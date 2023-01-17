@@ -1,32 +1,40 @@
-// Setup
-@import "setup/variables";
-@import "setup/functions";
-@import "setup/mixins";
-@import "setup/typography";
-
-// Basics
-@import "basics/helpers";
-@import "basics/layout";
-@import "basics/base";
-@import "basics/links";
-@import "basics/forms";
-
-
-// Views
-@import "views/about-us";
-@import "views/home-page";
-@import "views/car-app";
-@import "views/review-app";
-@import "views/user-details";
-
-// Components
-@import "cmps/app-header";
-@import "cmps/app-footer";
-@import "cmps/user-msg";
-@import "cmps/shopping-cart";
+// SETUP
+@import 'setup/typography';
+@import 'setup/functions';
+@import 'setup/mixins';
+@import 'setup/variables';
 
 
 
+// BASICS
+@import 'basics/base';
+@import 'basics/layout';
+@import 'basics/helpers';
+@import 'basics/buttons';
+@import 'basics/links';
 
+
+// COMPONENTS
+@import 'cmps/app-header';
+@import 'cmps/tool-bar';
+@import 'cmps/board-side-bar';
+@import 'cmps/user-msg';
+
+@import 'cmps/board-list';
+
+@import 'cmps/group-list';
+@import 'cmps/group-preview';
+
+@import 'cmps/task-list';
+
+@import 'cmps/task-details-side-menu';
+
+
+//VIEWS
+@import 'views/home-page';
+@import 'views/board-page';
+@import 'views/board-index';
+
+@import 'views/task-details';
 
 
