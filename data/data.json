@@ -51,16 +51,19 @@
         {
             "_id": "u101",
             "fullname": "Or Dvir",
+            "username": "Or Dvir",
             "imgUrl": "https://robohash.org/Or?set=set5"
         },
         {
             "_id": "u102",
             "fullname": "Liad Gola",
+            "username": "Liad Gola",
             "imgUrl": "https://robohash.org/Liad?set=set5"
         },
         {
             "_id": "u103",
             "fullname": "Oren Sharizad",
+            "username": "Oren Sharizad",
             "imgUrl": "https://robohash.org/oren?set=set5"
         }
     ],
