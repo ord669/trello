@@ -12,6 +12,7 @@ export function BoardDetails() {
     useEffect(() => {
         ; (async () => {
             const groups = await groupService.query(boardId)
+            console.log('boardId:', boardId)
             console.log('groups:', groups)
             setGroups(groups)
         })()
