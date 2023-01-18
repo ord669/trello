@@ -1,18 +1,45 @@
 button {
-    border: 0;
-    color: #fff;
-    padding: 5px 10px;
     cursor: pointer;
 }
 
+.btn {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}
+
 .btn-link {
-    border: 0;
-    background-color: transparent;
-    text-decoration: underline;
-    transition: .5s;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 3px;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+    height: 32px;
+    max-width: 300px;
+    overflow: hidden;
+    padding: 6px 12px;
+    position: relative;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition-duration: 85ms;
+    transition-property: background-color, border-color, box-shadow;
+    transition-timing-function: ease;
+    -webkit-user-select: none;
+    user-select: none;
+    white-space: nowrap;
 }
 
 .btn-link:hover {
-    background-color: $clr1;
-    transform: scale(1.1);
+    background-color: #091e4214;
+    border: none;
+    box-shadow: none;
+    color: inherit;
+    text-decoration: none;
+
 }
