@@ -34,19 +34,19 @@ export function HomeHeader() {
     }
 
     return (
-        <header className="home-header full">
-            <div className="home-header-contianer ">
-                <nav>
-                    {/* {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)} */}
-                    <div className="home-header-logo">
-                        <h1> Trello</h1>
-                    </div>
-                    {/* <NavLink>Features</NavLink>
-                    <NavLink>Solutions</NavLink>
-                    <NavLink>Plans</NavLink>
-                    <NavLink>Pricing</NavLink>
-                    <NavLink>Resources</NavLink> */}
-                </nav>
+        <section className="home-header full">
+            <div className="home-header-contianer  ">
+
+                <div className="home-header-logo">
+                    <h1>Trello</h1>
+                </div>
+                <div>
+                    <button className='btn-login'>Log in</button>
+                    <button className='btn-get-trello'>Get Trello for free</button>
+
+                </div>
+
+
                 {/* {user &&
                     <span className="user-info">
                         <Link to={`user/${user._id}`}>
@@ -65,6 +65,6 @@ export function HomeHeader() {
             </div>
 
 
-        </header>
+        </section>
     )
 }

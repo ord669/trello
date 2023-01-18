@@ -2,7 +2,7 @@
     height: 100vh;
     display: grid;
     grid-template-columns: 20px 1fr 20px;
-    grid-template-rows: 44px 1fr;
+    grid-template-rows: minmax(44px, 60px) 1fr;
 
     >* {
         grid-column: 2;

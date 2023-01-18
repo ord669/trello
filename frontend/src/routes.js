@@ -8,7 +8,7 @@ import { AdminApp } from './pages/admin-app.jsx'
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
     {
-        path: '/',
+        path: '/home',
         component: <HomePage />,
         label: 'Home 🏠',
     },
