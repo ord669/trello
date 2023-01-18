@@ -7,11 +7,12 @@ import { groupService } from "../services/group.service.local"
 export function BoardDetails() {
     const [groups, setGroups] = useState([])
     const { boardId } = useParams()
-
+    console.log('boardId: ', boardId);
 
     useEffect(() => {
         ; (async () => {
             const groups = await groupService.query(boardId)
+            console.log('boardId:', boardId)
             console.log('groups:', groups)
             setGroups(groups)
         })()
@@ -19,7 +20,7 @@ export function BoardDetails() {
 
     return (
         <section className='board-details'>
-            <GroupList />
+            <GroupList groups={groups} />
             <AddGroup />
         </section>
     )

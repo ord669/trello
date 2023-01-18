@@ -1,11 +1,13 @@
 import { AddTask } from "../task/add-task"
 import { GroupPreview } from "./group-preview"
 
-export function GroupList() {
-    const groups = [1, 2, 3]
+export function GroupList({ groups }) {
+
     return (
         <section className='group-list'>
-            {groups.map(group => <GroupPreview />)}
+            {groups.map(group =>
+                <GroupPreview key={group.id} group={group} />
+            )}
             <AddTask />
         </section>
     )
