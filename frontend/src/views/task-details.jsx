@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { ChecklistIcon, CloseIcon, DescriptionIcon, LabelIcon, ManIcon } from "../assets/svg/icon-library";
+import { CloseIcon, TitleIcon } from "../assets/svg/icon-library";
+import { TaskDetailsActivity } from "../cmps/task/task-details-activity";
+import { TaskDetailsChecklist } from "../cmps/task/task-details-checklist";
+import { TaskDetailsDescription } from "../cmps/task/task-details-description";
+import { TaskDetailsLabels } from "../cmps/task/task-details-labels";
+import { TaskDetailsSideMenu } from "../cmps/task/task-details-side-menu";
 
 export function TaskDetails() {
     const { board } = useSelector(storeState => storeState.boardModule)
@@ -25,45 +30,38 @@ export function TaskDetails() {
         <section className='task-details'>
             <div className="black-screen" onClick={() => navigate(`/board/${board._id}`)}></div>
             <div className="main-task-details">
+                <button onClick={() => removeTask(groupId, taskId)}>Remove Task</button>
                 <button onClick={() => navigate(`/board/${board._id}`)}
                     className="btn details-close-btn"><CloseIcon />
                 </button>
 
                 <div className="task-details-cover full-task"></div>
 
-                <div className="task-details-title">{task.title}</div>
+                <div className="task-details-title flex align-center">
+                    <TitleIcon />
+                    {task.title}
+                </div>
 
                 <div className="task-details-content">
-                    <div className="task-details-labels">
-                        <h1>labels</h1>
-                    </div>
-                    <div className="task-details-description">
-                        <div className="flex">
-                            <DescriptionIcon />
-                            <h1>Description</h1>
-                        </div>
-                        <textarea type="text" defaultValue={task.description} />
-                    </div>
-                    <div className="task-details-checklist">
-                        <h1>CheckList</h1>
-                        <ul>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                        </ul>
-                    </div>
+                    {task.labelIds && <ul>
+                        {task.labelIds.map((labelId, idx) => {
+                            <li key={idx}>
+                                <TaskDetailsLabels labelId={labelId} />
+                            </li>
+                        })
+                        }
+                    </ul>}
+                    <TaskDetailsLabels labelId={task.la} />
 
-                    <div className="task-details-activity">
-                        <h1>Activity</h1>
-                    </div>
+                    <TaskDetailsDescription description={task.description} />
+
+                    <TaskDetailsChecklist />
+
+                    <TaskDetailsActivity />
                 </div>
 
-                <div className="task-details-side-menu">
-                    <h1>add to card</h1>
-                    <button className=" side-menu-item btn-link"> <ManIcon /> Members</button>
-                    <button className=" side-menu-item btn-link"> <LabelIcon /> Labels</button>
-                    <button className="side-menu-item btn-link"> <ChecklistIcon /> Checklist</button>
-                </div>
+                <TaskDetailsSideMenu />
+
             </div>
         </section>
     )
