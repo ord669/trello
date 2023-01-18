@@ -4,6 +4,7 @@ import { GroupList } from "../cmps/group/group-list";
 export function BoardDetails() {
     return (
         <section className='board-details'>
+            hello
             <GroupList />
             <AddGroup />
         </section>
