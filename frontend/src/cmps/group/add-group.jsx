@@ -21,15 +21,19 @@ export function AddGroup() {
     }
 
     return (
-        <section className='group-preview add-group'>
+        <section className='add-group'>
             {isShown ?
                 <form>
                     <input type="text"
                         name="title"
+                        placeholder="Enter list title..."
                         value={title}
-                        onChange={handleChange} />
-                    <button className="btn btn-add-group" onClick={onAddList}>Add list</button>
-                    <button className="btn btn-close-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>X</button>
+                        onChange={handleChange}
+                        autoFocus />
+                    <section className="form-btns">
+                        <button className="btn btn-add-group" onClick={onAddList}>Add list</button>
+                        <button className="btn btn-close-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>X</button>
+                    </section>
                 </form>
                 :
                 <div onClick={() => setIsShown(prevIsShown => !prevIsShown)}>

@@ -1,0 +1,47 @@
+.add-group {
+    // background-color: rgba(255, 255, 255, 0.2);
+    background-color: #ffffff3d;
+    color: $clr6;
+    margin: 0 4px;
+    min-width: 272px;
+    border-radius: 3px;
+
+    &:hover {
+        background-color: #ffffff4d;
+    }
+
+    form {
+        background-color: $clr6;
+        border-radius: 3px;
+        padding: 4px;
+
+        input {
+            width: 100%;
+            padding: 8px 12px;
+            border: solid 2px $clr8;
+            border-radius: 3px;
+
+            &:focus-visible{
+                outline: none;
+            }
+        }
+
+        .form-btns {
+            margin-top: 4px;
+        }
+    }
+
+    .btn-add-group {
+        background-color: $clr8;
+        border-radius: 3px;
+        padding: 4px 12px;
+        margin-inline-end: 4px;
+    }
+
+    .btn-close-form {
+        color: $clr9;
+        background-color: inherit;
+        width: 32px;
+        aspect-ratio: 1/1;
+    }
+}
