@@ -43,7 +43,9 @@ export async function loadBoard(boardId) {
 export async function removeGroup(groupId) {
     store.dispatch(getActionRemoveGroup(groupId))
     try {
-        await groupService.remove(store.board._id, groupId)
+        const { board } = store.getState().boardModule
+        console.log('board from remove:', board);
+        await groupService.remove(board._id, groupId)
     } catch (err) {
         store.dispatch({ type: UNDO_REMOVE_GROUP, })
         console.log('Cannot remove group', err)

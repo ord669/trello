@@ -32,8 +32,8 @@ async function getById(boardId, groupId) {
 async function remove(boardId, groupId) {
     try {
         let board = await boardService.getById(boardId)
-        board = board.groups.filter(group => group._id !== groupId)
-        await boardService.save(STORAGE_KEY, board)
+        board = board.groups.filter(group => group.id !== groupId)
+        await boardService.save(board)
     } catch (err) {
         console.log('Cannot remove group: ', err)
         throw err

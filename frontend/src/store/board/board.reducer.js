@@ -24,8 +24,8 @@ export function boardReducer(state = initialState, action) {
             newState = { ...state, board: action.board }
             break
         case REMOVE_GROUP:
-            lastRemovedGroup = state.board.group.find(group => group._id === action.groupId)
-            groups = state.board.groups.filter(group => group._id !== action.groupId)
+            lastRemovedGroup = state.board.groups.find(group => group.id === action.groupId)
+            groups = state.board.groups.filter(group => group.id !== action.groupId)
             newState = { ...state, board: { ...state.board, groups }, lastRemovedGroup }
             break
         case ADD_GROUP:
@@ -33,7 +33,7 @@ export function boardReducer(state = initialState, action) {
             newState = { ...state, board }
             break
         case UPDATE_GROUP:
-            groups = state.board.groups.map(group => (group._id === action.group._id) ? action.group : group)
+            groups = state.board.groups.map(group => (group.id === action.group.id) ? action.group : group)
             newState = { ...state, board: { ...state.board, groups } }
             break
         case UNDO_REMOVE_GROUP:
