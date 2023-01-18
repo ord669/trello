@@ -56,7 +56,7 @@ export function App() {
                             {/* <Route path="admin" element={<AdminApp />} /> */}
                             <Route path="user/:id" element={<UserDetails />} />
                         </Routes>
-
+                        {/* <BoardDetails /> */}
                     </main>
                 </div>
             </Router>
