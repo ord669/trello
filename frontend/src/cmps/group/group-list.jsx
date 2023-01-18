@@ -9,7 +9,6 @@ export function GroupList({ groups }) {
                 <GroupPreview key={group.id} group={group} />
             )}
             <AddGroup />
-
         </section>
     )
 }

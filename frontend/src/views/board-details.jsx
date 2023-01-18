@@ -1,34 +1,27 @@
-import { useState, useEffect } from "react"
-import { Outlet, useParams } from "react-router-dom"
-import { AddGroup } from "../cmps/group/add-group"
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
+import { useParams } from "react-router-dom"
 import { GroupList } from "../cmps/group/group-list"
 import { ToolBar } from "../cmps/tool-bar"
-import { groupService } from "../services/group.service.local"
+import { loadBoard } from "../store/board/board.action"
 
 
 
 export function BoardDetails() {
-    const [groups, setGroups] = useState([])
+    const { board } = useSelector(storeState => storeState.boardModule)
     const { boardId } = useParams()
-    console.log('boardId: ', boardId);
+    console.log('boardId: ', boardId)
 
     useEffect(() => {
-        ; (async () => {
-            const groups = await groupService.query(boardId)
-            console.log('boardId:', boardId)
-            console.log('groups:', groups)
-            setGroups(groups)
-        })()
+        // ; (async () => {
+        loadBoard(boardId)
+        // })()
     }, [])
-
 
     return (
         <section className='board-details'>
             <ToolBar />
-            <GroupList groups={groups} />
-
-            <Outlet />
-
+            <GroupList groups={board?.groups || []} />
         </section>
 
 

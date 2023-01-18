@@ -41,7 +41,6 @@ async function remove(boardId, groupId) {
 }
 
 async function save(boardId, group) {
-
     try {
         const board = await boardService.getById(boardId)
         if (!board.groups) board.groups = []
@@ -49,11 +48,12 @@ async function save(boardId, group) {
             board.groups.map(currGroup => currGroup._id === group._id ? group : currGroup)
         } else {
             // Later, owner is set by the backend
-            group.byMember = userService.getLoggedinUser()
+            // group.byMember = userService.getLoggedinUser()
             group._id = utilService.makeId()
             board.groups.push(group)
         }
-        await boardService.save(STORAGE_KEY, board)
+        console.log('board in save group:', board);
+        await boardService.save(board)
         return group
     } catch (err) {
         console.log('Cannot save group: ', err)

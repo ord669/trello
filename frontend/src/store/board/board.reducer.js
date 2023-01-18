@@ -1,3 +1,5 @@
+import { boardService } from "../../services/board.service.local"
+
 export const SET_BOARD = 'SET_BOARD'
 export const REMOVE_GROUP = 'REMOVE_GROUP'
 export const ADD_GROUP = 'ADD_GROUP'
@@ -6,22 +8,23 @@ export const UNDO_REMOVE_GROUP = 'UNDO_REMOVE_GROUP'
 
 
 const initialState = {
-    board: null,
+    board: boardService.getEmptyBoard(),
+    // board: null,
     cart: [],
     lastRemovedGroup: null
 }
 
-export function carReducer(state = initialState, action) {
+export function boardReducer(state = initialState, action) {
     let newState = state
     let board
     let groups
-    let cart
+    let lastRemovedGroup
     switch (action.type) {
         case SET_BOARD:
             newState = { ...state, board: action.board }
             break
         case REMOVE_GROUP:
-            const lastRemovedGroup = state.board.group.find(group => group._id === action.groupId)
+            lastRemovedGroup = state.board.group.find(group => group._id === action.groupId)
             groups = state.board.groups.filter(group => group._id !== action.groupId)
             newState = { ...state, board: { ...state.board, groups }, lastRemovedGroup }
             break

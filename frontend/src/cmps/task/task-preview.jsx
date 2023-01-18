@@ -1,3 +1,5 @@
+import { PenIcon } from "../../assets/svg/icon-library";
+
 export function TaskPreview({ task }) {
 
 
@@ -7,12 +9,14 @@ export function TaskPreview({ task }) {
 
 
     return (
-        <section onClick={() => onOpenTaskDetails(task.id)} className='task-preview'>
-            <h4>{task.title}</h4>
-            <h4>{task.style.bgColor}</h4>
-            <h4>{task.style.img}</h4>
+        <section className='task-preview'>
+            <p>{task.title}</p>
+
             <div className="task-icons">
 
+            </div>
+            <div className="task-preview-edit display-none">
+                <PenIcon />
             </div>
         </section>
     )
