@@ -19,12 +19,7 @@ export const groupService = {
 }
 window.cs = groupService
 
-// query(boardId)
-
-console.log('query(boardId): ', query());
-
 async function query(boardId) {
-
     const boards = await boardService.getById(boardId)
     return boards.groups
 }
