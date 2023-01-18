@@ -36,8 +36,8 @@ export function AppHeader() {
 
     return (
         <header className="app-header full">
-            <MoreIcon />
-            <div className="logo flex align-center ">
+
+            <div className="header-logo flex align-center ">
                 <BoardIcon />
                 <h1>Trello</h1>
             </div>
