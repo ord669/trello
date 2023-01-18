@@ -16,7 +16,7 @@
 }
 
 .home-page-content {
-    padding-top: 100px;
+    // padding-top: 100px;
 }
 
 .home-page-content input {
@@ -54,5 +54,12 @@
     text-decoration: none;
     font-size: 1rem;
     padding: 0.7rem 1rem 0.8rem;
-    color: rgb(255, 255, 255) !important;
+
+    &:hover {
+        background-color: rgb(7, 71, 166);
+        border-color: rgb(7, 71, 166);
+        text-decoration: none;
+    }
+
+
 }
