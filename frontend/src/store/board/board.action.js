@@ -33,7 +33,7 @@ export async function removeGroup(groupId) {
 
 export async function saveGroup(group) {
     try {
-        const type = (group.id) ? UPDATE_GROUP : ADD_GROUP
+        const type = (group._id) ? UPDATE_GROUP : ADD_GROUP
         const { board } = store.getState().boardModule
         const savedGroup = await groupService.save(board._id, group)
         store.dispatch({ type, group: savedGroup })

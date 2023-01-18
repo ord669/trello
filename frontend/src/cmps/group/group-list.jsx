@@ -5,7 +5,7 @@ export function GroupList({ groups }) {
 
     return (
         <section className='group-list'>
-            {groups.map(group => <GroupPreview key={group.id} group={group} />)}
+            {groups.map(group => <GroupPreview key={group._id} group={group} />)}
             <AddGroup />
         </section >
     )
