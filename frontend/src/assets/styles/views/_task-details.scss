@@ -1,0 +1,16 @@
+.board-details {
+    height: 100%;
+    padding-left: 16px;
+
+    >:first-child {
+        margin-left: 12px;
+    }
+
+    .group-list {
+
+        height: 100%;
+        display: flex;
+        overflow: scroll;
+
+    }
+}

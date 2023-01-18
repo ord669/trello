@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { AddGroup } from "../cmps/group/add-group"
 import { GroupList } from "../cmps/group/group-list"
+import { ToolBar } from "../cmps/tool-bar"
 import { groupService } from "../services/group.service.local"
 
 const style = {
@@ -24,6 +25,7 @@ export function BoardDetails() {
 
     return (
         <section className='board-details'>
+            <ToolBar />
             <GroupList groups={groups} />
         </section>
     )
