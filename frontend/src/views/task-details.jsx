@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { ChecklistIcon, CloseIcon, DescriptionIcon, LabelIcon, ManIcon } from "../assets/svg/icon-library";
-import { loadBoard } from "../store/board/board.action";
 
 export function TaskDetails() {
     const { board } = useSelector(storeState => storeState.boardModule)
@@ -10,11 +9,8 @@ export function TaskDetails() {
     const [labels, setLabels] = useState([])
     const [group, setGroup] = useState([])
     const [task, setTask] = useState({})
+    const navigate = useNavigate()
 
-    console.log('groupId: ', groupId);
-    console.log('taskId: ', taskId);
-    console.log('board: ', board);
-    console.log('board.groups:', board.groups)
 
     useEffect(() => {
         if (!board.groups) return
@@ -30,11 +26,16 @@ export function TaskDetails() {
 
     return (
         <section className='task-details'>
-            <div className="black-screen"></div>
+            <div className="black-screen" onClick={() => navigate(`/board/${board._id}`)}></div>
             <div className="main-task-details">
-                <button className=" btn details-close-btn"><CloseIcon /></button>
+                <button onClick={() => navigate(`/board/${board._id}`)}
+                    className="btn details-close-btn"><CloseIcon />
+                </button>
+
                 <div className="task-details-cover full-task"></div>
+
                 <div className="task-details-title">{task.title}</div>
+
                 <div className="task-details-content">
                     <div className="task-details-labels">
                         <h1>labels</h1>
@@ -42,9 +43,9 @@ export function TaskDetails() {
                     <div className="task-details-description">
                         <div className="flex">
                             <DescriptionIcon />
-                            <h1>{task.description}</h1>
+                            <h1>Description</h1>
                         </div>
-                        <textarea type="text" />
+                        <textarea type="text" defaultValue={task.description} />
                     </div>
                     <div className="task-details-checklist">
                         <h1>CheckList</h1>
@@ -60,11 +61,12 @@ export function TaskDetails() {
                     </div>
 
                 </div>
+
                 <div className="task-details-side-menu">
                     <h1>add to card</h1>
-                    <button className="members side-menu-item btn-link"><ManIcon /> Members</button>
-                    <button className="Labels side-menu-item btn-link"><LabelIcon /> Labels</button>
-                    <button className="checklist side-menu-item btn-link"><ChecklistIcon /> Checklist</button>
+                    <button className=" side-menu-item btn-link"> <ManIcon /> Members</button>
+                    <button className=" side-menu-item btn-link"> <LabelIcon /> Labels</button>
+                    <button className="side-menu-item btn-link"> <ChecklistIcon /> Checklist</button>
                 </div>
             </div>
         </section>
