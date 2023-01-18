@@ -13,9 +13,7 @@ export function BoardDetails() {
     console.log('boardId: ', boardId)
 
     useEffect(() => {
-        // ; (async () => {
         loadBoard(boardId)
-        // })()
     }, [])
 
     return (

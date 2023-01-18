@@ -68,7 +68,7 @@
         }
     ],
     "groups": [
-        [
+        
             {
                 "id": "g101",
                 "title": "In Development",
@@ -986,7 +986,7 @@
                 ],
                 "style": {}
             }
-        ]
+        
     ],
     "activities": [
         {
