@@ -26,7 +26,7 @@ async function query(boardId) {
 
 async function getById(boardId, groupId) {
     const groups = await query(boardId)
-    return groups.find(group => group._id === groupId) || null
+    return groups.find(group => group.id === groupId) || null
 }
 
 async function remove(boardId, groupId) {
@@ -44,12 +44,12 @@ async function save(boardId, group) {
     try {
         const board = await boardService.getById(boardId)
         if (!board.groups) board.groups = []
-        if (group._id) {
-            board.groups.map(currGroup => currGroup._id === group._id ? group : currGroup)
+        if (group.id) {
+            board.groups.map(currGroup => currGroup.id === group.id ? group : currGroup)
         } else {
             // Later, owner is set by the backend
             // group.byMember = userService.getLoggedinUser()
-            group._id = utilService.makeId()
+            group.id = utilService.makeId()
             board.groups.push(group)
         }
         console.log('board in save group:', board);
@@ -71,19 +71,19 @@ function getEmptyGroup() {
 
 async function queryTasks(boardId, groupId) {
     const groups = await query(boardId)
-    return groups.find(group => group._id === groupId).tasks
+    return groups.find(group => group.id === groupId).tasks
 }
 
 async function getTaskById(boardId, groupId, taskId) {
     const tasks = queryTasks(boardId, groupId)
-    return tasks.find(task => task._id === taskId)
+    return tasks.find(task => task.id === taskId)
 }
 
 async function removeTask(boardId, groupId, taskId) {
     try {
         const board = await boardService.getById(boardId)
-        let group = board.groups.find(group => group._id === groupId)
-        group = group.tasks.filter(task => task._id !== taskId)
+        let group = board.groups.find(group => group.id === groupId)
+        group = group.tasks.filter(task => task.id !== taskId)
         await boardService.save(STORAGE_KEY, board)
     } catch (err) {
         console.log('Cannot remove task: ', err)
@@ -94,12 +94,12 @@ async function removeTask(boardId, groupId, taskId) {
 async function saveTask(boardId, groupId, task) {
     try {
         const board = await boardService.getById(boardId)
-        let group = board.groups.find(group => group._id === groupId)
+        let group = board.groups.find(group => group.id === groupId)
         if (task._id) {
-            group.tasks.map(currTask => currTask._id === task._id ? task : currTask)
+            group.tasks.map(currTask => currTask.id === task.id ? task : currTask)
         } else {
             group.byMember = userService.getLoggedinUser()
-            group._id = utilService.makeId()
+            group.id = utilService.makeId()
             group.tasks.push(group)
         }
         await boardService.save(STORAGE_KEY, board)
