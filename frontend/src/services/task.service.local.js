@@ -1,70 +1,99 @@
 
+import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
-import { boardService } from './board.service.local.js'
-import { storageService } from './async-storage.service.js'
 
-const TSAK_KEY = 'board'
+const STORAGE_KEY = 'board'
 
 export const taskService = {
-    query,
-    getById,
-    remove,
-    save,
-    getEmptyTask,
-}
-window.cs = taskService
-
-async function query(groupId) {
-    let tasks = await storageService.query(TSAK_KEY)
-    if (groupId) {
-        tasks = tasks.filter(task => task.groupId === groupId)
-    }
-    return tasks
+    setTaskInBoard,
+    removeTaskFromBoard,
+    getEmptyTask
 }
 
-async function getById(taskId) {
-    return storageService.get(taskId)
+function setTaskInBoard() {
+
 }
 
-async function remove(groupId, task) {
-    try {
-        task.groupId = ''
-        await storageService.save(TSAK_KEY, task)
-    } catch (err) {
-        console.log('Cannot remove task: ', err)
-        throw err
-    }
+function removeTaskFromBoard() {
+
 }
 
-async function save(groupId, task) {
-    try {
-        const board = await boardService.getById(boardId)
-        let group = board.groups.find(group => group._id === groupId)
-        if (task._id) {
-            group.tasks.map(currTask => currTask._id === task._id ? task : currTask)
-        } else {
-            group.byMember = userService.getLoggedinUser()
-            group._id = utilService.makeId()
-            group.tasks.push(group)
-        }
-        await boardService.save(STORAGE_KEY, board)
-        return group
-    } catch (err) {
-        console.log('Cannot save task: ', err)
-        throw err
-    }
-}
-
-function getEmptyTask() {
+function getEmptyTask(groupId, title) {
     return {
-        title: '',
-        description: '',
-        comments: [],
-        labelsId: [],
-
+        "_id": utilService.makeId(),
+        "title": title,
+        "archivedAt": Date.now(),
+        "description": "description",
+        "comments": [],
+        "checklists": [
+            {
+                "_id": "YEhmF",
+                "title": "Checklist",
+                "todos": [
+                    {
+                        "_id": "212jX",
+                        "title": "Make the header responsive",
+                        "isDone": false
+                    }
+                ]
+            }
+        ],
+        "memberIds": [
+            "u102"
+        ],
+        "labelIds": [
+            "l104"
+        ],
+        "dueDate": 16156215211,
+        "byMember": {
+            "_id": "u103",
+            "username": "Oren Sharizad",
+            "fullname": "Oren Sharizad",
+            "imgUrl": "https://robohash.org/oren?set=set5"
+        },
+        "style": {
+            "bgColor": "#26de81",
+            "img": "#26de81"
+        },
+        "Attachments": {
+            "file": "https://trello.com/1/cards/63c6c7e1fa702b025564cfd9/attachments/63c6c7f3d750200091545a10/download/3-Types-of-Functional-Testing.png"
+        },
+        "activity": [
+            {
+                "_id": "a101",
+                "txt": "added Checklist to this card",
+                "createdAt": 154513,
+                "byMember": {
+                    "_id": "u103",
+                    "username": "Oren Sharizad",
+                    "fullname": "Oren Sharizad",
+                    "imgUrl": "https://robohash.org/oren?set=set5"
+                }
+            },
+            {
+                "_id": "a102",
+                "txt": "attached 3-Types-of-Functional-Testing.png to this card",
+                "createdAt": 154512,
+                "byMember": {
+                    "_id": "u103",
+                    "username": "Oren Sharizad",
+                    "fullname": "Oren Sharizad",
+                    "imgUrl": "https://robohash.org/oren?set=set5"
+                }
+            },
+            {
+                "_id": "a103",
+                "txt": "added this card to In Development",
+                "createdAt": 154511,
+                "byMember": {
+                    "_id": "u103",
+                    "username": "Oren Sharizad",
+                    "fullname": "Oren Sharizad",
+                    "imgUrl": "https://robohash.org/oren?set=set5"
+                }
+            }
+        ],
+        "groupId": groupId
     }
 }
-
-// TEST DATA
-// storageService.post(STORAGE_KEY, { vendor: 'Subali Rahok 2', price: 980 }).then(x => console.log(x))

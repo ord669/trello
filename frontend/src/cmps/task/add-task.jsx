@@ -1,17 +1,17 @@
 import { useState } from "react"
+import { useSelector } from "react-redux"
 import { PlusIcon } from "../../assets/svg/icon-library"
 import { groupService } from "../../services/group.service.local"
-import { saveTask } from "../../store/task/task.action"
+import { removeTask, saveTask } from "../../store/board/board.action"
 
-export function AddTask({groupId}) {
+export function AddTask({ groupId }) {
     const [isShown, setIsShown] = useState(false)
     const [title, setTilte] = useState('')
+    // const boa        useSelector()
 
     function onAddTask() {
         if (!title) return
-        const task = groupService.getEmptyTask()
-        task.title = title
-        saveTask(groupId,task)
+        saveTask(groupId, title)
         setIsShown(prevIsShown => !prevIsShown)
         setTilte('')
     }
