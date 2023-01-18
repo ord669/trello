@@ -75,6 +75,7 @@ export async function removeTask(groupId, taskId) {
         group.tasks = group.tasks.filter(task => task._id !== taskId)
         saveGroup(group)
 
+
     } catch (err) {
 
         throw err

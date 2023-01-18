@@ -45,6 +45,10 @@
         justify-content: center;
     }
 
+    &.space-between {
+        justify-content: space-between;
+    }
+
     &.align-center {
         align-items: center;
     }
@@ -82,7 +86,13 @@
     display: none;
 }
 
-.icon {
-    width: 100%;
-    height: 100%;
+.clean-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
 }
+
+// .icon {
+//     width: 100%;
+//     height: 100%;
+// }
