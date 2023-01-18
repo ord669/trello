@@ -1,4 +1,5 @@
 .main-task-details {
+    color: #172b4d;
     position: fixed;
     left: 50%;
     top: 50%;
@@ -11,53 +12,72 @@
     margin-top: 60px;
     display: grid;
     gap: 1em;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 1fr 190px;
     grid-template-rows: 120px 80px 1fr;
     grid-template-areas:
-        "cover cover "
-        "title title "
+        "cover    cover "
+        "title    title "
         "content  aside";
-}
 
-.task-details-cover {
-    background-color: #ef7564;
-    grid-area: cover;
-}
-
-.task-details-title {
-    grid-area: title;
-}
-
-.task-details-content {
-    grid-area: content;
-}
-
-.task-details-side-menu {
-    grid-area: aside;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-
-    .side-menu-item {
-        width: 100%;
-        padding: 6px 12px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    &>*:not(.full-task) {
+        padding: 0 10px;
     }
-}
 
 
 
 
+    .task-details-cover {
+        background-color: #ef7564;
+        grid-area: cover;
+    }
 
+    .task-details-title {
+        grid-area: title;
+        font-size: 20px
+    }
 
+    .task-details-content {
+        grid-area: content;
 
+        .task-details-description {
+            textarea {
+                overflow: hidden;
+                overflow-wrap: break-word;
+                resize: none;
+                height: 108px;
+                width: 100%;
+            }
 
-.details-close-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-radius: 50%;
+        }
+    }
+
+    .task-details-side-menu {
+        grid-area: aside;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        .side-menu-item {
+            width: 100%;
+            padding: 6px 12px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+    }
+
+    .details-close-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: 50%;
+        font-size: 27px;
+        color: #45526c;
+        margin: 4px;
+        padding: 4px;
+        width: 40px;
+        height: 40px;
+    }
+
 }

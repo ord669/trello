@@ -41,7 +41,7 @@ export function getActionRemoveGroup(groupId) {
 // }
 export async function saveTask(groupId, task) {
     try {
-        const type = (task.id) ? UPDATE_TASK : ADD_TASK
+        const type = (task._id) ? UPDATE_TASK : ADD_TASK
         const { board } = store.getState().boardModule
         const savedTask = await groupService.saveTask(board._id, groupId, task)
         store.dispatch({ type, task: savedTask })
