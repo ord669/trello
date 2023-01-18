@@ -5,8 +5,6 @@ import { GroupList } from "../cmps/group/group-list"
 import { ToolBar } from "../cmps/tool-bar"
 import { loadBoard } from "../store/board/board.action"
 
-
-
 export function BoardDetails() {
     const { board } = useSelector(storeState => storeState.boardModule)
     const { boardId } = useParams()
@@ -18,10 +16,9 @@ export function BoardDetails() {
 
     return (
         <section className='board-details'>
-            <ToolBar />
+            <ToolBar board={board} />
             <GroupList groups={board?.groups || []} />
         </section>
-
 
     )
 }
