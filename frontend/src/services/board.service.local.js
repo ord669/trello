@@ -26,7 +26,6 @@ async function query(filterBy = { txt: '' }) {
 }
 
 function getById(boardId) {
-    console.log('boardId: ', boardId);
     return storageService.get(STORAGE_KEY, boardId)
 }
 
@@ -41,7 +40,7 @@ async function save(board) {
         savedBoard = await storageService.put(STORAGE_KEY, board)
     } else {
         // Later, owner is set by the backend
-        board.owner = userService.getLoggedinUser()
+        // board.owner = userService.getLoggedinUser()
         savedBoard = await storageService.post(STORAGE_KEY, board)
     }
     return savedBoard
