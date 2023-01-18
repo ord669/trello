@@ -9,8 +9,12 @@ export function GroupPreview({ group }) {
             <button onClick={() => removeGroup(group.id)}>X</button>
             <h2>{group.title}</h2>
             <TaskList tasks={group.tasks} />
+<<<<<<< HEAD
+            <AddTask />
+=======
 
             <AddTask  groupId={group.id}/>
+>>>>>>> refs/remotes/origin/main
         </section>
     )
 }

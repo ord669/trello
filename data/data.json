@@ -145,7 +145,8 @@
                                 "imgUrl": "https://robohash.org/oren?set=set5"
                             }
                         }
-                    ]
+                    ],
+                        "groupId": "g101"
                 }
             ],
             "style": {}
@@ -223,7 +224,8 @@
                                 "imgUrl": "https://robohash.org/Liad?set=set5"
                             }
                         }
-                    ]
+                    ],
+                        "groupId": "g102"
                 },
                 {
                     "_id": "c103",
@@ -264,7 +266,8 @@
                                 "imgUrl": "https://robohash.org/Or?set=set5"
                             }
                         }
-                    ]
+                    ],
+                        "groupId": "g102"
                 },
                 {
                     "_id": "c104",
@@ -316,7 +319,8 @@
                                 "imgUrl": "https://robohash.org/Or?set=set5"
                             }
                         }
-                    ]
+                    ],
+                        "groupId": "g102"
                 },
                 {
                     "_id": "c105",
@@ -340,7 +344,8 @@
                         "bgColor": ""
                     },
                     "Attachments": {},
-                    "activity": []
+                    "activity": [],
+                        "groupId": "g102"
                 }
             ],
             "style": {}
@@ -420,7 +425,8 @@
                                 "imgUrl": "https://robohash.org/Liad?set=set5"
                             }
                         }
-                    ]
+                    ],
+                        "groupId": "g103"
                 },
                 {
                     "_id": "c107",
@@ -486,7 +492,8 @@
                                 "imgUrl": "https://robohash.org/oren?set=set5"
                             }
                         }
-                    ]
+                    ],
+                        "groupId": "g103"
                 },
                 {
                     "_id": "c108",
@@ -516,7 +523,8 @@
                     "Attachments": {
                         "file": "https://trello.com/1/cards/63c6cabe12d00103d58557be/attachments/63c6cad25bf8c801a3c857e3/download/featured-image-PWA.png"
                     },
-                    "activity": []
+                    "activity": [],
+                        "groupId": "g103"
                 }
             ],
             "style": {}
@@ -574,7 +582,8 @@
                                 "imgUrl": "https://robohash.org/Liad?set=set5"
                             }
                         }
-                    ]
+                    ],
+                        "groupId": "g104"
                 },
                 {
                     "_id": "c110",
@@ -616,7 +625,8 @@
                                 "imgUrl": "https://robohash.org/oren?set=set5"
                             }
                         }
-                    ]
+                    ],
+                        "groupId": "g104"
                 },
                 {
                     "_id": "c111",
@@ -642,7 +652,8 @@
                     },
                     "style": {},
                     "Attachments": {},
-                    "activity": []
+                    "activity": [],
+                        "groupId": "g104"
                 },
                 {
                     "_id": "c112",
@@ -681,7 +692,8 @@
                                 "imgUrl": "https://robohash.org/Or?set=set5"
                             }
                         }
-                    ]
+                    ],
+                        "groupId": "g104"
                 }
             ],
             "style": {}
@@ -724,7 +736,8 @@
                                 "imgUrl": "https://robohash.org/oren?set=set5"
                             }
                         }
-                    ]
+                    ],
+                        "groupId": "g105"
                 },
                 {
                     "_id": "c114",
@@ -801,7 +814,8 @@
                                 "imgUrl": "https://robohash.org/Liad?set=set5"
                             }
                         }
-                    ]
+                    ],
+                        "groupId": "g105"
                 },
                 {
                     "_id": "c115",
@@ -868,7 +882,8 @@
                     },
                     "style": {},
                     "Attachments": {},
-                    "activity": []
+                    "activity": [],
+                        "groupId": "g105"
                 },
                 {
                     "_id": "c116",
@@ -916,7 +931,8 @@
                                 "imgUrl": "https://robohash.org/Or?set=set5"
                             }
                         }
-                    ]
+                    ],
+                        "groupId": "g105"
                 },
                 {
                     "_id": "c117",
@@ -979,7 +995,8 @@
                                 "imgUrl": "https://robohash.org/Liad?set=set5"
                             }
                         }
-                    ]
+                    ],
+                        "groupId": "g105"
                 }
             ],
             "style": {}
