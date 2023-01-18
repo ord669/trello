@@ -1,7 +1,7 @@
 import { boardService } from "../../services/board.service.local"
 import { groupService } from "../../services/group.service.local"
 import { store } from '../store'
-// import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+
 import { ADD_GROUP, REMOVE_GROUP, SET_BOARD, UNDO_REMOVE_GROUP, UPDATE_GROUP } from "./board.reducer"
 
 export async function loadBoard(boardId) {
@@ -9,10 +9,7 @@ export async function loadBoard(boardId) {
         const board = await boardService.getById(boardId)
         if (!board) throw new Error('Board not found')
         console.log('board from DB:', board)
-        store.dispatch({
-            type: SET_BOARD,
-            board
-        })
+        store.dispatch({ type: SET_BOARD, board })
     } catch (err) {
         console.log('Cannot load board', err)
         throw err

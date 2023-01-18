@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { PlusIcon } from "../../assets/svg/icon-library"
 import { groupService } from "../../services/group.service.local"
-import { saveTask } from "../../store/task/task.action"
 
 export function AddTask({groupId}) {
     const [isShown, setIsShown] = useState(false)
@@ -11,7 +10,7 @@ export function AddTask({groupId}) {
         if (!title) return
         const task = groupService.getEmptyTask()
         task.title = title
-        saveTask(groupId,task)
+        // saveTask(groupId,task)
         setIsShown(prevIsShown => !prevIsShown)
         setTilte('')
     }
