@@ -32,6 +32,10 @@
     height: 100%;
     padding-left: 16px;
 
+    >:first-child {
+        margin-left: 12px;
+    }
+
     .group-list {
 
         height: 100%;
