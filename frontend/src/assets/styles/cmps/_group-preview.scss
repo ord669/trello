@@ -1,11 +1,11 @@
 .group-preview {
     margin: 0 4px;
-    width: 272px;
-    overflow: hidden;
+    min-width: 272px;
     background-color: $clr3 ;
 
     .task-list {
         margin: 0 4px;
+        background-color: $clr6;
     }
 
 }
