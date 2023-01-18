@@ -4,6 +4,7 @@ export function HomePage() {
         <section className='home-page   '>
             <div className="main-home-page  ">
                 <div className="home-page-content">
+
                     <h1 className='home-page-title'>
                         Trello brings all your tasks, teammates, and tools together
                     </h1>
@@ -19,6 +20,7 @@ export function HomePage() {
                 </div>
                 <img className="hero-img" src={require(`../assets/img/hero.png`)} alt="hero-img" />
             </div>
+
         </section >
     )
 }
