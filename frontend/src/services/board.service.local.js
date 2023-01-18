@@ -94,37 +94,37 @@ function _createBoards() {
                 "style": {},
                 "labels": [
                     {
-                        "id": "l101",
+                        "_id": "l101",
                         "title": "Done",
                         "color": "#d6ecd2"
                     },
                     {
-                        "id": "l102",
+                        "_id": "l102",
                         "title": "Progress",
                         "color": "#fbf3c0"
                     },
                     {
-                        "id": "l103",
+                        "_id": "l103",
                         "title": "Todo",
                         "color": "#fce7c6"
                     },
                     {
-                        "id": "l104",
+                        "_id": "l104",
                         "title": "Important",
                         "color": "#f5d3ce"
                     },
                     {
-                        "id": "l105",
+                        "_id": "l105",
                         "title": "Urgent",
                         "color": "#efb3ab"
                     },
                     {
-                        "id": "l106",
+                        "_id": "l106",
                         "title": "Later",
                         "color": "#dfc0eb"
                     },
                     {
-                        "id": "l107",
+                        "_id": "l107",
                         "title": "Basic",
                         "color": "#e4f0f6"
                     }
@@ -150,25 +150,24 @@ function _createBoards() {
                     }
                 ],
                 "groups": [
-
                     {
-                        "id": "g101",
+                        "_id": "g101",
                         "title": "In Development",
                         "archivedAt": 1589983468410,
                         "tasks": [
                             {
-                                "id": "c101",
+                                "_id": "c101",
                                 "title": "functional testing for app header",
                                 "archivedAt": 1589983468411,
                                 "description": "description",
                                 "comments": [],
                                 "checklists": [
                                     {
-                                        "id": "YEhmF",
+                                        "_id": "YEhmF",
                                         "title": "Checklist",
                                         "todos": [
                                             {
-                                                "id": "212jX",
+                                                "_id": "212jX",
                                                 "title": "Make the header responsive",
                                                 "isDone": false
                                             }
@@ -197,7 +196,7 @@ function _createBoards() {
                                 },
                                 "activity": [
                                     {
-                                        "id": "a101",
+                                        "_id": "a101",
                                         "txt": "added Checklist to this card",
                                         "createdAt": 154513,
                                         "byMember": {
@@ -208,7 +207,7 @@ function _createBoards() {
                                         }
                                     },
                                     {
-                                        "id": "a102",
+                                        "_id": "a102",
                                         "txt": "attached 3-Types-of-Functional-Testing.png to this card",
                                         "createdAt": 154512,
                                         "byMember": {
@@ -219,7 +218,7 @@ function _createBoards() {
                                         }
                                     },
                                     {
-                                        "id": "a103",
+                                        "_id": "a103",
                                         "txt": "added this card to In Development",
                                         "createdAt": 154511,
                                         "byMember": {
@@ -229,39 +228,40 @@ function _createBoards() {
                                             "imgUrl": "https://robohash.org/oren?set=set5"
                                         }
                                     }
-                                ]
+                                ],
+                                    "groupId": "g101"
                             }
                         ],
                         "style": {}
                     },
                     {
-                        "id": "g102",
+                        "_id": "g102",
                         "title": "Backlog-Server",
                         "archivedAt": 1589983478560,
                         "tasks": [
                             {
-                                "id": "c102",
+                                "_id": "c102",
                                 "title": "Create backend services",
                                 "archivedAt": 1589983468411,
                                 "description": "",
                                 "comments": [],
                                 "checklists": [
                                     {
-                                        "id": "dsFge",
+                                        "_id": "dsFge",
                                         "title": "Checklist",
                                         "todos": [
                                             {
-                                                "id": "212jX",
+                                                "_id": "212jX",
                                                 "title": "Get packages",
                                                 "isDone": false
                                             },
                                             {
-                                                "id": "32ttr",
+                                                "_id": "32ttr",
                                                 "title": "Open an Atlas account",
                                                 "isDone": true
                                             },
                                             {
-                                                "id": "0sd9P",
+                                                "_id": "0sd9P",
                                                 "title": "Node js modules",
                                                 "isDone": false
                                             }
@@ -286,7 +286,7 @@ function _createBoards() {
                                 },
                                 "activity": [
                                     {
-                                        "id": "a104",
+                                        "_id": "a104",
                                         "txt": "added Checklist to this card",
                                         "createdAt": 1589669463411,
                                         "byMember": {
@@ -297,7 +297,7 @@ function _createBoards() {
                                         }
                                     },
                                     {
-                                        "id": "a105",
+                                        "_id": "a105",
                                         "txt": "added this card to Backlog-Server",
                                         "createdAt": 1589669468411,
                                         "byMember": {
@@ -307,10 +307,11 @@ function _createBoards() {
                                             "imgUrl": "https://robohash.org/Liad?set=set5"
                                         }
                                     }
-                                ]
+                                ],
+                                    "groupId": "g102"
                             },
                             {
-                                "id": "c103",
+                                "_id": "c103",
                                 "title": "Connect the data with MongoDB",
                                 "archivedAt": 1589989488411,
                                 "description": "Change the all css in the app to Scss",
@@ -338,7 +339,7 @@ function _createBoards() {
                                 },
                                 "activity": [
                                     {
-                                        "id": "a106",
+                                        "_id": "a106",
                                         "txt": "added this card to Backlog-Server",
                                         "createdAt": 1589989488411,
                                         "byMember": {
@@ -348,10 +349,11 @@ function _createBoards() {
                                             "imgUrl": "https://robohash.org/Or?set=set5"
                                         }
                                     }
-                                ]
+                                ],
+                                    "groupId": "g102"
                             },
                             {
-                                "id": "c104",
+                                "_id": "c104",
                                 "title": "More customization options",
                                 "archivedAt": 1589954488411,
                                 "description": "",
@@ -379,7 +381,7 @@ function _createBoards() {
                                 "Attachments": {},
                                 "activity": [
                                     {
-                                        "id": "a108",
+                                        "_id": "a108",
                                         "txt": "added label Progress to this card card",
                                         "createdAt": 1589999488411,
                                         "byMember": {
@@ -390,7 +392,7 @@ function _createBoards() {
                                         }
                                     },
                                     {
-                                        "id": "a107",
+                                        "_id": "a107",
                                         "txt": "added this card to Backlog-Server",
                                         "createdAt": 1589989488411,
                                         "byMember": {
@@ -400,10 +402,11 @@ function _createBoards() {
                                             "imgUrl": "https://robohash.org/Or?set=set5"
                                         }
                                     }
-                                ]
+                                ],
+                                    "groupId": "g102"
                             },
                             {
-                                "id": "c105",
+                                "_id": "c105",
                                 "title": "Sanity test for new component",
                                 "archivedAt": 1589957488411,
                                 "description": "",
@@ -424,39 +427,40 @@ function _createBoards() {
                                     "bgColor": ""
                                 },
                                 "Attachments": {},
-                                "activity": []
+                                "activity": [],
+                                    "groupId": "g102"
                             }
                         ],
                         "style": {}
                     },
                     {
-                        "id": "g103",
+                        "_id": "g103",
                         "title": "Backlog-clinet",
                         "archivedAt": 1589983878560,
                         "tasks": [
                             {
-                                "id": "c106",
+                                "_id": "c106",
                                 "title": "Provide training and support to other team members",
                                 "archivedAt": 1589983468911,
                                 "description": "",
                                 "comments": [],
                                 "checklists": [
                                     {
-                                        "id": "54yPP",
+                                        "_id": "54yPP",
                                         "title": "Checklist",
                                         "todos": [
                                             {
-                                                "id": "97opd",
+                                                "_id": "97opd",
                                                 "title": "Make an appointment",
                                                 "isDone": true
                                             },
                                             {
-                                                "id": "956IA",
+                                                "_id": "956IA",
                                                 "title": "Prepare all the details",
                                                 "isDone": true
                                             },
                                             {
-                                                "id": "LKQ12",
+                                                "_id": "LKQ12",
                                                 "title": "Sum up everything",
                                                 "isDone": false
                                             }
@@ -483,7 +487,7 @@ function _createBoards() {
                                 },
                                 "activity": [
                                     {
-                                        "id": "a109",
+                                        "_id": "a109",
                                         "txt": "added Checklist to this card",
                                         "createdAt": 1589669463411,
                                         "byMember": {
@@ -494,7 +498,7 @@ function _createBoards() {
                                         }
                                     },
                                     {
-                                        "id": "a110",
+                                        "_id": "a110",
                                         "txt": "moved this card to Backlog-clinet",
                                         "createdAt": 1589669468411,
                                         "byMember": {
@@ -504,36 +508,37 @@ function _createBoards() {
                                             "imgUrl": "https://robohash.org/Liad?set=set5"
                                         }
                                     }
-                                ]
+                                ],
+                                    "groupId": "g103"
                             },
                             {
-                                "id": "c107",
+                                "_id": "c107",
                                 "title": "Build basic CRUD",
                                 "archivedAt": 1693479488411,
                                 "description": "Build basic CRUD for users",
                                 "comments": [],
                                 "checklists": [
                                     {
-                                        "id": "Ofe53",
+                                        "_id": "Ofe53",
                                         "title": "Checklist",
                                         "todos": [
                                             {
-                                                "id": "ueysd",
+                                                "_id": "ueysd",
                                                 "title": "Create",
                                                 "isDone": true
                                             },
                                             {
-                                                "id": "RDsaw",
+                                                "_id": "RDsaw",
                                                 "title": "Read",
                                                 "isDone": true
                                             },
                                             {
-                                                "id": "23EDS",
+                                                "_id": "23EDS",
                                                 "title": "Update",
                                                 "isDone": false
                                             },
                                             {
-                                                "id": "bcsv3",
+                                                "_id": "bcsv3",
                                                 "title": "Delete",
                                                 "isDone": false
                                             }
@@ -560,7 +565,7 @@ function _createBoards() {
                                 "Attachments": {},
                                 "activity": [
                                     {
-                                        "id": "a111",
+                                        "_id": "a111",
                                         "txt": "added this card to Backlog-clinet",
                                         "createdAt": 1589989488411,
                                         "byMember": {
@@ -570,10 +575,11 @@ function _createBoards() {
                                             "imgUrl": "https://robohash.org/oren?set=set5"
                                         }
                                     }
-                                ]
+                                ],
+                                    "groupId": "g103"
                             },
                             {
-                                "id": "c108",
+                                "_id": "c108",
                                 "title": "Connecting to PWA",
                                 "archivedAt": 1693472488411,
                                 "description": "",
@@ -600,18 +606,19 @@ function _createBoards() {
                                 "Attachments": {
                                     "file": "https://trello.com/1/cards/63c6cabe12d00103d58557be/attachments/63c6cad25bf8c801a3c857e3/download/featured-image-PWA.png"
                                 },
-                                "activity": []
+                                "activity": [],
+                                    "groupId": "g103"
                             }
                         ],
                         "style": {}
                     },
                     {
-                        "id": "g104",
+                        "_id": "g104",
                         "title": "Done",
                         "archivedAt": 1612483878560,
                         "tasks": [
                             {
-                                "id": "c109",
+                                "_id": "c109",
                                 "title": "Apply socket service",
                                 "archivedAt": 1612483878560,
                                 "description": "Here we have some description of what the board is about and what rules are in place to co-ordinate the team members...",
@@ -637,7 +644,7 @@ function _createBoards() {
                                 },
                                 "activity": [
                                     {
-                                        "id": "a112",
+                                        "_id": "a112",
                                         "txt": "changed this card color",
                                         "createdAt": 1612993878560,
                                         "byMember": {
@@ -648,7 +655,7 @@ function _createBoards() {
                                         }
                                     },
                                     {
-                                        "id": "a113",
+                                        "_id": "a113",
                                         "txt": "moved this card to Done",
                                         "createdAt": 1612483878560,
                                         "byMember": {
@@ -658,10 +665,11 @@ function _createBoards() {
                                             "imgUrl": "https://robohash.org/Liad?set=set5"
                                         }
                                     }
-                                ]
+                                ],
+                                    "groupId": "g104"
                             },
                             {
-                                "id": "c110",
+                                "_id": "c110",
                                 "title": "Add user authentication",
                                 "archivedAt": 1693479488411,
                                 "description": "Here we have some description of what the board is about and what rules are in place to co-ordinate the team members...",
@@ -690,7 +698,7 @@ function _createBoards() {
                                 "Attachments": {},
                                 "activity": [
                                     {
-                                        "id": "a114",
+                                        "_id": "a114",
                                         "txt": "added label Urgent to this card",
                                         "createdAt": 1589989488411,
                                         "byMember": {
@@ -700,10 +708,11 @@ function _createBoards() {
                                             "imgUrl": "https://robohash.org/oren?set=set5"
                                         }
                                     }
-                                ]
+                                ],
+                                    "groupId": "g104"
                             },
                             {
-                                "id": "c111",
+                                "_id": "c111",
                                 "title": "Database implementation",
                                 "archivedAt": 1693472445411,
                                 "description": "Need to finish JSON data ASAP",
@@ -726,10 +735,11 @@ function _createBoards() {
                                 },
                                 "style": {},
                                 "Attachments": {},
-                                "activity": []
+                                "activity": [],
+                                    "groupId": "g104"
                             },
                             {
-                                "id": "c112",
+                                "_id": "c112",
                                 "title": "Node",
                                 "archivedAt": 1696472488411,
                                 "description": "",
@@ -755,7 +765,7 @@ function _createBoards() {
                                 },
                                 "activity": [
                                     {
-                                        "id": "a115",
+                                        "_id": "a115",
                                         "txt": "added an attachment to this card",
                                         "createdAt": 1589989488411,
                                         "byMember": {
@@ -765,18 +775,19 @@ function _createBoards() {
                                             "imgUrl": "https://robohash.org/Or?set=set5"
                                         }
                                     }
-                                ]
+                                ],
+                                    "groupId": "g104"
                             }
                         ],
                         "style": {}
                     },
                     {
-                        "id": "g105",
+                        "_id": "g105",
                         "title": "QA",
                         "archivedAt": 1652483878560,
                         "tasks": [
                             {
-                                "id": "c113",
+                                "_id": "c113",
                                 "title": "Testing",
                                 "archivedAt": 1612483878560,
                                 "description": "Here we have some description of what the board is about and what rules are in place to co-ordinate the team members...",
@@ -798,7 +809,7 @@ function _createBoards() {
                                 },
                                 "activity": [
                                     {
-                                        "id": "a116",
+                                        "_id": "a116",
                                         "txt": "changed this card color",
                                         "createdAt": 1612993878560,
                                         "byMember": {
@@ -808,21 +819,22 @@ function _createBoards() {
                                             "imgUrl": "https://robohash.org/oren?set=set5"
                                         }
                                     }
-                                ]
+                                ],
+                                    "groupId": "g105"
                             },
                             {
-                                "id": "c114",
+                                "_id": "c114",
                                 "title": "Finish making more customization options",
                                 "archivedAt": 1693479488411,
                                 "description": "Here we have some description of what the board is about and what rules are in place to co-ordinate the team members...",
                                 "comments": [],
                                 "checklists": [
                                     {
-                                        "id": "EA342",
+                                        "_id": "EA342",
                                         "title": "Checklist",
                                         "todos": [
                                             {
-                                                "id": "31Qq5",
+                                                "_id": "31Qq5",
                                                 "title": "Check software",
                                                 "isDone": false
                                             }
@@ -853,7 +865,7 @@ function _createBoards() {
                                 "Attachments": {},
                                 "activity": [
                                     {
-                                        "id": "a117",
+                                        "_id": "a117",
                                         "txt": "added label Important to this card",
                                         "createdAt": 1589989488411,
                                         "byMember": {
@@ -864,7 +876,7 @@ function _createBoards() {
                                         }
                                     },
                                     {
-                                        "id": "a118",
+                                        "_id": "a118",
                                         "txt": "moved this card to QA",
                                         "createdAt": 1589989488411,
                                         "byMember": {
@@ -875,7 +887,7 @@ function _createBoards() {
                                         }
                                     },
                                     {
-                                        "id": "a119",
+                                        "_id": "a119",
                                         "txt": "added Checklist to this card",
                                         "createdAt": 1589989488411,
                                         "byMember": {
@@ -885,52 +897,53 @@ function _createBoards() {
                                             "imgUrl": "https://robohash.org/Liad?set=set5"
                                         }
                                     }
-                                ]
+                                ],
+                                    "groupId": "g105"
                             },
                             {
-                                "id": "c115",
+                                "_id": "c115",
                                 "title": "File Management",
                                 "archivedAt": 1693482445411,
                                 "description": "Files can't be larger than 40MB",
                                 "comments": [],
                                 "checklists": [
                                     {
-                                        "id": "RS43s",
+                                        "_id": "RS43s",
                                         "title": "Todo-List",
                                         "todos": [
                                             {
-                                                "id": "sd2D4",
+                                                "_id": "sd2D4",
                                                 "title": "Upload endpoint returns a 400 error code",
                                                 "isDone": false
                                             }
                                         ]
                                     },
                                     {
-                                        "id": "ds64s",
+                                        "_id": "ds64s",
                                         "title": "Task Review",
                                         "todos": [
                                             {
-                                                "id": "2gfd5",
+                                                "_id": "2gfd5",
                                                 "title": "Implement endpoint to upload file",
                                                 "isDone": true
                                             },
                                             {
-                                                "id": "xw523",
+                                                "_id": "xw523",
                                                 "title": "Implement endpoint to validate file",
                                                 "isDone": true
                                             },
                                             {
-                                                "id": "hd12D",
+                                                "_id": "hd12D",
                                                 "title": "Implement endpoint to tag files in folders",
                                                 "isDone": true
                                             },
                                             {
-                                                "id": "32re2",
+                                                "_id": "32re2",
                                                 "title": "Implement endpoint to store file on cloudinary",
                                                 "isDone": true
                                             },
                                             {
-                                                "id": "DSF23",
+                                                "_id": "DSF23",
                                                 "title": "Create a form to send upload request",
                                                 "isDone": false
                                             }
@@ -952,16 +965,17 @@ function _createBoards() {
                                 },
                                 "style": {},
                                 "Attachments": {},
-                                "activity": []
+                                "activity": [],
+                                    "groupId": "g105"
                             },
                             {
-                                "id": "c116",
+                                "_id": "c116",
                                 "title": "Automation tests",
                                 "archivedAt": 1696572488411,
                                 "description": "Unit testing and review of QA team",
                                 "comments": [
                                     {
-                                        "id": "E21W3",
+                                        "_id": "E21W3",
                                         "txt": "Please Check Again, Found some Bugs",
                                         "createdAt": 1696572588411,
                                         "byMember": {
@@ -990,7 +1004,7 @@ function _createBoards() {
                                 "Attachments": {},
                                 "activity": [
                                     {
-                                        "id": "a120",
+                                        "_id": "a120",
                                         "txt": "added a comment to this card",
                                         "createdAt": 1696572588411,
                                         "byMember": {
@@ -1000,16 +1014,17 @@ function _createBoards() {
                                             "imgUrl": "https://robohash.org/Or?set=set5"
                                         }
                                     }
-                                ]
+                                ],
+                                    "groupId": "g105"
                             },
                             {
-                                "id": "c117",
+                                "_id": "c117",
                                 "title": "Bug fixes",
                                 "archivedAt": 1696573488411,
                                 "description": "",
                                 "comments": [
                                     {
-                                        "id": "sd23d",
+                                        "_id": "sd23d",
                                         "txt": "Joined Bugs",
                                         "createdAt": 1696575488411,
                                         "byMember": {
@@ -1042,7 +1057,7 @@ function _createBoards() {
                                 },
                                 "activity": [
                                     {
-                                        "id": "a121",
+                                        "_id": "a121",
                                         "txt": "added a comment to this card",
                                         "createdAt": 1696575488411,
                                         "byMember": {
@@ -1053,7 +1068,7 @@ function _createBoards() {
                                         }
                                     },
                                     {
-                                        "id": "a122",
+                                        "_id": "a122",
                                         "txt": "added an attachment to this card",
                                         "createdAt": 1696575488411,
                                         "byMember": {
@@ -1063,16 +1078,16 @@ function _createBoards() {
                                             "imgUrl": "https://robohash.org/Liad?set=set5"
                                         }
                                     }
-                                ]
+                                ],
+                                    "groupId": "g105"
                             }
                         ],
                         "style": {}
                     }
-
                 ],
                 "activities": [
                     {
-                        "id": "a101",
+                        "_id": "a101",
                         "txt": "Changed Color",
                         "createdAt": 154514,
                         "byMember": {
@@ -1081,14 +1096,16 @@ function _createBoards() {
                             "imgUrl": "https://robohash.org/Or?set=set5"
                         },
                         "task": {
-                            "id": "c101",
+                            "_id": "c101",
                             "title": "Replace Logo"
                         }
                     }
                 ],
-
-                "cmpsOrder": ["status-picker", "member-picker", "date-picker"]
-
+                "cmpsOrder": [
+                    "status-picker",
+                    "member-picker",
+                    "date-picker"
+                ]
             }
         ]
         utilService.saveToStorage(STORAGE_KEY, boards)

@@ -4,6 +4,9 @@
     padding-bottom: 1em;
     display: flex;
     flex-direction: column;
+    background-image: url(../../img/background.jpg);
+    background-position: 50%;
+    background-size: cover;
 
     >:first-child {
         margin-left: 12px;
@@ -38,4 +41,11 @@
         padding: 8px 4px 4px 12px;
     }
 
+    .tool-bar {
+        color: $clr6;
+        // padding-left: 32px;
+        padding: 0 12px 8px;
+        margin-top: -4px;
+
+    }
 }

@@ -4,47 +4,25 @@ import { store } from '../store'
 // import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { ADD_GROUP, REMOVE_GROUP, SET_BOARD, UNDO_REMOVE_GROUP, UPDATE_GROUP } from "./board.reducer"
 
-// Action Creators:
-export function getActionRemoveGroup(groupId) {
-    return {
-        type: REMOVE_GROUP,
-        groupId
-    }
-}
-// export function getActionAddGroup(group) {
-//     return {
-//         type: ADD_GROUP,
-//         group
-//     }
-// }
-// export function getActionUpdateGroup(group) {
-//     return {
-//         type: UPDATE_GROUP,
-//         group
-//     }
-// }
-
 export async function loadBoard(boardId) {
     try {
         const board = await boardService.getById(boardId)
+        if (!board) throw new Error('Board not found')
         console.log('board from DB:', board)
         store.dispatch({
             type: SET_BOARD,
             board
         })
-
     } catch (err) {
         console.log('Cannot load board', err)
         throw err
     }
-
 }
 
 export async function removeGroup(groupId) {
-    store.dispatch(getActionRemoveGroup(groupId))
+    store.dispatch({ type: REMOVE_GROUP, groupId })
     try {
         const { board } = store.getState().boardModule
-        console.log('board from remove:', board);
         await groupService.remove(board._id, groupId)
     } catch (err) {
         store.dispatch({ type: UNDO_REMOVE_GROUP, })
@@ -65,5 +43,3 @@ export async function saveGroup(group) {
         throw err
     }
 }
-
-

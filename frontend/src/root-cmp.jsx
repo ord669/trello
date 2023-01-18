@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter as Router, Route, Routes, useLocation, useNavigate, useParams } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
 import routes from './routes'
 
@@ -16,23 +16,14 @@ import { ChatApp } from './pages/chat-app.jsx'
 import { AdminApp } from './pages/admin-app.jsx'
 import { BoardDetails } from './views/board-details';
 import { TaskDetails } from './views/task-details';
-import { HomeHeader } from './cmps/home-header';
 
 export function App() {
-    const location = window.location.href
-    const regex = new RegExp('home', 'i')
-    const isHome = regex.test(location)
-
 
     return (
         <Provider store={store}>
             <Router>
                 <div className='main-container app'>
-
-                    {!isHome
-                        ? <AppHeader className='full' />
-                        : <HomeHeader className='full' />
-                    }
+                    <AppHeader className='full' />
                     <main className='full'>
                         {/* <Routes>
                             <Route path="/" element={<HomePage />} />
@@ -47,9 +38,7 @@ export function App() {
                             <Route path="/home" element={<HomePage />} />
 
                             <Route path="/board/:boardId" element={<BoardDetails />} >
-                                <Route
-                                    path="/board/:boardId/:groupId/:taskId"
-                                    element={<TaskDetails />} />
+                                <Route Route path="/board/:boardId/:groupId/:taskId" element={<TaskDetails />} />
                             </Route>
 
                             {/* <Route path="review" element={<ReviewIndex />} /> */}
@@ -58,7 +47,7 @@ export function App() {
                             {/* <Route path="admin" element={<AdminApp />} /> */}
                             <Route path="user/:id" element={<UserDetails />} />
                         </Routes>
-                        {/* <BoardDetails /> */}
+
                     </main>
                 </div>
             </Router>
