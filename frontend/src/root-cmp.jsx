@@ -14,6 +14,7 @@ import { CarIndex } from './pages/car-index.jsx'
 import { ReviewIndex } from './pages/review-index.jsx'
 import { ChatApp } from './pages/chat-app.jsx'
 import { AdminApp } from './pages/admin-app.jsx'
+import { BoardDetails } from './views/board-details'
 
 export function App() {
 
@@ -23,8 +24,7 @@ export function App() {
                 <div>
                     <AppHeader />
                     <main>
-                        <Routes>
-                            {/* {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)} */}
+                        {/* <Routes>
                             <Route path="/" element={<HomePage />} />
                             <Route path="car" element={<CarIndex />} />
                             <Route path="review" element={<ReviewIndex />} />
@@ -32,7 +32,8 @@ export function App() {
                             <Route path="about" element={<AboutUs />} />
                             <Route path="admin" element={<AdminApp />} />
                             <Route path="user/:id" element={<UserDetails />} />
-                        </Routes>
+                        </Routes> */}
+                        <BoardDetails />
                     </main>
                     <AppFooter />
                 </div>
