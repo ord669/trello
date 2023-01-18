@@ -4,26 +4,6 @@ import { store } from '../store'
 // import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { ADD_GROUP, REMOVE_GROUP, SET_BOARD, UNDO_REMOVE_GROUP, UPDATE_GROUP } from "./board.reducer"
 
-// Action Creators:
-export function getActionRemoveGroup(groupId) {
-    return {
-        type: REMOVE_GROUP,
-        groupId
-    }
-}
-// export function getActionAddGroup(group) {
-//     return {
-//         type: ADD_GROUP,
-//         group
-//     }
-// }
-// export function getActionUpdateGroup(group) {
-//     return {
-//         type: UPDATE_GROUP,
-//         group
-//     }
-// }
-
 export async function loadBoard(boardId) {
     try {
         const board = await boardService.getById(boardId)
@@ -41,7 +21,7 @@ export async function loadBoard(boardId) {
 }
 
 export async function removeGroup(groupId) {
-    store.dispatch(getActionRemoveGroup(groupId))
+    store.dispatch({ type: REMOVE_GROUP, groupId })
     try {
         const { board } = store.getState().boardModule
         await groupService.remove(board._id, groupId)
