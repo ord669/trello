@@ -21,7 +21,6 @@ window.cs = groupService
 
 // query(boardId)
 
-console.log('query(boardId): ', query());
 
 async function query(boardId) {
 
