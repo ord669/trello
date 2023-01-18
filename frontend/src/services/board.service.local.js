@@ -3,24 +3,24 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-const STORAGE_KEY = 'car'
+const STORAGE_KEY = 'board'
 
-export const carService = {
+export const boardService = {
     query,
     getById,
     save,
     remove,
-    getEmptyCar,
-    addCarMsg
+    getEmptyBoard,
+    addCarMsg: addBoardActivity
 }
-window.cs = carService
+window.cs = boardService
 
 
 async function query(filterBy = { txt: '' }) {
     let boards = await storageService.query(STORAGE_KEY)
     if (filterBy.txt) {
         const regex = new RegExp(filterBy.txt, 'i')
-        boards = boards.filter(board => regex.test(board.vendor) || regex.test(board.description))
+        boards = boards.filter(board => regex.test(board.title))
     }
     return boards
 }
@@ -46,26 +46,31 @@ async function save(board) {
     return savedBoard
 }
 
-async function addCarMsg(carId, txt) {
+async function addBoardActivity(boardId, txt) {
     // Later, this is all done by the backend
-    const car = await getById(carId)
-    if (!car.msgs) car.msgs = []
+    const board = await getById(boardId)
+    if (!board.activities) board.activities = []
 
-    const msg = {
+    const activity = {
         id: utilService.makeId(),
         by: userService.getLoggedinUser(),
         txt
     }
-    car.msgs.push(msg)
-    await storageService.put(STORAGE_KEY, car)
+    board.activities.push(activity)
+    await storageService.put(STORAGE_KEY, board)
 
-    return msg
+    return activity
 }
 
-function getEmptyCar() {
+function getEmptyBoard() {
     return {
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
+        title: '',
+        isstarred: false,
+        style: {},
+        activities: [],
+        labels: [],
+        style: {},
+        members: []
     }
 }
 
