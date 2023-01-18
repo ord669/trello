@@ -5,9 +5,11 @@ import { CHANGE_COUNT } from '../store/user.reducer'
 export function HomePage() {
 
     return (
-        <section>
-            <h1>Hello from home page</h1>
-
+        <section className='home-page '>
+            <div className="main-home-page ">
+                <h1 className='home-page-title'>Trello brings all your tasks, teammates, and tools together</h1>
+                <img className="hero-img" src={require(`../assets/img/hero.png`)} alt="hero-img" />
+            </div>
         </section >
     )
 }

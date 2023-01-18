@@ -20,9 +20,9 @@ export function App() {
     return (
         <Provider store={store}>
             <Router>
-                <div>
+                <div >
                     <AppHeader />
-                    <main>
+                    <main >
                         <Routes>
                             {/* {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)} */}
                             <Route path="/" element={<HomePage />} />
