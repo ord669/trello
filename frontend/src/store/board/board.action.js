@@ -27,17 +27,16 @@ export function getActionRemoveGroup(groupId) {
 export async function loadBoard(boardId) {
     try {
         const board = await boardService.getById(boardId)
+        if (!board) throw new Error('Board not found')
         console.log('board from DB:', board)
         store.dispatch({
             type: SET_BOARD,
             board
         })
-
     } catch (err) {
         console.log('Cannot load board', err)
         throw err
     }
-
 }
 
 export async function removeGroup(groupId) {
@@ -65,5 +64,3 @@ export async function saveGroup(group) {
         throw err
     }
 }
-
-

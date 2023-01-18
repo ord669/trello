@@ -21,10 +21,5 @@ export function BoardDetails() {
             <Outlet />
         </section>
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> refs/remotes/origin/main
     )
 }
