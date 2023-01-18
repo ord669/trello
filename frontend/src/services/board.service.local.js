@@ -30,7 +30,6 @@ function getById(boardId) {
 }
 
 async function remove(boardId) {
-    // throw new Error('Nope')
     await storageService.remove(STORAGE_KEY, boardId)
 }
 
@@ -39,8 +38,6 @@ async function save(board) {
     if (board._id) {
         savedBoard = await storageService.put(STORAGE_KEY, board)
     } else {
-        // Later, owner is set by the backend
-        // board.owner = userService.getLoggedinUser()
         savedBoard = await storageService.post(STORAGE_KEY, board)
     }
     return savedBoard
@@ -73,9 +70,6 @@ function getEmptyBoard() {
         members: []
     }
 }
-
-// TEST DATA
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
 
 function _createBoards() {
     let boards = utilService.loadFromStorage(STORAGE_KEY)
