@@ -1,12 +1,15 @@
+import { PenIcon } from "../../assets/svg/icon-library";
+
 export function TaskPreview({ task }) {
     return (
         <section className='task-preview'>
-            <h4>{task.title}</h4>
-            <h4>{task.style.bgColor}</h4>
-            <h4>{task.style.img}</h4>
+            <p>{task.title}</p>
 
             <div className="task-icons">
 
+            </div>
+            <div className="task-preview-edit display-none">
+                <PenIcon />
             </div>
         </section>
     )

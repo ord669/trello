@@ -1,11 +1,48 @@
 .group-preview {
+
     margin: 0 4px;
     min-width: 272px;
     background-color: $clr3 ;
 
     .task-list {
         margin: 0 4px;
-        background-color: $clr6;
     }
 
+    .add-task {
+        display: flex;
+        justify-content: space-between;
+        max-height: 38px;
+        min-height: 38px;
+    }
+
+    .task-preview {
+        position: relative;
+        background-color: $clr6;
+        cursor: pointer;
+        border-radius: 3px;
+        box-shadow: var(--ds-shadow-raised, 0 1px 0 #091e4240);
+        max-width: 300px;
+        min-height: 20px;
+        margin-bottom: 8px;
+        padding: 6px 8px 2px;
+        display: flex;
+        justify-content: space-between;
+
+        .task-preview-edit {
+            // position: absolute;
+            color: #42526e;
+        }
+
+        &:hover {
+            color: #091e42;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        &:hover .task-preview-edit {
+            color: #42526e;
+            display: block;
+            width: 7%;
+        }
+
+    }
 }
