@@ -1,0 +1,22 @@
+.board-details {
+    height: 100%;
+    padding-left: 16px;
+    display: flex;
+    flex-direction: column;
+
+    >:first-child {
+        margin-left: 12px;
+    }
+
+    .group-list {
+        display: flex;
+        flex-grow: 1;
+        width: 100%;
+        overflow-x: scroll;
+
+    }
+
+    .tool-bar {
+        padding: 8px 4px 4px 12px;
+    }
+}
