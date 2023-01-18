@@ -39,13 +39,13 @@ export function HomeHeader() {
                 <nav>
                     {/* {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)} */}
                     <div className="home-header-logo">
-                        logo
+                        <h1> Trello</h1>
                     </div>
-                    <NavLink>Features</NavLink>
+                    {/* <NavLink>Features</NavLink>
                     <NavLink>Solutions</NavLink>
                     <NavLink>Plans</NavLink>
                     <NavLink>Pricing</NavLink>
-                    <NavLink>Resources</NavLink>
+                    <NavLink>Resources</NavLink> */}
                 </nav>
                 {/* {user &&
                     <span className="user-info">
