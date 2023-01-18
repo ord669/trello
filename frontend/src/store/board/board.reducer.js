@@ -29,7 +29,7 @@ export function carReducer(state = initialState, action) {
             board = { ...state.board, groups: [...state.board.groups, action.group] }
             newState = { ...state, board }
             break
-        case UPDATE_CAR:
+        case UPDATE_GROUP:
             groups = state.board.groups.map(group => (group._id === action.group._id) ? action.group : group)
             newState = { ...state, board: { ...state.board, groups } }
             break
