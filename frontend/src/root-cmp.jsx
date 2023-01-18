@@ -31,7 +31,7 @@ export function App() {
                             <Route path="chat" element={<ChatApp />} />
                             <Route path="about" element={<AboutUs />} />
                             <Route path="admin" element={<AdminApp />} />
-                            <Route path="user/:id" element={<UserDetails />} />
+                            {/* <Route path="user/:id" element={<UserDetails />} /> */}
                         </Routes>
                     </main>
 
