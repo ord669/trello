@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
-import { AddGroup } from "../cmps/group/add-group";
-import { GroupList } from "../cmps/group/group-list";
-import { groupService } from "../services/group.service.local";
+import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
+import { AddGroup } from "../cmps/group/add-group"
+import { GroupList } from "../cmps/group/group-list"
+import { groupService } from "../services/group.service.local"
 
 export function BoardDetails() {
     const [groups, setGroups] = useState([])
+    const { boardId } = useParams()
+
 
     useEffect(() => {
         ; (async () => {
-            const groups = await groupService.query('b101')
+            const groups = await groupService.query(boardId)
             console.log('groups:', groups)
             setGroups(groups)
-        })
-
+        })()
     }, [])
 
     return (
