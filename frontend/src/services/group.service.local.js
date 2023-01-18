@@ -19,8 +19,12 @@ export const groupService = {
 }
 window.cs = groupService
 
+// query(boardId)
+
+console.log('query(boardId): ', query());
 
 async function query(boardId) {
+
     const boards = await boardService.getById(boardId)
     return boards.groups
 }
@@ -120,10 +124,5 @@ function getEmptyTask() {
     }
 }
 
-
 // TEST DATA
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
-
-
-
-
+// storageService.post(STORAGE_KEY, { vendor: 'Subali Rahok 2', price: 980 }).then(x => console.log(x))

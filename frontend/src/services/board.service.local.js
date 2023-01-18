@@ -14,8 +14,9 @@ export const boardService = {
     addBoardActivity
 }
 window.cs = boardService
+// query()
 
-
+console.log('query(): ', query());
 async function query(filterBy = { txt: '' }) {
     let boards = await storageService.query(STORAGE_KEY)
     if (!boards || !boards.length) {
