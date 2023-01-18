@@ -20,7 +20,7 @@ export function BoardDetails() {
 
     return (
         <section className='board-details'>
-            <GroupList />
+            <GroupList groups={groups} />
             <AddGroup />
         </section>
     )
