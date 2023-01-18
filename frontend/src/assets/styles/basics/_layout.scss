@@ -1,6 +1,8 @@
 .main-container {
+    height: 100vh;
     display: grid;
     grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 44px 1fr;
 
     >* {
         grid-column: 2;
