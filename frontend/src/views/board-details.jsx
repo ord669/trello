@@ -6,6 +6,7 @@ import { ToolBar } from "../cmps/tool-bar"
 import { loadBoard } from "../store/board/board.action"
 
 
+
 export function BoardDetails() {
     const { board } = useSelector(storeState => storeState.boardModule)
     const { boardId } = useParams()
@@ -13,7 +14,7 @@ export function BoardDetails() {
 
     useEffect(() => {
         // ; (async () => {
-            loadBoard(boardId)
+        loadBoard(boardId)
         // })()
     }, [])
 
@@ -22,5 +23,7 @@ export function BoardDetails() {
             <ToolBar />
             <GroupList groups={board?.groups || []} />
         </section>
+
+
     )
 }
