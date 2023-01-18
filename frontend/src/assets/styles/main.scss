@@ -4,15 +4,12 @@
 @import 'setup/mixins';
 @import 'setup/variables';
 
-
-
 // BASICS
 @import 'basics/base';
 @import 'basics/layout';
 @import 'basics/helpers';
 @import 'basics/buttons';
 @import 'basics/links';
-
 
 // COMPONENTS
 @import 'cmps/app-header';
@@ -29,12 +26,9 @@
 
 @import 'cmps/task-details-side-menu';
 
-
 //VIEWS
 @import 'views/home-page';
 @import 'views/board-page';
 @import 'views/board-index';
 
 @import 'views/task-details';
-
-
