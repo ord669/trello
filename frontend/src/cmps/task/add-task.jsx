@@ -20,7 +20,6 @@ export function AddTask({ groupId }) {
         setTilte(target.value)
     }
 
-
     return (
         <section className='add-task'>
             {isShown ?

@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { ChecklistIcon, CloseIcon, DescriptionIcon, LabelIcon, ManIcon } from "../assets/svg/icon-library";
+import { CloseIcon, TitleIcon } from "../assets/svg/icon-library";
+import { TaskDetailsActivity } from "../cmps/task/task-details-activity";
+import { TaskDetailsChecklist } from "../cmps/task/task-details-checklist";
+import { TaskDetailsDescription } from "../cmps/task/task-details-description";
+import { TaskDetailsLabels } from "../cmps/task/task-details-labels";
+import { TaskDetailsSideMenu } from "../cmps/task/task-details-side-menu";
+import { removeTask } from "../store/board/board.action";
 
 export function TaskDetails() {
     const { board } = useSelector(storeState => storeState.boardModule)
     const { taskId, groupId } = useParams()
     const [task, setTask] = useState({})
     const navigate = useNavigate()
-
     useEffect(() => {
         if (!board.groups) return
         loadTask()
@@ -16,55 +21,55 @@ export function TaskDetails() {
 
     function loadTask() {
         const currGroup = board.groups.find(group => group._id === groupId)
-        console.log('currGroup: ', currGroup);
         const currTask = currGroup.tasks.find(task => task._id === taskId)
         setTask(currTask)
     }
 
+    function onRemoveTask() {
+        removeTask(groupId, taskId)
+        navigate(`/board/${board._id}`)
+    }
+    if (task) {
+
+    }
     return (
         <section className='task-details'>
             <div className="black-screen" onClick={() => navigate(`/board/${board._id}`)}></div>
             <div className="main-task-details">
+
                 <button onClick={() => navigate(`/board/${board._id}`)}
                     className="btn details-close-btn"><CloseIcon />
                 </button>
 
                 <div className="task-details-cover full-task"></div>
 
-                <div className="task-details-title">{task.title}</div>
+                <div className="task-details-title flex align-center">
+                    <TitleIcon />
+                    {task.title}
+                </div>
 
                 <div className="task-details-content">
-                    <div className="task-details-labels">
-                        <h1>labels</h1>
-                    </div>
-                    <div className="task-details-description">
-                        <div className="flex">
-                            <DescriptionIcon />
-                            <h1>Description</h1>
-                        </div>
-                        <textarea type="text" defaultValue={task.description} />
-                    </div>
-                    <div className="task-details-checklist">
-                        <h1>CheckList</h1>
-                        <ul>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                        </ul>
-                    </div>
+                    {task.labelIds && <ul className="labels-list clean-list ">
+                        {task.labelIds.map((labelId, idx) =>
+                            <li key={idx}>
+                                <TaskDetailsLabels labelId={labelId} />
+                            </li>
+                        )
+                        }
+                    </ul>}
 
-                    <div className="task-details-activity">
-                        <h1>Activity</h1>
-                    </div>
+                    <button onClick={onRemoveTask}>Remove Task</button>
+
+                    <TaskDetailsDescription description={task.description} />
+
+                    <TaskDetailsChecklist />
+
+                    <TaskDetailsActivity />
                 </div>
 
-                <div className="task-details-side-menu">
-                    <h1>add to card</h1>
-                    <button className=" side-menu-item btn-link"> <ManIcon /> Members</button>
-                    <button className=" side-menu-item btn-link"> <LabelIcon /> Labels</button>
-                    <button className="side-menu-item btn-link"> <ChecklistIcon /> Checklist</button>
-                </div>
+                <TaskDetailsSideMenu />
+
             </div>
-        </section>
+        </section >
     )
 }

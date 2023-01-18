@@ -97,4 +97,3 @@ function getEmptyTask(groupId, title) {
         "groupId": groupId
     }
 }
-

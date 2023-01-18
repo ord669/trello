@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 // import routes from '../routes'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react'
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
     const location = useLocation().pathname
-
+    const navigate = useNavigate()
     const [isHome, setIsHome] = useState(false)
 
     useEffect(() => {
@@ -48,7 +48,7 @@ export function AppHeader() {
             {!isHome &&
                 <div className="header-logo flex align-center ">
                     <BoardIcon />
-                    <h1>Trello</h1>
+                    <h1 onClick={() => navigate(`/home`)}>Trello</h1>
                 </div>
             }
 
