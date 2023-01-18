@@ -32,8 +32,8 @@ async function getById(boardId, groupId) {
 async function remove(boardId, groupId) {
     try {
         let board = await boardService.getById(boardId)
-        board = board.groups.filter(group => group.id !== groupId)
-        await boardService.save(board)
+        board.groups = board.groups.filter(group => group.id !== groupId)
+        await boardService.save(...board)
     } catch (err) {
         console.log('Cannot remove group: ', err)
         throw err
@@ -45,7 +45,7 @@ async function save(boardId, group) {
         const board = await boardService.getById(boardId)
         if (!board.groups) board.groups = []
         if (group.id) {
-            board.groups.map(currGroup => currGroup.id === group.id ? group : currGroup)
+            board.groups = board.groups.map(currGroup => currGroup.id === group.id ? group : currGroup)
         } else {
             // Later, owner is set by the backend
             // group.byMember = userService.getLoggedinUser()
