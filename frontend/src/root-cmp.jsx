@@ -1,21 +1,12 @@
 import React from 'react'
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
-
-import routes from './routes'
-
 import { AppHeader } from './cmps/app-header'
-import { AppFooter } from './cmps/app-footer'
-import { UserDetails } from './pages/user-details'
+import { UserDetails } from './views/user-details'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
-import { HomePage } from './pages/home-page.jsx'
-import { AboutUs } from './pages/about-us.jsx'
-import { CarIndex } from './pages/car-index.jsx'
-import { ReviewIndex } from './pages/review-index.jsx'
-import { ChatApp } from './pages/chat-app.jsx'
-import { AdminApp } from './pages/admin-app.jsx'
 import { BoardDetails } from './views/board-details';
 import { TaskDetails } from './views/task-details';
+import { HomePage } from './views/home-page';
 
 export function App() {
 
@@ -25,15 +16,7 @@ export function App() {
                 <div className='main-container app'>
                     <AppHeader className='full' />
                     <main className='full'>
-                        {/* <Routes>
-                            <Route path="/" element={<HomePage />} />
-                            <Route path="car" element={<CarIndex />} />
-                            <Route path="review" element={<ReviewIndex />} />
-                            <Route path="chat" element={<ChatApp />} />
-                            <Route path="about" element={<AboutUs />} />
-                            <Route path="admin" element={<AdminApp />} />
-                            <Route path="user/:id" element={<UserDetails />} />
-                        </Routes> */}
+
                         <Routes>
                             <Route path="/home" element={<HomePage />} />
 
@@ -41,10 +24,6 @@ export function App() {
                                 <Route Route path="/board/:boardId/:groupId/:taskId" element={<TaskDetails />} />
                             </Route>
 
-                            {/* <Route path="review" element={<ReviewIndex />} /> */}
-                            {/* <Route path="chat" element={<ChatApp />} /> */}
-                            {/* <Route path="about" element={<AboutUs />} /> */}
-                            {/* <Route path="admin" element={<AdminApp />} /> */}
                             <Route path="user/:id" element={<UserDetails />} />
                         </Routes>
 

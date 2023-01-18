@@ -6,11 +6,8 @@ import { ChecklistIcon, CloseIcon, DescriptionIcon, LabelIcon, ManIcon } from ".
 export function TaskDetails() {
     const { board } = useSelector(storeState => storeState.boardModule)
     const { taskId, groupId } = useParams()
-    const [labels, setLabels] = useState([])
-    const [group, setGroup] = useState([])
     const [task, setTask] = useState({})
     const navigate = useNavigate()
-
 
     useEffect(() => {
         if (!board.groups) return
@@ -59,7 +56,6 @@ export function TaskDetails() {
                     <div className="task-details-activity">
                         <h1>Activity</h1>
                     </div>
-
                 </div>
 
                 <div className="task-details-side-menu">
