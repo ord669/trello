@@ -21,22 +21,20 @@ export function App() {
         <Provider store={store}>
             <Router>
                 <div className='main-container app'>
-                    <AppHeader />
-                    <main>
+                    <AppHeader className='full' />
+                    <main className='full'>
                         <Routes>
-                            {/* {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)} */}
                             <Route path="/" element={<HomePage />} />
                             <Route path="car" element={<CarIndex />} />
                             <Route path="review" element={<ReviewIndex />} />
                             <Route path="chat" element={<ChatApp />} />
                             <Route path="about" element={<AboutUs />} />
                             <Route path="admin" element={<AdminApp />} />
-                            {/* <Route path="user/:id" element={<UserDetails />} /> */}
+                            <Route path="user/:id" element={<UserDetails />} />
                         </Routes>
+                        {/* <BoardDetails /> */}
                     </main>
-
                 </div>
-
             </Router>
         </Provider>
     )
