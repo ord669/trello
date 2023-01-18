@@ -6,7 +6,7 @@ export function TaskPreview({ task }) {
     const navigate = useNavigate()
 
     return (
-        <section onClick={() => { navigate(`${task._id}`) }} className='task-preview'>
+        <section onClick={() => { navigate(`${task.groupId}/${task._id}`) }} className='task-preview'>
             <p>{task.title}</p>
 
             <div className="task-icons">

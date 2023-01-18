@@ -38,7 +38,7 @@ export function App() {
                             <Route path="/home" element={<HomePage />} />
 
                             <Route path="/board/:boardId" element={<BoardDetails />} >
-                                <Route Route path="/board/:boardId/:taskId" element={<TaskDetails />} />
+                                <Route Route path="/board/:boardId/:groupId/:taskId" element={<TaskDetails />} />
                             </Route>
 
                             {/* <Route path="review" element={<ReviewIndex />} /> */}
