@@ -22,31 +22,28 @@ async function query(filterBy = { txt: '' }) {
         const regex = new RegExp(filterBy.txt, 'i')
         boards = boards.filter(board => regex.test(board.vendor) || regex.test(board.description))
     }
-    if (filterBy.price) {
-        boards = boards.filter(board => board.price <= filterBy.price)
-    }
     return boards
 }
 
-function getById(carId) {
-    return storageService.get(STORAGE_KEY, carId)
+function getById(boardId) {
+    return storageService.get(STORAGE_KEY, boardId)
 }
 
-async function remove(carId) {
+async function remove(boardId) {
     // throw new Error('Nope')
-    await storageService.remove(STORAGE_KEY, carId)
+    await storageService.remove(STORAGE_KEY, boardId)
 }
 
-async function save(car) {
-    let savedCar
-    if (car._id) {
-        savedCar = await storageService.put(STORAGE_KEY, car)
+async function save(board) {
+    let savedBoard
+    if (board._id) {
+        savedBoard = await storageService.put(STORAGE_KEY, board)
     } else {
         // Later, owner is set by the backend
-        car.owner = userService.getLoggedinUser()
-        savedCar = await storageService.post(STORAGE_KEY, car)
+        board.owner = userService.getLoggedinUser()
+        savedBoard = await storageService.post(STORAGE_KEY, board)
     }
-    return savedCar
+    return savedBoard
 }
 
 async function addCarMsg(carId, txt) {
