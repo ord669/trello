@@ -1,4 +1,4 @@
-import { AddTask } from "../task/add-task"
+import { AddGroup } from "./add-group"
 import { GroupPreview } from "./group-preview"
 
 export function GroupList({ groups }) {
@@ -8,7 +8,8 @@ export function GroupList({ groups }) {
             {groups.map(group =>
                 <GroupPreview key={group.id} group={group} />
             )}
-            <AddTask />
+            <AddGroup />
+
         </section>
     )
 }

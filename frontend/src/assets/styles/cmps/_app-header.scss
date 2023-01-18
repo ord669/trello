@@ -1,28 +1,30 @@
 .app-header {
-    background-color: $clr4;
-    padding: 10px;
-    height: 44px;
-    // background-color: red;
+    background-color: #181e21;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    // padding: 10px;
+    // height: 44px;
+    // // background-color: red;
 
-    nav {
-        // display: none;
-        font-size: .8em;
-        background-color: $clr5;
+    // nav {
+    //     // display: none;
+    //     font-size: .8em;
 
-    }
+    // }
 
-    nav a:first-child {
-        margin-right: 30px;
-    }
+    // nav a:first-child {
+    //     margin-right: 30px;
+    // }
 
-    nav a:not(:first-child) {
-        border-top: 1px solid $clr1;
-        padding: 0 5px;
-        margin: 10px;
-    }
+    // nav a:not(:first-child) {
+    //     border-top: 1px solid $clr1;
+    //     padding: 0 5px;
+    //     margin: 10px;
+    // }
 
-    nav .active {
-        color: $clr1;
-    }
+    // nav .active {
+    //     color: $clr1;
+    // }
 
 }
