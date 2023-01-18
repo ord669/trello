@@ -1,4 +1,4 @@
-import { AddTask } from "./add-task"
+import { AddTask } from "../task/add-task"
 import { GroupPreview } from "./group-preview"
 
 export function GroupList() {

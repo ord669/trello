@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react"
-import { AddGroup } from "../cmps/add-group"
-import { GroupList } from "../cmps/group-list"
-import { groupService } from "../services/group.service.local"
+import { AddGroup } from "../cmps/group/add-group";
+import { GroupList } from "../cmps/group/group-list";
 
 export function BoardDetails() {
     const [groups, setGroups] = useState([])
