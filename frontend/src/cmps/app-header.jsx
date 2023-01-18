@@ -4,7 +4,7 @@ import routes from '../routes'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { login, logout, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
-import { BoardIcon } from '../assets/svg/icon-library'
+import { BoardIcon, MoreIcon } from '../assets/svg/icon-library'
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
@@ -36,9 +36,9 @@ export function AppHeader() {
 
     return (
         <header className="app-header full">
-
-            <BoardIcon />
-            <div className="logo">
+            <MoreIcon />
+            <div className="logo flex align-center ">
+                <BoardIcon />
                 <h1>Trello</h1>
             </div>
 
