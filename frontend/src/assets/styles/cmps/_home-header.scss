@@ -1,6 +1,7 @@
 .home-header {
     background-color: rgb(255, 255, 255);
     color: rgb(23, 43, 77);
+    height: 30vh;
 }
 
 .home-header-contianer {
@@ -17,11 +18,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    // gap: 10px;
     font-size: 1em;
 
     a {
-        padding: 20px 16px 16px;
+        padding: 20px;
     }
 
 }

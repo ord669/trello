@@ -1,5 +1,5 @@
-import { AddGroup } from "../cmps/add-group"
-import { GroupList } from "../cmps/group-list"
+import { AddGroup } from "../cmps/group/add-group";
+import { GroupList } from "../cmps/group/group-list";
 
 export function BoardDetails() {
     return (

@@ -1,5 +1,5 @@
-import {useEffect} from 'react'
-import {useSelector} from 'react-redux'
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { loadUsers, removeUser } from '../store/user.actions'
 
 export function AdminApp() {
