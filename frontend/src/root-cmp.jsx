@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes, useLocation, useNavigate, useParams } from "react-router-dom";
 
 import routes from './routes'
 
@@ -16,14 +16,23 @@ import { ChatApp } from './pages/chat-app.jsx'
 import { AdminApp } from './pages/admin-app.jsx'
 import { BoardDetails } from './views/board-details';
 import { TaskDetails } from './views/task-details';
+import { HomeHeader } from './cmps/home-header';
 
 export function App() {
+    const location = window.location.href
+    const regex = new RegExp('home', 'i')
+    const isHome = regex.test(location)
+
 
     return (
         <Provider store={store}>
             <Router>
                 <div className='main-container app'>
-                    <AppHeader className='full' />
+
+                    {!isHome
+                        ? <AppHeader className='full' />
+                        : <HomeHeader className='full' />
+                    }
                     <main className='full'>
                         {/* <Routes>
                             <Route path="/" element={<HomePage />} />
