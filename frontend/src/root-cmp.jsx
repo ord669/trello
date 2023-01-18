@@ -20,8 +20,8 @@ export function App() {
     return (
         <Provider store={store}>
             <Router>
-                <div>
-                    <AppHeader />
+                <div className='main-container app'>
+                    <AppHeader className='full' />
                     <main>
                         <Routes>
                             {/* {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)} */}
@@ -34,7 +34,7 @@ export function App() {
                             <Route path="user/:id" element={<UserDetails />} />
                         </Routes>
                     </main>
-                    <AppFooter />
+
                 </div>
 
             </Router>
