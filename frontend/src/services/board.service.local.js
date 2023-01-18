@@ -229,7 +229,7 @@ function _createBoards() {
                                         }
                                     }
                                 ],
-                                    "groupId": "g101"
+                                "groupId": "g101"
                             }
                         ],
                         "style": {}
@@ -308,7 +308,7 @@ function _createBoards() {
                                         }
                                     }
                                 ],
-                                    "groupId": "g102"
+                                "groupId": "g102"
                             },
                             {
                                 "_id": "c103",
@@ -350,7 +350,7 @@ function _createBoards() {
                                         }
                                     }
                                 ],
-                                    "groupId": "g102"
+                                "groupId": "g102"
                             },
                             {
                                 "_id": "c104",
@@ -403,7 +403,7 @@ function _createBoards() {
                                         }
                                     }
                                 ],
-                                    "groupId": "g102"
+                                "groupId": "g102"
                             },
                             {
                                 "_id": "c105",
@@ -428,7 +428,7 @@ function _createBoards() {
                                 },
                                 "Attachments": {},
                                 "activity": [],
-                                    "groupId": "g102"
+                                "groupId": "g102"
                             }
                         ],
                         "style": {}
@@ -509,7 +509,7 @@ function _createBoards() {
                                         }
                                     }
                                 ],
-                                    "groupId": "g103"
+                                "groupId": "g103"
                             },
                             {
                                 "_id": "c107",
@@ -576,7 +576,7 @@ function _createBoards() {
                                         }
                                     }
                                 ],
-                                    "groupId": "g103"
+                                "groupId": "g103"
                             },
                             {
                                 "_id": "c108",
@@ -607,7 +607,7 @@ function _createBoards() {
                                     "file": "https://trello.com/1/cards/63c6cabe12d00103d58557be/attachments/63c6cad25bf8c801a3c857e3/download/featured-image-PWA.png"
                                 },
                                 "activity": [],
-                                    "groupId": "g103"
+                                "groupId": "g103"
                             }
                         ],
                         "style": {}
@@ -666,7 +666,7 @@ function _createBoards() {
                                         }
                                     }
                                 ],
-                                    "groupId": "g104"
+                                "groupId": "g104"
                             },
                             {
                                 "_id": "c110",
@@ -709,7 +709,7 @@ function _createBoards() {
                                         }
                                     }
                                 ],
-                                    "groupId": "g104"
+                                "groupId": "g104"
                             },
                             {
                                 "_id": "c111",
@@ -736,7 +736,7 @@ function _createBoards() {
                                 "style": {},
                                 "Attachments": {},
                                 "activity": [],
-                                    "groupId": "g104"
+                                "groupId": "g104"
                             },
                             {
                                 "_id": "c112",
@@ -776,7 +776,7 @@ function _createBoards() {
                                         }
                                     }
                                 ],
-                                    "groupId": "g104"
+                                "groupId": "g104"
                             }
                         ],
                         "style": {}
@@ -820,7 +820,7 @@ function _createBoards() {
                                         }
                                     }
                                 ],
-                                    "groupId": "g105"
+                                "groupId": "g105"
                             },
                             {
                                 "_id": "c114",
@@ -898,7 +898,7 @@ function _createBoards() {
                                         }
                                     }
                                 ],
-                                    "groupId": "g105"
+                                "groupId": "g105"
                             },
                             {
                                 "_id": "c115",
@@ -966,7 +966,7 @@ function _createBoards() {
                                 "style": {},
                                 "Attachments": {},
                                 "activity": [],
-                                    "groupId": "g105"
+                                "groupId": "g105"
                             },
                             {
                                 "_id": "c116",
@@ -1015,7 +1015,7 @@ function _createBoards() {
                                         }
                                     }
                                 ],
-                                    "groupId": "g105"
+                                "groupId": "g105"
                             },
                             {
                                 "_id": "c117",
@@ -1079,7 +1079,7 @@ function _createBoards() {
                                         }
                                     }
                                 ],
-                                    "groupId": "g105"
+                                "groupId": "g105"
                             }
                         ],
                         "style": {}

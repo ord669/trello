@@ -15,7 +15,7 @@ export const groupService = {
     getTaskById,
     removeTask,
     saveTask,
-    getEmptyTask,
+    // getEmptyTask,
 }
 window.cs = groupService
 
@@ -107,16 +107,6 @@ async function saveTask(boardId, groupId, task) {
     } catch (err) {
         console.log('Cannot save task: ', err)
         throw err
-    }
-}
-
-function getEmptyTask() {
-    return {
-        title: '',
-        description: '',
-        comments: [],
-        labelsId: [],
-
     }
 }
 
