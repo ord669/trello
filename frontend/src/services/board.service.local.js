@@ -17,8 +17,10 @@ window.cs = boardService
 
 async function query(filterBy = { txt: '' }) {
     let boards = await storageService.query(STORAGE_KEY)
+
     if (!boards || !boards.length) {
         boards = newBoards
+
         utilService.saveToStorage(STORAGE_KEY, boards)
     }
     if (filterBy.txt) {
@@ -29,6 +31,7 @@ async function query(filterBy = { txt: '' }) {
 }
 
 function getById(boardId) {
+    console.log('boardId: ', boardId);
     return storageService.get(STORAGE_KEY, boardId)
 }
 
@@ -78,7 +81,7 @@ function getEmptyBoard() {
 }
 
 // TEST DATA
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
+// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => 
 
 const newBoards = [
     {
