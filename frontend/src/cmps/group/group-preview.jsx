@@ -1,9 +1,10 @@
 import { TaskList } from "../task/task-list";
 
-export function GroupPreview() {
+export function GroupPreview({ group }) {
+    console.log('group preview: ', group.tasks);
     return (
         <section className='group-preview'>
-            <TaskList />
+            <TaskList tasks={group.tasks} />
         </section>
     )
 }

@@ -41,6 +41,7 @@ async function remove(boardId, groupId) {
 }
 
 async function save(boardId, group) {
+
     try {
         const board = await boardService.getById(boardId)
         if (!board.groups) board.groups = []
