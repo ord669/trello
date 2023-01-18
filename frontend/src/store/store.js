@@ -4,6 +4,7 @@ import { carReducer } from './car.reducer.js'
 import { userReducer } from './user.reducer.js'
 import { reviewReducer } from './review.reducer'
 import { systemReducer } from './system.reducer'
+import { boardReducer } from './board/board.reducer'
 
 const rootReducer = combineReducers({
     carModule: carReducer,
