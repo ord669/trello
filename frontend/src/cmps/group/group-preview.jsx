@@ -3,7 +3,6 @@ import { AddTask } from "../task/add-task";
 
 export function GroupPreview({ group }) {
 
-
     return (
         <section className='group-preview'>
             <h2>{group.title}</h2>
