@@ -1,8 +1,8 @@
 .group-preview {
-
     margin: 0 4px;
     min-width: 272px;
     background-color: $clr3 ;
+    border-radius: 3px; // maybe make var for this 
 
     .task-list {
         margin: 0 4px;

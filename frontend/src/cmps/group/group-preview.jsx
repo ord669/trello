@@ -7,7 +7,8 @@ export function GroupPreview({ group }) {
     return (
         <section className='group-preview'>
             <button onClick={() => removeGroup(group._id)}>X</button>
-            <h2>{group.title}</h2>
+            <p>{group.title}</p>
+            {/* <h2>{group.title}</h2> */}
             <TaskList tasks={group.tasks} />
 
             <AddTask groupId={group._id} />
