@@ -12,29 +12,27 @@ const initialState = {
 
 export function taskReducer(state = initialState, action) {
     let newState = state
-    let board
-    let groups
     let tasks
     let lastRemovedGroup
     switch (action.type) {
         case REMOVE_TASK:
-            lastRemovedGroup = state.board.groups.find(group => group._id === action.groupId)
-            groups = state.board.groups.filter(group => group._id !== action.groupId)
-            newState = { ...state, board: { ...state.board, groups }, lastRemovedGroup }
+            // lastRemovedGroup = state.board.groups.find(group => group._id === action.groupId)
+            // groups = state.board.groups.filter(group => group._id !== action.groupId)
+            // newState = { ...state, board: { ...state.board, groups }, lastRemovedGroup }
             break
         case ADD_TASK:
-            board = { ...state.board, groups: [...state.board.groups, action.group] }
-            newState = { ...state, board }
+            // board = { ...state.board, groups: [...state.board.groups, action.group] }
+            // newState = { ...state, board }
             break
         case UPDATE_TASK:
-            groups = state.board.groups.map(group => (group._id === action.group._id) ? action.group : group)
-            newState = { ...state, board: { ...state.board, groups } }
+            // groups = state.board.groups.map(group => (group._id === action.group._id) ? action.group : group)
+            // newState = { ...state, board: { ...state.board, groups } }
             break
         case UNDO_REMOVE_TASK:
-            if (state.lastRemovedGroup) {
-                board = { ...state.board, groups: [state.lastRemovedGroup, ...state.board.groups] }
-                newState = { ...state, board, lastRemovedGroup: null }
-            }
+            // if (state.lastRemovedGroup) {
+            //     board = { ...state.board, groups: [state.lastRemovedGroup, ...state.board.groups] }
+            //     newState = { ...state, board, lastRemovedGroup: null }
+            // }
             break
         default:
     }
