@@ -14,28 +14,27 @@ import { CarIndex } from './pages/car-index.jsx'
 import { ReviewIndex } from './pages/review-index.jsx'
 import { ChatApp } from './pages/chat-app.jsx'
 import { AdminApp } from './pages/admin-app.jsx'
-import { BoardDetails } from './views/board-details'
 
 export function App() {
 
     return (
         <Provider store={store}>
             <Router>
-                <div>
+                <div className='main-container app'>
                     <AppHeader />
                     <main>
-                        {/* <Routes>
+                        <Routes>
+                            {/* {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)} */}
                             <Route path="/" element={<HomePage />} />
                             <Route path="car" element={<CarIndex />} />
                             <Route path="review" element={<ReviewIndex />} />
                             <Route path="chat" element={<ChatApp />} />
                             <Route path="about" element={<AboutUs />} />
                             <Route path="admin" element={<AdminApp />} />
-                            <Route path="user/:id" element={<UserDetails />} />
-                        </Routes> */}
-                        <BoardDetails />
+                            {/* <Route path="user/:id" element={<UserDetails />} /> */}
+                        </Routes>
                     </main>
-                    <AppFooter />
+
                 </div>
 
             </Router>
