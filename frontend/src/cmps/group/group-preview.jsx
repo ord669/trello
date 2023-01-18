@@ -10,7 +10,7 @@ export function GroupPreview({ group }) {
             <h2>{group.title}</h2>
             <TaskList tasks={group.tasks} />
 
-            <AddTask />
+            <AddTask  groupId={group.id}/>
         </section>
     )
 }
