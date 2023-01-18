@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { Outlet, useParams } from "react-router-dom"
 import { GroupList } from "../cmps/group/group-list"
 import { ToolBar } from "../cmps/tool-bar"
 import { loadBoard } from "../store/board/board.action"
@@ -18,7 +18,13 @@ export function BoardDetails() {
         <section className='board-details'>
             <ToolBar board={board} />
             <GroupList groups={board?.groups || []} />
+            <Outlet />
         </section>
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> refs/remotes/origin/main
     )
 }
