@@ -1,4 +1,4 @@
-import { TaskList } from "./task-list"
+import { TaskList } from "../task/task-list";
 
 export function GroupPreview() {
     return (
