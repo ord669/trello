@@ -4,6 +4,10 @@ import { AddGroup } from "../cmps/group/add-group"
 import { GroupList } from "../cmps/group/group-list"
 import { groupService } from "../services/group.service.local"
 
+const style = {
+
+}
+
 export function BoardDetails() {
     const [groups, setGroups] = useState([])
     const { boardId } = useParams()
