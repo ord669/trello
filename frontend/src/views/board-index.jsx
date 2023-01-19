@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { BoardList } from "../cmps/board-list"
 import { BoardPreview } from "../cmps/board-preview"
+import { MainSidemenu } from "../cmps/main-side-menu"
 import { boardService } from "../services/board.service.local"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 
@@ -31,7 +32,7 @@ export function BoardIndex() {
     }
 
     async function onRemoveBoard(ev, boardId) {
-        console.log('boardId:', boardId);
+        console.log('boardId:', boardId)
         ev.stopPropagation()
         try {
             await boardService.remove(boardId)
@@ -44,7 +45,11 @@ export function BoardIndex() {
 
     return (
         <section className='board-index'>
-            <BoardList boards={boards} onCreateBoard={onCreateBoard} onRemoveBoard={onRemoveBoard} />
+            <MainSidemenu />
+            <main>
+                <h1>YOUR WORKSPACES</h1>
+                <BoardList boards={boards} onCreateBoard={onCreateBoard} onRemoveBoard={onRemoveBoard} />
+            </main>
         </section>
     )
 }

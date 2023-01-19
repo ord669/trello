@@ -64,6 +64,7 @@ function getEmptyBoard(title = '') {
         title,
         isstarred: false,
         style: {},
+        groups:[],
         activities: [],
         labels: [],
         style: {},

@@ -1,13 +1,9 @@
 .board-index {
-    .board-list {
-        >section {
-            border: solid 1px black;
-        }
+    display: flex;
 
-        .board-preview {
-            button {
-                color: red;
-            }
-        }
+    main{
+        flex-grow: 1;
+    margin: 40px 16px 0;
     }
+
 }

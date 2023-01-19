@@ -1,0 +1,45 @@
+.board-list {
+    min-width: 274px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 96px;
+    gap: .75em;
+    // gap: 1em 8px;
+
+    @include for-normal-layout {
+        grid-template-columns: repeat(3, minmax(125px, 1fr));
+    }
+
+    @include for-wide-layout {
+        grid-template-columns: repeat(4, minmax(125px, 1fr));
+    }
+
+    >section {
+        cursor: pointer;
+        background-color: #091e420a;
+        border-radius: 3px;
+        padding: 8px;
+    }
+
+    >section:hover {
+        filter: brightness(0.8);
+    }
+
+    .add-board {
+        text-align: center;
+    }
+
+    .add-board:hover {
+        background-color: #091e4214;
+    }
+
+    .board-preview {
+        font-weight: 900;
+        font-size: 1.25em;
+
+        // color: $clr6;
+        button {
+            color: red;
+        }
+    }
+}
