@@ -51,7 +51,7 @@ export function AppHeader() {
             {!isHome &&
                 <div className="header-logo flex align-center ">
                     <BoardIcon />
-                    <h1 onClick={() => navigate(`/home`)}>Trello</h1>
+                    <h1 onClick={() => navigate(`/`)}>Trello</h1>
                 </div>
             }
 

@@ -55,6 +55,7 @@ function getEmptyGroup() {
     return {
         title: '',
         tasks: [],
-        style: {}
+        style: {},
+        archivedAt: 1652483878560
     }
 }
