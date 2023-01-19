@@ -2,12 +2,25 @@
     // background-color: rgba(255, 255, 255, 0.2);
     background-color: #ffffff3d;
     color: $clr6;
-    margin: 0 4px;
+    margin: 4px;
+    // margin: 0 4px;
     min-width: 272px;
     border-radius: 3px;
+    transition: height 2.5s;
 
     &:hover {
         background-color: #ffffff4d;
+    }
+
+    .open-form {
+        display: flex;
+        align-items: center;
+        padding: 6px 8px;
+
+        svg {
+            width: 14px;
+            height: 14px;
+        }
     }
 
     form {
@@ -21,7 +34,7 @@
             border: solid 2px $clr8;
             border-radius: 3px;
 
-            &:focus-visible{
+            &:focus-visible {
                 outline: none;
             }
         }

@@ -36,10 +36,10 @@ export function AddGroup() {
                     </section>
                 </form>
                 :
-                <div onClick={() => setIsShown(prevIsShown => !prevIsShown)}>
+                <section className="open-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>
                     <PlusIcon />Add another list
                     {/* <h3>Add a Card</h3> */}
-                </div>}
+                </section>}
 
         </section>
     )

@@ -4,6 +4,24 @@
     background-color: $clr3 ;
     border-radius: 3px; // maybe make var for this 
 
+    &-header {
+        display: flex;
+        // align-items: center;
+        padding: 5px 8px;
+
+        p {
+            flex-grow: 1;
+            padding: 4px 8px;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .btn-remove-group{
+            padding: 4px 6px;
+            color: $clr1;
+        }
+    }
+
     .task-list {
         margin: 0 4px;
     }
