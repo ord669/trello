@@ -51,10 +51,11 @@ async function save(boardId, group) {
     }
 }
 
-function getEmptyGroup() {
+function getEmptyGroup(title = '') {
     return {
-        title: '',
+        title,
         tasks: [],
-        style: {}
+        style: {},
+        archivedAt: null
     }
 }

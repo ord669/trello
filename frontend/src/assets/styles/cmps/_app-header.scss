@@ -12,6 +12,12 @@
     .header-logo {
         padding: 0 16px;
         cursor: pointer;
+        font-size: 20px;
+        font-weight: 600;
+
+        svg{
+            margin-inline-end: 5px;
+        }
     }
 
 

@@ -1,13 +1,11 @@
 import { useState } from "react"
-import { useSelector } from "react-redux"
+// import { useSelector } from "react-redux"
 import { PlusIcon } from "../../assets/svg/icon-library"
-import { groupService } from "../../services/group.service.local"
 import { removeTask, saveTask } from "../../store/board/board.action"
 
 export function AddTask({ groupId }) {
     const [isShown, setIsShown] = useState(false)
     const [title, setTilte] = useState('')
-    // const boa        useSelector()
 
     function onAddTask() {
         if (!title) return
@@ -25,7 +23,6 @@ export function AddTask({ groupId }) {
             {isShown ?
                 <>
                     <textarea
-                        // type="text"
                         name="title"
                         placeholder="Enter a title for this card..."
                         value={title}
@@ -37,7 +34,7 @@ export function AddTask({ groupId }) {
                 <section className="open-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>
                     {/* <PlusIcon /> Add a card */}
                     <PlusIcon />
-                    <p>Add a Card</p>
+                    <span>Add a card</span>
                 </section>}
         </section>
     )

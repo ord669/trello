@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react'
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
     const location = useLocation().pathname
-    console.log('location: ', location);
     const navigate = useNavigate()
     const [isHome, setIsHome] = useState(false)
 
@@ -51,7 +50,8 @@ export function AppHeader() {
             {!isHome &&
                 <div className="header-logo flex align-center ">
                     <BoardIcon />
-                    <h1 onClick={() => navigate(`/`)}>Trello</h1>
+                    <span onClick={() => navigate(`/`)}>Trello</span>
+                    {/* <h2 onClick={() => navigate(`/`)}>Trello</h2> */}
                 </div>
             }
 
