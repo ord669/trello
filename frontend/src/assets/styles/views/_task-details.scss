@@ -1,6 +1,7 @@
 .main-task-details {
     color: #172b4d;
     background-color: #f4f5f7;
+    min-height: 600px;
     position: fixed;
     left: 50%;
     top: 50%;
@@ -22,17 +23,14 @@
         padding: 0 16px;
     }
 
-
-
-
     .task-details-cover {
+        height: 116px;
         background-color: #ef7564;
         grid-area: cover;
     }
 
     .task-details-title {
         grid-area: title;
-
 
         textarea {
             overflow: hidden;
@@ -65,10 +63,8 @@
             margin: 0 0 4px 40px;
             margin-top: 15px;
 
-
         }
     }
-
 
     .task-details-side-menu {
         grid-area: aside;
@@ -114,8 +110,6 @@
         gap: 4px;
         margin: 0 0 4px 40px;
 
-
-
     }
 
     .task-details-labels {
@@ -123,13 +117,10 @@
         padding: 5px 12px;
         border-radius: 3px;
 
-
-
         .sec-label-color {
             border-radius: 50%;
             width: 16px;
             height: 16px;
-
 
         }
     }
@@ -141,9 +132,6 @@
         height: 20px;
         color: #42526e;
 
-
-
-
         svg,
         path {
             height: 20px;
@@ -151,18 +139,26 @@
             color: #42526e;
             stroke: #42526e;
 
-
         }
 
     }
-
-
 
 }
 
 .task-details-content {
     grid-area: content;
 
+    .task-details-content-lable-members {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
 
     .task-details-description {
         margin: 0 0 4px 40px;

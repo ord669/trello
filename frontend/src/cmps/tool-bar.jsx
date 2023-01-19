@@ -2,6 +2,8 @@ import { FilterIcon, MoreTreeDotsIcon, StartIconEmpty } from "../assets/svg/icon
 import { UserAvatarIcon } from "./user-avatar-icon";
 
 export function ToolBar({ board }) {
+    console.log('board: ', board);
+    const admin = board.createdBy
     return (
         <section className='tool-bar full'>
             <h2>{board.title}</h2>
@@ -13,7 +15,7 @@ export function ToolBar({ board }) {
                     Filter
                 </button>
                 <p>|</p>
-                <UserAvatarIcon />
+                {admin && <UserAvatarIcon member={admin} />}
                 <p>|</p>
                 <button className="btn-header btn-header-square">
                     <MoreTreeDotsIcon className="icon" />
