@@ -1,6 +1,7 @@
 import { boardService } from "../../services/board.service.local"
 import { groupService } from "../../services/group.service.local"
 import { taskService } from "../../services/task.service.local"
+import { utilService } from "../../services/util.service"
 import { store } from '../store'
 
 import { ADD_GROUP, REMOVE_GROUP, SET_BOARD, UNDO_REMOVE_GROUP, UPDATE_GROUP } from "./board.reducer"
@@ -54,22 +55,37 @@ export async function saveBoard(board) {
         throw err
     }
 }
+// saveTask(task)
+export async function saveTask(task) {
+    console.log('task from action: ', task);
 
-export async function saveTask(groupId, title) {
-    const task = taskService.getEmptyTask(groupId, title)
-    const { board: boardToUpdate } = store.getState().boardModule
-    boardToUpdate.groups.find(group => group._id === groupId).tasks.push(task)
     try {
-        const board = await boardService.save(boardToUpdate)
-        store.dispatch({ type: SET_BOARD, board })
+        const { board: boardToUpdate } = store.getState().boardModule
+        let group = boardToUpdate.groups.find(group => group._id === task.groupId)
+        if (task._id) {
+            group.tasks = group.tasks.map(currTask => currTask._id !== task._id ? currTask : task)
+        } else {
+            task._id = utilService.makeId()
+            group.tasks.push(task)
+        }
+        saveGroup(group)
     } catch (err) {
-
+        console.log('Err from saveTask in board action :', err)
         throw err
     }
 }
+// export async function saveTask(groupId, title) {
+//     const task = taskService.getEmptyTask(groupId, title)
+//     const { board: boardToUpdate } = store.getState().boardModule
+//     boardToUpdate.groups.find(group => group._id === groupId).tasks.push(task)
+//     try {
+//         const board = await boardService.save(boardToUpdate)
+//         store.dispatch({ type: SET_BOARD, board })
+//     } catch (err) {
 
-
-
+//         throw err
+//     }
+// }
 
 export async function removeTask(groupId, taskId) {
     try {

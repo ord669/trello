@@ -1,16 +1,21 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 // import { useSelector } from "react-redux"
 import { PlusIcon } from "../../assets/svg/icon-library"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
+import { taskService } from "../../services/task.service.local"
 import { removeTask, saveTask } from "../../store/board/board.action"
 
 export function AddTask({ groupId }) {
     const [isShown, setIsShown] = useState(false)
     const [title, setTilte] = useState('')
-    const [task, setTask] = useState()
+    const [task, setTask] = useState(taskService.getEmptyTask())
+
+    useEffect(() => {
+        setTask((prev) => ({ ...prev, groupId }))
+    }, [])
 
     async function onAddTask() {
-        if (!title) return
+        if (!task.title) return
         try {
             await saveTask(task)
             setIsShown(prevIsShown => !prevIsShown)
@@ -22,7 +27,7 @@ export function AddTask({ groupId }) {
     }
 
     function handleChange({ target }) {
-        setTilte(target.value)
+        setTask((prev) => ({ ...prev, title: target.value }))
     }
 
     return (
@@ -32,7 +37,7 @@ export function AddTask({ groupId }) {
                     <textarea
                         name="title"
                         placeholder="Enter a title for this card..."
-                        value={title}
+                        value={task.title}
                         onChange={handleChange} />
                     <button className="btn-add" onClick={onAddTask}>Add card</button>
                     <button className="btn-close-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>X</button>
