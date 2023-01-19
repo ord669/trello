@@ -8,7 +8,8 @@ const STORAGE_KEY = 'board'
 export const taskService = {
     setTaskInBoard,
     removeTaskFromBoard,
-    getEmptyTask
+    getEmptyTask,
+    createChecklists
 }
 
 function setTaskInBoard() {
@@ -19,10 +20,24 @@ function removeTaskFromBoard() {
 
 }
 
-function getEmptyTask(groupId, title) {
+function createChecklists(title = 'checklists', todoTitle = 'Write Your Todo') {
     return {
         "_id": utilService.makeId(),
-        "title": title,
+        title,
+        "todos": [
+            {
+                "_id": utilService.makeId(),
+                "title": todoTitle,
+                "isDone": false
+            }
+        ]
+    }
+}
+
+function getEmptyTask() {
+    return {
+        "_id": '',
+        "title": '',
         "archivedAt": Date.now(),
         "description": "description",
         "comments": [],
@@ -94,6 +109,6 @@ function getEmptyTask(groupId, title) {
                 }
             }
         ],
-        "groupId": groupId
+        "groupId": ''
     }
 }

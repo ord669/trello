@@ -34,7 +34,7 @@ export function TaskDetails() {
         removeTask(groupId, taskId)
         navigate(`/board/${board._id}`)
     }
-    if (task) return <p>Loading..</p>
+    if (!task) return <p>Loading..</p>
 
     return (
         <section className='task-details'>

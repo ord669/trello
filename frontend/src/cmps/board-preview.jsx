@@ -5,7 +5,7 @@ export function BoardPreview({ board, onRemoveBoard }) {
     return (
         <section className='board-preview' onClick={() => navigate(`/board/${board._id}`)}>
             {board.title}
-            <button onClick={(ev) => onRemoveBoard(ev,board._id)}>X</button>
+            <button onClick={(ev) => onRemoveBoard(ev, board._id)}>X</button>
         </section>
     )
 }
