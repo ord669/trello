@@ -2,6 +2,7 @@ import { TaskList } from "../task/task-list"
 import { AddTask } from "../task/add-task"
 import { removeGroup } from "../../store/board/board.action"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
+import { GroupHeader } from "./group-header"
 
 export function GroupPreview({ group }) {
 
@@ -15,11 +16,11 @@ export function GroupPreview({ group }) {
     }
     return (
         <section className='group-preview'>
-            <section className="group-preview-header">
+            {/* <section className="group-preview-header">
                 <p>{group.title}</p>
                 <button className="btn-remove-group" onClick={onRemoveGroup}>X</button>
-            </section>
-            {/* <h2>{group.title}</h2> */}
+            </section> */}
+            <GroupHeader onRemoveGroup={onRemoveGroup} group={group} />
             <TaskList tasks={group.tasks} />
 
             <AddTask groupId={group._id} />

@@ -5,16 +5,23 @@
     background-color: $clr3 ;
     border-radius: 3px; // maybe make var for this 
 
-    &-header {
+    .group-header {
         display: flex;
         // align-items: center;
-        padding: 5px 8px;
+        padding: 6px 4px;
+        // padding: 5px 8px;
 
-        p {
+        textarea {
             flex-grow: 1;
-            padding: 4px 8px;
+            // height: 28px;
+            height: 2rem;
+            height: 1.75rem;
+            padding: 6px 8px;
+            // padding: 8px;
             margin: 0;
             font-weight: 600;
+            resize: none;
+            overflow-wrap: break-word;
         }
 
         .btn-remove-group {

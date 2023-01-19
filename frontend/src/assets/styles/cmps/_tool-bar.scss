@@ -12,12 +12,14 @@
         color: $clr6;
         width: fit-content;
         padding: 0 12px;
-
+        font-size: 18px;
+        font-weight: 700;
 
         &:hover {
             background-color: #ffffff4d;
         }
-        &:focus-visible{
+
+        &:focus-visible {
             color: $clr7;
             background-color: $clr6;
         }
