@@ -58,8 +58,6 @@ export function TaskDetails() {
                         }
                     </ul>}
 
-                    <button onClick={onRemoveTask}>Remove Task</button>
-
                     <TaskDetailsDescription description={task.description} />
 
                     <TaskDetailsChecklist />
@@ -67,7 +65,7 @@ export function TaskDetails() {
                     <TaskDetailsActivity />
                 </div>
 
-                <TaskDetailsSideMenu />
+                <TaskDetailsSideMenu onRemoveTask={onRemoveTask} />
 
             </div>
         </section >
