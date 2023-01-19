@@ -31,9 +31,8 @@ export function TaskDetails() {
         removeTask(groupId, taskId)
         navigate(`/board/${board._id}`)
     }
-    if (task) {
+    if (task) return <p>Loading..</p>
 
-    }
     return (
         <section className='task-details'>
             <div className="black-screen" onClick={() => navigate(`/board/${board._id}`)}></div>
