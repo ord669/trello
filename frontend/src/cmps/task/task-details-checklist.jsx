@@ -4,8 +4,8 @@ import { ChecklistIcon } from "../../assets/svg/icon-library";
 export function TaskDetailsChecklist() {
     return (
         <section className='task-details-checklist'>
-            <div className="flex align-center">
-                <ChecklistIcon />
+            <div className="flex align-center gap-10">
+                <ChecklistIcon className='icon-title' />
                 <h1>CheckList</h1>
             </div>
             <ul>

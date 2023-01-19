@@ -43,8 +43,8 @@ export function TaskDetails() {
 
                 <div className="task-details-cover full-task"></div>
 
-                <div className="task-details-title flex align-center">
-                    <TitleIcon />
+                <div className="task-details-title flex align-center gap-10">
+                    <TitleIcon className='icon-title' />
                     {task.title}
                 </div>
 
