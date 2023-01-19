@@ -23,6 +23,9 @@
         padding: 0 10px;
     }
 
+
+
+
     .task-details-cover {
         background-color: #ef7564;
         grid-area: cover;
@@ -30,23 +33,10 @@
 
     .task-details-title {
         grid-area: title;
-        font-size: 20px
+        font-size: 20px;
+        margin: 0 0 4px 40px;
     }
 
-    .task-details-content {
-        grid-area: content;
-
-        .task-details-description {
-            textarea {
-                overflow: hidden;
-                overflow-wrap: break-word;
-                resize: none;
-                height: 108px;
-                width: 100%;
-            }
-
-        }
-    }
 
     .task-details-side-menu {
         grid-area: aside;
@@ -87,6 +77,8 @@
         gap: 5px;
         padding: 7px;
         border-radius: 3px;
+        margin: 0 0 4px 40px;
+
 
         .sec-label-color {
             border-radius: 50%;
@@ -97,8 +89,32 @@
         }
     }
 
+    .icon-title {
+        left: 10px;
+        position: absolute;
+    }
 
 
+
+}
+
+.task-details-content {
+    grid-area: content;
+
+    >:not(:first-child) {
+        margin: 0 0 4px 40px;
+    }
+
+    .task-details-description {
+        textarea {
+            overflow: hidden;
+            overflow-wrap: break-word;
+            resize: none;
+            height: 108px;
+            width: 100%;
+        }
+
+    }
 
 
 }

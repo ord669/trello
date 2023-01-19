@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react'
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
     const location = useLocation().pathname
-    console.log('location: ', location);
     const navigate = useNavigate()
     const [isHome, setIsHome] = useState(false)
 
