@@ -66,18 +66,18 @@
             padding: 6px 8px 2px;
             min-height: 54px;
 
-            &:focus-visible{
+            &:focus-visible {
                 outline: none;
             }
         }
 
         //similar to the btns in add group
-        .btn-add-task {
-            background-color: $clr8;
-            border-radius: 3px;
-            padding: 4px 12px;
-            margin-inline-end: 4px;
-        }
+        // .btn-add-task {
+        //     background-color: $clr8;
+        //     border-radius: 3px;
+        //     padding: 4px 12px;
+        //     margin-inline-end: 4px;
+        // }
 
         .btn-close-form {
             color: $clr9;

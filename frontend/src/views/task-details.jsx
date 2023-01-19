@@ -10,6 +10,7 @@ import { TaskDetailsSideMenu } from "../cmps/task/task-details-side-menu";
 import { removeTask } from "../store/board/board.action";
 
 export function TaskDetails() {
+    const [isShown, setIsShown] = useState(false)
     const { board } = useSelector(storeState => storeState.boardModule)
     const { taskId, groupId } = useParams()
     const [task, setTask] = useState({})
@@ -46,7 +47,9 @@ export function TaskDetails() {
 
                 <div className="task-details-title flex align-center gap-10">
                     <TitleIcon className='icon-title' />
-                    {task.title}
+                    <textarea type="text"
+                        defaultValue={task.title} />
+
                 </div>
 
                 <div className="task-details-content">

@@ -74,3 +74,25 @@ button {
     display: flex;
     justify-content: space-around;
 }
+
+.btn-add {
+    background-color: $clr8;
+    border-radius: 3px;
+    padding: 4px 12px;
+    margin-inline-end: 4px;
+
+    &:hover {
+        background-color: #026aa7;
+    }
+}
+
+.btn-cancel {
+    color: #333;
+    border-radius: 3px;
+    padding: 4px 12px;
+
+
+    &:hover {
+        background-color: #091e4214;
+    }
+}

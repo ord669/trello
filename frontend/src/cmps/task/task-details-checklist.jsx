@@ -16,7 +16,7 @@ export function TaskDetailsChecklist({ checklists }) {
                             </div>
                             <h1>{checklist.title}</h1>
                         </div>
-                        <div className="task-todos">
+                        <div className="task-todos flex column gap-10">
                             {checklist.todos.map(todo =>
                                 <div key={todo._id}>
                                     <input className="icon-title"

@@ -63,10 +63,13 @@ export async function saveTask(groupId, title) {
         const board = await boardService.save(boardToUpdate)
         store.dispatch({ type: SET_BOARD, board })
     } catch (err) {
-
         throw err
     }
 }
+
+
+
+
 export async function removeTask(groupId, taskId) {
     try {
         const { board: boardToUpdate } = store.getState().boardModule

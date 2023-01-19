@@ -38,7 +38,6 @@ export function TaskDetailsLabels({ labelId }) {
     if (!label) return <div>loadind ...</div>
     return (
         <section style={mainStyle} className='task-details-labels flex align-center space-between gap-10 '>
-
             <div style={secStyle} className="sec-label-color"></div>
             <div> {label.title}</div>
 

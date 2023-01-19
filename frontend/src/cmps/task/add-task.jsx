@@ -33,7 +33,7 @@ export function AddTask({ groupId }) {
                         placeholder="Enter a title for this card..."
                         value={title}
                         onChange={handleChange} />
-                    <button className="btn-add-task" onClick={onAddTask}>Add card</button>
+                    <button className="btn-add" onClick={onAddTask}>Add card</button>
                     <button className="btn-close-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>X</button>
                 </>
                 :
