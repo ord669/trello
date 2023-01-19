@@ -29,6 +29,7 @@ export function App() {
                         </Routes>
 
                     </main>
+                    <UserMsg />
                 </div>
             </Router>
         </Provider>

@@ -1,6 +1,7 @@
 import { useState } from "react"
 // import { useSelector } from "react-redux"
 import { PlusIcon } from "../../assets/svg/icon-library"
+import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { removeTask, saveTask } from "../../store/board/board.action"
 
 export function AddTask({ groupId }) {
@@ -9,9 +10,14 @@ export function AddTask({ groupId }) {
 
     function onAddTask() {
         if (!title) return
-        saveTask(groupId, title)
-        setIsShown(prevIsShown => !prevIsShown)
-        setTilte('')
+        try {
+            saveTask(groupId, title)
+            setIsShown(prevIsShown => !prevIsShown)
+            setTilte('')
+            showSuccessMsg('Task Added successfully')
+        } catch (err) {
+            showErrorMsg('Cannot add task')
+        }
     }
 
     function handleChange({ target }) {

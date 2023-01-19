@@ -24,7 +24,7 @@ export async function removeGroup(groupId) {
         await groupService.remove(board._id, groupId)
     } catch (err) {
         store.dispatch({ type: UNDO_REMOVE_GROUP, })
-
+        console.log('Err from removeGroup in board action :', err)
         throw err
     }
 }
@@ -37,7 +37,7 @@ export async function saveGroup(group) {
         store.dispatch({ type, group: savedGroup })
         return savedGroup
     } catch (err) {
-
+        console.log('Err from saveGroup in board action :', err)
         throw err
     }
 }
@@ -49,9 +49,8 @@ export async function saveBoard(board) {
             type: SET_BOARD,
             board
         })
-
     } catch (err) {
-
+        console.log('Err from saveBoard in board action :', err)
         throw err
     }
 }
@@ -74,10 +73,8 @@ export async function removeTask(groupId, taskId) {
         const group = boardToUpdate.groups.find(group => group._id === groupId)
         group.tasks = group.tasks.filter(task => task._id !== taskId)
         saveGroup(group)
-
-
     } catch (err) {
-
+        console.log('Err from removeTask in board action :', err)
         throw err
     }
 }
