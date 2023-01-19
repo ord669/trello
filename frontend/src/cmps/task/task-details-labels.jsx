@@ -17,7 +17,6 @@ export function TaskDetailsLabels({ labelId }) {
         const currLabel = board.labels.find(label => label._id === labelId)
         setLabel(currLabel)
         setColor(currLabel.color)
-        console.log('color:', color)
     }
 
 
