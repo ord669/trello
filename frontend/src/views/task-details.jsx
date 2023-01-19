@@ -23,6 +23,7 @@ export function TaskDetails() {
         const currGroup = board.groups.find(group => group._id === groupId)
         const currTask = currGroup.tasks.find(task => task._id === taskId)
         setTask(currTask)
+        console.log('currTask: ', currTask);
     }
 
     function onRemoveTask() {
@@ -57,11 +58,13 @@ export function TaskDetails() {
                         )
                         }
                     </ul>}
-
                     <TaskDetailsDescription description={task.description} />
 
-                    <TaskDetailsChecklist />
 
+                    {task.checklists &&
+
+                        <TaskDetailsChecklist checklists={task.checklists} />
+                    }
                     <TaskDetailsActivity />
                 </div>
 
