@@ -8,9 +8,9 @@ export function TaskPreview({ task }) {
     return (
         <section onClick={() => { navigate(`${task.groupId}/${task._id}`) }} className='task-preview'>
             <p>{task.title}</p>
-
             <div className="task-icons">
             </div>
+
             <div className="task-preview-edit display-none">
                 <PenIcon />
             </div>

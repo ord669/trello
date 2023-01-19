@@ -24,21 +24,20 @@ export async function removeGroup(groupId) {
         await groupService.remove(board._id, groupId)
     } catch (err) {
         store.dispatch({ type: UNDO_REMOVE_GROUP, })
-
+        console.log('Err from removeGroup in board action :', err)
         throw err
     }
 }
 
-export async function saveGroup(title) {
+export async function saveGroup(group) {
     try {
-        const group = groupService.getEmptyGroup(title)
         const type = (group._id) ? UPDATE_GROUP : ADD_GROUP
         const { board } = store.getState().boardModule
         const savedGroup = await groupService.save(board._id, group)
         store.dispatch({ type, group: savedGroup })
         return savedGroup
     } catch (err) {
-
+        console.log('Err from saveGroup in board action :', err)
         throw err
     }
 }
@@ -50,9 +49,8 @@ export async function saveBoard(board) {
             type: SET_BOARD,
             board
         })
-
     } catch (err) {
-
+        console.log('Err from saveBoard in board action :', err)
         throw err
     }
 }
@@ -70,16 +68,13 @@ export async function saveTask(groupId, title) {
     }
 }
 export async function removeTask(groupId, taskId) {
-    console.log('taskId: ', taskId);
-    console.log('groupId: ', groupId);
     try {
         const { board: boardToUpdate } = store.getState().boardModule
         const group = boardToUpdate.groups.find(group => group._id === groupId)
-        console.log('group: before ', { ...group });
         group.tasks = group.tasks.filter(task => task._id !== taskId)
-        console.log('group after: ', group);
         saveGroup(group)
     } catch (err) {
+        console.log('Err from removeTask in board action :', err)
         throw err
     }
 }

@@ -7,6 +7,7 @@ import { store } from './store/store'
 import { BoardDetails } from './views/board-details';
 import { TaskDetails } from './views/task-details';
 import { HomePage } from './views/home-page';
+import { UserMsg } from './cmps/user-msg';
 
 export function App() {
 
@@ -27,6 +28,7 @@ export function App() {
                         </Routes>
 
                     </main>
+                    <UserMsg />
                 </div>
             </Router>
         </Provider>
