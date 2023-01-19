@@ -12,6 +12,7 @@ import { removeTask } from "../store/board/board.action";
 export function TaskDetails() {
     const [isShown, setIsShown] = useState(false)
     const { board } = useSelector(storeState => storeState.boardModule)
+    console.log('board FROM DETAILS: ', board);
     const { taskId, groupId } = useParams()
     const [task, setTask] = useState({})
     const navigate = useNavigate()
@@ -21,8 +22,8 @@ export function TaskDetails() {
     }, [board])
 
     function loadTask() {
+        console.log('board: ', board);
         const currGroup = board.groups.find(group => group._id === groupId)
-
         const currTask = currGroup.tasks.find(task => task._id === taskId)
         console.log('currGroup.tasks: ', currGroup.tasks);
         setTask(currTask)
@@ -63,7 +64,6 @@ export function TaskDetails() {
                         }
                     </ul>}
                     <TaskDetailsDescription description={task.description} />
-
 
                     {task.checklists &&
 
