@@ -16,7 +16,6 @@ export function App() {
                 <div className='main-container app'>
                     <AppHeader className='full' />
                     <main className='full'>
-
                         <Routes>
                             <Route path="/" element={<HomePage />} />
 
