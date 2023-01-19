@@ -1,9 +1,10 @@
 .user-avatar-icon {
-    height: 28px;
-    width: 28px;
+    min-height: 28px;
+    min-width: 28px;
     border-radius: 50%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: #ebecef;
 
 }

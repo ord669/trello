@@ -1,12 +1,11 @@
 import { useRef, useState } from "react";
 import { DescriptionIcon } from "../../assets/svg/icon-library";
 
-export function TaskDetailsDescription({ description }) {
+export function TaskDetailsDescription({ description, handleChange, onSaveTask }) {
 
     const [isShown, setIsShown] = useState(false)
     // const elTextArea = useRef()
     const inputReference = useRef(null);
-
 
     function onShownDesc() {
         setIsShown(prev => !prev)
@@ -24,9 +23,15 @@ export function TaskDetailsDescription({ description }) {
                     :
                     <div>
                         <textarea autoFocus type="text"
-                            defaultValue={description || 'add a more detailed description…'} />
+                            name="description"
+                            defaultValue={description || 'add a more detailed description…'}
+                            onChange={handleChange}
+                        />
                         <div className="desc-btn flex align-cetner ">
-                            <button className="btn-add">Save</button>
+                            <button onClick={() => {
+                                onSaveTask()
+                                setIsShown((prev) => !prev)
+                            }} className="btn-add">Save</button>
                             <button onClick={() => setIsShown((prev) => !prev)}
                                 className="btn-cancel">Cancel</button>
                         </div>
@@ -35,7 +40,6 @@ export function TaskDetailsDescription({ description }) {
                 }
 
             </div>
-
 
         </div >
     )

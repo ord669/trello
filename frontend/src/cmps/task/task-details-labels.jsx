@@ -3,11 +3,12 @@ import { useSelector } from "react-redux"
 import { LOADING_DONE } from "../../store/system.reducer"
 import tinycolor from "tinycolor2";
 
-
 export function TaskDetailsLabels({ labelId }) {
+    console.log('labelId from take: ', labelId);
     const { board } = useSelector(storeState => storeState.boardModule)
     const [label, setLabel] = useState({})
     const [color, setColor] = useState('')
+
     useEffect(() => {
         getLabel(labelId)
     }, [])
@@ -18,7 +19,6 @@ export function TaskDetailsLabels({ labelId }) {
         setLabel(currLabel)
         setColor(currLabel.color)
     }
-
 
     function darkenHexColor(hexColor, amount = 20) {
         let color = tinycolor(hexColor);
@@ -31,9 +31,8 @@ export function TaskDetailsLabels({ labelId }) {
     }
 
     const secStyle = {
-        backgroundColor: darkenHexColor(color)
+        backgroundColor: darkenHexColor(label.color)
     }
-
 
     if (!label) return <div>loadind ...</div>
     return (

@@ -1,4 +1,4 @@
-import { PlusIcon } from "../../assets/svg/icon-library"
+import { CloseIcon, PlusIcon } from "../../assets/svg/icon-library"
 import { useState } from "react"
 import { saveGroup } from "../../store/board/board.action"
 import { groupService } from "../../services/group.service.local"
@@ -37,8 +37,8 @@ export function AddGroup() {
                         onChange={handleChange}
                         autoFocus />
                     <section className="form-btns">
-                        <button className=" btn-add" onClick={onAddList}>Add list</button>
-                        <button className="btn btn-close-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>X</button>
+                        <button className="btn-add" onClick={onAddList}>Add list</button>
+                        <button className="btn-close-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}><CloseIcon /></button>
                     </section>
                 </form>
                 :

@@ -30,14 +30,15 @@ export function ToolBar({ board }) {
 
     }
 
+    const admin = board.createdBy
+
     return (
         <section className='tool-bar full'>
-            {/* <h2>{board.title}</h2> */}
-            <input className="board-title edit-title-input"
-                type="text"
-                value={title}
+            <span className="board-title edit-title-input"
                 onChange={handleChange}
-                onBlur={onSaveTitle} />
+                contentEditable
+                suppressContentEditableWarning
+                onBlur={onSaveTitle}>{title}</span>
             <div className="tool-bar-btns">
                 <button onClick={() => setIsOpenFilter(prev => !prev)} className="btn-header ">
                     <FilterIcon className="spacing" />
@@ -45,7 +46,7 @@ export function ToolBar({ board }) {
                 </button>
                 {isOpenFilter && <TaskFilter board={board} setIsOpenFilter={setIsOpenFilter} />}
                 <p>|</p>
-                <UserAvatarIcon />
+                {admin && <UserAvatarIcon member={admin} />}
                 <p>|</p>
                 <button className="btn-header btn-header-square">
                     <MoreTreeDotsIcon className="icon" />

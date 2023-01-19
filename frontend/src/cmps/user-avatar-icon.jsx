@@ -1,7 +1,8 @@
-export function UserAvatarIcon(user) {
+export function UserAvatarIcon({ member }) {
+
 
     const userStyle = {
-        backgroundImage: 'url(https://res.cloudinary.com/dd09wjwjn/image/upload/v1673989435/cld-sample-4.jpg)'
+        backgroundImage: `url(${member.imgUrl})`
     }
     return (
         <section style={userStyle} className='user-avatar-icon'>

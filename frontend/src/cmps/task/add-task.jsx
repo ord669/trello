@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 // import { useSelector } from "react-redux"
-import { PlusIcon } from "../../assets/svg/icon-library"
+import { CloseIcon, PlusIcon } from "../../assets/svg/icon-library"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { taskService } from "../../services/task.service.local"
 import { removeTask, saveTask } from "../../store/board/board.action"
@@ -39,12 +39,13 @@ export function AddTask({ groupId }) {
                         placeholder="Enter a title for this card..."
                         value={task.title}
                         onChange={handleChange} />
-                    <button className="btn-add" onClick={onAddTask}>Add card</button>
-                    <button className="btn-close-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>X</button>
+                    <section className="form-btns">
+                        <button className="btn-add" onClick={onAddTask}>Add card</button>
+                        <button className="btn-close-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}><CloseIcon /></button>
+                    </section>
                 </>
                 :
                 <section className="open-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>
-                    {/* <PlusIcon /> Add a card */}
                     <PlusIcon />
                     <span>Add a card</span>
                 </section>}
