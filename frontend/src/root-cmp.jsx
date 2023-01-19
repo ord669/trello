@@ -16,10 +16,8 @@ export function App() {
                 <div className='main-container app'>
                     <AppHeader className='full' />
                     <main className='full'>
-
                         <Routes>
                             <Route path="/home" element={<HomePage />} />
-
                             <Route path="/board/:boardId" element={<BoardDetails />} >
                                 <Route Route path="/board/:boardId/:groupId/:taskId" element={<TaskDetails />} />
                             </Route>
