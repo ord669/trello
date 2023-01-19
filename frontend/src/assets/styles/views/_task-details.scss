@@ -32,7 +32,7 @@
 
     .task-details-title {
         grid-area: title;
-        margin: 0 0 4px 40px;
+
 
         textarea {
             overflow: hidden;
@@ -42,18 +42,30 @@
             border: none;
             border-radius: 3px;
             font-family: sans-serif;
-            padding: 4px 8px;
             background: #0000;
             box-shadow: none;
-            font-size: 20px;
+            font-size: 21px;
             height: 32px;
             width: 670px;
+            padding: 0;
 
             &:focus {
                 background-color: #fff;
                 box-shadow: inset 0 0 0 2px #0079bf;
                 outline: none;
+
             }
+        }
+
+        .task-title {
+            display: flex;
+            flex-direction: column;
+            line-height: 0;
+            gap: 3px;
+            margin: 0 0 4px 40px;
+            margin-top: 15px;
+
+
         }
     }
 
@@ -123,7 +135,7 @@
     }
 
     .icon-title {
-        left: 20px;
+        left: 23px;
         position: absolute;
         width: 20px;
         height: 20px;
@@ -177,7 +189,8 @@
 }
 
 .task-details-checklist {
-    margin: 0 0 4px 40px
+    margin: 0 0 4px 40px;
+    color: #5e6c84
 }
 
 .task-details-activity {

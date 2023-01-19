@@ -12,9 +12,9 @@ import { removeTask } from "../store/board/board.action";
 export function TaskDetails() {
     const [isShown, setIsShown] = useState(false)
     const { board } = useSelector(storeState => storeState.boardModule)
-    console.log('board FROM DETAILS: ', board);
     const { taskId, groupId } = useParams()
     const [task, setTask] = useState({})
+    const [group, setGroup] = useState({})
     const navigate = useNavigate()
     useEffect(() => {
         if (!board.groups.length) return
@@ -22,19 +22,17 @@ export function TaskDetails() {
     }, [board])
 
     function loadTask() {
-        console.log('board: ', board);
         const currGroup = board.groups.find(group => group._id === groupId)
         const currTask = currGroup.tasks.find(task => task._id === taskId)
-        console.log('currGroup.tasks: ', currGroup.tasks);
         setTask(currTask)
-        console.log('currTask: ', currTask);
+        setGroup(currGroup)
     }
 
     function onRemoveTask() {
         removeTask(groupId, taskId)
         navigate(`/board/${board._id}`)
     }
-    if (task) return <p>Loading..</p>
+    if (!task) return <p>Loading..</p>
 
     return (
         <section className='task-details'>
@@ -49,10 +47,13 @@ export function TaskDetails() {
 
                 <div className="task-details-title flex align-center gap-10">
                     <TitleIcon className='icon-title' />
-                    <textarea type="text"
-                        defaultValue={task.title} />
-
+                    <div className="task-title ">
+                        <textarea type="text"
+                            defaultValue={task.title} />
+                        <p>in list {group.title}</p>
+                    </div>
                 </div>
+
 
                 <div className="task-details-content">
                     {task.labelIds && <ul className="labels-list clean-list ">
