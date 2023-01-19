@@ -8,11 +8,12 @@ export function AddGroup() {
     const [isShown, setIsShown] = useState(false)
     const [title, setTilte] = useState('')
 
-    function onAddList() {
+    async function onAddList(ev) {
+        ev.preventDefault()
         if (!title) return
         try {
             const group = groupService.getEmptyGroup(title)
-            saveGroup(group)
+            await saveGroup(group)
             setIsShown(prevIsShown => !prevIsShown)
             setTilte('')
             showSuccessMsg(`List added successfully `)

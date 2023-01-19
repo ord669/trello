@@ -8,10 +8,10 @@ export function AddTask({ groupId }) {
     const [isShown, setIsShown] = useState(false)
     const [title, setTilte] = useState('')
 
-    function onAddTask() {
+    async function onAddTask() {
         if (!title) return
         try {
-            saveTask(groupId, title)
+            await saveTask(groupId, title)
             setIsShown(prevIsShown => !prevIsShown)
             setTilte('')
             showSuccessMsg('Task Added successfully')
