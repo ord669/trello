@@ -24,12 +24,12 @@ export function AddTask({ groupId }) {
         <section className='add-task'>
             {isShown ?
                 <>
-                        <textarea
-                            // type="text"
-                            name="title"
-                            placeholder="Enter a title for this card..."
-                            value={title}
-                            onChange={handleChange} />
+                    <textarea
+                        // type="text"
+                        name="title"
+                        placeholder="Enter a title for this card..."
+                        value={title}
+                        onChange={handleChange} />
                     <button className="btn-add-task" onClick={onAddTask}>Add card</button>
                     <button className="btn-close-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>X</button>
                 </>

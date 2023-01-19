@@ -18,7 +18,7 @@ export function App() {
                     <main className='full'>
 
                         <Routes>
-                            <Route path="/home" element={<HomePage />} />
+                            <Route path="/" element={<HomePage />} />
 
                             <Route path="/board/:boardId" element={<BoardDetails />} >
                                 <Route Route path="/board/:boardId/:groupId/:taskId" element={<TaskDetails />} />

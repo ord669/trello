@@ -10,11 +10,14 @@ import { useEffect, useState } from 'react'
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
     const location = useLocation().pathname
+    console.log('location: ', location);
     const navigate = useNavigate()
     const [isHome, setIsHome] = useState(false)
 
     useEffect(() => {
-        setIsHome(location.includes('home'))
+        if (location.length > 1) setIsHome(false)
+        else setIsHome(true)
+
     }, [location])
 
     async function onLogin(credentials) {
