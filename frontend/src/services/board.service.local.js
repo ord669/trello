@@ -47,7 +47,6 @@ async function addBoardActivity(boardId, txt) {
     // Later, this is all done by the backend
     const board = await getById(boardId)
     if (!board.activities) board.activities = []
-
     const activity = {
         id: utilService.makeId(),
         by: userService.getLoggedinUser(),
@@ -55,7 +54,6 @@ async function addBoardActivity(boardId, txt) {
     }
     board.activities.push(activity)
     await storageService.put(STORAGE_KEY, board)
-
     return activity
 }
 

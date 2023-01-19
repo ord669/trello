@@ -66,11 +66,13 @@ button {
     color: #ffffff;
     cursor: pointer;
     font-size: 14px;
+    line-height: 20px;
     height: 32px;
-    margin: 0 4px 4px 0;
     max-width: 400px;
     overflow: hidden;
-    padding: 0.5rem 5rem;
+    padding: 1rem 0.9rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+
 }
