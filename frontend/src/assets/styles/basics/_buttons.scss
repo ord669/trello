@@ -94,3 +94,15 @@ button {
         background-color: #091e4214;
     }
 }
+
+.btn-close-form {
+    display: inline-flex;
+    color: $clr9;
+    background-color: inherit;
+    
+    svg {
+        color: $clr1;
+        width: 28px;
+        height: 28px;
+    }
+}
