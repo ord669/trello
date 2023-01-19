@@ -71,13 +71,17 @@
         display: flex;
         flex-wrap: wrap;
         gap: 4px;
+        margin: 0 0 4px 40px;
+
+
+
     }
 
     .task-details-labels {
         gap: 5px;
         padding: 7px;
         border-radius: 3px;
-        margin: 0 0 4px 40px;
+
 
 
         .sec-label-color {
@@ -92,6 +96,7 @@
     .icon-title {
         left: 10px;
         position: absolute;
+
     }
 
 
@@ -101,11 +106,13 @@
 .task-details-content {
     grid-area: content;
 
-    >:not(:first-child) {
-        margin: 0 0 4px 40px;
-    }
+    // >:not(:first-child) {
+    //     margin: 0 0 4px 40px;
+    // }
 
     .task-details-description {
+        margin: 0 0 4px 40px;
+
         textarea {
             overflow: hidden;
             overflow-wrap: break-word;
@@ -116,5 +123,11 @@
 
     }
 
+    .task-details-checklist {
+        margin: 0 0 4px 40px
+    }
 
+    .task-details-activity {
+        margin: 0 0 4px 40px
+    }
 }
