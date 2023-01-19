@@ -148,18 +148,6 @@
 .task-details-content {
     grid-area: content;
 
-    .task-details-content-lable-members {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-
-        li {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    }
-
     .task-details-description {
         margin: 0 0 4px 40px;
     }
@@ -191,13 +179,4 @@
 
 .task-details-activity {
     margin: 0 0 4px 40px
-}
-
-.description-fake-text-area {
-    background-color: rgba(9, 30, 66, 0.0392156863);
-    border: none;
-    border-radius: 3px;
-    min-height: 56px;
-    padding: 8px 12px;
-    cursor: pointer;
 }
