@@ -26,6 +26,9 @@ export function ToolBar({ board }) {
         }
 
     }
+
+    const admin = board.createdBy
+
     return (
         <section className='tool-bar full'>
             {/* <h2>{board.title}</h2> */}
