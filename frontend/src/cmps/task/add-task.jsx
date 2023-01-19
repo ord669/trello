@@ -44,9 +44,8 @@ export function AddTask({ groupId }) {
                 </>
                 :
                 <section className="open-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>
-                    {/* <PlusIcon /> Add a card */}
-                    <PlusIcon />
-                    <span>Add a card</span>
+                        <PlusIcon />
+                        <span>Add a card</span>
                 </section>}
         </section>
     )

@@ -31,12 +31,11 @@ export function ToolBar({ board }) {
 
     return (
         <section className='tool-bar full'>
-            {/* <h2>{board.title}</h2> */}
-            <input className="board-title edit-title-input"
-                type="text"
-                value={title}
+            <span className="board-title edit-title-input"
                 onChange={handleChange}
-                onBlur={onSaveTitle} />
+                contentEditable
+                suppressContentEditableWarning
+                onBlur={onSaveTitle}>{title}</span>
             <div className="tool-bar-btns">
 
                 <button className="btn-header ">
