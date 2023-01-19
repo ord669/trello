@@ -29,9 +29,8 @@ export async function removeGroup(groupId) {
     }
 }
 
-export async function saveGroup(title) {
+export async function saveGroup(group) {
     try {
-        const group = groupService.getEmptyGroup(title)
         const type = (group._id) ? UPDATE_GROUP : ADD_GROUP
         const { board } = store.getState().boardModule
         const savedGroup = await groupService.save(board._id, group)

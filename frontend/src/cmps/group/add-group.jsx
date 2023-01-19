@@ -1,6 +1,7 @@
 import { PlusIcon } from "../../assets/svg/icon-library"
 import { useState } from "react"
 import { saveGroup } from "../../store/board/board.action"
+import { groupService } from "../../services/group.service.local"
 
 export function AddGroup() {
     const [isShown, setIsShown] = useState(false)
@@ -8,7 +9,8 @@ export function AddGroup() {
 
     function onAddList() {
         if (!title) return
-        saveGroup(title)
+        const group = groupService.getEmptyGroup(title)
+        saveGroup(group)
         setIsShown(prevIsShown => !prevIsShown)
         setTilte('')
     }
