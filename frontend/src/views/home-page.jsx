@@ -5,17 +5,17 @@ import { useNavigate } from 'react-router-dom'
 export function HomePage() {
     const { board } = useSelector(storeState => storeState.boardModule)
     const navigate = useNavigate()
-    const { mousePos } = useSelector(storeState => storeState.modalModule)
+    // const { mousePos } = useSelector(storeState => storeState.modalModule)
 
     return (
 
         <section className='home-page   '>
-            <div>
+            {/* <div>
                 The mouse is at position{' '}
                 <b>
                     ({mousePos.x}, {mousePos.y})
                 </b>
-            </div>
+            </div> */}
             <div className="main-home-page  ">
                 <div className="home-page-content">
                     <h1 className='home-page-title'>
