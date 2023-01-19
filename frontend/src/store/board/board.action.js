@@ -55,35 +55,16 @@ export async function saveBoard(board) {
     }
 }
 
-// export async function saveTask(taskId) {
-//     const task = taskService.getEmptyTask(groupId, title)
-//     const { board: boardToUpdate } = store.getState().boardModule
-//     boardToUpdate.groups.find(group => group._id === groupId).tasks.push(task)
-//     try {
-//         const board = await boardService.save(boardToUpdate)
-//         store.dispatch({ type: SET_BOARD, board })
-//     } catch (err) {
-
-//         throw err
-//     }
-// }
-
-export async function saveTask(task) {
+export async function saveTask(groupId, title) {
+    const task = taskService.getEmptyTask(groupId, title)
+    const { board: boardToUpdate } = store.getState().boardModule
+    boardToUpdate.groups.find(group => group._id === groupId).tasks.push(task)
     try {
-        const { board } = store.getState().boardModule
-        console.log('board: ', board);
-        const group = board.groups.find(group => group._id === task.groupId)
-        // if(!task._id){
-
-        // }
-
-        // group.push(task)
-        // const savedGroup = await groupService.save(board._id, group)
-        // store.dispatch({ type, group: savedGroup })
-        // return savedGroup
+        const board = await boardService.save(boardToUpdate)
+        store.dispatch({ type: SET_BOARD, board })
     } catch (err) {
-        // console.log('Err from saveGroup in board action :', err)
-        // throw err
+
+        throw err
     }
 }
 export async function removeTask(groupId, taskId) {

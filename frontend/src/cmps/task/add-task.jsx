@@ -7,11 +7,12 @@ import { removeTask, saveTask } from "../../store/board/board.action"
 export function AddTask({ groupId }) {
     const [isShown, setIsShown] = useState(false)
     const [title, setTilte] = useState('')
+    const [task, setTask] = useState()
 
     async function onAddTask() {
         if (!title) return
         try {
-            await saveTask(groupId, title)
+            await saveTask(task)
             setIsShown(prevIsShown => !prevIsShown)
             setTilte('')
             showSuccessMsg('Task Added successfully')
