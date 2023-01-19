@@ -1,0 +1,22 @@
+input {
+    margin: 0;
+}
+
+.edit-title-input {
+    // overflow: hidden;
+    // overflow-wrap: break-word;
+    border: none;
+    border-radius: 3px;
+    background: #0000;
+    box-shadow: none;
+    font-size: 21px;
+    font-family: inherit;
+    padding: 0;
+
+    &:focus {
+        background-color: $clr6;
+        box-shadow: inset 0 0 0 2px #0079bf;
+        outline: none;
+
+    }
+}

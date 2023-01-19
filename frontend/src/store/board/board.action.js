@@ -45,10 +45,10 @@ export async function saveGroup(group) {
 
 export async function saveBoard(board) {
     try {
-        const board = await boardService.save(board)
+        const newBoard = await boardService.save(board)
         store.dispatch({
             type: SET_BOARD,
-            board
+            board: newBoard
         })
     } catch (err) {
         console.log('Err from saveBoard in board action :', err)
@@ -57,7 +57,7 @@ export async function saveBoard(board) {
 }
 // saveTask(task)
 export async function saveTask(task) {
-    console.log('task from action: ', task);
+    console.log('task from action: ', task)
 
     try {
         const { board: boardToUpdate } = store.getState().boardModule

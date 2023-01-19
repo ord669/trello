@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { BoardList } from "../cmps/board-list"
 import { BoardPreview } from "../cmps/board-preview"
 import { MainSidemenu } from "../cmps/main-side-menu"
@@ -7,6 +8,7 @@ import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 
 export function BoardIndex() {
     const [boards, setBoards] = useState([])
+    const navigate = useNavigate()
     console.log('boards:', boards)
 
     useEffect(() => {
@@ -24,7 +26,8 @@ export function BoardIndex() {
             if (!title) return
             const boardToSave = boardService.getEmptyBoard(title)
             const savedBoard = await boardService.save(boardToSave)
-            setBoards(prevBoards => [...prevBoards, savedBoard])
+            // setBoards(prevBoards => [...prevBoards, savedBoard])
+            navigate(`/board/${savedBoard._id}`)
             showSuccessMsg('Board created')
         } catch (err) {
             showErrorMsg('Cannot create new board')
