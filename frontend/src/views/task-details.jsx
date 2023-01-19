@@ -9,7 +9,7 @@ import { TaskDetailsLabels } from "../cmps/task/task-details-labels";
 import { TaskDetailsSideMenu } from "../cmps/task/task-details-side-menu";
 import { UserAvatarIcon } from "../cmps/user-avatar-icon";
 import { useForm } from "../customHooks/useForm";
-import { removeTask, saveTask } from "../store/board/board.action";
+import { removeTask, saveTask, selectLableAndChange, selectMemberAndChange } from "../store/board/board.action";
 
 export function TaskDetails() {
     const [isShown, setIsShown] = useState(false)
@@ -57,6 +57,15 @@ export function TaskDetails() {
         onSaveTask(task)
     }
 
+    function onSelectMember(memberId) {
+        selectMemberAndChange(memberId, groupId, taskId)
+    }
+    function onSelectLable(labelId) {
+        console.log('labelId send label: ', labelId);
+        // console.log('labelIds: ', labelIds);
+        selectLableAndChange(labelId, groupId, taskId)
+    }
+
     if (!task) return <p>Loading..</p>
     console.log('task: ', task);
     return (
@@ -83,30 +92,40 @@ export function TaskDetails() {
 
                 <div className="task-details-content">
                     <div className="task-details-content-lable-members">
-                        {task.labelIds &&
-                            <ul className="labels-list clean-list ">
-                                {getMembers().map((member, idx) =>
-                                    <li key={idx}>
-                                        <UserAvatarIcon member={member} />
+
+                        {!!task?.memberIds?.length &&
+                            <div>
+                                <p>Members</p>
+                                <ul className="labels-list clean-list ">
+                                    {getMembers().map((member, idx) =>
+                                        <li onClick={() => {
+                                            onSelectMember(member._id)
+                                        }} key={idx}>
+                                            <UserAvatarIcon member={member} />
+                                        </li>
+                                    )
+                                    }
+                                    <li className=" user-avatar-icon " >
+                                        <PlusIcon />
                                     </li>
-                                )
-                                }
-                                <li className=" user-avatar-icon " >
-                                    <PlusIcon />
-                                </li>
-                            </ul>
+                                </ul>
+                            </div>
                         }
 
-                        {task.labelIds &&
-                            <ul className="labels-list clean-list ">
+                        {!!task?.labelIds?.length &&
+                            <div className="labels-container">
+                                <p>Labels</p>
+                                <ul className="labels-list clean-list ">
+                                    {task.labelIds.map((labelId, idx) =>
+                                        <li onClick={() => { onSelectLable(labelId) }} key={idx}>
+                                            <TaskDetailsLabels labelId={labelId} />
+                                        </li>
+                                    )
+                                    }
+                                </ul>
+                            </div>
+                        }
 
-                                {task.labelIds.map((labelId, idx) =>
-                                    <li key={idx}>
-                                        <TaskDetailsLabels labelId={labelId} />
-                                    </li>
-                                )
-                                }
-                            </ul>}
                     </div>
                     <TaskDetailsDescription handleChange={handleChange} description={task.description} onSaveTask={onSaveTask} />
 
@@ -115,11 +134,28 @@ export function TaskDetails() {
                         <TaskDetailsChecklist checklists={task.checklists} />
                     }
                     <TaskDetailsActivity />
+                    <div>{board.members.map((member, idx) =>
+                        <button onClick={() => {
+                            onSelectMember(member._id)
+                        }} key={idx}>
+                            <UserAvatarIcon member={member} />
+                        </button>
+                    )
+                    }</div>
+                    <div>{board.labels.map((label, idx) =>
+                        <button onClick={() => {
+                            onSelectLable(label._id)
+                        }} key={idx}>
+                            <TaskDetailsLabels labelId={label._id} />
+                        </button>
+                    )
+                    }</div>
                 </div>
 
                 <TaskDetailsSideMenu onRemoveTask={onRemoveTask} />
 
             </div>
+
         </section >
     )
 }

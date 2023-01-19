@@ -13,7 +13,7 @@
     margin-top: 44px;
     display: grid;
     grid-template-columns: 1fr 190px;
-    grid-template-rows: 120px 80px 1fr;
+    grid-template-rows: 120px 65px 1fr;
     grid-template-areas:
         "cover    cover "
         "title    title "
@@ -63,6 +63,9 @@
             margin: 0 0 4px 40px;
             margin-top: 15px;
 
+            p {
+                margin-top: 5px;
+            }
         }
     }
 
@@ -106,10 +109,7 @@
 
     .labels-list {
         display: flex;
-        flex-wrap: wrap;
         gap: 4px;
-        margin: 0 0 4px 40px;
-
     }
 
     .task-details-labels {
@@ -148,6 +148,18 @@
 .task-details-content {
     grid-area: content;
 
+    .task-details-content-lable-members {
+        display: flex;
+
+        flex-wrap: wrap;
+        margin: 25px 0 4px 40px;
+
+        ul {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    }
+
     .task-details-description {
         margin: 0 0 4px 40px;
     }
@@ -156,7 +168,7 @@
         overflow: hidden;
         overflow-wrap: break-word;
         resize: none;
-        height: 108px;
+        height: 100px;
         width: 100%;
         border: none;
         border-radius: 3px;
