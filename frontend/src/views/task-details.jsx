@@ -16,13 +16,15 @@ export function TaskDetails() {
     const [task, setTask] = useState({})
     const navigate = useNavigate()
     useEffect(() => {
-        if (!board.groups) return
+        if (!board.groups.length) return
         loadTask()
     }, [board])
 
     function loadTask() {
         const currGroup = board.groups.find(group => group._id === groupId)
+
         const currTask = currGroup.tasks.find(task => task._id === taskId)
+        console.log('currGroup.tasks: ', currGroup.tasks);
         setTask(currTask)
         console.log('currTask: ', currTask);
     }
