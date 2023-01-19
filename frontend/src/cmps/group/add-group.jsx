@@ -1,6 +1,8 @@
 import { PlusIcon } from "../../assets/svg/icon-library"
 import { useState } from "react"
 import { saveGroup } from "../../store/board/board.action"
+import { groupService } from "../../services/group.service.local"
+import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 
 export function AddGroup() {
     const [isShown, setIsShown] = useState(false)
@@ -8,9 +10,15 @@ export function AddGroup() {
 
     function onAddList() {
         if (!title) return
-        saveGroup(title)
-        setIsShown(prevIsShown => !prevIsShown)
-        setTilte('')
+        try {
+            const group = groupService.getEmptyGroup(title)
+            saveGroup(group)
+            setIsShown(prevIsShown => !prevIsShown)
+            setTilte('')
+            showSuccessMsg(`List added successfully `)
+        } catch (err) {
+            showErrorMsg('Cannot Add list')
+        }
     }
 
     function handleChange({ target }) {
