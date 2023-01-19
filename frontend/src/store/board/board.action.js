@@ -98,3 +98,60 @@ export async function removeTask(groupId, taskId) {
         throw err
     }
 }
+
+export async function selectMemberAndChange(memberId, groupId, taskId) {
+
+    const { board: boardToUpdate } = store.getState().boardModule
+    const group = boardToUpdate.groups.find(group => group._id === groupId)
+    const task = group.tasks.find(task => task._id === taskId)
+
+    if (task.memberIds.includes(memberId)) {
+        task.memberIds = task.memberIds.filter(member => member !== memberId)
+        saveTask(task)
+    } else {
+        task.memberIds.push(memberId)
+        saveTask(task)
+    }
+}
+export async function selectLableAndChange(labelId, groupId, taskId) {
+    console.log('labelId: ', labelId);
+
+    const { board: boardToUpdate } = store.getState().boardModule
+    const group = boardToUpdate.groups.find(group => group._id === groupId)
+    const task = group.tasks.find(task => task._id === taskId)
+    console.log('task.labelIds before include: ', task.labelIds);
+
+    if (task.labelIds.includes(labelId)) {
+        console.log('in include: ');
+        task.labelIds = task.labelIds.filter(currLabelId => currLabelId !== labelId)
+
+        saveTask({ ...task })
+    } else {
+        task.labelIds.push(labelId)
+        saveTask({ ...task })
+    }
+
+    // if (task.labelIds.includes(labelIds)) {
+    //     console.log('task.labelIds: ', task.labelIds);
+    //     console.log('in:')
+    //     task.labelIds = task.labelIds.filter(lable => lable !== labelIds)
+    //     saveTask(task)
+    // } else {
+    //     task.labelIds.push(labelIds)
+    //     saveTask(task)
+    // }
+}
+
+function _getTaskById(groupId, taskId) {
+    const { board: boardToUpdate } = store.getState().boardModule
+    const group = boardToUpdate.groups.find(group => group._id === groupId)
+    const task = group.tasks.find(task => task._id === taskId)
+    return task
+}
+
+// function getGroupById(groupId,taskId){
+//     const { board: boardToUpdate } = store.getState().boardModule
+//     const group = boardToUpdate.groups.find(group => group._id === groupId)
+//     const task = group.tasks.find(task => task._id === taskId)
+//     return group
+// }
