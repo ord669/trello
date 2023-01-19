@@ -8,6 +8,7 @@ import { UserAvatarIcon } from "./user-avatar-icon"
 export function ToolBar({ board }) {
     const [title, setTitle] = useState('')
     const [isOpenFilter, setIsOpenFilter] = useState(false)
+    console.log('board:', board);
 
     useEffect(() => {
         setTitle(board.title)
@@ -44,7 +45,7 @@ export function ToolBar({ board }) {
                     <FilterIcon className="spacing" />
                     Filter
                 </button>
-                {isOpenFilter && <TaskFilter board={board} setIsOpenFilter={setIsOpenFilter} />}
+                {isOpenFilter && <TaskFilter boardId={board._id} setIsOpenFilter={setIsOpenFilter} />}
                 <p>|</p>
                 {admin && <UserAvatarIcon member={admin} />}
                 <p>|</p>

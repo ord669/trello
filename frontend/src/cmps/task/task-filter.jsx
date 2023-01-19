@@ -1,22 +1,17 @@
-import { useState } from "react";
-import { CloseIcon } from "../../assets/svg/icon-library";
-import { boardService } from "../../services/board.service.local";
-import { loadBoard } from "../../store/board/board.action";
+import { useState } from "react"
+import { CloseIcon } from "../../assets/svg/icon-library"
+import { boardService } from "../../services/board.service.local"
+import { loadBoard } from "../../store/board/board.action"
 
-export function TaskFilter({ setIsOpenFilter, board }) {
+export function TaskFilter({ setIsOpenFilter, boardId }) {
     const [filterBy, setFilterBy] = useState({ title: '' })
-    console.log('filterBy from task filter: ', filterBy);
+    console.log('filterBy from task filter: ', filterBy)
 
 
     function handleChange({ target }) {
         const { value, name: filed } = target
-        setFilterBy((prevFilterBy) => {
-            const filter = { ...prevFilterBy, [filed]: value }
-            loadBoard(board._id, filter)
-            return filter
-        })
-        // ({ ...prevFilterBy, [filed]: value }))
-
+        setFilterBy(prevFilter => ({ ...prevFilter, [filed]: value }))
+        loadBoard(boardId, filterBy)
     }
 
     console.log('filterBy.title:', filterBy.title)
