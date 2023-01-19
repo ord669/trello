@@ -8,6 +8,7 @@ import { BoardDetails } from './views/board-details'
 import { TaskDetails } from './views/task-details'
 import { HomePage } from './views/home-page'
 import { BoardIndex } from './views/board-index'
+import { UserMsg } from './cmps/user-msg'
 
 export function App() {
 

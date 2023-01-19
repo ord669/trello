@@ -1,0 +1,13 @@
+.board-index {
+    .board-list {
+        >section {
+            border: solid 1px black;
+        }
+
+        .board-preview {
+            button {
+                color: red;
+            }
+        }
+    }
+}

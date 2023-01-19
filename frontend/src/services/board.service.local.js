@@ -59,9 +59,9 @@ async function addBoardActivity(boardId, txt) {
     return activity
 }
 
-function getEmptyBoard() {
+function getEmptyBoard(title = '') {
     return {
-        title: '',
+        title,
         isstarred: false,
         style: {},
         activities: [],
