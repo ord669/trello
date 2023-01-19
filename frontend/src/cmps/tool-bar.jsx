@@ -2,14 +2,17 @@ import { useEffect, useRef, useState } from "react"
 import { FilterIcon, MoreTreeDotsIcon, StartIconEmpty } from "../assets/svg/icon-library"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { saveBoard } from "../store/board/board.action"
+import { TaskFilter } from "./task/task-filter"
 import { UserAvatarIcon } from "./user-avatar-icon"
 
 export function ToolBar({ board }) {
     const [title, setTitle] = useState('')
+    const [isOpenFilter, setIsOpenFilter] = useState(false)
 
     useEffect(() => {
         setTitle(board.title)
     }, [board])
+
     function handleChange({ target }) {
         setTitle(target.value)
     }
@@ -26,6 +29,7 @@ export function ToolBar({ board }) {
         }
 
     }
+
     return (
         <section className='tool-bar full'>
             {/* <h2>{board.title}</h2> */}
@@ -35,11 +39,11 @@ export function ToolBar({ board }) {
                 onChange={handleChange}
                 onBlur={onSaveTitle} />
             <div className="tool-bar-btns">
-
-                <button className="btn-header ">
+                <button onClick={() => setIsOpenFilter(prev => !prev)} className="btn-header ">
                     <FilterIcon className="spacing" />
                     Filter
                 </button>
+                {isOpenFilter && <TaskFilter board={board} setIsOpenFilter={setIsOpenFilter} />}
                 <p>|</p>
                 <UserAvatarIcon />
                 <p>|</p>
