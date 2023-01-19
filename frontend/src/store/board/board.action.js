@@ -70,15 +70,16 @@ export async function saveTask(groupId, title) {
     }
 }
 export async function removeTask(groupId, taskId) {
+    console.log('taskId: ', taskId);
+    console.log('groupId: ', groupId);
     try {
         const { board: boardToUpdate } = store.getState().boardModule
         const group = boardToUpdate.groups.find(group => group._id === groupId)
+        console.log('group: before ', { ...group });
         group.tasks = group.tasks.filter(task => task._id !== taskId)
+        console.log('group after: ', group);
         saveGroup(group)
-
-
     } catch (err) {
-
         throw err
     }
 }

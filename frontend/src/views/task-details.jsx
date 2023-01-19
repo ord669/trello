@@ -27,7 +27,7 @@ export function TaskDetails() {
 
     function onRemoveTask() {
         removeTask(groupId, taskId)
-        navigate(`/board/${board._id}`)
+        // navigate(`/board/${board._id}`)
     }
     if (task) {
 
