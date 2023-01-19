@@ -13,13 +13,13 @@ import { modalReducer } from './store/modal/modal.reducer'
 import { updatePos } from './store/modal/modal.action'
 
 export function App() {
-    useEffect(() => {
-        const handleMouseMove = (event) => {
-            const pos = { x: event.x, y: event.y }
-            updatePos(pos)
-        };
-        window.addEventListener('mousemove', handleMouseMove);
-    }, []);
+    // useEffect(() => {
+    //     const handleMouseMove = (event) => {
+    //         const pos = { x: event.x, y: event.y }
+    //         updatePos(pos)
+    //     };
+    //     window.addEventListener('mousemove', handleMouseMove);
+    // }, []);
 
     return (
         <Provider store={store}>
