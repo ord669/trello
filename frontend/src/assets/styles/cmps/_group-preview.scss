@@ -69,6 +69,10 @@
             // margin-bottom: 8px;
             padding: 6px 8px 2px;
             min-height: 54px;
+
+            &:focus-visible{
+                outline: none;
+            }
         }
 
         //similar to the btns in add group
