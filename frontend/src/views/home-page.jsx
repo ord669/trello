@@ -22,11 +22,9 @@ export function HomePage() {
                         Trello brings all your tasks, teammates, and tools together
                     </h1>
                     <p className='home-page-p'>Keep everything in the same place—even if your team isn't.</p>
-
                     <button onClick={() => navigate(`/board/b101`)}
                         className='home-page-btn'>Start Demo
                     </button>
-
                 </div>
                 <img className="hero-img" src={require(`../assets/img/hero.png`)} alt="hero-img" />
             </div>

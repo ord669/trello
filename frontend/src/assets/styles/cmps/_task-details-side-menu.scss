@@ -1,0 +1,15 @@
+.task-details-side-menu {
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    .side-menu-item {
+        width: 100%;
+        padding: 6px 12px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+}
