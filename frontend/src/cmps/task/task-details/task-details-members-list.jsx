@@ -5,19 +5,19 @@ export function MembersList({ getMembers, onSelectMember }) {
     return (
         <section className='members-List'>
             <p>Members</p>
-            <ul className="flex clean-list ">
+            <div className="members-icons-container  ">
                 {getMembers().map((member, idx) =>
-                    <li onClick={() => {
+                    <div onClick={() => {
                         onSelectMember(member._id)
                     }} key={idx}>
                         <UserAvatarIcon member={member} />
-                    </li>
+                    </div>
                 )
                 }
-                <li className="user-avatar-icon" >
+                <div className="user-avatar-icon details-user-avatar-icon" >
                     <PlusIcon />
-                </li>
-            </ul>
+                </div>
+            </div>
         </section>
     )
 }

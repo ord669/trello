@@ -1,0 +1,31 @@
+.header-title-container {
+    grid-area: header;
+    min-height: 32px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+
+    .task-details-cover {
+        background-color: #6deca9;
+        width: 100%;
+        min-height: 116px;
+        max-height: 116px;
+    }
+
+    .task-details-img {
+        width: 100%;
+        min-height: 160px;
+        max-height: 160px;
+    }
+
+    .header-title-title-container {
+        padding-top: 1.3rem;
+        padding-left: 1.5rem;
+        justify-content: flex-start;
+
+        .detils-title {
+            padding-left: 0.8rem;
+        }
+    }
+
+}
