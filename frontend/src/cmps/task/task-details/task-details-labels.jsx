@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { LOADING_DONE } from "../../store/system.reducer"
+import { LOADING_DONE } from "../../../store/system.reducer"
 import tinycolor from "tinycolor2";
 
 export function TaskDetailsLabels({ labelId }) {

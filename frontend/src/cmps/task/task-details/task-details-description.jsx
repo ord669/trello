@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { DescriptionIcon } from "../../assets/svg/icon-library";
+import { DescriptionIcon } from "../../../assets/svg/icon-library";
 
 export function TaskDetailsDescription({ description, handleChange, onSaveTask }) {
 
@@ -13,9 +13,9 @@ export function TaskDetailsDescription({ description, handleChange, onSaveTask }
     }
     return (
         <div className="task-details-description ">
+            <h3>Description</h3>
             <div className="flex align-center gap-10">
-                <DescriptionIcon className='icon-title' />
-                <h1>Description</h1>
+
             </div>
             <div>
                 {!isShown ?

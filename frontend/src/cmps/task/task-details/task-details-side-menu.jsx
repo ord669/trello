@@ -1,5 +1,4 @@
-import { ChecklistIcon, LabelIcon, ManIcon } from "../../assets/svg/icon-library";
-
+import { ChecklistIcon, LabelIcon, ManIcon } from "../../../assets/svg/icon-library";
 
 export function TaskDetailsSideMenu({ onRemoveTask }) {
     return (

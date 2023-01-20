@@ -1,5 +1,4 @@
-import { ChecklistIcon } from "../../assets/svg/icon-library";
-
+import { ChecklistIcon } from "../../../assets/svg/icon-library";
 
 export function TaskDetailsChecklist({ checklists }) {
     console.log('checklists: ', checklists);
@@ -11,9 +10,7 @@ export function TaskDetailsChecklist({ checklists }) {
                 {checklists.map(checklist =>
                     <div key={checklist._id}>
                         <div className="flex align-center gap-10">
-                            <div className=" icon-title">
-                                <ChecklistIcon />
-                            </div>
+
                             <h1>{checklist.title}</h1>
                         </div>
                         <div className="task-todos flex column gap-10">
