@@ -20,9 +20,7 @@ _createBoards()
 
 function filterGroupsTasks(board, filterBy = '') {
     let filterdBoard = board
-
     if (filterBy.title !== undefined) {
-        console.log('filterBy from service:', filterBy)
         const regex = new RegExp(filterBy.title, 'i')
         filterdBoard.groups = filterdBoard.groups.map(group => {
             const tasks = group.tasks.filter(task => regex.test(task.title))

@@ -1,9 +1,8 @@
 .tool-bar {
     padding: 8px 4px 4px 12px;
     color: $clr6;
-    // padding-left: 32px;
     padding: 0 12px 8px;
-    margin-top: -4px;
+    margin-top: 9px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -15,9 +14,9 @@
         font-size: 18px;
         font-weight: 700;
 
-        &:hover {
-            background-color: #ffffff4d;
-        }
+        // &:hover {
+        //     background-color: #ffffff4d;
+        // }
 
         &:focus-visible {
             color: $clr7;
@@ -39,8 +38,8 @@
     .tool-bar-btns {
         display: flex;
         width: 20%;
-        justify-content: space-between;
         align-items: center;
+        gap: 10px;
 
         p {
             font-size: 1.3rem;
@@ -48,7 +47,31 @@
         }
     }
 
-    // .fa-solid.x::before {
+    .tool-bar-star {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 3px;
+        line-height: 1;
+        position: absolute;
+        left: 255px;
+        padding: 6px 8px;
 
+        svg {
+            width: 16px;
+            height: 16px;
+            stroke-width: 1px;
+
+            &:hover {
+                transform: scale(1.2);
+                color: #f2d600;
+            }
+        }
+
+
+        svg.yellow-star {
+            fill: #f2d600;
+
+        }
+
+
+    }
 }
-
