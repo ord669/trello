@@ -3,8 +3,9 @@ import { AddTask } from "../task/add-task"
 import { removeGroup } from "../../store/board/board.action"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { GroupHeader } from "./group-header"
+import { DragDropContext, Draggable } from "react-beautiful-dnd"
 
-export function GroupPreview({ group }) {
+export function GroupPreview({ group, idx }) {
 
     function onRemoveGroup() {
         try {
@@ -16,13 +17,8 @@ export function GroupPreview({ group }) {
     }
     return (
         <section className='group-preview'>
-            {/* <section className="group-preview-header">
-                <p>{group.title}</p>
-                <button className="btn-remove-group" onClick={onRemoveGroup}>X</button>
-            </section> */}
             <GroupHeader onRemoveGroup={onRemoveGroup} group={group} />
-            <TaskList tasks={group.tasks} />
-
+            <TaskList tasks={group.tasks} groupId={group._id} />
             <AddTask groupId={group._id} />
         </section>
     )

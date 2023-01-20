@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { LOADING_DONE } from "../../store/system.reducer"
+import { LOADING_DONE } from "../../../store/system.reducer"
 import tinycolor from "tinycolor2";
 
 export function TaskDetailsLabels({ labelId }) {
@@ -36,7 +36,7 @@ export function TaskDetailsLabels({ labelId }) {
 
     if (!label) return <div>loadind ...</div>
     return (
-        <section style={mainStyle} className='task-details-labels flex align-center space-between gap-10 '>
+        <section style={mainStyle} className='task-details-labels flex align-center space-between  '>
             <div style={secStyle} className="sec-label-color"></div>
             <div> {label.title}</div>
 

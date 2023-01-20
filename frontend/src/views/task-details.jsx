@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { CloseIcon, PlusIcon, TitleIcon } from "../assets/svg/icon-library";
-import { TaskDetailsActivity } from "../cmps/task/task-details-activity";
-import { TaskDetailsChecklist } from "../cmps/task/task-details-checklist";
-import { TaskDetailsDescription } from "../cmps/task/task-details-description";
-import { TaskDetailsLabels } from "../cmps/task/task-details-labels";
-import { TaskDetailsSideMenu } from "../cmps/task/task-details-side-menu";
+import { ActivityIcon, ChecklistIcon, CloseIcon, DescriptionIcon, PlusIcon, TitleIcon } from "../assets/svg/icon-library";
+import { LabelList } from "../cmps/task/task-details/task-details-labels-list";
+import { MembersList } from "../cmps/task/task-details/task-details-members-list";
+import { TaskDetailsActivity } from "../cmps/task/task-details/task-details-activity";
+import { TaskDetailsChecklist } from "../cmps/task/task-details/task-details-checklist";
+import { TaskDetailsDescription } from "../cmps/task/task-details/task-details-description";
+import { TaskDetailsLabels } from "../cmps/task/task-details/task-details-labels";
+import { TaskDetailsSideMenu } from "../cmps/task/task-details/task-details-side-menu";
 import { UserAvatarIcon } from "../cmps/user-avatar-icon";
 import { useForm } from "../customHooks/useForm";
 import { removeTask, saveTask, selectLableAndChange, selectMemberAndChange } from "../store/board/board.action";
+import { DetilsTitle } from "../cmps/task/task-details/task-details-title";
+import { DetailsHeader } from "../cmps/task/task-details/task-details-header";
+import { DueDate } from "../cmps/task/task-details/task-details-due-date";
 
 export function TaskDetails() {
     const [isShown, setIsShown] = useState(false)
@@ -73,67 +78,42 @@ export function TaskDetails() {
             <div className="black-screen" onClick={() => navigate(`/board/${board._id}`)}></div>
             <div className="main-task-details">
 
-                <button onClick={() => navigate(`/board/${board._id}`)}
+                {/* <button onClick={() => navigate(`/board/${board._id}`)}
                     className="btn details-close-btn"><CloseIcon />
-                </button>
+                </button> */}
 
-                <div className="task-details-cover full-task"></div>
-
-                <div className="task-details-title flex align-center gap-10">
-                    <TitleIcon className='icon-title' />
-                    <div className="task-title ">
-                        <textarea type="text"
-                            name="title"
-                            onChange={onUpdateHeadline}
-                            defaultValue={task.title} />
-                        <p>in list {group.title}</p>
-                    </div>
-                </div>
+                <DetailsHeader onUpdateHeadline={onUpdateHeadline} task={task} group={group} />
 
                 <div className="task-details-content">
-                    <div className="task-details-content-lable-members">
-
+                    <div className="task-details-content-lable-members-date">
                         {!!task?.memberIds?.length &&
-                            <div>
-                                <p>Members</p>
-                                <ul className="labels-list clean-list ">
-                                    {getMembers().map((member, idx) =>
-                                        <li onClick={() => {
-                                            onSelectMember(member._id)
-                                        }} key={idx}>
-                                            <UserAvatarIcon member={member} />
-                                        </li>
-                                    )
-                                    }
-                                    <li className=" user-avatar-icon " >
-                                        <PlusIcon />
-                                    </li>
-                                </ul>
-                            </div>
+                            <MembersList getMembers={getMembers} onSelectMember={onSelectMember} />
                         }
-
                         {!!task?.labelIds?.length &&
-                            <div className="labels-container">
-                                <p>Labels</p>
-                                <ul className="labels-list clean-list ">
-                                    {task.labelIds.map((labelId, idx) =>
-                                        <li onClick={() => { onSelectLable(labelId) }} key={idx}>
-                                            <TaskDetailsLabels labelId={labelId} />
-                                        </li>
-                                    )
-                                    }
-                                </ul>
-                            </div>
+                            <LabelList task={task} onSelectLable={onSelectLable} />
                         }
 
+                        {!!task?.dueDate &&
+                            <DueDate dueDate={task.dueDate} />
+                        }
                     </div>
-                    <TaskDetailsDescription handleChange={handleChange} description={task.description} onSaveTask={onSaveTask} />
+                    <div className="description-container flex">
+                        <DescriptionIcon className='icon-title' />
+                        <TaskDetailsDescription handleChange={handleChange} description={task.description} onSaveTask={onSaveTask} />
+                    </div>
 
-                    {task.checklists &&
-
-                        <TaskDetailsChecklist checklists={task.checklists} />
+                    {task?.checklists &&
+                        <div className="checklist-container flex">
+                            <ChecklistIcon className="icon-title" />
+                            <TaskDetailsChecklist checklists={task.checklists} />
+                        </div>
                     }
-                    <TaskDetailsActivity />
+                    <div className="checklist-container flex">
+                        <ActivityIcon className="icon-title" />
+                        <TaskDetailsActivity />
+                    </div>
+
+                    {/* TODO////for dev only//// */}
                     <div>{board.members.map((member, idx) =>
                         <button onClick={() => {
                             onSelectMember(member._id)
