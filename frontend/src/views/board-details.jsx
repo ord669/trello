@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { DragDropContext, Droppable } from "react-beautiful-dnd"
 import { useSelector } from "react-redux"
 import { Outlet, useParams } from "react-router-dom"
 import { GroupList } from "../cmps/group/group-list"
@@ -17,7 +18,7 @@ export function BoardDetails() {
     return (
         <section className='board-details'>
             <ToolBar board={board} />
-            <GroupList groups={board?.groups || []} />
+                <GroupList groups={board?.groups || []} board={board} />
             <Outlet />
         </section>
 
