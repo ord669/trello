@@ -1,5 +1,4 @@
 import { DragDropContext, Droppable } from "react-beautiful-dnd"
-import { groupService } from "../../services/group.service.local"
 import { updateDrag } from "../../store/board/board.action"
 import { AddGroup } from "./add-group"
 import { GroupPreview } from "./group-preview"
@@ -7,12 +6,11 @@ import { GroupPreview } from "./group-preview"
 export function GroupList({ groups, board }) {
 
     function onDragEnd(result) {
-        if (!result.destination) return
         const { source, destination } = result
-        if (destination.droppableId === source.droppableId &&
+        if (!result.destination || 
+            destination.droppableId === source.droppableId &&
             destination.index === source.index) return
         updateDrag(result)
-        //TODO: reorder columns
     }
 
     return (

@@ -63,16 +63,14 @@ function getEmptyGroup(title = '') {
 }
 
 function reorderTasks(source, destination, groups) {
-    console.log('in tasks');
-    const sourceGroup = groups.find(group => group._id === source.droppableId)
-    const task = sourceGroup.tasks.splice(source.index, 1)[0]
-    const destinationGroup = groups.find(group => group._id === destination.droppableId)
-    destinationGroup.tasks.splice(destination.index, 0, task)
+    const [task] = groups.find(group => group._id === source.droppableId)
+        .tasks.splice(source.index, 1)
+    groups.find(group => group._id === destination.droppableId)
+        .tasks.splice(destination.index, 0, task)
     return groups
 }
 function reorderGroups(source, destination, groups) {
-    console.log('in group');
-    const group = groups.splice(source.index, 1)[0]
+    const [group] = groups.splice(source.index, 1)
     groups.splice(destination.index, 0, group)
     return groups
 } 

@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-import { DragDropContext, Droppable } from "react-beautiful-dnd"
 import { useSelector } from "react-redux"
 import { Outlet, useParams } from "react-router-dom"
 import { GroupList } from "../cmps/group/group-list"
