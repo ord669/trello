@@ -60,12 +60,12 @@ export function ToolBar({ board }) {
                     Filter
                 </button>
                 {isOpenFilter && <TaskFilter boardId={board._id} setIsOpenFilter={setIsOpenFilter} />}
-                <p>|</p>
+                <span>|</span>
                 <div className="flex align-center">
                     {admin && <UserAvatarIcon member={admin} />}
                     {admin && <UserAvatarIcon member={admin} />}
                     {admin && <UserAvatarIcon member={admin} />}
-                    <p>|</p>
+                    <span>|</span>
 
                 </div>
                 <button className="btn-header btn-header-square">

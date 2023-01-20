@@ -9,8 +9,8 @@ import { ADD_GROUP, REMOVE_GROUP, SET_BOARD, UNDO_REMOVE_GROUP, UPDATE_GROUP } f
 export async function loadBoard(boardId, filterBy) {
     try {
         const board = await boardService.getById(boardId)
-        const filterdBoard = boardService.filterGroupsTasks(board, filterBy)
         if (!board) throw new Error('Board not found')
+        const filterdBoard = boardService.filterGroupsTasks(board, filterBy)
         store.dispatch({ type: SET_BOARD, board: filterdBoard })
     } catch (err) {
         console.error(err)
@@ -50,6 +50,7 @@ export async function saveBoard(board) {
             type: SET_BOARD,
             board: newBoard
         })
+        return newBoard
     } catch (err) {
         console.log('Err from saveBoard in board action :', err)
         throw err
@@ -148,6 +149,7 @@ function _getTaskById(groupId, taskId) {
     const task = group.tasks.find(task => task._id === taskId)
     return task
 }
+
 
 // function getGroupById(groupId,taskId){
 //     const { board: boardToUpdate } = store.getState().boardModule

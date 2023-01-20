@@ -14,8 +14,13 @@ export function BoardDetails() {
         loadBoard(boardId)
     }, [])
 
+    console.log(board);
+    const style = {
+        backgroundImage: `url(${board.style.bgImgURL})`
+    }
+
     return (
-        <section className='board-details'>
+        <section style={style} className='board-details'>
             <ToolBar board={board} />
             <GroupList groups={board?.groups || []} />
             <Outlet />

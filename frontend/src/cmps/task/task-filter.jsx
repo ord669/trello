@@ -4,24 +4,26 @@ import { boardService } from "../../services/board.service.local"
 import { loadBoard } from "../../store/board/board.action"
 
 export function TaskFilter({ setIsOpenFilter, boardId }) {
-    const [filterBy, setFilterBy] = useState({ title: '' })
-    console.log('filterBy from task filter: ', filterBy)
-
+    const [filterBy, setFilterBy] = useState(boardService.getEmpteyFilter())
 
     function handleChange({ target }) {
         const { value, name: filed } = target
-        setFilterBy(prevFilter => ({ ...prevFilter, [filed]: value }))
-        loadBoard(boardId, filterBy)
+        // setFilterBy((prevFilter) => {
+        //     const filter = { ...prevFilter, [filed]: value }
+        //     loadBoard(boardId, filter)
+        //     return filter
+        // })
+        const newFilter = { ...filterBy, [filed]: value }
+        setFilterBy(newFilter)
+        loadBoard(boardId, newFilter)
     }
 
-    console.log('filterBy.title:', filterBy.title)
     return (
         <section className='task-filter'>
-            <button onClick={() => setIsOpenFilter(prev => !prev)} className="btn-close-filter"><CloseIcon /></button>
-            <h1 className="task-filter-title">Filter</h1>
+            <button onClick={() => setIsOpenFilter(prev => !prev)} className="btn-close-modal"><CloseIcon /></button>
+            <p className="task-filter-title">Filter</p>
             <div className="task-filter-layout">
-                <h1 className="filter-keyword">Keyword</h1>
-                {console.log('filterBy.title:', filterBy.title)}
+                <p className="filter-keyword">Keyword</p>
                 <input
                     type="text"
                     name="title"

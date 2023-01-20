@@ -13,12 +13,13 @@ export const boardService = {
     getEmptyBoard,
     addBoardActivity,
     getEmpteyFilter,
-    filterGroupsTasks
+    filterGroupsTasks,
+    getBgImgsURL
 }
 window.cs = boardService
 _createBoards()
 
-function filterGroupsTasks(board, filterBy = '') {
+function filterGroupsTasks(board, filterBy = { title: '' }) {
     let filterdBoard = board
     if (filterBy.title !== undefined) {
         const regex = new RegExp(filterBy.title, 'i')
@@ -79,7 +80,10 @@ function getEmptyBoard(title = '') {
         groups: [],
         activities: [],
         labels: [],
-        style: {},
+        style: {
+            bgImgURL: "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg",
+            bgColor: ""
+        },
         members: []
     }
 }
@@ -102,7 +106,9 @@ function _createBoards() {
                     "fullname": "Or Dvir",
                     "imgUrl": "https://robohash.org/Or?set=set5"
                 },
-                "style": {},
+                "style": {
+                    "bgImgURL": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg"
+                },
                 "labels": [
                     {
                         "_id": "l101",
@@ -1121,4 +1127,27 @@ function _createBoards() {
         ]
         utilService.saveToStorage(STORAGE_KEY, boards)
     }
+}
+
+function getBgImgsURL() {
+    return [
+        {
+            _id: utilService.makeId(),
+            url: 'https://images.unsplash.com/photo-1674080579362-dfb05936b9c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDR8MzE3MDk5fHx8fHwyfHwxNjc0MjE5MDcy&ixlib=rb-4.0.3&q=80&w=400'
+        },
+        {
+            _id: utilService.makeId(),
+            url: 'https://images.unsplash.com/photo-1674066636011-d445199acada?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDN8MzE3MDk5fHx8fHwyfHwxNjc0MjE5MDcy&ixlib=rb-4.0.3&q=80&w=400'
+        },
+        {
+            _id: utilService.makeId(),
+            url: 'https://images.unsplash.com/photo-1673905110274-86b3c5680071?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDJ8MzE3MDk5fHx8fHwyfHwxNjc0MjE5MDcy&ixlib=rb-4.0.3&q=80&w=400'
+        },
+
+        {
+            _id: utilService.makeId(),
+            url: 'https://images.unsplash.com/photo-1674130070695-82aefa76ca67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjc0MjE5MDcy&ixlib=rb-4.0.3&q=80&w=400'
+
+        }
+    ]
 }
