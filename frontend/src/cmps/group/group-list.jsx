@@ -7,7 +7,6 @@ import { GroupPreview } from "./group-preview"
 export function GroupList({ groups, board }) {
 
     function onDragEnd(result) {
-        console.log('result:', result)
         if (!result.destination) return
         const { source, destination } = result
         if (destination.droppableId === source.droppableId &&
