@@ -7,7 +7,6 @@ import { removeTask, saveTask } from "../../store/board/board.action"
 
 export function AddTask({ groupId }) {
     const [isShown, setIsShown] = useState(false)
-    const [title, setTilte] = useState('')
     const [task, setTask] = useState(taskService.getEmptyTask())
 
     useEffect(() => {
@@ -18,8 +17,7 @@ export function AddTask({ groupId }) {
         if (!task.title) return
         try {
             await saveTask(task)
-            setIsShown(prevIsShown => !prevIsShown)
-            setTilte('')
+            setTask(taskService.getEmptyTask())
             showSuccessMsg('Task Added successfully')
         } catch (err) {
             showErrorMsg('Cannot add task')
