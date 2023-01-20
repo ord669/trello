@@ -1,10 +1,9 @@
-import { DragDropContext, Droppable } from "react-beautiful-dnd"
+import { Droppable } from "react-beautiful-dnd"
 import { TaskPreview } from "./task-preview"
 
 export function TaskList({ tasks, groupId }) {
 
     return (
-        // <DragDropContext>
             <Droppable droppableId={groupId} type="TASK">
                 {provided => (
                     <section className='task-list'
@@ -15,6 +14,5 @@ export function TaskList({ tasks, groupId }) {
                     </section>
                 )}
             </Droppable>
-        // </DragDropContext>
     )
 }

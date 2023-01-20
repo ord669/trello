@@ -138,9 +138,8 @@ export async function selectLableAndChange(labelId, groupId, taskId) {
     // }
 }
 
-export function updateDrag(result) {
+export function updateDrag({ source, destination, type }) {
     const { board } = store.getState().boardModule
-    const { source, destination, type } = result
     const update = type === 'TASK' ? groupService.reorderTasks : groupService.reorderGroups
     const groupsToSave = update(source, destination, board.groups)
     saveBoard({ ...board, groups: groupsToSave })

@@ -24,8 +24,8 @@ export function GroupHeader({ onRemoveGroup, group }) {
     return (
         <section className='group-header'>
             <textarea
-            className="group-title edit-title-input"
-            onFocus={(ev)=>ev.target.select()}
+                className="group-title edit-title-input"
+                onFocus={(ev) => ev.target.select()}
                 onBlur={onSaveTitle}
                 onChange={handleChange}
                 value={title} />
