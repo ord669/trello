@@ -2,7 +2,7 @@
     display: flex;
 
     flex-wrap: wrap;
-    margin: 1.9rem 0 0.25rem 2rem;
+    margin: 2rem 0 0.2rem 2.2rem;
 
     p {
         font-size: 12px;
@@ -12,11 +12,11 @@
 
     .members-icons-container {
         display: flex;
-        margin-top: 0.4rem;
-        margin-right: 0.7rem;
+        margin-top: 0.3rem;
+        margin-right: 0.6rem;
 
         >div {
-            margin-right: 0.25rem;
+            margin-right: 0.4rem;
 
         }
 
@@ -31,7 +31,7 @@
 
     .labels-list-container {
         display: flex;
-        margin-top: 0.4rem;
+        margin-top: 0.3rem;
         margin-right: 1rem;
 
         >div {
@@ -42,7 +42,7 @@
 
     .due-date {
         width: 100%;
-        margin-top: 0.9rem;
+        margin-top: 1rem;
 
         .due-date-input {
             margin-top: 0.3rem;
@@ -52,7 +52,7 @@
             }
 
             :last-child {
-                margin-left: 0.3rem;
+                margin-left: 0.5rem;
             }
         }
 

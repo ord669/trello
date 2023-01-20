@@ -11,13 +11,18 @@ export function TaskDetailsDescription({ description, handleChange, onSaveTask }
         setIsShown(prev => !prev)
 
     }
-    return (
-        <div className="task-details-description ">
-            <h3>Description</h3>
-            <div className="flex align-center gap-10">
+    function handleKeyPress(e) {
+        console.log('e: ', e);
+        if (e.keyCode === 13) {
+            e.target.blur();
+            //Write you validation logic here
+        }
+    }
 
-            </div>
-            <div>
+    return (
+        <div className="task-details-description">
+            <h3>Description</h3>
+            <div className="des-container">
                 {!isShown ?
                     <p onClick={onShownDesc} className="description-fake-text-area"> {description || 'add a more detailed description…'}</p>
                     :
@@ -26,6 +31,8 @@ export function TaskDetailsDescription({ description, handleChange, onSaveTask }
                             name="description"
                             defaultValue={description || 'add a more detailed description…'}
                             onChange={handleChange}
+                            onKeyDown={(e) => handleKeyPress(e)}
+                            onBlur={() => { setIsShown((prev) => !prev) }}
                         />
                         <div className="desc-btn flex align-cetner ">
                             <button onClick={() => {

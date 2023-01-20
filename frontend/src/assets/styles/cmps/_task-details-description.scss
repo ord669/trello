@@ -1,5 +1,16 @@
+.description-container {
+    padding-top: 1.8rem;
+    font-size: 14px;
+    line-height: 20px;
+
+}
+
 .task-details-description {
-    margin: 0 0 4px 40px;
+    width: 100%;
+
+    h3 {
+        margin-left: 0.6rem;
+    }
 
     textarea {
         overflow: hidden;
@@ -18,13 +29,9 @@
             outline: none;
         }
     }
-}
 
-.description-fake-text-area {
-    background-color: rgba(9, 30, 66, 0.0392156863);
-    border: none;
-    border-radius: 3px;
-    min-height: 56px;
-    padding: 8px 12px;
-    cursor: pointer;
+    .des-container {
+        padding: 1.2rem 0.5rem;
+        cursor: pointer;
+    }
 }
