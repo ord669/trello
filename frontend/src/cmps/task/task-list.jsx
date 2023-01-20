@@ -5,7 +5,7 @@ export function TaskList({ tasks, groupId }) {
 
     return (
         // <DragDropContext>
-            <Droppable droppableId={groupId}>
+            <Droppable droppableId={groupId} type="TASK">
                 {provided => (
                     <section className='task-list'
                         ref={provided.innerRef}
