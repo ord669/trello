@@ -16,10 +16,17 @@ export function GroupPreview({ group, idx }) {
         }
     }
     return (
-        <section className='group-preview'>
-            <GroupHeader onRemoveGroup={onRemoveGroup} group={group} />
-            <TaskList tasks={group.tasks} groupId={group._id} />
-            <AddTask groupId={group._id} />
-        </section>
+        <Draggable draggableId={group._id} index={idx}>
+            {(provided, snapshot) => (
+                <section className = {`group-preview ${snapshot.isDragging ? 'dragged' : ''}`}
+                ref={provided.innerRef}
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}>
+                <GroupHeader onRemoveGroup={onRemoveGroup} group={group} />
+                <TaskList tasks={group.tasks} groupId={group._id} />
+                <AddTask groupId={group._id} />
+            </section>
+            )}
+        </Draggable>
     )
 }

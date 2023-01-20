@@ -1,6 +1,6 @@
 import { DragDropContext, Droppable } from "react-beautiful-dnd"
 import { groupService } from "../../services/group.service.local"
-import { saveBoard } from "../../store/board/board.action"
+import { updateDrag } from "../../store/board/board.action"
 import { AddGroup } from "./add-group"
 import { GroupPreview } from "./group-preview"
 
@@ -12,19 +12,23 @@ export function GroupList({ groups, board }) {
         const { source, destination } = result
         if (destination.droppableId === source.droppableId &&
             destination.index === source.index) return
-        // if (result.destination.index === result.source.index) return
-        const groupsToSave = groupService.reorderGroups(source, destination, groups)
-        const boardToSave = { ...board, groups: groupsToSave }
-        saveBoard(boardToSave)
+        updateDrag(result)
         //TODO: reorder columns
     }
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
-            <section className='group-list'>
-                {groups.map(group => <GroupPreview key={group._id} group={group} />)}
-                <AddGroup />
-            </section >
+            <Droppable droppableId={board._id || 'board'} direction="horizontal" type="GROUP">
+                {provided => (
+                    <section className='group-list'
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}>
+                        {groups.map((group, idx) => <GroupPreview key={group._id} group={group} idx={idx} />)}
+                        {provided.placeholder}
+                        <AddGroup />
+                    </section >
+                )}
+            </Droppable>
         </DragDropContext>
     )
 }

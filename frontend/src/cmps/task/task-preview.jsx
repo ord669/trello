@@ -9,9 +9,7 @@ export function TaskPreview({ task, idx }) {
     return (
         <Draggable draggableId={task._id} index={idx}>
             {(provided,snapshot) => (
-                <section
-                    // className='task-preview'
-                    className={`task-preview ${snapshot.isDragging  ? 'dragged' : ''}`}
+                <section className={`task-preview ${snapshot.isDragging  ? 'dragged' : ''}`}
                     onClick={() => { navigate(`${task.groupId}/${task._id}`) }}
                     ref={provided.innerRef}
                     {...provided.draggableProps}
