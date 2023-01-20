@@ -1,4 +1,4 @@
-import { TitleIcon } from "../../../assets/svg/icon-library";
+import { TaskTitleIcon, TitleIcon } from "../../../assets/svg/icon-library";
 import { DetilsTitle } from "./task-details-title";
 
 export function DetailsHeader({ onUpdateHeadline, task, group }) {
@@ -10,7 +10,7 @@ export function DetailsHeader({ onUpdateHeadline, task, group }) {
             </div>
 
             <div className="header-title-title-container flex  align-center">
-                <TitleIcon className='icon-title' />
+                <TaskTitleIcon className='icon-title' />
                 <DetilsTitle onUpdateHeadline={onUpdateHeadline} task={task} group={group} />
             </div>
         </section>

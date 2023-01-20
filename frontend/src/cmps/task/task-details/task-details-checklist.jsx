@@ -5,6 +5,7 @@ export function TaskDetailsChecklist({ checklists }) {
 
     if (!checklists) return
     return (
+
         <section className='task-details-checklist'>
             <div className="task-checklists">
                 {checklists.map(checklist =>
