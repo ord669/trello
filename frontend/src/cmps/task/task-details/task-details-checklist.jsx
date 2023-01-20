@@ -9,11 +9,11 @@ export function TaskDetailsChecklist({ checklists }) {
             <div className="task-checklists">
                 {checklists.map(checklist =>
                     <div key={checklist._id}>
-                        <div className="flex align-center gap-10">
+                        <div className="flex align-center ">
 
                             <h1>{checklist.title}</h1>
                         </div>
-                        <div className="task-todos flex column gap-10">
+                        <div className="task-todos flex column ">
                             {checklist.todos.map(todo =>
                                 <div key={todo._id}>
                                     <input className="icon-title"

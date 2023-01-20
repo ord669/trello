@@ -13,6 +13,8 @@ import { UserAvatarIcon } from "../cmps/user-avatar-icon";
 import { useForm } from "../customHooks/useForm";
 import { removeTask, saveTask, selectLableAndChange, selectMemberAndChange } from "../store/board/board.action";
 import { DetilsTitle } from "../cmps/task/task-details/task-details-title";
+import { DetailsHeader } from "../cmps/task/task-details/task-details-header";
+import { DueDate } from "../cmps/task/task-details/task-details-due-date";
 
 export function TaskDetails() {
     const [isShown, setIsShown] = useState(false)
@@ -76,25 +78,23 @@ export function TaskDetails() {
             <div className="black-screen" onClick={() => navigate(`/board/${board._id}`)}></div>
             <div className="main-task-details">
 
-                <button onClick={() => navigate(`/board/${board._id}`)}
+                {/* <button onClick={() => navigate(`/board/${board._id}`)}
                     className="btn details-close-btn"><CloseIcon />
-                </button>
+                </button> */}
 
-                <div className="task-details-cover full-task"></div>
+                <DetailsHeader onUpdateHeadline={onUpdateHeadline} task={task} group={group} />
 
                 <div className="task-details-content">
-
-                    <div className="description-container flex">
-                        <TitleIcon className='icon-title' />
-                        <DetilsTitle onUpdateHeadline={onUpdateHeadline} task={task} group={group} />
-                    </div>
-
-                    <div className="task-details-content-lable-members">
+                    <div className="task-details-content-lable-members-date">
                         {!!task?.memberIds?.length &&
                             <MembersList getMembers={getMembers} onSelectMember={onSelectMember} />
                         }
                         {!!task?.labelIds?.length &&
                             <LabelList task={task} onSelectLable={onSelectLable} />
+                        }
+
+                        {!!task?.dueDate &&
+                            <DueDate dueDate={task.dueDate} />
                         }
                     </div>
                     <div className="description-container flex">

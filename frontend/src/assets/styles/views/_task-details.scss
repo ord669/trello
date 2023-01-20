@@ -8,25 +8,25 @@
     transform: translate(-50%, -50%);
     z-index: 2;
     box-shadow: -6px 0px 14px rgb(0 0 0 / 20%);
-    width: 770px;
+    width: 768px;
     height: 100%;
-    margin-top: 44px;
+    margin-top: 47px;
     display: grid;
-    grid-template-columns: 20px 1fr 190px;
-    grid-template-rows: 120px 65px 1fr;
+    grid-template-columns: 20px 3fr 1fr;
+    grid-template-rows: minmax(32px, max-content) 1fr;
+    padding: 0;
     grid-template-areas:
-        "cover       cover    cover "
-        "sideicons  title    title "
-        "sideicons  content  aside";
+        "header  header  header"
+        "content  content  aside";
 
-    &>*:not(.full-task) {
-        padding: 0 16px;
+    .icon-title {
+        grid-area: sideicons;
     }
 
-    .task-details-cover {
-        height: 116px;
-        background-color: #ef7564;
-        grid-area: cover;
+    .task-details-side-menu {
+        grid-area: aside;
+        width: calc(100% - 600px);
+        min-width: 200px;
     }
 
     .icon-title {
@@ -36,6 +36,13 @@
     .task-details-title {
         grid-area: title;
 
+        .task-title-container {
+            display: flex;
+            flex-direction: column;
+            // font-family: SFUIText;
+            line-height: 0;
+        }
+
         textarea {
             overflow: hidden;
             overflow-wrap: break-word;
@@ -43,13 +50,14 @@
             width: 100%;
             border: none;
             border-radius: 3px;
-            font-family: sans-serif;
+            font-family: SFUIText;
+            font-weight: 700;
             background: #0000;
             box-shadow: none;
             font-size: 21px;
             height: 32px;
             width: 670px;
-            padding: 0;
+            margin: 0;
 
             &:focus {
                 background-color: #fff;
@@ -57,20 +65,13 @@
                 outline: none;
 
             }
+
         }
 
-        .task-title-container {
-            display: flex;
-            flex-direction: column;
-            line-height: 0;
-            gap: 3px;
-            margin: 0 0 4px 40px;
-            margin-top: 15px;
-
-            p {
-                margin-top: 5px;
-            }
+        p {
+            margin-top: 0.5rem;
         }
+
     }
 
     .task-details-side-menu {
@@ -106,10 +107,11 @@
     }
 
     .task-details-labels {
-        padding: 5px 12px;
+        padding: 0.3rem rem(9.8px);
         border-radius: 3px;
 
         .sec-label-color {
+            margin-right: 0.4rem;
             border-radius: 50%;
             width: 16px;
             height: 16px;
@@ -136,18 +138,7 @@
 
 .task-details-content {
     grid-area: content;
-
-    .task-details-content-lable-members {
-        display: flex;
-
-        flex-wrap: wrap;
-        margin: 25px 0 4px 40px;
-
-        ul {
-            margin-top: 10px;
-            font-size: 14px;
-        }
-    }
+    padding-left: 1.5rem;
 
 }
 

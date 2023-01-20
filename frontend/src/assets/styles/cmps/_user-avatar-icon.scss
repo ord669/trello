@@ -1,6 +1,9 @@
 .user-avatar-icon {
-    min-height: 28px;
-    min-width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 32px;
+    min-width: 32px;
     border-radius: 50%;
     background-size: cover;
     background-repeat: no-repeat;

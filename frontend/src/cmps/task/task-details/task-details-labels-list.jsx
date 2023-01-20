@@ -2,16 +2,16 @@ import { TaskDetailsLabels } from "./task-details-labels"
 
 export function LabelList({ task, onSelectLable }) {
     return (
-        <section className='labels-list-container'>
+        <section >
             <p>Labels</p>
-            <ul className="flex clean-list ">
+            <div className="labels-list-container">
                 {task.labelIds.map((labelId, idx) =>
-                    <li onClick={() => { onSelectLable(labelId) }} key={idx}>
+                    <div onClick={() => { onSelectLable(labelId) }} key={idx}>
                         <TaskDetailsLabels labelId={labelId} />
-                    </li>
+                    </div>
                 )
                 }
-            </ul>
+            </div>
 
         </section>
     )
