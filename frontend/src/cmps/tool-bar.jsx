@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { EmptyStarIcon, FilterIcon, FullStarIcon, MoreTreeDotsIcon, StartIconEmpty } from "../assets/svg/icon-library"
+import { handleKeyPress } from "../customHooks/enterOutFocues"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { saveBoard } from "../store/board/board.action"
 import { TaskFilter } from "./task/task-filter"
@@ -47,7 +48,9 @@ export function ToolBar({ board }) {
                     onChange={handleChange}
                     contentEditable
                     suppressContentEditableWarning
-                    onBlur={onSaveTitle}>{title}</span>
+                    onBlur={onSaveTitle}
+                    onKeyDown={(e) => handleKeyPress(e)}
+                >{title}</span>
 
                 <div onClick={setBoardIsStarred} className="tool-bar-star">
                     {board.isStarred ? <FullStarIcon /> : <EmptyStarIcon />}

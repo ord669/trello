@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { handleKeyPress } from "../../customHooks/enterOutFocues"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { saveGroup } from "../../store/board/board.action"
 
@@ -28,6 +29,7 @@ export function GroupHeader({ onRemoveGroup, group }) {
                 onFocus={(ev) => ev.target.select()}
                 onBlur={onSaveTitle}
                 onChange={handleChange}
+                onKeyDown={(e) => handleKeyPress(e)}
                 value={title} />
             <button className="btn-remove-group" onClick={onRemoveGroup}>X</button>
         </section>
