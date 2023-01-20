@@ -387,7 +387,9 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Or?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": ""
+                                    "bgColor": "",
+                                    "img": "https://trello.com/1/cards/63c6cb110f16e00169784602/attachments/63c6ccfdecac0d01f83f1e66/download/lhnymyb97mr83uw34vzv.png"
+
                                 },
                                 "Attachments": {},
                                 "activity": [
@@ -435,7 +437,8 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Liad?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": ""
+                                    "bgColor": "",
+                                    "img": "https://trello.com/1/cards/63c6cb110f16e00169784602/attachments/63c6ccfdecac0d01f83f1e66/download/lhnymyb97mr83uw34vzv.png"
                                 },
                                 "Attachments": {},
                                 "activity": [],
