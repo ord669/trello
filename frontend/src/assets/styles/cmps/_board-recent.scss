@@ -50,13 +50,13 @@
 
             &:hover {
                 transform: scale(1.2);
-                color: #f2d600;
+                color: $clr12;
             }
         }
 
         svg.yellow-star {
-            fill: #f2d600;
-            color: #f2d600;
+            fill: $clr12;
+            color: $clr12;
         }
     }
 
