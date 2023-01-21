@@ -13,7 +13,6 @@ export function BoardDetails() {
         loadBoard(boardId)
     }, [])
 
-    console.log(board);
     const style = {
         backgroundImage: `url(${board.style.bgImgURL})`
     }

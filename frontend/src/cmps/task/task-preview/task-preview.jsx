@@ -5,7 +5,6 @@ import { PenIcon } from "../../../assets/svg/icon-library";
 import { MiniLabelList } from "./task-preview-mini-labels-list";
 
 export function TaskPreview({ task, idx }) {
-    console.log('task: ', task);
 
     const { boardId } = useParams()
     const navigate = useNavigate()
