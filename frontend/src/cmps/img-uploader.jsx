@@ -15,6 +15,7 @@ export function ImgUploader({ onUploaded = null }) {
     setImgData({ imgUrl: secure_url, width, height })
     setIsUploading(false)
     onUploaded && onUploaded(secure_url)
+
   }
 
   function getUploadLabel() {

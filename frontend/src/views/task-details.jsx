@@ -16,6 +16,7 @@ import { DetilsTitle } from "../cmps/task/task-details/task-details-title";
 import { DetailsHeader } from "../cmps/task/task-details/task-details-header";
 import { DueDate } from "../cmps/task/task-details/task-details-due-date";
 import { groupService } from "../services/group.service.local";
+import { ImgUploader } from "../cmps/img-uploader";
 
 export function TaskDetails() {
     const [isShown, setIsShown] = useState(false)
@@ -82,6 +83,33 @@ export function TaskDetails() {
         }
     }
 
+    async function onCoverChange({ target }) {
+        task.style.bgColor = target.value
+        try {
+
+            await saveTask(task)
+        } catch (err) {
+            console.log('err', err)
+        }
+    }
+
+    async function onChoosenDate({ target }) {
+        task.dueDate = target.valueAsNumber
+        try {
+            await saveTask(task)
+        } catch (err) {
+            console.log('err', err)
+        }
+    }
+    async function onUploaded(url) {
+        task.style.img = url
+        try {
+            await saveTask(task)
+        } catch (err) {
+            console.log('err', err)
+        }
+    }
+
     if (!task) return <p>Loading..</p>
     console.log('task: ', task);
     return (
@@ -90,7 +118,7 @@ export function TaskDetails() {
 
             <div className="main-task-details">
 
-                <DetailsHeader onUpdateHeadline={onUpdateHeadline} task={task} group={group} />
+                <DetailsHeader onUpdateHeadline={onUpdateHeadline} boardId={board._id} task={task} group={group} />
 
                 <div className="task-details-content">
                     <div className="task-details-content-lable-members-date">
@@ -140,7 +168,19 @@ export function TaskDetails() {
                             <TaskDetailsLabels labelId={label._id} />
                         </button>
                     )
-                    }</div>
+                    }
+
+                    </div>
+                    <div>
+                        <input onChange={onCoverChange} type="color" id="body" name="body"
+                            value="#f6b73c" />
+                        <label htmlFor="cover">Cover</label>
+                    </div>
+
+                    <input onChange={onChoosenDate} type="date" id="start" name="trip-start"
+                        value="2018-07-22"
+                        min="2018-01-01" max="2018-12-31" />
+                    <ImgUploader onUploaded={onUploaded} />
                 </div>
 
                 <TaskDetailsSideMenu onAddCheckList={onAddCheckList} onRemoveTask={onRemoveTask} />

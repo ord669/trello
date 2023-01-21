@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import { TaskTitleIcon, TitleIcon } from "../../../assets/svg/icon-library";
+import { useNavigate } from "react-router-dom";
+import { CloseIcon, TaskTitleIcon, TitleIcon } from "../../../assets/svg/icon-library";
 import { DetilsTitle } from "./task-details-title";
 
-export function DetailsHeader({ onUpdateHeadline, task, group }) {
+export function DetailsHeader({ onUpdateHeadline, task, group, boardId }) {
+    console.log('group: ', group);
+    // console.log('task: ', task);
 
     const [isCover, setIsCover] = useState()
-
+    const navigate = useNavigate()
     useEffect(() => {
 
     }, [])
@@ -35,9 +38,9 @@ export function DetailsHeader({ onUpdateHeadline, task, group }) {
     return (
         <section className='header-title-container'>
             <div className="image-cover-container">
-                {/* <button onClick={() => navigate(`/board/${board._id}`)}
+                <button onClick={() => navigate(`/board/${boardId}`)}
                     className="btn details-close-btn"><CloseIcon />
-                </button> */}
+                </button>
 
                 {task.style.bgColor && <div style={taskPreviewImgCover()} className="task-details-cover"></div>}
                 {!task.style.bgColor && <div style={taskPreviewImgCover()} className="task-details-img "></div>}
