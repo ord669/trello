@@ -46,7 +46,6 @@ export function BoardIndex() {
 
     return (
         <section className='board-index'>
-            <MainSidemenu />
             <main>
                 <section className="title"><EmptyStarIcon />Starred boards</section>
                 <BoardList boards={boards.filter(board=>board.isStarred)} onCreateBoard={onCreateBoard} onRemoveBoard={onRemoveBoard} setBoards={setBoards}/>
