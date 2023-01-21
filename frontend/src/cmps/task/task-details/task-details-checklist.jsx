@@ -48,7 +48,7 @@ export function TaskDetailsChecklist({ checklist, task }) {
             <div className="check-box-container" >
                 {checklist.todos.map(todo =>
                     <div className="check-box" key={todo._id} onClick={() => { onClickLine(todo) }}>
-                        <input type="checkbox" ref={elInput} />
+                        <input checked={todo.isDone} type="checkbox" ref={elInput} />
                         <p className={`${todo.isDone ? "check-box-is-done" : ''}`} >{todo.title}</p>
                     </div>
                 )}
