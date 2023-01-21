@@ -29,7 +29,7 @@ export function TaskPreview({ task, idx }) {
 
     function taskPreviewImgCover() {
         if (task.style.bgColor) return styleBgColor
-        else return styleBgImg
+        if (task.style.img) return styleBgImg
     }
 
     return (

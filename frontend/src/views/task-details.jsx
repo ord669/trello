@@ -102,11 +102,8 @@ export function TaskDetails() {
 
                     {task?.checklists &&
                         <div className="checklists-container flex">
-                            <ChecklistIcon className="icon-title" />
                             {task.checklists.map(checkList =>
-
-                                <TaskDetailsChecklist key={checkList._id} checklist={checkList} />
-
+                                <TaskDetailsChecklist key={checkList._id} checklist={checkList} task={task} />
                             )}
                         </div>
                     }
