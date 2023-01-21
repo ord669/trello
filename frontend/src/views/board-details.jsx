@@ -8,7 +8,6 @@ import { loadBoard } from "../store/board/board.action"
 export function BoardDetails() {
     const { board } = useSelector(storeState => storeState.boardModule)
     const { boardId } = useParams()
-    console.log('boardId: ', boardId)
 
     useEffect(() => {
         loadBoard(boardId)
@@ -17,7 +16,7 @@ export function BoardDetails() {
     return (
         <section className='board-details'>
             <ToolBar board={board} />
-                <GroupList groups={board?.groups || []} board={board} />
+            <GroupList groups={board?.groups || []} board={board} />
             <Outlet />
         </section>
 

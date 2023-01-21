@@ -1,5 +1,5 @@
 import { Droppable } from "react-beautiful-dnd"
-import { TaskPreview } from "./task-preview"
+import { TaskPreview } from "./task-preview/task-preview"
 
 export function TaskList({ tasks, groupId }) {
 
