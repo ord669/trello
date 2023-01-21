@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { EmptyStarIcon } from "../assets/svg/icon-library"
+import { Clock, EmptyStarIcon } from "../assets/svg/icon-library"
 import { BoardList } from "../cmps/board-list"
-import { BoardPreview } from "../cmps/board-preview"
 import { MainSidemenu } from "../cmps/main-side-menu"
 import { boardService } from "../services/board.service.local"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
@@ -10,7 +9,6 @@ import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 export function BoardIndex() {
     const [boards, setBoards] = useState([])
     const navigate = useNavigate()
-    console.log('boards:', boards)
 
     useEffect(() => {
         loadBoards()
@@ -27,7 +25,6 @@ export function BoardIndex() {
             if (!title) return
             const boardToSave = boardService.getEmptyBoard(title)
             const savedBoard = await boardService.save(boardToSave)
-            // setBoards(prevBoards => [...prevBoards, savedBoard])
             navigate(`/board/${savedBoard._id}`)
             showSuccessMsg('Board created')
         } catch (err) {
@@ -51,9 +48,9 @@ export function BoardIndex() {
         <section className='board-index'>
             <MainSidemenu />
             <main>
-                <h1><EmptyStarIcon />Starred boards</h1>
+                <section className="title"><EmptyStarIcon />Starred boards</section>
                 <BoardList boards={boards.filter(board=>board.isStarred)} onCreateBoard={onCreateBoard} onRemoveBoard={onRemoveBoard} />
-                <h1><EmptyStarIcon />Recently viewed</h1>
+                <section className="title"><Clock /> Recently viewed</section>
                 <BoardList boards={boards} onCreateBoard={onCreateBoard} onRemoveBoard={onRemoveBoard} />
             </main>
         </section>

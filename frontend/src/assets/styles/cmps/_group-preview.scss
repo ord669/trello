@@ -12,17 +12,13 @@
 
     .group-header {
         display: flex;
-        // align-items: center;
         padding: 6px 4px;
-        // padding: 5px 8px;
 
         textarea {
             flex-grow: 1;
-            // height: 28px;
             height: 2rem;
             height: 1.75rem;
             padding: 6px 8px;
-            // padding: 8px;
             margin: 0;
             font-weight: 600;
             resize: none;
@@ -57,14 +53,13 @@
 
     .open-form {
         height: 30px;
-        margin: 6px 4px;
+        margin: 2px 4px 6px;
         display: flex;
         align-items: center;
         padding: 4px 8px;
         border-radius: 3px;
         color: #5e6c84;
         cursor: pointer;
-        // margin-inline-start: 8px;
 
         &:hover {
             background-color: #091e4214;
