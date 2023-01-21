@@ -9,6 +9,8 @@
     padding: 12px;
     color: $clr2;
     font-weight: bold;
+    box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
+
 
     .board-recent-img {
         background-position: center center;
@@ -56,5 +58,21 @@
             fill: $clr12;
             color: $clr12;
         }
+    }
+
+
+    .board-recent-empty {
+        p {
+            text-align: center;
+            color: #5E6C84;
+            margin: 12px 0;
+            font-weight: 400;
+
+        }
+    }
+
+    .recent-loader {
+        display: flex;
+        justify-content: center;
     }
 }

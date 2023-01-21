@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { login, logout, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
-import { ArrowDown, BellIcon, BoardIcon, BoardSkelton, CloseIcon, MoreIcon } from '../assets/svg/icon-library'
+import { ArrowDownIcon, BellIcon, BoardIcon, BoardSkelton, CloseIcon, MoreIcon } from '../assets/svg/icon-library'
 import { useEffect, useState } from 'react'
 import { CreateBoard } from './create-board'
 import { BoardNotification } from './board-notifiaction'
@@ -64,12 +64,12 @@ export function AppHeader() {
 
                         <div className='flex align-center gap-10' >
                             <div>
-                                <button onClick={() => setIsRecent(prev => !prev)} className='btn-app-header' >Recent <ArrowDown /></button>
+                                <button onClick={() => setIsRecent(prev => !prev)} className='btn-app-header' >Recent <ArrowDownIcon /></button>
                                 {isRecent && <BoardRecent type={'recent'} setIsRecent={setIsRecent} />}
                             </div>
                             <div>
-                                <button onClick={() => setIsStarred(prev => !prev)} className='btn-app-header'>Starred <ArrowDown /></button>
-                                {isStarred && <BoardRecent />}
+                                <button onClick={() => setIsStarred(prev => !prev)} className='btn-app-header'>Starred <ArrowDownIcon /></button>
+                                {isStarred && <BoardRecent type={'starred'} />}
 
                             </div>
                             <div>

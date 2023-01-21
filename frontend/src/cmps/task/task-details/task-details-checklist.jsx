@@ -1,18 +1,39 @@
 import ProgressBar from "@ramonak/react-progress-bar";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 import { ChecklistIcon } from "../../../assets/svg/icon-library";
+import { saveTask } from "../../../store/board/board.action";
 
-export function TaskDetailsChecklist({ checklist }) {
-    console.log('checklist: ', checklist.todos);
+export function TaskDetailsChecklist({ checklist, task }) {
+    let elInput = useRef()
+
+    useEffect(() => {
+
+    }, [])
+
+    // console.log('checklist: ', checklist.todo);
     const todosIsDont = checklist.todos.filter(todo => todo.isDone).length * 100
     const completed = Math.floor((todosIsDont / checklist.todos.length))
+
+    function onClickLine(todo) {
+        todo.isDone = !todo.isDone
+        task.checklists.find(currChecklist => currChecklist._id === checklist._id)
+            .todos.map(currTodo => currTodo._id !== todo._id ? currTodo : todo)
+
+        saveTask(task)
+    }
 
     if (!checklist) return
     return (
 
         <section className='task-details-checklist-container'>
-            <h3>{checklist.title}</h3>
+            <div className="task-details-checklist-header flex">
+                <ChecklistIcon className="icon-title" />
+
+                <h3>{checklist.title}</h3>
+                <button className="side-menu-item btn-link"></button>
+            </div>
+
             <div className="progressBar-container ">
                 <h3>{`${completed}%`}</h3>
                 <div>
@@ -26,9 +47,9 @@ export function TaskDetailsChecklist({ checklist }) {
             </div>
             <div className="check-box-container" >
                 {checklist.todos.map(todo =>
-                    <div className="check-box" key={todo._id}>
-                        <input type="checkbox" />
-                        <p >{todo.title}</p>
+                    <div className="check-box" key={todo._id} onClick={() => { onClickLine(todo) }}>
+                        <input checked={todo.isDone} type="checkbox" ref={elInput} />
+                        <p className={`${todo.isDone ? "check-box-is-done" : ''}`} >{todo.title}</p>
                     </div>
                 )}
             </div>

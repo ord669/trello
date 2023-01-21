@@ -1026,7 +1026,10 @@ function _createBoards() {
                                     "username": "Liad Gola",
                                     "imgUrl": "https://robohash.org/Liad?set=set5"
                                 },
-                                "style": {},
+                                "style": {
+                                    "bgColor": "",
+                                    "img": ""
+                                },
                                 "Attachments": {},
                                 "activity": [],
                                 "groupId": "g105"
