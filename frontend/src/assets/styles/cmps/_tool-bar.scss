@@ -37,7 +37,6 @@
 
     .tool-bar-btns {
         display: flex;
-        width: 20%;
         align-items: center;
         gap: 10px;
 
@@ -73,5 +72,10 @@
         }
 
 
+    }
+
+    .right-open {
+        margin-right: 300px;
+        transition: margin .12s ease-in;
     }
 }

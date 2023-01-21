@@ -1,7 +1,7 @@
 import { Draggable } from "react-beautiful-dnd"
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom"
-import { PenIcon } from "../../../assets/svg/icon-library";
+import { AttacheIcon, CheckListIcon, ClockIcon, EyeIcon, PenIcon } from "../../../assets/svg/icon-library";
 import { MiniLabelList } from "./task-preview-mini-labels-list";
 
 export function TaskPreview({ task, idx }) {
@@ -59,6 +59,12 @@ export function TaskPreview({ task, idx }) {
                             <PenIcon />
                         </div>
                     </div>
+                    {/* <div className="task-preview-icons-container">
+                        <EyeIcon />
+                        <CheckListIcon />
+                        <ClockIcon />
+                        <AttacheIcon />
+                    </div> */}
                 </section>
             )}
         </Draggable>
