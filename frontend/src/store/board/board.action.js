@@ -115,15 +115,11 @@ export async function selectMemberAndChange(memberId, groupId, taskId) {
     }
 }
 export async function selectLableAndChange(labelId, groupId, taskId) {
-    console.log('labelId: ', labelId)
-
     const { board: boardToUpdate } = store.getState().boardModule
     const group = boardToUpdate.groups.find(group => group._id === groupId)
     const task = group.tasks.find(task => task._id === taskId)
-    console.log('task.labelIds before include: ', task.labelIds)
 
     if (task.labelIds.includes(labelId)) {
-        console.log('in include: ')
         task.labelIds = task.labelIds.filter(currLabelId => currLabelId !== labelId)
 
         saveTask({ ...task })
@@ -141,6 +137,13 @@ export async function selectLableAndChange(labelId, groupId, taskId) {
     //     task.labelIds.push(labelIds)
     //     saveTask(task)
     // }
+}
+
+export function updateDrag({ source, destination, type }) {
+    const { board } = store.getState().boardModule
+    const update = type === 'TASK' ? groupService.reorderTasks : groupService.reorderGroups
+    const groupsToSave = update(source, destination, board.groups)
+    saveBoard({ ...board, groups: groupsToSave })
 }
 
 function _getTaskById(groupId, taskId) {

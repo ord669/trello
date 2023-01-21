@@ -97,18 +97,19 @@ export function TaskDetails() {
                             <DueDate dueDate={task.dueDate} />
                         }
                     </div>
+
                     <div className="description-container flex">
                         <DescriptionIcon className='icon-title' />
                         <TaskDetailsDescription handleChange={handleChange} description={task.description} onSaveTask={onSaveTask} />
                     </div>
 
-                    {task?.checklists &&
+                    {/* {task?.checklists &&
                         <div className="checklist-container flex">
                             <ChecklistIcon className="icon-title" />
                             <TaskDetailsChecklist checklists={task.checklists} />
                         </div>
-                    }
-                    <div className="checklist-container flex">
+                    } */}
+                    <div className="activity-container flex">
                         <ActivityIcon className="icon-title" />
                         <TaskDetailsActivity />
                     </div>

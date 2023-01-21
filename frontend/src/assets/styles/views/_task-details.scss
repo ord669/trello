@@ -74,22 +74,6 @@
 
     }
 
-    .task-details-side-menu {
-        grid-area: aside;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-
-        .side-menu-item {
-            width: 100%;
-            padding: 6px 12px;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-    }
-
     .details-close-btn {
         position: absolute;
         top: 0;
@@ -107,7 +91,7 @@
     }
 
     .task-details-labels {
-        padding: 0.3rem rem(9.8px);
+        padding: 0.3rem rem(10px);
         border-radius: 3px;
 
         .sec-label-color {
@@ -129,8 +113,8 @@
     // }
 
     svg {
-        width: 20px;
-        height: 20px;
+        width: 27px;
+        height: 18px;
         stroke: #172B4D;
     }
 
@@ -138,15 +122,11 @@
 
 .task-details-content {
     grid-area: content;
-    padding-left: 1.5rem;
+    padding-left: 1.2rem;
 
 }
 
 .task-details-checklist {
     margin: 0 0 4px 40px;
     color: #5e6c84
-}
-
-.task-details-activity {
-    margin: 0 0 4px 40px
 }

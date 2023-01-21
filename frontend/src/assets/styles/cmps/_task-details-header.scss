@@ -23,6 +23,13 @@
         padding-left: 1.5rem;
         justify-content: flex-start;
 
+        svg,
+        path {
+            margin-top: -0.7rem;
+            width: 19px;
+
+        }
+
         .detils-title {
             padding-left: 0.8rem;
         }

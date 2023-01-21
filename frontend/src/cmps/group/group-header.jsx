@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { handleKeyPress } from "../../customHooks/enterOutFocues"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { saveGroup } from "../../store/board/board.action"
 
@@ -24,10 +25,11 @@ export function GroupHeader({ onRemoveGroup, group }) {
     return (
         <section className='group-header'>
             <textarea
-            className="group-title edit-title-input"
-            onFocus={(ev)=>ev.target.select()}
+                className="group-title edit-title-input"
+                onFocus={(ev) => ev.target.select()}
                 onBlur={onSaveTitle}
                 onChange={handleChange}
+                onKeyDown={(e) => handleKeyPress(e)}
                 value={title} />
             <button className="btn-remove-group" onClick={onRemoveGroup}>X</button>
         </section>

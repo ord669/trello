@@ -1,10 +1,13 @@
 .group-preview {
     display: flex;
+    position: relative;
     flex-direction: column;
     margin: 0 4px;
     padding: 0 4px;
     min-width: 272px;
     background-color: $clr3 ;
+    max-height: 90%;
+
     border-radius: 3px; // maybe make var for this 
 
     .group-header {
@@ -33,43 +36,24 @@
     }
 
     .task-list {
+        overflow-y: auto;
+
         min-height: 1px;
         margin: 0 4px;
         flex-grow: 1;
-    }
 
-    // .task-list .task-preview:last-child {
-    //     margin: 0;
-    // }
+        /* width */
+        &::-webkit-scrollbar {
+            background-color: #dadbe1;
+            border-radius: 15px;
+            width: 9px;
 
-    .task-preview {
-        position: relative;
-        background-color: $clr6;
-        cursor: pointer;
-        border-radius: 3px;
-        box-shadow: var(--ds-shadow-raised, 0 1px 0 #091e4240);
-        max-width: 300px;
-        min-height: 20px;
-        margin-bottom: 8px;
-        padding: 6px 8px 2px;
-        display: flex;
-        justify-content: space-between;
-
-        .task-preview-edit {
-            // position: absolute;
-            color: #42526e;
         }
 
-        &:hover {
-            color: #091e42;
-            background-color: #ffffff4d;
-        }
+        &::-webkit-scrollbar-thumb {
+            background-color: #bfc2cc;
+            border-radius: 15px;
 
-        &:hover .task-preview-edit {
-            color: #42526e;
-            display: block;
-            width: 7%;
         }
-
     }
 }

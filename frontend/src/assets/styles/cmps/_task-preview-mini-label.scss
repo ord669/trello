@@ -1,0 +1,17 @@
+.mini-labels-list-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+
+    .task-preview-label {
+        border-radius: rem(3px);
+        padding: rem(4px) rem(16px);
+        font-size: rem(12px);
+        height: 8px;
+        max-height: 8px;
+        min-width: 40px;
+        max-width: 40px;
+
+    }
+}

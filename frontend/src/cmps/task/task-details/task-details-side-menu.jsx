@@ -1,13 +1,17 @@
-import { ChecklistIcon, LabelIcon, ManIcon } from "../../../assets/svg/icon-library";
+import { ArchiveImge, ChecklistIcon, LabelIcon, ManIcon } from "../../../assets/svg/icon-library";
 
+// const img = require("../../../assets/svg/archive.png")
 export function TaskDetailsSideMenu({ onRemoveTask }) {
     return (
         <section className='task-details-side-menu'>
-            <button className=" side-menu-item btn-link"> <ManIcon /> Members</button>
-            <button className=" side-menu-item btn-link"> <LabelIcon /> Labels</button>
-            <button className="side-menu-item btn-link"> <ChecklistIcon /> Checklist</button>
-            <button onClick={onRemoveTask} className="side-menu-item btn-link"> remove task</button>
-
+            <p>Add to card</p>
+            <div className="side-menu-btn-container">
+                <button className="details-btn-side-menu"> <ManIcon /> Members</button>
+                <button className="details-btn-side-menu"> <LabelIcon /> Labels</button>
+                <button className="details-btn-side-menu"> <ChecklistIcon /> Checklist</button>
+                <button onClick={onRemoveTask} className="details-btn-side-menu"> <ArchiveImge /> Archive</button>
+            </div>
+            {/* <img src={"img"} alt="" /> */}
         </section>
     )
 }

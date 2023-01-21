@@ -2,10 +2,10 @@ import { ActivityIcon } from "../../../assets/svg/icon-library";
 
 export function TaskDetailsActivity() {
     return (
-        <section className='task-details-activity flex align-center '>
+        <section className='task-details-activity '>
             <div className=" icon-title">
             </div>
-            <h1>Activity</h1>
+            <h3>Activity</h3>
         </section >
     )
 }
