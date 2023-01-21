@@ -22,7 +22,6 @@
         cursor: pointer;
         background-color: #091e420a;
         border-radius: 3px;
-        padding: 8px;
     }
 
     .add-board {
@@ -43,12 +42,37 @@
         background-size: cover;
 
         .board-hover {
+            position: relative;
             display: flex;
             height: 100%;
             width: 100%;
+            padding: 8px;
+            border-radius: inherit;
 
             &:hover {
                 background-color: rgba(0, 0, 0, 0.2);
+
+                .board-star {
+                    color:$clr6;
+                    display: block;
+                }
+            }
+
+            .board-star {
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
+                display: none;
+                
+                svg{
+                    display: block;
+                    height: fit-content;
+                }
+                
+                &.show{
+                    color: $clr12;
+                    display: block;
+                }
             }
         }
 

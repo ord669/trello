@@ -37,7 +37,6 @@
 
     .tool-bar-btns {
         display: flex;
-        width: 20%;
         align-items: center;
         gap: 10px;
 
@@ -62,16 +61,21 @@
 
             &:hover {
                 transform: scale(1.2);
-                color: #f2d600;
+                color: $clr12;
             }
         }
 
         svg.yellow-star {
-            fill: #f2d600;
-            color: #f2d600;
+            fill: $clr12;
+            color: $clr12;
 
         }
 
 
+    }
+
+    .right-open {
+        margin-right: 300px;
+        transition: margin .12s ease-in;
     }
 }

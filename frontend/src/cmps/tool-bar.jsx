@@ -3,6 +3,7 @@ import { EmptyStarIcon, FilterIcon, FullStarIcon, MoreTreeDotsIcon, StartIconEmp
 import { handleKeyPress } from "../customHooks/enterOutFocues"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { saveBoard } from "../store/board/board.action"
+import { BoardSideMenu } from "./board-side-menu"
 import { BoardStarred } from "./board-starred"
 import { TaskFilter } from "./task/task-filter"
 import { UserAvatarIcon } from "./user-avatar-icon"
@@ -10,7 +11,7 @@ import { UserAvatarIcon } from "./user-avatar-icon"
 export function ToolBar({ board }) {
     const [title, setTitle] = useState('')
     const [isOpenFilter, setIsOpenFilter] = useState(false)
-    const [isStarred, setIsStarred] = useState(false)
+    const [isOpenSideMenu, setIsOpenSideMenu] = useState(false)
 
     useEffect(() => {
         setTitle(board.title)
@@ -33,11 +34,6 @@ export function ToolBar({ board }) {
 
     }
 
-    // function setBoardIsStarred() {
-    //     const updatedBoard = board
-    //     updatedBoard.isStarred = !updatedBoard.isStarred
-    //     saveBoard(updatedBoard)
-    // }
 
     const admin = board.createdBy
 
@@ -54,12 +50,11 @@ export function ToolBar({ board }) {
                 >{title}</span>
 
                 <div className="tool-bar-star">
-                    {/* {board.isStarred ? <FullStarIcon /> : <EmptyStarIcon />} */}
                     <BoardStarred board={board} />
                 </div>
 
             </div>
-            <div className="tool-bar-btns">
+            <div className={isOpenSideMenu ? 'tool-bar-btns right-open' : 'tool-bar-btns'}>
                 <button onClick={() => setIsOpenFilter(prev => !prev)} className="btn-bar ">
                     <FilterIcon className="spacing" />
                     Filter
@@ -73,9 +68,10 @@ export function ToolBar({ board }) {
                     <span>|</span>
 
                 </div>
-                <button className="btn-bar btn-header-square">
+                <button onClick={() => setIsOpenSideMenu(prev => !prev)} className="btn-bar btn-header-square">
                     <MoreTreeDotsIcon className="icon" />
                 </button>
+                {isOpenSideMenu && <BoardSideMenu setIsOpenSideMenu={setIsOpenSideMenu} />}
 
             </div>
         </section>

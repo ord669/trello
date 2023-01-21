@@ -91,7 +91,7 @@ export function TaskDetailsChecklist({ checklist, task }) {
 
                         onClickTodo(todo)
                     }}>
-                        <input checked={todo.isDone} type="checkbox" onChange={() => { }} />
+                        <input checked={todo.isDone} checked={todo.isDone} type="checkbox" onChange={() => { }} />
                         <p className={`${todo.isDone ? "check-box-is-done" : ''}`} >{todo.title}</p>
                     </div>
                 )}
