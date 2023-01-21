@@ -7,12 +7,13 @@ import { saveTask } from "../../store/board/board.action"
 export function AddTask({ groupId, setIsShown }) {
     const [task, setTask] = useState(taskService.getEmptyTask())
 
-    useEffect(() => {
-        setTask((prev) => ({ ...prev, groupId }))
-    }, [])
+    // useEffect(() => {
+    //     setTask((prev) => ({ ...prev, groupId }))
+    // }, [])
 
     async function onAddTask() {
         if (!task.title) return
+        task.groupId = groupId
         try {
             await saveTask(task)
             setTask(taskService.getEmptyTask())

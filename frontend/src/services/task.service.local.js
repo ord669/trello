@@ -36,7 +36,7 @@ function createChecklists(title = 'checklists', todoTitle = 'Write Your Todo') {
 
 function getEmptyTask() {
     return {
-        "_id": '',
+        // "_id": '',
         "title": '',
         "archivedAt": Date.now(),
         "description": "description",

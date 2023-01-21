@@ -31,7 +31,6 @@ export function CreateBoard({ setIsCreateBoard }) {
             const savedBoard = await saveBoard(board)
             setIsCreateBoard(prev => !prev)
             navigate(`/board/${savedBoard._id}`)
-
         } catch (err) {
 
         }
@@ -64,11 +63,9 @@ export function CreateBoard({ setIsCreateBoard }) {
                     name="title"
                     value={board.title}
                     onChange={handleChange}
-
                 />
             </div>
             <button onClick={onAddBoard} className='btn-add'>Save</button>
-
         </section>
     )
 }

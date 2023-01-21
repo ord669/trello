@@ -1,20 +1,17 @@
 .board-index {
-    display: flex;
+    height: calc(100% - 44px);
     background-color: #0000;
+    margin-top: 40px;
+    padding: 0 75px;
 
-    main {
-        flex-grow: 1;
-        margin: 40px 16px 0;
+    .title {
+        display: flex;
+        font-size: 1.25rem;
+        padding-bottom: 10px;
 
-        .title {
-            display: flex;
-            font-size: 1.25rem;
-            padding-bottom: 10px;
-            svg{
-                margin-inline-end: 1rem;
-                align-self: center;
-            }
+        svg {
+            margin-inline-end: 1rem;
+            align-self: center;
         }
     }
-
 }

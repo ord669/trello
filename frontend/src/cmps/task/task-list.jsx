@@ -12,7 +12,7 @@ export function TaskList({ tasks, groupId, setIsShown, isShown }) {
                     {...provided.draggableProps}>
                     {tasks.map((task, idx) => <TaskPreview key={task._id} task={task} idx={idx} />)}
                     {provided.placeholder}
-                    {isShown && <AddTask setIsShown={setIsShown} />}
+                    {isShown && <AddTask groupId={groupId} setIsShown={setIsShown} />}
                 </section>
             )}
         </Droppable>

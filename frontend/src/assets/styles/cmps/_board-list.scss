@@ -1,21 +1,22 @@
 .board-list {
+    position: relative;
     min-width: 274px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
     grid-auto-rows: 96px;
     gap: .75em;
     margin-bottom: 40px;
 
     @include for-narrow-layout {
-        grid-template-columns: repeat(3, minmax(125px, 1fr));
+        grid-template-columns: repeat(3, minmax(150px, 1fr));
     }
 
     @include for-normal-layout {
-        grid-template-columns: repeat(4, minmax(125px, 1fr));
+        grid-template-columns: repeat(4, minmax(150px, 1fr));
     }
 
     @include for-wide-layout {
-        grid-template-columns: repeat(5, minmax(125px, 1fr));
+        grid-template-columns: repeat(5, minmax(150px, 1fr));
     }
 
     >section {
@@ -24,13 +25,26 @@
         border-radius: 3px;
     }
 
-    .add-board {
+    .new-board {
         display: flex;
-        justify-content: center;
-        align-items: center;
 
-        &:hover {
-            background-color: #091e4214;
+        >*{
+            border-radius: 3px;
+        }
+
+        .add-board {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+
+            &:hover {
+                background-color: #091e4214;
+            }
+        }
+
+        .create-board-modal {
+            top: 96px;
         }
     }
 }
