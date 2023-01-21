@@ -41,14 +41,14 @@
         align-items: center;
         gap: 10px;
 
-        p {
+        span {
             font-size: 1.3rem;
             color: rgba(211, 211, 211, 0.1);
         }
     }
 
     .tool-bar-star {
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: $clr10;
         border-radius: 3px;
         line-height: 1;
         position: absolute;

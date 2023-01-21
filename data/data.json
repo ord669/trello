@@ -8,7 +8,10 @@
         "fullname": "Or Dvir",
         "imgUrl": "https://robohash.org/Or?set=set5"
     },
-    "style": {},
+    "style": {
+        "bgImgURL": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg",
+        "bgColor": ""
+    },
     "labels": [
         {
             "_id": "l101",
@@ -146,7 +149,7 @@
                             }
                         }
                     ],
-                        "groupId": "g101"
+                    "groupId": "g101"
                 }
             ],
             "style": {}
@@ -225,7 +228,7 @@
                             }
                         }
                     ],
-                        "groupId": "g102"
+                    "groupId": "g102"
                 },
                 {
                     "_id": "c103",
@@ -267,7 +270,7 @@
                             }
                         }
                     ],
-                        "groupId": "g102"
+                    "groupId": "g102"
                 },
                 {
                     "_id": "c104",
@@ -320,7 +323,7 @@
                             }
                         }
                     ],
-                        "groupId": "g102"
+                    "groupId": "g102"
                 },
                 {
                     "_id": "c105",
@@ -345,7 +348,7 @@
                     },
                     "Attachments": {},
                     "activity": [],
-                        "groupId": "g102"
+                    "groupId": "g102"
                 }
             ],
             "style": {}
@@ -426,7 +429,7 @@
                             }
                         }
                     ],
-                        "groupId": "g103"
+                    "groupId": "g103"
                 },
                 {
                     "_id": "c107",
@@ -493,7 +496,7 @@
                             }
                         }
                     ],
-                        "groupId": "g103"
+                    "groupId": "g103"
                 },
                 {
                     "_id": "c108",
@@ -524,7 +527,7 @@
                         "file": "https://trello.com/1/cards/63c6cabe12d00103d58557be/attachments/63c6cad25bf8c801a3c857e3/download/featured-image-PWA.png"
                     },
                     "activity": [],
-                        "groupId": "g103"
+                    "groupId": "g103"
                 }
             ],
             "style": {}
@@ -583,7 +586,7 @@
                             }
                         }
                     ],
-                        "groupId": "g104"
+                    "groupId": "g104"
                 },
                 {
                     "_id": "c110",
@@ -626,7 +629,7 @@
                             }
                         }
                     ],
-                        "groupId": "g104"
+                    "groupId": "g104"
                 },
                 {
                     "_id": "c111",
@@ -653,7 +656,7 @@
                     "style": {},
                     "Attachments": {},
                     "activity": [],
-                        "groupId": "g104"
+                    "groupId": "g104"
                 },
                 {
                     "_id": "c112",
@@ -693,7 +696,7 @@
                             }
                         }
                     ],
-                        "groupId": "g104"
+                    "groupId": "g104"
                 }
             ],
             "style": {}
@@ -737,7 +740,7 @@
                             }
                         }
                     ],
-                        "groupId": "g105"
+                    "groupId": "g105"
                 },
                 {
                     "_id": "c114",
@@ -815,7 +818,7 @@
                             }
                         }
                     ],
-                        "groupId": "g105"
+                    "groupId": "g105"
                 },
                 {
                     "_id": "c115",
@@ -883,7 +886,7 @@
                     "style": {},
                     "Attachments": {},
                     "activity": [],
-                        "groupId": "g105"
+                    "groupId": "g105"
                 },
                 {
                     "_id": "c116",
@@ -932,7 +935,7 @@
                             }
                         }
                     ],
-                        "groupId": "g105"
+                    "groupId": "g105"
                 },
                 {
                     "_id": "c117",
@@ -996,7 +999,7 @@
                             }
                         }
                     ],
-                        "groupId": "g105"
+                    "groupId": "g105"
                 }
             ],
             "style": {}

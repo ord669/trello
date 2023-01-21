@@ -8,8 +8,11 @@
 }
 
 .main-home-page {
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    // justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+
     max-width: 1096px;
     margin-left: auto;
     margin-right: auto;
@@ -28,14 +31,15 @@
         font-size: 3rem;
         line-height: 1.25;
         font-weight: 500;
-        width: 500px;
         margin: 0;
     }
 
     .home-page-p {
         font-size: 20px;
         margin-top: 7px;
-        font-family: Charlie-Text
+        font-family: Charlie-Text;
+        max-width: 500px;
+        ;
     }
 
     .home-page-btn {
@@ -64,8 +68,14 @@
 }
 
 .hero-img {
-    left: 70px;
+    // left: 70px;
+    // position: relative;
+    // height: 566px;
+    // top: 13px;
+    width: 634px;
+    left: 20px;
     position: relative;
-    height: 566px;
+    height: 563px;
     top: 13px;
+
 }
