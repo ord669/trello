@@ -6,23 +6,19 @@
     padding: 0 4px;
     min-width: 272px;
     background-color: $clr3 ;
-    max-height: 90%;
+    max-height: 98%;
 
     border-radius: 3px; // maybe make var for this 
 
     .group-header {
         display: flex;
-        // align-items: center;
         padding: 6px 4px;
-        // padding: 5px 8px;
 
         textarea {
             flex-grow: 1;
-            // height: 28px;
             height: 2rem;
             height: 1.75rem;
             padding: 6px 8px;
-            // padding: 8px;
             margin: 0;
             font-weight: 600;
             resize: none;
@@ -37,10 +33,8 @@
 
     .task-list {
         overflow-y: auto;
-
         min-height: 1px;
         margin: 0 4px;
-        flex-grow: 1;
 
         /* width */
         &::-webkit-scrollbar {
@@ -55,5 +49,28 @@
             border-radius: 15px;
 
         }
+    }
+
+    .open-form {
+        height: 30px;
+        margin: 2px 4px 6px;
+        display: flex;
+        align-items: center;
+        padding: 4px 8px;
+        border-radius: 3px;
+        color: #5e6c84;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #091e4214;
+            color: $clr2;
+        }
+
+        svg {
+            width: 14px;
+            height: 14px;
+            margin-inline-end: 2px;
+        }
+
     }
 }

@@ -24,7 +24,7 @@ export function TaskDetails() {
 
     const [group, setGroup] = useState({})
 
-    const [task, setTask, handleChange] = useForm({})
+    const [task, setTask, handleChange] = useForm(null)
 
     const navigate = useNavigate()
 
@@ -75,12 +75,9 @@ export function TaskDetails() {
     console.log('task: ', task);
     return (
         <section className='task-details'>
-            <div className="black-screen" onClick={() => navigate(`/board/${board._id}`)}></div>
-            <div className="main-task-details">
+            <div className="black-screen" onClick={() => navigate(`/board/${board._id}`)}>            </div>
 
-                {/* <button onClick={() => navigate(`/board/${board._id}`)}
-                    className="btn details-close-btn"><CloseIcon />
-                </button> */}
+            <div className="main-task-details">
 
                 <DetailsHeader onUpdateHeadline={onUpdateHeadline} task={task} group={group} />
 
@@ -103,12 +100,17 @@ export function TaskDetails() {
                         <TaskDetailsDescription handleChange={handleChange} description={task.description} onSaveTask={onSaveTask} />
                     </div>
 
-                    {/* {task?.checklists &&
-                        <div className="checklist-container flex">
+                    {task?.checklists &&
+                        <div className="checklists-container flex">
                             <ChecklistIcon className="icon-title" />
-                            <TaskDetailsChecklist checklists={task.checklists} />
+                            {task.checklists.map(checkList =>
+
+                                <TaskDetailsChecklist key={checkList._id} checklist={checkList} />
+
+                            )}
                         </div>
-                    } */}
+                    }
+
                     <div className="activity-container flex">
                         <ActivityIcon className="icon-title" />
                         <TaskDetailsActivity />
@@ -136,7 +138,6 @@ export function TaskDetails() {
                 <TaskDetailsSideMenu onRemoveTask={onRemoveTask} />
 
             </div>
-
         </section >
     )
 }
