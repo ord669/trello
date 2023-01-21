@@ -6,7 +6,7 @@ import { loadBoard, saveBoard } from "../store/board/board.action";
 
 export function CreateBoard({ setIsCreateBoard }) {
 
-    const defaultURL = 'https://images.unsplash.com/photo-1674130070695-82aefa76ca67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjc0MjE5MDcy&ixlib=rb-4.0.3&q=80&w=400'
+    const defaultURL = 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674294790/photo-1674130070695-82aefa76ca67_bgworq.jpg'
 
     const [board, setBoard] = useState(boardService.getEmptyBoard())
     const navigate = useNavigate()
