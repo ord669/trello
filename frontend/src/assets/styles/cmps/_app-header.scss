@@ -3,8 +3,10 @@
     color: #fff;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 44px;
     gap: 5px;
+    width: 100%;
 
 
     .header-logo {
@@ -21,8 +23,24 @@
     }
 
 
-}
+    .home-header {
+        height: 60px;
+    }
 
-.home-header {
-    height: 60px;
+    .header-icon {
+        padding: 0 10px;
+
+        svg {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            padding: 5px;
+
+            &:hover {
+                background-color: $clr11;
+            }
+        }
+
+
+    }
 }

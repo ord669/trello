@@ -3,6 +3,7 @@ import { EmptyStarIcon, FilterIcon, FullStarIcon, MoreTreeDotsIcon, StartIconEmp
 import { handleKeyPress } from "../customHooks/enterOutFocues"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { saveBoard } from "../store/board/board.action"
+import { BoardStarred } from "./board-starred"
 import { TaskFilter } from "./task/task-filter"
 import { UserAvatarIcon } from "./user-avatar-icon"
 
@@ -32,11 +33,11 @@ export function ToolBar({ board }) {
 
     }
 
-    function setBoardIsStarred() {
-        const updatedBoard = board
-        updatedBoard.isStarred = !updatedBoard.isStarred
-        saveBoard(updatedBoard)
-    }
+    // function setBoardIsStarred() {
+    //     const updatedBoard = board
+    //     updatedBoard.isStarred = !updatedBoard.isStarred
+    //     saveBoard(updatedBoard)
+    // }
 
     const admin = board.createdBy
 
@@ -52,13 +53,14 @@ export function ToolBar({ board }) {
                     onKeyDown={(e) => handleKeyPress(e)}
                 >{title}</span>
 
-                <div onClick={setBoardIsStarred} className="tool-bar-star">
-                    {board.isStarred ? <FullStarIcon /> : <EmptyStarIcon />}
+                <div className="tool-bar-star">
+                    {/* {board.isStarred ? <FullStarIcon /> : <EmptyStarIcon />} */}
+                    <BoardStarred board={board} />
                 </div>
 
             </div>
             <div className="tool-bar-btns">
-                <button onClick={() => setIsOpenFilter(prev => !prev)} className="btn-header ">
+                <button onClick={() => setIsOpenFilter(prev => !prev)} className="btn-bar ">
                     <FilterIcon className="spacing" />
                     Filter
                 </button>
@@ -71,7 +73,7 @@ export function ToolBar({ board }) {
                     <span>|</span>
 
                 </div>
-                <button className="btn-header btn-header-square">
+                <button className="btn-bar btn-header-square">
                     <MoreTreeDotsIcon className="icon" />
                 </button>
 

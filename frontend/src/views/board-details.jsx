@@ -11,7 +11,7 @@ export function BoardDetails() {
 
     useEffect(() => {
         loadBoard(boardId)
-    }, [])
+    }, [boardId])
 
     console.log(board);
     const style = {
