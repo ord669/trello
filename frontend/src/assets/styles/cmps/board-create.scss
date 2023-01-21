@@ -1,0 +1,84 @@
+.create-board-modal {
+    color: $clr1;
+    width: 300px;
+    // height: 250px;
+    position: absolute;
+    background-color: #fff;
+    z-index: 10;
+    margin-top: 7px;
+    padding: 10px;
+
+    .create-board-title {
+        text-align: center;
+        border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+        margin-bottom: 8px;
+        padding: 6px 12px;
+    }
+
+    .board-title-add {
+        input {
+            outline: none;
+            border: none;
+            color: $clr2;
+            line-height: 20px;
+            border-radius: 3px;
+            padding: 8px 12px;
+            box-shadow: inset 0 0 0 2px #dfe1e6;
+            background-color: #fafbfc;
+            width: 100%;
+            margin-bottom: 10px;
+
+            &:focus {
+                background-color: $clr6;
+                box-shadow: inset 0 0 0 2px #0079bf;
+                outline: none;
+            }
+
+            &:hover {
+                box-shadow: inset 0 0 0 2px #eb5a46;
+            }
+        }
+
+
+
+    }
+
+    .btn-create-board {
+        background-color: $clr10 ;
+        padding: 8px 12px;
+        border-radius: 3px;
+
+        &:hover {
+            background-color: $clr11;
+        }
+    }
+
+    .create-board-img {
+        background-size: cover;
+        background-position: center center;
+        padding: 10px;
+
+        svg.board-skeleton {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+
+    .create-bgs {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        .bg-img {
+            background-position: center center;
+            background-size: cover;
+            height: 100%;
+            border-radius: 3px;
+            width: 65px;
+            height: 40px;
+        }
+    }
+}

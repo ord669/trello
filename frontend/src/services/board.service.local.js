@@ -1136,20 +1136,19 @@ function getBgImgsURL() {
     return [
         {
             _id: utilService.makeId(),
-            url: 'https://images.unsplash.com/photo-1674080579362-dfb05936b9c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDR8MzE3MDk5fHx8fHwyfHwxNjc0MjE5MDcy&ixlib=rb-4.0.3&q=80&w=400'
+            url: 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674294795/background-33_ol2iw7.jpg'
         },
         {
             _id: utilService.makeId(),
-            url: 'https://images.unsplash.com/photo-1674066636011-d445199acada?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDN8MzE3MDk5fHx8fHwyfHwxNjc0MjE5MDcy&ixlib=rb-4.0.3&q=80&w=400'
+            url: 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674294796/backround-22_gemgna.jpg'
         },
         {
             _id: utilService.makeId(),
-            url: 'https://images.unsplash.com/photo-1673905110274-86b3c5680071?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDJ8MzE3MDk5fHx8fHwyfHwxNjc0MjE5MDcy&ixlib=rb-4.0.3&q=80&w=400'
+            url: 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674294794/photo-1673905110274-86b3c5680071_sbomgg.jpg'
         },
-
         {
             _id: utilService.makeId(),
-            url: 'https://images.unsplash.com/photo-1674130070695-82aefa76ca67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDF8MzE3MDk5fHx8fHwyfHwxNjc0MjE5MDcy&ixlib=rb-4.0.3&q=80&w=400'
+            url: 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674294790/photo-1674130070695-82aefa76ca67_bgworq.jpg'
 
         }
     ]
