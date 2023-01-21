@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { EmptyStarIcon, FullStarIcon } from "../assets/svg/icon-library";
-import { boardService } from "../services/board.service.local";
-import { saveBoard } from "../store/board/board.action";
+import { useEffect, useState } from "react"
+import { EmptyStarIcon, FullStarIcon } from "../assets/svg/icon-library"
+import { boardService } from "../services/board.service.local"
+import { saveBoard } from "../store/board/board.action"
 
 export function BoardStarred({ board }) {
     const [isStarred, setIsStarred] = useState(board.isStarred)
@@ -17,7 +17,7 @@ export function BoardStarred({ board }) {
         }
     }
     return (
-        <section onClick={setBoardIsStarred} className='board-starred'>
+        <section onClick={setBoardIsStarred} className="board-starred">
             {isStarred ? <FullStarIcon /> : <EmptyStarIcon />}
         </section>
     )

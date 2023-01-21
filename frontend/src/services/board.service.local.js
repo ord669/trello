@@ -92,10 +92,53 @@ function getEmpteyFilter() {
     return { title: '' }
 }
 
+function _createBoard(title, url, isStarred) {
+    const board = getEmptyBoard(title)
+    return {
+        ...board,
+        _id: utilService.makeId(),
+        isStarred,
+        style: {
+            bgImgURL: url
+        }
+    }
+}
+
+function getBgImgsURL() {
+    return [
+        {
+            _id: utilService.makeId(),
+            url: 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674294795/background-33_ol2iw7.jpg'
+        },
+        {
+            _id: utilService.makeId(),
+            url: 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674294796/backround-22_gemgna.jpg'
+        },
+        {
+            _id: utilService.makeId(),
+            url: 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674294794/photo-1673905110274-86b3c5680071_sbomgg.jpg'
+        },
+        {
+            _id: utilService.makeId(),
+            url: 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674294790/photo-1674130070695-82aefa76ca67_bgworq.jpg'
+
+        }
+    ]
+}
+
 function _createBoards() {
     let boards = utilService.loadFromStorage(STORAGE_KEY)
     if (!boards || !boards.length) {
+        const imgUrls = getBgImgsURL()
         boards = [
+            _createBoard('Todos', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,true),
+            _createBoard('2023 Goals', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,false),
+            _createBoard('Fun Stuff', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,true),
+            _createBoard('Shopping List', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,true),
+            _createBoard('Sprint 2', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,false),
+            _createBoard('My Pet', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,false),
+            _createBoard('Project X', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,true),
+            _createBoard('My Startup', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,false),
             {
                 "_id": "b101",
                 "title": "Software Development",
@@ -1130,26 +1173,4 @@ function _createBoards() {
         ]
         utilService.saveToStorage(STORAGE_KEY, boards)
     }
-}
-
-function getBgImgsURL() {
-    return [
-        {
-            _id: utilService.makeId(),
-            url: 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674294795/background-33_ol2iw7.jpg'
-        },
-        {
-            _id: utilService.makeId(),
-            url: 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674294796/backround-22_gemgna.jpg'
-        },
-        {
-            _id: utilService.makeId(),
-            url: 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674294794/photo-1673905110274-86b3c5680071_sbomgg.jpg'
-        },
-        {
-            _id: utilService.makeId(),
-            url: 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674294790/photo-1674130070695-82aefa76ca67_bgworq.jpg'
-
-        }
-    ]
 }

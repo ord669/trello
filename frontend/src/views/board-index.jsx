@@ -49,9 +49,9 @@ export function BoardIndex() {
             <MainSidemenu />
             <main>
                 <section className="title"><EmptyStarIcon />Starred boards</section>
-                <BoardList boards={boards.filter(board=>board.isStarred)} onCreateBoard={onCreateBoard} onRemoveBoard={onRemoveBoard} />
+                <BoardList boards={boards.filter(board=>board.isStarred)} onCreateBoard={onCreateBoard} onRemoveBoard={onRemoveBoard} setBoards={setBoards}/>
                 <section className="title"><Clock /> Recently viewed</section>
-                <BoardList boards={boards} onCreateBoard={onCreateBoard} onRemoveBoard={onRemoveBoard} />
+                <BoardList boards={boards} onCreateBoard={onCreateBoard} onRemoveBoard={onRemoveBoard} setBoards={setBoards}/>
             </main>
         </section>
     )
