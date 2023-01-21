@@ -11,9 +11,7 @@ export function MembersList({ getMembers, onSelectMember }) {
                         onSelectMember(member._id)
                     }} key={idx}>
                         <UserAvatarIcon member={member} />
-                    </div>
-                )
-                }
+                    </div>)}
                 <div className="user-avatar-icon details-user-avatar-icon" >
                     <PlusIcon />
                 </div>

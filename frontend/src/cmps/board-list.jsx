@@ -4,11 +4,13 @@ import { CreateBoard } from "./create-board"
 
 export function BoardList({ boards, onRemoveBoard, setBoards }) {
     const [isShown, setIsShown] = useState(false)
+    
     function toggleIsStarred(ev, board) {
         ev.stopPropagation()
         const boardToSave = { ...board, isStarred: !board.isStarred }
         setBoards(prevBoards => prevBoards.map(currBoard => currBoard._id === board._id ? boardToSave : currBoard))
     }
+
     return (
         <section className='board-list'>
             <section className="new-board">

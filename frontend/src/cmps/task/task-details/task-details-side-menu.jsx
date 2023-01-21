@@ -1,6 +1,5 @@
 import { ArchiveImge, ChecklistIcon, LabelIcon, ManIcon } from "../../../assets/svg/icon-library";
 
-// const img = require("../../../assets/svg/archive.png")
 export function TaskDetailsSideMenu({ onRemoveTask, onAddCheckList }) {
     return (
         <section className='task-details-side-menu'>
@@ -11,7 +10,6 @@ export function TaskDetailsSideMenu({ onRemoveTask, onAddCheckList }) {
                 <button className="details-btn-side-menu" onClick={onAddCheckList}> <ChecklistIcon /> Checklist</button>
                 <button onClick={onRemoveTask} className="details-btn-side-menu"> <ArchiveImge /> Archive</button>
             </div>
-            {/* <img src={"img"} alt="" /> */}
         </section>
     )
 }

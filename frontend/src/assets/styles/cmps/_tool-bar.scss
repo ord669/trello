@@ -14,10 +14,6 @@
         font-size: 18px;
         font-weight: 700;
 
-        // &:hover {
-        //     background-color: #ffffff4d;
-        // }
-
         &:focus-visible {
             color: $clr7;
             background-color: $clr6;
@@ -68,7 +64,6 @@
         svg.yellow-star {
             fill: $clr12;
             color: $clr12;
-
         }
 
 

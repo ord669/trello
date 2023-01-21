@@ -9,7 +9,6 @@ const rootReducer = combineReducers({
     userModule: userReducer,
     systemModule: systemReducer,
     modalModule: modalReducer,
-
     boardModule: boardReducer,
 })
 

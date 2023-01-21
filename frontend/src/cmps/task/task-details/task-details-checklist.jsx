@@ -1,26 +1,24 @@
-import ProgressBar from "@ramonak/react-progress-bar";
-import React, { useEffect, useRef, useState } from "react";
-import { useForm } from "../../../customHooks/useForm";
+import ProgressBar from "@ramonak/react-progress-bar"
+import React, { useState } from "react"
+import { useForm } from "../../../customHooks/useForm"
 
-import { ChecklistIcon } from "../../../assets/svg/icon-library";
-import { saveTask } from "../../../store/board/board.action";
-import { groupService } from "../../../services/group.service.local";
+import { ChecklistIcon } from "../../../assets/svg/icon-library"
+import { saveTask } from "../../../store/board/board.action"
+import { taskService } from "../../../services/task.service.local"
 
 export function TaskDetailsChecklist({ checklist, task }) {
     const [isShown, setIsShown] = useState(false)
-    const [todo, setTodo, handleChange] = useForm(groupService.getEmptyTodo())
+    const [todo, setTodo, handleChange] = useForm(taskService.getEmptyTodo())
 
     function onShownAddTodo() {
-        setIsShown(prev => !prev)
-
+        setIsShown(prevIsShown => !prevIsShown)
     }
 
-    // console.log('checklist: ', checklist.todo);
-    const todosIsDont = checklist.todos.filter(todo => todo.isDone).length * 100
-    const completed = Math.floor((todosIsDont / checklist.todos.length)) > 0 ? Math.floor((todosIsDont / checklist.todos.length)) : 0
+    const doneTodos = checklist.todos.filter(todo => todo.isDone).length * 100
+    const completed = Math.floor((doneTodos / checklist.todos.length)) > 0 ? Math.floor((doneTodos / checklist.todos.length)) : 0
+    // const completed = Math.floor((doneTodos / checklist.todos.length)) || 0  //maybe better?
 
     async function onClickTodo(todoToChange) {
-
         todoToChange.isDone = !todoToChange.isDone
         onSaveTodo(todoToChange)
     }
@@ -33,11 +31,11 @@ export function TaskDetailsChecklist({ checklist, task }) {
             console.log('err', err)
         }
     }
+
     function handleKeyPress(e) {
         if (e.keyCode === 13) {
-            e.target.blur();
+            e.target.blur()
             onSaveTodo()
-
             //Write you validation logic here
         }
     }
@@ -53,7 +51,7 @@ export function TaskDetailsChecklist({ checklist, task }) {
         }
         task.checklists.map(currChecklist => currChecklist._id !== checklist._id ? currChecklist : checklist)
         try {
-            await saveTask(task)
+            saveTask(task)
         } catch (err) {
             console.log('err', err)
         }
@@ -61,7 +59,6 @@ export function TaskDetailsChecklist({ checklist, task }) {
 
     if (!checklist) return
     return (
-
         <section className='task-details-checklist-container'>
             <div className="task-details-checklist-header  ">
                 <div className="checklist-header-title-container">
@@ -72,7 +69,6 @@ export function TaskDetailsChecklist({ checklist, task }) {
                     <button className="check-list-btn side-menu-item btn-link" onClick={() => { onRemoveChecklist() }}>Delete</button>
                 </div>
             </div>
-
             <div className="progressBar-container ">
                 <h3>{`${completed}%`}</h3>
                 <div>
@@ -80,15 +76,13 @@ export function TaskDetailsChecklist({ checklist, task }) {
                         completed={completed}
                         bgColor="#5ba4cf"
                         height="8px"
-                        labelColor="#5ba4cf"
-                    />
+                        labelColor="#5ba4cf" />
                 </div>
             </div>
             <div className="check-box-container" >
                 {checklist.todos.map(todo =>
                     <div className="check-box" key={todo._id} onClick={(e) => {
                         e.stopPropagation()
-
                         onClickTodo(todo)
                     }}>
                         <input checked={todo.isDone} type="checkbox" onChange={() => { }} />
@@ -109,13 +103,10 @@ export function TaskDetailsChecklist({ checklist, task }) {
                             <button onClick={() => setIsShown((prev) => !prev)}
                                 className="btn-cancel">Cancel</button>
                         </div>
-
                     </div>
                 }
-
                 {!isShown && <button className="check-list-add-btn side-menu-item btn-link" onClick={() => { setIsShown(true) }}>Add an item</button>}
             </div>
-
-        </section >
+        </section>
     )
 }

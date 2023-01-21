@@ -1,21 +1,18 @@
 import { Draggable } from "react-beautiful-dnd"
-import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom"
-import { AttacheIcon, CheckListIcon, ClockIcon, EyeIcon, PenIcon } from "../../../assets/svg/icon-library";
-import { MiniLabelList } from "./task-preview-mini-labels-list";
+import { useNavigate } from "react-router-dom"
+import { PenIcon } from "../../../assets/svg/icon-library"
+import { MiniLabelList } from "./task-preview-mini-labels-list"
 
 export function TaskPreview({ task, idx }) {
-
-    const { boardId } = useParams()
     const navigate = useNavigate()
 
-    const styleBgColor = {
+    const styleBgColor = {  //better to to from scss
         borderTopLeftRadius: "3px",
         borderTopRightRadius: "3px",
         height: "32px",
         backgroundColor: `${task.style.bgColor}`
-
     }
+
     const styleBgImg = {
         borderTopLeftRadius: "3px",
         borderTopRightRadius: "3px",
@@ -44,27 +41,17 @@ export function TaskPreview({ task, idx }) {
                     {task.style && <div style={taskPreviewImgCover()} className="task-preview-comver-img">
                     </div>}
                     <div className="task-preview-details">
-
                         {task.labelIds &&
-                            <MiniLabelList task={task} />
-                        }
+                            <MiniLabelList task={task} />}
                         <p>{task.title}</p>
                         <div className="task-icons">
                         </div>
-
                     </div>
-
                     <div className="task-preview-edit-icon">
                         <div className="task-preview-edit display-none">
                             <PenIcon />
                         </div>
                     </div>
-                    {/* <div className="task-preview-icons-container">
-                        <EyeIcon />
-                        <CheckListIcon />
-                        <ClockIcon />
-                        <AttacheIcon />
-                    </div> */}
                 </section>
             )}
         </Draggable>

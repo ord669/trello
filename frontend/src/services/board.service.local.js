@@ -59,7 +59,6 @@ async function save(board) {
 }
 
 async function addBoardActivity(boardId, txt) {
-    // Later, this is all done by the backend
     const board = await getById(boardId)
     if (!board.activities) board.activities = []
     const activity = {
@@ -92,18 +91,6 @@ function getEmpteyFilter() {
     return { title: '' }
 }
 
-function _createBoard(title, url, isStarred) {
-    const board = getEmptyBoard(title)
-    return {
-        ...board,
-        _id: utilService.makeId(),
-        isStarred,
-        style: {
-            bgImgURL: url
-        }
-    }
-}
-
 function getBgImgsURL() {
     return [
         {
@@ -124,6 +111,18 @@ function getBgImgsURL() {
 
         }
     ]
+}
+
+function _createBoard(title, url, isStarred) {
+    const board = getEmptyBoard(title)
+    return {
+        ...board,
+        _id: utilService.makeId(),
+        isStarred,
+        style: {
+            bgImgURL: url
+        }
+    }
 }
 
 function _createBoards() {

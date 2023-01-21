@@ -1,6 +1,6 @@
 import { boardService } from "../../services/board.service.local"
 import { groupService } from "../../services/group.service.local"
-import { taskService } from "../../services/task.service.local"
+// import { taskService } from "../../services/task.service.local"
 import { utilService } from "../../services/util.service"
 import { store } from '../store'
 
@@ -20,8 +20,8 @@ export async function loadBoard(boardId, filterBy) {
 
 export async function removeGroup(groupId) {
     store.dispatch({ type: REMOVE_GROUP, groupId })
+    const { board } = store.getState().boardModule
     try {
-        const { board } = store.getState().boardModule
         await groupService.remove(board._id, groupId)
     } catch (err) {
         store.dispatch({ type: UNDO_REMOVE_GROUP, })
@@ -31,9 +31,9 @@ export async function removeGroup(groupId) {
 }
 
 export async function saveGroup(group) {
+    const type = (group._id) ? UPDATE_GROUP : ADD_GROUP
+    const { board } = store.getState().boardModule
     try {
-        const type = (group._id) ? UPDATE_GROUP : ADD_GROUP
-        const { board } = store.getState().boardModule
         const savedGroup = await groupService.save(board._id, group)
         store.dispatch({ type, group: savedGroup })
         return savedGroup
@@ -56,12 +56,12 @@ export async function saveBoard(board) {
         throw err
     }
 }
-// saveTask(task)
+
 export async function saveTask(task) {
     console.log('task from action: ', task)
     try {
         const { board: boardToUpdate } = store.getState().boardModule
-        let group = boardToUpdate.groups.find(group => group._id === task.groupId)
+        const group = boardToUpdate.groups.find(group => group._id === task.groupId)
         if (task._id) {
             group.tasks = group.tasks.map(currTask => currTask._id !== task._id ? currTask : task)
         } else {
@@ -74,18 +74,6 @@ export async function saveTask(task) {
         throw err
     }
 }
-// export async function saveTask(groupId, title) {
-//     const task = taskService.getEmptyTask(groupId, title)
-//     const { board: boardToUpdate } = store.getState().boardModule
-//     boardToUpdate.groups.find(group => group._id === groupId).tasks.push(task)
-//     try {
-//         const board = await boardService.save(boardToUpdate)
-//         store.dispatch({ type: SET_BOARD, board })
-//     } catch (err) {
-
-//         throw err
-//     }
-// }
 
 export async function removeTask(groupId, taskId) {
     try {
@@ -99,43 +87,30 @@ export async function removeTask(groupId, taskId) {
     }
 }
 
-export async function selectMemberAndChange(memberId, groupId, taskId) {
-
+export async function toggleMemberAssigned(memberId, groupId, taskId) {
     const { board: boardToUpdate } = store.getState().boardModule
     const group = boardToUpdate.groups.find(group => group._id === groupId)
     const task = group.tasks.find(task => task._id === taskId)
 
     if (task.memberIds.includes(memberId)) {
         task.memberIds = task.memberIds.filter(member => member !== memberId)
-        saveTask(task)
     } else {
         task.memberIds.push(memberId)
-        saveTask(task)
     }
+    saveTask(task)
 }
-export async function selectLableAndChange(labelId, groupId, taskId) {
+
+export async function toggleTaskLabel(labelId, groupId, taskId) {
     const { board: boardToUpdate } = store.getState().boardModule
     const group = boardToUpdate.groups.find(group => group._id === groupId)
     const task = group.tasks.find(task => task._id === taskId)
 
     if (task.labelIds.includes(labelId)) {
         task.labelIds = task.labelIds.filter(currLabelId => currLabelId !== labelId)
-
-        saveTask({ ...task })
     } else {
         task.labelIds.push(labelId)
-        saveTask({ ...task })
     }
-
-    // if (task.labelIds.includes(labelIds)) {
-    //     console.log('task.labelIds: ', task.labelIds);
-    //     console.log('in:')
-    //     task.labelIds = task.labelIds.filter(lable => lable !== labelIds)
-    //     saveTask(task)
-    // } else {
-    //     task.labelIds.push(labelIds)
-    //     saveTask(task)
-    // }
+    saveTask(task)
 }
 
 export function updateDrag({ source, destination, type }) {
@@ -145,12 +120,12 @@ export function updateDrag({ source, destination, type }) {
     saveBoard({ ...board, groups: groupsToSave })
 }
 
-function _getTaskById(groupId, taskId) {
-    const { board: boardToUpdate } = store.getState().boardModule
-    const group = boardToUpdate.groups.find(group => group._id === groupId)
-    const task = group.tasks.find(task => task._id === taskId)
-    return task
-}
+// function _getTaskById(groupId, taskId) {
+//     const { board: boardToUpdate } = store.getState().boardModule
+//     const group = boardToUpdate.groups.find(group => group._id === groupId)
+//     const task = group.tasks.find(task => task._id === taskId)
+//     return task
+// }
 
 
 // function getGroupById(groupId,taskId){

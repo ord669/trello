@@ -8,11 +8,6 @@ export function TaskFilter({ setIsOpenFilter, boardId }) {
 
     function handleChange({ target }) {
         const { value, name: filed } = target
-        // setFilterBy((prevFilter) => {
-        //     const filter = { ...prevFilter, [filed]: value }
-        //     loadBoard(boardId, filter)
-        //     return filter
-        // })
         const newFilter = { ...filterBy, [filed]: value }
         setFilterBy(newFilter)
         loadBoard(boardId, newFilter)
@@ -31,10 +26,7 @@ export function TaskFilter({ setIsOpenFilter, boardId }) {
                     onChange={handleChange}
                     placeholder="Enter a keyword..."
                 />
-
             </div>
-
-
         </section>
     )
 }

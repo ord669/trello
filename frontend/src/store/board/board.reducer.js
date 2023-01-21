@@ -9,7 +9,6 @@ export const UNDO_REMOVE_GROUP = 'UNDO_REMOVE_GROUP'
 
 const initialState = {
     board: boardService.getEmptyBoard(),
-    // board: null,
     lastRemovedGroup: null
 }
 
@@ -42,6 +41,7 @@ export function boardReducer(state = initialState, action) {
             }
             break
         default:
+            newState = { ...state }
     }
     return newState
 }

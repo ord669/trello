@@ -17,7 +17,7 @@ export function GroupPreview({ group, idx }) {
             showErrorMsg('Cannot remove List')
         }
     }
-    
+
     return (
         <Draggable draggableId={group._id} index={idx}>
             {(provided, snapshot) => (

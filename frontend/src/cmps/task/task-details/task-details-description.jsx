@@ -1,20 +1,16 @@
-import { useRef, useState } from "react";
-import { DescriptionIcon } from "../../../assets/svg/icon-library";
+import { useState } from "react"
 
 export function TaskDetailsDescription({ description, handleChange, onSaveTask }) {
-
     const [isShown, setIsShown] = useState(false)
-    // const elTextArea = useRef()
-    const inputReference = useRef(null);
 
     function onShownDesc() {
         setIsShown(prev => !prev)
 
     }
     function handleKeyPress(e) {
-        console.log('e: ', e);
+        console.log('e: ', e)
         if (e.keyCode === 13) {
-            e.target.blur();
+            e.target.blur()
             //Write you validation logic here
         }
     }
@@ -42,12 +38,9 @@ export function TaskDetailsDescription({ description, handleChange, onSaveTask }
                             <button onClick={() => setIsShown((prev) => !prev)}
                                 className="btn-cancel">Cancel</button>
                         </div>
-
                     </div>
                 }
-
             </div>
-
-        </div >
+        </div>
     )
 }

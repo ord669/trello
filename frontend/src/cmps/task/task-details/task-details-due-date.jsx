@@ -8,8 +8,6 @@ export function DueDate() {
                     Mar 20 at 11:07 PM
                 </button>
             </div>
-            <div >
-            </div>
         </section>
     )
 }
