@@ -11,7 +11,7 @@ export function BoardDetails() {
 
     useEffect(() => {
         loadBoard(boardId)
-    }, [])
+    }, [boardId])
 
     const style = {
         backgroundImage: `url(${board.style.bgImgURL})`

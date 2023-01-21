@@ -4,16 +4,21 @@ import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { login, logout, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
-import { BoardIcon, BoardSkelton, CloseIcon, MoreIcon } from '../assets/svg/icon-library'
+import { ArrowDown, BellIcon, BoardIcon, BoardSkelton, CloseIcon, MoreIcon } from '../assets/svg/icon-library'
 import { useEffect, useState } from 'react'
 import { CreateBoard } from './create-board'
+import { BoardNotification } from './board-notifiaction'
+import { BoardRecent } from './board-recent'
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
     const location = useLocation().pathname
     const navigate = useNavigate()
     const [isHome, setIsHome] = useState(false)
+    const [isRecent, setIsRecent] = useState(false)
+    const [isStarred, setIsStarred] = useState(false)
     const [isCreateBoard, setIsCreateBoard] = useState(false)
+    const [isNotification, setIsNotification] = useState(false)
 
     useEffect(() => {
         if (location.length > 1) setIsHome(false)
@@ -50,14 +55,32 @@ export function AppHeader() {
         <section className={`${isHome ? 'home-header' : 'app-header'} full`}>
 
             {!isHome &&
-                <header className='app-header'>
-                    <div className="header-logo flex align-center ">
-                        <BoardIcon />
-                        <span onClick={() => navigate(`/`)}>Trello</span>
+                <header className='app-header '>
+                    <div className='flex align-center' >
+                        <div className='header-logo flex align-center'>
+                            <BoardIcon />
+                            <span onClick={() => navigate(`/`)}>Trello</span>
+                        </div>
+
+                        <div className='flex align-center gap-10' >
+                            <div>
+                                <button onClick={() => setIsRecent(prev => !prev)} className='btn-app-header' >Recent <ArrowDown /></button>
+                                {isRecent && <BoardRecent type={'recent'} setIsRecent={setIsRecent} />}
+                            </div>
+                            <div>
+                                <button onClick={() => setIsStarred(prev => !prev)} className='btn-app-header'>Starred <ArrowDown /></button>
+                                {isStarred && <BoardRecent />}
+
+                            </div>
+                            <div>
+                                <button onClick={() => setIsCreateBoard(prev => !prev)} className="btn-bar">Create</button>
+                                {isCreateBoard && <CreateBoard setIsCreateBoard={setIsCreateBoard} />}
+                            </div>
+                        </div>
                     </div>
-                    <div >
-                        <button onClick={() => setIsCreateBoard(prev => !prev)} className="btn-header">Create</button>
-                        {isCreateBoard && <CreateBoard setIsCreateBoard={setIsCreateBoard} />}
+                    <div>
+                        <button onClick={() => setIsNotification((prev) => !prev)} className="header-icon"> <BellIcon /></button>
+                        {isNotification && <BoardNotification />}
                     </div>
 
                 </header>

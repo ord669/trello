@@ -16,6 +16,12 @@
         display: flex;
         align-items: center;
         padding: 6px 8px;
+
+        svg {
+            width: 14px;
+            height: 14px;
+            margin-inline-end: 2px;
+        }
     }
 
     form {
