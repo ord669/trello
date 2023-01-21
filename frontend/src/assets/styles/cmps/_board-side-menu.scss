@@ -1,0 +1,27 @@
+.board-side-menu {
+    background-color: #f4f5f7;
+    box-shadow: 0 12px 24px -6px #091e4240, 0 0 0 1px #091e4214;
+    transform: translateX(0);
+    top: 44px;
+    right: 0;
+    bottom: 0;
+    width: 339px;
+    z-index: 5;
+    overflow: hidden;
+    position: fixed;
+    transition-duration: .1s;
+    transition-property: transform, width;
+    transition-timing-function: ease-in;
+    color: $clr2;
+    text-align: center;
+    padding: 6px;
+
+
+    .bsm-title {
+        border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+        margin-bottom: 8px;
+        padding: 12px;
+
+    }
+
+}

@@ -27,7 +27,7 @@ export function BoardRecent({ setIsRecent, type }) {
     }
 
     return (
-        <section onBlur={() => console.log('in blur')} className='board-recent'>
+        <section className='board-recent'>
             {(!boards.length && type === 'recent') && <div className="recent-loader">
                 <LoaderIcon />
             </div>}
