@@ -10,6 +10,8 @@ export const groupService = {
     getEmptyGroup,
     reorderGroups,
     reorderTasks,
+    setNewCheckList,
+    getEmptyTodo,
 }
 window.cs = groupService
 
@@ -73,4 +75,20 @@ function reorderGroups(source, destination, groups) {
     const [group] = groups.splice(source.index, 1)
     groups.splice(destination.index, 0, group)
     return groups
-} 
+}
+
+function setNewCheckList(title) {
+    return {
+        "_id": "YEhmF",
+        "title": title,
+        "todos": []
+    }
+}
+
+function getEmptyTodo() {
+    return {
+        "_id": utilService.makeId(),
+        "title": "",
+        "isDone": false
+    }
+}

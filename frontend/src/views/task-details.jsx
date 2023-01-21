@@ -15,6 +15,7 @@ import { removeTask, saveTask, selectLableAndChange, selectMemberAndChange } fro
 import { DetilsTitle } from "../cmps/task/task-details/task-details-title";
 import { DetailsHeader } from "../cmps/task/task-details/task-details-header";
 import { DueDate } from "../cmps/task/task-details/task-details-due-date";
+import { groupService } from "../services/group.service.local";
 
 export function TaskDetails() {
     const [isShown, setIsShown] = useState(false)
@@ -69,6 +70,16 @@ export function TaskDetails() {
         console.log('labelId send label: ', labelId);
         // console.log('labelIds: ', labelIds);
         selectLableAndChange(labelId, groupId, taskId)
+    }
+
+    function onAddCheckList() {
+        const checkListName = prompt('list name')
+        task.checklists.push(groupService.setNewCheckList(checkListName))
+        try {
+            saveTask(task)
+        } catch (err) {
+            console.log('err', err)
+        }
     }
 
     if (!task) return <p>Loading..</p>
@@ -132,7 +143,7 @@ export function TaskDetails() {
                     }</div>
                 </div>
 
-                <TaskDetailsSideMenu onRemoveTask={onRemoveTask} />
+                <TaskDetailsSideMenu onAddCheckList={onAddCheckList} onRemoveTask={onRemoveTask} />
 
             </div>
         </section >
