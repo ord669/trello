@@ -1,3 +1,4 @@
+import { useRef } from "react"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BoardSkelton, CloseIcon } from "../assets/svg/icon-library";
@@ -22,7 +23,6 @@ export function CreateBoard({ setIsCreateBoard }) {
         backgroundImage: `url(${imgURL.url})`
     }
 
-
     async function onAddBoard() {
         try {
             board.style = {
@@ -36,8 +36,7 @@ export function CreateBoard({ setIsCreateBoard }) {
 
         }
     }
-
-
+    
     return (
         <section className='create-board-modal'>
             <button onClick={() => setIsCreateBoard(prev => !prev)} className='btn-close-modal'><CloseIcon /></button>
