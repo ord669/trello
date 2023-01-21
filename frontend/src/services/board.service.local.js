@@ -1136,7 +1136,7 @@ function getBgImgsURL() {
     return [
         {
             _id: utilService.makeId(),
-            url: 'https://images.unsplash.com/photo-1674080579362-dfb05936b9c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDR8MzE3MDk5fHx8fHwyfHwxNjc0MjE5MDcy&ixlib=rb-4.0.3&q=80&w=400'
+            url: 'https://res.cloudinary.com/dd09wjwjn/image/upload/v1674290494/photo-1674080579362-dfb05936b9c3_eicevk.jpg'
         },
         {
             _id: utilService.makeId(),
