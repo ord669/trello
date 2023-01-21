@@ -6,7 +6,7 @@
     padding: 0 4px;
     min-width: 272px;
     background-color: $clr3 ;
-    max-height: 90%;
+    max-height: 98%;
 
     border-radius: 3px; // maybe make var for this 
 
@@ -37,10 +37,8 @@
 
     .task-list {
         overflow-y: auto;
-
         min-height: 1px;
         margin: 0 4px;
-        flex-grow: 1;
 
         /* width */
         &::-webkit-scrollbar {
@@ -55,5 +53,29 @@
             border-radius: 15px;
 
         }
+    }
+
+    .open-form {
+        height: 30px;
+        margin: 6px 4px;
+        display: flex;
+        align-items: center;
+        padding: 4px 8px;
+        border-radius: 3px;
+        color: #5e6c84;
+        cursor: pointer;
+        // margin-inline-start: 8px;
+
+        &:hover {
+            background-color: #091e4214;
+            color: $clr2;
+        }
+
+        svg {
+            width: 14px;
+            height: 14px;
+            margin-inline-end: 2px;
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { EmptyStarIcon } from "../assets/svg/icon-library"
 import { BoardList } from "../cmps/board-list"
 import { BoardPreview } from "../cmps/board-preview"
 import { MainSidemenu } from "../cmps/main-side-menu"
@@ -50,7 +51,9 @@ export function BoardIndex() {
         <section className='board-index'>
             <MainSidemenu />
             <main>
-                <h1>YOUR WORKSPACES</h1>
+                <h1><EmptyStarIcon />Starred boards</h1>
+                <BoardList boards={boards.filter(board=>board.isStarred)} onCreateBoard={onCreateBoard} onRemoveBoard={onRemoveBoard} />
+                <h1><EmptyStarIcon />Recently viewed</h1>
                 <BoardList boards={boards} onCreateBoard={onCreateBoard} onRemoveBoard={onRemoveBoard} />
             </main>
         </section>

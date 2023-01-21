@@ -1,11 +1,13 @@
 import { TaskList } from "../task/task-list"
-import { AddTask } from "../task/add-task"
 import { removeGroup } from "../../store/board/board.action"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { GroupHeader } from "./group-header"
 import { Draggable } from "react-beautiful-dnd"
+import { PlusIcon } from "../../assets/svg/icon-library"
+import { useState } from "react"
 
 export function GroupPreview({ group, idx }) {
+    const [isShown, setIsShown] = useState(false)
 
     function onRemoveGroup() {
         try {
@@ -15,6 +17,7 @@ export function GroupPreview({ group, idx }) {
             showErrorMsg('Cannot remove List')
         }
     }
+    
     return (
         <Draggable draggableId={group._id} index={idx}>
             {(provided, snapshot) => (
@@ -24,8 +27,11 @@ export function GroupPreview({ group, idx }) {
                     {...provided.dragHandleProps}
                 >
                     <GroupHeader onRemoveGroup={onRemoveGroup} group={group} />
-                    <TaskList tasks={group.tasks} groupId={group._id} />
-                    <AddTask groupId={group._id} />
+                    <TaskList tasks={group.tasks} groupId={group._id} isShown={isShown} setIsShown={setIsShown} />
+                    {!isShown && <section className="open-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>
+                        <PlusIcon />
+                        <span>Add a card</span>
+                    </section>}
                 </section>
             )}
         </Draggable>
