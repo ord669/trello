@@ -6,6 +6,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    overflow: hidden;
+
 
     .board-title {
         color: $clr6;
@@ -22,14 +24,11 @@
             color: $clr7;
             background-color: $clr6;
         }
+
     }
 
 
 
-    svg {
-        width: 20px;
-        height: 20px;
-    }
 
     .btn-header-square {
         padding: 1rem 0.4rem;
@@ -43,6 +42,11 @@
         span {
             font-size: 1.3rem;
             color: rgba(211, 211, 211, 0.1);
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
         }
     }
 
@@ -76,6 +80,6 @@
 
     .right-open {
         margin-right: 300px;
-        transition: margin .12s ease-in;
+        transition: margin 0.4s;
     }
 }

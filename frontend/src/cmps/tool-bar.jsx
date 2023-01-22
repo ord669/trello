@@ -71,7 +71,9 @@ export function ToolBar({ board }) {
                 <button onClick={() => setIsOpenSideMenu(prev => !prev)} className="btn-bar btn-header-square">
                     <MoreTreeDotsIcon className="icon" />
                 </button>
-                {isOpenSideMenu && <BoardSideMenu setIsOpenSideMenu={setIsOpenSideMenu} />}
+                <BoardSideMenu isOpenSideMenu={isOpenSideMenu} board={board}
+                    setIsOpenSideMenu={setIsOpenSideMenu} />
+                {/* {isOpenSideMenu && <BoardSideMenu isOpenSideMenu={isOpenSideMenu} board={board} setIsOpenSideMenu={setIsOpenSideMenu} />} */}
 
             </div>
         </section>

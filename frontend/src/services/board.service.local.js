@@ -14,7 +14,8 @@ export const boardService = {
     addBoardActivity,
     getEmpteyFilter,
     filterGroupsTasks,
-    getBgImgsURL
+    getBgImgsURL,
+    getImgsFromUnsplash
 }
 window.cs = boardService
 _createBoards()
@@ -131,14 +132,14 @@ function _createBoards() {
     if (!boards || !boards.length) {
         const imgUrls = getBgImgsURL()
         boards = [
-            _createBoard('Todos', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,true),
-            _createBoard('2023 Goals', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,false),
-            _createBoard('Fun Stuff', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,true),
-            _createBoard('Shopping List', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,true),
-            _createBoard('Sprint 2', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,false),
-            _createBoard('My Pet', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,false),
-            _createBoard('Project X', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,true),
-            _createBoard('My Startup', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,false),
+            _createBoard('Todos', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, true),
+            _createBoard('2023 Goals', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, false),
+            _createBoard('Fun Stuff', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, true),
+            _createBoard('Shopping List', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, true),
+            _createBoard('Sprint 2', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, false),
+            _createBoard('My Pet', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, false),
+            _createBoard('Project X', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, true),
+            _createBoard('My Startup', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, false),
             {
                 "_id": "b101",
                 "title": "Software Development",
@@ -1175,5 +1176,17 @@ function _createBoards() {
             }
         ]
         utilService.saveToStorage(STORAGE_KEY, boards)
+    }
+}
+
+
+async function getImgsFromUnsplash() {
+    const url = 'https://api.unsplash.com/search/photos?query=london&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4'
+    // return fetch(url).then((res) => res.json())
+    try {
+        const res = await fetch(url)
+        return res.json()
+    } catch (err) {
+        console.error(err)
     }
 }

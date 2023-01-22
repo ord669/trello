@@ -28,7 +28,7 @@ export function BoardRecent({ setIsRecent, type }) {
 
     return (
         <section className='board-recent'>
-            {(!boards.length && type === 'recent') && <div className="recent-loader">
+            {(!boards.length && type === 'recent') && <div className="loader">
                 <LoaderIcon />
             </div>}
 
