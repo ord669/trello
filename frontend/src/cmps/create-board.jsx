@@ -24,7 +24,7 @@ export function CreateBoard({ setIsCreateBoard }) {
 
     async function onAddBoard() {
         board.style = {
-            bgImgURL: imgURL.url
+            background: imgURL.url
         }
         try {
             const savedBoard = await saveBoard(board)
