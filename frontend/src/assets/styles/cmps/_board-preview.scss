@@ -24,10 +24,11 @@
 
         .board-star {
             position: absolute;
-            bottom: 5px;
+            bottom: 10px;
             right: -12.5px;
             transition: .3s right;
             color: inherit;
+            // color: rgba(255, 255, 255, 0);
 
             svg {
                 display: block;
@@ -35,7 +36,7 @@
             }
 
             &.show {
-                right: 5px;
+                right: 10px;
                 color: $clr12;
             }
         }
@@ -44,7 +45,7 @@
             background-color: rgba(0, 0, 0, 0.4);
 
             .board-star {
-                right: 5px;
+                right: 10px;
             }
         }
     }

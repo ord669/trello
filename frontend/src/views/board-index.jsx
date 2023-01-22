@@ -28,10 +28,15 @@ export function BoardIndex() {
         }
     }
 
+    const starredBoards = boards.filter(board => board.isStarred)
+
     return (
         <section className='board-index'>
-            <section className="title"><EmptyStarIcon />Starred boards</section>
-            <BoardList boards={boards.filter(board => board.isStarred)} onRemoveBoard={onRemoveBoard} setBoards={setBoards} />
+            {!!starredBoards.length &&
+                <>
+                    <section className="title"><EmptyStarIcon />Starred boards</section>
+                    <BoardList boards={starredBoards} onRemoveBoard={onRemoveBoard} setBoards={setBoards} />
+                </>}
             <section className="title"><Clock /> Recently viewed</section>
             <BoardList boards={boards} onRemoveBoard={onRemoveBoard} setBoards={setBoards} />
         </section>
