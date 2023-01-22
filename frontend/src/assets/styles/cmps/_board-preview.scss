@@ -25,9 +25,9 @@
         .board-star {
             position: absolute;
             bottom: 5px;
-            right: -15px;
-            color: $clr6;
+            right: -12.5px;
             transition: .3s right;
+            color: inherit;
 
             svg {
                 display: block;
