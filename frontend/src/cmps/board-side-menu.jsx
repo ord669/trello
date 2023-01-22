@@ -12,8 +12,8 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
     }
 
     function onCloseSideMenu() {
-        setIsChangeBg(prev => !prev)
-        setIsOpenPhoto(prev => !prev)
+        setIsChangeBg(false)
+        setIsOpenPhoto(false)
         setIsOpenSideMenu(prev => !prev)
     }
 
@@ -21,7 +21,7 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
 
     return (
         <section className={isOpenSideMenu ? 'board-side-menu open' : 'board-side-menu'}>
-            <button onClick={() => setIsOpenSideMenu(prev => !prev)} className="btn-close-modal"><CloseIcon /></button>
+            <button onClick={onCloseSideMenu} className="btn-close-modal"><CloseIcon /></button>
 
             {!isChangeBg && <section onClick={() => setIsChangeBg(prev => !prev)}>
                 <h3 className="bsm-title">Menu</h3>
@@ -34,7 +34,7 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
 
             {isChangeBg && <section className="bsm-add-bg ">
                 {!isOpenPhoto && <section>
-                    <p className="bsm-back" onClick={onCloseSideMenu}><ArrowLeftIcon /></p>
+                    <p className="bsm-back" onClick={() => setIsChangeBg(prev => !prev)}><ArrowLeftIcon /></p>
                     <h3 className="bsm-title">Change background</h3>
                     <div className="bsm-add-bg-container">
                         <div >
