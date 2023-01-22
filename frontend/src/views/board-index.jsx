@@ -16,18 +16,6 @@ export function BoardIndex() {
         setBoards(boards)
     }
 
-    async function onRemoveBoard(ev, boardId) {
-        console.log('boardId:', boardId)
-        ev.stopPropagation()
-        try {
-            await boardService.remove(boardId)
-            setBoards(prevBoards => prevBoards.filter(board => board._id !== boardId))
-            showSuccessMsg('Board removed')
-        } catch (err) {
-            showErrorMsg('Cannot remove board, try later')
-        }
-    }
-
     const starredBoards = boards.filter(board => board.isStarred)
 
     return (
@@ -35,10 +23,12 @@ export function BoardIndex() {
             {!!starredBoards.length &&
                 <>
                     <section className="title"><EmptyStarIcon />Starred boards</section>
-                    <BoardList boards={starredBoards} onRemoveBoard={onRemoveBoard} setBoards={setBoards} />
+                    <BoardList boards={starredBoards} setBoards={setBoards} />
                 </>}
             <section className="title"><Clock /> Recently viewed</section>
-            <BoardList boards={boards} onRemoveBoard={onRemoveBoard} setBoards={setBoards} />
+            <BoardList boards={boards.splice(0, 3)} setBoards={setBoards} isCreate={true}/>
+            <section className="title">Your boards</section>
+            <BoardList boards={boards} setBoards={setBoards} />
         </section>
     )
 }
