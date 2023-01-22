@@ -2,33 +2,37 @@
     position: relative;
     min-width: 274px;
     display: grid;
-    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, minmax(125px, 1fr));
     grid-auto-rows: 96px;
-    gap: .75em;
+    gap: 24px 0;
+    // gap: 24px 8px;
+    // gap: 1em .75em;
+    // gap: .75em;
     margin-bottom: 40px;
 
     @include for-narrow-layout {
-        grid-template-columns: repeat(3, minmax(150px, 1fr));
+        grid-template-columns: repeat(3, minmax(115px, 1fr));
     }
 
     @include for-normal-layout {
-        grid-template-columns: repeat(4, minmax(150px, 1fr));
+        grid-template-columns: repeat(4, minmax(115px, 1fr));
     }
 
     @include for-wide-layout {
-        grid-template-columns: repeat(5, minmax(150px, 1fr));
+        grid-template-columns: repeat(5, minmax(115px, 1fr));
     }
 
     >section {
         cursor: pointer;
         background-color: #091e420a;
         border-radius: 3px;
+        margin-inline-end: 6%;
     }
 
     .new-board {
         display: flex;
 
-        >*{
+        >* {
             border-radius: 3px;
         }
 

@@ -1,8 +1,8 @@
 .board-index {
     height: calc(100% - 44px);
-    background-color: #fafbfc;
-    margin-top: 40px;
-    padding: 0 75px;
+    max-width: 1150px;
+    margin: auto;
+    padding: 40px 75px 0;
 
     .title {
         display: flex;
@@ -12,6 +12,8 @@
         svg {
             margin-inline-end: 1rem;
             align-self: center;
+            width: 24px;
+            height: 24px;
         }
     }
 }
