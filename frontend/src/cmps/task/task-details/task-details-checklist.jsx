@@ -80,7 +80,7 @@ export function TaskDetailsChecklist({ checklist, task }) {
             </div>
             <div className="check-box-container" >
                 {checklist.todos.map(todo =>
-                    <ChecklistItemPreview key={todo._id} todo={todo} onSaveTodo={onSaveTodo} />
+                    <ChecklistItemPreview key={todo._id} currTodo={todo} onSaveTodo={onSaveTodo} />
                 )}
                 {!isShown ?
                     <p onClick={onShownAddTodo} className="description-fake-text-area"></p>

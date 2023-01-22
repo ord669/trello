@@ -32,7 +32,6 @@ export function GroupHeader({ onRemoveGroup, group }) {
                 onChange={handleChange}
                 onKeyDown={(ev) => handleKeyPress(ev)}
                 value={title} />
-            {/* <button className="btn-remove-group" onClick={onRemoveGroup}>X</button> */}
             <button className="group-menu-btn"><ThreeDotsIcon /></button>
         </section>
     )

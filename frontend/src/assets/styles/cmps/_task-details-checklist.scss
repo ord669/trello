@@ -11,7 +11,7 @@
         display: flex;
         position: relative;
         justify-content: space-between;
-        width: 99%;
+        width: calc(100% - 0.8rem);
 
         .checklist-header-title-container {
             display: flex;
@@ -57,33 +57,12 @@
     }
 
     .check-box-container {
-        width: 100%;
+        // width: 100%;
         padding-top: 0.8rem;
         margin-left: 1.75rem;
 
         .check-box {
             margin-bottom: 1rem;
-
-        }
-
-        input {
-            cursor: pointer;
-            background-color: #fafbfc;
-            box-shadow: inset 0 0 0 2px #dfe1e6;
-            border: none;
-            width: 14px;
-            height: 14px;
-            transform: scale(1.2);
-            font-size: 11px;
-            margin-left: -2.1rem;
-        }
-
-        p {
-            margin-top: -1.5rem;
-        }
-
-        .check-box-is-done {
-            text-decoration: line-through;
         }
     }
 

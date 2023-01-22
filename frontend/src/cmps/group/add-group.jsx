@@ -38,7 +38,7 @@ export function AddGroup() {
                         autoFocus />
                     <section className="form-btns">
                         <button className="btn-add" onClick={onAddList}>Add list</button>
-                        <button className="btn-close-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}><CloseIcon /></button>
+                        <button className="btn-close" onClick={() => setIsShown(prevIsShown => !prevIsShown)}><CloseIcon /></button>
                     </section>
                 </form>
                 :
