@@ -9,7 +9,10 @@ import './assets/styles/main.scss'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <App />
+  <Provider store={store}>
+    <App />
+  </Provider>
+
 )
 
 // If you want your app to work offline and load faster, you can change

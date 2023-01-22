@@ -24,7 +24,7 @@ export function TaskDetails() {
     const { taskId, groupId } = useParams()
     const [group, setGroup] = useState({})
     const [task, setTask, handleChange] = useForm(null)
-    console.log('task: ', task);
+
     const navigate = useNavigate()
 
     useEffect(() => {

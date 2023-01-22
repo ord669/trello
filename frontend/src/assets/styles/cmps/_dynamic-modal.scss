@@ -1,0 +1,55 @@
+.dynamic-modal-container {
+    position: fixed;
+    background-color: white;
+    min-width: 304px;
+    max-width: 304px;
+    top: 50%;
+    /* position the top  edge of the element at the middle of the parent */
+    left: 50%;
+    /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+    box-shadow: var(--ds-shadow-overlay, 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08));
+    z-index: 1000;
+
+    .dynamic-modal-header {
+        height: 40px;
+        margin-bottom: 8px;
+        position: relative;
+        text-align: center;
+        z-index: 1000;
+
+        .dynamic-modal-header-title {
+            border-bottom: 1px solid #091e4221;
+            box-sizing: border-box;
+            color: #5e6c84;
+            display: block;
+            line-height: 40px;
+            margin: 0 12px;
+            padding: 0 32px;
+            z-index: 1001;
+
+        }
+
+        &-close-icon {
+            position: absolute;
+            padding: 10px 12px 10px 8px;
+            top: 0;
+            right: 0;
+            z-index: 1002;
+
+            svg,
+            path {
+                width: 20px;
+                height: 20px;
+
+            }
+        }
+    }
+
+    .dynamic-modal-content-container {
+        padding: 0 12px 12px;
+        z-index: 1000;
+
+    }
+}
