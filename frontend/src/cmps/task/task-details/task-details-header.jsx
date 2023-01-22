@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { CloseIcon, TaskTitleIcon } from "../../../assets/svg/icon-library"
+import { CloseIcon, CoverIcon, TaskTitleIcon } from "../../../assets/svg/icon-library"
 import { DetilsTitle } from "./task-details-title"
 
 export function DetailsHeader({ onUpdateHeadline, task, group, boardId }) {
@@ -33,6 +33,8 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId }) {
                 </button>
                 {task.style.bgColor && <div style={taskPreviewImgCover()} className="task-details-cover"></div>}
                 {!task.style.bgColor && <div style={taskPreviewImgCover()} className="task-details-img "></div>}
+                <button className="btn-bar " onClick={() => { }}><CoverIcon /> Cover</button>
+
             </div>
             <div className="header-title-title-container flex  align-center">
                 <TaskTitleIcon className='icon-title' />
