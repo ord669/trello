@@ -56,6 +56,10 @@
     &.gap-10 {
         gap: 10px
     }
+
+    &.warp {
+        flex-wrap: wrap
+    }
 }
 
 // Media helpers
@@ -88,4 +92,17 @@
 
 .dragged {
     rotate: 4deg;
+}
+
+.black-modal {
+    position: fixed;
+    inset: 0;
+    background-color: #000000a3;
+    opacity: 0;
+    transition: opacity 0.6s;
+    z-index: 1;
+    box-shadow: -6px 0px 14px rgb(0 0 0 / 20%);
+    max-height: 100vh;
+    pointer-events: auto;
+    opacity: 1;
 }

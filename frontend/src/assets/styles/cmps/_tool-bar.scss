@@ -42,15 +42,11 @@
         align-items: center;
         gap: 10px;
 
-        span {
+        .span {
             font-size: 1.3rem;
             color: rgba(211, 211, 211, 0.1);
         }
 
-        svg {
-            width: 20px;
-            height: 20px;
-        }
     }
 
     .tool-bar-star {
@@ -81,4 +77,11 @@
         margin-right: 300px;
         transition: margin 0.4s;
     }
+
+    svg.btn-share {
+        width: 16px;
+        height: 16px;
+    }
+
+
 }

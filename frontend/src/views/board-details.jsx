@@ -27,9 +27,7 @@ export function BoardDetails() {
                 background: bg
             }
         }
-
         return style
-
     }
 
 
