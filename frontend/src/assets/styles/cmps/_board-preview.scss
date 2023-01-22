@@ -1,6 +1,5 @@
 .board-preview {
     color: $clr6;
-    font-size: 1.25em;
     background-position: 50%;
     background-size: cover;
 
@@ -15,6 +14,7 @@
 
         h3 {
             flex-grow: 1;
+            font-weight: 900;
         }
 
         button {

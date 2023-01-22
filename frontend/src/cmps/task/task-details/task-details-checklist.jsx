@@ -76,16 +76,19 @@ export function TaskDetailsChecklist({ checklist, task }) {
                         completed={completed}
                         bgColor="#5ba4cf"
                         height="8px"
-                        labelColor="#5ba4cf" />
+                        labelColor="#5ba4cf"
+                        transitionDuration="200ms"
+                        completedClassName={completed === 100 ? "barCompleted" : ""}
+                    />
                 </div>
             </div>
             <div className="check-box-container" >
                 {checklist.todos.map(todo =>
                     <div className="check-box" key={todo._id} onClick={(e) => {
                         e.stopPropagation()
-                        onClickTodo(todo)
+
                     }}>
-                        <input checked={todo.isDone} type="checkbox" onChange={() => { }} />
+                        <input checked={todo.isDone} type="checkbox" onClick={() => { onClickTodo(todo) }} />
                         <p className={`${todo.isDone ? "check-box-is-done" : ''}`} >{todo.title}</p>
                     </div>
                 )}
@@ -99,7 +102,7 @@ export function TaskDetailsChecklist({ checklist, task }) {
                             onKeyDown={(e) => handleKeyPress(e)}
                         />
                         <div className="desc-btn flex align-cetner ">
-                            <button onClick={() => { onSaveTodo() }} className="btn-add">Save</button>
+                            <button onClick={() => { onSaveTodo() }} className="btn-add">Add</button>
                             <button onClick={() => setIsShown((prev) => !prev)}
                                 className="btn-cancel">Cancel</button>
                         </div>

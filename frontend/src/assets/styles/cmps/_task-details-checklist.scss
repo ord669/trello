@@ -38,7 +38,12 @@
         width: 100%;
         display: flex;
         padding-top: 0.7rem;
-        margin-left: 1.2rem;
+        margin-left: 1.3rem;
+
+        .barCompleted {
+            background-color: #60bc4f;
+            width: 100%;
+        }
 
         h3 {
             font-size: 11px;
@@ -47,23 +52,23 @@
 
         >div {
             margin-left: 0.6rem;
-            width: 95%;
+            width: 94%;
         }
     }
 
     .check-box-container {
         width: 100%;
         padding-top: 0.8rem;
-        margin-left: 1.5rem;
+        margin-left: 1.75rem;
 
         .check-box {
-            cursor: pointer;
             margin-bottom: 1rem;
+
         }
 
         input {
             cursor: pointer;
-
+            transform: scale(1.2);
             font-size: 11px;
             margin-left: -2.1rem;
         }

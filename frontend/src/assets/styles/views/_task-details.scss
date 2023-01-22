@@ -72,6 +72,10 @@
             flex-direction: column;
             // font-family: SFUIText;
             line-height: 0;
+
+            p {
+                padding-left: 0.2rem;
+            }
         }
 
         textarea {

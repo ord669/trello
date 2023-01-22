@@ -20,12 +20,13 @@ export function TaskDetailsDescription({ description, handleChange, onSaveTask }
             <h3>Description</h3>
             <div className="des-container">
                 {!isShown ?
-                    <p onClick={onShownDesc} className="description-fake-text-area"> {description || 'add a more detailed description…'}</p>
+                    <p onClick={onShownDesc} className={`${description.length > 0 ? 'description-fake-text-area-after-filled' : 'description-fake-text-area'}`}> {description || 'add a more detailed description…'}</p>
                     :
                     <div>
                         <textarea autoFocus type="text"
                             name="description"
-                            defaultValue={description || 'add a more detailed description…'}
+                            defaultValue={description.length > 0 ? description : ''}
+                            placeholder={description || 'add a more detailed description…'}
                             onChange={handleChange}
                             onKeyDown={(e) => handleKeyPress(e)}
                             onBlur={() => { setIsShown((prev) => !prev) }}
