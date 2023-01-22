@@ -15,12 +15,12 @@ import { updateDynamicModalPos } from "./store/modal/modal.action"
 export function App() {
     const { dynamicModalStatus } = useSelector(storeState => storeState.modalModule)
 
-    useEffect(() => {
-        window.addEventListener('click', (event) => {
-            updateDynamicModalPos({ x: event.x, y: event.y })
-        })
+    // useEffect(() => {
+    //     window.addEventListener('click', (event) => {
+    //         updateDynamicModalPos({ x: event.x, y: event.y })
+    //     })
 
-    }, [])
+    // }, [])
 
     return (
         <Router>
