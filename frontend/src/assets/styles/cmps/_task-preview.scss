@@ -38,4 +38,14 @@
         right: 0;
         top: 0;
     }
+
+    .task-preview-icons-container {
+
+        svg,
+        path {
+            width: 100%;
+            height: 100%;
+
+        }
+    }
 }

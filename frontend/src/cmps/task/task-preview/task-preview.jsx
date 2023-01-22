@@ -1,6 +1,7 @@
 import { Draggable } from "react-beautiful-dnd"
 import { useNavigate } from "react-router-dom"
 import { PenIcon } from "../../../assets/svg/icon-library"
+import { TaskPreviewIcons } from "./task-preview-icons"
 import { MiniLabelList } from "./task-preview-mini-labels-list"
 
 export function TaskPreview({ task, idx }) {
@@ -52,6 +53,10 @@ export function TaskPreview({ task, idx }) {
                             <PenIcon />
                         </div>
                     </div>
+
+                    {/* <div className="task-preview-icons-container">
+                        <TaskPreviewIcons />
+                    </div> */}
                 </section>
             )}
         </Draggable>

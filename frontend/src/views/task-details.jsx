@@ -16,13 +16,15 @@ import { DetailsHeader } from "../cmps/task/task-details/task-details-header"
 import { DueDate } from "../cmps/task/task-details/task-details-due-date"
 import { groupService } from "../services/group.service.local"
 import { ImgUploader } from "../cmps/img-uploader"
+import { TaskDetailsAttachment } from "../cmps/task/task-details/task-details-attachment"
 
 export function TaskDetails() {
-    const [isShown, setIsShown] = useState(false)
+
     const { board } = useSelector(storeState => storeState.boardModule)
     const { taskId, groupId } = useParams()
     const [group, setGroup] = useState({})
     const [task, setTask, handleChange] = useForm(null)
+    console.log('task: ', task);
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -65,6 +67,8 @@ export function TaskDetails() {
 
     function onAddCheckList() {
         const checkListName = prompt('list name')
+        console.log('checkListName: ', checkListName);
+        if (!checkListName) return
         task.checklists.push(groupService.setNewCheckList(checkListName))
         try {
             saveTask(task)
@@ -91,13 +95,24 @@ export function TaskDetails() {
         }
     }
 
-    async function onUploaded(url) {
+    async function onUploadedImg(url) {
+        console.log('url: ', url);
         task.style.img = url
         try {
             saveTask(task)
         } catch (err) {
             console.log('err', err)
         }
+    }
+
+    function onUploadedAttachment(attach) {
+        console.log('attach: ', attach);
+
+    }
+
+    function onUploadFile(ev) {
+        console.log('ev: ', ev);
+
     }
 
     if (!task) return <p>Loading..</p>
@@ -123,16 +138,23 @@ export function TaskDetails() {
                         <TaskDetailsDescription handleChange={handleChange} description={task.description} onSaveTask={onSaveTask} />
                     </div>
                     {task?.checklists &&
-                        <div className="checklists-container flex">
+                        <div className="checklists-container ">
                             {task.checklists.map(checkList =>
                                 <TaskDetailsChecklist key={checkList._id} checklist={checkList} task={task} />
+                            )}
+                        </div>}
+                    {task?.attachments &&
+                        <div className="attachments-container flex">
+                            {task.attachments.map(attachment =>
+                                <TaskDetailsAttachment key={attachment._id} task={task} />
                             )}
                         </div>}
                     <div className="activity-container flex">
                         <ActivityIcon className="icon-title" />
                         <TaskDetailsActivity />
                     </div>
-                    {/* TODO////for dev only//// */}
+                    {/* TODO////forom here down dev only//// */}
+                    <h2>Froom Here Functionality Only!!!</h2>
                     <div>
                         {board.members.map((member, idx) =>
                             <button onClick={() => onSelectMember(member._id)} key={idx}>
@@ -155,7 +177,10 @@ export function TaskDetails() {
                     <input onChange={onChoosenDate} type="date" id="start" name="trip-start"
                         value="2018-07-22"
                         min="2018-01-01" max="2018-12-31" />
-                    <ImgUploader onUploaded={onUploaded} />
+                    <ImgUploader onUploaded={onUploadedImg} />
+                    {/* <ImgUploader onUploaded={onUploadedAttachment} />
+
+                    <input onChange={onUploadFile} id="image-file" type="file" /> */}
                 </div>
                 <TaskDetailsSideMenu onAddCheckList={onAddCheckList} onRemoveTask={onRemoveTask} />
             </div>

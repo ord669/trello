@@ -130,14 +130,14 @@ function _createBoards() {
     if (!boards || !boards.length) {
         const imgUrls = getBgImgsURL()
         boards = [
-            _createBoard('Todos', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,true),
-            _createBoard('2023 Goals', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,false),
-            _createBoard('Fun Stuff', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,true),
-            _createBoard('Shopping List', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,true),
-            _createBoard('Sprint 2', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,false),
-            _createBoard('My Pet', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,false),
-            _createBoard('Project X', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,true),
-            _createBoard('My Startup', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url,false),
+            _createBoard('Todos', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, true),
+            _createBoard('2023 Goals', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, false),
+            _createBoard('Fun Stuff', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, true),
+            _createBoard('Shopping List', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, true),
+            _createBoard('Sprint 2', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, false),
+            _createBoard('My Pet', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, false),
+            _createBoard('Project X', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, true),
+            _createBoard('My Startup', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, false),
             {
                 "_id": "b101",
                 "title": "Software Development",
@@ -250,9 +250,11 @@ function _createBoards() {
                                     "bgColor": "#26de81",
                                     "img": "#26de81"
                                 },
-                                "Attachments": {
+                                "attachments": [{
+                                    "_id": "au103",
+                                    "title": "",
                                     "file": "https://trello.com/1/cards/63c6c7e1fa702b025564cfd9/attachments/63c6c7f3d750200091545a10/download/3-Types-of-Functional-Testing.png"
-                                },
+                                }],
                                 "activity": [
                                     {
                                         "_id": "a101",
@@ -393,9 +395,11 @@ function _createBoards() {
                                     "bgColor": "#26de81",
                                     "img": "https://trello.com/1/cards/63c6cb110f16e00169784602/attachments/63c6ccfdecac0d01f83f1e66/download/lhnymyb97mr83uw34vzv.png"
                                 },
-                                "Attachments": {
+                                "attachments": [{
+                                    "_id": "au104",
+                                    "title": "",
                                     "file": "https://trello.com/1/cards/63c6cb110f16e00169784602/attachments/63c6ccfdecac0d01f83f1e66/download/lhnymyb97mr83uw34vzv.png"
-                                },
+                                }],
                                 "activity": [
                                     {
                                         "_id": "a106",
@@ -439,7 +443,7 @@ function _createBoards() {
                                     "img": "https://trello.com/1/cards/63c6cb110f16e00169784602/attachments/63c6ccfdecac0d01f83f1e66/download/lhnymyb97mr83uw34vzv.png"
 
                                 },
-                                "Attachments": {},
+                                "attachments": [],
                                 "activity": [
                                     {
                                         "_id": "a108",
@@ -488,7 +492,7 @@ function _createBoards() {
                                     "bgColor": "",
                                     "img": "https://trello.com/1/cards/63c6cb110f16e00169784602/attachments/63c6ccfdecac0d01f83f1e66/download/lhnymyb97mr83uw34vzv.png"
                                 },
-                                "Attachments": {},
+                                "attachments": [],
                                 "activity": [],
                                 "groupId": "g102"
                             }
@@ -624,7 +628,7 @@ function _createBoards() {
                                 "style": {
                                     "bgColor": "blue"
                                 },
-                                "Attachments": {},
+                                "attachments": [],
                                 "activity": [
                                     {
                                         "_id": "a111",
@@ -665,9 +669,11 @@ function _createBoards() {
                                     "bgColor": "",
                                     "img": "https://trello.com/1/cards/63c6cabe12d00103d58557be/attachments/63c6cad25bf8c801a3c857e3/download/featured-image-PWA.png"
                                 },
-                                "Attachments": {
+                                "attachments": [{
+                                    "_id": "au105",
+                                    "title": "",
                                     "file": "https://trello.com/1/cards/63c6cabe12d00103d58557be/attachments/63c6cad25bf8c801a3c857e3/download/featured-image-PWA.png"
-                                },
+                                }],
                                 "activity": [],
                                 "groupId": "g103"
                             }
@@ -757,7 +763,7 @@ function _createBoards() {
                                 "style": {
                                     "bgColor": "lightgreen"
                                 },
-                                "Attachments": {},
+                                "attachments": [],
                                 "activity": [
                                     {
                                         "_id": "a114",
@@ -796,7 +802,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Liad?set=set5"
                                 },
                                 "style": {},
-                                "Attachments": {},
+                                "attachments": [],
                                 "activity": [],
                                 "groupId": "g104"
                             },
@@ -822,9 +828,11 @@ function _createBoards() {
                                     "bgColor": "",
                                     "img": "https://trello.com/1/cards/63c6cafd547eff01d743d8f2/attachments/63c6cafd547eff01d743d958/download/Screenshot_2023-01-17_at_18.21.05.png"
                                 },
-                                "Attachments": {
+                                "attachments": [{
+                                    "_id": "au106",
+                                    "title": "",
                                     "file": "https://trello.com/1/cards/63c6cafd547eff01d743d8f2/attachments/63c6cafd547eff01d743d958/download/Screenshot_2023-01-17_at_18.21.05.png"
-                                },
+                                }],
                                 "activity": [
                                     {
                                         "_id": "a115",
@@ -924,7 +932,7 @@ function _createBoards() {
                                 "style": {
                                     "bgColor": "orange"
                                 },
-                                "Attachments": {},
+                                "attachments": [],
                                 "activity": [
                                     {
                                         "_id": "a117",
@@ -1029,7 +1037,7 @@ function _createBoards() {
                                     "bgColor": "",
                                     "img": ""
                                 },
-                                "Attachments": {},
+                                "attachments": [],
                                 "activity": [],
                                 "groupId": "g105"
                             },
@@ -1066,7 +1074,7 @@ function _createBoards() {
                                 "style": {
                                     "bgColor": "lightblue"
                                 },
-                                "Attachments": {},
+                                "attachments": [],
                                 "activity": [
                                     {
                                         "_id": "a120",
@@ -1117,9 +1125,11 @@ function _createBoards() {
                                     "bgColor": "",
                                     "img": "https://trello.com/1/cards/63c6ca7013479602374fc31d/attachments/63c6ca7013479602374fc33e/download/image.png"
                                 },
-                                "Attachments": {
+                                "attachments": [{
+                                    "_id": "au107",
+                                    "title": "",
                                     "file": "https://trello.com/1/cards/63c6ca7013479602374fc31d/attachments/63c6ca7013479602374fc33e/download/image.png"
-                                },
+                                }],
                                 "activity": [
                                     {
                                         "_id": "a121",

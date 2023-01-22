@@ -78,7 +78,7 @@ function reorderGroups(source, destination, groups) {
 
 function setNewCheckList(title) {
     return {
-        "_id": "YEhmF",
+        "_id": utilService.makeId(),
         "title": title,
         "todos": []
     }

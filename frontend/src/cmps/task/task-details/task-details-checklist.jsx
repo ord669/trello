@@ -15,8 +15,8 @@ export function TaskDetailsChecklist({ checklist, task }) {
     }
 
     const doneTodos = checklist.todos.filter(todo => todo.isDone).length * 100
-    const completed = Math.floor((doneTodos / checklist.todos.length)) > 0 ? Math.floor((doneTodos / checklist.todos.length)) : 0
-    // const completed = Math.floor((doneTodos / checklist.todos.length)) || 0  //maybe better?
+
+    const completed = Math.floor((doneTodos / checklist.todos.length)) || 0
 
     async function onClickTodo(todoToChange) {
         todoToChange.isDone = !todoToChange.isDone
