@@ -178,3 +178,9 @@ export function LoaderIcon() {
         <line className="line animated line3" x1="46" y1="10" x2="46" y2="50" />
     </svg>
 }
+
+export function CoverIcon() {
+    return <svg xmlns="http://www.w3.org/2000/svg" viewBox="-18 -16 38 30">
+        <path d="M -15.1 14 q -1.2 0 -2.05 -0.85 Q -18 12.3 -18 11.1 V -13.1 q 0 -1.2 0.85 -2.05 Q -16.3 -16 -15.1 -16 h 32.2 q 1.2 0 2.05 0.85 q 0.85 0.85 0.85 2.05 v 24.2 q 0 1.2 -0.85 2.05 q -0.85 0.85 -2.05 0.85 Z m -0.9 -9 h 32 t 0.2 -0.45 V -9.6 H -15.75 v 12.6 Z" fill="#ffff" />
+    </svg>
+}

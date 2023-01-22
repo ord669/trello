@@ -7,6 +7,9 @@
     max-width: 300px;
     min-height: 20px;
     margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 
     justify-content: space-between;
 
@@ -31,6 +34,9 @@
 
     .task-preview-details {
         padding: 6px 8px 2px;
+        display: flex;
+        flex-direction: column;
+        gap: rem(4px);
     }
 
     .task-preview-edit-icon {
