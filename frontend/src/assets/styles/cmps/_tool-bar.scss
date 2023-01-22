@@ -10,15 +10,16 @@
 
 
     .board-title {
+        cursor: pointer;
         color: $clr6;
         width: fit-content;
         padding: 0 12px;
         font-size: 18px;
         font-weight: 700;
 
-        // &:hover {
-        //     background-color: #ffffff4d;
-        // }
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
 
         &:focus-visible {
             color: $clr7;
@@ -27,8 +28,10 @@
 
     }
 
-
-
+    svg {
+        width: 20px;
+        height: 20px;
+    }
 
     .btn-header-square {
         padding: 1rem 0.4rem;
@@ -54,8 +57,7 @@
         background-color: $clr10;
         border-radius: 3px;
         line-height: 1;
-        position: absolute;
-        left: 255px;
+        margin-inline-start: 5px;
         padding: 6px 8px;
 
         svg {
@@ -72,10 +74,7 @@
         svg.yellow-star {
             fill: $clr12;
             color: $clr12;
-
         }
-
-
     }
 
     .right-open {

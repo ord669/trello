@@ -1,12 +1,13 @@
 .create-board-modal {
     color: $clr1;
     width: 300px;
-    // height: 250px;
     position: absolute;
-    background-color: #fff;
+    background-color: $clr6;
     z-index: 10;
     margin-top: 7px;
     padding: 10px;
+    border: solid 1px rgba(9, 30, 66, 0.08);
+    box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25);
 
     .create-board-title {
         text-align: center;
@@ -38,9 +39,6 @@
                 box-shadow: inset 0 0 0 2px #eb5a46;
             }
         }
-
-
-
     }
 
     .btn-create-board {
@@ -64,13 +62,10 @@
         }
     }
 
-
     .create-bgs {
-
         display: flex;
         justify-content: space-between;
         align-items: center;
-
 
         .bg-img {
             background-position: center center;

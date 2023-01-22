@@ -7,7 +7,7 @@ export function BoardPreview({ board, onRemoveBoard, toggleIsStarred }) {
         <section className='board-preview' onClick={() => navigate(`/board/${board._id}`)}
             style={{ backgroundImage: `url(${board.style.bgImgURL})` }}>
             <span className="board-hover">
-                {board.title}
+                <h3>{board.title}</h3>
                 <button onClick={(ev) => onRemoveBoard(ev, board._id)}>X</button>
                 <section className={`board-star ${board.isStarred ? 'show' : ''}`} onClick={(ev) => toggleIsStarred(ev, board)}>
                     {board.isStarred ? <FullStarIcon /> : <EmptyStarIcon />}

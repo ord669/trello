@@ -11,8 +11,8 @@ export function AddGroup() {
     async function onAddList(ev) {
         ev.preventDefault()
         if (!title) return
+        const group = groupService.getEmptyGroup(title)
         try {
-            const group = groupService.getEmptyGroup(title)
             await saveGroup(group)
             setIsShown(prevIsShown => !prevIsShown)
             setTilte('')
@@ -44,7 +44,6 @@ export function AddGroup() {
                 :
                 <section className="open-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>
                     <PlusIcon />Add another list
-                    {/* <h3>Add a Card</h3> */}
                 </section>}
 
         </section>

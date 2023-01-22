@@ -1,14 +1,11 @@
-.task-details-content-lable-members-date {
+.task-details-content-label-members-date {
     display: flex;
-
     flex-wrap: wrap;
     padding: 2.5rem 0 0.2rem 2.3rem;
 
     p {
         font-size: 12px;
     }
-
-    .members-List {}
 
     .members-icons-container {
         display: flex;
@@ -17,7 +14,6 @@
 
         >div {
             margin-right: 0.4rem;
-
         }
 
         .details-user-avatar-icon {
@@ -26,7 +22,6 @@
                 height: 1rem;
             }
         }
-
     }
 
     .labels-list-container {
@@ -58,9 +53,6 @@
 
         button {
             font-size: 14px;
-
         }
-
     }
-
 }

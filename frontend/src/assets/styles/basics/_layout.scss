@@ -1,11 +1,8 @@
 .main-container {
     height: 100vh;
-    overflow: hidden;
     display: grid;
     grid-template-columns: 20px 1fr 20px;
     grid-template-rows: auto 1fr;
-    // grid-template-rows: minmax(44px, auto) 1fr;
-    // grid-template-rows: minmax(44px, 60px) 1fr;
 
     >* {
         grid-column: 2;
@@ -30,9 +27,3 @@
             minmax(20px, 1fr) minmax(auto, $normal-breakpoint) minmax(20px, 1fr);
     }
 }
-
-// .card-grid {
-//     display: grid;
-//     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-//     grid-gap: 20px;
-// }

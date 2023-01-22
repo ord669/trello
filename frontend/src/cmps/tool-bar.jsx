@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react"
-import { EmptyStarIcon, FilterIcon, FullStarIcon, MoreTreeDotsIcon, StartIconEmpty } from "../assets/svg/icon-library"
+import { useEffect, useState } from "react"
+import { FilterIcon, MoreTreeDotsIcon } from "../assets/svg/icon-library"
 import { handleKeyPress } from "../customHooks/enterOutFocues"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { saveBoard } from "../store/board/board.action"
@@ -31,9 +31,7 @@ export function ToolBar({ board }) {
         } catch (err) {
             showErrorMsg('Cannot update title, try later')
         }
-
     }
-
 
     const admin = board.createdBy
 
@@ -48,11 +46,9 @@ export function ToolBar({ board }) {
                     onBlur={onSaveTitle}
                     onKeyDown={(e) => handleKeyPress(e)}
                 >{title}</span>
-
                 <div className="tool-bar-star">
                     <BoardStarred board={board} />
                 </div>
-
             </div>
             <div className={isOpenSideMenu ? 'tool-bar-btns right-open' : 'tool-bar-btns'}>
                 <button onClick={() => setIsOpenFilter(prev => !prev)} className="btn-bar ">

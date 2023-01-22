@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-
-import tinycolor from "tinycolor2";
+import tinycolor from "tinycolor2"
 
 export function TaskPreviewLabels({ labelId }) {
     const { board } = useSelector(storeState => storeState.boardModule)
@@ -13,16 +12,15 @@ export function TaskPreviewLabels({ labelId }) {
     }, [])
 
     function getLabel(labelId) {
-
         const currLabel = board.labels.find(label => label._id === labelId)
         setLabel(currLabel)
         setColor(currLabel.color)
     }
 
     function darkenHexColor(hexColor, amount = 20) {
-        let color = tinycolor(hexColor);
-        let darkerColor = color.darken(amount).toHexString();
-        return darkerColor;
+        let color = tinycolor(hexColor)
+        let darkerColor = color.darken(amount).toHexString()
+        return darkerColor
     }
 
     const mainStyle = {
@@ -33,12 +31,10 @@ export function TaskPreviewLabels({ labelId }) {
         backgroundColor: darkenHexColor(label.color)
     }
 
-    if (!label) return <div>loadind ...</div>
+    if (!label) return <div>loading...</div>
     return (
-        <section style={secStyle} className='task-preview-label   '>
+        <section style={secStyle} className='task-preview-label'>
             <div style={mainStyle} className="sec-label-color"></div>
-            {/* <div> {label.title}</div> */}
-
         </section>
     )
 }

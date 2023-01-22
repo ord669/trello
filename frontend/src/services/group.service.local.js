@@ -10,6 +10,7 @@ export const groupService = {
     getEmptyGroup,
     reorderGroups,
     reorderTasks,
+    setNewCheckList,
 }
 window.cs = groupService
 
@@ -53,7 +54,7 @@ async function save(boardId, group) {
     }
 }
 
-function getEmptyGroup(title = '') {
+function getEmptyGroup(title = 'New group') {
     return {
         title,
         tasks: [],
@@ -63,14 +64,22 @@ function getEmptyGroup(title = '') {
 }
 
 function reorderTasks(source, destination, groups) {
-    const [task] = groups.find(group => group._id === source.droppableId)
-        .tasks.splice(source.index, 1)
-    groups.find(group => group._id === destination.droppableId)
-        .tasks.splice(destination.index, 0, task)
+    const sourceGroup = groups.find(group => group._id === source.droppableId)
+    const [task] = sourceGroup.tasks.splice(source.index, 1)
+    const destinationGroup = groups.find(group => group._id === destination.droppableId)
+    destinationGroup.tasks.splice(destination.index, 0, task)
     return groups
 }
 function reorderGroups(source, destination, groups) {
     const [group] = groups.splice(source.index, 1)
     groups.splice(destination.index, 0, group)
     return groups
-} 
+}
+
+function setNewCheckList(title) {
+    return {
+        "_id": utilService.makeId(),
+        "title": title,
+        "todos": []
+    }
+}

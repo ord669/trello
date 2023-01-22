@@ -1,15 +1,11 @@
-
-import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
-
-const STORAGE_KEY = 'board'
 
 export const taskService = {
     setTaskInBoard,
     removeTaskFromBoard,
     getEmptyTask,
-    createChecklists
+    createChecklists,
+    getEmptyTodo,
 }
 
 function setTaskInBoard() {
@@ -34,9 +30,17 @@ function createChecklists(title = 'checklists', todoTitle = 'Write Your Todo') {
     }
 }
 
+function getEmptyTodo() {
+    return {
+        "_id": utilService.makeId(),
+        "title": "",
+        "isDone": false
+    }
+}
+
 function getEmptyTask() {
     return {
-        "_id": '',
+        // "_id": '',
         "title": '',
         "archivedAt": Date.now(),
         "description": "description",

@@ -1,18 +1,17 @@
-import { useRef } from "react"
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { BoardSkelton, CloseIcon } from "../assets/svg/icon-library";
-import { boardService } from "../services/board.service.local";
-import { loadBoard, saveBoard } from "../store/board/board.action";
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { BoardSkelton, CloseIcon } from "../assets/svg/icon-library"
+import { boardService } from "../services/board.service.local"
+import { saveBoard } from "../store/board/board.action"
 
 export function CreateBoard({ setIsCreateBoard }) {
 
     const defaultURL = 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674294790/photo-1674130070695-82aefa76ca67_bgworq.jpg'
 
     const [board, setBoard] = useState(boardService.getEmptyBoard())
+    const [imgURL, setImgURL] = useState({ url: defaultURL })
     const navigate = useNavigate()
     const bgImgs = boardService.getBgImgsURL()
-    const [imgURL, setImgURL] = useState({ url: defaultURL })
 
     function handleChange({ target }) {
         const { value, name: filed } = target
@@ -24,28 +23,25 @@ export function CreateBoard({ setIsCreateBoard }) {
     }
 
     async function onAddBoard() {
+        board.style = {
+            bgImgURL: imgURL.url
+        }
         try {
-            board.style = {
-                bgImgURL: imgURL.url
-            }
             const savedBoard = await saveBoard(board)
             setIsCreateBoard(prev => !prev)
             navigate(`/board/${savedBoard._id}`)
-
         } catch (err) {
-
+            console.log('err:', err)
         }
     }
-    
+
     return (
         <section className='create-board-modal'>
             <button onClick={() => setIsCreateBoard(prev => !prev)} className='btn-close-modal'><CloseIcon /></button>
             <p className='create-board-title'>Create board</p>
-
             <div style={backgroundStyle} className='create-board-img'>
                 <BoardSkelton />
             </div>
-
             <div>
                 <p>Background</p>
                 <div className="create-bgs">
@@ -64,11 +60,9 @@ export function CreateBoard({ setIsCreateBoard }) {
                     name="title"
                     value={board.title}
                     onChange={handleChange}
-
                 />
             </div>
             <button onClick={onAddBoard} className='btn-add'>Save</button>
-
         </section>
     )
 }

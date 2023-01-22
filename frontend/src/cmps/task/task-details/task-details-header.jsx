@@ -1,15 +1,9 @@
-import { useEffect, useState } from "react";
-import { TaskTitleIcon, TitleIcon } from "../../../assets/svg/icon-library";
-import { DetilsTitle } from "./task-details-title";
+import { useNavigate } from "react-router-dom"
+import { CloseIcon, TaskTitleIcon } from "../../../assets/svg/icon-library"
+import { DetilsTitle } from "./task-details-title"
 
-export function DetailsHeader({ onUpdateHeadline, task, group }) {
-
-    const [isCover, setIsCover] = useState()
-
-    useEffect(() => {
-
-    }, [])
-
+export function DetailsHeader({ onUpdateHeadline, task, group, boardId }) {
+    const navigate = useNavigate()
     let styleBgColor
     let styleBgImg
 
@@ -27,22 +21,19 @@ export function DetailsHeader({ onUpdateHeadline, task, group }) {
     }
 
     function taskPreviewImgCover() {
-        console.log('in:')
         if (task.style.bgColor) return styleBgColor
-        else return styleBgImg
+        return styleBgImg
     }
 
     return (
         <section className='header-title-container'>
             <div className="image-cover-container">
-                {/* <button onClick={() => navigate(`/board/${board._id}`)}
+                <button onClick={() => navigate(`/board/${boardId}`)}
                     className="btn details-close-btn"><CloseIcon />
-                </button> */}
-
+                </button>
                 {task.style.bgColor && <div style={taskPreviewImgCover()} className="task-details-cover"></div>}
                 {!task.style.bgColor && <div style={taskPreviewImgCover()} className="task-details-img "></div>}
             </div>
-
             <div className="header-title-title-container flex  align-center">
                 <TaskTitleIcon className='icon-title' />
                 <DetilsTitle onUpdateHeadline={onUpdateHeadline} task={task} group={group} />

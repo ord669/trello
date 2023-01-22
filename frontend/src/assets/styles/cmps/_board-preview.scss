@@ -1,0 +1,51 @@
+.board-preview {
+    color: $clr6;
+    font-size: 1.25em;
+    background-position: 50%;
+    background-size: cover;
+
+    .board-hover {
+        position: relative;
+        display: flex;
+        height: 100%;
+        width: 100%;
+        padding: 8px;
+        border-radius: inherit;
+        background-color: rgba(0, 0, 0, 0.25);
+
+        h3 {
+            flex-grow: 1;
+        }
+
+        button {
+            align-self: flex-start;
+            color: red;
+        }
+
+        .board-star {
+            position: absolute;
+            bottom: 5px;
+            right: -15px;
+            color: $clr6;
+            transition: .3s right;
+
+            svg {
+                display: block;
+                height: fit-content;
+            }
+
+            &.show {
+                right: 5px;
+                color: $clr12;
+            }
+        }
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+
+            .board-star {
+                right: 5px;
+            }
+        }
+    }
+}
