@@ -22,20 +22,12 @@
             color: red;
         }
 
-        &:hover {
-            background-color: rgba(0, 0, 0, 0.4);
-
-            .board-star {
-                color: $clr6;
-                display: block;
-            }
-        }
-
         .board-star {
             position: absolute;
             bottom: 5px;
-            right: 5px;
-            display: none;
+            right: -15px;
+            color: $clr6;
+            transition: .3s right;
 
             svg {
                 display: block;
@@ -43,8 +35,16 @@
             }
 
             &.show {
+                right: 5px;
                 color: $clr12;
-                display: block;
+            }
+        }
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+
+            .board-star {
+                right: 5px;
             }
         }
     }
