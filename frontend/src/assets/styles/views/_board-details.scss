@@ -4,12 +4,12 @@
     padding-bottom: 1em;
     display: flex;
     flex-direction: column;
-    // background-image: url(../../img/background.jpg);
     background-position: 50%;
     background-size: cover;
 
     >:first-child {
         margin-left: 12px;
+        // mix-blend-mode: difference;
     }
 
     .group-list {
@@ -37,5 +37,17 @@
         }
 
     }
+
+    // .open-main-menu {
+    //     position: absolute;
+    //     top: 44px;
+    //     left: 0;
+    //     height: calc(100% - 44px);
+    //     width: 16px;
+    //     background-color: rgba(255, 255, 255, 0.16);
+    //     border-right: .2px solid #DFE1E6;
+
+    //     .icon-container {}
+    // }
 
 }
