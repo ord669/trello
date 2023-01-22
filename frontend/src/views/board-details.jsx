@@ -14,16 +14,30 @@ export function BoardDetails() {
         loadBoard(boardId)
     }, [boardId])
 
-    const style = {
-        backgroundImage: `url(${board.style.bgImgURL})`
+    function getBgStyle() {
+        const bg = board.style.background
+        let style
+        if (bg.includes('https')) {
+            style = {
+                backgroundImage: `url(${bg})`
+            }
+        }
+        else {
+            style = {
+                background: bg
+            }
+        }
+
+        return style
+
     }
 
+
     return (
-        <section style={style} className='board-details'>
+        <section style={getBgStyle()} className='board-details'>
             <ToolBar board={board} />
             <GroupList groups={board?.groups || []} board={board} />
             <Outlet />
         </section>
-
     )
 }

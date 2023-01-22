@@ -31,21 +31,21 @@ export function BoardRecent({ type }) {
                 <LoaderIcon />
             </div>}
             {(!boards.length && type === 'starred') && <div className="board-recent-empty">
-                    <img src="https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674313433/starred-board.cc47d0a8c646581ccd08_fcn5p9.svg" alt="" />
-                    <p>Star important boards to access them quickly and easily.</p>
-                </div>}
+                <img src="https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674313433/starred-board.cc47d0a8c646581ccd08_fcn5p9.svg" alt="" />
+                <p>Star important boards to access them quickly and easily.</p>
+            </div>}
 
             {boards && boards.map(board =>
-                    <div key={board._id} className=" board-recent-card ">
-                        <div onClick={() => navigate(`/board/${board._id}`)} className="recent-content">
-                            <div style={{ backgroundImage: `url(${board.style.bgImgURL})` }} className="board-recent-img">
-                            </div>
-                            <div className="board-recent-title">
-                                <p>{board.title}</p>
-                            </div>
+                <div key={board._id} className=" board-recent-card ">
+                    <div onClick={() => navigate(`/board/${board._id}`)} className="recent-content">
+                        <div style={{ backgroundImage: `url(${board.style.background})` }} className="board-recent-img">
                         </div>
-                        <button><BoardStarred board={board} /></button>
-                    </div>)}
+                        <div className="board-recent-title">
+                            <p>{board.title}</p>
+                        </div>
+                    </div>
+                    <button><BoardStarred board={board} /></button>
+                </div>)}
         </section>
     )
 }

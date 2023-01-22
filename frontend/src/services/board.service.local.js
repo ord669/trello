@@ -15,7 +15,8 @@ export const boardService = {
     getEmpteyFilter,
     filterGroupsTasks,
     getBgImgsURL,
-    getImgsFromUnsplash
+    getImgsFromUnsplash,
+    getColors
 }
 window.cs = boardService
 _createBoards()
@@ -81,9 +82,13 @@ function getEmptyBoard(title = '') {
         activities: [],
         labels: [],
         style: {
-            bgImgURL: "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg",
-            bgColor: ""
+            background: "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg"
+
         },
+        // style: {
+        //     bgImgURL: "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg",
+        //     bgColor: ""
+        // },
         members: []
     }
 }
@@ -121,7 +126,7 @@ function _createBoard(title, url, isStarred) {
         _id: utilService.makeId(),
         isStarred,
         style: {
-            bgImgURL: url
+            background: url
         }
     }
 }
@@ -150,7 +155,7 @@ function _createBoards() {
                     "imgUrl": "https://robohash.org/Or?set=set5"
                 },
                 "style": {
-                    "bgImgURL": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg"
+                    "background": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg"
                 },
                 "labels": [
                     {
@@ -1198,4 +1203,8 @@ async function getImgsFromUnsplash() {
     } catch (err) {
         console.error(err)
     }
+}
+
+function getColors() {
+    return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91']
 }
