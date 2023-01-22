@@ -1,7 +1,8 @@
 .tool-bar {
-    padding: 8px 4px 4px 12px;
+    // padding: 8px 4px 4px 12px;
+    padding: 0 4px 4px 32px;
     color: $clr6;
-    padding: 0 12px 8px;
+    // padding: 0 12px 8px;
     margin-top: 9px;
     display: flex;
     align-items: center;
@@ -11,11 +12,9 @@
 
     .board-title {
         cursor: pointer;
-        color: $clr6;
         width: fit-content;
         padding: 0 12px;
         font-size: 18px;
-        font-weight: 700;
 
         &:hover {
             background-color: rgba(255, 255, 255, 0.2);

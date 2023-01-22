@@ -2,7 +2,7 @@ import { useState } from "react"
 import { BoardPreview } from "./board-preview"
 import { CreateBoard } from "./create-board"
 
-export function BoardList({ boards, onRemoveBoard, setBoards }) {
+export function BoardList({ boards, setBoards, isCreate }) {
     const [isShown, setIsShown] = useState(false)
 
     function toggleIsStarred(ev, board) {
@@ -13,11 +13,11 @@ export function BoardList({ boards, onRemoveBoard, setBoards }) {
 
     return (
         <section className='board-list'>
-            {!!boards.length && boards.map(board => <BoardPreview key={board._id} board={board} onRemoveBoard={onRemoveBoard} toggleIsStarred={toggleIsStarred} />)}
-            <section className="new-board">
+            {!!boards.length && boards.map(board => <BoardPreview key={board._id} board={board} toggleIsStarred={toggleIsStarred} />)}
+            {isCreate && <section className="new-board">
                 <section className="add-board" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>Create new board</section>
                 {isShown && <CreateBoard setIsCreateBoard={setIsShown} />}
-            </section>
+            </section>}
         </section >
     )
 }
