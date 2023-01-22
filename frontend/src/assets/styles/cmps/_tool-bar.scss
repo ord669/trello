@@ -1,7 +1,8 @@
 .tool-bar {
-    padding: 8px 4px 4px 12px;
+    // padding: 8px 4px 4px 12px;
+    padding: 0 4px 4px 32px;
     color: $clr6;
-    padding: 0 12px 8px;
+    // padding: 0 12px 8px;
     margin-top: 9px;
     display: flex;
     align-items: center;
@@ -11,11 +12,9 @@
 
     .board-title {
         cursor: pointer;
-        color: $clr6;
         width: fit-content;
         padding: 0 12px;
         font-size: 18px;
-        font-weight: 700;
 
         &:hover {
             background-color: rgba(255, 255, 255, 0.2);
@@ -42,15 +41,11 @@
         align-items: center;
         gap: 10px;
 
-        span {
+        .span {
             font-size: 1.3rem;
             color: rgba(211, 211, 211, 0.1);
         }
 
-        svg {
-            width: 20px;
-            height: 20px;
-        }
     }
 
     .tool-bar-star {
@@ -81,4 +76,11 @@
         margin-right: 300px;
         transition: margin 0.4s;
     }
+
+    svg.btn-share {
+        width: 16px;
+        height: 16px;
+    }
+
+
 }

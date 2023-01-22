@@ -1,15 +1,8 @@
 .task-details {
-    overflow-y: scroll;
-    position: fixed;
-    inset: 0;
     height: 100%;
-    position: fixed;
     inset: 0;
     background-color: #000000a3;
-    opacity: 0;
-    transition: opacity 0.6s;
-    pointer-events: none;
-    z-index: 1;
+    transition: opacity .6s;
     box-shadow: -6px 0px 14px rgb(0 0 0 / 20%);
     pointer-events: auto;
     opacity: 1;
@@ -17,16 +10,16 @@
     overflow-y: auto;
     position: absolute;
     z-index: 2;
+
+    .black-screen {
+        height: 100%;
+        inset: 0;
+        pointer-events: auto;
+        position: absolute;
+        z-index: 2;
+    }
 }
 
-.black-screen {
-    height: 100%;
-    position: absolute;
-    inset: 0;
-    pointer-events: auto;
-    position: absolute;
-    z-index: 2;
-}
 
 .main-task-details {
     color: #172b4d;
@@ -70,7 +63,6 @@
         .task-title-container {
             display: flex;
             flex-direction: column;
-            // font-family: SFUIText;
             line-height: 0;
 
             p {
@@ -139,25 +131,14 @@
         }
     }
 
-    // .icon-title {
-    //     left: 23px;
-    //     position: absolute;
-    //     width: 20px;
-    //     height: 20px;
-    //     color: #42526e;
-
-    // }
-
     svg {
         width: 27px;
         height: 18px;
         stroke: #172B4D;
     }
-
 }
 
 .task-details-content {
     grid-area: content;
     padding-left: 1.2rem;
-
 }

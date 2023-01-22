@@ -1169,18 +1169,49 @@ function _createBoards() {
                 "activities": [
                     {
                         "_id": "a101",
-                        "txt": "Changed Color",
-                        "createdAt": 154514,
+                        "txt": "completed Node js modules on ",
+                        "createdAt": 1674408565401,
                         "byMember": {
                             "_id": "u101",
                             "fullname": "Or Dvir",
                             "imgUrl": "https://robohash.org/Or?set=set5"
                         },
                         "task": {
-                            "_id": "c101",
-                            "title": "Replace Logo"
+                            "_id": "c102",
+                            "groupId": "g102",
+                            "title": "Create backend services"
                         }
-                    }
+                    },
+                    {
+                        "_id": "a102",
+                        "txt": "Upload endpoint returns a 400 error code on ",
+                        "createdAt": 1674408565632,
+                        "byMember": {
+                            "_id": "u102",
+                            "fullname": "Oren Sharizad",
+                            "imgUrl": "https://robohash.org/liad?set=set5"
+                        },
+                        "task": {
+                            "_id": "c115",
+                            "groupId": "g105",
+                            "title": "File Management"
+                        }
+                    },
+                    {
+                        "_id": "a103",
+                        "txt": "Make the header responsive on ",
+                        "createdAt": 1674408565488,
+                        "byMember": {
+                            "_id": "u103",
+                            "fullname": "Liad Gola",
+                            "imgUrl": "https://robohash.org/Oren?set=set5"
+                        },
+                        "task": {
+                            "_id": "c101",
+                            "groupId": "g101",
+                            "title": "functional testing for app header"
+                        }
+                    },
                 ],
                 "cmpsOrder": [
                     "status-picker",
