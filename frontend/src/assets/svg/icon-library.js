@@ -172,7 +172,7 @@ export function EyeIcon() {
 }
 
 export function LoaderIcon() {
-    return <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" className="loader" >
+    return <svg style={{ width: "60px", height: "60px", margin: "0 auto" }} xmlns="http://www.w3.org/2000/svg" width="60" height="60" className="loader" >
         <line className="line animated" x1="14" y1="10" x2="14" y2="50" />
         <line className="line animated line2" x1="30" y1="10" x2="30" y2="50" />
         <line className="line animated line3" x1="46" y1="10" x2="46" y2="50" />

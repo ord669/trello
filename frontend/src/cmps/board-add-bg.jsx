@@ -35,14 +35,14 @@ export function BoardAddBg({ board, type }) {
         } catch (err) {
             console.log(err)
         }
-
     }
 
+    if (!imgs.length) return <div className="loader"><LoaderIcon /></div>
     return (
+        // { (!imgs.length) && <div className="loader"><LoaderIcon /></div> }
         <section className='board-add-bg'>
 
             {type === 'photo' && <div>
-                {(!imgs.length) && <div className="loader"><LoaderIcon /></div>}
                 <h3 className="bsm-title">Photos by Unsplash</h3>
                 <div className="photos-container">
                     {imgs.map((img, idx) =>
