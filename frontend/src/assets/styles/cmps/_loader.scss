@@ -1,3 +1,14 @@
+.loader {
+    display: flex;
+    justify-content: center;
+
+    svg {
+        width: 60px;
+        height: 60px;
+    }
+
+}
+
 .line {
     fill: none;
     stroke: #aaa;

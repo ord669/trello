@@ -14,7 +14,8 @@ export const boardService = {
     addBoardActivity,
     getEmpteyFilter,
     filterGroupsTasks,
-    getBgImgsURL
+    getBgImgsURL,
+    getImgsFromUnsplash
 }
 window.cs = boardService
 _createBoards()
@@ -1184,5 +1185,17 @@ function _createBoards() {
             }
         ]
         utilService.saveToStorage(STORAGE_KEY, boards)
+    }
+}
+
+
+async function getImgsFromUnsplash() {
+    const url = 'https://api.unsplash.com/search/photos?query=london&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4'
+    // return fetch(url).then((res) => res.json())
+    try {
+        const res = await fetch(url)
+        return res.json()
+    } catch (err) {
+        console.error(err)
     }
 }
