@@ -30,11 +30,21 @@ export function TaskPreview({ task, idx }) {
         if (task.style.img) return styleBgImg
     }
 
+    function getMousePos({ pageX, pageY }) {
+        const pos = { x: pageX, y: pageY }
+        const windowSize = { width: window.innerWidth, height: window.innerHeight }
+        console.log('pos: ', pos);
+        console.log('windowSize : ', windowSize)
+
+    }
     return (
         <Draggable draggableId={task._id} index={idx}>
             {(provided, snapshot) => (
                 <section className={`task-preview ${snapshot.isDragging ? 'dragged' : ''}`}
-                    onClick={() => { navigate(`${task.groupId}/${task._id}`) }}
+                    onClick={(ev) => {
+                        getMousePos(ev)
+                        navigate(`${task.groupId}/${task._id}`)
+                    }}
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}>

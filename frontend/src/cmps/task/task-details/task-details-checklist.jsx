@@ -88,7 +88,7 @@ export function TaskDetailsChecklist({ checklist, task }) {
                         e.stopPropagation()
 
                     }}>
-                        <input checked={todo.isDone} type="checkbox" onClick={() => { onClickTodo(todo) }} />
+                        <input checked={todo.isDone} type="checkbox" onChange={() => { }} onClick={() => { onClickTodo(todo) }} />
                         <p className={`${todo.isDone ? "check-box-is-done" : ''}`} >{todo.title}</p>
                     </div>
                 )}

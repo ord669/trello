@@ -1,3 +1,5 @@
+import { FastAverageColor } from "fast-average-color"
+
 export const utilService = {
     makeId,
     makeLorem,
@@ -5,7 +7,9 @@ export const utilService = {
     debounce,
     randomPastTime,
     saveToStorage,
-    loadFromStorage
+    loadFromStorage,
+    getBgUrlIsDark,
+    getBgIsDarkColorHex
 }
 
 function makeId(length = 6) {
@@ -35,7 +39,6 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive 
 }
 
-
 function randomPastTime() {
     const HOUR = 1000 * 60 * 60
     const DAY = 1000 * 60 * 60 * 24
@@ -60,4 +63,23 @@ function saveToStorage(key, value) {
 function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
+}
+
+async function getBgUrlIsDark(url) {
+    const fac = new FastAverageColor();
+    const brightnessLevel = await fac.getColorAsync(url)
+    return brightnessLevel.isDark
+}
+
+function getBgIsDarkColorHex(color) {
+    const hex = color.replace('#', '');
+    const c_r = parseInt(hex.substring(0, 0 + 2), 16);
+    const c_g = parseInt(hex.substring(2, 2 + 2), 16);
+    const c_b = parseInt(hex.substring(4, 4 + 2), 16);
+    const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+    return brightness < 155;
+}
+
+function onSetDynamicModal() {
+
 }
