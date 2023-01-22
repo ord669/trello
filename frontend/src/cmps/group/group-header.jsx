@@ -2,6 +2,7 @@ import { useState } from "react"
 import { handleKeyPress } from "../../customHooks/enterOutFocues"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { saveGroup } from "../../store/board/board.action"
+import {ThreeDotsIcon} from "../../assets/svg/icon-library"
 
 export function GroupHeader({ onRemoveGroup, group }) {
     const [title, setTitle] = useState(group.title)
@@ -29,9 +30,10 @@ export function GroupHeader({ onRemoveGroup, group }) {
                 onFocus={(ev) => ev.target.select()}
                 onBlur={onSaveTitle}
                 onChange={handleChange}
-                onKeyDown={(e) => handleKeyPress(e)}
+                onKeyDown={(ev) => handleKeyPress(ev)}
                 value={title} />
-            <button className="btn-remove-group" onClick={onRemoveGroup}>X</button>
+            {/* <button className="btn-remove-group" onClick={onRemoveGroup}>X</button> */}
+            <button className="group-menu-btn"><ThreeDotsIcon /></button>
         </section>
     )
 }

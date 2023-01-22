@@ -3,7 +3,7 @@
     position: relative;
     flex-direction: column;
     margin: 0 4px;
-    padding: 0 4px;
+    // padding: 0 4px;
     min-width: 272px;
     background-color: $clr3 ;
     max-height: 98%;
@@ -12,35 +12,51 @@
 
     .group-header {
         display: flex;
-        padding: 6px 4px;
+        align-items: center;
+        padding: 4px;
+        // padding: 6px 4px;
 
         textarea {
             flex-grow: 1;
             height: 2rem;
             height: 1.75rem;
             padding: 6px 8px;
-            margin: 0;
+            margin-top: 2px;
+            // margin: 0;
             font-weight: 600;
             resize: none;
             overflow-wrap: break-word;
         }
 
-        .btn-remove-group {
-            padding: 4px 6px;
-            color: #ce2e6c;
+        .group-menu-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 32px;
+            width: 32px;
+            border-radius: 3px;
+            padding: 6px;
+            color: #6b778c;
+
+            &:hover {
+                color: $clr7;
+                background-color: #091e4214;
+            }
         }
     }
 
     .task-list {
         overflow-y: auto;
         min-height: 1px;
+        padding: 0 4px;
         margin: 0 4px;
 
         /* width */
         &::-webkit-scrollbar {
             background-color: #dadbe1;
+            background-color: #091e4214;
             border-radius: 15px;
-            width: 9px;
+            width: 8px;
 
         }
 
@@ -72,4 +88,6 @@
             margin-inline-end: 2px;
         }
     }
+
+    .group-menu {}
 }

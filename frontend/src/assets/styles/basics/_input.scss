@@ -1,5 +1,7 @@
-input {
+input,
+textarea {
     margin: 0;
+    color: $clr7;
 }
 
 .edit-title-input {
