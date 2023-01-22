@@ -7,9 +7,9 @@
         resize: none;
         border: none;
         position: relative;
-        background-color: #fff;
+        background-color: $clr6;
         border-radius: 3px;
-        box-shadow: var(--ds-shadow-raised, 0 1px 0 rgba(9, 30, 66, 0.2509803922));
+        box-shadow: 0 1px 0 rgba(9, 30, 66, 0.2509803922);
         width: 100%;
         padding: 6px 8px 2px;
         min-height: 54px;

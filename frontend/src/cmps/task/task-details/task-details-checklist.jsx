@@ -5,6 +5,7 @@ import { useForm } from "../../../customHooks/useForm"
 import { ChecklistIcon } from "../../../assets/svg/icon-library"
 import { saveTask } from "../../../store/board/board.action"
 import { taskService } from "../../../services/task.service.local"
+import { ChecklistItemPreview } from "./checklist-item-preview"
 
 export function TaskDetailsChecklist({ checklist, task }) {
     const [isShown, setIsShown] = useState(false)
@@ -17,11 +18,6 @@ export function TaskDetailsChecklist({ checklist, task }) {
     const doneTodos = checklist.todos.filter(todo => todo.isDone).length * 100
 
     const completed = Math.floor((doneTodos / checklist.todos.length)) || 0
-
-    async function onClickTodo(todoToChange) {
-        todoToChange.isDone = !todoToChange.isDone
-        onSaveTodo(todoToChange)
-    }
 
     async function onRemoveChecklist() {
         task.checklists = task.checklists.filter(currChecklist => currChecklist._id !== checklist._id)
@@ -60,7 +56,7 @@ export function TaskDetailsChecklist({ checklist, task }) {
     if (!checklist) return
     return (
         <section className='task-details-checklist-container'>
-            <div className="task-details-checklist-header  ">
+            <div className="task-details-checklist-header">
                 <div className="checklist-header-title-container">
                     <ChecklistIcon className="icon-title" />
                     <h3>{checklist.title}</h3>
@@ -84,13 +80,7 @@ export function TaskDetailsChecklist({ checklist, task }) {
             </div>
             <div className="check-box-container" >
                 {checklist.todos.map(todo =>
-                    <div className="check-box" key={todo._id} onClick={(e) => {
-                        e.stopPropagation()
-
-                    }}>
-                        <input checked={todo.isDone} type="checkbox" onClick={() => { onClickTodo(todo) }} />
-                        <p className={`${todo.isDone ? "check-box-is-done" : ''}`} >{todo.title}</p>
-                    </div>
+                    <ChecklistItemPreview key={todo._id} todo={todo} onSaveTodo={onSaveTodo} />
                 )}
                 {!isShown ?
                     <p onClick={onShownAddTodo} className="description-fake-text-area"></p>
@@ -102,7 +92,7 @@ export function TaskDetailsChecklist({ checklist, task }) {
                             onKeyDown={(e) => handleKeyPress(e)}
                         />
                         <div className="desc-btn flex align-cetner ">
-                            <button onClick={() => { onSaveTodo() }} className="btn-add">Add</button>
+                            <button onClick={() => onSaveTodo()} className="btn-add">Add</button>
                             <button onClick={() => setIsShown((prev) => !prev)}
                                 className="btn-cancel">Cancel</button>
                         </div>
