@@ -5,6 +5,10 @@
 
     .label-preview {
         margin-right: 0.25rem;
+
+        &:hover{
+            filter: saturate(85%) brightness(85%);
+        }
     }
 
     .btn-link {

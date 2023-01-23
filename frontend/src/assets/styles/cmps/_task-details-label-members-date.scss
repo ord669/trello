@@ -34,14 +34,31 @@
             input {
                 width: rem(15px);
             }
-
-            :last-child {
-                margin-left: 0.5rem;
-            }
         }
 
         button {
+            display: flex;
+            align-items: center;
+            gap: 4px;
             font-size: 14px;
+            margin-left: 0.5rem;
+
+            .complete{
+                color: $clr6;
+                background-color: #61bd4f;
+                font-size: 12px;
+                padding: 1px 4px;
+                border-radius: 2px;
+            }
+
+            .icon {
+                height: 14px;
+                svg {
+                    width: 14px;
+                    height: 14px;
+                    stroke: none;
+                }
+            }
         }
     }
 }

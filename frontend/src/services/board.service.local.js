@@ -132,6 +132,20 @@ function _createBoard(title, url, isStarred) {
     }
 }
 
+async function getImgsFromUnsplash(val = 'london') {
+    const url = `https://api.unsplash.com/search/photos?query=${val}&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4`
+    // return fetch(url).then((res) => res.json())
+    try {
+        const res = await fetch(url)
+        return res.json()
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+function getColors() {
+    return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91']
+}
 
 function _createBoards() {
     let boards = utilService.loadFromStorage(STORAGE_KEY)
@@ -157,7 +171,9 @@ function _createBoards() {
                     "imgUrl": "https://robohash.org/Or?set=set5"
                 },
                 "style": {
-                    "background": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674336073/photos-thumbnail_3x.8f9c1323c9c16601a9a4_wvh9qh.jpg"
+                    // "bgImgURL": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg",
+                    // "bgColor": ""
+                    "background": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg",
                 },
                 "labels": [
                     {
@@ -207,7 +223,7 @@ function _createBoards() {
                         "_id": "u102",
                         "fullname": "Liad Gola",
                         "username": "Liad Gola",
-                        "imgUrl": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674479066/main_aq4l31.jpg"
+                        "imgUrl": "https://robohash.org/Liad?set=set5"
                     },
                     {
                         "_id": "u103",
@@ -248,6 +264,7 @@ function _createBoards() {
                                     "l104"
                                 ],
                                 "dueDate": 16156215211,
+                                "isDone": false,
                                 "byMember": {
                                     "_id": "u103",
                                     "username": "Oren Sharizad",
@@ -258,11 +275,9 @@ function _createBoards() {
                                     "bgColor": "#26de81",
                                     "img": "#26de81"
                                 },
-                                "attachments": [{
-                                    "_id": "au103",
-                                    "title": "",
+                                "Attachments": {
                                     "file": "https://trello.com/1/cards/63c6c7e1fa702b025564cfd9/attachments/63c6c7f3d750200091545a10/download/3-Types-of-Functional-Testing.png"
-                                }],
+                                },
                                 "activity": [
                                     {
                                         "_id": "a101",
@@ -344,6 +359,7 @@ function _createBoards() {
                                     "l102"
                                 ],
                                 "dueDate": 1589999468411,
+                                "isDone": true,
                                 "byMember": {
                                     "_id": "u102",
                                     "fullname": "Liad Gola",
@@ -366,7 +382,7 @@ function _createBoards() {
                                         }
                                     },
                                     {
-                                        "_id": "a105",
+                                        "_id": "a150",
                                         "txt": "added this card to Backlog-Server",
                                         "createdAt": 1589669468411,
                                         "byMember": {
@@ -393,6 +409,7 @@ function _createBoards() {
                                     "l107"
                                 ],
                                 "dueDate": 1599989488411,
+                                "isDone": true,
                                 "byMember": {
                                     "_id": "u101",
                                     "fullname": "Or Dvir",
@@ -403,11 +420,9 @@ function _createBoards() {
                                     "bgColor": "#26de81",
                                     "img": "https://trello.com/1/cards/63c6cb110f16e00169784602/attachments/63c6ccfdecac0d01f83f1e66/download/lhnymyb97mr83uw34vzv.png"
                                 },
-                                "attachments": [{
-                                    "_id": "au104",
-                                    "title": "",
+                                "Attachments": {
                                     "file": "https://trello.com/1/cards/63c6cb110f16e00169784602/attachments/63c6ccfdecac0d01f83f1e66/download/lhnymyb97mr83uw34vzv.png"
-                                }],
+                                },
                                 "activity": [
                                     {
                                         "_id": "a106",
@@ -440,6 +455,7 @@ function _createBoards() {
                                     "l104"
                                 ],
                                 "dueDate": 1599989488411,
+                                "isDone": false,
                                 "byMember": {
                                     "_id": "u101",
                                     "fullname": "Or Dvir",
@@ -447,11 +463,9 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Or?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": "",
-                                    "img": "https://trello.com/1/cards/63c6cb110f16e00169784602/attachments/63c6ccfdecac0d01f83f1e66/download/lhnymyb97mr83uw34vzv.png"
-
+                                    "bgColor": ""
                                 },
-                                "attachments": [],
+                                "Attachments": {},
                                 "activity": [
                                     {
                                         "_id": "a108",
@@ -490,6 +504,7 @@ function _createBoards() {
                                 ],
                                 "labelIds": [],
                                 "dueDate": null,
+                                "isDone": false,
                                 "byMember": {
                                     "_id": "u102",
                                     "fullname": "Liad Gola",
@@ -497,10 +512,9 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Liad?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": "",
-                                    "img": "https://trello.com/1/cards/63c6cb110f16e00169784602/attachments/63c6ccfdecac0d01f83f1e66/download/lhnymyb97mr83uw34vzv.png"
+                                    "bgColor": ""
                                 },
-                                "attachments": [],
+                                "Attachments": {},
                                 "activity": [],
                                 "groupId": "g102"
                             }
@@ -550,6 +564,7 @@ function _createBoards() {
                                     "l102"
                                 ],
                                 "dueDate": 1689122468411,
+                                "isDone": false,
                                 "byMember": {
                                     "_id": "u102",
                                     "fullname": "Liad Gola",
@@ -627,6 +642,7 @@ function _createBoards() {
                                     "l102"
                                 ],
                                 "dueDate": 1693489488411,
+                                "isDone": true,
                                 "byMember": {
                                     "_id": "u103",
                                     "fullname": "Oren Sharizad",
@@ -636,7 +652,7 @@ function _createBoards() {
                                 "style": {
                                     "bgColor": "blue"
                                 },
-                                "attachments": [],
+                                "Attachments": {},
                                 "activity": [
                                     {
                                         "_id": "a111",
@@ -667,6 +683,7 @@ function _createBoards() {
                                     "l104"
                                 ],
                                 "dueDate": null,
+                                "isDone": false,
                                 "byMember": {
                                     "_id": "u102",
                                     "fullname": "Liad Gola",
@@ -677,11 +694,9 @@ function _createBoards() {
                                     "bgColor": "",
                                     "img": "https://trello.com/1/cards/63c6cabe12d00103d58557be/attachments/63c6cad25bf8c801a3c857e3/download/featured-image-PWA.png"
                                 },
-                                "attachments": [{
-                                    "_id": "au105",
-                                    "title": "",
+                                "Attachments": {
                                     "file": "https://trello.com/1/cards/63c6cabe12d00103d58557be/attachments/63c6cad25bf8c801a3c857e3/download/featured-image-PWA.png"
-                                }],
+                                },
                                 "activity": [],
                                 "groupId": "g103"
                             }
@@ -709,6 +724,7 @@ function _createBoards() {
                                     "l106"
                                 ],
                                 "dueDate": 1612489978560,
+                                "isDone": true,
                                 "byMember": {
                                     "_id": "u102",
                                     "fullname": "Liad Gola",
@@ -762,6 +778,7 @@ function _createBoards() {
                                     "l107"
                                 ],
                                 "dueDate": 1693489488411,
+                                "isDone": false,
                                 "byMember": {
                                     "_id": "u101",
                                     "fullname": "Or Dvir",
@@ -771,7 +788,7 @@ function _createBoards() {
                                 "style": {
                                     "bgColor": "lightgreen"
                                 },
-                                "attachments": [],
+                                "Attachments": {},
                                 "activity": [
                                     {
                                         "_id": "a114",
@@ -803,6 +820,7 @@ function _createBoards() {
                                     "l106"
                                 ],
                                 "dueDate": 1693492445411,
+                                "isDone": false,
                                 "byMember": {
                                     "_id": "u102",
                                     "fullname": "Liad Gola",
@@ -810,7 +828,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Liad?set=set5"
                                 },
                                 "style": {},
-                                "attachments": [],
+                                "Attachments": {},
                                 "activity": [],
                                 "groupId": "g104"
                             },
@@ -826,6 +844,7 @@ function _createBoards() {
                                 ],
                                 "labelIds": [],
                                 "dueDate": null,
+                                "isDone": false,
                                 "byMember": {
                                     "_id": "u101",
                                     "fullname": "Or Dvir",
@@ -836,11 +855,9 @@ function _createBoards() {
                                     "bgColor": "",
                                     "img": "https://trello.com/1/cards/63c6cafd547eff01d743d8f2/attachments/63c6cafd547eff01d743d958/download/Screenshot_2023-01-17_at_18.21.05.png"
                                 },
-                                "attachments": [{
-                                    "_id": "au106",
-                                    "title": "",
+                                "Attachments": {
                                     "file": "https://trello.com/1/cards/63c6cafd547eff01d743d8f2/attachments/63c6cafd547eff01d743d958/download/Screenshot_2023-01-17_at_18.21.05.png"
-                                }],
+                                },
                                 "activity": [
                                     {
                                         "_id": "a115",
@@ -876,6 +893,7 @@ function _createBoards() {
                                 ],
                                 "labelIds": [],
                                 "dueDate": 1612589978560,
+                                "isDone": true,
                                 "byMember": {
                                     "_id": "u102",
                                     "fullname": "Liad Gola",
@@ -931,6 +949,7 @@ function _createBoards() {
                                     "l104"
                                 ],
                                 "dueDate": 1693489988411,
+                                "isDone": false,
                                 "byMember": {
                                     "_id": "u101",
                                     "fullname": "Or Dvir",
@@ -940,7 +959,7 @@ function _createBoards() {
                                 "style": {
                                     "bgColor": "orange"
                                 },
-                                "attachments": [],
+                                "Attachments": {},
                                 "activity": [
                                     {
                                         "_id": "a117",
@@ -1035,17 +1054,15 @@ function _createBoards() {
                                     "l104"
                                 ],
                                 "dueDate": 1693492445411,
+                                "isDone": true,
                                 "byMember": {
                                     "_id": "u102",
                                     "fullname": "Liad Gola",
                                     "username": "Liad Gola",
                                     "imgUrl": "https://robohash.org/Liad?set=set5"
                                 },
-                                "style": {
-                                    "bgColor": "",
-                                    "img": ""
-                                },
-                                "attachments": [],
+                                "style": {},
+                                "Attachments": {},
                                 "activity": [],
                                 "groupId": "g105"
                             },
@@ -1073,6 +1090,7 @@ function _createBoards() {
                                 ],
                                 "labelIds": [],
                                 "dueDate": null,
+                                "isDone": false,
                                 "byMember": {
                                     "_id": "u101",
                                     "fullname": "Or Dvir",
@@ -1082,7 +1100,7 @@ function _createBoards() {
                                 "style": {
                                     "bgColor": "lightblue"
                                 },
-                                "attachments": [],
+                                "Attachments": {},
                                 "activity": [
                                     {
                                         "_id": "a120",
@@ -1123,6 +1141,7 @@ function _createBoards() {
                                 ],
                                 "labelIds": [],
                                 "dueDate": null,
+                                "isDone": false,
                                 "byMember": {
                                     "_id": "u101",
                                     "fullname": "Or Dvir",
@@ -1133,11 +1152,9 @@ function _createBoards() {
                                     "bgColor": "",
                                     "img": "https://trello.com/1/cards/63c6ca7013479602374fc31d/attachments/63c6ca7013479602374fc33e/download/image.png"
                                 },
-                                "attachments": [{
-                                    "_id": "au107",
-                                    "title": "",
+                                "Attachments": {
                                     "file": "https://trello.com/1/cards/63c6ca7013479602374fc31d/attachments/63c6ca7013479602374fc33e/download/image.png"
-                                }],
+                                },
                                 "activity": [
                                     {
                                         "_id": "a121",
@@ -1245,7 +1262,7 @@ function _createBoards() {
                         }
                     },
                     {
-                        "_id": "a106",
+                        "_id": "a505",
                         "txt": "Good job guys",
                         "createdAt": 1299438834,
                         "byMember": {
@@ -1272,17 +1289,4 @@ function _createBoards() {
 }
 
 
-async function getImgsFromUnsplash(val = 'london') {
-    const url = `https://api.unsplash.com/search/photos?query=${val}&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4`
-    // return fetch(url).then((res) => res.json())
-    try {
-        const res = await fetch(url)
-        return res.json()
-    } catch (err) {
-        console.error(err)
-    }
-}
 
-function getColors() {
-    return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91']
-}

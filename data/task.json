@@ -8,6 +8,7 @@
     "memberIds": ["u102"],
     "labelIds": ["l104"],
     "dueDate": 16156215211,
+    "isDone": false,
     "byMember": {
         "_id": "u103",
         "username": "Oren Sharizad",

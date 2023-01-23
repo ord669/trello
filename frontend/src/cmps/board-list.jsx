@@ -1,14 +1,22 @@
 import { useState } from "react"
+import { boardService } from "../services/board.service.local"
+import { showUserMsg } from "../services/event-bus.service"
 import { BoardPreview } from "./board-preview"
 import { CreateBoard } from "./create-board"
 
 export function BoardList({ boards, setBoards, isCreate }) {
     const [isShown, setIsShown] = useState(false)
 
-    function toggleIsStarred(ev, board) {
+    async function toggleIsStarred(ev, board) {
         ev.stopPropagation()
         const boardToSave = { ...board, isStarred: !board.isStarred }
-        setBoards(prevBoards => prevBoards.map(currBoard => currBoard._id === board._id ? boardToSave : currBoard))
+        try {
+            boardService.save(boardToSave)
+            // await boardService.save(boardToSave)   /// maybe not with await
+            setBoards(prevBoards => prevBoards.map(currBoard => currBoard._id === board._id ? boardToSave : currBoard))
+        } catch (err) {
+            showUserMsg('Cannot starred board')
+        }
     }
 
     return (

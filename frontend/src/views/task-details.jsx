@@ -127,7 +127,7 @@ export function TaskDetails() {
                             <LabelList task={task} onSelectLabel={onSelectLabel} />
                         }
                         {!!task?.dueDate &&
-                            <DueDate dueDate={task.dueDate} />
+                            <DueDate dueDate={task.dueDate} task={task}/>
                         }
                     </div>
                     <div className="description-container flex">
