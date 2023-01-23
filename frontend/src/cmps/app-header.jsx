@@ -36,7 +36,7 @@ export function AppHeader() {
         if (bg.includes('https')) {
             try {
                 const color = await utilService.getAvgColorImage(bg)
-                console.log('color : ', color);
+                setColor(color)
             } catch (err) {
                 console.error(err)
             }
