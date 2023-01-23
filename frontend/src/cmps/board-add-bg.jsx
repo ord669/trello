@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from "react"
-import { LoaderIcon } from "../assets/svg/icon-library"
+import { LoaderIcon, ManIcon } from "../assets/svg/icon-library"
 import { boardService } from "../services/board.service.local"
+import { utilService } from "../services/util.service"
 import { saveBoard } from "../store/board/board.action"
 
 export function BoardAddBg({ board, type }) {
     const [imgs, setImgs] = useState([])
     const [colors, setColors] = useState(boardService.getColors())
+    const [imgVal, setImgVal] = useState('london')
+    const setUnsplash = useRef(utilService.debounce(loadImgs))
 
     async function onChangeBoardBg(bg) {
         console.log('bg: ', bg);
@@ -25,11 +28,15 @@ export function BoardAddBg({ board, type }) {
         loadImgs()
     }, [])
 
+    function handleChange({ target }) {
+        const { value } = target
+        setUnsplash.current(value)
+    }
 
-
-    async function loadImgs() {
+    async function loadImgs(val) {
+        console.log('val from babg: ', val);
         try {
-            const unsplashImgs = await boardService.getImgsFromUnsplash()
+            const unsplashImgs = await boardService.getImgsFromUnsplash(val)
             setImgs(unsplashImgs.results)
 
         } catch (err) {
@@ -44,6 +51,12 @@ export function BoardAddBg({ board, type }) {
 
             {type === 'photo' && <div>
                 <h3 className="bsm-title">Photos by Unsplash</h3>
+                <div className="bsm-input">
+                    <input placeholder="Search Photo"
+                        type="text"
+                        onChange={handleChange}
+                    />
+                </div>
                 <div className="photos-container">
                     {imgs.map((img, idx) =>
                         <div onClick={() => onChangeBoardBg(img.urls.full)} key={idx} className="bp-img" style={{ backgroundImage: `url(${img.urls.full})` }} ></div>

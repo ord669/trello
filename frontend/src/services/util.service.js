@@ -12,6 +12,7 @@ export const utilService = {
     getBgIsDarkColorHex,
     formatTime,
     getWindowDimensions,
+    getAvgColorImage
     // clickedOnModal,
 }
 
@@ -93,6 +94,17 @@ function formatTime(sentAt) {
         }
         duration /= division.amount
     }
+}
+
+async function getAvgColorImage(url) {
+    const fac = new FastAverageColor();
+    try {
+        const color = await fac.getColorAsync(url, { algorithm: 'dominant' })
+        return color
+    } catch (err) {
+        console.error(err)
+    }
+
 }
 
 async function getBgUrlIsDark(url) {

@@ -7,6 +7,12 @@
     flex-direction: column;
     background-position: 50%;
     background-size: cover;
+    transition: padding 0.5s;
+
+
+    &.open-menu {
+        padding-left: 260px;
+    }
 
     .group-list {
         display: flex;
@@ -17,7 +23,7 @@
         align-items: flex-start;
         border-radius: 3px;
 
-        >:first-child{
+        >:first-child {
             margin-inline-start: 28px;
         }
 
@@ -46,6 +52,9 @@
         width: 16px;
         background-color: rgba(255, 255, 255, 0.16);
         border-right: .2px solid #DFE1E6;
+        transition: width 0.5s;
+
+
 
 
         .icon-container {
@@ -73,4 +82,6 @@
             }
         }
     }
+
+
 }

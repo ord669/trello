@@ -1,0 +1,12 @@
+.main-side-menu {
+    background-color: #FAFBFC;
+    top: 44px;
+    left: 0;
+    // bottom: 0;
+    z-index: 2;
+    position: fixed;
+    transition: width 0.5s;
+    // transition: all 1s;
+    height: 100vh;
+
+}

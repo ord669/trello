@@ -4,6 +4,7 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'board'
+const STORAGE_IMG_KEY = []
 
 export const boardService = {
     query,
@@ -155,7 +156,7 @@ function _createBoards() {
                     "imgUrl": "https://robohash.org/Or?set=set5"
                 },
                 "style": {
-                    "background": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg"
+                    "background": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674500879/slack-imgs_gyltqa.jpg"
                 },
                 "labels": [
                     {
@@ -1225,8 +1226,8 @@ function _createBoards() {
 }
 
 
-async function getImgsFromUnsplash() {
-    const url = 'https://api.unsplash.com/search/photos?query=london&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4'
+async function getImgsFromUnsplash(val = 'london') {
+    const url = `https://api.unsplash.com/search/photos?query=${val}&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4`
     // return fetch(url).then((res) => res.json())
     try {
         const res = await fetch(url)

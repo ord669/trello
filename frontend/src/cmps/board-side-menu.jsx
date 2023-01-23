@@ -5,13 +5,10 @@ import { BoardAddBg } from "./board-add-bg";
 import { BoardActivity } from "./board-activity";
 
 export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
-    // const [isChangeBg ,setIsChangeBg] = useState(false)
     const [isChangeBg, setIsChangeBg] = useState(false)
     const [isOpenBg, setIsOpenBg] = useState(false)
     const [type, setType] = useState('')
-    const style = {
-        backgroundImage: `url(${board.style.background})`,
-    }
+
 
     function onCloseSideMenu() {
         setIsChangeBg(false)
@@ -24,6 +21,24 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
         setType(type)
     }
 
+    function getBgStyle() {
+        const bg = board.style.background
+        let style
+        if (bg.includes('https')) {
+            style = {
+                backgroundImage: `url(${bg})`
+            }
+        }
+        else {
+            style = {
+                background: bg
+            }
+        }
+        return style
+    }
+
+
+
 
 
     return (
@@ -34,7 +49,7 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
                 <div onClick={() => setIsChangeBg(prev => !prev)} >
                     <h3 className="bsm-title">Menu</h3>
                     <div className="bsm-content">
-                        <div className="bsm-board-bg" style={style}></div>
+                        <div className="bsm-board-bg" style={getBgStyle()}></div>
                         <div>Change background</div>
                     </div>
                 </div>

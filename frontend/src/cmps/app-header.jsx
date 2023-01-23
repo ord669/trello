@@ -2,14 +2,15 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 // import { login, logout, signup } from '../store/user.actions.js'
 // import { LoginSignup } from './login-signup.jsx'
-import { ArrowDownIcon, BellIcon, BoardIcon } from '../assets/svg/icon-library'
+import { ArrowDownIcon, BellIcon, BoardIcon, LoaderIcon } from '../assets/svg/icon-library'
 import { useEffect, useState } from 'react'
 import { CreateBoard } from './create-board'
 import { BoardNotification } from './board-notifiaction'
 import { BoardRecent } from './board-recent'
+import tinycolor from 'tinycolor2'
+import { utilService } from '../services/util.service'
 
 export function AppHeader() {
-    // const user = useSelector(storeState => storeState.userModule.user)
     const location = useLocation().pathname
     const navigate = useNavigate()
     const [isHome, setIsHome] = useState(false)
@@ -17,42 +18,52 @@ export function AppHeader() {
     const [isStarred, setIsStarred] = useState(false)
     const [isCreateBoard, setIsCreateBoard] = useState(false)
     const [isNotification, setIsNotification] = useState(false)
+    const { board } = useSelector(storeState => storeState.boardModule)
+    const [color, setColor] = useState('')
+
+
 
     useEffect(() => {
+        setAvgColor()
         if (location.length > 1) setIsHome(false)
         else setIsHome(true)
     }, [location])
 
-    // async function onLogin(credentials) {
-    //     try {
-    //         const user = await login(credentials)
-    //         showSuccessMsg(`Welcome: ${user.fullname}`)
-    //     } catch (err) {
-    //         showErrorMsg('Cannot login')
-    //     }
-    // }
-    // async function onSignup(credentials) {
-    //     try {
-    //         const user = await signup(credentials)
-    //         showSuccessMsg(`Welcome new user: ${user.fullname}`)
-    //     } catch (err) {
-    //         showErrorMsg('Cannot signup')
-    //     }
-    // }
-    // async function onLogout() {
-    //     try {
-    //         await logout()
-    //         showSuccessMsg(`Bye now`)
-    //     } catch (err) {
-    //         showErrorMsg('Cannot logout')
-    //     }
-    // }
 
+    async function setAvgColor() {
+        const color = await utilService.getAvgColorImage(board.style.background)
+        setColor(color)
+    }
+
+    function darkenHexColor(hexColor, amount = 20) {
+        let color = tinycolor(hexColor)
+        let darkerColor = color.darken(amount).toHexString()
+        return darkerColor
+    }
+
+    function getBgStyle() {
+        const bg = board.style.background
+        let style
+        if (bg.includes('https')) {
+            style = {
+                background: color.hex
+
+            }
+        }
+        else {
+            style = {
+                background: darkenHexColor(bg),
+            }
+        }
+        return style
+    }
+
+    // if (!color || !board) return <div className='loader'><LoaderIcon /></div>
     return (
         <section className={`${isHome ? 'home-header' : 'app-header'} full`}>
 
             {!isHome &&
-                <header className='app-header '>
+                <header style={getBgStyle()} className='app-header '>
                     <div className='flex align-center' >
                         <div className='header-logo flex align-center'>
                             <BoardIcon />
@@ -89,7 +100,7 @@ export function AppHeader() {
                     </div>
                     <div>
                         <button onClick={() => navigate('/login')} className='btn-login'>Log in</button>
-                        <button className='btn-get-trello'>Get Trello for free</button>
+                        <button onClick={() => navigate('/board')} className='btn-get-trello'>Get Trello for free</button>
                     </div>
                 </div>
             </header >
