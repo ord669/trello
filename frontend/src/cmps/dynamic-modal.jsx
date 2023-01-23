@@ -3,6 +3,8 @@ import { CloseIcon } from "../assets/svg/icon-library";
 import { utilService } from "../services/util.service";
 import { closeDynamicModal, updateDynamicModalPos } from "../store/modal/modal.action";
 import { BoardStarred } from "./board-starred";
+import { CheckListModal } from "./task/task-modals/check-list/check-list-modal";
+import { CoverModal } from "./task/task-modals/cover/cover-modal";
 import { LabelsModal } from "./task/task-modals/labels/labels-modal";
 import { MembersModal } from "./task/task-modals/members/members-modal";
 
@@ -27,9 +29,9 @@ export function DynamicModal() {
             case 'members':
                 return <MembersModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
             case 'checklist':
-                return <MembersModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
+                return <CheckListModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
             case 'cover':
-                return <MembersModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
+                return <CoverModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
             default:
                 break;
         }

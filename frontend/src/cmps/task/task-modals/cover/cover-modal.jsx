@@ -1,8 +1,6 @@
 import { useForm } from "../../../../customHooks/useForm";
 
-import { ModalMembersList } from "./members-modal-list";
-
-export function MembersModal({ board, currTask, getMembers, onSelectMember }) {
+export function CoverModal({ board, currTask, getMembers, onSelectMember }) {
 
     const [filterBy, setFilterBy, handleChange] = useForm({ txt: '' })
 
