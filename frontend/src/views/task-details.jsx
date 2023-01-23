@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useParams, useNavigate } from "react-router-dom"
-import { ActivityIcon, ChecklistIcon, CloseIcon, DescriptionIcon, PlusIcon, TitleIcon } from "../assets/svg/icon-library"
-import { LabelList } from "../cmps/task/task-details/task-details-labels-list"
+import { DescriptionIcon } from "../assets/svg/icon-library"
+import { LabelList } from "../cmps/task/task-details/label-list"
 import { MembersList } from "../cmps/task/task-details/task-details-members-list"
 import { ActivityIndex } from "../cmps/task/task-details/activity-index"
 import { TaskDetailsChecklist } from "../cmps/task/task-details/task-details-checklist"
 import { TaskDetailsDescription } from "../cmps/task/task-details/task-details-description"
-import { TaskDetailsLabels } from "../cmps/task/task-details/task-details-labels"
+import { LabelPreview } from "../cmps/task/task-details/label-preview"
 import { TaskDetailsSideMenu } from "../cmps/task/task-details/task-details-side-menu"
 import { UserAvatarIcon } from "../cmps/user-avatar-icon"
 import { useForm } from "../customHooks/useForm"
@@ -20,7 +20,6 @@ import { TaskDetailsAttachment } from "../cmps/task/task-details/task-details-at
 import { setTaskToEdit } from "../store/task/task.action"
 
 export function TaskDetails() {
-
     const { board } = useSelector(storeState => storeState.boardModule)
     const { taskId, groupId } = useParams()
     const [group, setGroup] = useState({})
@@ -32,10 +31,6 @@ export function TaskDetails() {
         if (!board.groups.length) return
         loadTask()
     }, [board])
-
-    function onSaveTask() {
-        saveTask(task)
-    }
 
     function loadTask() {
         const currGroup = board.groups.find(group => group._id === groupId)
@@ -50,20 +45,20 @@ export function TaskDetails() {
         navigate(`/board/${board._id}`)
     }
 
-    function getMembers(currBoard, currTask) {
+    function getMembers() {
         let members = board.members.filter(member => task.memberIds.indexOf(member._id) !== -1)
         return members
     }
 
     function onUpdateHeadline(ev) {
         handleChange(ev)
-        onSaveTask(task)
+        saveTask(task)
     }
 
     function onSelectMember(memberId) {
         toggleMemberAssigned(memberId, groupId, taskId)
     }
-    function onSelectLable(labelId) {
+    function onSelectLabel(labelId) {
         toggleTaskLabel(labelId, groupId, taskId)
     }
 
@@ -129,7 +124,7 @@ export function TaskDetails() {
                             <MembersList getMembers={getMembers} board={board} task={task} onSelectMember={onSelectMember} />
                         }
                         {!!task?.labelIds?.length &&
-                            <LabelList task={task} onSelectLable={onSelectLable} />
+                            <LabelList task={task} onSelectLabel={onSelectLabel} />
                         }
                         {!!task?.dueDate &&
                             <DueDate dueDate={task.dueDate} />
@@ -137,7 +132,7 @@ export function TaskDetails() {
                     </div>
                     <div className="description-container flex">
                         <DescriptionIcon className='icon-title' />
-                        <TaskDetailsDescription handleChange={handleChange} description={task.description} onSaveTask={onSaveTask} />
+                        <TaskDetailsDescription handleChange={handleChange} description={task.description} />
                     </div>
                     {task?.checklists &&
                         <div className="checklists-container ">
@@ -164,9 +159,9 @@ export function TaskDetails() {
                     </div>
                     <div>
                         {board.labels.map((label, idx) => <button onClick={() => {
-                            onSelectLable(label._id)
+                            onSelectLabel(label._id)
                         }} key={idx}>
-                            <TaskDetailsLabels labelId={label._id} />
+                            <LabelPreview labelId={label._id} />
                         </button>)}
                     </div>
                     <div>
@@ -187,7 +182,7 @@ export function TaskDetails() {
                     onAddCheckList={onAddCheckList}
                     getMembers={getMembers}
                     onSelectMember={onSelectMember}
-                    onSelectLable={onSelectLable}
+                    onSelectLabel={onSelectLabel}
                     onRemoveTask={onRemoveTask}
                 />
             </div>
