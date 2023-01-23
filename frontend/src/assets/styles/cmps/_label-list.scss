@@ -1,0 +1,21 @@
+.label-list {
+    display: flex;
+    margin-top: 0.3rem;
+    margin-right: 1rem;
+
+    .label-preview {
+        margin-right: 0.25rem;
+    }
+
+    .btn-link {
+        width: 32px;
+        padding: 8px;
+
+        svg,
+        path {
+            height: 16px;
+            width: 16px;
+            stroke: none;
+        }
+    }
+}
