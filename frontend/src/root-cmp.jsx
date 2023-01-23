@@ -14,20 +14,9 @@ import { closeDynamicModal, updateDynamicModalPos } from "./store/modal/modal.ac
 import { MembersModal } from "./cmps/task/task-modals/members/members-modal"
 import { Provider } from 'react-redux'
 import { store } from './store/store'
+import { LoginSignup } from "./cmps/login-signup"
 
 export function App() {
-
-    // const { modalPos } = useSelector(storeState => storeState.modalModule)
-
-    // useEffect(() => {
-    //     window.addEventListener('click', (event) => {
-    //         console.log('modalPos:', modalPos)
-    //         console.log('utilService.clickedOnModal({ x: event.x, y: event.y }, { borderLeft: modalPos.left, borderRight: modalPos.right, borderTop: modalPos.top, borderBottom: modalPos.bottom }): ', utilService.clickedOnModal({ x: event.x, y: event.y }, { borderLeft: modalPos.left, borderRight: modalPos.right, borderTop: modalPos.top, borderBottom: modalPos.bottom }));
-    //         if (utilService.clickedOnModal({ x: event.x, y: event.y }, { borderLeft: modalPos.left, borderRight: modalPos.right, borderTop: modalPos.top, borderBottom: modalPos.bottom })) return
-    //         closeDynamicModal()
-    //     })
-
-    // }, [modalPos])
 
     return (
         <Provider store={store}>
