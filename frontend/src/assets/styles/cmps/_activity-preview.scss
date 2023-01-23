@@ -1,0 +1,45 @@
+.activity-preview {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+
+    .activity-img {
+        cursor: pointer;
+        min-height: 32px;
+        min-width: 32px;
+        border-radius: 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #ebecef;
+        align-self: start;
+    }
+
+    .activity-content {
+        width: 100%;
+        text-align: start;
+    }
+
+    .activity-fullname {
+        color: $clr2;
+        padding-right: 5px;
+        font-weight: bold;
+    }
+
+    .activity-txt {
+        font-size: 12px;
+        font-weight: normal;
+    }
+
+    .activity-task {
+        font-size: 12px;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .activity-time {
+        font-size: 12px;
+    }
+}

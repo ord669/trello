@@ -1,12 +1,13 @@
 import { useState } from "react"
 import { ActivityIcon } from "../../../assets/svg/icon-library"
 import { AddComment } from "./add-comment"
+import { CommentList } from "./comment-list"
 
-export function ActivityIndex() {
+export function ActivityIndex({ activities }) {
     const [isShown, setIsShown] = useState(false)
 
     return (
-        <section className="activity-container">
+        <section className="activity-index">
             <section className="activity-header">
                 <ActivityIcon className="icon-title" />
                 <section>
@@ -15,6 +16,7 @@ export function ActivityIndex() {
                 </section>
             </section>
             <AddComment />
+            <CommentList activities={activities} />
         </section>
     )
 }

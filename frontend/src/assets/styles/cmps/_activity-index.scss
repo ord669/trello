@@ -1,4 +1,4 @@
-.activity-container {
+.activity-index {
     >* {
         display: flex;
     }
@@ -20,6 +20,8 @@
     }
 
     .add-comment {
+        margin-bottom: 12px;
+
         .user-avatar-icon {
             position: relative;
             right: 5px;
@@ -28,4 +30,14 @@
             margin-inline-end: 4px;
         }
     }
+
+    // .comment-list {
+        .activity-preview {
+            gap: 4px;
+            .activity-img {
+                position: relative;
+                right: 5px;
+            }
+        }
+    // }
 }

@@ -151,7 +151,7 @@ export function TaskDetails() {
                                 <TaskDetailsAttachment key={attachment._id} task={task} />
                             )}
                         </div>}
-                    <ActivityIndex />
+                    <ActivityIndex activities={task.activity} />
                     {/* TODO////forom here down dev only//// */}
                     <h2>Froom Here Functionality Only!!!</h2>
                     <div>
