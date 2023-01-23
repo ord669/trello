@@ -31,13 +31,18 @@
         }
     }
 
-    // .comment-list {
+    .comment-list {
+        flex-direction: column;
+
         .activity-preview {
+            height: 56px;
             gap: 4px;
+
             .activity-img {
+                align-self: center;
                 position: relative;
                 right: 5px;
             }
         }
-    // }
+    }
 }

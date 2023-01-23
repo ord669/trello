@@ -1015,8 +1015,84 @@
                 "fullname": "Or Dvir",
                 "imgUrl": "https://robohash.org/Or?set=set5"
             },
+            "type": "act",
             "task": {
                 "_id": "c101",
+                "title": "Replace Logo"
+            }
+        },
+        {
+            "_id": "a102",
+            "txt": "Changed Color",
+            "createdAt": 154514,
+            "byMember": {
+                "_id": "u101",
+                "fullname": "Or Dvir",
+                "imgUrl": "https://robohash.org/Or?set=set5"
+            },
+            "type": "act",
+            "task": {
+                "_id": "c101",
+                "title": "Replace Logo"
+            }
+        },
+        {
+            "_id": "a103",
+            "txt": "Changed Color",
+            "createdAt": 154514,
+            "byMember": {
+                "_id": "u101",
+                "fullname": "Or Dvir",
+                "imgUrl": "https://robohash.org/Or?set=set5"
+            },
+            "type": "act",
+            "task": {
+                "_id": "c101",
+                "title": "Replace Logo"
+            }
+        },
+        {
+            "_id": "a104",
+            "txt": "Changed Color",
+            "createdAt": 154514,
+            "byMember": {
+                "_id": "u101",
+                "fullname": "Or Dvir",
+                "imgUrl": "https://robohash.org/Or?set=set5"
+            },
+            "type": "act",
+            "task": {
+                "_id": "c102",
+                "title": "Replace Logo"
+            }
+        },
+        {
+            "_id": "a105",
+            "txt": "Changed Color",
+            "createdAt": 154514,
+            "byMember": {
+                "_id": "u101",
+                "fullname": "Or Dvir",
+                "imgUrl": "https://robohash.org/Or?set=set5"
+            },
+            "type": "act",
+            "task": {
+                "_id": "c102",
+                "title": "Replace Logo"
+            }
+        },
+        {
+            "_id": "a105",
+            "txt": "Good job guys",
+            "createdAt": 1299438834,
+            "byMember": {
+                "_id": "u101",
+                "fullname": "Or Dvir",
+                "imgUrl": "https://robohash.org/Or?set=set5"
+            },
+            "type": "comment",
+            "task": {
+                "_id": "c102",
                 "title": "Replace Logo"
             }
         }

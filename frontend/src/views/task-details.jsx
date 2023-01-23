@@ -151,7 +151,9 @@ export function TaskDetails() {
                                 <TaskDetailsAttachment key={attachment._id} task={task} />
                             )}
                         </div>}
-                    <ActivityIndex activities={task.activity} />
+                    <ActivityIndex board={board} currTask={task} />
+
+
                     {/* TODO////forom here down dev only//// */}
                     <h2>Froom Here Functionality Only!!!</h2>
                     <div>
