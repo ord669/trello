@@ -26,6 +26,10 @@ export function DynamicModal() {
                 return <LabelsModal board={board} currTask={currTask} onSelectLable={func.onSelectLable} />
             case 'members':
                 return <MembersModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
+            case 'checklist':
+                return <MembersModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
+            case 'cover':
+                return <MembersModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
             default:
                 break;
         }
