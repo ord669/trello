@@ -4,16 +4,15 @@ import { EmptyStarIcon, FullStarIcon } from "../assets/svg/icon-library"
 export function BoardPreview({ board, toggleIsStarred }) {
     const navigate = useNavigate()
 
-    function setStyle(BG) {
-
+    function setStyle(background) {
         let style
-        if (BG.includes('https')) {
+        if (background.includes('https')) {
             style = {
-                backgroundImage: `url(${BG})`
+                backgroundImage: `url(${background})`
             }
         } else {
             style = {
-                background: BG
+                background
             }
         }
         return style
@@ -23,7 +22,8 @@ export function BoardPreview({ board, toggleIsStarred }) {
             style={setStyle(board.style.background)}>
             <span className="board-hover">
                 <h3>{board.title}</h3>
-                <section className={`board-star ${board.isStarred ? 'show' : ''}`} onClick={(ev) => toggleIsStarred(ev, board)}>
+                <section className={`board-star ${board.isStarred ? 'show' : ''}`}
+                    onClick={(ev) => toggleIsStarred(ev, board)}>
                     {board.isStarred ? <FullStarIcon /> : <EmptyStarIcon />}
                 </section>
             </span>

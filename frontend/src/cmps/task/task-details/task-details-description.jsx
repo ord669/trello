@@ -1,16 +1,17 @@
 import { useState } from "react"
+import { saveTask } from "../../../store/board/board.action"
 
-export function TaskDetailsDescription({ description, handleChange, onSaveTask }) {
+export function TaskDetailsDescription({ description, handleChange }) {
     const [isShown, setIsShown] = useState(false)
 
     function onShownDesc() {
         setIsShown(prev => !prev)
 
     }
-    function handleKeyPress(e) {
-        console.log('e: ', e)
-        if (e.keyCode === 13) {
-            e.target.blur()
+    function handleKeyPress(ev) {
+        console.log('ev: ', ev)
+        if (ev.keyCode === 13) {
+            ev.target.blur()
             //Write you validation logic here
         }
     }
@@ -28,15 +29,15 @@ export function TaskDetailsDescription({ description, handleChange, onSaveTask }
                             defaultValue={description.length > 0 ? description : ''}
                             placeholder={description || 'add a more detailed description…'}
                             onChange={handleChange}
-                            onKeyDown={(e) => handleKeyPress(e)}
-                            onBlur={() => { setIsShown((prev) => !prev) }}
+                            onKeyDown={(ev) => handleKeyPress(ev)}
+                            onBlur={() => setIsShown((prev) => !prev)}
                         />
                         <div className="desc-btn flex align-cetner ">
                             <button onClick={() => {
-                                onSaveTask()
+                                saveTask()
                                 setIsShown((prev) => !prev)
                             }} className="btn-add">Save</button>
-                            <button onClick={() => setIsShown((prev) => !prev)}
+                            <button onClick={() => setIsShown(prev => !prev)}
                                 className="btn-cancel">Cancel</button>
                         </div>
                     </div>

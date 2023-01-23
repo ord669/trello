@@ -1,0 +1,107 @@
+.covers-modal-header {
+    margin: 4px 0 12px;
+    width: 100%;
+
+}
+
+.modal-covers-list-container {
+    margin-top: 12px;
+
+    h4 {
+        color: #5e6c84;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 16px;
+        margin: 16px 0 8px;
+    }
+
+    .cover-container {
+        cursor: pointer;
+        padding: rem(4px);
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        &:hover {
+            background-color: #091e420a;
+        }
+
+        .cover-container-text-container {
+            display: flex;
+        }
+
+        p {
+            margin-right: 0.5rem;
+        }
+
+        button {
+            position: absolute;
+            right: rem(15px);
+            font-size: 10px;
+        }
+
+        .display-none {
+            display: none;
+        }
+    }
+
+    .modal-cover-icon {
+        margin-right: rem(8px);
+    }
+}
+
+.modal-covers-photos-container {
+    -webkit-transform: translate3d(0, 0, 0);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 4px;
+    margin: 0 -4px;
+    overflow-x: hidden;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    .bp-img {
+        height: 48px;
+        width: 88px;
+        background-size: cover;
+        background-position: center center;
+        border-radius: 8px;
+
+        cursor: pointer;
+        background-color: rgb(12, 4, 4);
+
+        &:active {
+            box-shadow: 0 0 0 2px var(--ds-border-inverse, #FFFFFF), 0 0 0 4px var(--ds-border-brand, #0079BF);
+        }
+
+        &:hover {
+            opacity: .7;
+        }
+
+    }
+
+}
+
+.modal-covers-colors-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 4px;
+    margin: 0 -4px;
+    overflow-x: hidden;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+    .bp-color {
+        margin: 0;
+        border-radius: 3px;
+        height: 72px;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        box-shadow: none;
+        width: 50px;
+        height: 32px;
+        cursor: pointer;
+    }
+}

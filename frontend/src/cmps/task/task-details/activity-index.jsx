@@ -6,7 +6,7 @@ import { AddComment } from "./add-comment"
 import { CommentList } from "./comment-list"
 
 export function ActivityIndex({ board, currTask }) {
-    const [isShown, setIsShown] = useState(false)
+    const [isShown, setIsShown] = useState(true)
 
     function saveComment(comment) {
         comment.task = { _id: currTask._id, title: currTask.title }

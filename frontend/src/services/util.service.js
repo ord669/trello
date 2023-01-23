@@ -11,8 +11,9 @@ export const utilService = {
     getBgUrlIsDark,
     getBgIsDarkColorHex,
     formatTime,
+    formatDate,
     getWindowDimensions,
-    getAvgColorImage
+    getAvgColorImage,
     // clickedOnModal,
 }
 
@@ -67,6 +68,16 @@ function saveToStorage(key, value) {
 function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
+}
+
+function formatDate(time) {
+    var options = {
+        year: 'numeric', month: 'short', day: 'numeric',
+        hour: 'numeric', minute: 'numeric',
+        // hour12: true,
+    }
+
+    return new Intl.DateTimeFormat('en', options).format(time)
 }
 
 function formatTime(sentAt) {

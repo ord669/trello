@@ -101,6 +101,7 @@
                         "l104"
                     ],
                     "dueDate": 16156215211,
+                    "isDone": false,
                     "byMember": {
                         "_id": "u103",
                         "username": "Oren Sharizad",
@@ -195,6 +196,7 @@
                         "l102"
                     ],
                     "dueDate": 1589999468411,
+                    "isDone": true,
                     "byMember": {
                         "_id": "u102",
                         "fullname": "Liad Gola",
@@ -244,6 +246,7 @@
                         "l107"
                     ],
                     "dueDate": 1599989488411,
+                    "isDone": true,
                     "byMember": {
                         "_id": "u101",
                         "fullname": "Or Dvir",
@@ -289,6 +292,7 @@
                         "l104"
                     ],
                     "dueDate": 1599989488411,
+                    "isDone": false,
                     "byMember": {
                         "_id": "u101",
                         "fullname": "Or Dvir",
@@ -337,6 +341,7 @@
                     ],
                     "labelIds": [],
                     "dueDate": null,
+                    "isDone": false,
                     "byMember": {
                         "_id": "u102",
                         "fullname": "Liad Gola",
@@ -396,6 +401,7 @@
                         "l102"
                     ],
                     "dueDate": 1689122468411,
+                    "isDone": false,
                     "byMember": {
                         "_id": "u102",
                         "fullname": "Liad Gola",
@@ -473,6 +479,7 @@
                         "l102"
                     ],
                     "dueDate": 1693489488411,
+                    "isDone": true,
                     "byMember": {
                         "_id": "u103",
                         "fullname": "Oren Sharizad",
@@ -513,6 +520,7 @@
                         "l104"
                     ],
                     "dueDate": null,
+                    "isDone": false,
                     "byMember": {
                         "_id": "u102",
                         "fullname": "Liad Gola",
@@ -553,6 +561,7 @@
                         "l106"
                     ],
                     "dueDate": 1612489978560,
+                    "isDone": true,
                     "byMember": {
                         "_id": "u102",
                         "fullname": "Liad Gola",
@@ -606,6 +615,7 @@
                         "l107"
                     ],
                     "dueDate": 1693489488411,
+                    "isDone": false,
                     "byMember": {
                         "_id": "u101",
                         "fullname": "Or Dvir",
@@ -647,6 +657,7 @@
                         "l106"
                     ],
                     "dueDate": 1693492445411,
+                    "isDone": false,
                     "byMember": {
                         "_id": "u102",
                         "fullname": "Liad Gola",
@@ -670,6 +681,7 @@
                     ],
                     "labelIds": [],
                     "dueDate": null,
+                    "isDone": false,
                     "byMember": {
                         "_id": "u101",
                         "fullname": "Or Dvir",
@@ -718,6 +730,7 @@
                     ],
                     "labelIds": [],
                     "dueDate": 1612589978560,
+                    "isDone": true,
                     "byMember": {
                         "_id": "u102",
                         "fullname": "Liad Gola",
@@ -773,6 +786,7 @@
                         "l104"
                     ],
                     "dueDate": 1693489988411,
+                    "isDone": false,
                     "byMember": {
                         "_id": "u101",
                         "fullname": "Or Dvir",
@@ -877,6 +891,7 @@
                         "l104"
                     ],
                     "dueDate": 1693492445411,
+                    "isDone": true,
                     "byMember": {
                         "_id": "u102",
                         "fullname": "Liad Gola",
@@ -912,6 +927,7 @@
                     ],
                     "labelIds": [],
                     "dueDate": null,
+                    "isDone": false,
                     "byMember": {
                         "_id": "u101",
                         "fullname": "Or Dvir",
@@ -962,6 +978,7 @@
                     ],
                     "labelIds": [],
                     "dueDate": null,
+                    "isDone": false,
                     "byMember": {
                         "_id": "u101",
                         "fullname": "Or Dvir",
