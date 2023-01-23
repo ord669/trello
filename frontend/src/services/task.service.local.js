@@ -7,6 +7,7 @@ export const taskService = {
     createChecklists,
     getEmptyTodo,
     getEmptyComment,
+    getEmptyChecklist,
 }
 
 function setTaskInBoard() {
@@ -31,6 +32,15 @@ function createChecklists(title = 'checklists', todoTitle = 'Write Your Todo') {
     }
 }
 
+function getEmptyChecklist() {
+    return {
+        "_id": utilService.makeId(),
+        "title": "Checklist",
+        "todos": [
+            getEmptyTodo()
+        ]
+    }
+}
 function getEmptyTodo() {
     return {
         "_id": utilService.makeId(),

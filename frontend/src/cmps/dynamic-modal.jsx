@@ -22,13 +22,12 @@ export function DynamicModal() {
     const clickedElemntHeight = modalPos.height
 
     function DynamicModalContent({ type, func }) {
-
         switch (type) {
             case 'labels':
                 return <LabelsModal board={board} currTask={currTask} onSelectLable={func.onSelectLable} />
             case 'members':
                 return <MembersModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
-            case 'checklist':
+            case 'add checklist':
                 return <CheckListModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
             case 'cover':
                 return <CoverModal board={board} currTask={currTask} onCoverChangeBg={func.onCoverChangeBg} />
@@ -77,7 +76,7 @@ export function DynamicModal() {
     return (
         <section style={renderPos()} className='dynamic-modal-container'>
             <div className="dynamic-modal-header">
-                <div onClick={() => { closeDynamicModal() }} className="dynamic-modal-header-close-icon">
+                <div onClick={() => closeDynamicModal() } className="dynamic-modal-header-close-icon">
                     <CloseIcon />
                 </div>
                 <span className="dynamic-modal-header-title">{modalDetails.name}</span>

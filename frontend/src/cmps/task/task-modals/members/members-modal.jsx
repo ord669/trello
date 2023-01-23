@@ -8,8 +8,13 @@ export function MembersModal({ board, currTask, getMembers, onSelectMember }) {
 
     return (
         <section className='members-modal-container'>
-            <div className="members-modal-header">
-                <input onChange={handleChange} type="text" name="txt" placeholder="Search members" />
+            <div className="modal-header">
+                <input 
+                type="text" 
+                name="txt" 
+                autoFocus
+                onChange={handleChange} 
+                placeholder="Search members" />
             </div>
             <ModalMembersList filterBy={filterBy} board={board} currTask={currTask} getMembers={getMembers} onSelectMember={onSelectMember} />
         </section>

@@ -1,7 +1,7 @@
 import { PenIcon } from "../../../../assets/svg/icon-library"
 import { LabelPreview } from "../labels/label-modal-preview"
 
-export function LabelsModalList({ filterBy, board, currTask, onSelectLable }) {
+export function LabelsModalList({ filterBy, board, currTask, onSelectLabel }) {
 
     function filteredLabels(filterBy) {
         let filteredLabels = [...board.labels]
@@ -23,7 +23,7 @@ export function LabelsModalList({ filterBy, board, currTask, onSelectLable }) {
 
                     <div
                         className="label-container"
-                        onClick={() => { onSelectLable(label._id) }}
+                        onClick={() => { onSelectLabel(label._id) }}
                         key={label._id}>
                         <input type="checkbox" onChange={() => { }} checked={checkForLabelIncluded(label._id)} />
                         <LabelPreview label={label} />

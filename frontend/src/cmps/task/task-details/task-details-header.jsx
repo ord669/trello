@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { CloseIcon, CoverIcon, TaskTitleIcon } from "../../../assets/svg/icon-library"
-import { openDynamicModal } from "../../../store/modal/modal.action"
+import { closeDynamicModal, openDynamicModal } from "../../../store/modal/modal.action"
 import { DetilsTitle } from "./task-details-title"
 
 export function DetailsHeader({ onUpdateHeadline, task, group, boardId, onCoverChangeBg }) {
@@ -8,9 +8,12 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId, onCoverC
     let background
     let showImgBg
 
-    console.log('task.style.background: ', task.style.background);
+    function onCloseTask(){
+        closeDynamicModal()
+        navigate(`/board/${boardId}`)
+    }
+
     if (!task.style.background.includes('https')) {
-        console.log('in:')
         background = {
             backgroundColor: `${task.style.background}`,
             minHeight: "116px",
@@ -34,7 +37,7 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId, onCoverC
     return (
         <section className='header-title-container'>
             <div className="image-cover-container">
-                <button onClick={() => navigate(`/board/${boardId}`)}
+                <button onClick={onCloseTask}
                     className="btn details-close-btn"><CloseIcon />
                 </button>
                 {showImgBg && <div style={background} className="task-details-cover"></div>}

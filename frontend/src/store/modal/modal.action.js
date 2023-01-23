@@ -10,28 +10,30 @@ import { OPEN_MODAL, CLOSE_MODAL, UPDATE_POS, UPDATE_ELEMENT_SIZE, UPDATE_CLICKE
 // }
 export async function openDynamicModal({ ev, name, func }) {
     const { target } = ev
-    closeDynamicModal()
+    // closeDynamicModal()
     // GET Element POS
     updateDynamicModalPos(target.getBoundingClientRect())
     updateModalType({ name, func })
 
     // GET ELEMENT SIZE
-    store.dispatch({ type: CLOSE_MODAL, status: false })
-    store.dispatch({ type: OPEN_MODAL, status: true })
+    store.dispatch({ type: CLOSE_MODAL })
+    store.dispatch({ type: OPEN_MODAL })
 }
 
 export async function closeDynamicModal() {
-    store.dispatch({ type: CLOSE_MODAL, status: false })
+    console.log('in');
+    store.dispatch({ type: CLOSE_MODAL })
 }
-export function updateDynamicModalPos(pos) {
 
+export function updateDynamicModalPos(pos) {
     store.dispatch({ type: UPDATE_MODAL_POS, pos })
 }
+
 export function updateClickedElementSize(size) {
     store.dispatch({ type: UPDATE_ELEMENT_SIZE, size })
 }
-export function updateModalType(element) {
 
+export function updateModalType(element) {
     store.dispatch({ type: UPDATE_MODAL_TYPE, element })
 }
 // export function updateClickedPos(clickedPos) {
