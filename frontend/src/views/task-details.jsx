@@ -17,6 +17,7 @@ import { DueDate } from "../cmps/task/task-details/task-details-due-date"
 import { groupService } from "../services/group.service.local"
 import { ImgUploader } from "../cmps/img-uploader"
 import { TaskDetailsAttachment } from "../cmps/task/task-details/task-details-attachment"
+import { setTaskToEdit } from "../store/task/task.action"
 
 export function TaskDetails() {
 
@@ -41,6 +42,7 @@ export function TaskDetails() {
         const currTask = currGroup.tasks.find(task => task._id === taskId)
         setTask(currTask)
         setGroup(currGroup)
+        setTaskToEdit(currTask)
     }
 
     function onRemoveTask() {
@@ -151,7 +153,7 @@ export function TaskDetails() {
                         </div>}
                     <ActivityIndex />
                     {/* TODO////forom here down dev only//// */}
-                    <h2>From Here Functionality Only!!!</h2>
+                    <h2>Froom Here Functionality Only!!!</h2>
                     <div>
                         {board.members.map((member, idx) =>
                             <button onClick={() => onSelectMember(member._id)} key={idx}>
