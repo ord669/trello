@@ -31,11 +31,24 @@ export function AppHeader() {
 
 
     async function setAvgColor() {
-        const color = await utilService.getAvgColorImage(board.style.background)
-        setColor(color)
+        const bg = board.style.background
+
+        if (bg.includes('https')) {
+            try {
+                const color = await utilService.getAvgColorImage(bg)
+                console.log('color : ', color);
+            } catch (err) {
+                console.error(err)
+            }
+        }
+        else {
+            const color = bg
+            setColor(color)
+        }
+
     }
 
-    function darkenHexColor(hexColor, amount = 20) {
+    function darkenHexColor(hexColor, amount = 5) {
         let color = tinycolor(hexColor)
         let darkerColor = color.darken(amount).toHexString()
         return darkerColor
@@ -44,7 +57,15 @@ export function AppHeader() {
     function getBgStyle() {
         const bg = board.style.background
         let style
-        if (bg.includes('https')) {
+        if (location.length === 6) {
+            console.log('location:', location)
+            style = {
+                background: "#026AA7"
+            }
+        }
+
+
+        else if (bg.includes('https')) {
             style = {
                 background: color.hex
 
