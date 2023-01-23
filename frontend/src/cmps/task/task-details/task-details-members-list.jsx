@@ -1,12 +1,12 @@
 import { PlusIcon } from "../../../assets/svg/icon-library"
 import { UserAvatarIcon } from "../../user-avatar-icon"
 
-export function MembersList({ getMembers, onSelectMember }) {
+export function MembersList({ board, task, getMembers, onSelectMember }) {
     return (
         <section className='members-List'>
             <p>Members</p>
             <div className="members-icons-container  ">
-                {getMembers().map((member, idx) =>
+                {getMembers(board, task).map((member, idx) =>
                     <div onClick={() => {
                         onSelectMember(member._id)
                     }} key={idx}>
