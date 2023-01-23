@@ -4,6 +4,9 @@ textarea {
     color: $clr7;
     font-family: inherit;
 }
+textarea{
+    overflow-wrap: break-word;
+}
 
 .edit-title-input {
     border: none;
