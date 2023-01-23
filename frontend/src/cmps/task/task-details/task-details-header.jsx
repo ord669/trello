@@ -3,27 +3,32 @@ import { CloseIcon, CoverIcon, TaskTitleIcon } from "../../../assets/svg/icon-li
 import { openDynamicModal } from "../../../store/modal/modal.action"
 import { DetilsTitle } from "./task-details-title"
 
-export function DetailsHeader({ onUpdateHeadline, task, group, boardId, onCoverChange }) {
+export function DetailsHeader({ onUpdateHeadline, task, group, boardId, onCoverChangeBg }) {
     const navigate = useNavigate()
-    let styleBgColor
-    let styleBgImg
+    let background
+    let showImgBg
 
-    if (task.style) {
-        styleBgColor = {
-            backgroundColor: `${task.style.bgColor}`,
+    console.log('task.style.background: ', task.style.background);
+    if (!task.style.background.includes('https')) {
+        console.log('in:')
+        background = {
+            backgroundColor: `${task.style.background}`,
             minHeight: "116px",
             maxHeight: "116px",
         }
-        styleBgImg = {
-            backgroundImage: `url(${task.style.img})`,
+        showImgBg = false
+    } else {
+        console.log('else:')
+
+        background = {
+            backgroundImage: `url(${task.style.background})`,
             minHeight: "160px",
             maxHeight: "160px",
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat'
         }
-    }
-
-    function taskPreviewImgCover() {
-        if (task.style.bgColor) return styleBgColor
-        return styleBgImg
+        showImgBg = true
     }
 
     return (
@@ -32,10 +37,10 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId, onCoverC
                 <button onClick={() => navigate(`/board/${boardId}`)}
                     className="btn details-close-btn"><CloseIcon />
                 </button>
-                {task.style.bgColor && <div style={taskPreviewImgCover()} className="task-details-cover"></div>}
-                {!task.style.bgColor && <div style={taskPreviewImgCover()} className="task-details-img "></div>}
+                {showImgBg && <div style={background} className="task-details-cover"></div>}
+                {!showImgBg && <div style={background} className="task-details-img "></div>}
                 <button className="btn-bar "
-                    onClick={(ev) => openDynamicModal({ ev, name: 'cover', func: { onCoverChange } })}
+                    onClick={(ev) => openDynamicModal({ ev, name: 'cover', func: { onCoverChangeBg } })}
                 ><CoverIcon /> Cover</button>
 
             </div>

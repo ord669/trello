@@ -4,12 +4,10 @@
         linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
     background-blend-mode: normal, normal;
     color: rgb(255, 255, 255);
-    font-family: Charlie-Text
+    font-family: Charlie-Text;
 }
 
 .main-home-page {
-    // display: flex;
-    // justify-content: space-between;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
 
@@ -55,6 +53,8 @@
         font-size: 1rem;
         padding: 15px 41px;
         margin-top: 30px;
+        color: #fff;
+
 
         &:hover {
             background-color: rgb(7, 71, 166);

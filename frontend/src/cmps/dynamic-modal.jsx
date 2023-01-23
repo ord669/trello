@@ -31,7 +31,7 @@ export function DynamicModal() {
             case 'checklist':
                 return <CheckListModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
             case 'cover':
-                return <CoverModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
+                return <CoverModal board={board} currTask={currTask} onCoverChangeBg={func.onCoverChangeBg} />
             default:
                 break;
         }

@@ -79,8 +79,8 @@ export function TaskDetails() {
         }
     }
 
-    async function onCoverChange({ target }) {
-        task.style.bgColor = target.value
+    async function onCoverChangeBg(bg) {
+        task.style.background = bg
         try {
             saveTask(task)
         } catch (err) {
@@ -122,7 +122,7 @@ export function TaskDetails() {
         <section className='task-details'>
             <div className="black-screen" onClick={() => navigate(`/board/${board._id}`)}></div>
             <div className="main-task-details">
-                <DetailsHeader onUpdateHeadline={onUpdateHeadline} onCoverChange={onCoverChange} boardId={board._id} task={task} group={group} />
+                <DetailsHeader onUpdateHeadline={onUpdateHeadline} onCoverChangeBg={onCoverChangeBg} boardId={board._id} task={task} group={group} />
                 <div className="task-details-content">
                     <div className="task-details-content-label-members-date">
                         {!!task?.memberIds?.length &&
@@ -169,7 +169,7 @@ export function TaskDetails() {
                         </button>)}
                     </div>
                     <div>
-                        <input onChange={onCoverChange} type="color" id="body" name="body"
+                        <input onChange={onCoverChangeBg} type="color" id="body" name="body"
                             value="#f6b73c" />
                         <label htmlFor="cover">Cover</label>
                     </div>
