@@ -1,12 +1,91 @@
 .main-side-menu {
-    background-color: #FAFBFC;
     top: 44px;
     left: 0;
-    // bottom: 0;
     z-index: 2;
     position: fixed;
     transition: width 0.5s;
-    // transition: all 1s;
     height: 100vh;
+    padding: 14px 12px;
+
+
+    &.open-menu {
+        width: 260px;
+        border-right: 1px solid #535353;
+    }
+
+    .msm-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 10px;
+        padding: 6px;
+
+
+        >* {
+            color: inherit;
+        }
+
+    }
+
+    .msm-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 10px;
+        padding: 6px;
+        cursor: pointer;
+
+        >* {
+            color: inherit;
+        }
+
+        &:hover {
+            background-color: #ffffff29;
+
+            .msm-btn-star {
+                display: block;
+            }
+        }
+
+        .msm-card-bg {
+            width: 24px;
+            height: 20px;
+            border-radius: 3px;
+            background-size: cover;
+            background-position: center center;
+        }
+
+
+    }
+
+    .msm-board-bg {
+        border-radius: 3px;
+        background-size: cover;
+        background-position: center center;
+        width: 36px;
+        height: 36px;
+    }
+
+
+
+    .msm-btn-close {
+        border-radius: 3px;
+
+        &:hover {
+            background-color: #ffffff4d;
+        }
+    }
+
+    .msm-btn-star {
+        display: none;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+
 
 }
