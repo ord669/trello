@@ -1,0 +1,55 @@
+.members-modal-header {
+    margin: 4px 0 12px;
+    width: 100%;
+
+    input {
+        margin: 4px 0 12px;
+        width: 100%;
+    }
+}
+
+.modal-members-list-container {
+    margin-top: 12px;
+
+    h4 {
+        color: #5e6c84;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 16px;
+        margin: 16px 0 8px;
+    }
+
+    .member-container {
+        cursor: pointer;
+        padding: rem(4px);
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        &:hover {
+            background-color: #091e420a;
+        }
+
+        .member-container-text-container {
+            display: flex;
+        }
+
+        p {
+            margin-right: 0.5rem;
+        }
+
+        button {
+            position: absolute;
+            right: rem(15px);
+            font-size: 10px;
+        }
+
+        .display-none {
+            display: none;
+        }
+    }
+
+    .modal-member-icon {
+        margin-right: rem(8px);
+    }
+}

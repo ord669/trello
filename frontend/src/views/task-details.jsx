@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import { ActivityIcon, ChecklistIcon, CloseIcon, DescriptionIcon, PlusIcon, TitleIcon } from "../assets/svg/icon-library"
 import { LabelList } from "../cmps/task/task-details/task-details-labels-list"
 import { MembersList } from "../cmps/task/task-details/task-details-members-list"
-import { TaskDetailsActivity } from "../cmps/task/task-details/task-details-activity"
+import { ActivityIndex } from "../cmps/task/task-details/activity-index"
 import { TaskDetailsChecklist } from "../cmps/task/task-details/task-details-checklist"
 import { TaskDetailsDescription } from "../cmps/task/task-details/task-details-description"
 import { TaskDetailsLabels } from "../cmps/task/task-details/task-details-labels"
@@ -17,6 +17,7 @@ import { DueDate } from "../cmps/task/task-details/task-details-due-date"
 import { groupService } from "../services/group.service.local"
 import { ImgUploader } from "../cmps/img-uploader"
 import { TaskDetailsAttachment } from "../cmps/task/task-details/task-details-attachment"
+import { setTaskToEdit } from "../store/task/task.action"
 
 export function TaskDetails() {
 
@@ -41,6 +42,7 @@ export function TaskDetails() {
         const currTask = currGroup.tasks.find(task => task._id === taskId)
         setTask(currTask)
         setGroup(currGroup)
+        setTaskToEdit(currTask)
     }
 
     function onRemoveTask() {
@@ -48,7 +50,7 @@ export function TaskDetails() {
         navigate(`/board/${board._id}`)
     }
 
-    function getMembers() {
+    function getMembers(currBoard, currTask) {
         let members = board.members.filter(member => task.memberIds.indexOf(member._id) !== -1)
         return members
     }
@@ -67,7 +69,7 @@ export function TaskDetails() {
 
     function onAddCheckList() {
         const checkListName = prompt('list name')
-        console.log('checkListName: ', checkListName);
+        console.log('checkListName: ', checkListName)
         if (!checkListName) return
         task.checklists.push(groupService.setNewCheckList(checkListName))
         try {
@@ -96,7 +98,7 @@ export function TaskDetails() {
     }
 
     async function onUploadedImg(url) {
-        console.log('url: ', url);
+        console.log('url: ', url)
         task.style.img = url
         try {
             saveTask(task)
@@ -106,12 +108,12 @@ export function TaskDetails() {
     }
 
     function onUploadedAttachment(attach) {
-        console.log('attach: ', attach);
+        console.log('attach: ', attach)
 
     }
 
     function onUploadFile(ev) {
-        console.log('ev: ', ev);
+        console.log('ev: ', ev)
 
     }
 
@@ -124,7 +126,7 @@ export function TaskDetails() {
                 <div className="task-details-content">
                     <div className="task-details-content-label-members-date">
                         {!!task?.memberIds?.length &&
-                            <MembersList getMembers={getMembers} onSelectMember={onSelectMember} />
+                            <MembersList getMembers={getMembers} board={board} task={task} onSelectMember={onSelectMember} />
                         }
                         {!!task?.labelIds?.length &&
                             <LabelList task={task} onSelectLable={onSelectLable} />
@@ -149,12 +151,9 @@ export function TaskDetails() {
                                 <TaskDetailsAttachment key={attachment._id} task={task} />
                             )}
                         </div>}
-                    <div className="activity-container flex">
-                        <ActivityIcon className="icon-title" />
-                        <TaskDetailsActivity />
-                    </div>
+                    <ActivityIndex />
                     {/* TODO////forom here down dev only//// */}
-                    <h2>From Here Functionality Only!!!</h2>
+                    <h2>Froom Here Functionality Only!!!</h2>
                     <div>
                         {board.members.map((member, idx) =>
                             <button onClick={() => onSelectMember(member._id)} key={idx}>

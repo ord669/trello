@@ -44,15 +44,19 @@
 @import 'cmps/task-details-member-list';
 @import 'cmps/task-details-header';
 @import 'cmps/task-details-label-members-date';
-@import 'cmps/task-details-activity';
 @import 'cmps/task-details-checklist';
 @import 'cmps/checklist-item-preview';
 @import 'cmps/login-signup';
+
+@import 'cmps/activity-index';
+@import 'cmps/write-comment';
+
 
 @import 'cmps/user-avatar-icon';
 
 @import 'cmps/progress-bar';
 @import 'cmps/dynamic-modal';
+@import 'cmps/modal-members';
 //VIEWS
 @import 'views/home-page';
 @import 'views/board-details';

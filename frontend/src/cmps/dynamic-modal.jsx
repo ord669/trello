@@ -4,11 +4,12 @@ import { utilService } from "../services/util.service";
 import { closeDynamicModal, updateDynamicModalPos } from "../store/modal/modal.action";
 import { BoardStarred } from "./board-starred";
 import { DueDate } from "./task/task-details/task-details-due-date";
-import { MembersModal } from "./task/task-modals/members-modal";
+import { MembersModal } from "./task/task-modals/members/members-modal";
 
 export function DynamicModal() {
     const { modalPos, modalDetails } = useSelector(storeState => storeState.modalModule)
-    console.log('modalDetails: ', modalDetails);
+    const { currTask } = useSelector(storeState => storeState.taskModule)
+    const { board } = useSelector(storeState => storeState.boardModule)
 
     const windowSize = utilService.getWindowDimensions()
     const elementStartLeft = (modalPos.left)
@@ -19,13 +20,12 @@ export function DynamicModal() {
     const clickedElemntHeight = modalPos.height
 
     function DynamicModalContent({ type, func }) {
-        console.log('func from content: ', func);
 
         switch (type) {
             case 'labels':
                 return
             case 'members':
-                return <MembersModal getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
+                return <MembersModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
             default:
                 break;
         }
