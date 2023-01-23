@@ -1,0 +1,31 @@
+.activity-container {
+    >* {
+        display: flex;
+    }
+
+    .activity-header {
+        align-items: center;
+        margin-bottom: 12px;
+
+        >section {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            h3 {
+                margin-left: 0.6rem;
+            }
+        }
+    }
+
+    .add-comment {
+        .user-avatar-icon {
+            position: relative;
+            right: 5px;
+            width: 32px;
+            height: 32px;
+            margin-inline-end: 4px;
+        }
+    }
+}

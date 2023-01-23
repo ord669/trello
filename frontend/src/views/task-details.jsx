@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import { ActivityIcon, ChecklistIcon, CloseIcon, DescriptionIcon, PlusIcon, TitleIcon } from "../assets/svg/icon-library"
 import { LabelList } from "../cmps/task/task-details/task-details-labels-list"
 import { MembersList } from "../cmps/task/task-details/task-details-members-list"
-import { TaskDetailsActivity } from "../cmps/task/task-details/task-details-activity"
+import { ActivityIndex } from "../cmps/task/task-details/activity-index"
 import { TaskDetailsChecklist } from "../cmps/task/task-details/task-details-checklist"
 import { TaskDetailsDescription } from "../cmps/task/task-details/task-details-description"
 import { TaskDetailsLabels } from "../cmps/task/task-details/task-details-labels"
@@ -67,7 +67,7 @@ export function TaskDetails() {
 
     function onAddCheckList() {
         const checkListName = prompt('list name')
-        console.log('checkListName: ', checkListName);
+        console.log('checkListName: ', checkListName)
         if (!checkListName) return
         task.checklists.push(groupService.setNewCheckList(checkListName))
         try {
@@ -96,7 +96,7 @@ export function TaskDetails() {
     }
 
     async function onUploadedImg(url) {
-        console.log('url: ', url);
+        console.log('url: ', url)
         task.style.img = url
         try {
             saveTask(task)
@@ -106,12 +106,12 @@ export function TaskDetails() {
     }
 
     function onUploadedAttachment(attach) {
-        console.log('attach: ', attach);
+        console.log('attach: ', attach)
 
     }
 
     function onUploadFile(ev) {
-        console.log('ev: ', ev);
+        console.log('ev: ', ev)
 
     }
 
@@ -149,10 +149,7 @@ export function TaskDetails() {
                                 <TaskDetailsAttachment key={attachment._id} task={task} />
                             )}
                         </div>}
-                    <div className="activity-container flex">
-                        <ActivityIcon className="icon-title" />
-                        <TaskDetailsActivity />
-                    </div>
+                    <ActivityIndex />
                     {/* TODO////forom here down dev only//// */}
                     <h2>From Here Functionality Only!!!</h2>
                     <div>
