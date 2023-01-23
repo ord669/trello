@@ -12,12 +12,10 @@
     text-align: center;
     width: 0;
 
-
     &.open {
         width: 340px;
         padding: 6px;
     }
-
 
     .bsm-title {
         border-bottom: 1px solid rgba(9, 30, 66, 0.13);
@@ -26,7 +24,6 @@
         font-weight: normal;
 
     }
-
 
     .bsm-content {
         display: flex;
@@ -97,7 +94,6 @@
         gap: 10px;
         padding: 12px 6px 8px 12px;
 
-
     }
 
     .bp-img {
@@ -112,12 +108,10 @@
             opacity: .7;
         }
 
-
     }
 
     .bsm-input {
         padding: 12px 6px 8px 12px;
-
 
         input {
             outline: none;
@@ -148,13 +142,11 @@
         padding: 12px 6px 6px 12px;
         font-weight: bold;
 
-
         svg {
             width: 16px;
             height: 16px;
         }
     }
-
 
 }
 

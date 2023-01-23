@@ -83,7 +83,7 @@ function getEmptyBoard(title = '') {
         activities: [],
         labels: [],
         style: {
-            background: "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg"
+            "background": "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674475778/la6dlzexuazhmqj1z9gg.jpg"
 
         },
         // style: {
@@ -130,21 +130,6 @@ function _createBoard(title, url, isStarred) {
             background: url
         }
     }
-}
-
-async function getImgsFromUnsplash(val = 'london') {
-    const url = `https://api.unsplash.com/search/photos?query=${val}&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4`
-    // return fetch(url).then((res) => res.json())
-    try {
-        const res = await fetch(url)
-        return res.json()
-    } catch (err) {
-        console.error(err)
-    }
-}
-
-function getColors() {
-    return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91']
 }
 
 function _createBoards() {
@@ -272,8 +257,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/oren?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": "#26de81",
-                                    "img": "#26de81"
+                                    "background": "#26de81"
                                 },
                                 "Attachments": {
                                     "file": "https://trello.com/1/cards/63c6c7e1fa702b025564cfd9/attachments/63c6c7f3d750200091545a10/download/3-Types-of-Functional-Testing.png"
@@ -367,7 +351,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Liad?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": "#26de81"
+                                    "background": "#26de81"
                                 },
                                 "activity": [
                                     {
@@ -417,8 +401,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Or?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": "#26de81",
-                                    "img": "https://trello.com/1/cards/63c6cb110f16e00169784602/attachments/63c6ccfdecac0d01f83f1e66/download/lhnymyb97mr83uw34vzv.png"
+                                    "background": "https://trello.com/1/cards/63c6cb110f16e00169784602/attachments/63c6ccfdecac0d01f83f1e66/download/lhnymyb97mr83uw34vzv.png",
                                 },
                                 "Attachments": {
                                     "file": "https://trello.com/1/cards/63c6cb110f16e00169784602/attachments/63c6ccfdecac0d01f83f1e66/download/lhnymyb97mr83uw34vzv.png"
@@ -463,7 +446,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Or?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": ""
+                                    "background": "https://trello.com/1/cards/63c6cb110f16e00169784602/attachments/63c6ccfdecac0d01f83f1e66/download/lhnymyb97mr83uw34vzv.png"
                                 },
                                 "Attachments": {},
                                 "activity": [
@@ -512,7 +495,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Liad?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": ""
+                                    "background": "https://trello.com/1/cards/63c6cb110f16e00169784602/attachments/63c6ccfdecac0d01f83f1e66/download/lhnymyb97mr83uw34vzv.png"
                                 },
                                 "Attachments": {},
                                 "activity": [],
@@ -572,7 +555,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Liad?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": "orange"
+                                    "background": "orange"
                                 },
                                 "activity": [
                                     {
@@ -650,7 +633,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/oren?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": "blue"
+                                    "background": "blue"
                                 },
                                 "Attachments": {},
                                 "activity": [
@@ -691,8 +674,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Liad?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": "",
-                                    "img": "https://trello.com/1/cards/63c6cabe12d00103d58557be/attachments/63c6cad25bf8c801a3c857e3/download/featured-image-PWA.png"
+                                    "background": "https://trello.com/1/cards/63c6cabe12d00103d58557be/attachments/63c6cad25bf8c801a3c857e3/download/featured-image-PWA.png"
                                 },
                                 "Attachments": {
                                     "file": "https://trello.com/1/cards/63c6cabe12d00103d58557be/attachments/63c6cad25bf8c801a3c857e3/download/featured-image-PWA.png"
@@ -732,7 +714,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Liad?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": "darkblue"
+                                    "background": "darkblue"
                                 },
                                 "activity": [
                                     {
@@ -786,7 +768,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Or?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": "lightgreen"
+                                    "background": "lightgreen"
                                 },
                                 "Attachments": {},
                                 "activity": [
@@ -827,8 +809,10 @@ function _createBoards() {
                                     "username": "Liad Gola",
                                     "imgUrl": "https://robohash.org/Liad?set=set5"
                                 },
-                                "style": {},
-                                "Attachments": {},
+                                "style": {
+                                    "background": "lightgreen"
+                                },
+                                "attachments": [],
                                 "activity": [],
                                 "groupId": "g104"
                             },
@@ -852,8 +836,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Or?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": "",
-                                    "img": "https://trello.com/1/cards/63c6cafd547eff01d743d8f2/attachments/63c6cafd547eff01d743d958/download/Screenshot_2023-01-17_at_18.21.05.png"
+                                    "background": "https://trello.com/1/cards/63c6cafd547eff01d743d8f2/attachments/63c6cafd547eff01d743d958/download/Screenshot_2023-01-17_at_18.21.05.png"
                                 },
                                 "Attachments": {
                                     "file": "https://trello.com/1/cards/63c6cafd547eff01d743d8f2/attachments/63c6cafd547eff01d743d958/download/Screenshot_2023-01-17_at_18.21.05.png"
@@ -901,7 +884,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Liad?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": "yellow"
+                                    "background": "lightgreen"
                                 },
                                 "activity": [
                                     {
@@ -957,7 +940,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Or?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": "orange"
+                                    "background": "orange"
                                 },
                                 "Attachments": {},
                                 "activity": [
@@ -1061,8 +1044,10 @@ function _createBoards() {
                                     "username": "Liad Gola",
                                     "imgUrl": "https://robohash.org/Liad?set=set5"
                                 },
-                                "style": {},
-                                "Attachments": {},
+                                "style": {
+                                    "background": "orange"
+                                },
+                                "attachments": [],
                                 "activity": [],
                                 "groupId": "g105"
                             },
@@ -1098,7 +1083,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Or?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": "lightblue"
+                                    "background": "lightblue"
                                 },
                                 "Attachments": {},
                                 "activity": [
@@ -1149,8 +1134,7 @@ function _createBoards() {
                                     "imgUrl": "https://robohash.org/Or?set=set5"
                                 },
                                 "style": {
-                                    "bgColor": "",
-                                    "img": "https://trello.com/1/cards/63c6ca7013479602374fc31d/attachments/63c6ca7013479602374fc33e/download/image.png"
+                                    "background": "https://trello.com/1/cards/63c6ca7013479602374fc31d/attachments/63c6ca7013479602374fc33e/download/image.png"
                                 },
                                 "Attachments": {
                                     "file": "https://trello.com/1/cards/63c6ca7013479602374fc31d/attachments/63c6ca7013479602374fc33e/download/image.png"
@@ -1288,5 +1272,17 @@ function _createBoards() {
     }
 }
 
+async function getImgsFromUnsplash(val = 'london') {
+    const url = `https://api.unsplash.com/search/photos?query=${val}&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4`
+    // return fetch(url).then((res) => res.json())
+    try {
+        const res = await fetch(url)
+        return res.json()
+    } catch (err) {
+        console.error(err)
+    }
+}
 
-
+function getColors() {
+    return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91', '#172b4d']
+}
