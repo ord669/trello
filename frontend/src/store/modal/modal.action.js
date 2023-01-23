@@ -10,7 +10,7 @@ import { OPEN_MODAL, CLOSE_MODAL, UPDATE_POS, UPDATE_ELEMENT_SIZE, UPDATE_CLICKE
 // }
 export async function openDynamicModal({ ev, name, func }) {
     const { target } = ev
-
+    closeDynamicModal()
     // GET Element POS
     updateDynamicModalPos(target.getBoundingClientRect())
     updateModalType({ name, func })

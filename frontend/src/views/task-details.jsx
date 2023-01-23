@@ -185,6 +185,8 @@ export function TaskDetails() {
                     onAddCheckList={onAddCheckList}
                     getMembers={getMembers}
                     onSelectMember={onSelectMember}
+                    onSelectLable={onSelectLable}
+                    onRemoveTask={onRemoveTask}
                 />
             </div>
         </section>

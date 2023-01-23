@@ -1224,7 +1224,6 @@ function _createBoards() {
     }
 }
 
-
 async function getImgsFromUnsplash() {
     const url = 'https://api.unsplash.com/search/photos?query=london&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4'
     // return fetch(url).then((res) => res.json())

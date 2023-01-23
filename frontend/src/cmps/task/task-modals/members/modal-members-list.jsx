@@ -3,12 +3,6 @@ import { useState } from "react"
 import { UserAvatarIcon } from "../../../user-avatar-icon"
 
 export function ModalMembersList({ filterBy, board, currTask, getMembers, onSelectMember }) {
-    console.log('filterBy: ', filterBy);
-    const [hover, setHover] = useState(false)
-
-    useEffect(() => {
-        setHover(false)
-    }, [filterBy])
 
     function filteredMembers(filterBy) {
         let filteredMembers = [...board.members]
