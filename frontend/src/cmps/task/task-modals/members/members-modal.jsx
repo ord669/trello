@@ -1,5 +1,5 @@
 import { useForm } from "../../../../customHooks/useForm";
-import { MembersList } from "../../task-details/task-details-members-list";
+
 import { ModalMembersList } from "./members-modal-list";
 
 export function MembersModal({ board, currTask, getMembers, onSelectMember }) {

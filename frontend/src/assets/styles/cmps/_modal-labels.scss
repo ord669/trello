@@ -25,6 +25,8 @@
 
 .modal-labels-list-container {
     margin-top: 12px;
+    display: flex;
+    flex-direction: column;
 
     h4 {
         color: #5e6c84;
@@ -32,6 +34,7 @@
         font-weight: 600;
         line-height: 16px;
         margin: 16px 0 8px;
+
     }
 
     .labels-modal-list-body {
@@ -39,9 +42,17 @@
 
     }
 
+    .create-btn {
+        width: 100%;
+        margin: 4px 0;
+
+    }
+
     .label-container {
         position: relative;
         display: flex;
+        align-items: center;
+        justify-content: space-between;
         box-sizing: border-box;
         margin: 0;
         padding: 0 0 4px 4px;
@@ -54,8 +65,40 @@
             line-height: 16px;
             transform: scale(1.2);
             color: #5e6c84;
-
+            margin-right: 1rem;
         }
-    }
 
+        .label-body-title-main-style {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            height: 32px;
+            border-radius: 3px;
+            min-width: 48px;
+
+            .sec-label-color {
+                margin: 0 0.4rem;
+                border-radius: 50%;
+                width: 16px;
+                height: 16px;
+            }
+
+            &:hover {
+                cursor: pointer;
+                filter: saturate(85%) brightness(85%);
+            }
+        }
+
+        button {
+            padding: 8px;
+
+            margin-bottom: 0;
+
+            &:hover {
+                cursor: pointer;
+                filter: saturate(85%) brightness(85%);
+            }
+        }
+
+    }
 }

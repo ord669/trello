@@ -58,10 +58,11 @@ export async function saveBoard(board) {
 }
 
 export async function saveTask(task) {
-    console.log('task from action: ', task)
+
+
     try {
-        const { board: boardToUpdate } = store.getState().boardModule
-        const group = boardToUpdate.groups.find(group => group._id === task.groupId)
+        const { board } = store.getState().boardModule
+        const group = board.groups.find(group => group._id === task.groupId)
         if (task._id) {
             group.tasks = group.tasks.map(currTask => currTask._id !== task._id ? currTask : task)
         } else {
@@ -101,14 +102,16 @@ export async function toggleMemberAssigned(memberId, groupId, taskId) {
 }
 
 export async function toggleTaskLabel(labelId, groupId, taskId) {
-    const { board: boardToUpdate } = store.getState().boardModule
-    const group = boardToUpdate.groups.find(group => group._id === groupId)
+    const { board } = store.getState().boardModule
+
+    const group = board.groups.find(group => group._id === groupId)
     const task = group.tasks.find(task => task._id === taskId)
 
     if (task.labelIds.includes(labelId)) {
         task.labelIds = task.labelIds.filter(currLabelId => currLabelId !== labelId)
     } else {
         task.labelIds.push(labelId)
+
     }
     saveTask(task)
 }
@@ -126,7 +129,6 @@ export function updateDrag({ source, destination, type }) {
 //     const task = group.tasks.find(task => task._id === taskId)
 //     return task
 // }
-
 
 // function getGroupById(groupId,taskId){
 //     const { board: boardToUpdate } = store.getState().boardModule

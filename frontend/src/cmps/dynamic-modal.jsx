@@ -3,8 +3,7 @@ import { CloseIcon } from "../assets/svg/icon-library";
 import { utilService } from "../services/util.service";
 import { closeDynamicModal, updateDynamicModalPos } from "../store/modal/modal.action";
 import { BoardStarred } from "./board-starred";
-import { DueDate } from "./task/task-details/task-details-due-date";
-import { LabelsModal } from "./task/task-modals/members/labels-modal";
+import { LabelsModal } from "./task/task-modals/labels/labels-modal";
 import { MembersModal } from "./task/task-modals/members/members-modal";
 
 export function DynamicModal() {
@@ -35,7 +34,7 @@ export function DynamicModal() {
     function renderPos() {
         const bottomMargin = 5
         const modalWidth = 304
-        const modalHeight = 100
+        const modalHeight = 400
         let posToRender = 'downRight'
 
         if (elementStartLeft + modalWidth > windowSize.width) posToRender = "downLeft"
@@ -55,7 +54,7 @@ export function DynamicModal() {
                 return {
                     top: `${elementStartBottom - clickedElemntHeight}px`,
                     left: `${elementStartLeft}px`,
-                    transform: "translateY(-100%)",
+                    transform: "translateY(-50%)",
 
                 }
             case 'upLeft':
