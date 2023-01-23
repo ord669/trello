@@ -9,22 +9,34 @@ export function CreateBoard({ setIsCreateBoard }) {
     const defaultURL = 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674294790/photo-1674130070695-82aefa76ca67_bgworq.jpg'
 
     const [board, setBoard] = useState(boardService.getEmptyBoard())
-    const [imgURL, setImgURL] = useState({ url: defaultURL })
+    const [BG, setBG] = useState({ url: defaultURL })
     const navigate = useNavigate()
     const bgImgs = boardService.getBgImgsURL()
+    const bgColors = boardService.getColors().splice(0, 6)
 
     function handleChange({ target }) {
         const { value, name: filed } = target
         setBoard((prevBoard) => ({ ...prevBoard, [filed]: value }))
     }
 
-    const backgroundStyle = {
-        backgroundImage: `url(${imgURL.url})`
+    function setStyle() {
+        let style
+        if (BG.url.includes('https')) {
+            style = {
+                backgroundImage: `url(${BG.url})`
+            }
+        } else {
+            style = {
+                background: BG.url
+            }
+        }
+        return style
     }
+
 
     async function onAddBoard() {
         board.style = {
-            background: imgURL.url
+            background: BG.url
         }
         try {
             const savedBoard = await saveBoard(board)
@@ -39,19 +51,28 @@ export function CreateBoard({ setIsCreateBoard }) {
         <section className='create-board-modal'>
             <button onClick={() => setIsCreateBoard(prev => !prev)} className='btn-close-modal'><CloseIcon /></button>
             <p className='create-board-title'>Create board</p>
-            <div style={backgroundStyle} className='create-board-img'>
+            <div style={setStyle()} className='create-board-img'>
                 <BoardSkelton />
             </div>
             <div>
                 <p>Background</p>
                 <div className="create-bgs">
                     {bgImgs.map(bgImg =>
-                        <button key={bgImg._id} onClick={() => setImgURL(bgImg)}
+                        <button key={bgImg._id} onClick={() => setBG(bgImg)}
                             className="bg-img"
                             style={{ backgroundImage: `url(${bgImg.url})` }}>
                         </button>
                     )}
                 </div>
+                <div className="create-bgs">
+                    {bgColors.map((bgcolor, idx) =>
+                        <button key={idx} onClick={() => setBG({ url: bgcolor })}
+                            className="bg-color"
+                            style={{ background: bgcolor }}>
+                        </button>
+                    )}
+                </div>
+
             </div>
             <div className='board-title-add'>
                 <p>Board title</p>
@@ -63,6 +84,6 @@ export function CreateBoard({ setIsCreateBoard }) {
                 />
             </div>
             <button onClick={onAddBoard} className='btn-add'>Save</button>
-        </section>
+        </section >
     )
 }
