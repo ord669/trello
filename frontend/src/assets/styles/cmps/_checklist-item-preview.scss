@@ -21,7 +21,7 @@
         transform: scale(1.2);
         font-size: 11px;
 
-        &:hover{
+        &:hover {
             // background-color: #091e420a;
         }
     }
@@ -30,8 +30,19 @@
         flex-grow: 1;
     }
 
-    p {
-        justify-self: center;
+    .options-btn {
+        margin-inline-start: 4px;
+        width: 24px;
+        height: 24px;
+
+        &:hover {
+            background-color: #091e4214;
+        }
+
+        svg {
+            stroke: none;
+            width: 18px;
+        }
     }
 
     .done {
@@ -53,16 +64,16 @@
             outline: none;
         }
 
-        .form-btns{
+        .form-btns {
             display: flex;
             align-items: center;
 
-            .btn-close{
+            .btn-close {
                 margin-inline-start: 2px;
             }
         }
 
-        svg{
+        svg {
             width: 28px;
             height: 28px;
         }

@@ -66,22 +66,24 @@
         }
     }
 
+    .add-new-item {
+        margin-top: 8px 0;
+        position: relative;
+        right: 5px;
+        font-size: 14px;
 
-    .add-item {
-        margin: 0 10px 8px 0;
-        // margin: 8px 10px 8px 0;
-        width: calc(100% - 12px);
+        .add-item {
+            margin: 0 10px 8px 0;
+            width: calc(100% - 8px);
 
-        >*{
-            margin-inline-end: 4px;
-        }
-        .check-list-add-btn {
-            // margin-top: 2rem;
-        }
-
-        textarea {
-            width: 100%;
-            padding: 8px 12px;
+            >* {
+                margin-inline-end: 4px;
+            }
+            
+            textarea {
+                width: 100%;
+                padding: 8px 12px;
+            }
         }
     }
 }
