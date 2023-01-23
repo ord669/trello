@@ -31,7 +31,7 @@ export function updateClickedElementSize(size) {
     store.dispatch({ type: UPDATE_ELEMENT_SIZE, size })
 }
 export function updateModalType(element) {
-    console.log('element: ', element);
+
     store.dispatch({ type: UPDATE_MODAL_TYPE, element })
 }
 // export function updateClickedPos(clickedPos) {

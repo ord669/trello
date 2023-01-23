@@ -6,13 +6,13 @@ export const ADD_GROUP = 'ADD_GROUP'
 export const UPDATE_GROUP = 'UPDATE_GROUP'
 export const UNDO_REMOVE_GROUP = 'UNDO_REMOVE_GROUP'
 
-
 const initialState = {
     board: boardService.getEmptyBoard(),
     lastRemovedGroup: null
 }
 
 export function boardReducer(state = initialState, action) {
+
     let newState = state
     let board
     let groups

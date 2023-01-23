@@ -7,8 +7,11 @@ import { loadBoard } from "../store/board/board.action"
 import { ArrowDownIcon } from "../assets/svg/icon-library"
 import { FastAverageColor } from "fast-average-color"
 import { utilService } from "../services/util.service"
+import { DynamicModal } from "../cmps/dynamic-modal"
 
 export function BoardDetails() {
+    const { dynamicModalStatus } = useSelector(storeState => storeState.modalModule)
+
     const { board } = useSelector(storeState => storeState.boardModule)
     const { boardId } = useParams()
 
@@ -17,7 +20,7 @@ export function BoardDetails() {
     }, [boardId])
 
     function getBgStyle() {
-        utilService.getBgUrlIsDark(board.style.background)
+        // utilService.getBgUrlIsDark(board.style.background)
 
         const bg = board.style.background
         let style
@@ -27,7 +30,7 @@ export function BoardDetails() {
             }
         }
         else {
-            utilService.getBgIsDarkColorHex(board.style.background)
+            // utilService.getBgIsDarkColorHex(board.style.background)
 
             style = {
                 background: bg
@@ -44,6 +47,8 @@ export function BoardDetails() {
                 <div className="icon-container"><ArrowDownIcon /></div>
             </section>
             <Outlet />
+            {dynamicModalStatus && <DynamicModal />}
+
         </section>
     )
 }
