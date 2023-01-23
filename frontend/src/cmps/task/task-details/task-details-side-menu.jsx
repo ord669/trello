@@ -9,7 +9,7 @@ export function TaskDetailsSideMenu({ onRemoveTask, onAddCheckList, getMembers, 
             <div className="side-menu-btn-container">
                 <button onClick={(ev) => openDynamicModal({ ev, name: 'members', func: { getMembers, onSelectMember } })} className="details-btn-side-menu"> <ManIcon /> Members</button>
                 <button onClick={(ev) => openDynamicModal({ ev, name: 'labels', func: { onSelectLable } })} className="details-btn-side-menu"> <LabelIcon /> Labels</button>
-                <button className="details-btn-side-menu" onClick={onAddCheckList}> <ChecklistIcon /> Checklist</button>
+                <button onClick={(ev) => openDynamicModal({ ev, name: 'checklist', func: { getMembers, onSelectMember } })} className="details-btn-side-menu" > <ChecklistIcon /> Checklist</button>
                 <button onClick={onRemoveTask} className="details-btn-side-menu"> <ArchiveImge /> Archive</button>
 
             </div>

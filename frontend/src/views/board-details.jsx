@@ -8,20 +8,21 @@ import { ArrowDownIcon } from "../assets/svg/icon-library"
 import { FastAverageColor } from "fast-average-color"
 import { utilService } from "../services/util.service"
 import { DynamicModal } from "../cmps/dynamic-modal"
+import { MainSidemenu } from "../cmps/main-side-menu"
+import { useState } from "react"
 
 export function BoardDetails() {
     const { dynamicModalStatus } = useSelector(storeState => storeState.modalModule)
-
     const { board } = useSelector(storeState => storeState.boardModule)
     const { boardId } = useParams()
+    const [isOpenMenu, setIsOpenMenu] = useState(false)
+
 
     useEffect(() => {
         loadBoard(boardId)
     }, [boardId])
 
     function getBgStyle() {
-        // utilService.getBgUrlIsDark(board.style.background)
-
         const bg = board.style.background
         let style
         if (bg.includes('https')) {
@@ -30,8 +31,6 @@ export function BoardDetails() {
             }
         }
         else {
-            // utilService.getBgIsDarkColorHex(board.style.background)
-
             style = {
                 background: bg
             }
@@ -40,15 +39,16 @@ export function BoardDetails() {
     }
 
     return (
-        <section style={getBgStyle()} className='board-details'>
+        <section style={getBgStyle()} className={isOpenMenu ? 'board-details open-menu' : 'board-details'}>
             <ToolBar board={board} />
             <GroupList groups={board?.groups || []} board={board} />
-            <section className="open-main-menu">
-                <div className="icon-container"><ArrowDownIcon /></div>
-            </section>
+            {!isOpenMenu && <section className="open-main-menu">
+                <div onClick={() => setIsOpenMenu(prev => !prev)} className="icon-container"><ArrowDownIcon /></div>
+            </section>}
+            {isOpenMenu && < MainSidemenu board={board} isOpenMenu={isOpenMenu} setIsOpenMenu={setIsOpenMenu} />}
             <Outlet />
             {dynamicModalStatus && <DynamicModal />}
 
-        </section>
+        </section >
     )
 }

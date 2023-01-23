@@ -4,6 +4,7 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'board'
+const STORAGE_IMG_KEY = []
 
 export const boardService = {
     query,
@@ -131,20 +132,6 @@ function _createBoard(title, url, isStarred) {
     }
 }
 
-async function getImgsFromUnsplash() {
-    const url = 'https://api.unsplash.com/search/photos?query=london&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4'
-    // return fetch(url).then((res) => res.json())
-    try {
-        const res = await fetch(url)
-        return res.json()
-    } catch (err) {
-        console.error(err)
-    }
-}
-
-function getColors() {
-    return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91']
-}
 
 function _createBoards() {
     let boards = utilService.loadFromStorage(STORAGE_KEY)
@@ -170,7 +157,7 @@ function _createBoards() {
                     "imgUrl": "https://robohash.org/Or?set=set5"
                 },
                 "style": {
-                    "background": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg"
+                    "background": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674336073/photos-thumbnail_3x.8f9c1323c9c16601a9a4_wvh9qh.jpg"
                 },
                 "labels": [
                     {
@@ -1282,4 +1269,20 @@ function _createBoards() {
         ]
         utilService.saveToStorage(STORAGE_KEY, boards)
     }
+}
+
+
+async function getImgsFromUnsplash(val = 'london') {
+    const url = `https://api.unsplash.com/search/photos?query=${val}&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4`
+    // return fetch(url).then((res) => res.json())
+    try {
+        const res = await fetch(url)
+        return res.json()
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+function getColors() {
+    return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91']
 }
