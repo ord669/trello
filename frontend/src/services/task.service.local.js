@@ -6,6 +6,7 @@ export const taskService = {
     getEmptyTask,
     createChecklists,
     getEmptyTodo,
+    getEmptyComment,
 }
 
 function setTaskInBoard() {
@@ -35,6 +36,19 @@ function getEmptyTodo() {
         "_id": utilService.makeId(),
         "title": "",
         "isDone": false
+    }
+}
+
+function getEmptyComment() {
+    return {
+        "_id": utilService.makeId(),
+        "txt": "",
+        "type": "comment",
+        "byMember": {
+            "_id": "u101",
+            "fullname": "Or Dvir",
+            "imgUrl": "https://robohash.org/Or?set=set5"
+        },
     }
 }
 

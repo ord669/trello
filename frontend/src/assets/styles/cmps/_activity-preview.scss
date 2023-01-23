@@ -6,15 +6,11 @@
     margin-bottom: 16px;
 
     .activity-img {
-        cursor: pointer;
         min-height: 32px;
         min-width: 32px;
         border-radius: 50%;
         background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
         background-color: #ebecef;
-        align-self: start;
     }
 
     .activity-content {
@@ -40,6 +36,7 @@
     }
 
     .activity-time {
+        color: #5e6c84;
         font-size: 12px;
     }
 }

@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom'
 import {utilService} from '../services/util.service'
 
 export function ActivityPreview({ activity }) {
-    console.log('activity:', activity);
     const navigate = useNavigate()
 
     function onNavigate(task) {

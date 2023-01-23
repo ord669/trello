@@ -1,23 +1,27 @@
 import { useState } from "react"
 import { CloseIcon } from "../../../assets/svg/icon-library"
+import { taskService } from "../../../services/task.service.local"
 
-export function AddComment({ username }) {
-    const [title, setTitle] = useState('')
+export function AddComment({ username, saveComment }) {
+    const [comment, setComment] = useState(taskService.getEmptyComment())
     const [isShown, setIsShown] = useState(false)
 
     function handleChange({ target }) {
-        setTitle(target.value)
+        const { value, name: feild } = target
+        setComment(prevComment => ({ ...prevComment, [feild]: value }))
     }
 
     function onSaveComment() {
-        if (!title) return
-        console.log('title:', title)
-        setTitle('')
+        if (!comment.txt) return
+        console.log('comment:', comment)
+        comment.createdAt = Date.now()
+        saveComment(comment)
+        onClose()
     }
 
     function onClose() {
         setIsShown(prevIsShown => !prevIsShown)
-        setTitle('')
+        setComment(taskService.getEmptyComment())
     }
 
     return (
@@ -26,10 +30,10 @@ export function AddComment({ username }) {
             <section className={`write-comment ${isShown ? 'show' : ''}`}>
                 <textarea
                     onClick={() => setIsShown(true)}
-                    name="title"
+                    name="txt"
                     placeholder="Write a comment..."
                     onChange={handleChange}
-                    value={title}
+                    value={comment.txt}
                 // onKeyDown={(ev) => handleKeyPress(ev)} 
                 />
                 {isShown &&
