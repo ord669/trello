@@ -5,13 +5,19 @@ export function CoverModal({ board, currTask, getMembers, onSelectMember }) {
     const [filterBy, setFilterBy, handleChange] = useForm({ txt: '' })
 
     return (
-        <section className='members-modal-container'>
-            <div className="members-modal-header">
+        <section className='covers-modal-container'>
+            <div className="covers-modal-header">
 
             </div>
-            <section className='modal-members-list-container'>
-                <h4>Board members</h4>
-                <div className="modal-members-list-body">
+            <section className='modal-covers-list-container'>
+                <h4>Cover</h4>
+                <div className="modal-covers-list-body">
+
+                </div>
+            </section>
+            <section className='modal-covers-list-container'>
+                <h4>Photos from Unsplash</h4>
+                <div className="modal-covers-list-body">
 
                 </div>
             </section>

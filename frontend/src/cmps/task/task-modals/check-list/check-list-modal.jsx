@@ -6,10 +6,25 @@ export function CheckListModal({ board, currTask, getMembers, onSelectMember }) 
 
     return (
         <section className='members-modal-container'>
-            {/* <div className="members-modal-header">
+            <div className="members-modal-header">
                 <input onChange={handleChange} type="text" name="txt" placeholder="Search members" />
             </div>
-            <ModalMembersList filterBy={filterBy} board={board} currTask={currTask} getMembers={getMembers} onSelectMember={onSelectMember} /> */}
+            <section className='modal-members-list-container'>
+                <h4>Board members</h4>
+                <div className="modal-members-list-body">
+
+                    <div className={"member-container"}>
+                        <div className="modal-member-icon">
+
+                        </div>
+                        <div className="member-container-text-container">
+
+                        </div>
+                        <button className={`clean-btn fa-solid fa-check `} ></button>
+
+                    </div>
+                </div>
+            </section>
         </section>
     )
 }
