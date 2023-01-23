@@ -10,17 +10,23 @@ import { UserMsg } from './cmps/user-msg'
 import { DynamicModal } from "./cmps/dynamic-modal"
 import { useSelector } from "react-redux"
 import { useEffect } from "react"
-import { updateDynamicModalPos } from "./store/modal/modal.action"
+import { closeDynamicModal, updateDynamicModalPos } from "./store/modal/modal.action"
+import { utilService } from "./services/util.service"
+import { MembersModal } from "./cmps/task/task-modals/members-modal"
 
 export function App() {
     const { dynamicModalStatus } = useSelector(storeState => storeState.modalModule)
+    // const { modalPos } = useSelector(storeState => storeState.modalModule)
 
     // useEffect(() => {
     //     window.addEventListener('click', (event) => {
-    //         updateDynamicModalPos({ x: event.x, y: event.y })
+    //         console.log('modalPos:', modalPos)
+    //         console.log('utilService.clickedOnModal({ x: event.x, y: event.y }, { borderLeft: modalPos.left, borderRight: modalPos.right, borderTop: modalPos.top, borderBottom: modalPos.bottom }): ', utilService.clickedOnModal({ x: event.x, y: event.y }, { borderLeft: modalPos.left, borderRight: modalPos.right, borderTop: modalPos.top, borderBottom: modalPos.bottom }));
+    //         if (utilService.clickedOnModal({ x: event.x, y: event.y }, { borderLeft: modalPos.left, borderRight: modalPos.right, borderTop: modalPos.top, borderBottom: modalPos.bottom })) return
+    //         closeDynamicModal()
     //     })
 
-    // }, [])
+    // }, [modalPos])
 
     return (
         <Router>
@@ -34,7 +40,7 @@ export function App() {
                             <Route Route path="/board/:boardId/:groupId/:taskId" element={<TaskDetails />} />
                         </Route>
                         <Route path="user/:id" element={<UserDetails />} />
-                        <Route path="/board/modal" element={<DynamicModal />} />
+                        <Route path="/board/members" element={<MembersModal />} />
                     </Routes>
                     {dynamicModalStatus && <DynamicModal />}
                 </main>

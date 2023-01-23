@@ -182,7 +182,11 @@ export function TaskDetails() {
 
                     <input onChange={onUploadFile} id="image-file" type="file" /> */}
                 </div>
-                <TaskDetailsSideMenu onAddCheckList={onAddCheckList} onRemoveTask={onRemoveTask} />
+                <TaskDetailsSideMenu
+                    onAddCheckList={onAddCheckList}
+                    getMembers={getMembers}
+                    onSelectMember={onSelectMember}
+                />
             </div>
         </section>
     )

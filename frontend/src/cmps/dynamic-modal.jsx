@@ -1,38 +1,68 @@
 import { useSelector } from "react-redux";
 import { CloseIcon } from "../assets/svg/icon-library";
+import { utilService } from "../services/util.service";
+import { closeDynamicModal, updateDynamicModalPos } from "../store/modal/modal.action";
 import { BoardStarred } from "./board-starred";
 import { DueDate } from "./task/task-details/task-details-due-date";
+import { MembersModal } from "./task/task-modals/members-modal";
 
-export function DynamicModal(modalWidth = 304, elType = 'button') {
-    const { pos, clickedElemntSize } = useSelector(storeState => storeState.modalModule)
-    console.log('pos: ', pos);
-    console.log('clickedElemntSize: ', clickedElemntSize);
+export function DynamicModal() {
+    const { modalPos, modalDetails } = useSelector(storeState => storeState.modalModule)
+    console.log('modalDetails: ', modalDetails);
 
-    function DynamicModalContent({ type }) {
-        console.log('type: ', type);
+    const windowSize = utilService.getWindowDimensions()
+    const elementStartLeft = (modalPos.left)
+    const elementStartRight = (modalPos.right)
+    const elementStartTop = (modalPos.top)
+    const elementStartBottom = (modalPos.bottom)
+    const clickedElemntWidth = modalPos.width
+    const clickedElemntHeight = modalPos.height
+
+    function DynamicModalContent({ type, func }) {
+        console.log('func from content: ', func);
+
         switch (type) {
-            case 'label':
-                return <DueDate />
-            case 'members':
+            case 'labels':
                 return
+            case 'members':
+                return <MembersModal getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
             default:
                 break;
         }
     }
 
     function renderPos() {
+        const bottomMargin = 5
+        const modalWidth = 304
+        const modalHeight = 100
+        let posToRender = 'downRight'
 
-        let elemntType = elType
-        const btnHeight = 32
-        const btnMarginDown = 10
-
-        switch (elemntType) {
-            case 'button':
+        if (elementStartLeft + modalWidth > windowSize.width) posToRender = "downLeft"
+        if (elementStartBottom + modalHeight > windowSize.height) posToRender = "upRight"
+        switch (posToRender) {
+            case 'downRight':
                 return {
-                    top: "60px",
+                    top: `${elementStartBottom + bottomMargin}px`,
+                    left: `${elementStartLeft}px`,
                 }
-            case 'members':
-                return
+            case 'downLeft':
+                return {
+                    top: `${elementStartBottom + bottomMargin}px`,
+                    left: `${elementStartLeft - modalWidth}px`
+                }
+            case 'upRight':
+                return {
+                    top: `${elementStartBottom - clickedElemntHeight}px`,
+                    left: `${elementStartLeft}px`,
+                    transform: "translateY(-100%)",
+
+                }
+            case 'upLeft':
+                return {
+                    top: `${elementStartBottom + bottomMargin}px`,
+                    left: `${elementStartLeft - modalWidth}px`,
+                    transform: "translateY(-100%)",
+                }
             default:
                 break;
         }
@@ -41,14 +71,14 @@ export function DynamicModal(modalWidth = 304, elType = 'button') {
     return (
         <section style={renderPos()} className='dynamic-modal-container'>
             <div className="dynamic-modal-header">
-                <div className="dynamic-modal-header-close-icon">
+                <div onClick={() => { closeDynamicModal() }} className="dynamic-modal-header-close-icon">
                     <CloseIcon />
                 </div>
                 <span className="dynamic-modal-header-title">headline</span>
             </div>
 
             <div className="dynamic-modal-content-container">
-                <DynamicModalContent type={'label'} />
+                <DynamicModalContent type={modalDetails.name} func={modalDetails.func} />
 
             </div>
 

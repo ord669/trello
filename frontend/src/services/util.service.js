@@ -10,7 +10,9 @@ export const utilService = {
     loadFromStorage,
     getBgUrlIsDark,
     getBgIsDarkColorHex,
-    formatTime
+    formatTime,
+    getWindowDimensions,
+    // clickedOnModal,
 }
 
 function makeId(length = 6) {
@@ -111,3 +113,25 @@ function getBgIsDarkColorHex(color) {
 function onSetDynamicModal() {
 
 }
+
+function getWindowDimensions() {
+
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+        width,
+        height
+    };
+}
+
+// function clickedOnModal(clickedPos, ModalPos) {
+
+//     const { borderLeft, borderRight, borderBottom, borderTop } = ModalPos
+//     console.log('borderRight: ', borderRight);
+//     console.log('borderLeft: ', borderLeft);
+//     const { x, y } = clickedPos
+//     console.log('ModalPos from util: ', ModalPos);
+//     console.log('clickedPos: ', clickedPos);
+//     //&& y > borderTop && y < borderBottom
+//     if (x > borderLeft && x < borderRight) return false
+//     else return true
+// }

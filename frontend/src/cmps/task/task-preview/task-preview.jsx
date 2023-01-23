@@ -31,14 +31,13 @@ export function TaskPreview({ task, idx }) {
         if (task.style.img) return styleBgImg
     }
 
-
     return (
         <Draggable draggableId={task._id} index={idx}>
             {(provided, snapshot) => (
                 <section className={`task-preview ${snapshot.isDragging ? 'dragged' : ''}`}
                     onClick={(ev) => {
+                        // openDynamicModal(ev)
 
-                        openDynamicModal(ev)
                         navigate(`${task.groupId}/${task._id}`)
                     }}
                     ref={provided.innerRef}
