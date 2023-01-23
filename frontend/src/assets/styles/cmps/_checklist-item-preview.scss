@@ -8,6 +8,10 @@
 
     &:hover {
         background-color: #091e420a;
+
+        .options-btn {
+            display: flex;
+        }
     }
 
 
@@ -31,6 +35,7 @@
     }
 
     .options-btn {
+        display: none;
         margin-inline-start: 4px;
         width: 24px;
         height: 24px;
