@@ -50,7 +50,7 @@ export function TaskDetails() {
         navigate(`/board/${board._id}`)
     }
 
-    function getMembers() {
+    function getMembers(currBoard, currTask) {
         let members = board.members.filter(member => task.memberIds.indexOf(member._id) !== -1)
         return members
     }
@@ -126,7 +126,7 @@ export function TaskDetails() {
                 <div className="task-details-content">
                     <div className="task-details-content-label-members-date">
                         {!!task?.memberIds?.length &&
-                            <MembersList getMembers={getMembers} onSelectMember={onSelectMember} />
+                            <MembersList getMembers={getMembers} board={board} task={task} onSelectMember={onSelectMember} />
                         }
                         {!!task?.labelIds?.length &&
                             <LabelList task={task} onSelectLable={onSelectLable} />
@@ -185,6 +185,8 @@ export function TaskDetails() {
                     onAddCheckList={onAddCheckList}
                     getMembers={getMembers}
                     onSelectMember={onSelectMember}
+                    onSelectLable={onSelectLable}
+                    onRemoveTask={onRemoveTask}
                 />
             </div>
         </section>
