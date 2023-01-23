@@ -28,15 +28,10 @@
             overflow-wrap: break-word;
         }
 
-        .group-menu-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .options-btn {
+            padding: 6px;
             height: 32px;
             width: 32px;
-            border-radius: 3px;
-            padding: 6px;
-            color: #6b778c;
 
             &:hover {
                 color: $clr7;

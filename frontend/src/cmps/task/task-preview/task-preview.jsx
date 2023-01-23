@@ -1,6 +1,7 @@
 import { Draggable } from "react-beautiful-dnd"
 import { useNavigate } from "react-router-dom"
 import { PenIcon } from "../../../assets/svg/icon-library"
+import { openDynamicModal } from "../../../store/modal/modal.action"
 import { TaskPreviewIcons } from "./task-preview-icons"
 import { MiniLabelList } from "./task-preview-mini-labels-list"
 
@@ -30,11 +31,16 @@ export function TaskPreview({ task, idx }) {
         if (task.style.img) return styleBgImg
     }
 
+
     return (
         <Draggable draggableId={task._id} index={idx}>
             {(provided, snapshot) => (
                 <section className={`task-preview ${snapshot.isDragging ? 'dragged' : ''}`}
-                    onClick={() => { navigate(`${task.groupId}/${task._id}`) }}
+                    onClick={(ev) => {
+
+                        openDynamicModal(ev)
+                        navigate(`${task.groupId}/${task._id}`)
+                    }}
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}>

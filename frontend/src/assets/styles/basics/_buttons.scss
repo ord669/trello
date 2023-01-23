@@ -120,7 +120,7 @@ button {
     }
 }
 
-.btn-close-form {
+.btn-close {
     display: inline-flex;
     color: $clr9;
     background-color: inherit;
@@ -152,9 +152,12 @@ button {
     &:hover {
         background-color: rgba(255, 255, 255, 0.9);
     }
+}
 
-
-
-
-
+.options-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    color: #6b778c;
 }

@@ -32,7 +32,7 @@ export function AddTask({ groupId, setIsShown }) {
                 onChange={handleChange} />
             <section className="form-btns">
                 <button className="btn-add" onClick={onAddTask}>Add card</button>
-                <button className="btn-close-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}><CloseIcon /></button>
+                <button className="btn-close" onClick={() => setIsShown(prevIsShown => !prevIsShown)}><CloseIcon /></button>
             </section>
         </section>
     )

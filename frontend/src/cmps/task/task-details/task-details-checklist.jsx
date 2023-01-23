@@ -11,14 +11,6 @@ export function TaskDetailsChecklist({ checklist, task }) {
     const [isShown, setIsShown] = useState(false)
     const [todo, setTodo, handleChange] = useForm(taskService.getEmptyTodo())
 
-    function onShownAddTodo() {
-        setIsShown(prevIsShown => !prevIsShown)
-    }
-
-    const doneTodos = checklist.todos.filter(todo => todo.isDone).length * 100
-
-    const completed = Math.floor((doneTodos / checklist.todos.length)) || 0
-
     async function onRemoveChecklist() {
         task.checklists = task.checklists.filter(currChecklist => currChecklist._id !== checklist._id)
         try {
@@ -28,9 +20,9 @@ export function TaskDetailsChecklist({ checklist, task }) {
         }
     }
 
-    function handleKeyPress(e) {
-        if (e.keyCode === 13) {
-            e.target.blur()
+    function handleKeyPress(ev) {
+        if (ev.keyCode === 13) {
+            ev.target.blur()
             onSaveTodo()
             //Write you validation logic here
         }
@@ -43,7 +35,7 @@ export function TaskDetailsChecklist({ checklist, task }) {
         } else {
             // Post
             checklist.todos.push(todo)
-            setIsShown((prev) => !prev)
+            setIsShown(prev => !prev)
         }
         task.checklists.map(currChecklist => currChecklist._id !== checklist._id ? currChecklist : checklist)
         try {
@@ -52,6 +44,9 @@ export function TaskDetailsChecklist({ checklist, task }) {
             console.log('err', err)
         }
     }
+
+    const doneTodos = checklist.todos.filter(todo => todo.isDone).length * 100
+    const completed = Math.floor((doneTodos / checklist.todos.length)) || 0
 
     if (!checklist) return
     return (
@@ -80,25 +75,27 @@ export function TaskDetailsChecklist({ checklist, task }) {
             </div>
             <div className="check-box-container" >
                 {checklist.todos.map(todo =>
-                    <ChecklistItemPreview key={todo._id} todo={todo} onSaveTodo={onSaveTodo} />
+                    <ChecklistItemPreview key={todo._id} currTodo={todo} onSaveTodo={onSaveTodo} />
                 )}
-                {!isShown ?
-                    <p onClick={onShownAddTodo} className="description-fake-text-area"></p>
-                    :
-                    <div>
-                        <textarea autoFocus type="text"
-                            name="title"
-                            onChange={handleChange}
-                            onKeyDown={(e) => handleKeyPress(e)}
-                        />
-                        <div className="desc-btn flex align-cetner ">
-                            <button onClick={() => onSaveTodo()} className="btn-add">Add</button>
-                            <button onClick={() => setIsShown((prev) => !prev)}
-                                className="btn-cancel">Cancel</button>
-                        </div>
-                    </div>
-                }
-                {!isShown && <button className="check-list-add-btn side-menu-item btn-link" onClick={() => { setIsShown(true) }}>Add an item</button>}
+                <section className="add-new-item">
+                    {!isShown ?
+                        <button className="check-list-add-btn side-menu-item btn-link" onClick={() => { setIsShown(true) }}>Add an item</button>
+                        :
+                        <section className="add-item">
+                            <textarea autoFocus type="text"
+                                name="title"
+                                placeholder="Add an item"
+                                onChange={handleChange}
+                                onKeyDown={(ev) => handleKeyPress(ev)}
+                            />
+                            <div className="desc-btn flex align-cetner ">
+                                <button onClick={() => onSaveTodo()} className="btn-add">Add</button>
+                                <button onClick={() => setIsShown(prev => !prev)}
+                                    className="btn-cancel">Cancel</button>
+                            </div>
+                        </section>
+                    }
+                </section>
             </div>
         </section>
     )
