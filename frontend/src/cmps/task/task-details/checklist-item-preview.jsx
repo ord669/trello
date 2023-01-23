@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { CloseIcon } from "../../../assets/svg/icon-library"
+import { CloseIcon, ThreeDotsIcon } from "../../../assets/svg/icon-library"
 
 export function ChecklistItemPreview({ currTodo, onSaveTodo }) {
     const [todo, setTodo] = useState(currTodo)
@@ -16,7 +16,8 @@ export function ChecklistItemPreview({ currTodo, onSaveTodo }) {
 
     const style = {
         backgroundColor: isShown ? '#091e420a' : '',
-        padding: isShown ? '0 0 6px 4px' : '6px 4px',
+        padding: isShown ? '0 0 6px 4px' : '4px 0px 4px 4px',
+        // padding: isShown ? '0 0 6px 4px' : '6px 0 6px 4px',
         alignItems: isShown ? '' : 'center'
     }
 
@@ -40,7 +41,10 @@ export function ChecklistItemPreview({ currTodo, onSaveTodo }) {
                     </section>
                 </section>
                 :
-                <span className={`${todo.isDone ? 'done' : ''}`} onClick={() => setIsShown(preIsShown => !preIsShown)}>{todo.title}</span>
+                <>
+                    <span className={`${todo.isDone ? 'done' : ''}`} onClick={() => setIsShown(preIsShown => !preIsShown)}>{todo.title}</span>
+                    <button className="options-btn"><ThreeDotsIcon /></button>
+                </>
             }
         </section>
     )

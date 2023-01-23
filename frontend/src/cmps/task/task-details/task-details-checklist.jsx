@@ -77,23 +77,25 @@ export function TaskDetailsChecklist({ checklist, task }) {
                 {checklist.todos.map(todo =>
                     <ChecklistItemPreview key={todo._id} currTodo={todo} onSaveTodo={onSaveTodo} />
                 )}
-                {!isShown ?
-                    <button className="check-list-add-btn side-menu-item btn-link" onClick={() => { setIsShown(true) }}>Add an item</button>
-                    :
-                    <section className="add-item">
-                        <textarea autoFocus type="text"
-                            name="title"
-                            placeholder="Add an item"
-                            onChange={handleChange}
-                            onKeyDown={(ev) => handleKeyPress(ev)}
-                        />
-                        <div className="desc-btn flex align-cetner ">
-                            <button onClick={() => onSaveTodo()} className="btn-add">Add</button>
-                            <button onClick={() => setIsShown(prev => !prev)}
-                                className="btn-cancel">Cancel</button>
-                        </div>
-                    </section>
-                }
+                <section className="add-new-item">
+                    {!isShown ?
+                        <button className="check-list-add-btn side-menu-item btn-link" onClick={() => { setIsShown(true) }}>Add an item</button>
+                        :
+                        <section className="add-item">
+                            <textarea autoFocus type="text"
+                                name="title"
+                                placeholder="Add an item"
+                                onChange={handleChange}
+                                onKeyDown={(ev) => handleKeyPress(ev)}
+                            />
+                            <div className="desc-btn flex align-cetner ">
+                                <button onClick={() => onSaveTodo()} className="btn-add">Add</button>
+                                <button onClick={() => setIsShown(prev => !prev)}
+                                    className="btn-cancel">Cancel</button>
+                            </div>
+                        </section>
+                    }
+                </section>
             </div>
         </section>
     )
