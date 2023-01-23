@@ -220,7 +220,7 @@ function _createBoards() {
                         "_id": "u102",
                         "fullname": "Liad Gola",
                         "username": "Liad Gola",
-                        "imgUrl": "https://robohash.org/Liad?set=set5"
+                        "imgUrl": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674479066/main_aq4l31.jpg"
                     },
                     {
                         "_id": "u103",

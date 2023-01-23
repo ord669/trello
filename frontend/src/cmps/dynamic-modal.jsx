@@ -4,6 +4,7 @@ import { utilService } from "../services/util.service";
 import { closeDynamicModal, updateDynamicModalPos } from "../store/modal/modal.action";
 import { BoardStarred } from "./board-starred";
 import { DueDate } from "./task/task-details/task-details-due-date";
+import { LabelsModal } from "./task/task-modals/members/labels-modal";
 import { MembersModal } from "./task/task-modals/members/members-modal";
 
 export function DynamicModal() {
@@ -23,7 +24,7 @@ export function DynamicModal() {
 
         switch (type) {
             case 'labels':
-                return
+                return <LabelsModal board={board} currTask={currTask} onSelectLable={func.onSelectLable} />
             case 'members':
                 return <MembersModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
             default:
@@ -74,7 +75,7 @@ export function DynamicModal() {
                 <div onClick={() => { closeDynamicModal() }} className="dynamic-modal-header-close-icon">
                     <CloseIcon />
                 </div>
-                <span className="dynamic-modal-header-title">headline</span>
+                <span className="dynamic-modal-header-title">{modalDetails.name}</span>
             </div>
 
             <div className="dynamic-modal-content-container">
