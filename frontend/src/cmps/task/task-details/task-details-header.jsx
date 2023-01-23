@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom"
 import { CloseIcon, CoverIcon, TaskTitleIcon } from "../../../assets/svg/icon-library"
+import { openDynamicModal } from "../../../store/modal/modal.action"
 import { DetilsTitle } from "./task-details-title"
 
-export function DetailsHeader({ onUpdateHeadline, task, group, boardId }) {
+export function DetailsHeader({ onUpdateHeadline, task, group, boardId, onCoverChange }) {
     const navigate = useNavigate()
     let styleBgColor
     let styleBgImg
@@ -33,7 +34,9 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId }) {
                 </button>
                 {task.style.bgColor && <div style={taskPreviewImgCover()} className="task-details-cover"></div>}
                 {!task.style.bgColor && <div style={taskPreviewImgCover()} className="task-details-img "></div>}
-                <button className="btn-bar " onClick={() => { }}><CoverIcon /> Cover</button>
+                <button className="btn-bar "
+                    onClick={(ev) => openDynamicModal({ ev, name: 'cover', func: { onCoverChange } })}
+                ><CoverIcon /> Cover</button>
 
             </div>
             <div className="header-title-title-container flex  align-center">

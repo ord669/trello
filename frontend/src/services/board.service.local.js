@@ -132,6 +132,21 @@ function _createBoard(title, url, isStarred) {
     }
 }
 
+async function getImgsFromUnsplash() {
+    const url = 'https://api.unsplash.com/search/photos?query=london&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4'
+    // return fetch(url).then((res) => res.json())
+    try {
+        const res = await fetch(url)
+        return res.json()
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+function getColors() {
+    return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91']
+}
+
 function _createBoards() {
     let boards = utilService.loadFromStorage(STORAGE_KEY)
     if (!boards || !boards.length) {
@@ -206,7 +221,7 @@ function _createBoards() {
                         "_id": "u102",
                         "fullname": "Liad Gola",
                         "username": "Liad Gola",
-                        "imgUrl": "https://robohash.org/Liad?set=set5"
+                        "imgUrl": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674479066/main_aq4l31.jpg"
                     },
                     {
                         "_id": "u103",
@@ -1170,49 +1185,94 @@ function _createBoards() {
                 "activities": [
                     {
                         "_id": "a101",
-                        "txt": "completed Node js modules on ",
-                        "createdAt": 1674408565401,
+                        "txt": "Changed Color",
+                        "createdAt": 154514,
                         "byMember": {
                             "_id": "u101",
                             "fullname": "Or Dvir",
                             "imgUrl": "https://robohash.org/Or?set=set5"
                         },
+                        "type": "act",
                         "task": {
-                            "_id": "c102",
-                            "groupId": "g102",
-                            "title": "Create backend services"
+                            "_id": "c101",
+                            "title": "Replace Logo"
                         }
                     },
                     {
                         "_id": "a102",
-                        "txt": "Upload endpoint returns a 400 error code on ",
-                        "createdAt": 1674408565632,
+                        "txt": "Changed Color",
+                        "createdAt": 154514,
                         "byMember": {
-                            "_id": "u102",
-                            "fullname": "Oren Sharizad",
-                            "imgUrl": "https://robohash.org/liad?set=set5"
+                            "_id": "u101",
+                            "fullname": "Or Dvir",
+                            "imgUrl": "https://robohash.org/Or?set=set5"
                         },
+                        "type": "act",
                         "task": {
-                            "_id": "c115",
-                            "groupId": "g105",
-                            "title": "File Management"
+                            "_id": "c101",
+                            "title": "Replace Logo"
                         }
                     },
                     {
                         "_id": "a103",
-                        "txt": "Make the header responsive on ",
-                        "createdAt": 1674408565488,
+                        "txt": "Changed Color",
+                        "createdAt": 154514,
                         "byMember": {
-                            "_id": "u103",
-                            "fullname": "Liad Gola",
-                            "imgUrl": "https://robohash.org/Oren?set=set5"
+                            "_id": "u101",
+                            "fullname": "Or Dvir",
+                            "imgUrl": "https://robohash.org/Or?set=set5"
                         },
+                        "type": "act",
                         "task": {
                             "_id": "c101",
-                            "groupId": "g101",
-                            "title": "functional testing for app header"
+                            "title": "Replace Logo"
                         }
                     },
+                    {
+                        "_id": "a104",
+                        "txt": "Changed Color",
+                        "createdAt": 154514,
+                        "byMember": {
+                            "_id": "u101",
+                            "fullname": "Or Dvir",
+                            "imgUrl": "https://robohash.org/Or?set=set5"
+                        },
+                        "type": "act",
+                        "task": {
+                            "_id": "c102",
+                            "title": "Replace Logo"
+                        }
+                    },
+                    {
+                        "_id": "a105",
+                        "txt": "Changed Color",
+                        "createdAt": 154514,
+                        "byMember": {
+                            "_id": "u101",
+                            "fullname": "Or Dvir",
+                            "imgUrl": "https://robohash.org/Or?set=set5"
+                        },
+                        "type": "act",
+                        "task": {
+                            "_id": "c102",
+                            "title": "Replace Logo"
+                        }
+                    },
+                    {
+                        "_id": "a106",
+                        "txt": "Good job guys",
+                        "createdAt": 1299438834,
+                        "byMember": {
+                            "_id": "u101",
+                            "fullname": "Or Dvir",
+                            "imgUrl": "https://robohash.org/Or?set=set5"
+                        },
+                        "type": "comment",
+                        "task": {
+                            "_id": "c102",
+                            "title": "Replace Logo"
+                        }
+                    }
                 ],
                 "cmpsOrder": [
                     "status-picker",

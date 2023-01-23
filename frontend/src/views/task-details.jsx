@@ -122,7 +122,7 @@ export function TaskDetails() {
         <section className='task-details'>
             <div className="black-screen" onClick={() => navigate(`/board/${board._id}`)}></div>
             <div className="main-task-details">
-                <DetailsHeader onUpdateHeadline={onUpdateHeadline} boardId={board._id} task={task} group={group} />
+                <DetailsHeader onUpdateHeadline={onUpdateHeadline} onCoverChange={onCoverChange} boardId={board._id} task={task} group={group} />
                 <div className="task-details-content">
                     <div className="task-details-content-label-members-date">
                         {!!task?.memberIds?.length &&
@@ -151,7 +151,8 @@ export function TaskDetails() {
                                 <TaskDetailsAttachment key={attachment._id} task={task} />
                             )}
                         </div>}
-                    <ActivityIndex />
+                    <ActivityIndex board={board} currTask={task} />
+
                     {/* TODO////forom here down dev only//// */}
                     <h2>Froom Here Functionality Only!!!</h2>
                     <div>
@@ -185,6 +186,8 @@ export function TaskDetails() {
                     onAddCheckList={onAddCheckList}
                     getMembers={getMembers}
                     onSelectMember={onSelectMember}
+                    onSelectLable={onSelectLable}
+                    onRemoveTask={onRemoveTask}
                 />
             </div>
         </section>
