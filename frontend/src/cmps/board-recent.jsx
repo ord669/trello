@@ -7,6 +7,7 @@ import { BoardStarred } from "./board-starred"
 export function BoardRecent({ type }) {
     const navigate = useNavigate()
     const [boards, setBoards] = useState([])
+    const [someBoardsIsStarred, setSomeBoardIsStarred] = useState(true)
 
     useEffect(() => {
         loadBoards()
@@ -19,6 +20,8 @@ export function BoardRecent({ type }) {
             else if (type === 'starred') {
                 const starredBoards = boards.filter(board => board.isStarred)
                 setBoards(starredBoards)
+                const boardsIsStarred = boards.some(board => board.isStarred)
+                setSomeBoardIsStarred(boardsIsStarred)
             }
         } catch (err) {
             console.error(err)
@@ -27,10 +30,10 @@ export function BoardRecent({ type }) {
 
     return (
         <section className='board-recent'>
-            {(!boards.length && type === 'recent') && <div className="loader">
+            {(!boards.length && someBoardsIsStarred) && <div className="loader">
                 <LoaderIcon />
             </div>}
-            {(!boards.length && type === 'starred') && <div className="board-recent-empty">
+            {(!someBoardsIsStarred && type === 'starred') && <div className="board-recent-empty">
                 <img src="https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674313433/starred-board.cc47d0a8c646581ccd08_fcn5p9.svg" alt="" />
                 <p>Star important boards to access them quickly and easily.</p>
             </div>}
