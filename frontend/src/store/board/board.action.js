@@ -59,7 +59,6 @@ export async function saveBoard(board) {
 
 export async function saveTask(task) {
 
-
     try {
         const { board } = store.getState().boardModule
         const group = board.groups.find(group => group._id === task.groupId)
