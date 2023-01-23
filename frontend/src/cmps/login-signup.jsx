@@ -1,20 +1,15 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
 import { ImgUploader } from '../cmps/img-uploader'
+import { login, logout, signup } from '../store/user.actions'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+import { useLocation, useNavigate } from 'react-router-dom'
+
 
 export function LoginSignup(props) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
     const [isSignup, setIsSignup] = useState(false)
-    const [users, setUsers] = useState([])
-
-    useEffect(() => {
-        loadUsers()
-    }, [])
-
-    async function loadUsers() {
-        const users = await userService.getUsers()
-        setUsers(users)
-    }
+    const navigate = useNavigate()
 
     function clearState() {
         setCredentials({ username: '', password: '', fullname: '', imgUrl: '' })
@@ -27,18 +22,36 @@ export function LoginSignup(props) {
         setCredentials({ ...credentials, [field]: value })
     }
 
-    function onLogin(ev = null) {
-        if (ev) ev.preventDefault()
-        if (!credentials.username) return
-        props.onLogin(credentials)
-        clearState()
-    }
 
-    function onSignup(ev = null) {
-        if (ev) ev.preventDefault()
-        if (!credentials.username || !credentials.password || !credentials.fullname) return
-        props.onSignup(credentials)
-        clearState()
+    async function onLogin(ev) {
+        ev.preventDefault()
+        try {
+            const user = await login(credentials)
+            showSuccessMsg(`Welcome: ${user.fullname}`)
+            clearState()
+            navigate('/')
+        } catch (err) {
+            showErrorMsg('Cannot login')
+        }
+    }
+    async function onSignup(ev) {
+        ev.preventDefault()
+        try {
+            const user = await signup(credentials)
+            showSuccessMsg(`Welcome new user: ${user.fullname}`)
+            clearState()
+            navigate('/')
+        } catch (err) {
+            showErrorMsg('Cannot signup')
+        }
+    }
+    async function onLogout() {
+        try {
+            await logout()
+            showSuccessMsg(`Bye now`)
+        } catch (err) {
+            showErrorMsg('Cannot logout')
+        }
     }
 
     function toggleSignup() {
@@ -50,48 +63,13 @@ export function LoginSignup(props) {
     }
 
     return (
-        <div className="login-page">
-            <p>
-                <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
-            </p>
-            {!isSignup && <form className="login-form" onSubmit={onLogin}>
-                <select
-                    name="username"
-                    value={credentials.username}
-                    onChange={handleChange}
-                >
-                    <option value="">Select User</option>
-                    {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
-                </select>
-                {/* <input
-                        type="text"
-                        name="username"
-                        value={username}
-                        placeholder="Username"
-                        onChange={handleChange}
-                        required
-                        autoFocus
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        placeholder="Password"
-                        onChange={handleChange}
-                        required
-                    /> */}
-                <button>Login!</button>
-            </form>}
-            <div className="signup-section">
-                {isSignup && <form className="signup-form" onSubmit={onSignup}>
-                    <input
-                        type="text"
-                        name="fullname"
-                        value={credentials.fullname}
-                        placeholder="Fullname"
-                        onChange={handleChange}
-                        required
-                    />
+        <div className='main-login-page'>
+
+            <div className="login-page">
+
+                <p className='login-title'>{!isSignup ? 'Log in to chello ' : 'Sign up for your account'}</p>
+
+                {!isSignup && <form className="login-form" onSubmit={onLogin}>
                     <input
                         type="text"
                         name="username"
@@ -99,6 +77,7 @@ export function LoginSignup(props) {
                         placeholder="Username"
                         onChange={handleChange}
                         required
+                        autoFocus
                     />
                     <input
                         type="password"
@@ -108,10 +87,45 @@ export function LoginSignup(props) {
                         onChange={handleChange}
                         required
                     />
-                    <ImgUploader onUploaded={onUploaded} />
-                    <button >Signup!</button>
+                    <button className='login-btn'>Continue</button>
                 </form>}
+                <div className="signup-section">
+                    {isSignup && <form className="login-form" onSubmit={onSignup}>
+                        <input
+                            type="text"
+                            name="fullname"
+                            value={credentials.fullname}
+                            placeholder="Fullname"
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="username"
+                            value={credentials.username}
+                            placeholder="Username"
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="password"
+                            name="password"
+                            value={credentials.password}
+                            placeholder="Password"
+                            onChange={handleChange}
+                            required
+                        />
+                        {/* <ImgUploader onUploaded={onUploaded} /> */}
+                        <button className='login-btn' >Signup!</button>
+                    </form>}
+                </div>
+
+                <button className="btn-signup" onClick={toggleSignup}>{!isSignup ? 'Cant log in? Sign up for an account' : 'Already have an account? Log In'}</button>
+
             </div>
+            <img className="login-img-left" src={require(`../assets/img/left.png`)} alt="hero-img" />
+            <img className="login-img-right" src={require(`../assets/img/right.png`)} alt="hero-img" />
+
         </div>
     )
 }

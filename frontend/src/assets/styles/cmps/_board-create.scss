@@ -66,6 +66,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 10px;
 
         .bg-img {
             background-position: center center;
@@ -74,6 +75,21 @@
             border-radius: 3px;
             width: 65px;
             height: 40px;
+
+            &:hover {
+                opacity: .7;
+            }
+        }
+
+        .bg-color {
+            border-radius: 3px;
+            width: 40px;
+            height: 32px;
+
+            &:hover {
+                opacity: .7;
+            }
         }
     }
+
 }

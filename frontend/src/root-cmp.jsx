@@ -13,6 +13,7 @@ import { useEffect } from "react"
 import { closeDynamicModal, updateDynamicModalPos } from "./store/modal/modal.action"
 import { utilService } from "./services/util.service"
 import { MembersModal } from "./cmps/task/task-modals/members-modal"
+import { LoginSignup } from "./cmps/login-signup"
 
 export function App() {
     const { dynamicModalStatus } = useSelector(storeState => storeState.modalModule)
@@ -35,6 +36,7 @@ export function App() {
                 <main className='full'>
                     <Routes>
                         <Route path="/" element={<HomePage />} />
+                        <Route path="/login" element={<LoginSignup />} />
                         <Route path="/board" element={<BoardIndex />} />
                         <Route path="/board/:boardId" element={<BoardDetails />} >
                             <Route Route path="/board/:boardId/:groupId/:taskId" element={<TaskDetails />} />

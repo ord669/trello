@@ -28,6 +28,20 @@ export function BoardRecent({ type }) {
         }
     }
 
+    function setStyle(BG) {
+        let style
+        if (BG.includes('https')) {
+            style = {
+                backgroundImage: `url(${BG})`
+            }
+        } else {
+            style = {
+                background: BG
+            }
+        }
+        return style
+    }
+
     return (
         <section className='board-recent'>
             {(!boards.length && someBoardsIsStarred) && <div className="loader">
@@ -41,7 +55,7 @@ export function BoardRecent({ type }) {
             {boards && boards.map(board =>
                 <div key={board._id} className=" board-recent-card ">
                     <div onClick={() => navigate(`/board/${board._id}`)} className="recent-content">
-                        <div style={{ backgroundImage: `url(${board.style.background})` }} className="board-recent-img">
+                        <div style={setStyle(board.style.background)} className="board-recent-img">
                         </div>
                         <div className="board-recent-title">
                             <p>{board.title}</p>

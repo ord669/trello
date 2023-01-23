@@ -88,7 +88,7 @@ export function AppHeader() {
                         <h1>Trello</h1>
                     </div>
                     <div>
-                        <button className='btn-login'>Log in</button>
+                        <button onClick={() => navigate('/login')} className='btn-login'>Log in</button>
                         <button className='btn-get-trello'>Get Trello for free</button>
                     </div>
                 </div>
