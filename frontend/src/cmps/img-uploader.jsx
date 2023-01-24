@@ -1,7 +1,11 @@
 import { useState } from 'react'
 import { uploadService } from '../services/upload.service'
 
-export function ImgUploader({ onUploaded = null }) {
+export function ImgUploader({ onUploaded = null, type, styleClass, content, showFile }) {
+  let fileName
+  console.log('styleClass: ', styleClass);
+  console.log('type: ', type);
+  console.log('styleClass: ', styleClass);
   const [imgData, setImgData] = useState({
     imgUrl: null,
     height: 500,
@@ -26,9 +30,10 @@ export function ImgUploader({ onUploaded = null }) {
 
   return (
     <div className="upload-preview">
-      {imgData.imgUrl && <img src={imgData.imgUrl} style={{ maxWidth: '200px', float: 'right' }} />}
-      {/* <label htmlFor="imgUpload">{getUploadLabel()}</label> */}
-      <label className='btn-link' htmlFor="imgUpload">Upload a cover image</label>
+      {imgData.imgUrl && showFile && <img src={imgData.imgUrl} style={{ maxWidth: '200px', float: 'right' }} />}
+      {!type && <label htmlFor="imgUpload">{getUploadLabel()}</label>}
+      {type === 'cover' && <label className={styleClass.coverLabelBtn} htmlFor="imgUpload">Upload a cover image</label>}
+      {type === 'attach' && <label className={styleClass.attachLableBtn} htmlFor="imgUpload">{content.title}</label>}
       <input type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
     </div>
   )

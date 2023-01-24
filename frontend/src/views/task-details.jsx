@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useParams, useNavigate } from "react-router-dom"
-import { DescriptionIcon } from "../assets/svg/icon-library"
+import { AttachmentIcon, DescriptionIcon } from "../assets/svg/icon-library"
 import { LabelList } from "../cmps/task/task-details/label-list"
 import { MembersList } from "../cmps/task/task-details/task-details-members-list"
 import { ActivityIndex } from "../cmps/task/task-details/activity-index"
@@ -90,17 +90,22 @@ export function TaskDetails() {
         }
     }
 
-    function onUploadedAttachment(attach) {
-        console.log('attach: ', attach)
-
+    function onRemoveAttach(attachId) {
+        task.attachments = task.attachments.filter(attach => attach._id !== attachId)
+        saveTask(task)
     }
 
-    function onUploadFile(ev) {
-        console.log('ev: ', ev)
-
+    function onEditAttach(attachment, title) {
+        console.log('attachment: ', attachment);
+        console.log('title: ', title);
+        attachment.title = title.txt
+        task.attachments = task.attachments.map(attach => attach._id !== attachment._id ? attach : attachment)
+        console.log('task: ', task);
+        saveTask(task)
     }
 
     if (!task) return <p>Loading..</p>
+    console.log('task: ', task);
     return (
         <section className='task-details'>
             <div className="black-screen" onClick={() => navigate(`/board/${board._id}`)}></div>
@@ -129,22 +134,21 @@ export function TaskDetails() {
                             )}
                         </div>}
                     {task?.attachments &&
-                        <div className="attachments-container flex">
+                        <div className="attachments-container ">
+                            <div className="task-details-attachment-header">
+                                <div className="attachment-icon">
+                                    <AttachmentIcon />
+                                </div>
+                                <h3>Attachments</h3>
+                            </div>
                             {task.attachments.map(attachment =>
-                                <TaskDetailsAttachment key={attachment._id} task={task} />
+
+                                <TaskDetailsAttachment key={attachment._id} task={task} attachment={attachment} onRemoveAttach={onRemoveAttach} onEditAttach={onEditAttach} />
                             )}
+                            <button className="btn-link">Add an attachment</button>
+
                         </div>}
                     <ActivityIndex board={board} currTask={task} />
-
-                    {/* TODO////forom here down dev only//// */}
-                    <h2>Froom Here Functionality Only!!!</h2>
-
-                    <input onChange={onChoosenDate} type="date" id="start" name="trip-start"
-                        value="2018-07-22"
-                        min="2018-01-01" max="2018-12-31" />
-                    {/* <ImgUploader onUploaded={onUploadedAttachment} />
-
-                    <input onChange={onUploadFile} id="image-file" type="file" /> */}
                 </div>
                 <TaskDetailsSideMenu
                     addCheckList={addCheckList}
