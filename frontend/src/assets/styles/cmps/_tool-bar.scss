@@ -1,8 +1,5 @@
 .tool-bar {
-    // padding: 8px 4px 4px 12px;
     padding: 6px 4px 6px 32px;
-    color: $clr6;
-    // padding: 0 12px 8px;
     margin-top: 9px;
     display: flex;
     align-items: center;
@@ -17,7 +14,9 @@
         font-size: 18px;
 
         &:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            // background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: contrast(0.5);
+
         }
 
         &:focus-visible {
@@ -40,16 +39,19 @@
         display: flex;
         align-items: center;
         gap: 10px;
+        padding-inline-end: 6px;
 
         .span {
             font-size: 1.3rem;
-            color: rgba(211, 211, 211, 0.1);
+            color: inherit;
         }
 
     }
 
     .tool-bar-star {
-        background-color: $clr10;
+        // background-color: $clr10;
+        backdrop-filter: contrast(0.5);
+
         border-radius: 3px;
         line-height: 1;
         margin-inline-start: 5px;
@@ -66,10 +68,7 @@
             }
         }
 
-        svg.yellow-star {
-            fill: $clr12;
-            color: $clr12;
-        }
+
     }
 
     .right-open {

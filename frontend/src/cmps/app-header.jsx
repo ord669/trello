@@ -20,9 +20,12 @@ export function AppHeader() {
     const [isNotification, setIsNotification] = useState(false)
     const { board } = useSelector(storeState => storeState.boardModule)
     const [color, setColor] = useState('')
+    const [boardColor, setBoardColor] = useState('')
+
 
     useEffect(() => {
         setAvgColor()
+        setDynamicColor()
         if (location.length > 1) setIsHome(false)
         else setIsHome(true)
     }, [location, board])
@@ -57,26 +60,54 @@ export function AppHeader() {
         if (location.length === 6) {
             console.log('location:', location)
             style = {
-                background: "#026AA7"
+                background: "#026AA7",
+                color: boardColor
             }
         }
 
         else if (bg.includes('https')) {
 
             style = {
-                background: color.hex
+                background: color.hex,
+                color: boardColor
+
 
             }
         }
         else {
             style = {
                 background: darkenHexColor(bg),
+                color: boardColor
+
             }
         }
         return style
     }
+    async function setDynamicColor() {
+        if (!board) return
+        const bg = board.style.background
 
-    if (!color || !board) return <div className='loader'><LoaderIcon /></div>
+        if (bg.includes('https')) {
+            try {
+                const colorIsDark = await utilService.getBgUrlIsDark(bg)
+                console.log('colorisDark: ', colorIsDark);
+                const color = colorIsDark ? "#fff" : "#172b4d"
+                setBoardColor(color)
+            } catch (err) {
+                console.error(err)
+            }
+        }
+
+        else {
+            const colorIsDark = utilService.getBgIsDarkColorHex(bg)
+            console.log('colorisDark: ', colorIsDark);
+            const color = colorIsDark ? "#fff" : "#172b4d"
+            setBoardColor(color)
+        }
+
+    }
+
+    if (!color || !board) return
     return (
         <section className={`${isHome ? 'home-header' : 'app-header'} full`}>
 
