@@ -11,8 +11,7 @@ import { MembersModal } from "./task/task-modals/members/members-modal";
 
 export function DynamicModal() {
     const { modalPos, modalDetails } = useSelector(storeState => storeState.modalModule)
-    console.log('modalDetails: ', modalDetails);
-    console.log('modalPos: ', modalPos);
+
     const { currTask } = useSelector(storeState => storeState.taskModule)
     const { board } = useSelector(storeState => storeState.boardModule)
 

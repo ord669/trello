@@ -9,9 +9,8 @@ import { OPEN_MODAL, CLOSE_MODAL, UPDATE_POS, UPDATE_ELEMENT_SIZE, UPDATE_CLICKE
 
 // }
 export async function openDynamicModal({ ev, name, func }) {
-    console.log('click:')
     const { target } = ev
-    // closeDynamicModal()
+
     // GET Element POS
     updateDynamicModalPos(target.getBoundingClientRect())
     updateModalType({ name, func })
@@ -22,7 +21,6 @@ export async function openDynamicModal({ ev, name, func }) {
 }
 
 export async function closeDynamicModal() {
-    console.log('in');
     store.dispatch({ type: CLOSE_MODAL })
 }
 

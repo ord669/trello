@@ -29,7 +29,6 @@ export function AppHeader() {
 
     async function setAvgColor() {
         const bg = board.style.background
-        console.log(' board.style.background: ', board.style.background);
 
         if (bg.includes('https')) {
             try {
@@ -63,7 +62,7 @@ export function AppHeader() {
         }
 
         else if (bg.includes('https')) {
-            console.log('color:', color)
+
             style = {
                 background: color.hex
 
