@@ -1,5 +1,8 @@
 import { useForm } from "../../../../customHooks/useForm";
-import { AttachmentList } from "./attachment-modal-list";
+import { taskService } from "../../../../services/task.service.local";
+import { utilService } from "../../../../services/util.service";
+import { saveTask } from "../../../../store/board/board.action";
+import { ImgUploader } from "../../../img-uploader";
 
 export function AttachmentModal({ board, currTask, getMembers, onSelectMember }) {
 
@@ -7,10 +10,28 @@ export function AttachmentModal({ board, currTask, getMembers, onSelectMember })
     console.log('attachment: ', attachment);
     const [title, setTitle, handleChangeTitle] = useForm('')
     console.log('title: ', title);
+    console.log('currTask: ', currTask);
+
+    async function onUploadedAttach(url, title = 'uploded img') {
+        console.log('url: ', url)
+
+        currTask.attachments.push(taskService.getAttachment(url, title))
+        // currTask.attachments.push({ 'file': url, title, createdAt: utilService.makeId() })
+        console.log('currTask: ', currTask);
+        try {
+            saveTask(currTask)
+        } catch (err) {
+            console.log('err', err)
+        }
+    }
 
     return (
-        <section className='members-modal-container'>
+        <section className='attachs-modal-container'>
             <div className="modal-header">
+                <div className="uploads-container uploads-btn no-paddin-full">
+                    <ImgUploader onUploaded={onUploadedAttach} type={'attach'} styleClass={{ attachLableBtn: '' }} content={{ title: 'Computer' }} showFile={false} />
+                </div>
+                <hr />
                 <div className="attach-link">
                     Attach a link
                     <input
@@ -28,7 +49,6 @@ export function AttachmentModal({ board, currTask, getMembers, onSelectMember })
                         onChange={handleChangeTitle}
                         placeholder="Link name (optional)" />}
             </div>
-            <button className="btn-link">Attach</button>
         </section>
     )
 }

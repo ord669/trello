@@ -126,6 +126,7 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
             </div>
             <div>
                 <p className="msm-your-boards">Your Boards</p>
+
                 {boards && boards.map(board =>
                     <div key={board._id} className="msm-boards-list">
                         <div onClick={() => navigate(`board/${board._id}`)} key={board._id} className="msm-card">

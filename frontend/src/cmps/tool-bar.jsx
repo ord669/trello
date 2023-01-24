@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { FilterIcon, ManShareIcon, MoreTreeDotsIcon } from "../assets/svg/icon-library"
 import { handleKeyPress } from "../customHooks/enterOutFocues"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
+import { utilService } from "../services/util.service"
 import { saveBoard } from "../store/board/board.action"
 import { BoardSideMenu } from "./board-side-menu"
 import { BoardStarred } from "./board-starred"
@@ -15,9 +16,13 @@ export function ToolBar({ board }) {
     const [isOpenFilter, setIsOpenFilter] = useState(false)
     const [isOpenSideMenu, setIsOpenSideMenu] = useState(false)
     const [isOpenShare, setIsOpenShare] = useState(false)
+    const [color, setColor] = useState('')
+    const [btnShareBg, setBtnShareBg] = useState({})
+
 
     useEffect(() => {
         setTitle(board.title)
+        setDynamicColor()
     }, [board])
 
     function handleChange({ target }) {
@@ -35,11 +40,45 @@ export function ToolBar({ board }) {
             showErrorMsg('Cannot update title, try later')
         }
     }
+    async function setDynamicColor() {
+        if (!board) return
+        const bg = board.style.background
+
+        if (bg.includes('https')) {
+            try {
+                const colorIsDark = await utilService.getBgUrlIsDark(bg)
+                const color = colorIsDark ? "#fff" : "#172b4d"
+                const bgColor = colorIsDark ? "#fff" : "#0079BF"
+                const btnShareStyle = {
+                    background: colorIsDark ? "#fff" : "#0079BF",
+                    color: colorIsDark ? "#172b4d" : "#fff"
+                }
+                setBtnShareBg(btnShareStyle)
+                setColor(color)
+            } catch (err) {
+                console.error(err)
+            }
+        }
+
+        else {
+            const colorIsDark = utilService.getBgIsDarkColorHex(bg)
+            const color = colorIsDark ? "#fff" : "#172b4d"
+            const bgColor = colorIsDark ? "#fff" : "#0079BF"
+            const btnShareStyle = {
+                background: colorIsDark ? "#fff" : "#0079BF",
+                color: colorIsDark ? "#172b4d" : "#fff"
+            }
+            setBtnShareBg(btnShareStyle)
+            setColor(color)
+        }
+
+    }
+
+
 
     const admin = board.createdBy
-
     return (
-        <section className='tool-bar full'>
+        <section style={{ color }} className='tool-bar full'>
 
             <div className="flex ">
                 <span className="board-title edit-title-input"
@@ -61,16 +100,15 @@ export function ToolBar({ board }) {
                 {isOpenFilter && <TaskFilter boardId={board._id} setIsOpenFilter={setIsOpenFilter} />}
                 <span className="span">|</span>
                 <div className="flex align-center">
-                    {admin && <UserAvatarIcon member={admin} />}
-                    {admin && <UserAvatarIcon member={admin} />}
-                    {admin && <UserAvatarIcon member={admin} />}
+                    {board.members.map(member =>
+                        <div key={member._id}><UserAvatarIcon member={member} /></div>
+                    )}
                     <span className="span">|</span>
 
                 </div>
-                <button onClick={() => setIsOpenShare(prev => !prev)} className="btn-share"><ManShareIcon /> Share</button>
+                <button style={btnShareBg} onClick={() => setIsOpenShare(prev => !prev)} className="btn-share"><ManShareIcon /> Share</button>
                 <span className="span">|</span>
                 <button onClick={() => setIsOpenSideMenu(prev => !prev)} className="btn-bar 
-                    <span>|</span>
                 btn-header-square">
                     <MoreTreeDotsIcon className="icon" />
                 </button>

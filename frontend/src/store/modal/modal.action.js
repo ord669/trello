@@ -8,12 +8,12 @@ import { OPEN_MODAL, CLOSE_MODAL, UPDATE_POS, UPDATE_ELEMENT_SIZE, UPDATE_CLICKE
 //     store.dispatch({ type: SET_MOUSE_POS, pos })
 
 // }
-export async function openDynamicModal({ ev, name, func }) {
+export async function openDynamicModal({ ev, name, data, func }) {
     const { target } = ev
 
     // GET Element POS
     updateDynamicModalPos(target.getBoundingClientRect())
-    updateModalType({ name, func })
+    updateModalType({ name, func, data })
 
     // GET ELEMENT SIZE
     store.dispatch({ type: CLOSE_MODAL })

@@ -17,7 +17,6 @@ export function BoardDetails() {
     const { boardId } = useParams()
     const [isOpenMenu, setIsOpenMenu] = useState(false)
 
-
     useEffect(() => {
         loadBoard(boardId)
     }, [boardId])
