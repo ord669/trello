@@ -15,6 +15,7 @@
     border-radius: 3px;
     z-index: 6001;
     transition: height 2s;
+    cursor: default;
 
     .quick-task-edit-details {
         padding: 6px 8px 2px;
@@ -23,6 +24,9 @@
         gap: rem(4px);
 
         textarea {
+            margin-top: 0.07rem;
+            margin-left: -0.16rem;
+            font-size: 14px;
             height: 100%;
             width: 100%;
             overflow: hidden;
@@ -30,6 +34,11 @@
             border: none;
             outline: none;
 
+        }
+
+        .mini-labels-list-container {
+            margin-top: 0.25rem;
+            margin-left: -0.7px;
         }
     }
 
