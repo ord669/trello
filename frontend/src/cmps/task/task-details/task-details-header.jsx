@@ -3,12 +3,12 @@ import { CloseIcon, CoverIcon, TaskTitleIcon } from "../../../assets/svg/icon-li
 import { closeDynamicModal, openDynamicModal } from "../../../store/modal/modal.action"
 import { DetilsTitle } from "./task-details-title"
 
-export function DetailsHeader({ onUpdateHeadline, task, group, boardId, onCoverChangeBg }) {
+export function DetailsHeader({ onUpdateHeadline, task, group, boardId }) {
     const navigate = useNavigate()
     let background
     let showImgBg
 
-    function onCloseTask(){
+    function onCloseTask() {
         closeDynamicModal()
         navigate(`/board/${boardId}`)
     }
@@ -41,7 +41,7 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId, onCoverC
                 {showImgBg && <div style={background} className="task-details-cover"></div>}
                 {!showImgBg && <div style={background} className="task-details-img "></div>}
                 <button className="btn-bar "
-                    onClick={(ev) => openDynamicModal({ ev, name: 'cover', func: { onCoverChangeBg } })}
+                    onClick={(ev) => openDynamicModal({ ev, name: 'cover' })}
                 ><CoverIcon /> Cover</button>
 
             </div>

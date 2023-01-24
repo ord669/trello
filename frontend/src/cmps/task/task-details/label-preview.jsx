@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import tinycolor from "tinycolor2"
+import { toggleTaskLabel } from "../../../store/board/board.action"
 
-export function LabelPreview({ labelId, onSelectLabel }) {
+export function LabelPreview({ labelId, task }) {
     const { board } = useSelector(storeState => storeState.boardModule)
     const [label, setLabel] = useState({})
     const [color, setColor] = useState('')
@@ -33,7 +34,7 @@ export function LabelPreview({ labelId, onSelectLabel }) {
 
     if (!label) return <div>loading...</div>
     return (
-        <section style={mainStyle} onClick={() => onSelectLabel(labelId)}
+        <section style={mainStyle} onClick={() => toggleTaskLabel(labelId, task.groupId, task._id)}
             className='label-preview flex align-center space-between'>
             <div style={secStyle} className="sec-label-color"></div>
             <div>{label.title}</div>

@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { UserAvatarIcon } from "../../../user-avatar-icon"
 
-export function ModalMembersList({ filterBy, board, currTask, getMembers, onSelectMember }) {
+export function ModalMembersList({ filterBy, board, currTask, getMembers, toggleMemberAssigned }) {
 
     function filteredMembers(filterBy) {
         let filteredMembers = [...board.members]
@@ -18,7 +18,7 @@ export function ModalMembersList({ filterBy, board, currTask, getMembers, onSele
             <h4>Board members</h4>
             <div className="modal-members-list-body">
                 {filteredMembers(filterBy.txt).map((member, idx) =>
-                    <div onClick={() => onSelectMember(member._id)} key={idx} className={"member-container"}>
+                    <div onClick={() => toggleMemberAssigned(member._id, currTask.groupId, currTask._id)} key={idx} className={"member-container"}>
                         <div className="modal-member-icon">
                             <UserAvatarIcon member={member} />
                         </div>

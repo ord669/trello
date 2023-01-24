@@ -4,9 +4,7 @@ import { boardService } from "../../../../services/board.service.local";
 import { saveTask } from "../../../../store/board/board.action";
 import { ImgUploader } from "../../../img-uploader";
 
-export function CoverModal({ board, currTask, getMembers, onCoverChangeBg }) {
-
-    const [filterBy, setFilterBy, handleChange] = useForm({ txt: '' })
+export function CoverModal({ board, currTask }) {
     const [imgs, setImgs] = useState([])
     const [colors, setColors] = useState(boardService.getColors())
 
@@ -25,7 +23,6 @@ export function CoverModal({ board, currTask, getMembers, onCoverChangeBg }) {
     }
 
     async function onUploadedImg(url) {
-        console.log('url: ', url)
         currTask.style.background = url
         try {
             saveTask(currTask)
@@ -46,7 +43,10 @@ export function CoverModal({ board, currTask, getMembers, onCoverChangeBg }) {
                         <h4 >Colors</h4>
                         <div className="modal-covers-colors-container">
                             {colors.map((color, idx) =>
-                                <div onClick={() => onCoverChangeBg(color)} key={idx} className="bp-color" style={{ background: color }} ></div>
+                                <div onClick={() => {
+                                    currTask.style.background = color
+                                    saveTask(currTask)
+                                }} key={idx} className="bp-color" style={{ background: color }} ></div>
                             )}
                         </div>
                     </div>
@@ -59,7 +59,10 @@ export function CoverModal({ board, currTask, getMembers, onCoverChangeBg }) {
                 <div className="modal-covers-list-body">
                     <div className="modal-covers-photos-container">
                         {imgs.map(img =>
-                            <div onClick={() => onCoverChangeBg(img.urls.full)} key={img.id} className="bp-img" style={{ backgroundImage: `url(${img.urls.full})` }} ></div>
+                            <div onClick={() => {
+                                currTask.style.background = img.urls.full
+                                saveTask(currTask)
+                            }} key={img.id} className="bp-img" style={{ backgroundImage: `url(${img.urls.full})` }} ></div>
                         )}
                     </div>
                 </div>

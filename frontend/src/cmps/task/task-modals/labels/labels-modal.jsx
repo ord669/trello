@@ -1,8 +1,8 @@
 import { useForm } from "../../../../customHooks/useForm"
 import { LabelsModalList } from "./labels-modal-list"
 
-export function LabelsModal({ board, currTask, onSelectLabel }) {
-    console.log('onSelectLabel: ', onSelectLabel);
+export function LabelsModal({ board, currTask, toggleTaskLabel }) {
+
     const [filterBy, setFilterBy, handleChange] = useForm({ txt: '' })
 
     return (
@@ -15,7 +15,7 @@ export function LabelsModal({ board, currTask, onSelectLabel }) {
                     onChange={handleChange}
                     placeholder="Search labels..." />
             </div>
-            <LabelsModalList filterBy={filterBy} board={board} currTask={currTask} onSelectLabel={onSelectLabel} />
+            <LabelsModalList filterBy={filterBy} board={board} currTask={currTask} toggleTaskLabel={toggleTaskLabel} />
         </section>
     )
 }
