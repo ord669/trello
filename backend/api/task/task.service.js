@@ -79,12 +79,12 @@ async function remove(taskId) {
 
 async function update(task) {
     try {
-        const taskToUpdate = {
-            title: task.title,
-        }
+        // const taskToUpdate = {
+        //     title: task.title,
+        // }
         const collection = await dbService.getCollection('task')
-        await collection.updateOne({ _id: ObjectId(task._id) }, { $set: taskToUpdate })
-        return taskToUpdate
+        await collection.updateOne({ _id: ObjectId(task._id) }, { $set: task })
+        return task
     } catch (err) {
         logger.error(`cannot update task ${task._id}`, err)
         throw err
@@ -96,7 +96,6 @@ async function add(task) {
         // const taskToAdd = {
         //     // byUserId: ObjectId(task.byUserId),
         //     // aboutUserId: ObjectId(task.aboutUserId),
-        //     title: task.title
         // }
         const collection = await dbService.getCollection('task')
         await collection.insertOne(task)

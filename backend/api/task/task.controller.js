@@ -6,7 +6,7 @@ const taskService = require('./task.service')
 
 async function removeTask(req, res) {
     try {
-        const taskId = req.params.id
+        const { taskId } = req.params
         const removedId = await taskService.remove(taskId)
         res.send(removedId)
     } catch (err) {
@@ -28,19 +28,17 @@ async function updateTask(req, res) {
 }
 
 async function addTask(req, res) {
-
     // const { loggedinUser } = req
-
     try {
-        let task = req.body
+        const task = req.body
         // task.byUserId = loggedinUser._id
-        task = await taskService.add(task)
+        const addedTask = await taskService.add(task)
 
         // prepare the updated review for sending out
         // task.aboutUser = await userService.getById(task.aboutUserId)
 
         // Give the user credit for adding a review
-        // var user = await userService.getById(review.byUserId)
+        // let user = await userService.getById(review.byUserId)
 
 
         // loggedinUser = await userService.update(loggedinUser)
@@ -59,8 +57,7 @@ async function addTask(req, res) {
         // const fullUser = await userService.getById(loggedinUser._id)
         // socketService.emitTo({ type: 'user-updated', data: fullUser, label: fullUser._id })
 
-        res.send(task)
-
+        res.send(addedTask)
     } catch (err) {
         logger.error('Failed to add task', err)
         res.status(500).send({ err: 'Failed to add task' })
