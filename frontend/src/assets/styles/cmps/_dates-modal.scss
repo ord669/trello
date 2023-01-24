@@ -1,0 +1,78 @@
+.dates-modal-container {
+    display: grid;
+    gap: 8px;
+
+    .react-calendar {
+
+        .react-calendar__navigation {
+            display: flex;
+            height: 45px;
+            padding: 0 4px;
+
+            :nth-child(3) {
+                font-weight: 900;
+                padding-top: 4px;
+                align-self: baseline;
+                color: $clr7;
+            }
+
+            .react-calendar__navigation__arrow {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #a5adba;
+                background-color: inherit;
+                border-radius: 3px;
+                width: 24px;
+                height: 24px;
+                font-size: 24px;
+                padding-bottom: 3px;
+
+                &:hover {
+                    background-color: #091e4214;
+                }
+            }
+
+            .react-calendar__navigation__next2-button,
+            .react-calendar__navigation__prev2-button {
+                display: none;
+            }
+        }
+
+        .react-calendar__month-view__weekdays {
+            height: 36px;
+            font-size: 12px;
+
+            .react-calendar__month-view__weekdays__weekday {
+                font-weight: 700;
+                padding: 8px;
+
+                * {
+                    text-decoration: none;
+                }
+            }
+
+        }
+
+        .react-calendar__month-view__days {
+            color: #091e42;
+            font-size: 14px;
+
+            .react-calendar__tile {
+                height: 32px;
+                border-radius: 3px;
+                padding: 5px 9px;
+
+                &:hover {
+                    background-color: #ebecf0;
+                }
+            }
+        }
+
+        height: 300px;
+    }
+
+    >.btn-add {
+        margin: 0;
+    }
+}

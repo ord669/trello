@@ -17,37 +17,25 @@ button {
 }
 
 .btn-link {
-    background-color: #091e420a;
-    border: none;
+    background-color: inherit;
     border-radius: 3px;
-    box-shadow: none;
-    box-sizing: border-box;
     color: inherit;
     cursor: pointer;
-    display: block;
     height: 32px;
-    max-width: 300px;
     overflow: hidden;
     padding: 6px 12px;
-    position: relative;
-    text-decoration: none;
     text-overflow: ellipsis;
     transition-duration: 85ms;
     transition-property: background-color, border-color, box-shadow;
     transition-timing-function: ease;
-    -webkit-user-select: none;
-    user-select: none;
     white-space: nowrap;
+
+    &:hover {
+        background-color: #091e4214;
+        color: inherit;
+    }
 }
 
-.btn-link:hover {
-    background-color: #091e4214;
-    border: none;
-    box-shadow: none;
-    color: inherit;
-    text-decoration: none;
-
-}
 
 .btn-bar:not(.no-edit) {
     background-color: rgba(255, 255, 255, 0.2);
@@ -67,7 +55,6 @@ button {
     font-size: 14px;
     line-height: 20px;
     height: 32px;
-    max-width: 400px;
     overflow: hidden;
     padding: 1rem 0.9rem;
     display: flex;
@@ -84,7 +71,6 @@ button {
     font-size: 14px;
     line-height: 20px;
     height: 32px;
-    max-width: 400px;
     overflow: hidden;
     padding: 1rem 0.9rem;
     display: flex;

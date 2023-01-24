@@ -35,7 +35,6 @@ export function BoardDetails() {
                 background: bg
             }
         }
-        console.log('style:', style)
         return style
     }
     if (!board) return <div className="loader"><LoaderIcon /></div>
