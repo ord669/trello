@@ -13,7 +13,7 @@ export function TaskDetailsSideMenu({ onRemoveTask, onAddCheckList, getMembers, 
                     className="details-btn-side-menu"> <LabelIcon /> Labels</button>
                 <button onClick={(ev) => openDynamicModal({ ev, name: 'add checklist', func: { getMembers } })}
                     className="details-btn-side-menu" > <ChecklistIcon /> Checklist</button>
-                <button className="attachment-icon details-btn-side-menu"> <AttachmentIcon /> Attachment</button>
+                <button onClick={(ev) => openDynamicModal({ ev, name: 'attachment', func: { getMembers } })} className="attachment-icon details-btn-side-menu"> <AttachmentIcon /> Attachment</button>
                 <button onClick={onRemoveTask} className="details-btn-side-menu"> <ArchiveImge /> Archive</button>
             </section>
         </section>

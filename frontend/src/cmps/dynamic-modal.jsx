@@ -3,6 +3,7 @@ import { CloseIcon } from "../assets/svg/icon-library";
 import { utilService } from "../services/util.service";
 import { closeDynamicModal, updateDynamicModalPos } from "../store/modal/modal.action";
 import { BoardStarred } from "./board-starred";
+import { AttachmentModal } from "./task/task-modals/attachment/attachment-modal";
 import { CheckListModal } from "./task/task-modals/check-list/check-list-modal";
 import { CoverModal } from "./task/task-modals/cover/cover-modal";
 import { LabelsModal } from "./task/task-modals/labels/labels-modal";
@@ -33,6 +34,8 @@ export function DynamicModal() {
                 return <CheckListModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
             case 'cover':
                 return <CoverModal board={board} currTask={currTask} onCoverChangeBg={func.onCoverChangeBg} />
+            case 'attachment':
+                return <AttachmentModal board={board} currTask={currTask} />
             default:
                 break;
         }
