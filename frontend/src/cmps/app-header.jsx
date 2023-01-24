@@ -22,7 +22,6 @@ export function AppHeader() {
     const [color, setColor] = useState('')
     const [boardColor, setBoardColor] = useState('')
 
-
     useEffect(() => {
         setAvgColor()
         setDynamicColor()
@@ -71,7 +70,6 @@ export function AppHeader() {
                 background: color.hex,
                 color: boardColor
 
-
             }
         }
         else {
@@ -90,7 +88,7 @@ export function AppHeader() {
         if (bg.includes('https')) {
             try {
                 const colorIsDark = await utilService.getBgUrlIsDark(bg)
-                console.log('colorisDark: ', colorIsDark);
+
                 const color = colorIsDark ? "#fff" : "#172b4d"
                 setBoardColor(color)
             } catch (err) {

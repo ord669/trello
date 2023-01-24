@@ -6,9 +6,8 @@ async function getBoards(req, res) {
   try {
     logger.debug('Getting Boards')
     const filterBy = {
-      title: req.query.txt || ''
+      title: req.query.txt
     }
-    console.log('filterBy:', filterBy)
     const boards = await boardService.query(filterBy)
     res.json(boards)
   } catch (err) {
@@ -19,7 +18,7 @@ async function getBoards(req, res) {
 
 async function getBoardById(req, res) {
   try {
-    const boardId = req.params.boardId
+    const { boardId } = req.params
     const board = await boardService.getById(boardId)
     res.json(board)
   } catch (err) {
@@ -29,8 +28,7 @@ async function getBoardById(req, res) {
 }
 
 async function addBoard(req, res) {
-  const { loggedinUser } = req
-
+  // const { loggedinUser } = req
   try {
     const board = req.body
     // board.owner = loggedinUser
@@ -57,7 +55,7 @@ async function updateBoard(req, res) {
 
 async function removeBoard(req, res) {
   try {
-    const boardId = req.params.id
+    const { boardId } = req.params
     const removedId = await boardService.remove(boardId)
     res.send(removedId)
   } catch (err) {

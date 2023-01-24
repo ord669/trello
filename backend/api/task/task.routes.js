@@ -8,9 +8,9 @@ const router = express.Router()
 // router.use(requireAuth)
 
 router.post('/', log, addTask)
+router.put('/:taskId', updateTask)
 // router.post('/', log, requireAuth, addTask)
-router.delete('/:id', removeTask)
-router.put('/:id', updateTask)
+router.delete('/:taskId', removeTask)
 // router.delete('/:id', requireAuth, deleteTask)
 
 module.exports = router

@@ -10,6 +10,7 @@ import { utilService } from "../services/util.service"
 import { DynamicModal } from "../cmps/dynamic-modal"
 import { MainSidemenu } from "../cmps/main-side-menu"
 import { useState } from "react"
+import { QuickTaskEdit } from "../cmps/task/quick-task-edit"
 
 export function BoardDetails() {
     const { dynamicModalStatus } = useSelector(storeState => storeState.modalModule)
