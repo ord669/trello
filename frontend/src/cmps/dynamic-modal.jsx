@@ -10,6 +10,8 @@ import { MembersModal } from "./task/task-modals/members/members-modal";
 
 export function DynamicModal() {
     const { modalPos, modalDetails } = useSelector(storeState => storeState.modalModule)
+    console.log('modalDetails: ', modalDetails);
+    console.log('modalPos: ', modalPos);
     const { currTask } = useSelector(storeState => storeState.taskModule)
     const { board } = useSelector(storeState => storeState.boardModule)
 
@@ -24,7 +26,7 @@ export function DynamicModal() {
     function DynamicModalContent({ type, func }) {
         switch (type) {
             case 'labels':
-                return <LabelsModal board={board} currTask={currTask} onSelectLable={func.onSelectLable} />
+                return <LabelsModal board={board} currTask={currTask} onSelectLabel={func.onSelectLabel} />
             case 'members':
                 return <MembersModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
             case 'add checklist':
@@ -76,7 +78,7 @@ export function DynamicModal() {
     return (
         <section style={renderPos()} className='dynamic-modal-container'>
             <div className="dynamic-modal-header">
-                <div onClick={() => closeDynamicModal() } className="dynamic-modal-header-close-icon">
+                <div onClick={() => closeDynamicModal()} className="dynamic-modal-header-close-icon">
                     <CloseIcon />
                 </div>
                 <span className="dynamic-modal-header-title">{modalDetails.name}</span>

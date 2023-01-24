@@ -21,17 +21,15 @@ export function AppHeader() {
     const { board } = useSelector(storeState => storeState.boardModule)
     const [color, setColor] = useState('')
 
-
-
     useEffect(() => {
         setAvgColor()
         if (location.length > 1) setIsHome(false)
         else setIsHome(true)
     }, [location])
 
-
     async function setAvgColor() {
         const bg = board.style.background
+        console.log(' board.style.background: ', board.style.background);
 
         if (bg.includes('https')) {
             try {
@@ -64,8 +62,8 @@ export function AppHeader() {
             }
         }
 
-
         else if (bg.includes('https')) {
+            console.log('color:', color)
             style = {
                 background: color.hex
 
@@ -79,7 +77,7 @@ export function AppHeader() {
         return style
     }
 
-    // if (!color || !board) return <div className='loader'><LoaderIcon /></div>
+    if (!color || !board) return <div className='loader'><LoaderIcon /></div>
     return (
         <section className={`${isHome ? 'home-header' : 'app-header'} full`}>
 
