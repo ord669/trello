@@ -36,9 +36,7 @@ function getEmptyChecklist() {
     return {
         "_id": utilService.makeId(),
         "title": "Checklist",
-        "todos": [
-            getEmptyTodo()
-        ]
+        "todos": []
     }
 }
 function getEmptyTodo() {

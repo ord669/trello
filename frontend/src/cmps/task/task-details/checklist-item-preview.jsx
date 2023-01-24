@@ -1,13 +1,23 @@
 import { useState } from "react"
 import { CloseIcon, ThreeDotsIcon } from "../../../assets/svg/icon-library"
 
-export function ChecklistItemPreview({ currTodo, onSaveTodo }) {
+export function ChecklistItemPreview({ currTodo, saveTodo }) {
     const [todo, setTodo] = useState(currTodo)
     const [isShown, setIsShown] = useState(false)
 
     function onClickTodo(todoToChange) {
         todoToChange.isDone = !todoToChange.isDone
-        onSaveTodo(todoToChange)
+        saveTodo(todoToChange)
+    }
+
+    async function onSaveTodo() {
+        try {
+            await saveTodo(todo)
+            setIsShown(prevIsShown => !prevIsShown)
+        } catch (err) {
+            console.log('Cannot save todo:', err)
+
+        }
     }
 
     function handleChange({ target }) {
@@ -36,7 +46,7 @@ export function ChecklistItemPreview({ currTodo, onSaveTodo }) {
                         value={todo.title}
                         onChange={handleChange} />
                     <section className="form-btns">
-                        <button className="btn-add">Save</button>
+                        <button className="btn-add" onClick={onSaveTodo}>Save</button>
                         <button className="btn-close" onClick={() => setIsShown(preIsShown => !preIsShown)}><CloseIcon /></button>
                     </section>
                 </section>

@@ -63,11 +63,8 @@ export function TaskDetails() {
         toggleTaskLabel(labelId, groupId, taskId)
     }
 
-    function onAddCheckList() {
-        const checkListName = prompt('list name')
-        console.log('checkListName: ', checkListName)
-        if (!checkListName) return
-        task.checklists.push(groupService.setNewCheckList(checkListName))
+    function addCheckList(checklist) {
+        task.checklists.push(checklist)
         try {
             saveTask(task)
         } catch (err) {
@@ -150,7 +147,7 @@ export function TaskDetails() {
                     <input onChange={onUploadFile} id="image-file" type="file" /> */}
                 </div>
                 <TaskDetailsSideMenu
-                    onAddCheckList={onAddCheckList}
+                    addCheckList={addCheckList}
                     getMembers={getMembers}
                     onSelectMember={onSelectMember}
                     onSelectLabel={onSelectLabel}

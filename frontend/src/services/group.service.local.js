@@ -10,7 +10,6 @@ export const groupService = {
     getEmptyGroup,
     reorderGroups,
     reorderTasks,
-    setNewCheckList,
 }
 window.cs = groupService
 
@@ -76,10 +75,3 @@ function reorderGroups(source, destination, groups) {
     return groups
 }
 
-function setNewCheckList(title) {
-    return {
-        "_id": utilService.makeId(),
-        "title": title,
-        "todos": []
-    }
-}

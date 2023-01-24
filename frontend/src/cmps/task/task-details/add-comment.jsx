@@ -27,7 +27,7 @@ export function AddComment({ username, saveComment }) {
     return (
         <section className="add-comment">
             <section className="user-avatar-icon" style={{ backgroundImage: `url(https://robohash.org/${username || 'liad'}?set=set5)` }}></section>
-            <section className={`write-comment ${isShown ? 'show' : ''}`}>
+            <section className={`write-comment ${isShown ? 'show' : ''}`}>  {/* onBlur={onClose} */}
                 <textarea
                     onClick={() => setIsShown(true)}
                     name="txt"
@@ -38,7 +38,7 @@ export function AddComment({ username, saveComment }) {
                 />
                 {isShown &&
                     <section className="btns-container">
-                        <button className="btn-link" onClick={onSaveComment}>Save</button>
+                        <button className={comment.txt ? 'btn-add' : 'btn-link'} onClick={onSaveComment}>Save</button>
                         <button className="close-btn" onClick={onClose}><CloseIcon /></button>
                     </section>
                 }
