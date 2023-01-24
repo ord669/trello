@@ -21,7 +21,6 @@ export function TaskPreview({ task, idx }) {
     useEffect(() => {
         elTaskPreview.current.addEventListener('contextmenu', (ev) => {
             ev.preventDefault();
-            console.log('elTaskPreview:', elTaskPreview.current)
             setIsQuickEdit(true)
             setQuickEditModalPos(elTaskPreview.current.getBoundingClientRect())
         });

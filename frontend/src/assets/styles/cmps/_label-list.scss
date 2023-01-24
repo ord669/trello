@@ -1,12 +1,14 @@
 .label-list {
     display: flex;
     margin-top: 0.3rem;
-    margin-right: 1rem;
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 0.1rem;
 
     .label-preview {
         margin-right: 0.25rem;
 
-        &:hover{
+        &:hover {
             filter: saturate(85%) brightness(85%);
         }
     }

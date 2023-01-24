@@ -11,12 +11,11 @@ import { CoverModal } from "./task/task-modals/cover/cover-modal"
 import { LabelsModal } from "./task/task-modals/labels/labels-modal"
 import { MembersModal } from "./task/task-modals/members/members-modal"
 import { EditAttachment } from "./task/task-modals/attachment/edit-attachment-modal";
+import { taskService } from "../services/task.service.local"
+import { toggleMemberAssigned, toggleTaskLabel } from "../store/board/board.action"
 
 export function DynamicModal() {
     const { modalPos, modalDetails } = useSelector(storeState => storeState.modalModule)
-    console.log('modalDetails: ', modalDetails);
-
-    const { currTask } = useSelector(storeState => storeState.taskModule)
     const { board } = useSelector(storeState => storeState.boardModule)
 
     const windowSize = utilService.getWindowDimensions()
@@ -27,17 +26,17 @@ export function DynamicModal() {
     const clickedElemntWidth = modalPos.width
     const clickedElemntHeight = modalPos.height
 
-    function DynamicModalContent({ type, func, data }) {
-        console.log('data: from content ', data);
+    function DynamicModalContent({ type, func, data, currTask }) {
+
         switch (type) {
             case 'labels':
-                return <LabelsModal board={board} currTask={currTask} onSelectLabel={func.onSelectLabel} />
+                return <LabelsModal board={board} currTask={currTask} toggleTaskLabel={toggleTaskLabel} />
             case 'members':
-                return <MembersModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
+                return <MembersModal board={board} currTask={currTask} getMembers={taskService.getMembers} toggleMemberAssigned={toggleMemberAssigned} />
             case 'add checklist':
                 return <CheckListModal board={board} currTask={currTask} addCheckList={func.addCheckList} />
             case 'cover':
-                return <CoverModal board={board} currTask={currTask} onCoverChangeBg={func.onCoverChangeBg} />
+                return <CoverModal board={board} currTask={currTask} />
             case 'attachment':
                 return <AttachmentModal board={board} currTask={currTask} />
             case 'dates':
@@ -98,7 +97,7 @@ export function DynamicModal() {
             </div>
 
             <div className="dynamic-modal-content-container">
-                <DynamicModalContent type={modalDetails.name} func={modalDetails.func} data={modalDetails.data} />
+                <DynamicModalContent type={modalDetails.name} func={modalDetails.func} data={modalDetails.data} currTask={modalDetails.task} />
 
             </div>
 
