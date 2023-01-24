@@ -3,6 +3,20 @@ const logger = require('../../services/logger.service')
 const ObjectId = require('mongodb').ObjectId
 const asyncLocalStorage = require('../../services/als.service')
 
+
+
+
+async function getById(taskId) {
+    try {
+        const collection = await dbService.getCollection('task')
+        const task = await collection.findOne({ _id: ObjectId(taskId) })
+        task._id = taskId
+        return task
+    } catch (err) {
+        logger.error(`while finding task ${taskId}`, err)
+        throw err
+    }
+}
 async function query(filterBy = {}) {
     try {
         const criteria = _buildCriteria(filterBy)
@@ -62,30 +76,15 @@ async function remove(taskId) {
         throw err
     }
 }
-// async function remove(tasksId) {
-//     try {
-//         // const store = asyncLocalStorage.getStore()
-//         // const { loggedinUser } = store
-//         const collection = await dbService.getCollection('task')
-//         // remove only if user is owner/admin
-//         const criteria = { _id: ObjectId(tasksId) }
-//         // if (!loggedinUser.isAdmin) criteria.byUserId = ObjectId(loggedinUser._id)
-//         const { deletedTask } = await collection.deleteOne(criteria)
-//         return deletedTask
-//     } catch (err) {
-//         logger.error(`cannot remove task ${tasksId}`, err)
-//         throw err
-//     }
-// }
 
 async function update(task) {
     try {
-        const taskToUpdate = {
-            title: task.title,
-        }
+        // const taskToUpdate = {
+        //     title: task.title,
+        // }
         const collection = await dbService.getCollection('task')
-        await collection.updateOne({ _id: ObjectId(task._id) }, { $set: taskToUpdate })
-        return taskToUpdate
+        await collection.updateOne({ _id: ObjectId(task._id) }, { $set: task })
+        return task
     } catch (err) {
         logger.error(`cannot update task ${task._id}`, err)
         throw err
@@ -97,7 +96,6 @@ async function add(task) {
         // const taskToAdd = {
         //     // byUserId: ObjectId(task.byUserId),
         //     // aboutUserId: ObjectId(task.aboutUserId),
-        //     title: task.title
         // }
         const collection = await dbService.getCollection('task')
         await collection.insertOne(task)
@@ -118,7 +116,8 @@ module.exports = {
     query,
     remove,
     add,
-    update
+    update,
+    getById
 }
 
 

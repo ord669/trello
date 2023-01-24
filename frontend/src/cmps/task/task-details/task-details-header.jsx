@@ -21,8 +21,6 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId, onCoverC
         }
         showImgBg = false
     } else {
-        console.log('else:')
-
         background = {
             backgroundImage: `url(${task.style.background})`,
             minHeight: "160px",
