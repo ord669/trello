@@ -16,8 +16,7 @@ export function CheckListModal({ board, currTask, addCheckList }) {
     }
 
     return (
-        <section className='members-modal-container'>
-            {/* <section> */}
+        <section className='checklist-modal-container'>
             <h4>Title</h4>
             <section className="modal-header">
                 <input
@@ -30,6 +29,5 @@ export function CheckListModal({ board, currTask, addCheckList }) {
                 <button className="btn-add" onClick={onAddChecklist}>Add</button>
             </section>
         </section>
-        // </section>
     )
 }

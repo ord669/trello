@@ -4,7 +4,7 @@ import { utilService } from "../services/util.service"
 import { closeDynamicModal, updateDynamicModalPos } from "../store/modal/modal.action"
 import { BoardStarred } from "./board-starred"
 import { AttachmentModal } from "./task/task-modals/attachment/attachment-modal"
-import { DatesModal } from "./task/task-modals/attachment/dates/dates-modal"
+import { DatesModal } from "./task/task-modals/dates/dates-modal"
 import { CheckListModal } from "./task/task-modals/check-list/check-list-modal"
 import { CopyModal } from "./task/task-modals/copy/copy-modal";
 import { CoverModal } from "./task/task-modals/cover/cover-modal"
