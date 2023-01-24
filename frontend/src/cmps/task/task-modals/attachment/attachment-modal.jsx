@@ -1,4 +1,6 @@
 import { useForm } from "../../../../customHooks/useForm";
+import { taskService } from "../../../../services/task.service.local";
+import { utilService } from "../../../../services/util.service";
 import { saveTask } from "../../../../store/board/board.action";
 import { ImgUploader } from "../../../img-uploader";
 import { AttachmentList } from "./attachment-modal-list";
@@ -11,9 +13,11 @@ export function AttachmentModal({ board, currTask, getMembers, onSelectMember })
     console.log('title: ', title);
     console.log('currTask: ', currTask);
 
-    async function onUploadedAttach(url, title = '') {
+    async function onUploadedAttach(url, title = 'uploded img') {
         console.log('url: ', url)
-        currTask.attachments.push({ 'file': url, title })
+
+        currTask.attachments.push(taskService.getAttachment(url, title))
+        // currTask.attachments.push({ 'file': url, title, createdAt: utilService.makeId() })
         console.log('currTask: ', currTask);
         try {
             saveTask(currTask)
@@ -46,7 +50,6 @@ export function AttachmentModal({ board, currTask, getMembers, onSelectMember })
                         onChange={handleChangeTitle}
                         placeholder="Link name (optional)" />}
             </div>
-            <button className="btn-link">Attach</button>
         </section>
     )
 }

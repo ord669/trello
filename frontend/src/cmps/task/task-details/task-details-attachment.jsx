@@ -1,23 +1,30 @@
 import { AttachmentIcon } from "../../../assets/svg/icon-library";
+import { utilService } from "../../../services/util.service";
 
-export function TaskDetailsAttachment({ task, attachment }) {
+export function TaskDetailsAttachment({ task, attachment, onRemoveAttach }) {
+
+    function time(timestamp) {
+        return utilService.formatTime(timestamp)
+    }
+
     return (
         <section className='task-details-attachment'>
-            <div className="task-details-attachment-header">
-                <div className="attachment-icon">
-                    <AttachmentIcon />
-                </div>
-                <h3>Attachments</h3>
-            </div>
+
             <div className="task-details-attachment-content-container">
                 <div className="task-details-attachment-content">
                     <div className="img-container">
-                        <img src={attachment.file} />
+                        <div style={{ backgroundImage: `url(${attachment.file})` }} ></div>
                     </div>
-                    <h3>{attachment.title && attachment.title}</h3>
-                    <h3>{attachment.createdAt && attachment.createdAt}</h3>
+                    <div className="attachment-details">
+                        <p>{attachment.title && attachment.title}</p>
+                        <div className="attachment-details-crud">
+                            <p>{attachment.createdAt && time(attachment.createdAt)}</p>
+                            <ul>
+                                <li onClick={() => onRemoveAttach(attachment._id)}>Delete</li>
+                            </ul>
+                        </div>
+                    </div>
 
-                    {/* {attachment.file && <img style={{ backgroundImage: `url(${attachment.file})` }} />} */}
                 </div>
             </div>
 

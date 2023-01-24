@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { uploadService } from '../services/upload.service'
 
 export function ImgUploader({ onUploaded = null, type, styleClass, content, showFile }) {
+  let fileName
   console.log('styleClass: ', styleClass);
   console.log('type: ', type);
   console.log('styleClass: ', styleClass);

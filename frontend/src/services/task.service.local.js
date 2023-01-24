@@ -8,6 +8,7 @@ export const taskService = {
     getEmptyTodo,
     getEmptyComment,
     getEmptyChecklist,
+    getAttachment,
 }
 
 function setTaskInBoard() {
@@ -29,6 +30,16 @@ function createChecklists(title = 'checklists', todoTitle = 'Write Your Todo') {
                 "isDone": false
             }
         ]
+    }
+}
+
+function getAttachment(file, title) {
+    return {
+        "_id": utilService.makeId(),
+        title,
+        file,
+        createdAt: Date.now()
+
     }
 }
 

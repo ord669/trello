@@ -2,10 +2,12 @@
     clear: both;
     margin-bottom: 24px;
     position: relative;
-}
 
-.task-details-attachment {
-    width: 100%;
+    button {
+        margin-left: 40px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
 
     .task-details-attachment-header {
         display: flex;
@@ -13,10 +15,26 @@
         padding: 8px 0;
         position: relative;
 
-        h3 {
-            margin-left: 0.6rem;
+    }
+
+    .attachment-icon {
+        svg {
+            transform: scale(1.30) rotate(-90deg) translate(8px, -3px);
+
+            path {
+                // transform: 
+                transform: rotate(-42deg) scale(0.38) translate(-30px, 10px);
+            }
         }
     }
+
+    h3 {
+        margin-left: 0.6rem;
+    }
+}
+
+.task-details-attachment {
+    width: 100%;
 
     &-content-container {
         margin-left: 38px;
@@ -27,35 +45,45 @@
         display: flex;
 
         border-radius: 3px;
-        margin: 0 0 8px;
+        margin: 0 0 16px;
         min-height: 80px;
         overflow: hidden;
         position: relative;
     }
 
     .img-container {
+        min-width: 112px;
+        min-height: 80px;
 
-        img {
+        div {
             width: 100%;
+            height: 100%;
             background-repeat: no-repeat;
             background-size: cover;
+            background-position: center;
             border-radius: 3px;
-            height: 80px;
-            margin-top: -40px;
-
-            text-decoration: none;
-
-            z-index: 1;
         }
     }
 
-    .attachment-icon {
-        svg {
-            transform: scale(1.30) rotate(-90deg) translate(8px, -3px);
+    .attachment-details {
+        margin-left: 1rem;
+        display: flex;
+        flex-direction: column;
+        padding-top: 0.2rem;
 
-            path {
-                // transform: 
-                transform: rotate(-42deg) scale(0.38) translate(-30px, 10px);
+        .attachment-details-crud {
+            color: #5e6c84;
+            display: flex;
+            align-items: flex-start;
+
+            ul {
+                all: unset;
+                margin-left: 1.3rem;
+
+                li {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
             }
         }
     }
