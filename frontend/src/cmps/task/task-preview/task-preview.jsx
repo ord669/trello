@@ -10,9 +10,7 @@ export function TaskPreview({ task, idx }) {
 
     let background
 
-    console.log('task.style.background: ', task.style.background);
     if (!task?.style?.background?.includes('https')) {
-        console.log('in:')
         background = {
             backgroundColor: `${task.style.background}`,
             borderTopLeftRadius: "3px",

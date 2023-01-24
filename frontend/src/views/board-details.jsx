@@ -4,7 +4,7 @@ import { Outlet, useParams } from "react-router-dom"
 import { GroupList } from "../cmps/group/group-list"
 import { ToolBar } from "../cmps/tool-bar"
 import { loadBoard } from "../store/board/board.action"
-import { ArrowDownIcon } from "../assets/svg/icon-library"
+import { ArrowDownIcon, LoaderIcon } from "../assets/svg/icon-library"
 import { FastAverageColor } from "fast-average-color"
 import { utilService } from "../services/util.service"
 import { DynamicModal } from "../cmps/dynamic-modal"
@@ -27,7 +27,7 @@ export function BoardDetails() {
         let style
         if (bg.includes('https')) {
             style = {
-                backgroundImage: `url(${bg})`
+                backgroundImage: `url(${bg})`,
             }
         }
         else {
@@ -35,9 +35,10 @@ export function BoardDetails() {
                 background: bg
             }
         }
+        console.log('style:', style)
         return style
     }
-
+    if (!board) return <div className="loader"><LoaderIcon /></div>
     return (
         <section style={getBgStyle()} className={isOpenMenu ? 'board-details open-menu' : 'board-details'}>
             <ToolBar board={board} />

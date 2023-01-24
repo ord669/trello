@@ -7,7 +7,7 @@ export const UPDATE_GROUP = 'UPDATE_GROUP'
 export const UNDO_REMOVE_GROUP = 'UNDO_REMOVE_GROUP'
 
 const initialState = {
-    board: boardService.getEmptyBoard(),
+    board: null,
     lastRemovedGroup: null
 }
 
