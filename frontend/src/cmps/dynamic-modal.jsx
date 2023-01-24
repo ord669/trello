@@ -5,6 +5,7 @@ import { closeDynamicModal, updateDynamicModalPos } from "../store/modal/modal.a
 import { BoardStarred } from "./board-starred";
 import { AttachmentModal } from "./task/task-modals/attachment/attachment-modal";
 import { CheckListModal } from "./task/task-modals/check-list/check-list-modal";
+import { CopyModal } from "./task/task-modals/copy/copy-modal";
 import { CoverModal } from "./task/task-modals/cover/cover-modal";
 import { LabelsModal } from "./task/task-modals/labels/labels-modal";
 import { MembersModal } from "./task/task-modals/members/members-modal";
@@ -35,6 +36,8 @@ export function DynamicModal() {
                 return <CoverModal board={board} currTask={currTask} onCoverChangeBg={func.onCoverChangeBg} />
             case 'attachment':
                 return <AttachmentModal board={board} currTask={currTask} />
+            case 'copy card':
+                return <CopyModal board={board} currTask={currTask} />
             default:
                 break;
         }

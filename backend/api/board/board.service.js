@@ -2,6 +2,7 @@ const dbService = require('../../services/db.service')
 const logger = require('../../services/logger.service')
 const utilService = require('../../services/util.service')
 const ObjectId = require('mongodb').ObjectId
+const taskService = require('../task/task.service')
 
 // async function query(filterBy = { title: '' }) {
 //     try {
@@ -15,10 +16,19 @@ const ObjectId = require('mongodb').ObjectId
 //     }
 // }
 
+
 async function getById(boardId) {
+    console.log('boardId:', boardId)
     try {
         const collection = await dbService.getCollection('board')
-        const board = collection.findOne({ _id: ObjectId(boardId) })
+        const board = await collection.findOne({ _id: ObjectId(boardId) })
+        board.groups = await Promise.all(board.groups.map(async group => {
+            const tasks = await Promise.all(group.tasksId.map(taskId => taskService.getById(taskId)))
+            group.tasks = tasks
+            console.log('tasks: ', tasks);
+            return group
+        }))
+        console.log('board:', board)
         return board
     } catch (err) {
         logger.error(`while finding board ${boardId}`, err)
