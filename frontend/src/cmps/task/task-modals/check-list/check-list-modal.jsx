@@ -1,9 +1,8 @@
 import { useState } from "react"
 import { taskService } from "../../../../services/task.service.local"
-import { saveTask } from "../../../../store/board/board.action"
 import { closeDynamicModal } from "../../../../store/modal/modal.action"
 
-export function CheckListModal({ board, currTask, getMembers, onSelectMember }) {
+export function CheckListModal({ board, currTask, addCheckList }) {
     const [checklist, setChecklist] = useState(taskService.getEmptyChecklist)
 
     function handleChange({ target }) {
@@ -12,12 +11,8 @@ export function CheckListModal({ board, currTask, getMembers, onSelectMember }) 
     }
 
     function onAddChecklist() {
-        console.log(checklist)
         closeDynamicModal()
-        const checklists = [checklist, ...currTask.checklists]
-        const task = { ...currTask, checklists }
-        // saveTask(task)
-        // setTask(task)
+        addCheckList(checklist)
     }
 
     return (
