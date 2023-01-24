@@ -59,6 +59,7 @@ export function TaskDetails() {
         toggleMemberAssigned(memberId, groupId, taskId)
     }
     function onSelectLabel(labelId) {
+        console.log('labelId fro, details: ', labelId);
         toggleTaskLabel(labelId, groupId, taskId)
     }
 
@@ -82,16 +83,6 @@ export function TaskDetails() {
 
     async function onChoosenDate({ target }) {
         task.dueDate = target.valueAsNumber
-        try {
-            saveTask(task)
-        } catch (err) {
-            console.log('err', err)
-        }
-    }
-
-    async function onUploadedImg(url) {
-        console.log('url: ', url)
-        task.style.img = url
         try {
             saveTask(task)
         } catch (err) {
@@ -147,29 +138,10 @@ export function TaskDetails() {
 
                     {/* TODO////forom here down dev only//// */}
                     <h2>Froom Here Functionality Only!!!</h2>
-                    <div>
-                        {board.members.map((member, idx) =>
-                            <button onClick={() => onSelectMember(member._id)} key={idx}>
-                                <UserAvatarIcon member={member} />
-                            </button>)}
-                    </div>
-                    <div>
-                        {board.labels.map((label, idx) => <button onClick={() => {
-                            onSelectLabel(label._id)
-                        }} key={idx}>
-                            <LabelPreview labelId={label._id} />
-                        </button>)}
-                    </div>
-                    <div>
-                        <input onChange={onCoverChangeBg} type="color" id="body" name="body"
-                            value="#f6b73c" />
-                        <label htmlFor="cover">Cover</label>
-                    </div>
 
                     <input onChange={onChoosenDate} type="date" id="start" name="trip-start"
                         value="2018-07-22"
                         min="2018-01-01" max="2018-12-31" />
-                    <ImgUploader onUploaded={onUploadedImg} />
                     {/* <ImgUploader onUploaded={onUploadedAttachment} />
 
                     <input onChange={onUploadFile} id="image-file" type="file" /> */}

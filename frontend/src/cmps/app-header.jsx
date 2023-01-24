@@ -21,24 +21,21 @@ export function AppHeader() {
     const { board } = useSelector(storeState => storeState.boardModule)
     const [color, setColor] = useState('')
 
-
-
     useEffect(() => {
         setAvgColor()
         if (location.length > 1) setIsHome(false)
         else setIsHome(true)
-    }, [location])
-
+    }, [location, board])
 
     async function setAvgColor() {
+        if (!board) return
         const bg = board.style.background
-
         if (bg.includes('https')) {
             try {
                 const color = await utilService.getAvgColorImage(bg)
                 setColor(color)
             } catch (err) {
-                console.error(err)
+                console.error("cannot read bg ", err)
             }
         }
         else {
@@ -64,8 +61,8 @@ export function AppHeader() {
             }
         }
 
-
         else if (bg.includes('https')) {
+
             style = {
                 background: color.hex
 
@@ -79,7 +76,7 @@ export function AppHeader() {
         return style
     }
 
-    // if (!color || !board) return <div className='loader'><LoaderIcon /></div>
+    if (!color || !board) return <div className='loader'><LoaderIcon /></div>
     return (
         <section className={`${isHome ? 'home-header' : 'app-header'} full`}>
 

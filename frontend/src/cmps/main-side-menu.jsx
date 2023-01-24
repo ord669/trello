@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import tinycolor from "tinycolor2";
-import { ArrowDownIcon, ArrowLeftIcon, LoaderIcon } from "../assets/svg/icon-library";
+import { ArrowDownIcon, ArrowLeftIcon, BoardIcon, LoaderIcon } from "../assets/svg/icon-library";
 import { boardService } from "../services/board.service.local";
 import { utilService } from "../services/util.service";
 import { BoardStarred } from "./board-starred";
@@ -116,11 +116,16 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
             {!board || !color && <div className="loader"><LoaderIcon /></div>}
             <div className="msm-title">
                 <div className="msm-board-bg" style={getBgStyle()}></div>
-                <p>{board.title}</p>
+                <p >{board.title}</p>
                 <button className="msm-btn-close" onClick={() => setIsOpenMenu(prev => !prev)} ><ArrowLeftIcon /></button>
             </div>
+
+            <div className="msm-board-title" onClick={() => navigate('/board')}>
+                <BoardIcon />
+                <p>Boards</p>
+            </div>
             <div>
-                <p>Your Boards</p>
+                <p className="msm-your-boards">Your Boards</p>
                 {boards && boards.map(board =>
                     <div key={board._id} className="msm-boards-list">
                         <div onClick={() => navigate(`board/${board._id}`)} key={board._id} className="msm-card">

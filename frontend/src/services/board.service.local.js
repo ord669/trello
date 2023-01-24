@@ -83,7 +83,7 @@ function getEmptyBoard(title = '') {
         activities: [],
         labels: [],
         style: {
-            "background": "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674475778/la6dlzexuazhmqj1z9gg.jpg"
+            "background": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1673811922/samples/landscapes/architecture-signs.jpg"
 
         },
         // style: {
@@ -156,9 +156,7 @@ function _createBoards() {
                     "imgUrl": "https://robohash.org/Or?set=set5"
                 },
                 "style": {
-                    // "bgImgURL": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg",
-                    // "bgColor": ""
-                    "background": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg",
+                    "background": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1673811922/samples/landscapes/architecture-signs.jpg",
                 },
                 "labels": [
                     {

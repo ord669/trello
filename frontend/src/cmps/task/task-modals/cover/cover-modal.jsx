@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useForm } from "../../../../customHooks/useForm";
 import { boardService } from "../../../../services/board.service.local";
+import { saveTask } from "../../../../store/board/board.action";
+import { ImgUploader } from "../../../img-uploader";
 
 export function CoverModal({ board, currTask, getMembers, onCoverChangeBg }) {
 
@@ -26,6 +28,15 @@ export function CoverModal({ board, currTask, getMembers, onCoverChangeBg }) {
         console.log('url: ', url);
 
     }
+    async function onUploadedImg(url) {
+        console.log('url: ', url)
+        currTask.style.background = url
+        try {
+            saveTask(currTask)
+        } catch (err) {
+            console.log('err', err)
+        }
+    }
 
     if (!imgs) return
     console.log('imgs: ', imgs);
@@ -45,6 +56,8 @@ export function CoverModal({ board, currTask, getMembers, onCoverChangeBg }) {
                     </div>
                 </div>
             </section>
+            <ImgUploader onUploaded={onUploadedImg} />
+
             <section className='modal-covers-list-container'>
                 <h4>Photos from Unsplash</h4>
                 <div className="modal-covers-list-body">

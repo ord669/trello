@@ -16,6 +16,15 @@
         display: flex;
         flex-direction: column;
         row-gap: 0.5rem;
+
+        .attachment-icon {
+            svg {
+                path {
+                    // transform: 
+                    transform: scale(0.38) translate(-2px, 2px);
+                }
+            }
+        }
     }
 
     .details-btn-side-menu {

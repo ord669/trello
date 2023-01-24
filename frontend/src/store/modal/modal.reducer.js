@@ -22,7 +22,7 @@ export function modalReducer(state = initialState, action) {
             newState = { ...state, dynamicModalStatus: true }
             break
         case CLOSE_MODAL:
-            console.log('CLOSE_MODAL:', CLOSE_MODAL);
+
             newState = { ...state, dynamicModalStatus: false }
             break
         case UPDATE_MODAL_POS:

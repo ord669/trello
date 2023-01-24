@@ -2,6 +2,7 @@ import { useForm } from "../../../../customHooks/useForm"
 import { LabelsModalList } from "./labels-modal-list"
 
 export function LabelsModal({ board, currTask, onSelectLabel }) {
+    console.log('onSelectLabel: ', onSelectLabel);
     const [filterBy, setFilterBy, handleChange] = useForm({ txt: '' })
 
     return (
