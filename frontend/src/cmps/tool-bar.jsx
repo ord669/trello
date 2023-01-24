@@ -101,7 +101,7 @@ export function ToolBar({ board }) {
                 <span className="span">|</span>
                 <div className="flex align-center">
                     {board.members.map(member =>
-                        <div><UserAvatarIcon member={member} /></div>
+                        <div key={member._id}><UserAvatarIcon member={member} /></div>
                     )}
                     <span className="span">|</span>
 
