@@ -78,6 +78,9 @@
 
             ul {
                 all: unset;
+                display: flex;
+                gap: 1.5rem;
+                justify-content: space-between;
                 margin-left: 1.3rem;
 
                 li {

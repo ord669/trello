@@ -3,7 +3,6 @@ import { taskService } from "../../../../services/task.service.local";
 import { utilService } from "../../../../services/util.service";
 import { saveTask } from "../../../../store/board/board.action";
 import { ImgUploader } from "../../../img-uploader";
-import { AttachmentList } from "./attachment-modal-list";
 
 export function AttachmentModal({ board, currTask, getMembers, onSelectMember }) {
 

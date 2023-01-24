@@ -95,6 +95,15 @@ export function TaskDetails() {
         saveTask(task)
     }
 
+    function onEditAttach(attachment, title) {
+        console.log('attachment: ', attachment);
+        console.log('title: ', title);
+        attachment.title = title.txt
+        task.attachments = task.attachments.map(attach => attach._id !== attachment._id ? attach : attachment)
+        console.log('task: ', task);
+        saveTask(task)
+    }
+
     if (!task) return <p>Loading..</p>
     console.log('task: ', task);
     return (
@@ -134,7 +143,7 @@ export function TaskDetails() {
                             </div>
                             {task.attachments.map(attachment =>
 
-                                <TaskDetailsAttachment key={attachment._id} task={task} attachment={attachment} onRemoveAttach={onRemoveAttach} />
+                                <TaskDetailsAttachment key={attachment._id} task={task} attachment={attachment} onRemoveAttach={onRemoveAttach} onEditAttach={onEditAttach} />
                             )}
                             <button className="btn-link">Add an attachment</button>
 

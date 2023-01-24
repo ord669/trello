@@ -1,7 +1,8 @@
 import { AttachmentIcon } from "../../../assets/svg/icon-library";
 import { utilService } from "../../../services/util.service";
+import { openDynamicModal } from "../../../store/modal/modal.action";
 
-export function TaskDetailsAttachment({ task, attachment, onRemoveAttach }) {
+export function TaskDetailsAttachment({ task, attachment, onRemoveAttach, onEditAttach }) {
 
     function time(timestamp) {
         return utilService.formatTime(timestamp)
@@ -19,8 +20,9 @@ export function TaskDetailsAttachment({ task, attachment, onRemoveAttach }) {
                         <p>{attachment.title && attachment.title}</p>
                         <div className="attachment-details-crud">
                             <p>{attachment.createdAt && time(attachment.createdAt)}</p>
-                            <ul>
+                            <ul className="">
                                 <li onClick={() => onRemoveAttach(attachment._id)}>Delete</li>
+                                <li onClick={(ev) => openDynamicModal({ ev, name: 'edit attachment', func: { onEditAttach }, data: { attachment } })}>Edit</li>
                             </ul>
                         </div>
                     </div>
