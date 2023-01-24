@@ -1,16 +1,21 @@
 import { useForm } from "../../../../customHooks/useForm"
 import { LabelsModalList } from "./labels-modal-list"
 
-export function LabelsModal({ board, currTask, onSelectLable }) {
-
+export function LabelsModal({ board, currTask, onSelectLabel }) {
+    console.log('onSelectLabel: ', onSelectLabel);
     const [filterBy, setFilterBy, handleChange] = useForm({ txt: '' })
 
     return (
         <section className='labels-modal-container'>
-            <div className="labels-modal-header">
-                <input onChange={handleChange} type="text" name="txt" placeholder="Search labels..." />
+            <div className="modal-header">
+                <input
+                    type="text"
+                    name="txt"
+                    autoFocus
+                    onChange={handleChange}
+                    placeholder="Search labels..." />
             </div>
-            <LabelsModalList filterBy={filterBy} board={board} currTask={currTask} onSelectLable={onSelectLable} />
+            <LabelsModalList filterBy={filterBy} board={board} currTask={currTask} onSelectLabel={onSelectLabel} />
         </section>
     )
 }

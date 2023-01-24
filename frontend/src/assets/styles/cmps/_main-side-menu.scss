@@ -5,7 +5,8 @@
     position: fixed;
     transition: width 0.5s;
     height: 100vh;
-    padding: 14px 12px;
+    padding: 14px 0;
+    // padding: 14px 12px;
 
 
     &.open-menu {
@@ -17,10 +18,8 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 10px;
         margin-bottom: 10px;
-        padding: 6px;
-
+        padding: 6px 12px;
 
         >* {
             color: inherit;
@@ -34,11 +33,15 @@
         justify-content: space-between;
         gap: 10px;
         margin-bottom: 10px;
-        padding: 6px;
+        padding: 6px 12px;
         cursor: pointer;
 
         >* {
             color: inherit;
+        }
+
+        .msm-btn-star {
+            align-self: self-end;
         }
 
         &:hover {
@@ -72,6 +75,11 @@
 
     .msm-btn-close {
         border-radius: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
 
         &:hover {
             background-color: #ffffff4d;

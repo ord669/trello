@@ -19,10 +19,11 @@ export function modalReducer(state = initialState, action) {
 
     switch (action.type) {
         case OPEN_MODAL:
-            newState = { ...state, dynamicModalStatus: action.status }
+            newState = { ...state, dynamicModalStatus: true }
             break
         case CLOSE_MODAL:
-            newState = { ...state, dynamicModalStatus: action.status }
+
+            newState = { ...state, dynamicModalStatus: false }
             break
         case UPDATE_MODAL_POS:
             newState = { ...state, modalPos: action.pos }
@@ -38,6 +39,5 @@ export function modalReducer(state = initialState, action) {
             break
         default:
     }
-
     return newState
 }

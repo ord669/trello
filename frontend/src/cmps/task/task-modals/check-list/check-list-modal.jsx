@@ -1,30 +1,40 @@
-import { useForm } from "../../../../customHooks/useForm";
+import { useState } from "react"
+import { taskService } from "../../../../services/task.service.local"
+import { saveTask } from "../../../../store/board/board.action"
+import { closeDynamicModal } from "../../../../store/modal/modal.action"
 
 export function CheckListModal({ board, currTask, getMembers, onSelectMember }) {
+    const [checklist, setChecklist] = useState(taskService.getEmptyChecklist)
 
-    const [filterBy, setFilterBy, handleChange] = useForm({ txt: '' })
+    function handleChange({ target }) {
+        const { value, name: feild } = target
+        setChecklist(prevChecklist => ({ ...prevChecklist, [feild]: value }))
+    }
+
+    function onAddChecklist() {
+        console.log(checklist)
+        closeDynamicModal()
+        const checklists = [checklist, ...currTask.checklists]
+        const task = { ...currTask, checklists }
+        // saveTask(task)
+        // setTask(task)
+    }
 
     return (
         <section className='members-modal-container'>
-            <div className="members-modal-header">
-                <input onChange={handleChange} type="text" name="txt" placeholder="Search members" />
-            </div>
-            <section className='modal-members-list-container'>
-                <h4>Board members</h4>
-                <div className="modal-members-list-body">
-
-                    <div className={"member-container"}>
-                        <div className="modal-member-icon">
-
-                        </div>
-                        <div className="member-container-text-container">
-
-                        </div>
-                        <button className={`clean-btn fa-solid fa-check `} ></button>
-
-                    </div>
-                </div>
+            {/* <section> */}
+            <h4>Title</h4>
+            <section className="modal-header">
+                <input
+                    type="text"
+                    onChange={handleChange}
+                    name="title"
+                    autoFocus
+                    onFocus={(ev) => ev.target.select()}
+                    value={checklist.title} />
+                <button className="btn-add" onClick={onAddChecklist}>Add</button>
             </section>
         </section>
+        // </section>
     )
 }

@@ -1,4 +1,5 @@
 import { PlusIcon } from "../../../assets/svg/icon-library"
+import { openDynamicModal } from "../../../store/modal/modal.action"
 import { UserAvatarIcon } from "../../user-avatar-icon"
 
 export function MembersList({ board, task, getMembers, onSelectMember }) {
@@ -12,7 +13,17 @@ export function MembersList({ board, task, getMembers, onSelectMember }) {
                     }} key={idx}>
                         <UserAvatarIcon member={member} />
                     </div>)}
-                <div className="user-avatar-icon details-user-avatar-icon" >
+                <div className="user-avatar-icon details-user-avatar-icon"
+                    onClick={(ev) =>
+                        openDynamicModal({
+                            ev,
+                            name: 'members',
+                            func: {
+                                getMembers,
+                                onSelectMember
+                            }
+                        })}
+                >
                     <PlusIcon />
                 </div>
             </div>

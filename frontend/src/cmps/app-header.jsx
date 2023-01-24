@@ -21,14 +21,11 @@ export function AppHeader() {
     const { board } = useSelector(storeState => storeState.boardModule)
     const [color, setColor] = useState('')
 
-
-
     useEffect(() => {
         setAvgColor()
         if (location.length > 1) setIsHome(false)
         else setIsHome(true)
     }, [location, board])
-
 
     async function setAvgColor() {
         if (!board) return
@@ -64,8 +61,8 @@ export function AppHeader() {
             }
         }
 
-
         else if (bg.includes('https')) {
+
             style = {
                 background: color.hex
 
