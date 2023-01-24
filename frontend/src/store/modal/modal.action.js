@@ -40,9 +40,6 @@ export function updateModalType(element) {
 // }
 
 export function quickEdit(ev, task) {
-    console.log('ev: ', ev);
-    console.log('task: ', task);
-
     const quickEditModalPos = ev.target.getBoundingClientRect()
 
     // store.dispatch({ type: UPDATE_MODAL_TYPE, element })

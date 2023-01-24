@@ -100,12 +100,10 @@ export function TaskDetails() {
         console.log('title: ', title);
         attachment.title = title.txt
         task.attachments = task.attachments.map(attach => attach._id !== attachment._id ? attach : attachment)
-        console.log('task: ', task);
         saveTask(task)
     }
 
     if (!task) return <p>Loading..</p>
-    console.log('task: ', task);
     return (
         <section className='task-details'>
             <div className="black-screen" onClick={() => navigate(`/board/${board._id}`)}></div>
@@ -120,7 +118,7 @@ export function TaskDetails() {
                             <LabelList task={task} onSelectLabel={onSelectLabel} />
                         }
                         {!!task?.dueDate &&
-                            <DueDate dueDate={task.dueDate} task={task} />
+                            <DueDate task={task} />
                         }
                     </div>
                     <div className="description-container flex">

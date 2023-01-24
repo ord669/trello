@@ -15,13 +15,13 @@ export function DatesModal({ board, currTask }) {
 
     function onSaveDueDate() {
         if (!isDueDate) return
-        const task = { ...currTask, dueDate: Date.now() }
+        const task = { ...currTask, dueDate: date.getTime(), isDone: false }
         saveTask(task)
         closeDynamicModal()
     }
 
     function onRemoveDueDate() {
-        const task = { ...currTask, dueDate: null }
+        const task = { ...currTask, dueDate: null, isDone: false }
         saveTask(task)
         closeDynamicModal()
     }
@@ -42,7 +42,7 @@ export function DatesModal({ board, currTask }) {
             <h5>Due date</h5>
             <section className='date-input'>
                 <input type="checkbox"
-                checked={isDueDate}
+                    checked={isDueDate}
                     onChange={() => setIsDueDate(prev => !prev)} />
                 {!!isDueDate ?
                     <section>{shortTime.format(date.getTime())}</section>

@@ -4,9 +4,9 @@ import { utilService } from "../../../services/util.service"
 import { saveTask } from "../../../store/board/board.action"
 import { openDynamicModal } from "../../../store/modal/modal.action"
 
-export function DueDate({ dueDate, task }) {
+export function DueDate({ task }) {
     const [isDone, setIsDone] = useState(task.isDone)
-    const [day, year, hour] = utilService.formatDate(dueDate).split(',')
+    const [day, year, hour] = utilService.formatDate(task.dueDate).split(',')
 
     function handleChange({ target }) {
         const taskToSave = { ...task, isDone: target.checked }
