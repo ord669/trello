@@ -2,6 +2,7 @@ import { useState } from "react"
 import { ArrowDownIcon } from "../../../assets/svg/icon-library"
 import { utilService } from "../../../services/util.service"
 import { saveTask } from "../../../store/board/board.action"
+import { openDynamicModal } from "../../../store/modal/modal.action"
 
 export function DueDate({ dueDate, task }) {
     const [isDone, setIsDone] = useState(task.isDone)
@@ -21,7 +22,7 @@ export function DueDate({ dueDate, task }) {
                     type="checkbox"
                     onChange={handleChange}
                     checked={isDone} />
-                <button className="btn-link">
+                <button className="btn-link" onClick={(ev) => openDynamicModal({ ev, name: 'dates', func: {} })}>
                     {`${day} at ${hour}`}
                     {isDone && <span className="complete">complete</span>}
                     <span className="icon"><ArrowDownIcon /></span>

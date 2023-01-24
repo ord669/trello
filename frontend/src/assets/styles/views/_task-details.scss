@@ -18,6 +18,14 @@
         position: absolute;
         z-index: 2;
     }
+
+    .btn-link {
+        background-color: rgba(9, 30, 66, 0.04);
+
+        &:hover {
+            background-color: rgba(9, 30, 66, 0.08);
+        }
+    }
 }
 
 .main-task-details {
