@@ -17,7 +17,6 @@ export function BoardDetails() {
     const { boardId } = useParams()
     const [isOpenMenu, setIsOpenMenu] = useState(false)
 
-
     useEffect(() => {
         loadBoard(boardId)
     }, [boardId])
@@ -35,7 +34,7 @@ export function BoardDetails() {
                 background: bg
             }
         }
-        console.log('style:', style)
+
         return style
     }
     if (!board) return <div className="loader"><LoaderIcon /></div>

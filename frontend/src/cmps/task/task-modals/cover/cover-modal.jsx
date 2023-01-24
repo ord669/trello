@@ -24,10 +24,6 @@ export function CoverModal({ board, currTask, getMembers, onCoverChangeBg }) {
         }
     }
 
-    function onChangeCoverBg(url) {
-        console.log('url: ', url);
-
-    }
     async function onUploadedImg(url) {
         console.log('url: ', url)
         currTask.style.background = url
@@ -56,7 +52,7 @@ export function CoverModal({ board, currTask, getMembers, onCoverChangeBg }) {
                     </div>
                 </div>
             </section>
-            <ImgUploader onUploaded={onUploadedImg} />
+            <ImgUploader onUploaded={onUploadedImg} type={'cover'} styleClass={{ coverLabelBtn: 'btn-link' }} />
 
             <section className='modal-covers-list-container'>
                 <h4>Photos from Unsplash</h4>

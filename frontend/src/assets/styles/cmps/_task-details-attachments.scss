@@ -1,0 +1,62 @@
+.attachments-container {
+    clear: both;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.task-details-attachment {
+    width: 100%;
+
+    .task-details-attachment-header {
+        display: flex;
+
+        padding: 8px 0;
+        position: relative;
+
+        h3 {
+            margin-left: 0.6rem;
+        }
+    }
+
+    &-content-container {
+        margin-left: 38px;
+        width: 100%;
+    }
+
+    &-content {
+        display: flex;
+
+        border-radius: 3px;
+        margin: 0 0 8px;
+        min-height: 80px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .img-container {
+
+        img {
+            width: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 3px;
+            height: 80px;
+            margin-top: -40px;
+
+            text-decoration: none;
+
+            z-index: 1;
+        }
+    }
+
+    .attachment-icon {
+        svg {
+            transform: scale(1.30) rotate(-90deg) translate(8px, -3px);
+
+            path {
+                // transform: 
+                transform: rotate(-42deg) scale(0.38) translate(-30px, 10px);
+            }
+        }
+    }
+}

@@ -93,17 +93,8 @@ export function TaskDetails() {
         }
     }
 
-    function onUploadedAttachment(attach) {
-        console.log('attach: ', attach)
-
-    }
-
-    function onUploadFile(ev) {
-        console.log('ev: ', ev)
-
-    }
-
     if (!task) return <p>Loading..</p>
+    console.log('task: ', task);
     return (
         <section className='task-details'>
             <div className="black-screen" onClick={() => navigate(`/board/${board._id}`)}></div>
@@ -134,7 +125,8 @@ export function TaskDetails() {
                     {task?.attachments &&
                         <div className="attachments-container flex">
                             {task.attachments.map(attachment =>
-                                <TaskDetailsAttachment key={attachment._id} task={task} />
+
+                                <TaskDetailsAttachment key={attachment._id} task={task} attachment={attachment} />
                             )}
                         </div>}
                     <ActivityIndex board={board} currTask={task} />

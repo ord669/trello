@@ -1,4 +1,6 @@
 import { useForm } from "../../../../customHooks/useForm";
+import { saveTask } from "../../../../store/board/board.action";
+import { ImgUploader } from "../../../img-uploader";
 import { AttachmentList } from "./attachment-modal-list";
 
 export function AttachmentModal({ board, currTask, getMembers, onSelectMember }) {
@@ -7,10 +9,26 @@ export function AttachmentModal({ board, currTask, getMembers, onSelectMember })
     console.log('attachment: ', attachment);
     const [title, setTitle, handleChangeTitle] = useForm('')
     console.log('title: ', title);
+    console.log('currTask: ', currTask);
+
+    async function onUploadedAttach(url, title = '') {
+        console.log('url: ', url)
+        currTask.attachments.push({ 'file': url, title })
+        console.log('currTask: ', currTask);
+        try {
+            saveTask(currTask)
+        } catch (err) {
+            console.log('err', err)
+        }
+    }
 
     return (
-        <section className='members-modal-container'>
+        <section className='attachs-modal-container'>
             <div className="modal-header">
+                <div className="uploads-container uploads-btn no-paddin-full">
+                    <ImgUploader onUploaded={onUploadedAttach} type={'attach'} styleClass={{ attachLableBtn: '' }} content={{ title: 'Computer' }} showFile={false} />
+                </div>
+                <hr />
                 <div className="attach-link">
                     Attach a link
                     <input
