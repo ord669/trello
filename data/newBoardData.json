@@ -1,0 +1,150 @@
+{
+    "title": "Software Development",
+    "isStarred": false,
+    "archivedAt": 1589983468418,
+    "createdBy": {
+        "_id": "u101",
+        "fullname": "Or Dvir",
+        "imgUrl": "https://robohash.org/Or?set=set5"
+    },
+    "style": {
+        "background": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1673811922/samples/landscapes/architecture-signs.jpg"
+    },
+    "labels": [
+        {
+            "_id": "l101",
+            "title": "Done",
+            "color": "#d6ecd2"
+        },
+        {
+            "_id": "l102",
+            "title": "Progress",
+            "color": "#fbf3c0"
+        },
+        {
+            "_id": "l103",
+            "title": "Todo",
+            "color": "#fce7c6"
+        },
+        {
+            "_id": "l104",
+            "title": "Important",
+            "color": "#f5d3ce"
+        },
+        {
+            "_id": "l105",
+            "title": "Urgent",
+            "color": "#efb3ab"
+        },
+        {
+            "_id": "l106",
+            "title": "Later",
+            "color": "#dfc0eb"
+        },
+        {
+            "_id": "l107",
+            "title": "Basic",
+            "color": "#e4f0f6"
+        }
+    ],
+    "members": [
+        {
+            "_id": "u101",
+            "fullname": "Or Dvir",
+            "username": "Or Dvir",
+            "imgUrl": "https://robohash.org/Or?set=set5"
+        },
+        {
+            "_id": "u102",
+            "fullname": "Liad Gola",
+            "username": "Liad Gola",
+            "imgUrl": "https://robohash.org/Liad?set=set5"
+        },
+        {
+            "_id": "u103",
+            "fullname": "Oren Sharizad",
+            "username": "Oren Sharizad",
+            "imgUrl": "https://robohash.org/oren?set=set5"
+        }
+    ],
+    "groups": [
+        {
+            "_id": "g101",
+            "title": "In Development",
+            "archivedAt": 1589983468410,
+            "tasksId": [
+                "63cdb0b283600a17ffbb74b8"
+            ],
+            "style": {}
+        },
+        {
+            "_id": "g102",
+            "title": "Backlog-Server",
+            "archivedAt": 1589983478560,
+            "tasksId": [
+                "63cdb0b283600a17ffbb74b9",
+                "63cdb0b283600a17ffbb74ba",
+                "63cdb0b283600a17ffbb74bb",
+                "63cdb0b283600a17ffbb74bc"
+            ],
+            "style": {}
+        },
+        {
+            "_id": "g103",
+            "title": "Backlog-clinet",
+            "archivedAt": 1589983878560,
+            "tasksId": [
+                "63cdb0b283600a17ffbb74bd",
+                "63cdb0b283600a17ffbb74be",
+                "63cdb0b283600a17ffbb74bf"
+            ],
+            "style": {}
+        },
+        {
+            "_id": "g104",
+            "title": "Done",
+            "archivedAt": 1612483878560,
+            "tasksId": [
+                "63cdb0b283600a17ffbb74c0",
+                "63cdb0b283600a17ffbb74c1",
+                "63cdb0b283600a17ffbb74c2",
+                "63cdb0b283600a17ffbb74c3"
+            ],
+            "style": {}
+        },
+        {
+            "_id": "g105",
+            "title": "QA",
+            "archivedAt": 1652483878560,
+            "tasksId": [
+                "63cdb0b283600a17ffbb74c4",
+                "63cdb0b283600a17ffbb74c5",
+                "63cdb0b283600a17ffbb74c6",
+                "63cdb0b283600a17ffbb74c7",
+                "63cdb0b283600a17ffbb74c8"
+            ],
+            "style": {}
+        }
+    ],
+    "activities": [
+        {
+            "_id": "a101",
+            "txt": "Changed Color",
+            "createdAt": 154514,
+            "byMember": {
+                "_id": "u101",
+                "fullname": "Or Dvir",
+                "imgUrl": "https://robohash.org/Or?set=set5"
+            },
+            "task": {
+                "_id": "c101",
+                "title": "Replace Logo"
+            }
+        }
+    ],
+    "cmpsOrder": [
+        "status-picker",
+        "member-picker",
+        "date-picker"
+    ]
+}
