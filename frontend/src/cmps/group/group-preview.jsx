@@ -24,9 +24,13 @@ export function GroupPreview({ group, idx }) {
                 <section className={`group-preview ${snapshot.isDragging ? 'dragged' : ''}`}
                     ref={provided.innerRef}
                     {...provided.draggableProps}
-                    {...provided.dragHandleProps}
+
                 >
-                    <GroupHeader onRemoveGroup={onRemoveGroup} group={group} />
+                    <div  {...provided.dragHandleProps}>
+                        <GroupHeader onRemoveGroup={onRemoveGroup} group={group}
+
+                        />
+                    </div>
                     <TaskList tasks={group.tasks} groupId={group._id} isShown={isShown} setIsShown={setIsShown} />
                     {!isShown && <section className="open-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>
                         <PlusIcon />

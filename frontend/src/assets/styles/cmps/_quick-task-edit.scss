@@ -1,0 +1,37 @@
+.quick-task-edit {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 5000;
+    background: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+
+}
+
+.quick-task-edit-container {
+    position: absolute;
+    background-color: white;
+    border-radius: 3px;
+    z-index: 6001;
+    transition: height 2s;
+
+
+    .quick-task-edit-details {
+        padding: 6px 8px 2px;
+        display: flex;
+        flex-direction: column;
+        gap: rem(4px);
+
+        textarea {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            resize: none;
+            border: none;
+            outline: none;
+
+        }
+    }
+
+}
