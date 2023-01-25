@@ -1,0 +1,32 @@
+.copy-modal {
+
+    .selects-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+
+        :first-child {
+            min-width: 190px;
+        }
+
+    }
+
+    .copy-card-select {
+        min-width: 80px;
+        height: 50px;
+        color: lightgray;
+        padding: 12px;
+        border-radius: 3px;
+        border: none;
+        background-color: #091e420a;
+        color: $clr2;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+}

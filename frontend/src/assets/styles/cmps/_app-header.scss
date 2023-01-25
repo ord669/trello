@@ -13,6 +13,7 @@
         font-weight: 600;
         border-radius: 3px;
         padding: 0 6px;
+        color: inherit;
 
         &:hover {
             backdrop-filter: contrast(0.5);
@@ -22,6 +23,7 @@
             margin-inline-end: 5px;
             height: 24px;
             width: 24px;
+            fill: #fff;
         }
     }
 
@@ -45,7 +47,6 @@
             padding: 5px;
 
             &:hover {
-                background-color: $clr11;
                 backdrop-filter: contrast(0.5);
 
             }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import tinycolor from "tinycolor2"
-import { toggleTaskLabel } from "../../../store/board/board.action"
+import { toggleTaskLabel } from "../../../store/task/task.action"
 
 export function LabelPreview({ labelId, task }) {
     const { board } = useSelector(storeState => storeState.boardModule)

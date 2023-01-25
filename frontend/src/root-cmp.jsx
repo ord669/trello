@@ -1,6 +1,6 @@
 // import React, { useEffect, useState } from 'react'
 import { HashRouter as Router, Route, Routes } from "react-router-dom"
-import { AppHeader } from './cmps/app-header'
+import { DynamicHeader } from './cmps/dynamic-header'
 import { UserDetails } from './views/user-details'
 import { BoardDetails } from './views/board-details'
 import { TaskDetails } from './views/task-details'
@@ -22,7 +22,7 @@ export function App() {
         <Provider store={store}>
             <Router>
                 <div className='main-container app'>
-                    <AppHeader className='full' />
+                    <DynamicHeader className='full' />
                     <main className='full'>
                         <Routes>
                             <Route path="/" element={<HomePage />} />

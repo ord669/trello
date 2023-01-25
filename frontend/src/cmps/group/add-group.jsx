@@ -1,8 +1,8 @@
 import { CloseIcon, PlusIcon } from "../../assets/svg/icon-library"
 import { useState } from "react"
 import { saveGroup } from "../../store/board/board.action"
-import { groupService } from "../../services/group.service.local"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
+import { boardService } from "../../services/board.service"
 
 export function AddGroup() {
     const [isShown, setIsShown] = useState(false)
@@ -11,7 +11,7 @@ export function AddGroup() {
     async function onAddList(ev) {
         ev.preventDefault()
         if (!title) return
-        const group = groupService.getEmptyGroup(title)
+        const group = boardService.getEmptyGroup(title)
         try {
             await saveGroup(group)
             setIsShown(prevIsShown => !prevIsShown)

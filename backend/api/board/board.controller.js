@@ -64,6 +64,40 @@ async function removeBoard(req, res) {
   }
 }
 
+async function removeGroupFromBoard(req, res) {
+  try {
+    const { boardId, groupId } = req.params
+    const removedId = await boardService.removeGroupFromBoard(boardId, groupId)
+    res.send(removedId)
+  } catch (err) {
+    logger.error('Failed to remove board', err)
+    res.status(500).send({ err: 'Failed to remove board' })
+  }
+}
+
+async function addGroupToBoard(req, res) {
+  try {
+    const { boardId } = req.params
+    const group = req.body
+    const updatedGroup = await boardService.addGroupToBoard(boardId, group)
+    res.json(updatedGroup)
+  } catch (err) {
+    logger.error('Failed to add group', err)
+    res.status(500).send({ err: 'Failed to add group' })
+  }
+}
+
+async function updateGroupInBoard(req, res) {
+  try {
+    const { boardId } = req.params
+    const group = req.body
+    const updatedGroup = await boardService.updateGroupToBoard(boardId, group)
+    res.json(updatedGroup)
+  } catch (err) {
+    logger.error('Failed to add group', err)
+    res.status(500).send({ err: 'Failed to add group' })
+  }
+}
 
 
 module.exports = {
@@ -72,6 +106,7 @@ module.exports = {
   addBoard,
   updateBoard,
   removeBoard,
-  // addCarMsg,
-  // removeCarMsg
+  removeGroupFromBoard,
+  addGroupToBoard,
+  updateGroupInBoard,
 }

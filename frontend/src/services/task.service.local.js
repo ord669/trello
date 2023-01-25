@@ -1,8 +1,8 @@
 import { utilService } from './util.service.js'
 
 export const taskService = {
-    setTaskInBoard,
-    removeTaskFromBoard,
+    remove,
+    save,
     getEmptyTask,
     createChecklists,
     getEmptyTodo,
@@ -10,14 +10,15 @@ export const taskService = {
     getEmptyChecklist,
     getAttachment,
     getMembers,
+    reorderTasks,
 }
 
-function setTaskInBoard() {
+async function remove(taskId) {
 
 }
 
-function removeTaskFromBoard() {
-
+async function save(task) {
+  
 }
 
 function createChecklists(title = 'checklists', todoTitle = 'Write Your Todo') {
@@ -51,12 +52,21 @@ function getEmptyChecklist() {
         "todos": []
     }
 }
+
 function getEmptyTodo() {
     return {
         "_id": utilService.makeId(),
         "title": "",
         "isDone": false
     }
+}
+
+function reorderTasks(source, destination, groups) {
+    const sourceGroup = groups.find(group => group._id === source.droppableId)
+    const [task] = sourceGroup.tasks.splice(source.index, 1)
+    const destinationGroup = groups.find(group => group._id === destination.droppableId)
+    destinationGroup.tasks.splice(destination.index, 0, task)
+    return groups
 }
 
 function getEmptyComment() {
@@ -156,10 +166,12 @@ function getMembers(board, task) {
     return members
 }
 
-// async function onCoverChangeBg(task, bg) {
-//     task.style.background = bg
-//     try {
-//     } catch (err) {
-//         console.log('err', err)
-//     }
-// }
+
+
+
+
+
+
+
+
+

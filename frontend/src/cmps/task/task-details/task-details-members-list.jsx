@@ -1,6 +1,6 @@
 import { PlusIcon } from "../../../assets/svg/icon-library"
 import { taskService } from "../../../services/task.service.local"
-import { toggleMemberAssigned } from "../../../store/board/board.action"
+import { toggleMemberAssigned } from "../../../store/task/task.action"
 import { openDynamicModal } from "../../../store/modal/modal.action"
 import { UserAvatarIcon } from "../../user-avatar-icon"
 

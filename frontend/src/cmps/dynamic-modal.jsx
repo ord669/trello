@@ -12,7 +12,7 @@ import { LabelsModal } from "./task/task-modals/labels/labels-modal"
 import { MembersModal } from "./task/task-modals/members/members-modal"
 import { EditAttachment } from "./task/task-modals/attachment/edit-attachment-modal";
 import { taskService } from "../services/task.service.local"
-import { toggleMemberAssigned, toggleTaskLabel } from "../store/board/board.action"
+import { toggleMemberAssigned, toggleTaskLabel } from "../store/task/task.action"
 
 export function DynamicModal() {
     const { modalPos, modalDetails } = useSelector(storeState => storeState.modalModule)

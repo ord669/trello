@@ -12,7 +12,7 @@ export function GroupList({ groups, board }) {
             destination.index === source.index) return
         updateDrag(result)
     }
-
+    
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <Droppable droppableId={board._id || 'board'} direction="horizontal" type="GROUP">

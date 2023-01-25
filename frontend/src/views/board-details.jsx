@@ -49,7 +49,6 @@ export function BoardDetails() {
             {isOpenMenu && < MainSidemenu board={board} isOpenMenu={isOpenMenu} setIsOpenMenu={setIsOpenMenu} />}
             <Outlet />
             {dynamicModalStatus && <DynamicModal />}
-
         </section >
     )
 }

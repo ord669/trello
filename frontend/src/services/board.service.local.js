@@ -11,9 +11,13 @@ export const boardService = {
     getById,
     save,
     remove,
+    removeGroup,
+    saveGroup,
+    reorderGroups,
     getEmptyBoard,
-    addBoardActivity,
+    // addBoardActivity,
     getEmpteyFilter,
+    getEmptyGroup,
     filterGroupsTasks,
     getBgImgsURL,
     getImgsFromUnsplash,
@@ -61,18 +65,18 @@ async function save(board) {
     return savedBoard
 }
 
-async function addBoardActivity(boardId, txt) {
-    const board = await getById(boardId)
-    if (!board.activities) board.activities = []
-    const activity = {
-        id: utilService.makeId(),
-        by: userService.getLoggedinUser(),
-        txt
-    }
-    board.activities.push(activity)
-    await storageService.put(STORAGE_KEY, board)
-    return activity
-}
+// async function addBoardActivity(boardId, txt) {
+//     const board = await getById(boardId)
+//     if (!board.activities) board.activities = []
+//     const activity = {
+//         id: utilService.makeId(),
+//         by: userService.getLoggedinUser(),
+//         txt
+//     }
+//     board.activities.push(activity)
+//     await storageService.put(STORAGE_KEY, board)
+//     return activity
+// }
 
 function getEmptyBoard(title = '') {
     return {
@@ -86,16 +90,57 @@ function getEmptyBoard(title = '') {
             "background": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1673811922/samples/landscapes/architecture-signs.jpg"
 
         },
-        // style: {
-        //     bgImgURL: "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg",
-        //     bgColor: ""
-        // },
+
         members: []
     }
 }
 
 function getEmpteyFilter() {
     return { title: '' }
+}
+
+function getEmptyGroup(title = 'New group') {
+    return {
+        title,
+        tasks: [],
+        style: {},
+        archivedAt: null
+    }
+}
+
+async function removeGroup(boardId, groupId) {
+    try {
+        let board = await getById(boardId)
+        board.groups = board.groups.filter(group => group._id !== groupId)
+        await save(board)
+    } catch (err) {
+        console.log('Cannot remove group: ', err)
+        throw err
+    }
+}
+
+async function saveGroup(boardId, group) {
+    try {
+        const board = await getById(boardId)
+        if (!board.groups) board.groups = []
+        if (group._id) {
+            board.groups = board.groups.map(currGroup => currGroup._id === group._id ? group : currGroup)
+        } else {
+            group._id = utilService.makeId()
+            board.groups.push(group)
+        }
+        await save(board)
+        return group
+    } catch (err) {
+        console.log('Cannot save group: ', err)
+        throw err
+    }
+}
+
+function reorderGroups(source, destination, groups) {
+    const [group] = groups.splice(source.index, 1)
+    groups.splice(destination.index, 0, group)
+    return groups
 }
 
 function getBgImgsURL() {
@@ -118,6 +163,21 @@ function getBgImgsURL() {
 
         }
     ]
+}
+
+async function getImgsFromUnsplash(val = 'london') {
+    const url = `https://api.unsplash.com/search/photos?query=${val}&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4`
+    // return fetch(url).then((res) => res.json())
+    try {
+        const res = await fetch(url)
+        return res.json()
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+function getColors() {
+    return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91', '#172b4d']
 }
 
 function _createBoard(title, url, isStarred) {
@@ -1329,19 +1389,4 @@ function _createBoards() {
         ]
         utilService.saveToStorage(STORAGE_KEY, boards)
     }
-}
-
-async function getImgsFromUnsplash(val = 'london') {
-    const url = `https://api.unsplash.com/search/photos?query=${val}&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4`
-    // return fetch(url).then((res) => res.json())
-    try {
-        const res = await fetch(url)
-        return res.json()
-    } catch (err) {
-        console.error(err)
-    }
-}
-
-function getColors() {
-    return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91', '#172b4d']
 }
