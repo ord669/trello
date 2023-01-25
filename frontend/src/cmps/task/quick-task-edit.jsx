@@ -42,6 +42,11 @@ export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
         let pos = 'normal'
         if (quickEditModalPos.height + quickEditModalPos.y + maxHeight > windowSize.height) pos = 'toLow'
 
+        // if (modalPos.x + modalWidth > windowSize.width) posToRender = "downLeft"
+        // if (elementStartBottom + modalHeight > windowSize.height) posToRender = "upRight"
+        // if (elementStartBottom + modalHeight > windowSize.height &&
+        //     modalPos.x + modalWidth > windowSize.width) posToRender = "upLeft"
+
         switch (pos) {
             case 'normal':
                 return {
@@ -66,7 +71,9 @@ export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
         setIsQuickEdit(false)
     }
     let left = false
-    if (quickEditModalPos.x + quickEditModalPos.width > windowSize.width) left = true
+    if (quickEditModalPos.right + quickEditModalPos.width > windowSize.width) left = true
+    console.log('quickEditModalPos: ', quickEditModalPos);
+    console.log('quickEditModalPos: ', quickEditModalPos);
 
     return (
         <section onClick={(ev) => {

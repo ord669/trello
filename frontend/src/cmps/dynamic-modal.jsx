@@ -28,11 +28,9 @@ export function DynamicModal() {
     const clickedElemntHeight = modalPos.height
 
     function DynamicModalContent({ type, func, data, currTask }) {
-        console.log('currTask: ', currTask);
-        console.log('indynami:')
+
         switch (type) {
             case 'labels':
-
                 return <LabelsModal board={board} currTask={currTask} toggleTaskLabel={toggleTaskLabel} />
             case 'members':
                 return <MembersModal board={board} currTask={currTask} getMembers={taskService.getMembers} toggleMemberAssigned={toggleMemberAssigned} />
@@ -57,28 +55,28 @@ export function DynamicModal() {
         console.log('in pos:')
         const bottomMargin = 5
         const modalWidth = 304
-        let modalHeight
+        let modalHeight = 220
         let posToRender = 'downRight'
 
-        console.log('modalDetails.name: ', modalDetails.name);
         switch (modalDetails.name) {
-            case 'add checklists':
-            case 'attachment':
-
-                modalHeight = 220
+            case 'copy card':
+            case 'cover':
+                modalHeight = 370
                 break;
-
+            case 'dates':
+            case 'labels':
+                modalHeight = 480
+                break;
             default:
                 break;
         }
-
+        console.log('modalDetails.name: ', modalDetails.name);
         console.log('modalHeight: ', modalHeight);
-
-        if (modalDetails.size === 'm') modalHeight = 370
-        if (modalDetails.size === 'l') modalHeight = 480
 
         if (modalPos.x + modalWidth > windowSize.width) posToRender = "downLeft"
         if (elementStartBottom + modalHeight > windowSize.height) posToRender = "upRight"
+        if (elementStartBottom + modalHeight > windowSize.height &&
+            modalPos.x + modalWidth > windowSize.width) posToRender = "upLeft"
 
         switch (posToRender) {
             case 'downRight':
@@ -87,6 +85,7 @@ export function DynamicModal() {
                     left: `${elementStartLeft}px`,
                 }
             case 'downLeft':
+                console.log('downLeft: ');
                 return {
                     top: `${elementStartBottom + bottomMargin}px`,
                     left: `${elementStartLeft - modalWidth}px`
@@ -102,7 +101,7 @@ export function DynamicModal() {
                 return {
                     top: `${elementStartBottom + bottomMargin}px`,
                     left: `${elementStartLeft - modalWidth}px`,
-                    transform: "translateY(-100%)",
+                    transform: "translateY(-50%)",
                 }
             default:
                 break
