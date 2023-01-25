@@ -7,17 +7,14 @@ import { MembersList } from "../cmps/task/task-details/task-details-members-list
 import { ActivityIndex } from "../cmps/task/task-details/activity-index"
 import { TaskDetailsChecklist } from "../cmps/task/task-details/task-details-checklist"
 import { TaskDetailsDescription } from "../cmps/task/task-details/task-details-description"
-import { LabelPreview } from "../cmps/task/task-details/label-preview"
 import { TaskDetailsSideMenu } from "../cmps/task/task-details/task-details-side-menu"
-import { UserAvatarIcon } from "../cmps/user-avatar-icon"
 import { useForm } from "../customHooks/useForm"
-import { removeTask, saveTask, toggleTaskLabel, toggleMemberAssigned } from "../store/board/board.action"
+import { removeTask, saveTask } from "../store/board/board.action"
 import { DetailsHeader } from "../cmps/task/task-details/task-details-header"
 import { DueDate } from "../cmps/task/task-details/task-details-due-date"
-import { groupService } from "../services/group.service.local"
-import { ImgUploader } from "../cmps/img-uploader"
 import { TaskDetailsAttachment } from "../cmps/task/task-details/task-details-attachment"
 import { setTaskToEdit } from "../store/task/task.action"
+import { taskService } from "../services/task.service.local"
 
 export function TaskDetails() {
     const { board } = useSelector(storeState => storeState.boardModule)
@@ -45,35 +42,17 @@ export function TaskDetails() {
         navigate(`/board/${board._id}`)
     }
 
-    function getMembers() {
-        let members = board.members.filter(member => task.memberIds.indexOf(member._id) !== -1)
-        return members
-    }
-
     function onUpdateHeadline(ev) {
         handleChange(ev)
-        saveTask(task)
-    }
-
-    function onSelectMember(memberId) {
-        toggleMemberAssigned(memberId, groupId, taskId)
-    }
-    function onSelectLabel(labelId) {
-        console.log('labelId fro, details: ', labelId);
-        toggleTaskLabel(labelId, groupId, taskId)
+        try {
+            saveTask(task)
+        } catch (err) {
+            console.log('err from onUpdateHeadline', err)
+        }
     }
 
     function addCheckList(checklist) {
         task.checklists.push(checklist)
-        try {
-            saveTask(task)
-        } catch (err) {
-            console.log('err', err)
-        }
-    }
-
-    async function onCoverChangeBg(bg) {
-        task.style.background = bg
         try {
             saveTask(task)
         } catch (err) {
@@ -92,35 +71,39 @@ export function TaskDetails() {
 
     function onRemoveAttach(attachId) {
         task.attachments = task.attachments.filter(attach => attach._id !== attachId)
-        saveTask(task)
+        try {
+            saveTask(task)
+        } catch (err) {
+            console.log('err from remove attach', err)
+        }
     }
 
     function onEditAttach(attachment, title) {
-        console.log('attachment: ', attachment);
-        console.log('title: ', title);
         attachment.title = title.txt
         task.attachments = task.attachments.map(attach => attach._id !== attachment._id ? attach : attachment)
-        console.log('task: ', task);
-        saveTask(task)
+        try {
+            saveTask(task)
+        } catch (err) {
+            console.log('err from edit attach', err)
+        }
     }
 
     if (!task) return <p>Loading..</p>
-    console.log('task: ', task);
     return (
         <section className='task-details'>
             <div className="black-screen" onClick={() => navigate(`/board/${board._id}`)}></div>
             <div className="main-task-details">
-                <DetailsHeader onUpdateHeadline={onUpdateHeadline} onCoverChangeBg={onCoverChangeBg} boardId={board._id} task={task} group={group} />
+                <DetailsHeader onUpdateHeadline={onUpdateHeadline} boardId={board._id} task={task} group={group} />
                 <div className="task-details-content">
                     <div className="task-details-content-label-members-date">
                         {!!task?.memberIds?.length &&
-                            <MembersList getMembers={getMembers} board={board} task={task} onSelectMember={onSelectMember} />
+                            <MembersList getMembers={taskService.getMembers} board={board} task={task} />
                         }
                         {!!task?.labelIds?.length &&
-                            <LabelList task={task} onSelectLabel={onSelectLabel} />
+                            <LabelList task={task} />
                         }
                         {!!task?.dueDate &&
-                            <DueDate dueDate={task.dueDate} task={task} />
+                            <DueDate task={task} />
                         }
                     </div>
                     <div className="description-container flex">
@@ -152,10 +135,8 @@ export function TaskDetails() {
                 </div>
                 <TaskDetailsSideMenu
                     addCheckList={addCheckList}
-                    getMembers={getMembers}
-                    onSelectMember={onSelectMember}
-                    onSelectLabel={onSelectLabel}
                     onRemoveTask={onRemoveTask}
+                    task={task}
                 />
             </div>
         </section>

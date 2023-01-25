@@ -2,6 +2,11 @@
     display: grid;
     gap: 8px;
 
+    .clicked {
+        background-color: #091e42;
+        font-size: 50px;
+    }
+
     .react-calendar {
 
         .react-calendar__navigation {
@@ -69,10 +74,44 @@
             }
         }
 
-        height: 300px;
+        height: fit-content;
     }
 
-    >.btn-add {
+    .date-input {
+        display: flex;
+        margin-bottom: 15px;
+
+        h5 {
+            color: #5e6c84;
+            font-weight: 900;
+        }
+
+        input {
+            margin-inline-start: 1px;
+            border: 1px solid #dfe1e6;
+            width: 15px;
+        }
+
+        section {
+            width: 90px;
+            height: 32px;
+            background-color: #ebecf0;
+            color: #a5adba;
+            border-radius: 3px;
+            padding: 6px;
+            margin-inline-start: 10px;
+        }
+    }
+
+    .btn-add {
         margin: 0;
+    }
+
+    .btn-link {
+        background-color: #091e420a;
+
+        &:hover {
+            background-color: #091e4214;
+        }
     }
 }

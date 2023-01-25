@@ -8,12 +8,13 @@ import { OPEN_MODAL, CLOSE_MODAL, UPDATE_POS, UPDATE_ELEMENT_SIZE, UPDATE_CLICKE
 //     store.dispatch({ type: SET_MOUSE_POS, pos })
 
 // }
-export async function openDynamicModal({ ev, name, data, func }) {
+export async function openDynamicModal({ ev, name, data, func, task, size }) {
+    console.log('size: ', size);
     const { target } = ev
 
     // GET Element POS
     updateDynamicModalPos(target.getBoundingClientRect())
-    updateModalType({ name, func, data })
+    updateModalType({ name, func, data, task, size })
 
     // GET ELEMENT SIZE
     store.dispatch({ type: CLOSE_MODAL })
@@ -40,9 +41,6 @@ export function updateModalType(element) {
 // }
 
 export function quickEdit(ev, task) {
-    console.log('ev: ', ev);
-    console.log('task: ', task);
-
     const quickEditModalPos = ev.target.getBoundingClientRect()
 
     // store.dispatch({ type: UPDATE_MODAL_TYPE, element })

@@ -9,7 +9,6 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
     const [isOpenBg, setIsOpenBg] = useState(false)
     const [type, setType] = useState('')
 
-
     function onCloseSideMenu() {
         setIsChangeBg(false)
         setIsOpenBg(false)
@@ -36,10 +35,6 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
         }
         return style
     }
-
-
-
-
 
     return (
         <section className={isOpenSideMenu ? 'board-side-menu open' : 'board-side-menu'}>
@@ -86,7 +81,6 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
                     </div>
                 }
             </section>}
-
 
         </section >
     )

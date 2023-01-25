@@ -10,7 +10,8 @@ export const taskService = {
     getEmptyChecklist,
     getAttachment,
     remove,
-    save
+    save,
+    getMembers,
 }
 
 
@@ -166,3 +167,16 @@ function getEmptyTask() {
         "groupId": ''
     }
 }
+
+function getMembers(board, task) {
+    let members = board.members.filter(member => task.memberIds.indexOf(member._id) !== -1)
+    return members
+}
+
+// async function onCoverChangeBg(task, bg) {
+//     task.style.background = bg
+//     try {
+//     } catch (err) {
+//         console.log('err', err)
+//     }
+// }

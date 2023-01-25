@@ -1,11 +1,28 @@
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom"
+import { CgCreditCard } from "react-icons/cg";
+import { MdLabelOutline } from "react-icons/md";
+import { FiCreditCard } from "react-icons/fi";
+import { HiOutlineCreditCard } from "react-icons/hi";
+import { AiOutlineClockCircle } from "react-icons/ai";
+import { BsArchive } from "react-icons/bs";
+
+import { utilService } from "../../services/util.service";
 import { MiniLabelList } from "./task-preview/task-preview-mini-labels-list";
+import { closeDynamicModal, openDynamicModal, updateDynamicModalPos } from "../../store/modal/modal.action"
+import { useForm } from "../../customHooks/useForm";
+import { saveTask } from "../../store/board/board.action";
+import { IconContext } from "react-icons";
+import { ManIcon } from "../../assets/svg/icon-library";
 
 export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
-    console.log('quickEditModalPos: ', quickEditModalPos);
-    const { boardId } = useParams()
-    console.log('boardId: ', boardId);
-    const navigate = useNavigate()
+    const [editAnimation, setEditAnimation] = useState(false)
+    setTimeout(() => { setEditAnimation(true) }, 100)
+
+    const [title, setTitle, handleChange] = useForm(task.title)
+
+    const windowSize = utilService.getWindowDimensions()
 
     let background
 
@@ -16,7 +33,6 @@ export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
             borderTopRightRadius: "3px",
             height: "32px",
         }
-
     } else {
         background = {
             backgroundImage: `url(${task.style.background})`,
@@ -28,47 +44,100 @@ export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
         }
-
     }
 
     function renderPos() {
-        return {
-            top: `${quickEditModalPos.y}px`,
-            left: `${quickEditModalPos.x}px`,
-            width: `${quickEditModalPos.width}px`,
+        const maxHeight = 150
+        let pos = 'normal'
+        if (quickEditModalPos.height + quickEditModalPos.y + maxHeight > windowSize.height) pos = 'toLow'
+
+        // if (modalPos.x + modalWidth > windowSize.width) posToRender = "downLeft"
+        // if (elementStartBottom + modalHeight > windowSize.height) posToRender = "upRight"
+        // if (elementStartBottom + modalHeight > windowSize.height &&
+        //     modalPos.x + modalWidth > windowSize.width) posToRender = "upLeft"
+
+        switch (pos) {
+            case 'normal':
+                return {
+                    top: `${quickEditModalPos.y}px`,
+                    left: `${quickEditModalPos.x}px`,
+                    width: `${quickEditModalPos.width}px`,
+                }
+            case 'toLow':
+                return {
+                    top: `${quickEditModalPos.y}px`,
+                    left: `${quickEditModalPos.x}px`,
+                    width: `${quickEditModalPos.width}px`,
+                    transform: `translateY(-50%)`,
+                }
+            default:
+                break;
         }
+
     }
     function checkPress(ev) {
         const pressedClickPos = ev.target.getBoundingClientRect()
-        console.log('pressedClickPos: ', pressedClickPos);
-
         setIsQuickEdit(false)
     }
+    let left = false
+    if (quickEditModalPos.right + quickEditModalPos.width > windowSize.width) left = true
 
     return (
         <section onClick={(ev) => {
             ev.stopPropagation()
-            checkPress(ev)
+            setIsQuickEdit(false)
+            closeDynamicModal()
         }} className='quick-task-edit'>
 
             <div onClick={(ev) => {
                 ev.preventDefault()
                 ev.stopPropagation()
-            }} style={renderPos()} className="quick-task-edit-container">
-                {task.style && <div style={background} className="task-preview-comver-img">
-                </div>}
-                <div className="quick-task-edit-details">
-                    {task.labelIds &&
-                        <MiniLabelList task={task} />}
+            }} style={renderPos()} className='quick-task-edit-container'>
 
-                    <textarea type="text" defaultValue={task.title} />
-                    <div className="task-icons">
+                <div className={`${!left ? `quick-edit-side` : 'quick-card-editor-buttons-left'} ${editAnimation && 'fade-in'}`}>
+                    <button className="edit-side-btn"><CgCreditCard /><span>Open card</span></button>
+                    <button onClick={(ev) => openDynamicModal({ ev, name: 'labels', task, size: 'm' })} className="edit-side-btn">
+                        <MdLabelOutline />
+                        <span>Edit labels</span></button>
+                    <button onClick={(ev) => openDynamicModal({ ev, name: 'members', task, size: 's' })} className="edit-side-btn">
+                        <ManIcon />
+                        <span>Change members</span></button>
+                    <button onClick={(ev) => openDynamicModal({ ev, name: 'cover', task, size: 'm' })} className="edit-side-btn">
+                        <FiCreditCard />
+                        <span>Change cover</span>
+                    </button>
+                    <button className="edit-side-btn"> <HiOutlineCreditCard /> <span>Copy</span></button>
+                    <button className="edit-side-btn"><AiOutlineClockCircle /> <span>Edit dates</span></button>
+                    <button className="edit-side-btn"><BsArchive /> <span>Archive</span></button>
+                </div>
+
+                <div className="quick-task-edit-content">
+
+                    {task.style && <div style={background} className="task-preview-comver-img">
+                    </div>}
+                    <div className="quick-task-edit-details">
+                        {task.labelIds &&
+                            <MiniLabelList task={task} />}
+
+                        <textarea type="text" name='title' onChange={handleChange} defaultValue={title} />
+                        <div className="task-icons">
+                        </div>
+                    </div>
+                    <div className="task-preview-edit-icon">
+
                     </div>
                 </div>
-                <div className="task-preview-edit-icon">
 
-                </div>
-
+                <button onClick={(ev) => {
+                    task.title = title.title
+                    try {
+                        saveTask(task)
+                    } catch (err) {
+                        console.log('err quick edit title', err)
+                    }
+                    setIsQuickEdit(false)
+                    closeDynamicModal()
+                }} className="btn-add">Save</button>
             </div>
         </section>
     )

@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom"
-import { CloseIcon, CoverIcon, TaskTitleIcon } from "../../../assets/svg/icon-library"
+import { CloseIcon, TaskTitleIcon } from "../../../assets/svg/icon-library"
+import { FiCreditCard } from "react-icons/fi";
+
 import { closeDynamicModal, openDynamicModal } from "../../../store/modal/modal.action"
 import { DetilsTitle } from "./task-details-title"
 
-export function DetailsHeader({ onUpdateHeadline, task, group, boardId, onCoverChangeBg }) {
-    console.log('task: ', task);
+export function DetailsHeader({ onUpdateHeadline, task, group, boardId }) {
     const navigate = useNavigate()
     let background
     let showImgBg
@@ -42,8 +43,8 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId, onCoverC
                 {showImgBg && <div style={background} className="task-details-cover"></div>}
                 {!showImgBg && <div style={background} className="task-details-img "></div>}
                 <button className="btn-bar "
-                    onClick={(ev) => openDynamicModal({ ev, name: 'cover', func: { onCoverChangeBg } })}
-                ><CoverIcon /> Cover</button>
+                    onClick={(ev) => openDynamicModal({ ev, name: 'cover', task })}
+                ><FiCreditCard /> Cover</button>
 
             </div>
             <div className="header-title-title-container flex  align-center">

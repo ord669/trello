@@ -27,7 +27,6 @@ async function getById(boardId) {
         board.groups = await Promise.all(board.groups.map(async group => {
             const tasks = await Promise.all(group.tasksId.map(taskId => taskService.getById(taskId)))
             group.tasks = tasks
-            console.log('tasks: ', tasks)
             return group
         }))
         console.log('board:', board)

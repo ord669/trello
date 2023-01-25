@@ -4,19 +4,19 @@ import { utilService } from "../services/util.service"
 import { closeDynamicModal, updateDynamicModalPos } from "../store/modal/modal.action"
 import { BoardStarred } from "./board-starred"
 import { AttachmentModal } from "./task/task-modals/attachment/attachment-modal"
-import { DatesModal } from "./task/task-modals/attachment/dates/dates-modal"
+import { DatesModal } from "./task/task-modals/dates/dates-modal"
 import { CheckListModal } from "./task/task-modals/check-list/check-list-modal"
 import { CopyModal } from "./task/task-modals/copy/copy-modal";
 import { CoverModal } from "./task/task-modals/cover/cover-modal"
 import { LabelsModal } from "./task/task-modals/labels/labels-modal"
 import { MembersModal } from "./task/task-modals/members/members-modal"
 import { EditAttachment } from "./task/task-modals/attachment/edit-attachment-modal";
+import { taskService } from "../services/task.service.local"
+import { toggleMemberAssigned, toggleTaskLabel } from "../store/board/board.action"
 
 export function DynamicModal() {
     const { modalPos, modalDetails } = useSelector(storeState => storeState.modalModule)
     console.log('modalDetails: ', modalDetails);
-
-    const { currTask } = useSelector(storeState => storeState.taskModule)
     const { board } = useSelector(storeState => storeState.boardModule)
 
     const windowSize = utilService.getWindowDimensions()
@@ -27,17 +27,17 @@ export function DynamicModal() {
     const clickedElemntWidth = modalPos.width
     const clickedElemntHeight = modalPos.height
 
-    function DynamicModalContent({ type, func, data }) {
-        console.log('data: from content ', data);
+    function DynamicModalContent({ type, func, data, currTask }) {
+
         switch (type) {
             case 'labels':
-                return <LabelsModal board={board} currTask={currTask} onSelectLabel={func.onSelectLabel} />
+                return <LabelsModal board={board} currTask={currTask} toggleTaskLabel={toggleTaskLabel} />
             case 'members':
-                return <MembersModal board={board} currTask={currTask} getMembers={func.getMembers} onSelectMember={func.onSelectMember} />
+                return <MembersModal board={board} currTask={currTask} getMembers={taskService.getMembers} toggleMemberAssigned={toggleMemberAssigned} />
             case 'add checklist':
                 return <CheckListModal board={board} currTask={currTask} addCheckList={func.addCheckList} />
             case 'cover':
-                return <CoverModal board={board} currTask={currTask} onCoverChangeBg={func.onCoverChangeBg} />
+                return <CoverModal board={board} currTask={currTask} />
             case 'attachment':
                 return <AttachmentModal board={board} currTask={currTask} />
             case 'dates':
@@ -52,13 +52,32 @@ export function DynamicModal() {
     }
 
     function renderPos() {
+        console.log('in pos:')
         const bottomMargin = 5
         const modalWidth = 304
-        const modalHeight = 400
+        let modalHeight = 220
         let posToRender = 'downRight'
 
-        if (elementStartLeft + modalWidth > windowSize.width) posToRender = "downLeft"
+        switch (modalDetails.name) {
+            case 'copy card':
+            case 'cover':
+                modalHeight = 370
+                break;
+            case 'dates':
+            case 'labels':
+                modalHeight = 480
+                break;
+            default:
+                break;
+        }
+        console.log('modalDetails.name: ', modalDetails.name);
+        console.log('modalHeight: ', modalHeight);
+
+        if (modalPos.x + modalWidth > windowSize.width) posToRender = "downLeft"
         if (elementStartBottom + modalHeight > windowSize.height) posToRender = "upRight"
+        if (elementStartBottom + modalHeight > windowSize.height &&
+            modalPos.x + modalWidth > windowSize.width) posToRender = "upLeft"
+
         switch (posToRender) {
             case 'downRight':
                 return {
@@ -66,6 +85,7 @@ export function DynamicModal() {
                     left: `${elementStartLeft}px`,
                 }
             case 'downLeft':
+                console.log('downLeft: ');
                 return {
                     top: `${elementStartBottom + bottomMargin}px`,
                     left: `${elementStartLeft - modalWidth}px`
@@ -81,7 +101,7 @@ export function DynamicModal() {
                 return {
                     top: `${elementStartBottom + bottomMargin}px`,
                     left: `${elementStartLeft - modalWidth}px`,
-                    transform: "translateY(-100%)",
+                    transform: "translateY(-50%)",
                 }
             default:
                 break
@@ -98,7 +118,7 @@ export function DynamicModal() {
             </div>
 
             <div className="dynamic-modal-content-container">
-                <DynamicModalContent type={modalDetails.name} func={modalDetails.func} data={modalDetails.data} />
+                <DynamicModalContent type={modalDetails.name} func={modalDetails.func} data={modalDetails.data} currTask={modalDetails.task} />
 
             </div>
 

@@ -1,5 +1,5 @@
 {
-    "tasks": [
+    "tasks":[
         {
             "title": "functional testing for app header",
             "archivedAt": 1589983468411,
@@ -77,7 +77,7 @@
                         "imgUrl": "https://robohash.org/oren?set=set5"
                     }
                 }
-            ],
+            ], 
             "groupId": "g101"
         },
         {
