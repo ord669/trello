@@ -27,7 +27,6 @@ export function GroupHeader({ onRemoveGroup, group }) {
 
     return (
         <section className='group-header'>
-
             {!inputIn ? <div onMouseUp={() => {
                 setInputIn(true)
                 setTimeout(() => {
@@ -35,8 +34,8 @@ export function GroupHeader({ onRemoveGroup, group }) {
                 }, 50)
             }} className="group-title edit-title-input">
                 {title}
-            </div> :
-                inputIn &&
+            </div>
+                :
                 <textarea
                     ref={elInput}
                     className="group-title edit-title-input"
@@ -49,9 +48,7 @@ export function GroupHeader({ onRemoveGroup, group }) {
                     onKeyDown={(ev) => handleKeyPress(ev)}
                     value={title} />
             }
-
             <button className="options-btn"><ThreeDotsIcon /></button>
-
         </section>
     )
 }

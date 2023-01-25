@@ -166,7 +166,7 @@ function _buildCriteria(filterBy) {
     if (filterBy.title !== 'undefined') criteria.title = filterBy.title
     return criteria
 }
-getAiBoardFromChat()
+// getAiBoardFromChat()
 async function getAiBoardFromChat() {
     try {
         const script = await dbService.getBoardScript()

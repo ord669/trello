@@ -15,14 +15,12 @@
         align-items: center;
         padding: 4px;
 
-        :first-child {
+        textarea,
+        div {
             font-family: Charlie-Semi-Bold;
             flex-grow: 1;
             padding: 6px 8px;
-
         }
-
-        // padding: 6px 4px;
 
         textarea {
             height: 1.75rem;
@@ -30,10 +28,10 @@
             margin-bottom: 4px;
             font-size: 14px;
             font-weight: 600;
+            line-height: 15px;
             resize: none;
             overflow: hidden;
             overflow-wrap: break-word;
-
         }
 
         .options-btn {
@@ -91,6 +89,4 @@
             margin-inline-end: 2px;
         }
     }
-
-    .group-menu {}
 }
