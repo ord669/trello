@@ -69,13 +69,17 @@
             transform: translateX(0);
         }
 
+        span {
+            margin-left: rem(4px);
+        }
+
         .edit-side-btn {
             background: #0009;
             border-radius: 3px;
             clear: both;
             color: #c7d1db;
-            display: block;
-            float: left;
+            display: flex;
+            align-items: center;
             margin: 0 0 4px 8px;
             padding: 6px 12px 6px 8px;
             transition: transform 85ms ease-in;
@@ -97,11 +101,18 @@
         transition: opacity 85ms ease-in, transform 85ms ease-in;
         width: 240px;
         z-index: 0;
-        left: -100px;
+        left: -250px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
 
         &.fade-in {
             opacity: 1;
             transform: translateX(0);
+        }
+
+        span {
+            margin-left: rem(4px);
         }
 
         .edit-side-btn {
@@ -114,6 +125,8 @@
             margin: 0 0 4px 8px;
             padding: 6px 12px 6px 8px;
             transition: transform 85ms ease-in;
+            display: flex;
+            align-items: center;
 
             &:hover {
                 background: #000c;

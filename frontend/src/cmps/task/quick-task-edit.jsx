@@ -1,11 +1,20 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom"
+import { CgCreditCard } from "react-icons/cg";
+import { MdLabelOutline } from "react-icons/md";
+import { FiCreditCard } from "react-icons/fi";
+import { HiOutlineCreditCard } from "react-icons/hi";
+import { AiOutlineClockCircle } from "react-icons/ai";
+import { BsArchive } from "react-icons/bs";
+
 import { utilService } from "../../services/util.service";
 import { MiniLabelList } from "./task-preview/task-preview-mini-labels-list";
 import { closeDynamicModal, openDynamicModal, updateDynamicModalPos } from "../../store/modal/modal.action"
 import { useForm } from "../../customHooks/useForm";
 import { saveTask } from "../../store/board/board.action";
+import { IconContext } from "react-icons";
+import { ManIcon } from "../../assets/svg/icon-library";
 
 export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
     const [editAnimation, setEditAnimation] = useState(false)
@@ -72,8 +81,6 @@ export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
     }
     let left = false
     if (quickEditModalPos.right + quickEditModalPos.width > windowSize.width) left = true
-    console.log('quickEditModalPos: ', quickEditModalPos);
-    console.log('quickEditModalPos: ', quickEditModalPos);
 
     return (
         <section onClick={(ev) => {
@@ -88,13 +95,20 @@ export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
             }} style={renderPos()} className='quick-task-edit-container'>
 
                 <div className={`${!left ? `quick-edit-side` : 'quick-card-editor-buttons-left'} ${editAnimation && 'fade-in'}`}>
-                    <button className="edit-side-btn">Open card</button>
-                    <button onClick={(ev) => openDynamicModal({ ev, name: 'labels', task, size: 'm' })} className="edit-side-btn">Edit labels</button>
-                    <button onClick={(ev) => openDynamicModal({ ev, name: 'members', task, size: 's' })} className="edit-side-btn">Change members</button>
-                    <button onClick={(ev) => openDynamicModal({ ev, name: 'cover', task, size: 'm' })} className="edit-side-btn">Change cover</button>
-                    <button className="edit-side-btn">Copy</button>
-                    <button className="edit-side-btn">Edit dates</button>
-                    <button className="edit-side-btn">Archive</button>
+                    <button className="edit-side-btn"><CgCreditCard /><span>Open card</span></button>
+                    <button onClick={(ev) => openDynamicModal({ ev, name: 'labels', task, size: 'm' })} className="edit-side-btn">
+                        <MdLabelOutline />
+                        <span>Edit labels</span></button>
+                    <button onClick={(ev) => openDynamicModal({ ev, name: 'members', task, size: 's' })} className="edit-side-btn">
+                        <ManIcon />
+                        <span>Change members</span></button>
+                    <button onClick={(ev) => openDynamicModal({ ev, name: 'cover', task, size: 'm' })} className="edit-side-btn">
+                        <FiCreditCard />
+                        <span>Change cover</span>
+                    </button>
+                    <button className="edit-side-btn"> <HiOutlineCreditCard /> <span>Copy</span></button>
+                    <button className="edit-side-btn"><AiOutlineClockCircle /> <span>Edit dates</span></button>
+                    <button className="edit-side-btn"><BsArchive /> <span>Archive</span></button>
                 </div>
 
                 <div className="quick-task-edit-content">
