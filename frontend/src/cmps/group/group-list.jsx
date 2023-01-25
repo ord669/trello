@@ -7,7 +7,7 @@ export function GroupList({ groups, board }) {
 
     function onDragEnd(result) {
         const { source, destination } = result
-        if (!result.destination || 
+        if (!result.destination ||
             destination.droppableId === source.droppableId &&
             destination.index === source.index) return
         updateDrag(result)

@@ -4,6 +4,11 @@
     background-color: #fafbfc;
     grid-template-columns: 20px 1fr 20px;
     grid-template-rows: auto 1fr;
+    overflow: hidden;
+
+    main {
+        overflow: auto;
+    }
 
     >* {
         grid-column: 2;

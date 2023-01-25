@@ -9,7 +9,6 @@
     background-size: cover;
     transition: padding 0.5s;
 
-
     &.open-menu {
         padding-left: 260px;
     }
@@ -22,6 +21,7 @@
         overflow-x: scroll;
         align-items: flex-start;
         border-radius: 3px;
+        padding-bottom: 1rem;
 
         >:first-child {
             margin-inline-start: 28px;
@@ -54,9 +54,6 @@
         border-right: .2px solid #DFE1E6;
         transition: width 0.5s;
 
-
-
-
         .icon-container {
             display: flex;
             align-items: center;
@@ -82,6 +79,5 @@
             }
         }
     }
-
 
 }

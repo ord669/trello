@@ -6,8 +6,10 @@
     justify-content: space-between;
     overflow: hidden;
 
-
     .board-title {
+        letter-spacing: 0.5px;
+        font-family: Charlie-Bold;
+        line-height: 32px;
         cursor: pointer;
         width: fit-content;
         padding: 0 12px;
@@ -68,7 +70,6 @@
             }
         }
 
-
     }
 
     .right-open {
@@ -80,6 +81,5 @@
         width: 16px;
         height: 16px;
     }
-
 
 }

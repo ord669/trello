@@ -96,18 +96,18 @@ export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
 
                 <div className={`${!left ? `quick-edit-side` : 'quick-card-editor-buttons-left'} ${editAnimation && 'fade-in'}`}>
                     <button className="edit-side-btn"><CgCreditCard /><span>Open card</span></button>
-                    <button onClick={(ev) => openDynamicModal({ ev, name: 'labels', task, size: 'm' })} className="edit-side-btn">
+                    <button onClick={(ev) => openDynamicModal({ ev, name: 'labels', task })} className="edit-side-btn">
                         <MdLabelOutline />
                         <span>Edit labels</span></button>
-                    <button onClick={(ev) => openDynamicModal({ ev, name: 'members', task, size: 's' })} className="edit-side-btn">
+                    <button onClick={(ev) => openDynamicModal({ ev, name: 'members', task })} className="edit-side-btn">
                         <ManIcon />
                         <span>Change members</span></button>
-                    <button onClick={(ev) => openDynamicModal({ ev, name: 'cover', task, size: 'm' })} className="edit-side-btn">
+                    <button onClick={(ev) => openDynamicModal({ ev, name: 'cover', task })} className="edit-side-btn">
                         <FiCreditCard />
                         <span>Change cover</span>
                     </button>
-                    <button className="edit-side-btn"> <HiOutlineCreditCard /> <span>Copy</span></button>
-                    <button className="edit-side-btn"><AiOutlineClockCircle /> <span>Edit dates</span></button>
+                    <button onClick={(ev) => openDynamicModal({ ev, name: 'copy card', task })} className="edit-side-btn"> <HiOutlineCreditCard /> <span>Copy</span></button>
+                    <button onClick={(ev) => openDynamicModal({ ev, name: 'dates', task })} className="edit-side-btn"><AiOutlineClockCircle /> <span>Edit dates</span></button>
                     <button className="edit-side-btn"><BsArchive /> <span>Archive</span></button>
                 </div>
 

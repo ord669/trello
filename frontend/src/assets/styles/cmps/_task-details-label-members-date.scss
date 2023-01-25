@@ -62,4 +62,8 @@
             }
         }
     }
+
+    @include for-mobile-layout {
+        padding-left: 0.3rem;
+    }
 }
