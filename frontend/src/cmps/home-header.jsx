@@ -1,41 +1,25 @@
-import { Link, NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import routes from '../routes'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { login, logout, signup } from '../store/user.actions.js'
-import { LoginSignup } from './login-signup'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { MainLogo } from '../assets/svg/icon-library'
+
 
 export function HomeHeader() {
-    const user = useSelector(storeState => storeState.userModule.user)
-
-    async function onLogin(credentials) {
-        try {
-            const user = await login(credentials)
-            showSuccessMsg(`Welcome: ${user.fullname}`)
-        } catch (err) {
-            showErrorMsg('Cannot login')
-        }
-    }
-    async function onSignup(credentials) {
-        try {
-            const user = await signup(credentials)
-            showSuccessMsg(`Welcome new user: ${user.fullname}`)
-        } catch (err) {
-            showErrorMsg('Cannot signup')
-        }
-    }
-    async function onLogout() {
-        try {
-            await logout()
-            showSuccessMsg(`Bye now`)
-        } catch (err) {
-            showErrorMsg('Cannot logout')
-        }
-    }
+    const navigate = useNavigate()
+    const [isOpenNav, setIsOpenNav] = useState(false)
 
     return (
-        <section className="home-header full">
+        <header className='home-header full'>
 
-        </section>
+            <div className="home-header-contianer  ">
+                <div className="home-header-logo flex align-center gap-10">
+                    <MainLogo />
+                    <h1>Jarvis</h1>
+                </div>
+                <div>
+                    <button onClick={() => navigate('/login')} className='btn-login'>Log in</button>
+                    <button onClick={() => navigate('/board')} className='btn-get-trello'>Get Trello for free</button>
+                </div>
+            </div>
+        </header >
     )
 }

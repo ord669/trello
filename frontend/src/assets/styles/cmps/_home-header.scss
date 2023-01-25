@@ -10,9 +10,12 @@
         margin: 0px auto;
         max-width: 1356px;
 
-        h1 {
-            padding-inline-start: 80px;
+        svg {
+            width: 24px;
+            height: 24px;
         }
+
+
     }
 
     .btn-login {
@@ -43,5 +46,28 @@
             border-color: rgb(7, 71, 166);
             text-decoration: none;
         }
+    }
+}
+
+@media(max-width:500px) {
+    .home-header {
+
+        .home-header-contianer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0px auto;
+            padding: 0 6px;
+
+
+            h1 {
+                padding: 0 6px;
+            }
+        }
+
+        .btn-get-trello {
+            display: none;
+        }
+
     }
 }
