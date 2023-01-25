@@ -4,6 +4,39 @@ const utilService = require('../../services/util.service')
 const ObjectId = require('mongodb').ObjectId
 const taskService = require('../task/task.service')
 
+// var groups = [
+//     {
+//         groupTitle: 'Planning',
+//         tasks: [
+//             'Define development objectives',
+//             'Gather and analyze project requirements',
+//             'Create a preliminary timeline',
+//             'Outline the technical architecture'
+//         ]
+//     },
+//     {
+//         groupTitle: 'Design Development',
+//         tasks: [
+//             'Create user stories',
+//             'Develop a user interface design',
+//             'Construct backend code',
+//             'Integrate frontend code with backend components',
+//             'Test application for bugs and errors'
+//         ]
+//     },
+//     {
+//         groupTitle: 'Testing Launch',
+//         tasks: [
+//             'Develop test cases',
+//             'Testing Debugging',
+//             'Update application documentation',
+//             'Deploy application',
+//             'Ensure proper deployment',
+//             'Conduct an afterlaunch review'
+//         ]
+//     }
+// ]
+
 async function query(filterBy = { title: '' }) {
     try {
         // const criteria = _buildCriteria(filterBy)
@@ -44,7 +77,6 @@ async function remove(boardId) {
         throw err
     }
 }
-
 
 async function add(board) {
     try {
@@ -129,14 +161,170 @@ async function updateGroupToBoard(boardId, group) {
 //     }
 // }
 
-
 function _buildCriteria(filterBy) {
     const criteria = {}
     if (filterBy.title !== 'undefined') criteria.title = filterBy.title
     return criteria
 }
+getAiBoardFromChat()
+async function getAiBoardFromChat() {
+    try {
+        const script = await dbService.getBoardScript()
+        const lines = script.split('\n')
 
+        console.log('group23222222323231232342343242342323423423423423324s: ', lines);
+        const groups = lines.reduce((acc, line) => {
+            if (line.includes('$')) {
+                const group = { groupTitle: _removeSpecialChars(line), tasks: [] }
+                acc.push(group)
+            } else if (line.includes('∞')) {
+                const task = { taskTitle: _removeSpecialChars(line) }
+                // acc[acc.length - 1].tasks.push(task)
+                acc[acc.length - 1].tasks.push(_removeSpecialChars(line))
+            }
+            return acc
+        }, [])
 
+        const newGroups = groups.map(group => {
+            const newGroup = _createAiGroup(group.groupTitle)
+
+            group.tasks.forEach(async task => {
+                const taskFromMongo = await taskService.add(_createAiTask(task, newGroup._id))
+                newGroup.tasksId.push(taskFromMongo._id)
+            });
+            return newGroup
+        })
+        const aiBoard = _createAiBoard('Ai Board', newGroups)
+
+        const aiBoardWithId = await add(aiBoard)
+
+        return await getById(aiBoardWithId._id)
+
+    } catch (err) {
+        console.log('err from getiin ai in board sevice', err)
+        throw err
+    }
+}
+
+function _removeSpecialChars(str) {
+    return str.replace(/(?!\w|\s)./g, '')
+        .replace(/\s+/g, ' ')
+        .replace(/^(\s*)([\W\w]*)(\b\s*$)/g, '$2');
+}
+
+function _createAiBoard(title, groups = []) {
+    return {
+        title,
+        isstarred: false,
+        archivedAt: null,
+        createdBy: {
+            _id: "u101",
+            fullname: "Or Dvir",
+            imgUrl: "https://robohash.org/Or?set=set5"
+        },
+        groups,
+        activities: [],
+        labels: [
+            {
+                "_id": "l101",
+                "title": "Done",
+                "color": "#d6ecd2"
+            },
+            {
+                "_id": "l102",
+                "title": "Progress",
+                "color": "#fbf3c0"
+            },
+            {
+                "_id": "l103",
+                "title": "Todo",
+                "color": "#fce7c6"
+            },
+            {
+                "_id": "l104",
+                "title": "Important",
+                "color": "#f5d3ce"
+            },
+            {
+                "_id": "l105",
+                "title": "Urgent",
+                "color": "#efb3ab"
+            },
+            {
+                "_id": "l106",
+                "title": "Later",
+                "color": "#dfc0eb"
+            },
+            {
+                "_id": "l107",
+                "title": "Basic",
+                "color": "#e4f0f6"
+            }
+        ],
+        style: {
+            "background": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1673811922/samples/landscapes/architecture-signs.jpg"
+        },
+        members: [{
+            _id: "u101",
+            fullname: "Or Dvir",
+            username: "Or Dvir",
+            imgUrl: "https://robohash.org/Or?set=set5"
+        },
+        {
+            _id: "u102",
+            fullname: "Liad Gola",
+            username: "Liad Gola",
+            imgUrl: "https://robohash.org/Liad?set=set5"
+        },
+        {
+            _id: "u103",
+            fullname: "Oren Sharizad",
+            username: "Oren Sharizad",
+            imgUrl: "https://robohash.org/oren?set=set5"
+        }],
+        cmpsOrder: [],
+    }
+}
+function _createAiGroup(title) {
+    return {
+        _id: utilService.makeId(),
+        title,
+        tasksId: [],
+        tasks: [],
+        style: {},
+        archivedAt: null
+    }
+}
+
+function _createAiTask(title, groupId) {
+    return {
+        "title": title,
+        "archivedAt": Date.now(),
+        "description": "",
+        "comments": [],
+        "checklists": [],
+        "memberIds": [
+            "u102"
+        ],
+        "labelIds": [
+            "l104"
+        ],
+        "dueDate": null,
+        "isDone": false,
+        "byMember": {
+            "_id": "u103",
+            "username": "Oren Sharizad",
+            "fullname": "Oren Sharizad",
+            "imgUrl": "https://robohash.org/oren?set=set5"
+        },
+        "style": {
+            "background": "#26DE81"
+        },
+        "attachments": [],
+        "activity": [],
+        groupId,
+    }
+}
 
 module.exports = {
     remove,
@@ -147,6 +335,7 @@ module.exports = {
     addGroupToBoard,
     updateGroupToBoard,
     removeGroupFromBoard,
+    getAiBoardFromChat,
     // addTaskToGroup,
     // removeTaskFromGroup,
 }

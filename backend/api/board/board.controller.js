@@ -40,7 +40,6 @@ async function addBoard(req, res) {
   }
 }
 
-
 async function updateBoard(req, res) {
   console.log('in');
   try {
@@ -99,7 +98,19 @@ async function updateGroupInBoard(req, res) {
     res.status(500).send({ err: 'Failed to add group' })
   }
 }
-
+async function getAiBoard(req, res) {
+  // console.log('res: ', res);
+  console.log('in get from :')
+  try {
+    logger.debug('Getting Boards')
+    const aiBoards = await boardService.getAiBoardFromChat()
+    console.log('aiBoards: ', aiBoards);
+    res.json(aiBoards)
+  } catch (err) {
+    logger.error('Failed to get ai board  from controller', err)
+    res.status(500).send({ err: 'Failed to get ai board from controller' })
+  }
+}
 
 module.exports = {
   getBoards,
@@ -110,4 +121,5 @@ module.exports = {
   removeGroupFromBoard,
   addGroupToBoard,
   updateGroupInBoard,
+  getAiBoard,
 }

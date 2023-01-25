@@ -10,7 +10,6 @@ const http = require('http').createServer(app)
 app.use(cookieParser())
 app.use(express.json())
 
-
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, 'public')))
 } else {
@@ -43,7 +42,6 @@ app.use('/api/task', taskRoutes)
 app.get('/**', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
-
 
 const logger = require('./services/logger.service')
 const port = process.env.PORT || 3030
