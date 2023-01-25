@@ -11,9 +11,13 @@ export const boardService = {
     getById,
     save,
     remove,
+    removeGroup,
+    saveGroup,
+    reorderGroups,
     getEmptyBoard,
     addBoardActivity,
     getEmpteyFilter,
+    getEmptyGroup,
     filterGroupsTasks,
     getBgImgsURL,
     getImgsFromUnsplash,
@@ -96,6 +100,50 @@ function getEmptyBoard(title = '') {
 
 function getEmpteyFilter() {
     return { title: '' }
+}
+
+function getEmptyGroup(title = 'New group') {
+    return {
+        title,
+        tasks: [],
+        style: {},
+        archivedAt: null
+    }
+}
+
+async function removeGroup(boardId, groupId) {
+    try {
+        let board = await getById(boardId)
+        board.groups = board.groups.filter(group => group._id !== groupId)
+        await save(board)
+    } catch (err) {
+        console.log('Cannot remove group: ', err)
+        throw err
+    }
+}
+
+async function saveGroup(boardId, group) {
+    try {
+        const board = await getById(boardId)
+        if (!board.groups) board.groups = []
+        if (group._id) {
+            board.groups = board.groups.map(currGroup => currGroup._id === group._id ? group : currGroup)
+        } else {
+            group._id = utilService.makeId()
+            board.groups.push(group)
+        }
+        await save(board)
+        return group
+    } catch (err) {
+        console.log('Cannot save group: ', err)
+        throw err
+    }
+}
+
+function reorderGroups(source, destination, groups) {
+    const [group] = groups.splice(source.index, 1)
+    groups.splice(destination.index, 0, group)
+    return groups
 }
 
 function getBgImgsURL() {

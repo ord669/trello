@@ -1,6 +1,5 @@
 import { boardService } from "../../services/board.service.local"
-import { groupService } from "../../services/group.service.local"
-// import { taskService } from "../../services/task.service.local"
+import { taskService } from "../../services/task.service.local"
 import { utilService } from "../../services/util.service"
 import { store } from '../store'
 
@@ -22,7 +21,7 @@ export async function removeGroup(groupId) {
     store.dispatch({ type: REMOVE_GROUP, groupId })
     const { board } = store.getState().boardModule
     try {
-        await groupService.remove(board._id, groupId)
+        await boardService.removeGroup(board._id, groupId)
     } catch (err) {
         store.dispatch({ type: UNDO_REMOVE_GROUP, })
         console.log('Err from removeGroup in board action :', err)
@@ -34,7 +33,7 @@ export async function saveGroup(group) {
     const type = (group._id) ? UPDATE_GROUP : ADD_GROUP
     const { board } = store.getState().boardModule
     try {
-        const savedGroup = await groupService.save(board._id, group)
+        const savedGroup = await boardService.saveGroup(board._id, group)
         store.dispatch({ type, group: savedGroup })
         return savedGroup
     } catch (err) {
@@ -127,7 +126,7 @@ export async function toggleTaskLabel(labelId, groupId, taskId) {
 
 export function updateDrag({ source, destination, type }) {
     const { board } = store.getState().boardModule
-    const update = type === 'TASK' ? groupService.reorderTasks : groupService.reorderGroups
+    const update = type === 'TASK' ? taskService.reorderTasks : boardService.reorderGroups
     const groupsToSave = update(source, destination, board.groups)
     saveBoard({ ...board, groups: groupsToSave })
 }

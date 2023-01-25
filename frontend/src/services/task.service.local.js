@@ -10,6 +10,7 @@ export const taskService = {
     getEmptyChecklist,
     getAttachment,
     getMembers,
+    reorderTasks,
 }
 
 function setTaskInBoard() {
@@ -18,6 +19,14 @@ function setTaskInBoard() {
 
 function removeTaskFromBoard() {
 
+}
+
+function reorderTasks(source, destination, groups) {
+    const sourceGroup = groups.find(group => group._id === source.droppableId)
+    const [task] = sourceGroup.tasks.splice(source.index, 1)
+    const destinationGroup = groups.find(group => group._id === destination.droppableId)
+    destinationGroup.tasks.splice(destination.index, 0, task)
+    return groups
 }
 
 function createChecklists(title = 'checklists', todoTitle = 'Write Your Todo') {
