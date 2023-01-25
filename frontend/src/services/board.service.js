@@ -87,6 +87,7 @@ function getEmpteyFilter() {
 function getEmptyGroup(title = 'New group') {
     return {
         title,
+        tasksId: [],
         tasks: [],
         style: {},
         archivedAt: null
@@ -94,11 +95,9 @@ function getEmptyGroup(title = 'New group') {
 }
 
 // async function removeGroup(board, groupId) {
-function removeGroup(board, groupId) {
+function removeGroup(boardId, groupId) {
     try {
-        board.groups = board.groups.filter(group => group._id !== groupId)
-        save(board)
-        // await save(board)
+        return httpService.delete(`${BASE_URL}${boardId}/${groupId} `)
     } catch (err) {
         console.log('Cannot remove group: ', err)
         throw err

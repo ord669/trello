@@ -30,7 +30,6 @@ export async function removeGroup(groupId) {
 }
 
 export async function saveGroup(group) {
-    console.log('group:', group);
     const type = (group._id) ? UPDATE_GROUP : ADD_GROUP
     const { board } = store.getState().boardModule
     try {

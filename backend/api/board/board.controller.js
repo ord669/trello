@@ -9,7 +9,7 @@ async function getBoards(req, res) {
       title: req.query.txt
     }
     const boards = await boardService.query(filterBy)
-    console.log('boards from controller: ', boards);
+    console.log('boards from controller: ', boards)
     res.json(boards)
   } catch (err) {
     logger.error('Failed to get boards', err)
@@ -65,11 +65,22 @@ async function removeBoard(req, res) {
   }
 }
 
-async function addGroupToBoard(req,res){
+async function removeGroupFromBoard(req, res) {
+  try {
+    const { boardId, groupId } = req.params
+    const removedId = await boardService.removeGroupFromBoard(boardId, groupId)
+    res.send(removedId)
+  } catch (err) {
+    logger.error('Failed to remove board', err)
+    res.status(500).send({ err: 'Failed to remove board' })
+  }
+}
+
+async function addGroupToBoard(req, res) {
   try {
     const { boardId } = req.params
     const group = req.body
-    const updatedGroup = await boardService.addGroupToBoard(boardId,group)
+    const updatedGroup = await boardService.addGroupToBoard(boardId, group)
     res.json(updatedGroup)
   } catch (err) {
     logger.error('Failed to add group', err)
@@ -77,11 +88,11 @@ async function addGroupToBoard(req,res){
   }
 }
 
-async function updateGroupToBoard(req,res){
+async function updateGroupInBoard(req, res) {
   try {
     const { boardId } = req.params
     const group = req.body
-    const updatedGroup = await boardService.updateGroupToBoard(boardId,group)
+    const updatedGroup = await boardService.updateGroupToBoard(boardId, group)
     res.json(updatedGroup)
   } catch (err) {
     logger.error('Failed to add group', err)
@@ -97,6 +108,7 @@ module.exports = {
   addBoard,
   updateBoard,
   removeBoard,
+  removeGroupFromBoard,
   addGroupToBoard,
-  updateGroupToBoard,
+  updateGroupInBoard,
 }

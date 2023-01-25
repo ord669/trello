@@ -3,7 +3,6 @@ import { AddTask } from "./add-task"
 import { TaskPreview } from "./task-preview/task-preview"
 
 export function TaskList({ tasks, groupId, setIsShown, isShown }) {
-
     return (
         <Droppable droppableId={groupId} type="TASK">
             {provided => (

@@ -18,9 +18,7 @@ async function query(filterBy = { title: '' }) {
     }
 }
 
-
 async function getById(boardId) {
-    console.log('boardId:', boardId)
     try {
         const collection = await dbService.getCollection('board')
         const board = await collection.findOne({ _id: ObjectId(boardId) })
@@ -48,6 +46,7 @@ async function remove(boardId) {
     }
 }
 
+
 async function add(board) {
     try {
         const collection = await dbService.getCollection('board')
@@ -60,7 +59,6 @@ async function add(board) {
 }
 
 async function update(board) {
-    console.log('board:', board)
     try {
         const boardToSave = {
             title: board.title,
@@ -72,6 +70,17 @@ async function update(board) {
         return board
     } catch (err) {
         logger.error(`cannot update board ${board._id}`, err)
+        throw err
+    }
+}
+
+async function removeGroupFromBoard(boardId, groupId) {
+    try {
+        const collection = await dbService.getCollection('board')
+        await collection.updateOne({ _id: ObjectId(boardId) }, { $pull: { 'groups': { '_id': groupId } } })
+        return groupId
+    } catch (err) {
+        logger.error(`cannot remove group ${groupId}`, err)
         throw err
     }
 }
@@ -88,10 +97,10 @@ async function addGroupToBoard(boardId, group) {
     }
 }
 
-async function updateGroupToBoard(boardId,group){
+async function updateGroupToBoard(boardId, group) {
     try {
         const collection = await dbService.getCollection('board')
-        await collection.updateOne({ _id: ObjectId(boardId) }, { $push: { 'groups': group } })
+        await collection.updateOne({ _id: ObjectId(boardId), 'groups._id': group._id }, { $set: { 'groups.$': group } })
         return group
     } catch (err) {
         logger.error('cannot insert board', err)
@@ -115,4 +124,6 @@ module.exports = {
     add,
     update,
     addGroupToBoard,
+    updateGroupToBoard,
+    removeGroupFromBoard,
 }
