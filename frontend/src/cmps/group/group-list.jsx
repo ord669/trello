@@ -7,12 +7,12 @@ export function GroupList({ groups, board }) {
 
     function onDragEnd(result) {
         const { source, destination } = result
-        if (!result.destination || 
+        if (!result.destination ||
             destination.droppableId === source.droppableId &&
             destination.index === source.index) return
         updateDrag(result)
     }
-
+    
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <Droppable droppableId={board._id || 'board'} direction="horizontal" type="GROUP">

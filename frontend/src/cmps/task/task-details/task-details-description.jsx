@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { saveTask } from "../../../store/board/board.action"
+import { saveTask } from "../../../store/task/task.action"
 
 export function TaskDetailsDescription({ description, handleChange }) {
     const [isShown, setIsShown] = useState(false)

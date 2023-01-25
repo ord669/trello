@@ -10,7 +10,7 @@ async function query(filterBy = { title: '' }) {
         // console.log('criteria: ', criteria);
         const collection = await dbService.getCollection('board')
         const boards = await collection.find().toArray()
-        console.log('boards: ', boards);
+        console.log('boards: ', boards)
         return boards
     } catch (err) {
         logger.error('cannot find boards', err)
@@ -18,9 +18,7 @@ async function query(filterBy = { title: '' }) {
     }
 }
 
-
 async function getById(boardId) {
-    console.log('boardId:', boardId)
     try {
         const collection = await dbService.getCollection('board')
         const board = await collection.findOne({ _id: ObjectId(boardId) })
@@ -29,7 +27,7 @@ async function getById(boardId) {
             group.tasks = tasks
             return group
         }))
-        console.log('board:', board)
+        // console.log('board:', board);
         return board
     } catch (err) {
         logger.error(`while finding board ${boardId}`, err)
@@ -48,6 +46,7 @@ async function remove(boardId) {
     }
 }
 
+
 async function add(board) {
     try {
         const collection = await dbService.getCollection('board')
@@ -60,7 +59,6 @@ async function add(board) {
 }
 
 async function update(board) {
-    console.log('board:', board)
     try {
         const boardToSave = {
             title: board.title,
@@ -76,11 +74,60 @@ async function update(board) {
     }
 }
 
-
-async function updatedGroup(taskId, groupId, boardId) {
-
-
+async function removeGroupFromBoard(boardId, groupId) {
+    try {
+        const collection = await dbService.getCollection('board')
+        await collection.updateOne({ _id: ObjectId(boardId) }, { $pull: { 'groups': { '_id': groupId } } })
+        return groupId
+    } catch (err) {
+        logger.error(`cannot remove group ${groupId}`, err)
+        throw err
+    }
 }
+
+async function addGroupToBoard(boardId, group) {
+    try {
+        group._id = utilService.makeId()
+        const collection = await dbService.getCollection('board')
+        await collection.updateOne({ _id: ObjectId(boardId) }, { $push: { 'groups': group } })
+        return group
+    } catch (err) {
+        logger.error('cannot add group', err)
+        throw err
+    }
+}
+
+async function updateGroupToBoard(boardId, group) {
+    console.log('boardId, group:', boardId, group);
+    try {
+        const collection = await dbService.getCollection('board')
+        await collection.updateOne({ _id: ObjectId(boardId), 'groups._id': group._id }, { $set: { 'groups.$': group } })
+        return group
+    } catch (err) {
+        logger.error('cannot insert group', err)
+        throw err
+    }
+}
+
+// async function addTaskToGroup(task) {
+//     try {
+//         const collection = await dbService.getCollection('board')
+//         await collection.updateOne({ _id: ObjectId(boardId), 'groups._id': task.groupId }, { $push: { 'tasksId': task._id } })
+//     } catch (err) {
+//         logger.error('cannot insert task id to group', err)
+//         throw err
+//     }
+// }
+
+// async function removeTaskFromGroup(boardId,groupId,taskId) {
+//     try {
+//         const collection = await dbService.getCollection('board')
+//         await collection.updateOne({ _id: ObjectId(boardId), 'groups._id': groupId }, { $pull: { 'tasksId': taskId } })
+//     } catch (err) {
+//         logger.error(`cannot remove task id ${taskId} from group`, err)
+//         throw err
+//     }
+// }
 
 
 function _buildCriteria(filterBy) {
@@ -97,5 +144,9 @@ module.exports = {
     getById,
     add,
     update,
-    updatedGroup
+    addGroupToBoard,
+    updateGroupToBoard,
+    removeGroupFromBoard,
+    // addTaskToGroup,
+    // removeTaskFromGroup,
 }

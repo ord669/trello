@@ -140,11 +140,8 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
                         </div>
                     </div>
                 )}
-
             </div>
-
-        </section >
-
+        </section>
     )
 }
 

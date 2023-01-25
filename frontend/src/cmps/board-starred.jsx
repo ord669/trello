@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { EmptyStarIcon, FullStarIcon } from "../assets/svg/icon-library"
 import { boardService } from "../services/board.service"
-import { saveBoard } from "../store/board/board.action"
 
 export function BoardStarred({ board }) {
     const [isStarred, setIsStarred] = useState(board.isStarred)

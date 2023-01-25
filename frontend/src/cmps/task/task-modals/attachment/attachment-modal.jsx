@@ -1,7 +1,7 @@
 import { useForm } from "../../../../customHooks/useForm";
 import { taskService } from "../../../../services/task.service.local";
 import { utilService } from "../../../../services/util.service";
-import { saveTask } from "../../../../store/board/board.action";
+import { saveTask } from "../../../../store/task/task.action";
 import { ImgUploader } from "../../../img-uploader";
 
 export function AttachmentModal({ board, currTask, getMembers, onSelectMember }) {
