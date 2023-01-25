@@ -56,7 +56,6 @@ async function update(task) {
 }
 
 async function add(task) {
-    console.log('task from service:', task)
     try {
         const collection = await dbService.getCollection('task')
         await collection.insertOne(task)

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { saveGroup, saveTask } from "../../../../store/board/board.action";
+import { saveGroup } from "../../../../store/board/board.action";
+import { saveTask } from "../../../../store/task/task.action";
 import { showErrorMsg, showSuccessMsg } from "../../../../services/event-bus.service"
 import { handleKeyPress } from "../../../../customHooks/enterOutFocues"
 // import { handleKeyPress } from "../customHooks/enterOutFocues"
@@ -45,7 +46,6 @@ export function CopyModal({ board, currTask }) {
     function handleChange({ target }) {
         const { value, name: filed } = target
         setTask((prevTask) => ({ ...prevTask, [filed]: value }))
-        console.log('task:', task)
 
     }
 

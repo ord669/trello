@@ -10,7 +10,6 @@ async function query(filterBy = { title: '' }) {
         // console.log('criteria: ', criteria);
         const collection = await dbService.getCollection('board')
         const boards = await collection.find().toArray()
-        console.log('boards: ', boards)
         return boards
     } catch (err) {
         logger.error('cannot find boards', err)
@@ -60,11 +59,13 @@ async function add(board) {
 
 async function update(board) {
     try {
-        const boardToSave = {
-            title: board.title,
-            background: board.background,
-            isStarred: board.isStarred
-        }
+        // const boardToSave = {
+        //     title: board.title,
+        //     background: board.background,
+        //     isStarred: board.isStarred
+        // }
+        const boardToSave = { ...board }
+        delete boardToSave._id 
         const collection = await dbService.getCollection('board')
         await collection.updateOne({ _id: ObjectId(board._id) }, { $set: boardToSave })
         return board
@@ -98,7 +99,6 @@ async function addGroupToBoard(boardId, group) {
 }
 
 async function updateGroupToBoard(boardId, group) {
-    console.log('boardId, group:', boardId, group);
     try {
         const collection = await dbService.getCollection('board')
         await collection.updateOne({ _id: ObjectId(boardId), 'groups._id': group._id }, { $set: { 'groups.$': group } })

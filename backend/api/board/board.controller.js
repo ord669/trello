@@ -42,6 +42,7 @@ async function addBoard(req, res) {
 
 
 async function updateBoard(req, res) {
+  console.log('in');
   try {
     const board = req.body
     const updatedBoard = await boardService.update(board)
