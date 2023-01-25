@@ -10,6 +10,7 @@ import { QuickTaskEdit } from "../quick-task-edit"
 import { useState } from "react"
 
 export function TaskPreview({ task, idx }) {
+    console.log('task:', task);
     const navigate = useNavigate()
     const elTaskPreview = useRef()
     const [quickEditModalPos, setQuickEditModalPos] = useState(null)

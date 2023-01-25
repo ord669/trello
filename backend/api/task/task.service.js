@@ -2,6 +2,8 @@ const dbService = require('../../services/db.service')
 const logger = require('../../services/logger.service')
 const ObjectId = require('mongodb').ObjectId
 const asyncLocalStorage = require('../../services/als.service')
+// const boardService = require('../board/board.service')
+
 
 
 
@@ -10,7 +12,7 @@ async function getById(taskId) {
     try {
         const collection = await dbService.getCollection('task')
         const task = await collection.findOne({ _id: ObjectId(taskId) })
-        task._id = taskId
+        // task._id = taskId
         return task
     } catch (err) {
         logger.error(`while finding task ${taskId}`, err)
@@ -22,43 +24,6 @@ async function query(filterBy = {}) {
         const criteria = _buildCriteria(filterBy)
         const collection = await dbService.getCollection('task')
         const tasks = await collection.find(criteria).toArray()
-        // var tasks = await collection.aggregate([
-        //     {
-        //         $match: criteria
-        //     },
-        //     {
-        //         $lookup:
-        //         {
-        //             localField: 'byUserId',
-        //             from: 'user',
-        //             foreignField: '_id',
-        //             as: 'byUser'
-        //         }
-        //     },
-        //     {
-        //         $unwind: '$byUser'
-        //     },
-        //     {
-        //         $lookup:
-        //         {
-        //             localField: 'aboutUserId',
-        //             from: 'user',
-        //             foreignField: '_id',
-        //             as: 'aboutUser'
-        //         }
-        //     },
-        //     {
-        //         $unwind: '$aboutUser'
-        //     }
-        // ]).toArray()
-        // tasks = tasks.map(review => {
-        //     review.byUser = { _id: review.byUser._id, fullname: review.byUser.fullname }
-        //     review.aboutUser = { _id: review.aboutUser._id, fullname: review.aboutUser.fullname }
-        //     delete review.byUserId
-        //     delete review.aboutUserId
-        //     return review
-        // })
-
         return tasks
     } catch (err) {
         logger.error('cannot find tasks', err)
@@ -79,11 +44,10 @@ async function remove(taskId) {
 
 async function update(task) {
     try {
-        // const taskToUpdate = {
-        //     title: task.title,
-        // }
+        const taskToUpdate = { ...task }
+        delete taskToUpdate._id  //need to change this
         const collection = await dbService.getCollection('task')
-        await collection.updateOne({ _id: ObjectId(task._id) }, { $set: task })
+        await collection.updateOne({ _id: ObjectId(task._id) }, { $set: taskToUpdate })
         return task
     } catch (err) {
         logger.error(`cannot update task ${task._id}`, err)
@@ -92,17 +56,33 @@ async function update(task) {
 }
 
 async function add(task) {
+    console.log('task from service:', task)
     try {
-        // const taskToAdd = {
-        //     // byUserId: ObjectId(task.byUserId),
-        //     // aboutUserId: ObjectId(task.aboutUserId),
-        // }
         const collection = await dbService.getCollection('task')
         await collection.insertOne(task)
-
         return task
     } catch (err) {
         logger.error('cannot insert task', err)
+        throw err
+    }
+}
+
+async function addTaskToGroup(boardId,task) {
+    try {
+        const collection = await dbService.getCollection('board')
+        await collection.updateOne({ _id: ObjectId(boardId), 'groups._id': task.groupId }, { $push: { 'tasksId': task._id } })
+    } catch (err) {
+        logger.error('cannot insert task id to group', err)
+        throw err
+    }
+}
+
+async function removeTaskFromGroup(boardId,groupId,taskId) {
+    try {
+        const collection = await dbService.getCollection('board')
+        await collection.updateOne({ _id: ObjectId(boardId), 'groups._id': groupId }, { $pull: { 'tasksId': taskId } })
+    } catch (err) {
+        logger.error(`cannot remove task id ${taskId} from group`, err)
         throw err
     }
 }

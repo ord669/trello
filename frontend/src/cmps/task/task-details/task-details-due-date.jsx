@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { ArrowDownIcon } from "../../../assets/svg/icon-library"
 import { utilService } from "../../../services/util.service"
-import { saveTask } from "../../../store/board/board.action"
+import { saveTask } from "../../../store/task/task.action"
 import { openDynamicModal } from "../../../store/modal/modal.action"
 
 export function DueDate({ task }) {

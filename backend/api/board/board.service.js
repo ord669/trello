@@ -27,7 +27,7 @@ async function getById(boardId) {
             group.tasks = tasks
             return group
         }))
-        console.log('board:', board)
+        // console.log('board:', board);
         return board
     } catch (err) {
         logger.error(`while finding board ${boardId}`, err)
@@ -92,21 +92,42 @@ async function addGroupToBoard(boardId, group) {
         await collection.updateOne({ _id: ObjectId(boardId) }, { $push: { 'groups': group } })
         return group
     } catch (err) {
-        logger.error('cannot insert board', err)
+        logger.error('cannot add group', err)
         throw err
     }
 }
 
 async function updateGroupToBoard(boardId, group) {
+    console.log('boardId, group:', boardId, group);
     try {
         const collection = await dbService.getCollection('board')
         await collection.updateOne({ _id: ObjectId(boardId), 'groups._id': group._id }, { $set: { 'groups.$': group } })
         return group
     } catch (err) {
-        logger.error('cannot insert board', err)
+        logger.error('cannot insert group', err)
         throw err
     }
 }
+
+// async function addTaskToGroup(task) {
+//     try {
+//         const collection = await dbService.getCollection('board')
+//         await collection.updateOne({ _id: ObjectId(boardId), 'groups._id': task.groupId }, { $push: { 'tasksId': task._id } })
+//     } catch (err) {
+//         logger.error('cannot insert task id to group', err)
+//         throw err
+//     }
+// }
+
+// async function removeTaskFromGroup(boardId,groupId,taskId) {
+//     try {
+//         const collection = await dbService.getCollection('board')
+//         await collection.updateOne({ _id: ObjectId(boardId), 'groups._id': groupId }, { $pull: { 'tasksId': taskId } })
+//     } catch (err) {
+//         logger.error(`cannot remove task id ${taskId} from group`, err)
+//         throw err
+//     }
+// }
 
 
 function _buildCriteria(filterBy) {
@@ -126,4 +147,6 @@ module.exports = {
     addGroupToBoard,
     updateGroupToBoard,
     removeGroupFromBoard,
+    // addTaskToGroup,
+    // removeTaskFromGroup,
 }

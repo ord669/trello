@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { taskReducer } from "../../../../store/task/task.reducer";
 
 export function CopyModal({ board, currTask }) {
     const [currGroup, setCurrGroup] = useState({})

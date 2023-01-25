@@ -9,11 +9,10 @@ import { TaskDetailsChecklist } from "../cmps/task/task-details/task-details-che
 import { TaskDetailsDescription } from "../cmps/task/task-details/task-details-description"
 import { TaskDetailsSideMenu } from "../cmps/task/task-details/task-details-side-menu"
 import { useForm } from "../customHooks/useForm"
-import { removeTask, saveTask } from "../store/board/board.action"
+import { removeTask, saveTask } from "../store/task/task.action"
 import { DetailsHeader } from "../cmps/task/task-details/task-details-header"
 import { DueDate } from "../cmps/task/task-details/task-details-due-date"
 import { TaskDetailsAttachment } from "../cmps/task/task-details/task-details-attachment"
-import { setTaskToEdit } from "../store/task/task.action"
 import { taskService } from "../services/task.service.local"
 
 export function TaskDetails() {
@@ -34,7 +33,6 @@ export function TaskDetails() {
         const currTask = currGroup.tasks.find(task => task._id === taskId)
         setTask(currTask)
         setGroup(currGroup)
-        setTaskToEdit(currTask)
     }
 
     function onRemoveTask() {

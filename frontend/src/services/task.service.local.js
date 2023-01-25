@@ -1,49 +1,24 @@
-import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 
 export const taskService = {
-    setTaskInBoard,
+    remove,
+    save,
     getEmptyTask,
     createChecklists,
     getEmptyTodo,
     getEmptyComment,
     getEmptyChecklist,
     getAttachment,
-    remove,
-    save,
     getMembers,
     reorderTasks,
 }
 
-
 async function remove(taskId) {
-    return httpService.delete(`task/${taskId}`)
+
 }
 
 async function save(task) {
-    var savedTask
-    if (task._id) {
-        savedTask = await httpService.put(`task/${task._id}`, task)
-    } else {
-        // Later, owner is set by the backend
-        // board.owner = userService.getLoggedinUser()
-        savedTask = await httpService.post('task', task)
-    }
-    return savedTask
-}
-
-
-
-function setTaskInBoard() {
-
-}
-
-function reorderTasks(source, destination, groups) {
-    const sourceGroup = groups.find(group => group._id === source.droppableId)
-    const [task] = sourceGroup.tasks.splice(source.index, 1)
-    const destinationGroup = groups.find(group => group._id === destination.droppableId)
-    destinationGroup.tasks.splice(destination.index, 0, task)
-    return groups
+  
 }
 
 function createChecklists(title = 'checklists', todoTitle = 'Write Your Todo') {
@@ -77,12 +52,21 @@ function getEmptyChecklist() {
         "todos": []
     }
 }
+
 function getEmptyTodo() {
     return {
         "_id": utilService.makeId(),
         "title": "",
         "isDone": false
     }
+}
+
+function reorderTasks(source, destination, groups) {
+    const sourceGroup = groups.find(group => group._id === source.droppableId)
+    const [task] = sourceGroup.tasks.splice(source.index, 1)
+    const destinationGroup = groups.find(group => group._id === destination.droppableId)
+    destinationGroup.tasks.splice(destination.index, 0, task)
+    return groups
 }
 
 function getEmptyComment() {
@@ -182,10 +166,12 @@ function getMembers(board, task) {
     return members
 }
 
-// async function onCoverChangeBg(task, bg) {
-//     task.style.background = bg
-//     try {
-//     } catch (err) {
-//         console.log('err', err)
-//     }
-// }
+
+
+
+
+
+
+
+
+

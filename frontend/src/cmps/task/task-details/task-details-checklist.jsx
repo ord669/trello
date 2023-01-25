@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import { useForm } from "../../../customHooks/useForm"
 
 import { ChecklistIcon, CloseIcon } from "../../../assets/svg/icon-library"
-import { saveTask } from "../../../store/board/board.action"
+import { saveTask } from "../../../store/task/task.action"
 import { taskService } from "../../../services/task.service.local"
 import { ChecklistItemPreview } from "./checklist-item-preview"
 

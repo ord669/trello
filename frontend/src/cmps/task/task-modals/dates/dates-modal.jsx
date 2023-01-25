@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import Calendar from 'react-calendar'
 import { ArrowRightIcon } from '../../../../assets/svg/icon-library'
-import { saveTask } from '../../../../store/board/board.action'
+import { saveTask } from '../../../../store/task/task.action'
 import { closeDynamicModal } from '../../../../store/modal/modal.action'
 
 export function DatesModal({ board, currTask }) {

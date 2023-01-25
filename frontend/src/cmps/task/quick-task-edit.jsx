@@ -12,7 +12,7 @@ import { utilService } from "../../services/util.service";
 import { MiniLabelList } from "./task-preview/task-preview-mini-labels-list";
 import { closeDynamicModal, openDynamicModal, updateDynamicModalPos } from "../../store/modal/modal.action"
 import { useForm } from "../../customHooks/useForm";
-import { saveTask } from "../../store/board/board.action";
+import { saveTask } from "../../store/task/task.action";
 import { IconContext } from "react-icons";
 import { ManIcon } from "../../assets/svg/icon-library";
 

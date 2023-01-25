@@ -9,7 +9,6 @@ async function getBoards(req, res) {
       title: req.query.txt
     }
     const boards = await boardService.query(filterBy)
-    console.log('boards from controller: ', boards)
     res.json(boards)
   } catch (err) {
     logger.error('Failed to get boards', err)
@@ -99,7 +98,6 @@ async function updateGroupInBoard(req, res) {
     res.status(500).send({ err: 'Failed to add group' })
   }
 }
-
 
 
 module.exports = {
