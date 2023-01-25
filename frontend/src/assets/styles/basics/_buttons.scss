@@ -38,10 +38,12 @@ button {
 
 .btn-bar:not(.no-edit) {
     background-color: rgba(255, 255, 255, 0.2);
+
     color: inherit;
 
     &:hover {
         background-color: rgba(255, 255, 255, 0.3);
+        backdrop-filter: contrast(0.5);
 
     }
 }
@@ -85,7 +87,6 @@ button {
 
 
     &:hover {
-        background-color: $clr11;
         backdrop-filter: contrast(0.5);
 
     }

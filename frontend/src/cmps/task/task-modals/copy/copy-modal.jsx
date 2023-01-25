@@ -5,15 +5,16 @@ import { taskReducer } from "../../../../store/task/task.reducer";
 export function CopyModal({ board, currTask }) {
     const [currGroup, setCurrGroup] = useState({})
     const [currTaskIdx, setCurrTaskIdx] = useState('')
-    console.log('currGroup: ', currGroup);
 
     useEffect(() => {
         loadCurrGroup()
-        checkCurrTaskIdx()
     }, [])
 
     function loadCurrGroup() {
         const group = board.groups.find(group => group._id === currTask.groupId)
+        const taskIdx = group.tasks.findIndex(task => task._id === currTask._id)
+        console.log('taskIdx: ', taskIdx);
+        setCurrTaskIdx(taskIdx)
         setCurrGroup(group)
     }
 
@@ -27,11 +28,11 @@ export function CopyModal({ board, currTask }) {
         if (group._id === currTask.groupId) return `${group.title}(current)`
         else return group.title
     }
-    function checkCurrTaskIdx() {
-        if (!currGroup) return
-        const taskIdx = currGroup.tasks?.findIndex(task => task._id === currTask._id)
-        setCurrTaskIdx(taskIdx)
+
+    function onCopyCard() {
+
     }
+
 
     return (
         <section className='copy-modal'>
@@ -51,12 +52,12 @@ export function CopyModal({ board, currTask }) {
                     <option key={group._id} value={group._id}>{ChackCurrGroup(group)}</option>
                 )}
             </select>
-            <select defaultValue={currTaskIdx} name="" id="">
+            <select name="" id="">
                 {currGroup?.tasks?.map((task, idx) =>
-                    <option key={task._id} value="">{idx + 1}</option>
+                    <option selected={currTaskIdx} key={task._id} value="">{idx + 1}</option>
                 )}
             </select>
-            <button className="btn-add">Create card</button>
+            <button onClick={onCopyCard} className="btn-add">Create card</button>
         </section >
     )
 }
