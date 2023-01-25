@@ -1,6 +1,6 @@
 import { Draggable } from "react-beautiful-dnd"
 import { useNavigate } from "react-router-dom"
-import { PenIcon } from "../../../assets/svg/icon-library"
+import { AttacheIcon, AttachmentIcon, ChecklistIcon, CheckListIcon, PenIcon } from "../../../assets/svg/icon-library"
 import { openDynamicModal, quickEdit } from "../../../store/modal/modal.action"
 import { TaskPreviewIcons } from "./task-preview-icons"
 import { MiniLabelList } from "./task-preview-mini-labels-list"
@@ -10,11 +10,9 @@ import { QuickTaskEdit } from "../quick-task-edit"
 import { useState } from "react"
 
 export function TaskPreview({ task, idx }) {
-    console.log('task:', task);
     const navigate = useNavigate()
     const elTaskPreview = useRef()
     const [quickEditModalPos, setQuickEditModalPos] = useState(null)
-
     const [isQuickEdit, setIsQuickEdit] = useState(false)
 
     let background
@@ -26,6 +24,8 @@ export function TaskPreview({ task, idx }) {
             setQuickEditModalPos(elTaskPreview.current.getBoundingClientRect())
         });
     }, [])
+
+
 
     if (!task?.style?.background?.includes('https')) {
         background = {
@@ -81,7 +81,9 @@ export function TaskPreview({ task, idx }) {
                             {task.labelIds &&
                                 <MiniLabelList task={task} />}
                             <p>{task.title}</p>
-                            <div className="task-icons">
+                            {<TaskPreviewIcons task={task} />}
+                            <div>
+
                             </div>
                         </div>
                         <div className="task-preview-edit-icon">
