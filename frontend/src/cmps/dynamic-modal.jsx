@@ -16,6 +16,7 @@ import { toggleMemberAssigned, toggleTaskLabel } from "../store/board/board.acti
 
 export function DynamicModal() {
     const { modalPos, modalDetails } = useSelector(storeState => storeState.modalModule)
+    console.log('modalDetails: ', modalDetails);
     const { board } = useSelector(storeState => storeState.boardModule)
 
     const windowSize = utilService.getWindowDimensions()
@@ -27,6 +28,7 @@ export function DynamicModal() {
     const clickedElemntHeight = modalPos.height
 
     function DynamicModalContent({ type, func, data, currTask }) {
+        console.log('currTask: ', currTask);
 
         switch (type) {
             case 'labels':

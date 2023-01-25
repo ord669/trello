@@ -34,7 +34,11 @@ export function TaskDetailsDescription({ description, handleChange }) {
                         />
                         <div className="desc-btn flex align-cetner ">
                             <button onClick={() => {
-                                saveTask()
+                                try {
+                                    saveTask()
+                                } catch (err) {
+                                    console.log('err from desc btn', err)
+                                }
                                 setIsShown((prev) => !prev)
                             }} className="btn-add">Save</button>
                             <button onClick={() => setIsShown(prev => !prev)}

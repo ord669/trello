@@ -45,7 +45,11 @@ export function CoverModal({ board, currTask }) {
                             {colors.map((color, idx) =>
                                 <div onClick={() => {
                                     currTask.style.background = color
-                                    saveTask(currTask)
+                                    try {
+                                        saveTask(currTask)
+                                    } catch (err) {
+                                        console.log('err from cover save color', err)
+                                    }
                                 }} key={idx} className="bp-color" style={{ background: color }} ></div>
                             )}
                         </div>
@@ -61,7 +65,11 @@ export function CoverModal({ board, currTask }) {
                         {imgs.map(img =>
                             <div onClick={() => {
                                 currTask.style.background = img.urls.full
-                                saveTask(currTask)
+                                try {
+                                    saveTask(currTask)
+                                } catch (err) {
+                                    console.log('err from save img bg', err)
+                                }
                             }} key={img.id} className="bp-img" style={{ backgroundImage: `url(${img.urls.full})` }} ></div>
                         )}
                     </div>

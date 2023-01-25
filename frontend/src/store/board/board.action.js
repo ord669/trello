@@ -97,7 +97,12 @@ export async function toggleMemberAssigned(memberId, groupId, taskId) {
     } else {
         task.memberIds.push(memberId)
     }
-    saveTask(task)
+    try {
+        saveTask(task)
+    } catch (err) {
+        console.log('err error from toggle members', err)
+        throw err
+    }
 }
 
 export async function toggleTaskLabel(labelId, groupId, taskId) {
@@ -112,7 +117,12 @@ export async function toggleTaskLabel(labelId, groupId, taskId) {
         task.labelIds.push(labelId)
 
     }
-    saveTask(task)
+    try {
+        saveTask(task)
+    } catch (err) {
+        console.log('err from toggle task label', err)
+        throw err
+    }
 }
 
 export function updateDrag({ source, destination, type }) {

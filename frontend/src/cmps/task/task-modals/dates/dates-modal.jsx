@@ -16,13 +16,21 @@ export function DatesModal({ board, currTask }) {
     function onSaveDueDate() {
         if (!isDueDate) return
         const task = { ...currTask, dueDate: date.getTime(), isDone: false }
-        saveTask(task)
+        try {
+            saveTask(task)
+        } catch (err) {
+            console.log('err from save due date', err)
+        }
         closeDynamicModal()
     }
 
     function onRemoveDueDate() {
         const task = { ...currTask, dueDate: null, isDone: false }
-        saveTask(task)
+        try {
+            saveTask(task)
+        } catch (err) {
+            console.log('err from remove due date', err)
+        }
         closeDynamicModal()
     }
 

@@ -4,7 +4,6 @@ import { LabelPreview } from "./label-preview"
 
 export function LabelList({ task }) {
 
-
     return (
         <section>
             <p>Labels</p>

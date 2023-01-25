@@ -22,7 +22,7 @@ export function TaskDetailsAttachment({ task, attachment, onRemoveAttach, onEdit
                             <p>{attachment.createdAt && time(attachment.createdAt)}</p>
                             <ul className="">
                                 <li onClick={() => onRemoveAttach(attachment._id)}>Delete</li>
-                                <li onClick={(ev) => openDynamicModal({ ev, name: 'edit attachment', func: { onEditAttach }, data: { attachment } })}>Edit</li>
+                                <li onClick={(ev) => openDynamicModal({ ev, name: 'edit attachment', func: { onEditAttach }, data: { attachment }, task })}>Edit</li>
                             </ul>
                         </div>
                     </div>

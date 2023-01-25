@@ -7,15 +7,11 @@ import { MembersList } from "../cmps/task/task-details/task-details-members-list
 import { ActivityIndex } from "../cmps/task/task-details/activity-index"
 import { TaskDetailsChecklist } from "../cmps/task/task-details/task-details-checklist"
 import { TaskDetailsDescription } from "../cmps/task/task-details/task-details-description"
-import { LabelPreview } from "../cmps/task/task-details/label-preview"
 import { TaskDetailsSideMenu } from "../cmps/task/task-details/task-details-side-menu"
-import { UserAvatarIcon } from "../cmps/user-avatar-icon"
 import { useForm } from "../customHooks/useForm"
-import { removeTask, saveTask, toggleTaskLabel, toggleMemberAssigned } from "../store/board/board.action"
+import { removeTask, saveTask } from "../store/board/board.action"
 import { DetailsHeader } from "../cmps/task/task-details/task-details-header"
 import { DueDate } from "../cmps/task/task-details/task-details-due-date"
-import { groupService } from "../services/group.service.local"
-import { ImgUploader } from "../cmps/img-uploader"
 import { TaskDetailsAttachment } from "../cmps/task/task-details/task-details-attachment"
 import { setTaskToEdit } from "../store/task/task.action"
 import { taskService } from "../services/task.service.local"
@@ -48,7 +44,11 @@ export function TaskDetails() {
 
     function onUpdateHeadline(ev) {
         handleChange(ev)
-        saveTask(task)
+        try {
+            saveTask(task)
+        } catch (err) {
+            console.log('err from onUpdateHeadline', err)
+        }
     }
 
     function addCheckList(checklist) {
@@ -71,13 +71,21 @@ export function TaskDetails() {
 
     function onRemoveAttach(attachId) {
         task.attachments = task.attachments.filter(attach => attach._id !== attachId)
-        saveTask(task)
+        try {
+            saveTask(task)
+        } catch (err) {
+            console.log('err from remove attach', err)
+        }
     }
 
     function onEditAttach(attachment, title) {
         attachment.title = title.txt
         task.attachments = task.attachments.map(attach => attach._id !== attachment._id ? attach : attachment)
-        saveTask(task)
+        try {
+            saveTask(task)
+        } catch (err) {
+            console.log('err from edit attach', err)
+        }
     }
 
     if (!task) return <p>Loading..</p>

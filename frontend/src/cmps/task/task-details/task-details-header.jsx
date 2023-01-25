@@ -41,7 +41,7 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId }) {
                 {showImgBg && <div style={background} className="task-details-cover"></div>}
                 {!showImgBg && <div style={background} className="task-details-img "></div>}
                 <button className="btn-bar "
-                    onClick={(ev) => openDynamicModal({ ev, name: 'cover' })}
+                    onClick={(ev) => openDynamicModal({ ev, name: 'cover', task })}
                 ><CoverIcon /> Cover</button>
 
             </div>

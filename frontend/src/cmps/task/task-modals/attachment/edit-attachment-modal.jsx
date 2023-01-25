@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { useForm } from "../../../../customHooks/useForm"
-import { saveTask } from "../../../../store/board/board.action"
 
 export function EditAttachment({ filterBy, board, currTask, attachment, onEditAttach }) {
     console.log('attachment: from edit ', attachment);

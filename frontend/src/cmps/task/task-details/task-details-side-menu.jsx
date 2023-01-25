@@ -7,18 +7,27 @@ export function TaskDetailsSideMenu({ onRemoveTask, addCheckList, task }) {
         <section className='task-details-side-menu'>
             <p>Add to card</p>
             <section className="side-menu-btn-container">
+                {/* ----------------members---------------- */}
                 <button onClick={(ev) => openDynamicModal({ ev, name: 'members', task })}
                     className="details-btn-side-menu"> <ManIcon /> Members</button>
+
+                {/* ----------------labels---------------- */}
                 <button onClick={(ev) => openDynamicModal({ ev, name: 'labels', task })}
                     className="details-btn-side-menu"> <LabelIcon /> Labels</button>
-                <button onClick={(ev) => openDynamicModal({ ev, name: 'add checklist', func: { addCheckList } })}
+
+                {/* ----------------Checklist---------------- */}
+                <button onClick={(ev) => openDynamicModal({ ev, name: 'add checklist', func: { addCheckList }, task })}
                     className="details-btn-side-menu" > <ChecklistIcon /> Checklist</button>
-                <button onClick={(ev) => openDynamicModal({ ev, name: 'dates', func: {} })} className="details-btn-side-menu"> <ClockIcon /> Dates</button>
-                <button onClick={(ev) => openDynamicModal({ ev, name: 'attachment' })} className="attachment-icon details-btn-side-menu"> <AttachmentIcon /> Attachment</button>
+
+                {/* ----------------dates---------------- */}
+                <button onClick={(ev) => openDynamicModal({ ev, name: 'dates', func: {}, task })} className="details-btn-side-menu"> <ClockIcon /> Dates</button>
+
+                {/* ----------------attachment---------------- */}
+                <button onClick={(ev) => openDynamicModal({ ev, name: 'attachment', task })} className="attachment-icon details-btn-side-menu"> <AttachmentIcon /> Attachment</button>
 
                 {/* ----------------copy---------------- */}
 
-                <button onClick={(ev) => openDynamicModal({ ev, name: 'copy card' })} className="attachment-icon details-btn-side-menu"> <CopyIcon /> Copy</button>
+                <button onClick={(ev) => openDynamicModal({ ev, name: 'copy card', task })} className="attachment-icon details-btn-side-menu"> <CopyIcon /> Copy</button>
 
                 {/* ------------------------------------------ */}
                 <button onClick={onRemoveTask} className="details-btn-side-menu"> <ArchiveImge /> Archive</button>

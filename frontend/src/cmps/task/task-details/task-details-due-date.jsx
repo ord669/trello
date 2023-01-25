@@ -10,7 +10,11 @@ export function DueDate({ task }) {
 
     function handleChange({ target }) {
         const taskToSave = { ...task, isDone: target.checked }
-        saveTask(taskToSave)
+        try {
+            saveTask(taskToSave)
+        } catch (err) {
+            console.log('err from handle change', err)
+        }
         setIsDone(target.checked)
     }
 
@@ -22,7 +26,7 @@ export function DueDate({ task }) {
                     type="checkbox"
                     onChange={handleChange}
                     checked={isDone} />
-                <button className="btn-link" onClick={(ev) => openDynamicModal({ ev, name: 'dates', func: {} })}>
+                <button className="btn-link" onClick={(ev) => openDynamicModal({ ev, name: 'dates', task })}>
                     {`${day} at ${hour}`}
                     {isDone && <span className="complete">complete</span>}
                     <span className="icon"><ArrowDownIcon /></span>

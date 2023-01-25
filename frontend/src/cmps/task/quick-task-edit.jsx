@@ -15,9 +15,6 @@ export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
 
     const windowSize = utilService.getWindowDimensions()
 
-    const { boardId } = useParams()
-    const navigate = useNavigate()
-
     let background
 
     if (!task?.style?.background?.includes('https')) {
@@ -112,7 +109,11 @@ export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
 
                 <button onClick={(ev) => {
                     task.title = title.title
-                    saveTask(task)
+                    try {
+                        saveTask(task)
+                    } catch (err) {
+                        console.log('err quick edit title', err)
+                    }
                     setIsQuickEdit(false)
                     closeDynamicModal()
                 }} className="btn-add">Save</button>
