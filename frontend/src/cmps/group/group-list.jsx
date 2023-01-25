@@ -4,6 +4,7 @@ import { AddGroup } from "./add-group"
 import { GroupPreview } from "./group-preview"
 
 export function GroupList({ groups, board }) {
+    console.log('groups:', groups);
 
     function onDragEnd(result) {
         const { source, destination } = result

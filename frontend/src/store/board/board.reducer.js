@@ -12,7 +12,6 @@ const initialState = {
 }
 
 export function boardReducer(state = initialState, action) {
-
     let newState = state
     let board
     let groups

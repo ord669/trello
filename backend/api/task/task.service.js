@@ -4,10 +4,6 @@ const ObjectId = require('mongodb').ObjectId
 const asyncLocalStorage = require('../../services/als.service')
 // const boardService = require('../board/board.service')
 
-
-
-
-
 async function getById(taskId) {
     try {
         const collection = await dbService.getCollection('task')
@@ -56,7 +52,6 @@ async function update(task) {
 }
 
 async function add(task) {
-    console.log('task from service:', task)
     try {
         const collection = await dbService.getCollection('task')
         await collection.insertOne(task)
@@ -67,7 +62,7 @@ async function add(task) {
     }
 }
 
-async function addTaskToGroup(boardId,task) {
+async function addTaskToGroup(boardId, task) {
     try {
         const collection = await dbService.getCollection('board')
         await collection.updateOne({ _id: ObjectId(boardId), 'groups._id': task.groupId }, { $push: { 'tasksId': task._id } })
@@ -77,7 +72,7 @@ async function addTaskToGroup(boardId,task) {
     }
 }
 
-async function removeTaskFromGroup(boardId,groupId,taskId) {
+async function removeTaskFromGroup(boardId, groupId, taskId) {
     try {
         const collection = await dbService.getCollection('board')
         await collection.updateOne({ _id: ObjectId(boardId), 'groups._id': groupId }, { $pull: { 'tasksId': taskId } })
@@ -100,5 +95,3 @@ module.exports = {
     update,
     getById
 }
-
-

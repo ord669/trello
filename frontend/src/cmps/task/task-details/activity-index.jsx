@@ -1,17 +1,21 @@
 import { useState } from "react"
 import { ActivityIcon } from "../../../assets/svg/icon-library"
 import { showErrorMsg } from "../../../services/event-bus.service"
+import { taskService } from "../../../services/task.service"
 import { saveBoard } from "../../../store/board/board.action"
 import { AddComment } from "./add-comment"
 import { CommentList } from "./comment-list"
 
 export function ActivityIndex({ board, currTask }) {
+    console.log('currTask:', currTask)
     const [isShown, setIsShown] = useState(true)
 
     function saveComment(comment) {
         comment.task = { _id: currTask._id, title: currTask.title }
         const boardToSave = { ...board, activities: [comment, ...board.activities] }
         try {
+            currTask.comments.push(comment)
+            taskService.save(currTask)
             saveBoard(boardToSave)
         } catch (err) {
             console.log('Cannot save comment:', err)

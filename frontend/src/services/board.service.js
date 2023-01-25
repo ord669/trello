@@ -23,6 +23,7 @@ export const boardService = {
     saveGroup,
     removeGroup,
     reorderGroups,
+    removeTasksFromBoard,
 
 }
 
@@ -52,13 +53,14 @@ async function remove(boardId) {
 }
 
 async function save(board) {
-    var savedBoard
+    console.log('board:', board)
+    let savedBoard
     if (board._id) {
         savedBoard = await httpService.put(BASE_URL + board._id, board)
     } else {
         // Later, owner is set by the backend
         // board.owner = userService.getLoggedinUser()
-        savedBoard = await httpService.post('board', board)
+        savedBoard = await httpService.post(BASE_URL, board)
     }
     return savedBoard
 }
@@ -75,7 +77,6 @@ function getEmptyBoard(title = '') {
             "background": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1673811922/samples/landscapes/architecture-signs.jpg"
 
         },
-
         members: []
     }
 }
@@ -145,6 +146,15 @@ function getBgImgsURL() {
 
         }
     ]
+}
+
+function removeTasksFromBoard(board) {
+    const groups = board.groups.map(group => {
+        const newGroup = { ...group }
+        delete newGroup.tasks
+        return newGroup
+    })
+    return { ...board, groups }
 }
 
 async function getImgsFromUnsplash(val = 'london') {

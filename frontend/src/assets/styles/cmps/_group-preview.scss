@@ -6,7 +6,7 @@
     // padding: 0 4px;
     min-width: 272px;
     background-color: $clr3 ;
-    max-height: 98%;
+    max-height: 100%;
 
     border-radius: 3px; // maybe make var for this 
 
@@ -14,17 +14,23 @@
         display: flex;
         align-items: center;
         padding: 4px;
-        // padding: 6px 4px;
+
+        textarea,
+        div {
+            font-family: Charlie-Semi-Bold;
+            flex-grow: 1;
+            padding: 6px 8px;
+        }
 
         textarea {
-            flex-grow: 1;
-            height: 2rem;
             height: 1.75rem;
-            padding: 6px 8px;
-            margin-top: 2px;
-            // margin: 0;
+            margin-top: 3px;
+            margin-bottom: 4px;
+            font-size: 14px;
             font-weight: 600;
+            line-height: 15px;
             resize: none;
+            overflow: hidden;
             overflow-wrap: break-word;
         }
 
@@ -83,6 +89,4 @@
             margin-inline-end: 2px;
         }
     }
-
-    .group-menu {}
 }

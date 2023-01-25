@@ -6,10 +6,8 @@ import { store } from '../store'
 import { ADD_GROUP, REMOVE_GROUP, SET_BOARD, UNDO_REMOVE_GROUP, UPDATE_GROUP } from "./board.reducer"
 
 export async function loadBoard(boardId, filterBy) {
-    console.log('boardId: ', boardId);
     try {
         const board = await boardService.getById(boardId)
-        console.log('board: ', board);
         if (!board) throw new Error('Board not found')
         const filterdBoard = boardService.filterGroupsTasks(board, filterBy)
         store.dispatch({ type: SET_BOARD, board: filterdBoard })
@@ -45,24 +43,30 @@ export async function saveGroup(group) {
 }
 
 export async function saveBoard(board) {
+    console.log('board:', board)
     try {
-        const newBoard = await boardService.save(board)
-        store.dispatch({
-            type: SET_BOARD,
-            board: newBoard
-        })
-        return newBoard
+        const boardToSave = boardService.removeTasksFromBoard({ ...board })
+        console.log('boardToSave:', boardToSave)
+        await boardService.save(boardToSave)
+        store.dispatch({ type: SET_BOARD, board })
+        return board
+        // store.dispatch({ type: SET_BOARD, board: newBoard })
+        // return newBoard
     } catch (err) {
         console.log('Err from saveBoard in board action :', err)
         throw err
     }
 }
 
-export function updateDrag({ source, destination, type }) {
+export async function updateDrag({ source, destination, type }) {
+    console.log('source, destination, type:', source, destination, type)
     const { board } = store.getState().boardModule
     const update = type === 'TASK' ? taskService.reorderTasks : boardService.reorderGroups
-    const groupsToSave = update(source, destination, board.groups)
-    saveBoard({ ...board, groups: groupsToSave })
+    update(source, destination, board.groups)
+    // const groupsToSave = update(source, destination, board.groups)
+    // const groupsToSave = await update(source, destination, board.groups)
+    saveBoard({ ...board })
+    // saveBoard({ ...board, groups: groupsToSave })
 }
 
 // export async function saveTask(task) {

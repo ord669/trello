@@ -1,11 +1,13 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { handleKeyPress } from "../../customHooks/enterOutFocues"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { saveGroup } from "../../store/board/board.action"
-import {ThreeDotsIcon} from "../../assets/svg/icon-library"
+import { ThreeDotsIcon } from "../../assets/svg/icon-library"
 
 export function GroupHeader({ onRemoveGroup, group }) {
     const [title, setTitle] = useState(group.title)
+    const [inputIn, setInputIn] = useState(false)
+    const elInput = useRef()
 
     function handleChange({ target }) {
         setTitle(target.value)
@@ -25,13 +27,27 @@ export function GroupHeader({ onRemoveGroup, group }) {
 
     return (
         <section className='group-header'>
-            <textarea
-                className="group-title edit-title-input"
-                onFocus={(ev) => ev.target.select()}
-                onBlur={onSaveTitle}
-                onChange={handleChange}
-                onKeyDown={(ev) => handleKeyPress(ev)}
-                value={title} />
+            {!inputIn ? <div onMouseUp={() => {
+                setInputIn(true)
+                setTimeout(() => {
+                    elInput.current.focus()
+                }, 50)
+            }} className="group-title edit-title-input">
+                {title}
+            </div>
+                :
+                <textarea
+                    ref={elInput}
+                    className="group-title edit-title-input"
+                    onFocus={(ev) => ev.target.select()}
+                    onBlur={() => {
+                        onSaveTitle()
+                        setInputIn(false)
+                    }}
+                    onChange={handleChange}
+                    onKeyDown={(ev) => handleKeyPress(ev)}
+                    value={title} />
+            }
             <button className="options-btn"><ThreeDotsIcon /></button>
         </section>
     )

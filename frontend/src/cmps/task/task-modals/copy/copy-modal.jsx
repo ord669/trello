@@ -6,8 +6,6 @@ import { showErrorMsg, showSuccessMsg } from "../../../../services/event-bus.ser
 import { handleKeyPress } from "../../../../customHooks/enterOutFocues"
 // import { handleKeyPress } from "../customHooks/enterOutFocues"
 
-
-
 export function CopyModal({ board, currTask }) {
     const [currGroup, setCurrGroup] = useState({})
     const [currTaskIdx, setCurrTaskIdx] = useState('')
@@ -62,10 +60,7 @@ export function CopyModal({ board, currTask }) {
             console.log(err)
         }
 
-
-
     }
-
 
     return (
         <section className='copy-modal'>
