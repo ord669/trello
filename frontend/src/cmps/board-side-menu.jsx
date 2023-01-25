@@ -1,6 +1,6 @@
 import { ArrowLeftIcon, CloseIcon, ActivityIcon } from "../assets/svg/icon-library";
 import { useEffect, useRef, useState } from "react"
-import { boardService } from "../services/board.service.local";
+import { boardService } from "../services/board.service";
 import { BoardAddBg } from "./board-add-bg";
 import { BoardActivity } from "./board-activity";
 

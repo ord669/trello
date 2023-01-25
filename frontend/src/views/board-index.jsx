@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Clock, EmptyStarIcon } from "../assets/svg/icon-library"
 import { BoardList } from "../cmps/board-list"
-import { boardService } from "../services/board.service.local"
+import { boardService } from "../services/board.service"
 
 export function BoardIndex() {
     const [boards, setBoards] = useState([])
@@ -16,7 +16,7 @@ export function BoardIndex() {
         setBoards(boards)
     }
 
-    
+
     const starredBoards = boards.filter(board => board.isStarred)
 
     return (
@@ -27,7 +27,7 @@ export function BoardIndex() {
                     <BoardList boards={starredBoards} setBoards={setBoards} />
                 </>}
             <section className="title"><Clock /> Recently viewed</section>
-            {!!boards.length &&<BoardList boards={[boards[0]]} setBoards={setBoards} isCreate={true}/>}
+            {!!boards.length && <BoardList boards={[boards[0]]} setBoards={setBoards} isCreate={true} />}
             <section className="title">Your boards</section>
             <BoardList boards={boards} setBoards={setBoards} />
         </section>

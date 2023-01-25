@@ -115,6 +115,7 @@ export function AppHeader() {
                         <div className='header-logo flex align-center'>
                             <BoardIcon />
                             <span onClick={() => navigate(`/`)}>Trello</span>
+                            {/* <img className="main-logo" src={require(`../assets/img/main-logo.png`)} alt="main-logo" /> */}
                         </div>
                         <div className='flex align-center gap-10' >
                             <div>

@@ -1,5 +1,6 @@
-import { boardService } from "../../services/board.service.local"
+import { boardService } from "../../services/board.service"
 import { groupService } from "../../services/group.service.local"
+import { taskService } from "../../services/task.service.local"
 // import { taskService } from "../../services/task.service.local"
 import { utilService } from "../../services/util.service"
 import { store } from '../store'
@@ -60,13 +61,15 @@ export async function saveBoard(board) {
 export async function saveTask(task) {
 
     try {
+        const savedTask = await taskService.save(task)
         const { board } = store.getState().boardModule
         const group = board.groups.find(group => group._id === task.groupId)
         if (task._id) {
-            group.tasks = group.tasks.map(currTask => currTask._id !== task._id ? currTask : task)
-        } else {
+            group.tasks = group.tasks.map(currTask => currTask._id !== task._id ? currTask : savedTask)
+        }
+        else {
             task._id = utilService.makeId()
-            group.tasks.push(task)
+            group.tasks.push(savedTask)
         }
         saveGroup(group)
     } catch (err) {
@@ -75,8 +78,10 @@ export async function saveTask(task) {
     }
 }
 
+
 export async function removeTask(groupId, taskId) {
     try {
+        const removedTaskId = await taskService.remove(taskId)
         const { board: boardToUpdate } = store.getState().boardModule
         const group = boardToUpdate.groups.find(group => group._id === groupId)
         group.tasks = group.tasks.filter(task => task._id !== taskId)

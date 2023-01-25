@@ -1,6 +1,6 @@
 
 import { utilService } from './util.service.js'
-import { boardService } from './board.service.local.js'
+import { boardService } from './board.service.js'
 
 export const groupService = {
     query,

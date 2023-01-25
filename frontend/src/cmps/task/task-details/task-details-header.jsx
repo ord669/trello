@@ -4,11 +4,12 @@ import { closeDynamicModal, openDynamicModal } from "../../../store/modal/modal.
 import { DetilsTitle } from "./task-details-title"
 
 export function DetailsHeader({ onUpdateHeadline, task, group, boardId, onCoverChangeBg }) {
+    console.log('task: ', task);
     const navigate = useNavigate()
     let background
     let showImgBg
 
-    function onCloseTask(){
+    function onCloseTask() {
         closeDynamicModal()
         navigate(`/board/${boardId}`)
     }

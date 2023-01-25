@@ -9,7 +9,7 @@ export function CopyModal({ board, currTask }) {
 
     useEffect(() => {
         loadCurrGroup()
-        setCurrTask()
+        checkCurrTaskIdx()
     }, [])
 
     function loadCurrGroup() {
@@ -27,7 +27,7 @@ export function CopyModal({ board, currTask }) {
         if (group._id === currTask.groupId) return `${group.title}(current)`
         else return group.title
     }
-    function setCurrTask() {
+    function checkCurrTaskIdx() {
         if (!currGroup) return
         const taskIdx = currGroup.tasks?.findIndex(task => task._id === currTask._id)
         setCurrTaskIdx(taskIdx)

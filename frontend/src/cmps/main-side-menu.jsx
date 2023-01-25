@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import tinycolor from "tinycolor2";
 import { ArrowDownIcon, ArrowLeftIcon, BoardIcon, LoaderIcon } from "../assets/svg/icon-library";
-import { boardService } from "../services/board.service.local";
+import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
 import { BoardStarred } from "./board-starred";
 
@@ -20,6 +20,7 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
         loadBoards()
 
     }, [])
+    console.log('boards:', boards)
     async function setAvgColor() {
         const bg = board.style.background
         if (bg.includes('https')) {
@@ -112,6 +113,7 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
 
     // if (!board || !color) return <div className="loader"><LoaderIcon /></div>
     return (
+
         <section style={getDynamicStyle()} className={isOpenMenu ? 'main-side-menu open-menu' : 'main-side-menu'}>
             {!board || !color && <div className="loader"><LoaderIcon /></div>}
             <div className="msm-title">
