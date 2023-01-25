@@ -82,9 +82,9 @@ export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
 
                 <div className={`${!left ? `quick-edit-side` : 'quick-card-editor-buttons-left'} ${editAnimation && 'fade-in'}`}>
                     <button className="edit-side-btn">Open card</button>
-                    <button onClick={(ev) => openDynamicModal({ ev, name: 'labels', task })} className="edit-side-btn">Edit labels</button>
-                    <button onClick={(ev) => openDynamicModal({ ev, name: 'members', task })} className="edit-side-btn">Change members</button>
-                    <button onClick={(ev) => openDynamicModal({ ev, name: 'cover', task })} className="edit-side-btn">Change cover</button>
+                    <button onClick={(ev) => openDynamicModal({ ev, name: 'labels', task, size: 'm' })} className="edit-side-btn">Edit labels</button>
+                    <button onClick={(ev) => openDynamicModal({ ev, name: 'members', task, size: 's' })} className="edit-side-btn">Change members</button>
+                    <button onClick={(ev) => openDynamicModal({ ev, name: 'cover', task, size: 'm' })} className="edit-side-btn">Change cover</button>
                     <button className="edit-side-btn">Copy</button>
                     <button className="edit-side-btn">Edit dates</button>
                     <button className="edit-side-btn">Archive</button>

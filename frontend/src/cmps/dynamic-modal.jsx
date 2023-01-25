@@ -29,9 +29,10 @@ export function DynamicModal() {
 
     function DynamicModalContent({ type, func, data, currTask }) {
         console.log('currTask: ', currTask);
-
+        console.log('indynami:')
         switch (type) {
             case 'labels':
+
                 return <LabelsModal board={board} currTask={currTask} toggleTaskLabel={toggleTaskLabel} />
             case 'members':
                 return <MembersModal board={board} currTask={currTask} getMembers={taskService.getMembers} toggleMemberAssigned={toggleMemberAssigned} />
@@ -53,13 +54,32 @@ export function DynamicModal() {
     }
 
     function renderPos() {
+        console.log('in pos:')
         const bottomMargin = 5
         const modalWidth = 304
-        const modalHeight = 400
+        let modalHeight
         let posToRender = 'downRight'
 
-        if (elementStartLeft + modalWidth > windowSize.width) posToRender = "downLeft"
+        console.log('modalDetails.name: ', modalDetails.name);
+        switch (modalDetails.name) {
+            case 'add checklists':
+            case 'attachment':
+
+                modalHeight = 220
+                break;
+
+            default:
+                break;
+        }
+
+        console.log('modalHeight: ', modalHeight);
+
+        if (modalDetails.size === 'm') modalHeight = 370
+        if (modalDetails.size === 'l') modalHeight = 480
+
+        if (modalPos.x + modalWidth > windowSize.width) posToRender = "downLeft"
         if (elementStartBottom + modalHeight > windowSize.height) posToRender = "upRight"
+
         switch (posToRender) {
             case 'downRight':
                 return {

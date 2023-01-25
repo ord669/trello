@@ -7,17 +7,14 @@ import { ImgUploader } from "../../../img-uploader";
 export function AttachmentModal({ board, currTask, getMembers, onSelectMember }) {
 
     const [attachment, setAttachment, handleChange] = useForm('')
-    console.log('attachment: ', attachment);
+
     const [title, setTitle, handleChangeTitle] = useForm('')
-    console.log('title: ', title);
-    console.log('currTask: ', currTask);
+
+
 
     async function onUploadedAttach(url, title = 'uploded img') {
-        console.log('url: ', url)
-
         currTask.attachments.push(taskService.getAttachment(url, title))
         // currTask.attachments.push({ 'file': url, title, createdAt: utilService.makeId() })
-        console.log('currTask: ', currTask);
         try {
             saveTask(currTask)
         } catch (err) {
