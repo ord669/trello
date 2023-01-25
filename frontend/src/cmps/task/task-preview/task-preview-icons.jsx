@@ -21,16 +21,13 @@ export function TaskPreviewIcons({ task }) {
 
     async function setDueDateIsDone(ev) {
         ev.stopPropagation()
-
-        const updatedTask = { ...task }
-        updatedTask.isDone = !updatedTask.isDone
+        task.isDone = !task.isDone
         try {
-            await saveTask(updatedTask)
+            await saveTask(task)
             showSuccessMsg('Task is Done')
 
         } catch (err) {
             console.log(err)
-
         }
 
 
