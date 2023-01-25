@@ -10,7 +10,7 @@ async function query(filterBy = { title: '' }) {
         // console.log('criteria: ', criteria);
         const collection = await dbService.getCollection('board')
         const boards = await collection.find().toArray()
-        console.log('boards: ', boards);
+        console.log('boards: ', boards)
         return boards
     } catch (err) {
         logger.error('cannot find boards', err)
@@ -76,10 +76,27 @@ async function update(board) {
     }
 }
 
+async function addGroupToBoard(boardId, group) {
+    try {
+        group._id = utilService.makeId()
+        const collection = await dbService.getCollection('board')
+        await collection.updateOne({ _id: ObjectId(boardId) }, { $push: { 'groups': group } })
+        return group
+    } catch (err) {
+        logger.error('cannot insert board', err)
+        throw err
+    }
+}
 
-async function updatedGroup(taskId, groupId, boardId) {
-
-
+async function updateGroupToBoard(boardId,group){
+    try {
+        const collection = await dbService.getCollection('board')
+        await collection.updateOne({ _id: ObjectId(boardId) }, { $push: { 'groups': group } })
+        return group
+    } catch (err) {
+        logger.error('cannot insert board', err)
+        throw err
+    }
 }
 
 
@@ -97,5 +114,5 @@ module.exports = {
     getById,
     add,
     update,
-    updatedGroup
+    addGroupToBoard,
 }

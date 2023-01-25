@@ -1,4 +1,4 @@
-import { boardService } from "../../services/board.service.local"
+import { boardService } from "../../services/board.service"
 import { taskService } from "../../services/task.service.local"
 import { utilService } from "../../services/util.service"
 import { store } from '../store'
@@ -30,6 +30,7 @@ export async function removeGroup(groupId) {
 }
 
 export async function saveGroup(group) {
+    console.log('group:', group);
     const type = (group._id) ? UPDATE_GROUP : ADD_GROUP
     const { board } = store.getState().boardModule
     try {

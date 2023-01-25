@@ -18,12 +18,17 @@ export const boardService = {
     getBgImgsURL,
     getImgsFromUnsplash,
     getColors,
-    filterGroupsTasks
+    filterGroupsTasks,
+    getEmptyGroup,
+    saveGroup,
+    removeGroup,
+    reorderGroups,
 
 }
 
 async function query(filterBy = { title: '' }) {
-    return httpService.get(BASE_URL)
+    const queryParams = `?title=${filterBy.title}`
+    return httpService.get(BASE_URL + queryParams)
 }
 
 function filterGroupsTasks(board, filterBy = { title: '' }) {
@@ -38,26 +43,24 @@ function filterGroupsTasks(board, filterBy = { title: '' }) {
     return filterdBoard
 }
 
+function getById(boardId) {
+    return httpService.get(BASE_URL + boardId)
+}
+
 async function remove(boardId) {
-    return httpService.delete(`board/${boardId}`)
+    return httpService.delete(BASE_URL + boardId)
 }
 
 async function save(board) {
     var savedBoard
     if (board._id) {
-        savedBoard = await httpService.put(`board/${board._id}`, board)
-
+        savedBoard = await httpService.put(BASE_URL + board._id, board)
     } else {
         // Later, owner is set by the backend
         // board.owner = userService.getLoggedinUser()
-
         savedBoard = await httpService.post('board', board)
     }
     return savedBoard
-}
-
-function getById(boardId) {
-    return httpService.get(`board/${boardId}`)
 }
 
 function getEmptyBoard(title = '') {
@@ -76,8 +79,51 @@ function getEmptyBoard(title = '') {
         members: []
     }
 }
+
 function getEmpteyFilter() {
     return { title: '' }
+}
+
+function getEmptyGroup(title = 'New group') {
+    return {
+        title,
+        tasks: [],
+        style: {},
+        archivedAt: null
+    }
+}
+
+// async function removeGroup(board, groupId) {
+function removeGroup(board, groupId) {
+    try {
+        board.groups = board.groups.filter(group => group._id !== groupId)
+        save(board)
+        // await save(board)
+    } catch (err) {
+        console.log('Cannot remove group: ', err)
+        throw err
+    }
+}
+
+async function saveGroup(boardId, group) {
+    let savedGroup
+    try {
+        if (group._id) {
+            savedGroup = httpService.put(BASE_URL + boardId + '/group', group)
+        } else {
+            savedGroup = httpService.post(BASE_URL + boardId + '/group', group)
+        }
+        return savedGroup
+    } catch (err) {
+        console.log('Cannot save group: ', err)
+        throw err
+    }
+}
+
+function reorderGroups(source, destination, groups) {
+    const [group] = groups.splice(source.index, 1)
+    groups.splice(destination.index, 0, group)
+    return groups
 }
 
 function getBgImgsURL() {

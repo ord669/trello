@@ -165,6 +165,21 @@ function getBgImgsURL() {
     ]
 }
 
+async function getImgsFromUnsplash(val = 'london') {
+    const url = `https://api.unsplash.com/search/photos?query=${val}&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4`
+    // return fetch(url).then((res) => res.json())
+    try {
+        const res = await fetch(url)
+        return res.json()
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+function getColors() {
+    return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91', '#172b4d']
+}
+
 function _createBoard(title, url, isStarred) {
     const board = getEmptyBoard(title)
     return {
@@ -1374,19 +1389,4 @@ function _createBoards() {
         ]
         utilService.saveToStorage(STORAGE_KEY, boards)
     }
-}
-
-async function getImgsFromUnsplash(val = 'london') {
-    const url = `https://api.unsplash.com/search/photos?query=${val}&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4`
-    // return fetch(url).then((res) => res.json())
-    try {
-        const res = await fetch(url)
-        return res.json()
-    } catch (err) {
-        console.error(err)
-    }
-}
-
-function getColors() {
-    return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91', '#172b4d']
 }
