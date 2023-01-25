@@ -15,7 +15,7 @@ export const boardService = {
     saveGroup,
     reorderGroups,
     getEmptyBoard,
-    addBoardActivity,
+    // addBoardActivity,
     getEmpteyFilter,
     getEmptyGroup,
     filterGroupsTasks,
@@ -65,18 +65,18 @@ async function save(board) {
     return savedBoard
 }
 
-async function addBoardActivity(boardId, txt) {
-    const board = await getById(boardId)
-    if (!board.activities) board.activities = []
-    const activity = {
-        id: utilService.makeId(),
-        by: userService.getLoggedinUser(),
-        txt
-    }
-    board.activities.push(activity)
-    await storageService.put(STORAGE_KEY, board)
-    return activity
-}
+// async function addBoardActivity(boardId, txt) {
+//     const board = await getById(boardId)
+//     if (!board.activities) board.activities = []
+//     const activity = {
+//         id: utilService.makeId(),
+//         by: userService.getLoggedinUser(),
+//         txt
+//     }
+//     board.activities.push(activity)
+//     await storageService.put(STORAGE_KEY, board)
+//     return activity
+// }
 
 function getEmptyBoard(title = '') {
     return {
@@ -90,10 +90,7 @@ function getEmptyBoard(title = '') {
             "background": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1673811922/samples/landscapes/architecture-signs.jpg"
 
         },
-        // style: {
-        //     bgImgURL: "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1281x1920/d808adc6ff4e58b7a4620bf4f70a729f/photo-1667391557801-53f64f0a5ffa.jpg",
-        //     bgColor: ""
-        // },
+
         members: []
     }
 }

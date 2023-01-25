@@ -8,7 +8,7 @@
         "imgUrl": "https://robohash.org/Or?set=set5"
     },
     "style": {
-        "background": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1673811922/samples/landscapes/architecture-signs.jpg",
+        "background": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1673811922/samples/landscapes/architecture-signs.jpg"
     },
     "labels": [
         {
@@ -73,7 +73,7 @@
             "title": "In Development",
             "archivedAt": 1589983468410,
             "tasksId": [
-                "63cdb0b283600a17ffbb74b8"
+                "63d03fc21271af120cadaa44"
             ],
             "style": {}
         },
@@ -82,10 +82,10 @@
             "title": "Backlog-Server",
             "archivedAt": 1589983478560,
             "tasksId": [
-                "63cdb0b283600a17ffbb74b9",
-                "63cdb0b283600a17ffbb74ba",
-                "63cdb0b283600a17ffbb74bb",
-                "63cdb0b283600a17ffbb74bc"
+                "63d03fc21271af120cadaa45",
+                "63d03fc21271af120cadaa46",
+                "63d03fc21271af120cadaa47",
+                "63d03fc21271af120cadaa48"
             ],
             "style": {}
         },
@@ -94,9 +94,9 @@
             "title": "Backlog-clinet",
             "archivedAt": 1589983878560,
             "tasksId": [
-                "63cdb0b283600a17ffbb74bd",
-                "63cdb0b283600a17ffbb74be",
-                "63cdb0b283600a17ffbb74bf"
+                "63d03fc21271af120cadaa49",
+                "63d03fc21271af120cadaa4a",
+                "63d03fc21271af120cadaa4b"
             ],
             "style": {}
         },
@@ -105,10 +105,10 @@
             "title": "Done",
             "archivedAt": 1612483878560,
             "tasksId": [
-                "63cdb0b283600a17ffbb74c0",
-                "63cdb0b283600a17ffbb74c1",
-                "63cdb0b283600a17ffbb74c2",
-                "63cdb0b283600a17ffbb74c3"
+                "63d03fc21271af120cadaa4c",
+                "63d03fc21271af120cadaa4d",
+                "63d03fc21271af120cadaa4e",
+                "63d03fc21271af120cadaa4f"
             ],
             "style": {}
         },
@@ -117,11 +117,11 @@
             "title": "QA",
             "archivedAt": 1652483878560,
             "tasksId": [
-                "63cdb0b283600a17ffbb74c4",
-                "63cdb0b283600a17ffbb74c5",
-                "63cdb0b283600a17ffbb74c6",
-                "63cdb0b283600a17ffbb74c7",
-                "63cdb0b283600a17ffbb74c8"
+                "63d03fc21271af120cadaa50",
+                "63d03fc21271af120cadaa51",
+                "63d03fc21271af120cadaa52",
+                "63d03fc21271af120cadaa53",
+                "63d03fc21271af120cadaa54"
             ],
             "style": {}
         }

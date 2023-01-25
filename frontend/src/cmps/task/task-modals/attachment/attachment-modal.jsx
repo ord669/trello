@@ -10,8 +10,6 @@ export function AttachmentModal({ board, currTask, getMembers, onSelectMember })
 
     const [title, setTitle, handleChangeTitle] = useForm('')
 
-
-
     async function onUploadedAttach(url, title = 'uploded img') {
         currTask.attachments.push(taskService.getAttachment(url, title))
         // currTask.attachments.push({ 'file': url, title, createdAt: utilService.makeId() })

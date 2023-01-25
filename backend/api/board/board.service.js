@@ -6,9 +6,11 @@ const taskService = require('../task/task.service')
 
 async function query(filterBy = { title: '' }) {
     try {
-        const criteria = _buildCriteria(filterBy)
+        // const criteria = _buildCriteria(filterBy)
+        // console.log('criteria: ', criteria);
         const collection = await dbService.getCollection('board')
-        const boards = await collection.find(criteria).toArray()
+        const boards = await collection.find().toArray()
+        console.log('boards: ', boards);
         return boards
     } catch (err) {
         logger.error('cannot find boards', err)
@@ -75,6 +77,12 @@ async function update(board) {
 }
 
 
+async function updatedGroup(taskId, groupId, boardId) {
+
+
+}
+
+
 function _buildCriteria(filterBy) {
     const criteria = {}
     if (filterBy.title !== 'undefined') criteria.title = filterBy.title
@@ -89,4 +97,5 @@ module.exports = {
     getById,
     add,
     update,
+    updatedGroup
 }

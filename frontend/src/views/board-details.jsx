@@ -41,6 +41,7 @@ export function BoardDetails() {
     return (
         <section style={getBgStyle()} className={isOpenMenu ? 'board-details open-menu' : 'board-details'}>
             <ToolBar board={board} />
+
             <GroupList groups={board?.groups || []} board={board} />
             {!isOpenMenu && <section className="open-main-menu">
                 <div onClick={() => setIsOpenMenu(prev => !prev)} className="icon-container"><ArrowDownIcon /></div>

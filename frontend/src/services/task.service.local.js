@@ -1,23 +1,40 @@
+import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 
 export const taskService = {
     setTaskInBoard,
-    removeTaskFromBoard,
     getEmptyTask,
     createChecklists,
     getEmptyTodo,
     getEmptyComment,
     getEmptyChecklist,
     getAttachment,
+    remove,
+    save,
     getMembers,
     reorderTasks,
 }
 
-function setTaskInBoard() {
 
+async function remove(taskId) {
+    return httpService.delete(`task/${taskId}`)
 }
 
-function removeTaskFromBoard() {
+async function save(task) {
+    var savedTask
+    if (task._id) {
+        savedTask = await httpService.put(`task/${task._id}`, task)
+    } else {
+        // Later, owner is set by the backend
+        // board.owner = userService.getLoggedinUser()
+        savedTask = await httpService.post('task', task)
+    }
+    return savedTask
+}
+
+
+
+function setTaskInBoard() {
 
 }
 

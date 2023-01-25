@@ -99,6 +99,7 @@ async function add(task) {
         // }
         const collection = await dbService.getCollection('task')
         await collection.insertOne(task)
+
         return task
     } catch (err) {
         logger.error('cannot insert task', err)

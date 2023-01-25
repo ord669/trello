@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm } from "../../../../customHooks/useForm";
-import { boardService } from "../../../../services/board.service.local";
+import { boardService } from "../../../../services/board.service";
 import { saveTask } from "../../../../store/board/board.action";
 import { ImgUploader } from "../../../img-uploader";
 

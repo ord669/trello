@@ -1,6 +1,6 @@
 import { ArrowLeftIcon, CloseIcon, ActivityIcon } from "../assets/svg/icon-library";
 import { useEffect, useRef, useState } from "react"
-import { boardService } from "../services/board.service.local";
+import { boardService } from "../services/board.service";
 import { BoardAddBg } from "./board-add-bg";
 import { BoardActivity } from "./board-activity";
 
@@ -8,7 +8,6 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
     const [isChangeBg, setIsChangeBg] = useState(false)
     const [isOpenBg, setIsOpenBg] = useState(false)
     const [type, setType] = useState('')
-
 
     function onCloseSideMenu() {
         setIsChangeBg(false)
@@ -36,10 +35,6 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
         }
         return style
     }
-
-
-
-
 
     return (
         <section className={isOpenSideMenu ? 'board-side-menu open' : 'board-side-menu'}>
@@ -86,7 +81,6 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
                     </div>
                 }
             </section>}
-
 
         </section >
     )
