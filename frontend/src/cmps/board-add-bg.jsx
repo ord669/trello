@@ -12,7 +12,7 @@ export function BoardAddBg({ board, type }) {
 
     async function onChangeBoardBg(bg) {
         console.log('bg: ', bg);
-        const updatedBoard = board
+        const updatedBoard = { ...board }
         updatedBoard.style.background = bg
         try {
             await saveBoard(updatedBoard)

@@ -1,7 +1,8 @@
 import { ArchiveImge, AttachmentIcon, ChecklistIcon, ClockIcon, LabelIcon, ManIcon, CopyIcon } from "../../../assets/svg/icon-library"
 import { closeDynamicModal, openDynamicModal } from "../../../store/modal/modal.action"
+import { FiCreditCard } from "react-icons/fi";
 
-export function TaskDetailsSideMenu({ onRemoveTask, addCheckList, task }) {
+export function TaskDetailsSideMenu({ onRemoveTask, addCheckList, task, setnoBg }) {
 
     return (
         <section className='task-details-side-menu'>
@@ -29,6 +30,11 @@ export function TaskDetailsSideMenu({ onRemoveTask, addCheckList, task }) {
 
                 <button onClick={(ev) => openDynamicModal({ ev, name: 'copy card', task })} className="attachment-icon details-btn-side-menu"> <CopyIcon /> Copy</button>
 
+                {/* ---------------------Cover--------------------- */}
+                <button onClick={(ev) => openDynamicModal({ ev, name: 'cover', task, func: { setnoBg } })} className="details-btn-side-menu btn-side-menu-cover-svg">
+                    <FiCreditCard />
+                    <span>Change cover</span>
+                </button>
                 {/* ------------------------------------------ */}
                 <button onClick={onRemoveTask} className="details-btn-side-menu"> <ArchiveImge /> Archive</button>
             </section>

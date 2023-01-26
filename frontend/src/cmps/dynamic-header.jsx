@@ -6,7 +6,6 @@ import { HomeHeader } from './home-header'
 export function DynamicHeader() {
     const location = useLocation().pathname
     const [isHome, setIsHome] = useState(false)
-    console.log('isHome: ', isHome);
 
     useEffect(() => {
         if (location.length > 1) setIsHome(false)

@@ -83,7 +83,7 @@ export function TaskPreviewIcons({ task }) {
     return (
         <section className='task-preview-icons flex align-center gap-10 '>
             {!!task.checklists.length && <div style={checkListStyle()} className="tpi-checklists ">
-                <ChecklistIcon />
+                <ChecklistIcon style={{ fill: 'red' }} />
                 <div >
                     {allTodosIsDone}/{allTodosLength}
                 </div>

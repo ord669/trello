@@ -8,12 +8,14 @@ import { useEffect } from "react"
 import { useRef } from "react"
 import { QuickTaskEdit } from "../quick-task-edit"
 import { useState } from "react"
+import { TaskPreviewLabels } from "./task-preview-mini-labels"
 
 export function TaskPreview({ task, idx }) {
     const navigate = useNavigate()
     const elTaskPreview = useRef()
     const [quickEditModalPos, setQuickEditModalPos] = useState(null)
     const [isQuickEdit, setIsQuickEdit] = useState(false)
+    const [isShownLabels, setIsShownLabels] = useState(false)
 
     let background
 
@@ -46,6 +48,12 @@ export function TaskPreview({ task, idx }) {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
         }
+
+    }
+
+    function setLabelsShown(ev) {
+        ev.stopPropagation()
+        setIsShownLabels(prev => !prev)
 
     }
 

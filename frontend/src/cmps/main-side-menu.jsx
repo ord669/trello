@@ -17,7 +17,7 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
         setDynamicColor()
         loadBoards()
 
-    }, [])
+    }, [board])
     console.log('boards:', boards)
     async function setAvgColor() {
         const bg = board.style.background

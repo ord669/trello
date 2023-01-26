@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux'
 export function AppHeader() {
     const navigate = useNavigate()
     const location = useLocation().pathname
+    console.log('location: ', location.length);
     const [isRecent, setIsRecent] = useState(false)
     const [isStarred, setIsStarred] = useState(false)
     const [isCreateBoard, setIsCreateBoard] = useState(false)
@@ -22,6 +23,7 @@ export function AppHeader() {
     useEffect(() => {
         setAvgColor()
         setDynamicColor()
+        getBgStyle()
 
     }, [board])
 
@@ -60,16 +62,14 @@ export function AppHeader() {
         }
         const bg = board.style.background
         if (location.length === 6) {
-            console.log('location:', location)
             style = {
                 background: "#026AA7",
+                color: "#fff",
                 fill: '#fff',
-                fill: boardColor
             }
         }
 
         else if (bg.includes('https')) {
-            console.log('1:', 1)
             style = {
                 background: color.hex,
                 color: boardColor,
@@ -78,7 +78,6 @@ export function AppHeader() {
             }
         }
         else {
-            console.log('2:', 2)
             style = {
                 background: darkenHexColor(bg),
                 color: boardColor,
@@ -112,11 +111,20 @@ export function AppHeader() {
 
     }
 
-    // if (!board || !color) return
+    function logoStyle() {
+        let style = {}
+        if (location.length === 6) {
+            style = {
+                fill: '#fff'
+            }
+        }
+        return style
+    }
+    if (!board && location.length !== 6) return
     return (
         <header className='app-header full' style={getBgStyle()} >
             <div className='flex align-center' >
-                <div className='header-logo flex align-center'>
+                <div style={logoStyle()} className='header-logo flex align-center'>
                     <MainLogo />
                     <span onClick={() => navigate(`/`)}>Jarvis</span>
                 </div>
@@ -135,9 +143,12 @@ export function AppHeader() {
                     </div>
                 </div>
             </div>
-            <div>
+            <div className='header-sec-container'>
                 <button onClick={() => setIsNotification((prev) => !prev)} className="header-icon"> <BellIcon /></button>
                 {isNotification && <BoardNotification />}
+                <div className="account-item">
+                    <span>O</span>
+                </div>
             </div>
 
         </header>

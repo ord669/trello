@@ -11,15 +11,22 @@ import { DynamicModal } from "../cmps/dynamic-modal"
 import { MainSidemenu } from "../cmps/main-side-menu"
 import { useState } from "react"
 import { QuickTaskEdit } from "../cmps/task/quick-task-edit"
+import { useDispatch } from "react-redux"
+import { SET_BOARD } from "../store/board/board.reducer"
 
 export function BoardDetails() {
     const { dynamicModalStatus } = useSelector(storeState => storeState.modalModule)
     const { board } = useSelector(storeState => storeState.boardModule)
     const { boardId } = useParams()
     const [isOpenMenu, setIsOpenMenu] = useState(false)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         loadBoard(boardId)
+
+        return () => {
+            dispatch({ type: SET_BOARD, board: null })
+        }
     }, [boardId])
 
     function getBgStyle() {
@@ -37,7 +44,9 @@ export function BoardDetails() {
         }
         return style
     }
-    if (!board) return <div className="loader"><LoaderIcon /></div>
+    if (!board) return <div style={{
+        marginTop: "100px"
+    }} className="loader" > <LoaderIcon /></div >
     return (
         <section style={getBgStyle()} className={isOpenMenu ? 'board-details open-menu' : 'board-details'}>
             <ToolBar board={board} />

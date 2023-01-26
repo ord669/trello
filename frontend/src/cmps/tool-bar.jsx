@@ -23,7 +23,7 @@ export function ToolBar({ board }) {
     useEffect(() => {
         setTitle(board.title)
         setDynamicColor()
-    }, [board])
+    }, [board, color])
 
     function handleChange({ target }) {
         setTitle(target.value)
@@ -103,7 +103,6 @@ export function ToolBar({ board }) {
                     {board.members.map(member =>
                         <div key={member._id}><UserAvatarIcon member={member} /></div>
                     )}
-                    <span className="span">|</span>
 
                 </div>
                 <button style={btnShareBg} onClick={() => setIsOpenShare(prev => !prev)} className="btn-share"><ManShareIcon /> Share</button>
@@ -114,7 +113,6 @@ export function ToolBar({ board }) {
                 </button>
                 <BoardSideMenu isOpenSideMenu={isOpenSideMenu} board={board}
                     setIsOpenSideMenu={setIsOpenSideMenu} />
-
                 {isOpenShare && <ShareModal setIsOpenShare={setIsOpenShare} />}
 
 
