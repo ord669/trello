@@ -153,8 +153,11 @@ function getEmptyGroup(title = 'New group') {
 
 // async function removeGroup(board, groupId) {
 function removeGroup(boardId, groupId) {
+    const board = getById(boardId)
     try {
-        return httpService.delete(`${BASE_URL}${boardId}/${groupId} `)
+        board.filter(group => group._id !== groupId)
+        save(board)
+        return groupId
     } catch (err) {
         console.log('Cannot remove group: ', err)
         throw err
@@ -162,14 +165,16 @@ function removeGroup(boardId, groupId) {
 }
 
 async function saveGroup(boardId, group) {
-    let savedGroup
+    const board = getById(boardId)
     try {
         if (group._id) {
-            savedGroup = httpService.put(BASE_URL + boardId + '/group', group)
+            board.groups.map(currGroup => currGroup._id === group._id ? group : currGroup)
         } else {
-            savedGroup = httpService.post(BASE_URL + boardId + '/group', group)
+            group._id = utilService.makeId()
+            board.groups.push(group)
         }
-        return savedGroup
+        save(board)
+        return group
     } catch (err) {
         console.log('Cannot save group: ', err)
         throw err
