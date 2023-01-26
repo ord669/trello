@@ -1,5 +1,10 @@
+import { storageService } from './async-storage.service.js'
+import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 
+const STORAGE_KEY = 'tasks'
+const tasks = []
+storageService._save(STORAGE_KEY, tasks)
 export const taskService = {
     remove,
     save,
@@ -13,12 +18,61 @@ export const taskService = {
     reorderTasks,
 }
 
-async function remove(taskId) {
+// async function remove(boardId, groupId, taskId) {
+//     console.log('boardId, groupId, taskId:', boardId, groupId, taskId);
+//     return httpService.delete(`task/${boardId}/${groupId}/${taskId}`)
+// }
 
+// async function save(boardId, task) {
+//     console.log('boardId:', boardId);
+//     let savedTask
+//     if (task._id) {
+//         savedTask = await httpService.put(`task/${boardId}/${task._id}`, task)
+//     } else {
+//         // Later, owner is set by the backend
+//         // board.owner = userService.getLoggedinUser()
+//         savedTask = await httpService.post(`task/${boardId}`, task)
+//     }
+//     return savedTask
+// }
+// async function remove(taskId) {
+//     return httpService.delete(`task/${taskId}`)
+// }
+
+async function remove(taskId) {
+    await storageService.remove(STORAGE_KEY, taskId)
 }
 
 async function save(task) {
-  
+    let savedTask
+    if (task._id) {
+        savedTask = await storageService.put(STORAGE_KEY, task)
+    } else {
+        // Later, owner is set by the backend
+        // board.owner = userService.getLoggedinUser()
+        savedTask = await storageService.post(STORAGE_KEY, task)
+    }
+    return savedTask
+}
+
+async function reorderTasks(source, destination, groups) {
+    const sourceGroup = groups.find(group => group._id === source.droppableId)
+    const [task] = sourceGroup.tasks.splice(source.index, 1)
+    sourceGroup.tasksId.splice(source.index, 1)
+    const destinationGroup = groups.find(group => group._id === destination.droppableId)
+    task.groupId = destinationGroup._id
+    // save(task)
+    // try {
+    //     await save(task)
+    //     destinationGroup.tasks.splice(destination.index, 0, task)
+    //     destinationGroup.tasksId.splice(destination.index, 0, task._id)
+    //     return groups
+    // } catch (err) {
+    //     console.log('Cannot save task drag', err)
+    // }
+    destinationGroup.tasks.splice(destination.index, 0, task)
+    destinationGroup.tasksId.splice(destination.index, 0, task._id)
+    return groups
 }
 
 function createChecklists(title = 'checklists', todoTitle = 'Write Your Todo') {
@@ -55,18 +109,10 @@ function getEmptyChecklist() {
 
 function getEmptyTodo() {
     return {
-        // "_id": utilService.makeId(),
+        "_id": utilService.makeId(),
         "title": "",
         "isDone": false
     }
-}
-
-function reorderTasks(source, destination, groups) {
-    const sourceGroup = groups.find(group => group._id === source.droppableId)
-    const [task] = sourceGroup.tasks.splice(source.index, 1)
-    const destinationGroup = groups.find(group => group._id === destination.droppableId)
-    destinationGroup.tasks.splice(destination.index, 0, task)
-    return groups
 }
 
 function getEmptyComment() {
@@ -77,87 +123,39 @@ function getEmptyComment() {
         "byMember": {
             "_id": "u101",
             "fullname": "Or Dvir",
-            "imgUrl": "https://robohash.org/Or?set=set5"
+            "imgUrl": "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg"
         },
     }
 }
 
 function getEmptyTask() {
     return {
-        // "_id": '',
-        "title": '',
+        "title": "",
         "archivedAt": Date.now(),
         "description": "description",
         "comments": [],
-        "checklists": [
-            {
-                "_id": "YEhmF",
-                "title": "Checklist",
-                "todos": [
-                    {
-                        "_id": "212jX",
-                        "title": "Make the header responsive",
-                        "isDone": false
-                    }
-                ]
-            }
-        ],
-        "memberIds": [
-            "u102"
-        ],
-        "labelIds": [
-            "l104"
-        ],
-        "dueDate": 16156215211,
+        "checklists": [],
+        "memberIds": [],
+        "labelIds": [],
+        "dueDate": 0,
+        "isDone": false,
         "byMember": {
             "_id": "u103",
             "username": "Oren Sharizad",
             "fullname": "Oren Sharizad",
-            "imgUrl": "https://robohash.org/oren?set=set5"
+            "imgUrl": "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg"
         },
         "style": {
-            "bgColor": "#26de81",
-            "img": "#26de81"
+            "background": ""
         },
-        "Attachments": {
-            "file": "https://trello.com/1/cards/63c6c7e1fa702b025564cfd9/attachments/63c6c7f3d750200091545a10/download/3-Types-of-Functional-Testing.png"
-        },
-        "activity": [
-            {
-                "_id": "a101",
-                "txt": "added Checklist to this card",
-                "createdAt": 154513,
-                "byMember": {
-                    "_id": "u103",
-                    "username": "Oren Sharizad",
-                    "fullname": "Oren Sharizad",
-                    "imgUrl": "https://robohash.org/oren?set=set5"
-                }
-            },
-            {
-                "_id": "a102",
-                "txt": "attached 3-Types-of-Functional-Testing.png to this card",
-                "createdAt": 154512,
-                "byMember": {
-                    "_id": "u103",
-                    "username": "Oren Sharizad",
-                    "fullname": "Oren Sharizad",
-                    "imgUrl": "https://robohash.org/oren?set=set5"
-                }
-            },
-            {
-                "_id": "a103",
-                "txt": "added this card to In Development",
-                "createdAt": 154511,
-                "byMember": {
-                    "_id": "u103",
-                    "username": "Oren Sharizad",
-                    "fullname": "Oren Sharizad",
-                    "imgUrl": "https://robohash.org/oren?set=set5"
-                }
-            }
-        ],
-        "groupId": ''
+        "attachments": [{
+            "createdAt": 1589989488411,
+            "_id": "l1",
+            "title": "",
+            "file": "https://trello.com/1/cards/63c6cabe12d00103d58557be/attachments/63c6cad25bf8c801a3c857e3/download/featured-image-PWA.png"
+        }],
+        "activity": [],
+        "groupId": "",
     }
 }
 
@@ -166,12 +164,10 @@ function getMembers(board, task) {
     return members
 }
 
-
-
-
-
-
-
-
-
-
+// async function onCoverChangeBg(task, bg) {
+//     task.style.background = bg
+//     try {
+//     } catch (err) {
+//         console.log('err', err)
+//     }
+// }

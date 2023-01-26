@@ -11,7 +11,6 @@ import { useSelector } from 'react-redux'
 export function AppHeader() {
     const navigate = useNavigate()
     const location = useLocation().pathname
-    console.log('location: ', location.length);
     const [isRecent, setIsRecent] = useState(false)
     const [isStarred, setIsStarred] = useState(false)
     const [isCreateBoard, setIsCreateBoard] = useState(false)
