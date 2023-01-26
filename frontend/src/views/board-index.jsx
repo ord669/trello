@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { Clock, EmptyStarIcon } from "../assets/svg/icon-library"
 import { BoardList } from "../cmps/board-list"
-import { boardService } from "../services/board.service"
+import { boardService } from "../services/board.service.local"
+// import { boardService } from "../services/board.service"
 
 export function BoardIndex() {
     const [boards, setBoards] = useState([])

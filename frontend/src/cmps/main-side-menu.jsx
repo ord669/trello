@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import tinycolor from "tinycolor2";
 import { ArrowDownIcon, ArrowLeftIcon, BoardIcon, LoaderIcon } from "../assets/svg/icon-library";
-import { boardService } from "../services/board.service";
+import { boardService } from "../services/board.service.local";
+// import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
 import { BoardStarred } from "./board-starred";
 

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { LoaderIcon, ManIcon } from "../assets/svg/icon-library"
-import { boardService } from "../services/board.service"
+import { boardService } from "../services/board.service.local"
+// import { boardService } from "../services/board.service"
 import { utilService } from "../services/util.service"
 import { saveBoard } from "../store/board/board.action"
 

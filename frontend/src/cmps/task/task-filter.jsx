@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { CloseIcon } from "../../assets/svg/icon-library"
-import { boardService } from "../../services/board.service"
+import { boardService } from "../../services/board.service.local"
+// import { boardService } from "../../services/board.service"
 import { loadBoard } from "../../store/board/board.action"
 
 export function TaskFilter({ setIsOpenFilter, boardId }) {
