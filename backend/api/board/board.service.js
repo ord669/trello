@@ -166,6 +166,7 @@ function _buildCriteria(filterBy) {
     if (filterBy.title !== 'undefined') criteria.title = filterBy.title
     return criteria
 }
+
 // getAiBoardFromChat()
 async function getAiBoardFromChat() {
     try {
@@ -184,6 +185,7 @@ async function getAiBoardFromChat() {
             }
             return acc
         }, [])
+        console.log('groups: ', groups);
 
         const newGroups = groups.map(group => {
             const newGroup = _createAiGroup(group.groupTitle)
@@ -198,6 +200,7 @@ async function getAiBoardFromChat() {
 
         const aiBoardWithId = await add(aiBoard)
 
+        // console.log('getById(aiBoardWithId._id): ', getById(aiBoardWithId._id));
         return await getById(aiBoardWithId._id)
 
     } catch (err) {
