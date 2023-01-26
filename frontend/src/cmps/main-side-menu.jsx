@@ -12,8 +12,6 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
     const [boards, setBoards] = useState([])
     const navigate = useNavigate()
 
-
-
     useEffect(() => {
         setAvgColor()
         setDynamicColor()
@@ -110,7 +108,6 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
         return style
     }
 
-
     // if (!board || !color) return <div className="loader"><LoaderIcon /></div>
     return (
 
@@ -144,4 +141,3 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
         </section>
     )
 }
-
