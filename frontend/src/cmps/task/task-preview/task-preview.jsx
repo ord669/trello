@@ -8,13 +8,14 @@ import { useEffect } from "react"
 import { useRef } from "react"
 import { QuickTaskEdit } from "../quick-task-edit"
 import { useState } from "react"
+import { TaskPreviewLabels } from "./task-preview-mini-labels"
 
 export function TaskPreview({ task, idx }) {
-    console.log('task id:', task._id);
     const navigate = useNavigate()
     const elTaskPreview = useRef()
     const [quickEditModalPos, setQuickEditModalPos] = useState(null)
     const [isQuickEdit, setIsQuickEdit] = useState(false)
+    const [isShownLabels, setIsShownLabels] = useState(false)
 
     let background
 
@@ -50,6 +51,12 @@ export function TaskPreview({ task, idx }) {
 
     }
 
+    function setLabelsShown(ev) {
+        ev.stopPropagation()
+        setIsShownLabels(prev => !prev)
+
+    }
+
     // function taskPreviewImgCover() {
     //     if (task.style.bgColor) return styleBgColor
     //     if (task.style.img) return styleBgImg
@@ -79,8 +86,20 @@ export function TaskPreview({ task, idx }) {
                         {task.style && <div style={background} className="task-preview-comver-img">
                         </div>}
                         <div className="task-preview-details">
-                            {task.labelIds &&
-                                <MiniLabelList task={task} />}
+
+                            {/* <button onClick={(ev) => setLabelsShown(ev)}>
+                                {isShownLabels
+                                    ?
+                                    <LabelPreview task={task} />
+                                    // <LabelPreview({ labelId, task })
+                                    :
+                                    <MiniLabelList task={task} />}
+                            </button> */}
+
+                            {
+                                task.labelIds && <MiniLabelList task={task} />
+                            }
+
                             <p>{task.title}</p>
                             {<TaskPreviewIcons task={task} />}
                             <div>

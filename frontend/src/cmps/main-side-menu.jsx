@@ -19,7 +19,7 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
         setDynamicColor()
         loadBoards()
 
-    }, [])
+    }, [board])
     console.log('boards:', boards)
     async function setAvgColor() {
         const bg = board.style.background
@@ -131,7 +131,7 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
 
                 {boards && boards.map(board =>
                     <div key={board._id} className="msm-boards-list">
-                        <div onClick={() => navigate(`/board${board._id}`)} key={board._id} className="msm-card">
+                        <div onClick={() => navigate(`/board/${board._id}`)} key={board._id} className="msm-card">
                             <div className="flex align-center gap-10">
                                 <div className="msm-card-bg" style={getBgStyle(board.style.background)}></div>
                                 <p>{board.title}</p>

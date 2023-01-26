@@ -9,6 +9,8 @@ button {
 .btn {
     background-color: rgba(0, 0, 0, 0.1);
     border: none;
+    backdrop-filter: contrast(0.5);
+
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.2);

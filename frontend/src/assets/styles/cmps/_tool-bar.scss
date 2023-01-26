@@ -1,6 +1,5 @@
 .tool-bar {
-    padding: 6px 4px 6px 32px;
-    margin-top: 9px;
+    padding: 8px 4px 8px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -48,12 +47,14 @@
         .span {
             font-size: 1.3rem;
             color: inherit;
+            opacity: 0.5;
+            font-weight: 100;
         }
 
     }
 
     .tool-bar-star {
-        // background-color: $clr10;
+        background-color: rgba(255, 255, 255, 0.2);
         backdrop-filter: contrast(0.5);
 
         border-radius: 3px;
@@ -83,5 +84,7 @@
         width: 16px;
         height: 16px;
     }
+
+
 
 }
