@@ -31,7 +31,7 @@ export function TaskDetailsSideMenu({ onRemoveTask, addCheckList, task, setnoBg 
                 <button onClick={(ev) => openDynamicModal({ ev, name: 'copy card', task })} className="attachment-icon details-btn-side-menu"> <CopyIcon /> Copy</button>
 
                 {/* ---------------------Cover--------------------- */}
-                <button onClick={(ev) => openDynamicModal({ ev, name: 'cover', task, func: { setnoBg } })} className="details-btn-side-menu">
+                <button onClick={(ev) => openDynamicModal({ ev, name: 'cover', task, func: { setnoBg } })} className="details-btn-side-menu btn-side-menu-cover-svg">
                     <FiCreditCard />
                     <span>Change cover</span>
                 </button>
