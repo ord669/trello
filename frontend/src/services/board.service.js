@@ -37,7 +37,6 @@ function filterGroupsTasks(board, filterBy = { title: '' }) {
         const regex = new RegExp(filterBy.title, 'i')
         filterdBoard.groups = filterdBoard.groups.map(group => {
             const tasks = group.tasks.filter(task => regex.test(task.title))
-            console.log('tasks from filter:', tasks);
             return { ...group, tasks }
         })
     }

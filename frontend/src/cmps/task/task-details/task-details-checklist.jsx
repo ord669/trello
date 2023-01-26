@@ -6,6 +6,7 @@ import { ChecklistIcon, CloseIcon } from "../../../assets/svg/icon-library"
 import { saveTask } from "../../../store/task/task.action"
 import { taskService } from "../../../services/task.service.local"
 import { ChecklistItemPreview } from "./checklist-item-preview"
+import { utilService } from "../../../services/util.service"
 
 export function TaskDetailsChecklist({ checklist, task }) {
     // const [checklist, setChecklist] = useState(currChecklist)
@@ -21,9 +22,7 @@ export function TaskDetailsChecklist({ checklist, task }) {
     }
 
     function saveChecklist() {
-        console.log('title:', title)
         if (title === checklist.title) return
-        console.log('title:', title)
         const checklistToSave = { ...checklist, title }
         task.checklists.map(currChecklist => currChecklist._id === checklistToSave._id ? checklistToSave : currChecklist)
         setIsTitleEdit(prev => !prev)
@@ -52,13 +51,16 @@ export function TaskDetailsChecklist({ checklist, task }) {
     }
 
     async function saveTodo(todoToUpdate) {
-        if (todoToUpdate !== undefined) {
+        console.log('todoToUpdate:', todoToUpdate);
+        if (todoToUpdate._id) {
             // Put
             checklist.todos = checklist.todos.map(currTodo => currTodo._id !== todoToUpdate._id ? currTodo : todoToUpdate)
         } else {
             // Post
+            todoToUpdate._id = utilService.makeId()
             checklist.todos.push(todo)
             setIsShown(prev => !prev)
+            setTodo(taskService.getEmptyTodo())
         }
         task.checklists.map(currChecklist => currChecklist._id !== checklist._id ? currChecklist : checklist)
         try {
@@ -132,7 +134,7 @@ export function TaskDetailsChecklist({ checklist, task }) {
                                 onKeyDown={(ev) => handleKeyPress(ev)}
                             />
                             <div className="desc-btn flex align-cetner ">
-                                <button onClick={() => saveTodo()} className="btn-add">Add</button>
+                                <button onClick={() => saveTodo(todo)} className="btn-add">Add</button>
                                 <button onClick={() => setIsShown(prev => !prev)}
                                     className="btn-cancel">Cancel</button>
                             </div>

@@ -55,7 +55,7 @@ function getEmptyChecklist() {
 
 function getEmptyTodo() {
     return {
-        "_id": utilService.makeId(),
+        // "_id": utilService.makeId(),
         "title": "",
         "isDone": false
     }
