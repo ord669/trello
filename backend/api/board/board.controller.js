@@ -76,29 +76,30 @@ async function removeGroupFromBoard(req, res) {
   }
 }
 
-async function addGroupToBoard(req, res) {
-  try {
-    const { boardId } = req.params
-    const group = req.body
-    const updatedGroup = await boardService.addGroupToBoard(boardId, group)
-    res.json(updatedGroup)
-  } catch (err) {
-    logger.error('Failed to add group', err)
-    res.status(500).send({ err: 'Failed to add group' })
-  }
-}
+// async function addGroupToBoard(req, res) {
+//   try {
+//     const { boardId } = req.params
+//     const group = req.body
+//     const updatedGroup = await boardService.addGroupToBoard(boardId, group)
+//     res.json(updatedGroup)
+//   } catch (err) {
+//     logger.error('Failed to add group', err)
+//     res.status(500).send({ err: 'Failed to add group' })
+//   }
+// }
 
-async function updateGroupInBoard(req, res) {
-  try {
-    const { boardId } = req.params
-    const group = req.body
-    const updatedGroup = await boardService.updateGroupToBoard(boardId, group)
-    res.json(updatedGroup)
-  } catch (err) {
-    logger.error('Failed to add group', err)
-    res.status(500).send({ err: 'Failed to add group' })
-  }
-}
+// async function updateGroupInBoard(req, res) {
+//   try {
+//     const { boardId } = req.params
+//     const group = req.body
+//     const updatedGroup = await boardService.updateGroupToBoard(boardId, group)
+//     res.json(updatedGroup)
+//   } catch (err) {
+//     logger.error('Failed to add group', err)
+//     res.status(500).send({ err: 'Failed to add group' })
+//   }
+// }
+
 async function getAiBoard(req, res) {
   try {
     logger.debug('Getting Boards')

@@ -4,39 +4,6 @@ const utilService = require('../../services/util.service')
 const ObjectId = require('mongodb').ObjectId
 const taskService = require('../task/task.service')
 
-// var groups = [
-//     {
-//         groupTitle: 'Planning',
-//         tasks: [
-//             'Define development objectives',
-//             'Gather and analyze project requirements',
-//             'Create a preliminary timeline',
-//             'Outline the technical architecture'
-//         ]
-//     },
-//     {
-//         groupTitle: 'Design Development',
-//         tasks: [
-//             'Create user stories',
-//             'Develop a user interface design',
-//             'Construct backend code',
-//             'Integrate frontend code with backend components',
-//             'Test application for bugs and errors'
-//         ]
-//     },
-//     {
-//         groupTitle: 'Testing Launch',
-//         tasks: [
-//             'Develop test cases',
-//             'Testing Debugging',
-//             'Update application documentation',
-//             'Deploy application',
-//             'Ensure proper deployment',
-//             'Conduct an afterlaunch review'
-//         ]
-//     }
-// ]
-
 async function query(filterBy = { title: '' }) {
     try {
         // const criteria = _buildCriteria(filterBy)
@@ -92,12 +59,7 @@ async function add(board) {
 
 async function update(board) {
     try {
-        // const boardToSave = {
-        //     title: board.title,
-        //     background: board.background,
-        //     isStarred: board.isStarred
-        // }
-        const boardToSave = { ...board }
+        const boardToSave = structuredClone(board)
         delete boardToSave._id
         const collection = await dbService.getCollection('board')
         await collection.updateOne({ _id: ObjectId(board._id) }, { $set: boardToSave })
@@ -141,26 +103,6 @@ async function updateGroupToBoard(boardId, group) {
         throw err
     }
 }
-
-// async function addTaskToGroup(task) {
-//     try {
-//         const collection = await dbService.getCollection('board')
-//         await collection.updateOne({ _id: ObjectId(boardId), 'groups._id': task.groupId }, { $push: { 'tasksId': task._id } })
-//     } catch (err) {
-//         logger.error('cannot insert task id to group', err)
-//         throw err
-//     }
-// }
-
-// async function removeTaskFromGroup(boardId,groupId,taskId) {
-//     try {
-//         const collection = await dbService.getCollection('board')
-//         await collection.updateOne({ _id: ObjectId(boardId), 'groups._id': groupId }, { $pull: { 'tasksId': taskId } })
-//     } catch (err) {
-//         logger.error(`cannot remove task id ${taskId} from group`, err)
-//         throw err
-//     }
-// }
 
 function _buildCriteria(filterBy) {
     const criteria = {}

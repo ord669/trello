@@ -16,8 +16,8 @@ router.post('/', addBoard)
 router.put('/:boardId', updateBoard)
 router.delete('/:boardId', removeBoard)
 
-router.post('/:boardId/group', addGroupToBoard)
-router.put('/:boardId/group', updateGroupInBoard)
+// router.post('/:boardId/group', addGroupToBoard)
+// router.put('/:boardId/group', updateGroupInBoard)
 router.delete('/:boardId/:groupId', removeGroupFromBoard)
 
 // router.put('/:id', requireAuth, updateBoard)

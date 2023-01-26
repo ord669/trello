@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { boardService } from "../services/board.service.local"
-// import { boardService } from "../services/board.service"
+// import { boardService } from "../services/board.service.local"
+import { boardService } from "../services/board.service"
 import { showUserMsg } from "../services/event-bus.service"
 import { BoardPreview } from "./board-preview"
 import { CreateBoard } from "./create-board"
