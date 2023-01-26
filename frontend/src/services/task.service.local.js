@@ -49,7 +49,7 @@ export const taskService = {
 
 function getById(taskId) {
     console.log('taskId:', taskId);
-    return storageService.get(taskId)
+    return storageService.get(STORAGE_KEY, taskId)
 }
 
 async function remove(taskId) {

@@ -8,6 +8,7 @@ import { taskService } from './task.service.local.js'
 // window.cs = boardService
 
 const STORAGE_KEY = 'board'
+const STORAGE_KEY_TASK = 'tasks'
 
 _createBoards()
 export const boardService = {
@@ -53,9 +54,10 @@ async function getById(boardId) {
     const board = await storageService.get(STORAGE_KEY, boardId)
     console.log('board:', board);
     board.groups = await Promise.all(board.groups.map(async group => {
-        console.log('group: ', group);
-        const tasks = await Promise.all(group.tasksId.map(taskId => taskService.getById(STORAGE_KEY, taskId)))
+        console.log('group from id before: ', group);
+        const tasks = await Promise.all(group.tasksId.map(taskId => taskService.getById(taskId)))
         group.tasks = tasks
+
         return group
     }))
     return board
@@ -66,13 +68,14 @@ async function remove(boardId) {
 }
 
 async function save(board) {
-    let savedBoard
+    const boardForDb = removeTasksFromBoard(board)
     if (board._id) {
-        savedBoard = await storageService.put(STORAGE_KEY, board)
+        await storageService.put(STORAGE_KEY, boardForDb)
     } else {
-        savedBoard = await storageService.post(STORAGE_KEY, board)
+        await storageService.post(STORAGE_KEY, boardForDb)
     }
-    return savedBoard
+    return structuredClone(board)
+
 }
 
 function getEmptyBoard(title = '') {
@@ -182,9 +185,8 @@ async function saveGroup(boardId, group) {
         } else {
             group._id = utilService.makeId()
             board.groups.push(group)
-
         }
-        await save(board)
+        await save(structuredClone(board))
         return group
     } catch (err) {
         console.log('Cannot save group: ', err)

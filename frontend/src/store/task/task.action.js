@@ -14,9 +14,7 @@ export async function saveTask(task) {
         }
         else {
             group.tasks.push(savedTask)
-            console.log('savedTask: ', savedTask);
             group.tasksId.push(savedTask._id)
-            console.log('group: ', group);
         }
         saveGroup(group)
     } catch (err) {
