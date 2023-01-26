@@ -4,11 +4,18 @@ import { FiCreditCard } from "react-icons/fi";
 
 import { closeDynamicModal, openDynamicModal } from "../../../store/modal/modal.action"
 import { DetilsTitle } from "./task-details-title"
+import { useEffect, useState } from "react";
 
-export function DetailsHeader({ onUpdateHeadline, task, group, boardId }) {
+export function DetailsHeader({ onUpdateHeadline, task, group, boardId, setnoBg, noBg }) {
     const navigate = useNavigate()
     let background
     let showImgBg
+
+    useEffect(() => {
+        if (!task.style.background) setnoBg(true)
+        return () => {
+        }
+    }, [])
 
     function onCloseTask() {
         closeDynamicModal()
@@ -40,8 +47,8 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId }) {
                 <button onClick={onCloseTask}
                     className="btn details-close-btn"><CloseIcon />
                 </button>
-                {showImgBg && <div style={background} className="task-details-cover"></div>}
-                {!showImgBg && <div style={background} className="task-details-img "></div>}
+                {showImgBg && !noBg && <div style={background} className="task-details-cover"></div>}
+                {!showImgBg && !noBg && <div style={background} className="task-details-img "></div>}
                 <button className="btn-bar "
                     onClick={(ev) => openDynamicModal({ ev, name: 'cover', task })}
                 ><FiCreditCard /> Cover</button>

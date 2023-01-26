@@ -1,6 +1,7 @@
 .task-details-content-label-members-date {
     display: flex;
     flex-wrap: wrap;
+    gap: 1.5rem;
     padding: 2.5rem 0 0.2rem 2.3rem;
 
     p {
@@ -26,7 +27,6 @@
 
     .due-date {
         width: 100%;
-        margin-top: 1rem;
 
         .due-date-input {
             margin-top: 0.3rem;
