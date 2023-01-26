@@ -33,11 +33,12 @@ export async function saveGroup(group) {
     const type = (group._id) ? UPDATE_GROUP : ADD_GROUP
     const { board } = store.getState().boardModule
     try {
-        await boardService.saveGroup(board._id, group)
-        store.dispatch({ type, group })
-        // const savedGroup = await boardService.saveGroup(board._id, group)
-        // store.dispatch({ type, group: savedGroup })
-        return group
+        // await boardService.saveGroup(board._id, group)
+        // store.dispatch({ type, group })
+        const savedGroup = await boardService.saveGroup(board._id, group)
+        const newGroup = group._id ? group : savedGroup
+        store.dispatch({ type, group: newGroup })
+        return newGroup
     } catch (err) {
         console.log('Err from saveGroup in board action :', err)
         throw err
@@ -47,9 +48,13 @@ export async function saveGroup(group) {
 export async function saveBoard(board) {
     try {
         const boardToSave = boardService.removeTasksFromBoard({ ...board })
-        await boardService.save(boardToSave)
-        store.dispatch({ type: SET_BOARD, board })
-        return board
+        const savedBoard = await boardService.save(boardToSave)
+        const newBoard = board._id ? board : savedBoard
+        store.dispatch({ type: SET_BOARD, board: newBoard })
+        return newBoard
+
+        // store.dispatch({ type: SET_BOARD, board })
+        // return board
         // store.dispatch({ type: SET_BOARD, board: newBoard })
         // return newBoard
     } catch (err) {

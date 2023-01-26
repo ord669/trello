@@ -33,6 +33,7 @@ async function addBoard(req, res) {
     const board = req.body
     // board.owner = loggedinUser
     const addedBoard = await boardService.add(board)
+    console.log('addedBoard:', addedBoard);
     res.json(addedBoard)
   } catch (err) {
     logger.error('Failed to add board', err)
@@ -99,8 +100,6 @@ async function updateGroupInBoard(req, res) {
   }
 }
 async function getAiBoard(req, res) {
-  // console.log('res: ', res);
-  console.log('in get from :')
   try {
     logger.debug('Getting Boards')
     const aiBoards = await boardService.getAiBoardFromChat()

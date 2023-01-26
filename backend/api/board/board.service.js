@@ -82,7 +82,6 @@ async function add(board) {
     try {
         const collection = await dbService.getCollection('board')
         await collection.insertOne(board)
-        console.log('board:', board);
         return board
     } catch (err) {
         logger.error('cannot insert board', err)
@@ -167,7 +166,7 @@ function _buildCriteria(filterBy) {
     if (filterBy.title !== 'undefined') criteria.title = filterBy.title
     return criteria
 }
-getAiBoardFromChat()
+// getAiBoardFromChat()
 async function getAiBoardFromChat() {
     try {
         const script = await dbService.getBoardScript()
