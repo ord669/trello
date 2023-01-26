@@ -221,7 +221,6 @@ function getBgImgsURL() {
 }
 
 function removeTasksFromBoard(board) {
-    console.log('board: ', board);
     const groups = board.groups.map(group => {
         delete group.tasks
         return group

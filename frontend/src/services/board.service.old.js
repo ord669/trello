@@ -1,12 +1,10 @@
 
-import { storageService } from './async-storage.service.js'
+// import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
-import { taskService } from './task.service.local.js'
 
 // window.cs = boardService
-
 const BASE_URL = 'board/'
 
 export const boardService = {
@@ -25,6 +23,12 @@ export const boardService = {
     removeGroup,
     reorderGroups,
     removeTasksFromBoard,
+
+}
+
+async function query(filterBy = { title: '' }) {
+    const queryParams = `?title=${filterBy.title}`
+    return httpService.get(BASE_URL + queryParams)
 }
 
 function filterGroupsTasks(board, filterBy = { title: '' }) {
@@ -39,11 +43,6 @@ function filterGroupsTasks(board, filterBy = { title: '' }) {
     return filterdBoard
 }
 
-async function query(filterBy = { title: '' }) {
-    const queryParams = `?title=${filterBy.title}`
-    return httpService.get(BASE_URL + queryParams)
-}
-
 function getById(boardId) {
     return httpService.get(BASE_URL + boardId)
 }
@@ -53,14 +52,15 @@ async function remove(boardId) {
 }
 
 async function save(board) {
-    const boardForDb = removeTasksFromBoard(structuredClone(board))
+    let savedBoard
     if (board._id) {
-        await httpService.put(BASE_URL + board._id, board)
+        savedBoard = await httpService.put(BASE_URL + board._id, board)
     } else {
-        const newBoard = await httpService.post(BASE_URL, board)
-        board._id = newBoard._id
+        // Later, owner is set by the backend
+        // board.owner = userService.getLoggedinUser()
+        savedBoard = await httpService.post(BASE_URL, board)
     }
-    return board
+    return savedBoard
 }
 
 function getEmptyBoard(title = '') {
@@ -148,42 +148,25 @@ function getEmptyGroup(title = 'New group') {
     }
 }
 
-async function removeGroup(board, groupId) {
+// async function removeGroup(board, groupId) {
+function removeGroup(boardId, groupId) {
     try {
-        return httpService.delete(`${BASE_URL}${board._id}/${groupId} `)
+        return httpService.delete(`${BASE_URL}${boardId}/${groupId} `)
     } catch (err) {
         console.log('Cannot remove group: ', err)
         throw err
     }
 }
 
-// async function saveGroup(board, group) {
-
-//     try {
-//         if (group._id) {
-//             await httpService.put(BASE_URL + board._id + '/group', group)
-//         } else {
-//             const newGroup = await httpService.post(BASE_URL + board._id + '/group', group)
-//             group._id = newGroup._id
-//         }
-//         return group
-//     } catch (err) {
-//         console.log('Cannot save group: ', err)
-//         throw err
-//     }
-// }
-
-async function saveGroup(board, group) {
-    const newBoard = structuredClone(board)
+async function saveGroup(boardId, group) {
+    let savedGroup
     try {
         if (group._id) {
-            newBoard.groups = newBoard.groups.map(currGroup => currGroup._id === group._id ? group : currGroup)
+            savedGroup = httpService.put(BASE_URL + boardId + '/group', group)
         } else {
-            group._id = utilService.makeId()
-            newBoard.groups.push(group)
+            savedGroup = httpService.post(BASE_URL + boardId + '/group', group)
         }
-        await save(newBoard)
-        return group
+        return savedGroup
     } catch (err) {
         console.log('Cannot save group: ', err)
         throw err
@@ -220,8 +203,9 @@ function getBgImgsURL() {
 
 function removeTasksFromBoard(board) {
     const groups = board.groups.map(group => {
-        delete group.tasks
-        return group
+        const newGroup = { ...group }
+        delete newGroup.tasks
+        return newGroup
     })
     return { ...board, groups }
 }
@@ -240,4 +224,3 @@ async function getImgsFromUnsplash(val = 'london') {
 function getColors() {
     return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91', '#172b4d']
 }
-
