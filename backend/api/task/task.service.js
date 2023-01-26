@@ -40,7 +40,7 @@ async function remove(taskId) {
 
 async function update(task) {
     try {
-        const taskToUpdate = JSON.parse(JSON.stringify((board)))
+        const taskToUpdate = JSON.parse(JSON.stringify((task)))
         // const taskToUpdate = structuredClone(task)
         delete taskToUpdate._id  //need to change this
         const collection = await dbService.getCollection('task')
