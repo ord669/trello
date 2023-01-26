@@ -48,7 +48,6 @@ export const taskService = {
 // }
 
 function getById(taskId) {
-    console.log('taskId:', taskId);
     return storageService.get(STORAGE_KEY, taskId)
 }
 
@@ -71,20 +70,13 @@ async function save(task) {
 async function reorderTasks(source, destination, groups) {
     const sourceGroup = groups.find(group => group._id === source.droppableId)
     const [task] = sourceGroup.tasks.splice(source.index, 1)
-    sourceGroup.tasksId.splice(source.index, 1)
+    sourceGroup.tasksId = sourceGroup.tasksId.filter(id => id !== task._id)
     const destinationGroup = groups.find(group => group._id === destination.droppableId)
     task.groupId = destinationGroup._id
-    // save(task)
-    // try {
-    //     await save(task)
-    //     destinationGroup.tasks.splice(destination.index, 0, task)
-    //     destinationGroup.tasksId.splice(destination.index, 0, task._id)
-    //     return groups
-    // } catch (err) {
-    //     console.log('Cannot save task drag', err)
-    // }
+
     destinationGroup.tasks.splice(destination.index, 0, task)
     destinationGroup.tasksId.splice(destination.index, 0, task._id)
+    await save(task)
     return groups
 }
 
@@ -122,7 +114,7 @@ function getEmptyChecklist() {
 
 function getEmptyTodo() {
     return {
-        "_id": utilService.makeId(),
+        "_id": '',
         "title": "",
         "isDone": false
     }

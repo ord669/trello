@@ -10,7 +10,6 @@ import { ShareModal } from "./share-modal"
 import { TaskFilter } from "./task/task-filter"
 import { UserAvatarIcon } from "./user-avatar-icon"
 
-
 export function ToolBar({ board }) {
     const [title, setTitle] = useState('')
     const [isOpenFilter, setIsOpenFilter] = useState(false)
@@ -19,14 +18,13 @@ export function ToolBar({ board }) {
     const [color, setColor] = useState('')
     const [btnShareBg, setBtnShareBg] = useState({})
 
-
     useEffect(() => {
         setTitle(board.title)
         setDynamicColor()
     }, [board, color])
 
     function handleChange({ target }) {
-        setTitle(target.value)
+        setTitle(target.innerText)
     }
 
     async function onSaveTitle() {
@@ -74,15 +72,13 @@ export function ToolBar({ board }) {
 
     }
 
-
-
     const admin = board.createdBy
     return (
         <section style={{ color }} className='tool-bar full'>
 
             <div className="flex ">
                 <span className="board-title edit-title-input"
-                    onChange={handleChange}
+                    onInput={handleChange}
                     contentEditable
                     suppressContentEditableWarning
                     onBlur={onSaveTitle}

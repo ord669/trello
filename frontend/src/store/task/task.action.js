@@ -3,7 +3,7 @@ import { saveGroup } from '../board/board.action'
 import { store } from '../store'
 
 export async function saveTask(task) {
-    console.log('task from action: ', task);
+
     try {
         const { board } = store.getState().boardModule
         const savedTask = await taskService.save(task)
@@ -24,10 +24,7 @@ export async function saveTask(task) {
 }
 
 export async function removeTask(task) {
-    console.log('task: ', task);
     const { groupId, _id: taskId } = task
-    console.log('groupId: ', groupId);
-    console.log('taskId: ', taskId);
     if (!groupId || !taskId) return
     try {
         const { board } = store.getState().boardModule
@@ -73,6 +70,7 @@ export async function toggleTaskLabel(labelId, groupId, taskId) {
     }
     try {
         saveTask(task)
+        return task
     } catch (err) {
         console.log('err from toggle task label', err)
         throw err

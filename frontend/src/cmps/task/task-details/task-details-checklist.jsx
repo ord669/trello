@@ -46,12 +46,11 @@ export function TaskDetailsChecklist({ checklist, task }) {
         if (ev.keyCode === 13) {
             ev.target.blur()
             saveTodo()
-            //Write you validation logic here
         }
     }
 
     async function saveTodo(todoToUpdate) {
-        console.log('todoToUpdate:', todoToUpdate);
+        console.log('todoToUpdate: from sat', todoToUpdate);
         if (todoToUpdate._id) {
             // Put
             checklist.todos = checklist.todos.map(currTodo => currTodo._id !== todoToUpdate._id ? currTodo : todoToUpdate)
