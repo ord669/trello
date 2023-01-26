@@ -40,7 +40,7 @@ export function CreateBoard({ setIsCreateBoard }) {
         }
         try {
             const savedBoard = await saveBoard(board)
-            setIsCreateBoard(prev => !prev)
+            setIsCreateBoard(prev => !prev)  ///
             navigate(`/board/${savedBoard._id}`)
         } catch (err) {
             console.log('err:', err)

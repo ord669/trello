@@ -7,7 +7,6 @@ import { AddComment } from "./add-comment"
 import { CommentList } from "./comment-list"
 
 export function ActivityIndex({ board, currTask }) {
-    console.log('currTask:', currTask)
     const [isShown, setIsShown] = useState(true)
 
     function saveComment(comment) {

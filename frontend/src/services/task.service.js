@@ -52,7 +52,7 @@ async function reorderTasks(source, destination, groups) {
     const [task] = sourceGroup.tasks.splice(source.index, 1)
     sourceGroup.tasksId.splice(source.index, 1)
     const destinationGroup = groups.find(group => group._id === destination.droppableId)
-    // task.groupId = destinationGroup._id
+    task.groupId = destinationGroup._id
     // save(task)
     // try {
     //     await save(task)
@@ -64,6 +64,7 @@ async function reorderTasks(source, destination, groups) {
     // }
     destinationGroup.tasks.splice(destination.index, 0, task)
     destinationGroup.tasksId.splice(destination.index, 0, task._id)
+    console.log('task:', task);
     return groups
 }
 

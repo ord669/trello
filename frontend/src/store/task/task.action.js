@@ -30,7 +30,7 @@ export async function removeTask(groupId,taskId) {
         const removedTaskId = await taskService.remove(taskId)
         const group = board.groups.find(group => group._id === groupId)
         group.tasks = group.tasks.filter(task => task._id !== taskId)
-        group.tasksId = group.tasks.filter(id => id !== taskId)
+        group.tasksId = group.tasksId.filter(id => id !== taskId)
         saveGroup(group)
     } catch (err) {
         console.log('Err from removeTask in board action :', err)
@@ -66,7 +66,6 @@ export async function toggleTaskLabel(labelId, groupId, taskId) {
         task.labelIds = task.labelIds.filter(currLabelId => currLabelId !== labelId)
     } else {
         task.labelIds.push(labelId)
-
     }
     try {
         saveTask(task)
