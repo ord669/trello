@@ -20,6 +20,7 @@ export function TaskDetails() {
     const { taskId, groupId } = useParams()
     const [group, setGroup] = useState({})
     const [task, setTask, handleChange] = useForm(null)
+    const [noBg, setnoBg] = useState(false)
 
     const navigate = useNavigate()
 
@@ -95,7 +96,7 @@ export function TaskDetails() {
         <section className='task-details'>
             <div className="black-screen" onClick={() => navigate(`/board/${board._id}`)}></div>
             <div className="main-task-details">
-                <DetailsHeader onUpdateHeadline={onUpdateHeadline} boardId={board._id} task={task} group={group} />
+                <DetailsHeader onUpdateHeadline={onUpdateHeadline} boardId={board._id} task={task} group={group} setnoBg={setnoBg} noBg={noBg} />
                 <div className="task-details-content">
                     <div className="task-details-content-label-members-date">
                         {!!task?.memberIds?.length &&
@@ -139,6 +140,7 @@ export function TaskDetails() {
                     addCheckList={addCheckList}
                     onRemoveTask={onRemoveTask}
                     task={task}
+                    setnoBg={setnoBg}
                 />
             </div>
         </section>

@@ -4,7 +4,8 @@ import { boardService } from "../../../../services/board.service";
 import { saveTask } from "../../../../store/task/task.action";
 import { ImgUploader } from "../../../img-uploader";
 
-export function CoverModal({ board, currTask }) {
+export function CoverModal({ board, currTask, setnoBg }) {
+    console.log('setnoBg: ', setnoBg);
     const [imgs, setImgs] = useState([])
     const [colors, setColors] = useState(boardService.getColors())
 
@@ -25,12 +26,22 @@ export function CoverModal({ board, currTask }) {
     async function onUploadedImg(url) {
         currTask.style.background = url
         try {
-            saveTask(currTask)
+            await saveTask(currTask)
+            setnoBg(false)
+
         } catch (err) {
             console.log('err', err)
         }
     }
-
+    function onRemoveCover() {
+        currTask.style.background = ''
+        try {
+            saveTask(currTask)
+            setnoBg(true)
+        } catch (err) {
+            console.log('err', err)
+        }
+    }
     if (!imgs) return
     console.log('imgs: ', imgs);
     return (
@@ -46,6 +57,7 @@ export function CoverModal({ board, currTask }) {
                                 <div onClick={() => {
                                     currTask.style.background = color
                                     try {
+                                        setnoBg(false)
                                         saveTask(currTask)
                                     } catch (err) {
                                         console.log('err from cover save color', err)
@@ -56,7 +68,14 @@ export function CoverModal({ board, currTask }) {
                     </div>
                 </div>
             </section>
-            <ImgUploader onUploaded={onUploadedImg} type={'cover'} styleClass={{ coverLabelBtn: 'btn-link' }} />
+            <div className="modal-covers-colors-upload btn-link">
+                <ImgUploader onUploaded={onUploadedImg} type={'cover'} styleClass={{}} />
+            </div>
+            <div onClick={() => {
+                onRemoveCover()
+            }} className="modal-covers-colors-upload btn-link">
+                <button>Remove cover</button>
+            </div>
 
             <section className='modal-covers-list-container'>
                 <h4>Photos from Unsplash</h4>

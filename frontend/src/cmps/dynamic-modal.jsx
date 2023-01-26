@@ -28,6 +28,7 @@ export function DynamicModal() {
     const clickedElemntHeight = modalPos.height
 
     function DynamicModalContent({ type, func, data, currTask }) {
+        console.log('func: ', func);
 
         switch (type) {
             case 'labels':
@@ -37,7 +38,7 @@ export function DynamicModal() {
             case 'add checklist':
                 return <CheckListModal board={board} currTask={currTask} addCheckList={func.addCheckList} />
             case 'cover':
-                return <CoverModal board={board} currTask={currTask} />
+                return <CoverModal board={board} currTask={currTask} setnoBg={func.setnoBg} />
             case 'attachment':
                 return <AttachmentModal board={board} currTask={currTask} />
             case 'dates':
@@ -60,9 +61,9 @@ export function DynamicModal() {
 
         switch (modalDetails.name) {
             case 'copy card':
-            case 'cover':
                 modalHeight = 370
                 break;
+            case 'cover':
             case 'dates':
             case 'labels':
                 modalHeight = 480
