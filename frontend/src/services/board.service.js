@@ -3,7 +3,7 @@ import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
-import { taskService } from './task.service.local.js'
+import { taskService } from './task.service.js'
 
 // window.cs = boardService
 

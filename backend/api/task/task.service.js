@@ -40,7 +40,8 @@ async function remove(taskId) {
 
 async function update(task) {
     try {
-        const taskToUpdate = structuredClone(task)
+        const taskToUpdate = JSON.parse(JSON.stringify((board)))
+        // const taskToUpdate = structuredClone(task)
         delete taskToUpdate._id  //need to change this
         const collection = await dbService.getCollection('task')
         await collection.updateOne({ _id: ObjectId(task._id) }, { $set: taskToUpdate })

@@ -10,7 +10,7 @@ async function query(filterBy = { title: '' }) {
         // console.log('criteria: ', criteria);
         const collection = await dbService.getCollection('board')
         const boards = await collection.find().toArray()
-        console.log('boards:', boards);
+        console.log('boards:', boards)
         return boards
     } catch (err) {
         logger.error('cannot find boards', err)
@@ -59,7 +59,8 @@ async function add(board) {
 
 async function update(board) {
     try {
-        const boardToSave = structuredClone(board)
+        const boardToSave = JSON.parse(JSON.stringify((board)))
+        // const boardToSave = structuredClone(board)
         delete boardToSave._id
         const collection = await dbService.getCollection('board')
         await collection.updateOne({ _id: ObjectId(board._id) }, { $set: boardToSave })
@@ -116,7 +117,7 @@ async function getAiBoardFromChat() {
         const script = await dbService.getBoardScript()
         const lines = script.split('\n')
 
-        console.log('group23222222323231232342343242342323423423423423324s: ', lines);
+        console.log('group23222222323231232342343242342323423423423423324s: ', lines)
         const groups = lines.reduce((acc, line) => {
             if (line.includes('$')) {
                 const group = { groupTitle: _removeSpecialChars(line), tasks: [] }
@@ -128,7 +129,7 @@ async function getAiBoardFromChat() {
             }
             return acc
         }, [])
-        console.log('groups: ', groups);
+        console.log('groups: ', groups)
 
         const newGroups = groups.map(group => {
             const newGroup = _createAiGroup(group.groupTitle)
@@ -136,7 +137,7 @@ async function getAiBoardFromChat() {
             group.tasks.forEach(async task => {
                 const taskFromMongo = await taskService.add(_createAiTask(task, newGroup._id))
                 newGroup.tasksId.push(taskFromMongo._id)
-            });
+            })
             return newGroup
         })
         const aiBoard = _createAiBoard('Ai Board', newGroups)
@@ -155,7 +156,7 @@ async function getAiBoardFromChat() {
 function _removeSpecialChars(str) {
     return str.replace(/(?!\w|\s)./g, '')
         .replace(/\s+/g, ' ')
-        .replace(/^(\s*)([\W\w]*)(\b\s*$)/g, '$2');
+        .replace(/^(\s*)([\W\w]*)(\b\s*$)/g, '$2')
 }
 
 function _createAiBoard(title, groups = []) {
