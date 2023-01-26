@@ -1,0 +1,29 @@
+.task-preview-icons {
+
+    color: #5e6c84;
+
+
+
+    .tpi-checklists {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        border-radius: 3px;
+        padding: 0 6px;
+    }
+
+    .tpi-due-date {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        border-radius: 3px;
+        padding: 0 6px;
+        font-size: 12px;
+
+        &:hover {
+            background-color: #ebecf0;
+        }
+    }
+
+
+}

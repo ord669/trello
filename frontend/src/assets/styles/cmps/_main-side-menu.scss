@@ -3,15 +3,15 @@
     left: 0;
     z-index: 2;
     position: fixed;
-    transition: width 0.5s;
+    transition: transform 0.5s;
     height: 100vh;
     padding: 14px 0;
-    // padding: 14px 12px;
+    width: 260px;
+    transform: translate(-100%);
 
 
     &.open-menu {
-        width: 260px;
-        border-right: 1px solid #535353;
+        transform: translate(0);
     }
 
     .msm-title {

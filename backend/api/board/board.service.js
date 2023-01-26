@@ -98,7 +98,7 @@ async function update(board) {
         //     isStarred: board.isStarred
         // }
         const boardToSave = { ...board }
-        delete boardToSave._id 
+        delete boardToSave._id
         const collection = await dbService.getCollection('board')
         await collection.updateOne({ _id: ObjectId(board._id) }, { $set: boardToSave })
         return board
@@ -167,7 +167,7 @@ function _buildCriteria(filterBy) {
     if (filterBy.title !== 'undefined') criteria.title = filterBy.title
     return criteria
 }
-// getAiBoardFromChat()
+getAiBoardFromChat()
 async function getAiBoardFromChat() {
     try {
         const script = await dbService.getBoardScript()

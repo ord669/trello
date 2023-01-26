@@ -46,7 +46,7 @@ export function BoardDetails() {
             {!isOpenMenu && <section className="open-main-menu">
                 <div onClick={() => setIsOpenMenu(prev => !prev)} className="icon-container"><ArrowDownIcon /></div>
             </section>}
-            {isOpenMenu && < MainSidemenu board={board} isOpenMenu={isOpenMenu} setIsOpenMenu={setIsOpenMenu} />}
+            < MainSidemenu board={board} isOpenMenu={isOpenMenu} setIsOpenMenu={setIsOpenMenu} />
             <Outlet />
             {dynamicModalStatus && <DynamicModal />}
         </section >

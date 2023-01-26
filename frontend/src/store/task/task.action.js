@@ -23,8 +23,7 @@ export async function saveTask(task) {
     }
 }
 
-
-export async function removeTask(groupId,taskId) {
+export async function removeTask(groupId, taskId) {
     try {
         const { board } = store.getState().boardModule
         const removedTaskId = await taskService.remove(taskId)

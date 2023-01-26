@@ -14,6 +14,8 @@ export function TaskDetailsChecklist({ checklist, task }) {
     const [isTitleEdit, setIsTitleEdit] = useState(false)
     const [todo, setTodo, handleChange] = useForm(taskService.getEmptyTodo())
 
+    console.log('checklist.todos:', checklist.todos)
+
     function handleChecklistChange({ target }) {
         setTitle(target.value)
     }
@@ -115,7 +117,7 @@ export function TaskDetailsChecklist({ checklist, task }) {
             </div>
             <div className="check-box-container" >
                 {checklist.todos.map(todo =>
-                    <ChecklistItemPreview key={todo._id} currTodo={todo} saveTodo={saveTodo} />
+                    < ChecklistItemPreview key={todo._id} currTodo={todo} saveTodo={saveTodo} />
                 )}
                 <section className="add-new-item">
                     {!isShown ?

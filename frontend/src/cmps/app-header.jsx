@@ -54,7 +54,8 @@ export function AppHeader() {
         if (!board) {
             return style = {
                 background: "#026AA7",
-                color: '#fff'
+                color: '#fff',
+                fill: boardColor
             }
         }
         const bg = board.style.background
@@ -118,7 +119,6 @@ export function AppHeader() {
                 <div className='header-logo flex align-center'>
                     <MainLogo />
                     <span onClick={() => navigate(`/`)}>Jarvis</span>
-                    {/* <img className="main-logo" src={require(`../assets/img/main-logo.png`)} alt="main-logo" /> */}
                 </div>
                 <div className='flex align-center gap-10' >
                     <div>
