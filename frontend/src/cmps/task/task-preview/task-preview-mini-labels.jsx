@@ -14,6 +14,7 @@ export function TaskPreviewLabels({ labelId }) {
     function getLabel(labelId) {
         const currLabel = board.labels.find(label => label._id === labelId)
         setLabel(currLabel)
+        if (!currLabel.color) return
         setColor(currLabel.color)
     }
 
