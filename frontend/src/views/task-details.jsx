@@ -29,7 +29,9 @@ export function TaskDetails() {
     }, [board])
 
     function loadTask() {
+        console.log('board: ', board);
         const currGroup = board.groups.find(group => group._id === groupId)
+        console.log('currGroup: ', currGroup);
         const currTask = currGroup.tasks.find(task => task._id === taskId)
         setTask(currTask)
         setGroup(currGroup)

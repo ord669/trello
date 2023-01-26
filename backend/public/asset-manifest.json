@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.71a1636a.css",
+    "main.js": "/static/js/main.41ca9a13.js",
+    "static/media/SFUIText-Regular.otf": "/static/media/SFUIText-Regular.3891cf449d0d4808a8b5.otf",
+    "static/media/SFUIDisplay-Regular.otf": "/static/media/SFUIDisplay-Regular.824bcb096242327a0403.otf",
+    "static/media/CharlieDisplay-Bold.ttf": "/static/media/CharlieDisplay-Bold.5a004353b62f47fcd234.ttf",
+    "static/media/CharlieText-Semibold.ttf": "/static/media/CharlieText-Semibold.9c8e3395b54fc4328868.ttf",
+    "static/media/CharlieText-Regular.ttf": "/static/media/CharlieText-Regular.3443d70ce64d7c39caf1.ttf",
+    "static/media/hero.png": "/static/media/hero.5ebb27cc814a9e77a336.png",
+    "static/media/left.png": "/static/media/left.82cb42866e2e4f4bdcea.png",
+    "service-worker.js": "/service-worker.js",
+    "static/media/right.png": "/static/media/right.c9f73f487c355ba9a76b.png",
+    "index.html": "/index.html",
+    "main.71a1636a.css.map": "/static/css/main.71a1636a.css.map",
+    "main.41ca9a13.js.map": "/static/js/main.41ca9a13.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.71a1636a.css",
+    "static/js/main.41ca9a13.js"
+  ]
+}

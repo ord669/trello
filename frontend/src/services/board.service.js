@@ -4,7 +4,6 @@ import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-
 // window.cs = boardService
 const BASE_URL = 'board/'
 
@@ -35,11 +34,13 @@ async function query(filterBy = { title: '' }) {
 function filterGroupsTasks(board, filterBy = { title: '' }) {
     let filterdBoard = board
     if (filterBy.title !== undefined) {
-        const regex = new RegExp(filterBy.title, 'i')
-        filterdBoard.groups = filterdBoard.groups.map(group => {
-            const tasks = group.tasks.filter(task => regex.test(task.title))
-            return { ...group, tasks }
-        })
+        // const regex = new RegExp(filterBy.title, 'i')
+        // filterdBoard.groups = filterdBoard.groups.map(group => {
+        //     console.log('group: ', group);
+
+        //     const tasks = group.tasks.filter(task => regex.test(task.title))
+        //     return { ...group, tasks }
+        // })
     }
     return filterdBoard
 }
@@ -171,6 +172,3 @@ async function getImgsFromUnsplash(val = 'london') {
 function getColors() {
     return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91', '#172b4d']
 }
-
-
-

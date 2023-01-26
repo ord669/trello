@@ -5,9 +5,11 @@ const asyncLocalStorage = require('../../services/als.service')
 // const boardService = require('../board/board.service')
 
 async function getById(taskId) {
+    console.log('taskId: ', taskId);
     try {
         const collection = await dbService.getCollection('task')
         const task = await collection.findOne({ _id: ObjectId(taskId) })
+        console.log('task: ', task);
         // task._id = taskId
         return task
     } catch (err) {
