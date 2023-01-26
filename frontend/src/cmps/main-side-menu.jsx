@@ -18,7 +18,7 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
         loadBoards()
 
     }, [board])
-    console.log('boards:', boards)
+
     async function setAvgColor() {
         const bg = board.style.background
         if (bg.includes('https')) {

@@ -14,6 +14,7 @@ import { DetailsHeader } from "../cmps/task/task-details/task-details-header"
 import { DueDate } from "../cmps/task/task-details/task-details-due-date"
 import { TaskDetailsAttachment } from "../cmps/task/task-details/task-details-attachment"
 import { taskService } from "../services/task.service.local"
+import { openDynamicModal } from "../store/modal/modal.action"
 
 export function TaskDetails() {
     const { board } = useSelector(storeState => storeState.boardModule)
@@ -41,7 +42,7 @@ export function TaskDetails() {
     }
 
     function onRemoveTask() {
-        removeTask(groupId, taskId)
+        removeTask(task)
         navigate(`/board/${board._id}`)
     }
 
@@ -131,7 +132,7 @@ export function TaskDetails() {
 
                                 <TaskDetailsAttachment key={attachment._id} task={task} attachment={attachment} onRemoveAttach={onRemoveAttach} onEditAttach={onEditAttach} />
                             )}
-                            <button className="btn-link">Add an attachment</button>
+                            <button onClick={(ev) => openDynamicModal({ ev, name: 'attachment', task })} className="btn-link">Add an attachment</button>
 
                         </div>}
                     <ActivityIndex board={board} currTask={task} />

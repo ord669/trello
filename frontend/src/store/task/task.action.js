@@ -1,7 +1,6 @@
-import { taskService } from '../../services/task.service'
+import { taskService } from '../../services/task.service.local'
 import { saveGroup } from '../board/board.action'
 import { store } from '../store'
-
 
 export async function saveTask(task) {
     try {
@@ -23,7 +22,10 @@ export async function saveTask(task) {
     }
 }
 
-export async function removeTask(groupId, taskId) {
+export async function removeTask(task) {
+    const { groupId, _id: taskId } = task
+    console.log('groupId: ', groupId);
+    console.log('taskId: ', taskId);
     if (!groupId || !taskId) return
     try {
         const { board } = store.getState().boardModule

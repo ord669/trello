@@ -1,6 +1,6 @@
 import { boardService } from "../../services/board.service"
 import { socketService, SOCKET_EMIT_GROUP_DRAGED, SOCKET_EMIT_TASK_DRAGED } from "../../services/socket.service"
-import { taskService } from "../../services/task.service"
+import { taskService } from "../../services/task.service.local"
 import { utilService } from "../../services/util.service"
 import { store } from '../store'
 
@@ -71,13 +71,10 @@ export async function updateDrag({ source, destination, type }) {
     // const groupsToSave = update(source, destination, board.groups)
     // const groupsToSave = await update(source, destination, board.groups)
     const dragEv = type === 'TASK' ? SOCKET_EMIT_TASK_DRAGED : SOCKET_EMIT_GROUP_DRAGED
-    
 
     saveBoard({ ...board })
     // saveBoard({ ...board, groups: groupsToSave })
 }
-
-
 
 // function _getTaskById(groupId, taskId) {
 //     const { board: boardToUpdate } = store.getState().boardModule
