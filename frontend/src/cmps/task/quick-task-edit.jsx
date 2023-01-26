@@ -12,7 +12,7 @@ import { utilService } from "../../services/util.service";
 import { MiniLabelList } from "./task-preview/task-preview-mini-labels-list";
 import { closeDynamicModal, openDynamicModal, updateDynamicModalPos } from "../../store/modal/modal.action"
 import { useForm } from "../../customHooks/useForm";
-import { saveTask } from "../../store/task/task.action";
+import { removeTask, saveTask } from "../../store/task/task.action";
 import { IconContext } from "react-icons";
 import { ManIcon } from "../../assets/svg/icon-library";
 
@@ -108,7 +108,7 @@ export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
                     </button>
                     <button onClick={(ev) => openDynamicModal({ ev, name: 'copy card', task })} className="edit-side-btn"> <HiOutlineCreditCard /> <span>Copy</span></button>
                     <button onClick={(ev) => openDynamicModal({ ev, name: 'dates', task })} className="edit-side-btn"><AiOutlineClockCircle /> <span>Edit dates</span></button>
-                    <button className="edit-side-btn"><BsArchive /> <span>Archive</span></button>
+                    <button onClick={() => removeTask(task.groupId, task._id)} className="edit-side-btn"><BsArchive /> <span>Archive</span></button>
                 </div>
 
                 <div className="quick-task-edit-content">
