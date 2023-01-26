@@ -165,11 +165,11 @@ function getEmptyGroup(title = 'New group') {
 }
 
 // async function removeGroup(board, groupId) {
-async function removeGroup(boardId, groupId) {
-    const board = await getById(boardId)
+async function removeGroup(board, groupId) {
+    const newBoard = structuredClone(board)
     try {
-        board.filter(group => group._id !== groupId)
-        await save(board)
+        newBoard.groups = newBoard.groups.filter(group => group._id !== groupId)
+        await save(newBoard)
         return groupId
     } catch (err) {
         console.log('Cannot remove group: ', err)
@@ -177,17 +177,17 @@ async function removeGroup(boardId, groupId) {
     }
 }
 
-async function saveGroup(boardId, group) {
-    const board = await getById(boardId)
+async function saveGroup(board, group) {
+    const newBoard = structuredClone(board)
     try {
         if (group._id) {
-            board.groups = board.groups.map(currGroup => currGroup._id === group._id ? group : currGroup)
+            newBoard.groups = newBoard.groups.map(currGroup => currGroup._id === group._id ? group : currGroup)
 
         } else {
             group._id = utilService.makeId()
-            board.groups.push(group)
+            newBoard.groups.push(group)
         }
-        await save(structuredClone(board))
+        await save(newBoard)
         return group
     } catch (err) {
         console.log('Cannot save group: ', err)

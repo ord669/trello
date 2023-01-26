@@ -24,13 +24,14 @@ export async function saveTask(task) {
 }
 
 export async function removeTask(task) {
+    console.log('task: ', task);
     const { groupId, _id: taskId } = task
     console.log('groupId: ', groupId);
     console.log('taskId: ', taskId);
     if (!groupId || !taskId) return
     try {
         const { board } = store.getState().boardModule
-        const removedTaskId = await taskService.remove(taskId)
+        await taskService.remove(taskId)
         const group = board.groups.find(group => group._id === groupId)
         group.tasks = group.tasks.filter(task => task._id !== taskId)
         group.tasksId = group.tasksId.filter(id => id !== taskId)
