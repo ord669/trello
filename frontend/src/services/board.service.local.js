@@ -3,6 +3,7 @@ import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import { taskService } from './task.service.local.js'
 
 // window.cs = boardService
 
@@ -48,8 +49,15 @@ async function query(filterBy = { txt: '' }) {
     return boards
 }
 
-function getById(boardId) {
-    return storageService.get(STORAGE_KEY, boardId)
+async function getById(boardId) {
+    const board = await storageService.get(STORAGE_KEY, boardId)
+    console.log('board:', board);
+    board.groups = await Promise.all(board.groups.map(async group => {
+        const tasks = await Promise.all(group.tasksId.map(taskId => taskService.getById(taskId)))
+        group.tasks = tasks
+        return group
+    }))
+    return board
 }
 
 async function remove(boardId) {

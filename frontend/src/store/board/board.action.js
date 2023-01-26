@@ -8,6 +8,7 @@ import { store } from '../store'
 import { ADD_GROUP, REMOVE_GROUP, SET_BOARD, UNDO_REMOVE_GROUP, UPDATE_GROUP } from "./board.reducer"
 
 export async function loadBoard(boardId, filterBy) {
+    console.log('boardId:', boardId);
     try {
         const board = await boardService.getById(boardId)
         if (!board) throw new Error('Board not found')
