@@ -53,7 +53,8 @@ async function getById(boardId) {
     const board = await storageService.get(STORAGE_KEY, boardId)
     console.log('board:', board);
     board.groups = await Promise.all(board.groups.map(async group => {
-        const tasks = await Promise.all(group.tasksId.map(taskId => taskService.getById(taskId)))
+        console.log('group: ', group);
+        const tasks = await Promise.all(group.tasksId.map(taskId => taskService.getById(STORAGE_KEY, taskId)))
         group.tasks = tasks
         return group
     }))
@@ -176,10 +177,12 @@ async function saveGroup(boardId, group) {
     const board = await getById(boardId)
     try {
         if (group._id) {
-            board.groups.map(currGroup => currGroup._id === group._id ? group : currGroup)
+            board.groups = board.groups.map(currGroup => currGroup._id === group._id ? group : currGroup)
+
         } else {
             group._id = utilService.makeId()
             board.groups.push(group)
+
         }
         await save(board)
         return group

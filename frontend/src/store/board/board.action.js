@@ -33,15 +33,13 @@ export async function removeGroup(groupId) {
 }
 
 export async function saveGroup(group) {
+
     const type = (group._id) ? UPDATE_GROUP : ADD_GROUP
     const { board } = store.getState().boardModule
     try {
-        // await boardService.saveGroup(board._id, group)
-        // store.dispatch({ type, group })
         const savedGroup = await boardService.saveGroup(board._id, group)
-        const newGroup = group._id ? group : savedGroup
-        store.dispatch({ type, group: newGroup })
-        return newGroup
+        store.dispatch({ type, group: savedGroup })
+        return savedGroup
     } catch (err) {
         console.log('Err from saveGroup in board action :', err)
         throw err
