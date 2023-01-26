@@ -34,13 +34,12 @@ async function query(filterBy = { title: '' }) {
 function filterGroupsTasks(board, filterBy = { title: '' }) {
     let filterdBoard = board
     if (filterBy.title !== undefined) {
-        // const regex = new RegExp(filterBy.title, 'i')
-        // filterdBoard.groups = filterdBoard.groups.map(group => {
-        //     console.log('group: ', group);
-
-        //     const tasks = group.tasks.filter(task => regex.test(task.title))
-        //     return { ...group, tasks }
-        // })
+        const regex = new RegExp(filterBy.title, 'i')
+        filterdBoard.groups = filterdBoard.groups.map(group => {
+            const tasks = group.tasks.filter(task => regex.test(task.title))
+            console.log('tasks from filter:', tasks);
+            return { ...group, tasks }
+        })
     }
     return filterdBoard
 }
