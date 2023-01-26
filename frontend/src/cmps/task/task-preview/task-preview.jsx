@@ -19,10 +19,10 @@ export function TaskPreview({ task, idx }) {
 
     useEffect(() => {
         elTaskPreview.current.addEventListener('contextmenu', (ev) => {
-            ev.preventDefault();
+            ev.preventDefault()
             setIsQuickEdit(true)
             setQuickEditModalPos(elTaskPreview.current.getBoundingClientRect())
-        });
+        })
     }, [])
 
 
@@ -73,11 +73,12 @@ export function TaskPreview({ task, idx }) {
                         />}
                     <div ref={elTaskPreview} className="task-preview-container"
                         {...provided.dragHandleProps}
+                        style={{ cursor: 'pointer' }}
                     >
 
                         {task.style && <div style={background} className="task-preview-comver-img">
                         </div>}
-                        <div className="task-preview-details">
+                        <div className="task-preview-details" >
                             {task.labelIds &&
                                 <MiniLabelList task={task} />}
                             <p>{task.title}</p>
