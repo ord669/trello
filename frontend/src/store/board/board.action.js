@@ -1,7 +1,7 @@
 import { boardService } from "../../services/board.service.local"
 // import { boardService } from "../../services/board.service"
 // import { socketService, SOCKET_EMIT_GROUP_DRAGED, SOCKET_EMIT_TASK_DRAGED } from "../../services/socket.service"
-import { taskService } from "../../services/task.service.local"
+import { taskService } from "../../services/task.service"
 import { utilService } from "../../services/util.service"
 import { store } from '../store'
 

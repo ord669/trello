@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { CloseIcon } from "../../../assets/svg/icon-library"
-import { taskService } from "../../../services/task.service.local"
+import { taskService } from "../../../services/task.service"
 
 export function AddComment({ username, saveComment }) {
     const [comment, setComment] = useState(taskService.getEmptyComment())

@@ -4,7 +4,7 @@ import { useForm } from "../../../customHooks/useForm"
 
 import { ChecklistIcon, CloseIcon } from "../../../assets/svg/icon-library"
 import { saveTask } from "../../../store/task/task.action"
-import { taskService } from "../../../services/task.service.local"
+import { taskService } from "../../../services/task.service"
 import { ChecklistItemPreview } from "./checklist-item-preview"
 import { utilService } from "../../../services/util.service"
 
