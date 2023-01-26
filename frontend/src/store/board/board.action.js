@@ -21,10 +21,11 @@ export async function loadBoard(boardId, filterBy) {
 }
 
 export async function removeGroup(groupId) {
+    console.log('groupId: ', groupId);
     store.dispatch({ type: REMOVE_GROUP, groupId })
     const { board } = store.getState().boardModule
     try {
-        await boardService.removeGroup(board._id, groupId)
+        await boardService.removeGroup(board, groupId)
     } catch (err) {
         store.dispatch({ type: UNDO_REMOVE_GROUP, })
         console.log('Err from removeGroup in board action :', err)
@@ -33,11 +34,13 @@ export async function removeGroup(groupId) {
 }
 
 export async function saveGroup(group) {
+    console.log('group from savef: ', group);
 
     const type = (group._id) ? UPDATE_GROUP : ADD_GROUP
     const { board } = store.getState().boardModule
+    console.log('board: ', board);
     try {
-        const savedGroup = await boardService.saveGroup(board._id, group)
+        const savedGroup = await boardService.saveGroup(board, group)
         store.dispatch({ type, group: savedGroup })
         return savedGroup
     } catch (err) {
