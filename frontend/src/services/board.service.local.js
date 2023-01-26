@@ -57,6 +57,7 @@ async function getById(boardId) {
         group.tasks = tasks
         return group
     }))
+    console.log('board:', board);
     return board
 }
 
@@ -256,6 +257,7 @@ function _createBoard(title, url, isStarred) {
 function _createBoards() {
     let boards = utilService.loadFromStorage(STORAGE_KEY)
     if (!boards || !boards.length) {
+        console.log('loading board from storage');
         const imgUrls = getBgImgsURL()
         boards = [
             _createBoard('Todos', imgUrls[utilService.getRandomIntInclusive(0, imgUrls.length - 1)].url, true),

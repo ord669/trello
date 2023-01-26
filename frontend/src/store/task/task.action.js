@@ -16,6 +16,7 @@ export async function saveTask(task) {
         else {
             group.tasks.push(savedTask)
             group.tasksId.push(savedTask._id)
+            console.log('group.tasksId:', group.tasksId);
         }
         saveGroup(group)
     } catch (err) {
