@@ -28,7 +28,6 @@ export function HomePage() {
                         <p>Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of who's doing what and what needs to get done. Learn more in our guide for getting started.</p>
                     </div>
 
-
                     <div className='sec-container-content'>
                         <div className="home-cards-container">
                             <div className="home-card">
@@ -52,7 +51,6 @@ export function HomePage() {
                         </div>
                         <img className="card-img" src={require(`../assets/img/Carousel_Image_Cards_2x.png`)} alt="hero-img" />
                     </div>
-
 
                 </div>
             </section>

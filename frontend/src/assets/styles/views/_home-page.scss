@@ -139,6 +139,13 @@
             margin-right: auto;
             color: $clr2;
 
+            .main-sec-container {
+                background: linear-gradient(0deg, rgb(230, 252, 255), rgb(255, 255, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(178, 212, 255);
+                background-blend-mode: normal;
+                width: 100%;
+            }
+
+
             .sec-container-card {
                 display: flex;
                 flex-direction: column;
@@ -149,6 +156,7 @@
 
                 h2 {
                     font-size: 36px;
+                    font-family: Charlie-Semi-Bold;
                 }
 
             }
@@ -158,6 +166,8 @@
             }
 
             .sec-container-content {
+                // background: linear-gradient(0deg, rgb(230, 252, 255), rgb(255, 255, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(178, 212, 255);
+                // background-blend-mode: normal;
                 margin-top: 50px;
                 display: grid;
                 grid-template-columns: 350px 1fr;
@@ -175,11 +185,14 @@
                 flex-direction: column;
                 justify-content: space-between;
                 padding-bottom: 50px;
+                color: #091e42;
+                font-size: 16px;
             }
 
             .home-card-title {
-                font-size: 1.5rem;
+                font-family: Charlie-Semi-Bold;
             }
+
 
 
             .card-img {
