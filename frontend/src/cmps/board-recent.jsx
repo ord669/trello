@@ -5,7 +5,7 @@ import { LoaderIcon } from "../assets/svg/icon-library"
 import { boardService } from "../services/board.service"
 import { BoardStarred } from "./board-starred"
 
-export function BoardRecent({ type }) {
+export function BoardRecent({ type, setIsRecent }) {
     const navigate = useNavigate()
     const [boards, setBoards] = useState([])
     const [someBoardsIsStarred, setSomeBoardIsStarred] = useState(true)
@@ -43,6 +43,11 @@ export function BoardRecent({ type }) {
         return style
     }
 
+    function onNavigate(board) {
+        setIsRecent(false)
+        navigate(`/board/${board._id}`)
+    }
+
     return (
         <section className='board-recent'>
             {(!boards.length && someBoardsIsStarred) && <div className="loader">
@@ -55,7 +60,7 @@ export function BoardRecent({ type }) {
 
             {boards && boards.map(board =>
                 <div key={board._id} className=" board-recent-card ">
-                    <div onClick={() => navigate(`/board/${board._id}`)} className="recent-content">
+                    <div onClick={() => onNavigate(board)} className="recent-content">
                         <div style={setStyle(board.style.background)} className="board-recent-img">
                         </div>
                         <div className="board-recent-title">

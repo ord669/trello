@@ -47,7 +47,6 @@ export function BoardAddBg({ board, type }) {
 
     if (!imgs.length) return <div className="loader"><LoaderIcon /></div>
     return (
-        // { (!imgs.length) && <div className="loader"><LoaderIcon /></div> }
         <section className='board-add-bg'>
 
             {type === 'photo' && <div>

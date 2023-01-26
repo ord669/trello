@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
-import { AttacheIcon, ChecklistIcon, CheckListIcon, ClockIcon, EyeIcon } from "../../../assets/svg/icon-library";
+import { AttacheIcon, ChecklistIcon, CheckListIcon, ClockIcon, DescriptionIcon, EyeIcon } from "../../../assets/svg/icon-library";
 import { utilService } from "../../../services/util.service";
 import { saveTask } from "../../../store/task/task.action";
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service";
+import { UserAvatarIcon } from "../../user-avatar-icon";
+import { taskService } from "../../../services/task.service.local";
+import { toggleMemberAssigned } from "../../../store/task/task.action"
+import { useSelector } from "react-redux";
+
 
 export function TaskPreviewIcons({ task }) {
     // const [todosIsDone, setTodosIsDone] = useState(false)
     const [allTodosLength, setAllTodosLength] = useState('')
     const [allTodosIsDone, setAllTodosIsDone] = useState('')
     const [day] = utilService.formatDate(task.dueDate).split(',')
+    const { board } = useSelector(storeState => storeState.boardModule)
+
 
 
     useEffect(() => {
@@ -88,7 +95,12 @@ export function TaskPreviewIcons({ task }) {
                     {allTodosIsDone}/{allTodosLength}
                 </div>
             </div>}
-            {task.dueDate && <div style={dueDateStyle()} onClick={(ev) => setDueDateIsDone(ev)} className="tpi-due-date"><ClockIcon /> {day}</div>}
+            {!!task.dueDate && <div style={dueDateStyle()} onClick={(ev) => setDueDateIsDone(ev)} className="tpi-due-date"><ClockIcon /> {day}</div>}
+            {!!task.description && <DescriptionIcon />}
+            {taskService.getMembers(board, task).map((member, idx) =>
+                <div key={member._id}>
+                    <UserAvatarIcon member={member} />
+                </div>)}
 
         </section >
     )
