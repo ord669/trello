@@ -119,7 +119,7 @@ module.exports = {
   updateBoard,
   removeBoard,
   removeGroupFromBoard,
-  addGroupToBoard,
-  updateGroupInBoard,
+  // addGroupToBoard,
+  // updateGroupInBoard,
   getAiBoard,
 }
