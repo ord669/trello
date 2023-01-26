@@ -11,7 +11,7 @@ export function TaskList({ tasks, groupId, setIsShown, isShown }) {
                 <section className='task-list'
                     ref={provided.innerRef}
                     {...provided.draggableProps}>
-                    {tasks.map((task, idx) => <TaskPreview key={task._id} task={task} idx={idx} />)}
+                    {tasks?.map((task, idx) => <TaskPreview key={task._id} task={task} idx={idx} />)}
                     {provided.placeholder}
                     {isShown && <AddTask groupId={groupId} setIsShown={setIsShown} />}
                 </section>
