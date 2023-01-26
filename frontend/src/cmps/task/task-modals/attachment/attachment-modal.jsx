@@ -1,5 +1,5 @@
 import { useForm } from "../../../../customHooks/useForm";
-import { taskService } from "../../../../services/task.service.local";
+import { taskService } from "../../../../services/task.service";
 import { utilService } from "../../../../services/util.service";
 import { saveTask } from "../../../../store/task/task.action";
 import { ImgUploader } from "../../../img-uploader";

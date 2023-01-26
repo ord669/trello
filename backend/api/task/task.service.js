@@ -5,11 +5,9 @@ const asyncLocalStorage = require('../../services/als.service')
 // const boardService = require('../board/board.service')
 
 async function getById(taskId) {
-    console.log('taskId: ', taskId);
     try {
         const collection = await dbService.getCollection('task')
         const task = await collection.findOne({ _id: ObjectId(taskId) })
-        console.log('task: ', task);
         // task._id = taskId
         return task
     } catch (err) {
@@ -42,7 +40,7 @@ async function remove(taskId) {
 
 async function update(task) {
     try {
-        const taskToUpdate = { ...task }
+        const taskToUpdate = structuredClone(task)
         delete taskToUpdate._id  //need to change this
         const collection = await dbService.getCollection('task')
         await collection.updateOne({ _id: ObjectId(task._id) }, { $set: taskToUpdate })
@@ -60,26 +58,6 @@ async function add(task) {
         return task
     } catch (err) {
         logger.error('cannot insert task', err)
-        throw err
-    }
-}
-
-async function addTaskToGroup(boardId, task) {
-    try {
-        const collection = await dbService.getCollection('board')
-        await collection.updateOne({ _id: ObjectId(boardId), 'groups._id': task.groupId }, { $push: { 'tasksId': task._id } })
-    } catch (err) {
-        logger.error('cannot insert task id to group', err)
-        throw err
-    }
-}
-
-async function removeTaskFromGroup(boardId, groupId, taskId) {
-    try {
-        const collection = await dbService.getCollection('board')
-        await collection.updateOne({ _id: ObjectId(boardId), 'groups._id': groupId }, { $pull: { 'tasksId': taskId } })
-    } catch (err) {
-        logger.error(`cannot remove task id ${taskId} from group`, err)
         throw err
     }
 }

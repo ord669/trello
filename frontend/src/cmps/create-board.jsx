@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { BoardSkelton, CloseIcon } from "../assets/svg/icon-library"
-import { boardService } from "../services/board.service.local"
-// import { boardService } from "../services/board.service"
+// import { boardService } from "../services/board.service.local"
+import { boardService } from "../services/board.service"
 import { saveBoard } from "../store/board/board.action"
 
 export function CreateBoard({ setIsCreateBoard }) {
