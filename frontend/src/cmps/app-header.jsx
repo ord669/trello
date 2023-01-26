@@ -132,7 +132,7 @@ export function AppHeader() {
                     <div className=' header-main-btns ' >
                         <div className='header-item'>
                             <button onClick={() => setIsRecent(prev => !prev)} className='btn-app-header' >Recent <ArrowDownIcon /></button>
-                            {isRecent && <BoardRecent type={'recent'} />}
+                            {isRecent && <BoardRecent setIsRecent={setIsRecent} type={'recent'} />}
                         </div>
                         <div className='header-item'>
                             <button onClick={() => setIsStarred(prev => !prev)} className='btn-app-header'>Starred <ArrowDownIcon /></button>
