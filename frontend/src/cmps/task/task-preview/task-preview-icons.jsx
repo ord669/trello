@@ -8,7 +8,6 @@ import { taskService } from "../../../services/task.service";
 import { toggleMemberAssigned } from "../../../store/task/task.action"
 import { useSelector } from "react-redux";
 
-
 export function TaskPreviewIcons({ task }) {
     // const [todosIsDone, setTodosIsDone] = useState(false)
     const [allTodosLength, setAllTodosLength] = useState('')
@@ -16,15 +15,12 @@ export function TaskPreviewIcons({ task }) {
     const [day] = utilService.formatDate(task.dueDate).split(',')
     const { board } = useSelector(storeState => storeState.boardModule)
 
-
-
     useEffect(() => {
 
         getTodosIsDone()
         getTodosLength()
 
     }, [task])
-
 
     async function setDueDateIsDone(ev) {
         ev.stopPropagation()
@@ -36,7 +32,6 @@ export function TaskPreviewIcons({ task }) {
         } catch (err) {
             console.log(err)
         }
-
 
     }
     function getTodosIsDone() {
@@ -72,7 +67,6 @@ export function TaskPreviewIcons({ task }) {
             }
         }
         return style
-
 
     }
 
