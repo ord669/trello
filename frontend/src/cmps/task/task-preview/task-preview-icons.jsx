@@ -88,8 +88,8 @@ export function TaskPreviewIcons({ task }) {
                     {allTodosIsDone}/{allTodosLength}
                 </div>
             </div>}
-            <div style={dueDateStyle()} onClick={(ev) => setDueDateIsDone(ev)} className="tpi-due-date"><ClockIcon /> {day}</div>
+            {task.dueDate && <div style={dueDateStyle()} onClick={(ev) => setDueDateIsDone(ev)} className="tpi-due-date"><ClockIcon /> {day}</div>}
 
-        </section>
+        </section >
     )
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import tinycolor from "tinycolor2";
 import { ArrowDownIcon, ArrowLeftIcon, BoardIcon, LoaderIcon } from "../assets/svg/icon-library";
 import { boardService } from "../services/board.service";
@@ -11,8 +11,6 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
     const [boardColor, setBoardColor] = useState('')
     const [boards, setBoards] = useState([])
     const navigate = useNavigate()
-
-
 
     useEffect(() => {
         setAvgColor()
@@ -110,7 +108,6 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
         return style
     }
 
-
     // if (!board || !color) return <div className="loader"><LoaderIcon /></div>
     return (
 
@@ -131,7 +128,7 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
 
                 {boards && boards.map(board =>
                     <div key={board._id} className="msm-boards-list">
-                        <div onClick={() => navigate(`board/${board._id}`)} key={board._id} className="msm-card">
+                        <div onClick={() => navigate(`/board/${board._id}`)} key={board._id} className="msm-card">
                             <div className="flex align-center gap-10">
                                 <div className="msm-card-bg" style={getBgStyle(board.style.background)}></div>
                                 <p>{board.title}</p>
@@ -144,4 +141,3 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
         </section>
     )
 }
-
