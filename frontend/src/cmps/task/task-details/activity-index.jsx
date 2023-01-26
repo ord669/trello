@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { ActivityIcon } from "../../../assets/svg/icon-library"
 import { showErrorMsg } from "../../../services/event-bus.service"
-import { taskService } from "../../../services/task.service.local"
+import { taskService } from "../../../services/task.service"
 import { saveBoard } from "../../../store/board/board.action"
 import { AddComment } from "./add-comment"
 import { CommentList } from "./comment-list"

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { CloseIcon } from "../../assets/svg/icon-library"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
-import { taskService } from "../../services/task.service.local"
+import { taskService } from "../../services/task.service"
 import { saveTask } from "../../store/task/task.action"
 
 export function AddTask({ groupId, setIsShown }) {

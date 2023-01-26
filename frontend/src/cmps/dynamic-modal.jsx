@@ -11,7 +11,7 @@ import { CoverModal } from "./task/task-modals/cover/cover-modal"
 import { LabelsModal } from "./task/task-modals/labels/labels-modal"
 import { MembersModal } from "./task/task-modals/members/members-modal"
 import { EditAttachment } from "./task/task-modals/attachment/edit-attachment-modal";
-import { taskService } from "../services/task.service.local"
+import { taskService } from "../services/task.service"
 import { toggleMemberAssigned, toggleTaskLabel } from "../store/task/task.action"
 import { ListActions } from "./task/task-modals/listAactions/list-actions"
 

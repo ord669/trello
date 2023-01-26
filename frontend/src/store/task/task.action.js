@@ -1,4 +1,4 @@
-import { taskService } from '../../services/task.service.local'
+import { taskService } from '../../services/task.service'
 import { saveGroup } from '../board/board.action'
 import { store } from '../store'
 

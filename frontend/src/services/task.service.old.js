@@ -1,21 +1,9 @@
-import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 
-const STORAGE_KEY = 'tasks'
-
-_createTasks()
-
-function _createTasks() {
-    const tasks = utilService.loadFromStorage(STORAGE_KEY)
-    if (!tasks) {
-        storageService._save(STORAGE_KEY, [])
-    }
-}
 export const taskService = {
-    remove,
-    save,
-    // getById,
+    // remove,
+    // save,
     getEmptyTask,
     createChecklists,
     getEmptyTodo,
@@ -43,14 +31,6 @@ export const taskService = {
 //     }
 //     return savedTask
 // }
-// async function remove(taskId) {
-//     return httpService.delete(`task/${taskId}`)
-// }
-
-// function getById(taskId) {
-//     return storageService.get(STORAGE_KEY, taskId)
-// }
-
 async function remove(taskId) {
     return httpService.delete(`task/${taskId}`)
 }
@@ -70,13 +50,11 @@ async function save(task) {
 async function reorderTasks(source, destination, groups) {
     const sourceGroup = groups.find(group => group._id === source.droppableId)
     const [task] = sourceGroup.tasks.splice(source.index, 1)
-    sourceGroup.tasksId = sourceGroup.tasksId.filter(id => id !== task._id)
+    sourceGroup.tasksId.splice(source.index, 1)
     const destinationGroup = groups.find(group => group._id === destination.droppableId)
     task.groupId = destinationGroup._id
-
     destinationGroup.tasks.splice(destination.index, 0, task)
     destinationGroup.tasksId.splice(destination.index, 0, task._id)
-    await save(task)
     return groups
 }
 
@@ -114,7 +92,7 @@ function getEmptyChecklist() {
 
 function getEmptyTodo() {
     return {
-        "_id": '',
+        // "_id": utilService.makeId(),
         "title": "",
         "isDone": false
     }
@@ -128,7 +106,7 @@ function getEmptyComment() {
         "byMember": {
             "_id": "u101",
             "fullname": "Or Dvir",
-            "imgUrl": "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg"
+            "imgUrl": "https://robohash.org/Or?set=set5"
         },
     }
 }
@@ -140,18 +118,22 @@ function getEmptyTask() {
         "description": "description",
         "comments": [],
         "checklists": [],
-        "memberIds": [],
-        "labelIds": [],
-        "dueDate": 0,
+        "memberIds": [
+            "u102"
+        ],
+        "labelIds": [
+            "l104"
+        ],
+        "dueDate": 16156215211,
         "isDone": false,
         "byMember": {
             "_id": "u103",
             "username": "Oren Sharizad",
             "fullname": "Oren Sharizad",
-            "imgUrl": "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg"
+            "imgUrl": "https://robohash.org/oren?set=set5"
         },
         "style": {
-            "background": ""
+            "background": "#26DE81"
         },
         "attachments": [{
             "createdAt": 1589989488411,

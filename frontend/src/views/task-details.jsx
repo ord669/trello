@@ -13,7 +13,7 @@ import { removeTask, saveTask } from "../store/task/task.action"
 import { DetailsHeader } from "../cmps/task/task-details/task-details-header"
 import { DueDate } from "../cmps/task/task-details/task-details-due-date"
 import { TaskDetailsAttachment } from "../cmps/task/task-details/task-details-attachment"
-import { taskService } from "../services/task.service.local"
+import { taskService } from "../services/task.service"
 import { openDynamicModal } from "../store/modal/modal.action"
 
 export function TaskDetails() {
