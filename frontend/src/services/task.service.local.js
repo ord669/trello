@@ -3,11 +3,19 @@ import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 
 const STORAGE_KEY = 'tasks'
-const tasks = []
-storageService._save(STORAGE_KEY, tasks)
+
+_createTasks()
+
+function _createTasks() {
+    const tasks = utilService.loadFromStorage(STORAGE_KEY)
+    if (!tasks) {
+        storageService._save(STORAGE_KEY, [])
+    }
+}
 export const taskService = {
     remove,
     save,
+    getById,
     getEmptyTask,
     createChecklists,
     getEmptyTodo,
@@ -38,6 +46,11 @@ export const taskService = {
 // async function remove(taskId) {
 //     return httpService.delete(`task/${taskId}`)
 // }
+
+function getById(taskId){
+    console.log('taskId:', taskId);
+    return storageService.get(taskId)
+}
 
 async function remove(taskId) {
     await storageService.remove(STORAGE_KEY, taskId)
