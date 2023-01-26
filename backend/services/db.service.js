@@ -50,6 +50,5 @@ async function getBoardScript() {
         presence_penalty: 0.6,
         stop: [" Human:", " AI:"],
     });
-    // console.log('response.data.choices[0].text: ', response.data.choices[0].text);
     return response.data.choices[0].text
 }

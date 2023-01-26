@@ -4,7 +4,6 @@ import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-
 // window.cs = boardService
 const BASE_URL = 'board/'
 
@@ -54,7 +53,6 @@ async function remove(boardId) {
 }
 
 async function save(board) {
-    console.log('board:', board)
     let savedBoard
     if (board._id) {
         savedBoard = await httpService.put(BASE_URL + board._id, board)
@@ -73,12 +71,67 @@ function getEmptyBoard(title = '') {
         style: {},
         groups: [],
         activities: [],
-        labels: [],
+        labels: [
+            {
+                "_id": "l101",
+                "title": "Done",
+                "color": "#d6ecd2"
+            },
+            {
+                "_id": "l102",
+                "title": "Progress",
+                "color": "#fbf3c0"
+            },
+            {
+                "_id": "l103",
+                "title": "Todo",
+                "color": "#fce7c6"
+            },
+            {
+                "_id": "l104",
+                "title": "Important",
+                "color": "#f5d3ce"
+            },
+            {
+                "_id": "l105",
+                "title": "Urgent",
+                "color": "#efb3ab"
+            },
+            {
+                "_id": "l106",
+                "title": "Later",
+                "color": "#dfc0eb"
+            },
+            {
+                "_id": "l107",
+                "title": "Basic",
+                "color": "#e4f0f6"
+            }
+        ],
         style: {
             "background": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1673811922/samples/landscapes/architecture-signs.jpg"
 
         },
-        members: []
+        members: [
+            {
+                "_id": "u101",
+                "fullname": "Or Dvir",
+                "username": "Or Dvir",
+                "imgUrl": "https://robohash.org/Or?set=set5"
+            },
+            {
+                "_id": "u102",
+                "fullname": "Liad Gola",
+                "username": "Liad Gola",
+                "imgUrl": "https://robohash.org/Liad?set=set5"
+            },
+            {
+                "_id": "u103",
+                "fullname": "Oren Sharizad",
+                "username": "Oren Sharizad",
+                "imgUrl": "https://robohash.org/oren?set=set5"
+            }
+        ]
     }
 }
 
@@ -172,6 +225,3 @@ async function getImgsFromUnsplash(val = 'london') {
 function getColors() {
     return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91', '#172b4d']
 }
-
-
-
