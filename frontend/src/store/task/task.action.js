@@ -3,9 +3,11 @@ import { saveGroup } from '../board/board.action'
 import { store } from '../store'
 
 export async function saveTask(task) {
+    console.log('task from action: ', task);
     try {
         const { board } = store.getState().boardModule
         const savedTask = await taskService.save(task)
+        console.log('savedTask after service: ', savedTask);
         const group = board.groups.find(group => group._id === task.groupId)
         console.log('group:', group)
         if (task._id) {

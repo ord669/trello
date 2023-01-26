@@ -4,7 +4,8 @@ import { utilService } from './util.service.js'
 
 const STORAGE_KEY = 'tasks'
 const tasks = []
-storageService._save(STORAGE_KEY, tasks)
+
+// storageService._save(STORAGE_KEY, tasks)
 export const taskService = {
     remove,
     save,
