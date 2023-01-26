@@ -48,11 +48,9 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
 
     async function setDynamicColor() {
         const bg = board.style.background
-
         if (bg.includes('https')) {
             try {
                 const colorIsDark = await utilService.getBgUrlIsDark(bg)
-                console.log('colorisDark: ', colorIsDark);
                 const color = colorIsDark ? "#fff" : "#172b4d"
                 setBoardColor(color)
             } catch (err) {

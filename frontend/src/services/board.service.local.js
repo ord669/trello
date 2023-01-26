@@ -52,15 +52,12 @@ async function query(filterBy = { txt: '' }) {
 
 async function getById(boardId) {
     const board = await storageService.get(STORAGE_KEY, boardId)
-    console.log('board:', board);
     board.groups = await Promise.all(board.groups.map(async group => {
-        console.log('group from id before: ', group);
         const tasks = await Promise.all(group.tasksId.map(taskId => taskService.getById(taskId)))
         group.tasks = tasks
 
         return group
     }))
-    console.log('board:', board);
     return board
 }
 
@@ -69,14 +66,14 @@ async function remove(boardId) {
 }
 
 async function save(board) {
-    const boardForDb = removeTasksFromBoard(board)
+    const boardForDb = removeTasksFromBoard(structuredClone(board))
     if (board._id) {
         await storageService.put(STORAGE_KEY, boardForDb)
     } else {
-        await storageService.post(STORAGE_KEY, boardForDb)
+        const newBoard = await storageService.post(STORAGE_KEY, boardForDb)
+        board._id = newBoard._id
     }
-    return structuredClone(board)
-
+    return board
 }
 
 function getEmptyBoard(title = '') {
@@ -224,10 +221,10 @@ function getBgImgsURL() {
 }
 
 function removeTasksFromBoard(board) {
+    console.log('board: ', board);
     const groups = board.groups.map(group => {
-        const newGroup = { ...group }
-        delete newGroup.tasks
-        return newGroup
+        delete group.tasks
+        return group
     })
     return { ...board, groups }
 }

@@ -53,15 +53,6 @@ async function reorderTasks(source, destination, groups) {
     sourceGroup.tasksId.splice(source.index, 1)
     const destinationGroup = groups.find(group => group._id === destination.droppableId)
     task.groupId = destinationGroup._id
-    // save(task)
-    // try {
-    //     await save(task)
-    //     destinationGroup.tasks.splice(destination.index, 0, task)
-    //     destinationGroup.tasksId.splice(destination.index, 0, task._id)
-    //     return groups
-    // } catch (err) {
-    //     console.log('Cannot save task drag', err)
-    // }
     destinationGroup.tasks.splice(destination.index, 0, task)
     destinationGroup.tasksId.splice(destination.index, 0, task._id)
     return groups

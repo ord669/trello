@@ -8,7 +8,6 @@ import { store } from '../store'
 import { ADD_GROUP, REMOVE_GROUP, SET_BOARD, UNDO_REMOVE_GROUP, UPDATE_GROUP } from "./board.reducer"
 
 export async function loadBoard(boardId, filterBy) {
-    console.log('boardId:', boardId);
     try {
         const board = await boardService.getById(boardId)
         if (!board) throw new Error('Board not found')
@@ -21,7 +20,6 @@ export async function loadBoard(boardId, filterBy) {
 }
 
 export async function removeGroup(groupId) {
-    console.log('groupId: ', groupId);
     store.dispatch({ type: REMOVE_GROUP, groupId })
     const { board } = store.getState().boardModule
     try {
@@ -34,6 +32,7 @@ export async function removeGroup(groupId) {
 }
 
 export async function saveGroup(group) {
+
     console.log('group from savef: ', group);
 
     const type = (group._id) ? UPDATE_GROUP : ADD_GROUP
@@ -50,17 +49,12 @@ export async function saveGroup(group) {
 }
 
 export async function saveBoard(board) {
+
     try {
-        const boardToSave = boardService.removeTasksFromBoard({ ...board })
-        const savedBoard = await boardService.save(boardToSave)
+        const savedBoard = await boardService.save(board)
         const newBoard = board._id ? board : savedBoard
         store.dispatch({ type: SET_BOARD, board: newBoard })
         return newBoard
-
-        // store.dispatch({ type: SET_BOARD, board })
-        // return board
-        // store.dispatch({ type: SET_BOARD, board: newBoard })
-        // return newBoard
     } catch (err) {
         console.log('Err from saveBoard in board action :', err)
         throw err
@@ -68,27 +62,14 @@ export async function saveBoard(board) {
 }
 
 export async function updateDrag({ source, destination, type }) {
+    console.log('destination: ', destination);
+    console.log('source: ', source);
     const { board } = store.getState().boardModule
     const update = type === 'TASK' ? taskService.reorderTasks : boardService.reorderGroups
     update(source, destination, board.groups)
     // const groupsToSave = update(source, destination, board.groups)
     // const groupsToSave = await update(source, destination, board.groups)
     // const dragEv = type === 'TASK' ? SOCKET_EMIT_TASK_DRAGED : SOCKET_EMIT_GROUP_DRAGED
-
     saveBoard({ ...board })
     // saveBoard({ ...board, groups: groupsToSave })
 }
-
-// function _getTaskById(groupId, taskId) {
-//     const { board: boardToUpdate } = store.getState().boardModule
-//     const group = boardToUpdate.groups.find(group => group._id === groupId)
-//     const task = group.tasks.find(task => task._id === taskId)
-//     return task
-// }
-
-// function getGroupById(groupId,taskId){
-//     const { board: boardToUpdate } = store.getState().boardModule
-//     const group = boardToUpdate.groups.find(group => group._id === groupId)
-//     const task = group.tasks.find(task => task._id === taskId)
-//     return group
-// }

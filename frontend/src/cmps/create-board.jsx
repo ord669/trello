@@ -34,7 +34,6 @@ export function CreateBoard({ setIsCreateBoard }) {
         return style
     }
 
-
     async function onAddBoard() {
         board.style = {
             background: BG.url
