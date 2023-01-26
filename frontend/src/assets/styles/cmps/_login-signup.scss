@@ -2,6 +2,21 @@
     width: 100%;
     position: relative;
 
+    .login-logo {
+        font-size: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+
+        svg {
+            width: 50px;
+            height: 50px;
+            fill: rgb(2, 106, 167);
+        }
+    }
+
+
     .login-img-left {
         position: fixed;
         left: 0;
