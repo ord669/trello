@@ -128,18 +128,21 @@ export function AppHeader() {
                     <MainLogo />
                     <span onClick={() => navigate(`/`)}>Jarvis</span>
                 </div>
-                <div className='flex align-center gap-10' >
-                    <div>
-                        <button onClick={() => setIsRecent(prev => !prev)} className='btn-app-header' >Recent <ArrowDownIcon /></button>
-                        {isRecent && <BoardRecent type={'recent'} />}
-                    </div>
-                    <div>
-                        <button onClick={() => setIsStarred(prev => !prev)} className='btn-app-header'>Starred <ArrowDownIcon /></button>
-                        {isStarred && <BoardRecent type={'starred'} />}
-                    </div>
-                    <div>
-                        <button onClick={() => setIsCreateBoard(prev => !prev)} className="btn-bar">Create</button>
-                        {isCreateBoard && <CreateBoard setIsCreateBoard={setIsCreateBoard} />}
+                <div>
+                    <button className='btn-header-more'>More</button>
+                    <div className=' header-main-btns ' >
+                        <div className='header-item'>
+                            <button onClick={() => setIsRecent(prev => !prev)} className='btn-app-header' >Recent <ArrowDownIcon /></button>
+                            {isRecent && <BoardRecent type={'recent'} />}
+                        </div>
+                        <div className='header-item'>
+                            <button onClick={() => setIsStarred(prev => !prev)} className='btn-app-header'>Starred <ArrowDownIcon /></button>
+                            {isStarred && <BoardRecent type={'starred'} />}
+                        </div>
+                        <div className='header-item'>
+                            <button onClick={() => setIsCreateBoard(prev => !prev)} className="btn-bar">Create</button>
+                            {isCreateBoard && <CreateBoard setIsCreateBoard={setIsCreateBoard} />}
+                        </div>
                     </div>
                 </div>
             </div>

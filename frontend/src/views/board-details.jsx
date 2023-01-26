@@ -44,13 +44,10 @@ export function BoardDetails() {
         }
         return style
     }
-    if (!board) return <div style={{
-        marginTop: "100px"
-    }} className="loader" > <LoaderIcon /></div >
+    if (!board) return <div style={{ marginTop: "300px" }} className="loader" > <LoaderIcon /></div >
     return (
         <section style={getBgStyle()} className={isOpenMenu ? 'board-details open-menu' : 'board-details'}>
             <ToolBar board={board} />
-
             <GroupList groups={board?.groups || []} board={board} />
             {!isOpenMenu && <section className="open-main-menu">
                 <div onClick={() => setIsOpenMenu(prev => !prev)} className="icon-container"><ArrowDownIcon /></div>

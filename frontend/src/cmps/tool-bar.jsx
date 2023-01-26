@@ -114,8 +114,6 @@ export function ToolBar({ board }) {
                 <BoardSideMenu isOpenSideMenu={isOpenSideMenu} board={board}
                     setIsOpenSideMenu={setIsOpenSideMenu} />
                 {isOpenShare && <ShareModal setIsOpenShare={setIsOpenShare} />}
-
-
             </div>
         </section>
     )

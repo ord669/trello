@@ -26,6 +26,13 @@
         }
     }
 
+    .header-main-btns {
+        display: flex;
+        align-items: center;
+
+    }
+
+
     .home-header {
         height: 60px;
     }
@@ -74,4 +81,9 @@
             font-size: 12px;
         }
     }
+
+    .btn-header-more {
+        display: none;
+    }
+
 }
