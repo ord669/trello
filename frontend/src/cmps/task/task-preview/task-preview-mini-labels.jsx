@@ -32,7 +32,7 @@ export function TaskPreviewLabels({ labelId }) {
         backgroundColor: darkenHexColor(label.color)
     }
 
-    if (!label) return <div>loading...</div>
+    // if (!label) return <div>loading...</div>
     return (
         <section style={secStyle} className='task-preview-label'>
             <div style={mainStyle} className="sec-label-color"></div>
