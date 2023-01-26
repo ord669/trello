@@ -43,6 +43,7 @@ async function query(filterBy = { title: '' }) {
         // console.log('criteria: ', criteria);
         const collection = await dbService.getCollection('board')
         const boards = await collection.find().toArray()
+        console.log('boards:', boards);
         return boards
     } catch (err) {
         logger.error('cannot find boards', err)

@@ -64,7 +64,6 @@ async function reorderTasks(source, destination, groups) {
     // }
     destinationGroup.tasks.splice(destination.index, 0, task)
     destinationGroup.tasksId.splice(destination.index, 0, task._id)
-    console.log('task:', task);
     return groups
 }
 
@@ -102,7 +101,7 @@ function getEmptyChecklist() {
 
 function getEmptyTodo() {
     return {
-        "_id": utilService.makeId(),
+        // "_id": utilService.makeId(),
         "title": "",
         "isDone": false
     }

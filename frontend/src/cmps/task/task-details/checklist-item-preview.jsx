@@ -3,6 +3,7 @@ import { CloseIcon, ThreeDotsIcon } from "../../../assets/svg/icon-library"
 
 export function ChecklistItemPreview({ currTodo, saveTodo }) {
     const [todo, setTodo] = useState(currTodo)
+    console.log('todo:', todo);
     const [isShown, setIsShown] = useState(false)
 
     function onClickTodo(todoToChange) {
