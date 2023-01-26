@@ -61,9 +61,8 @@
 
 @media (min-width:540px) {
     .home-page {
-        height: 100%;
-        background:
-            linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+        height: 90%;
+        background: url(../../svg/white-wave-bg.svg) center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
         background-blend-mode: normal, normal;
         color: rgb(255, 255, 255);
         font-family: Charlie-Text;
@@ -156,6 +155,13 @@
     .home-page-content {
         padding: 0 20px;
     }
+
+
+
+    .sec-container-title {
+        color: red;
+    }
+
 
 
 }

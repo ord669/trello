@@ -20,6 +20,9 @@ export function HomePage() {
                 </div>
                 <img className="hero-img" src={require(`../assets/img/hero.png`)} alt="hero-img" />
             </div>
+            <section className='sec-home-container'>
+                <h3 className='sec-container-title'>Jarvis Ai</h3>
+            </section>
         </section>
     )
 }

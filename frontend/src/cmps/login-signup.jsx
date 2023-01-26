@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
-import { ImgUploader } from '../cmps/img-uploader'
 import { login, logout, signup } from '../store/user.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { MainLogo } from '../assets/svg/icon-library'
+
 
 
 export function LoginSignup(props) {
@@ -40,7 +41,7 @@ export function LoginSignup(props) {
             const user = await signup(credentials)
             showSuccessMsg(`Welcome new user: ${user.fullname}`)
             clearState()
-            navigate('/')
+            navigate('/board')
         } catch (err) {
             showErrorMsg('Cannot signup')
         }
@@ -65,9 +66,14 @@ export function LoginSignup(props) {
     return (
         <div className='main-login-page'>
 
+            <div className='login-logo'>
+                <MainLogo />
+                <span onClick={() => navigate(`/`)}>Jarvis</span>
+            </div>
+
             <div className="login-page">
 
-                <p className='login-title'>{!isSignup ? 'Log in to chello ' : 'Sign up for your account'}</p>
+                <p className='login-title'>{!isSignup ? 'Log in to Jarvis ' : 'Sign up for your account'}</p>
 
                 {!isSignup && <form className="login-form" onSubmit={onLogin}>
                     <input
@@ -120,7 +126,7 @@ export function LoginSignup(props) {
                     </form>}
                 </div>
 
-                <button className="btn-signup" onClick={toggleSignup}>{!isSignup ? 'Cant log in? Sign up for an account' : 'Already have an account? Log In'}</button>
+                <button className="btn-signup" onClick={toggleSignup}>{!isSignup ? "Can't log in? Sign up for an account" : 'Already have an account? Log In'}</button>
 
             </div>
             <img className="login-img-left" src={require(`../assets/img/left.png`)} alt="hero-img" />
