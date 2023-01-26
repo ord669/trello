@@ -27,8 +27,6 @@ export function TaskPreview({ task, idx }) {
         })
     }, [])
 
-
-
     if (!task?.style?.background?.includes('https')) {
         background = {
             backgroundColor: `${task.style.background}`,

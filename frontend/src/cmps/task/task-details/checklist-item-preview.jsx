@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { CloseIcon, ThreeDotsIcon } from "../../../assets/svg/icon-library"
+import { openDynamicModal } from "../../../store/modal/modal.action";
 
 export function ChecklistItemPreview({ currTodo, saveTodo }) {
     const [todo, setTodo] = useState(currTodo)

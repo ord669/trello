@@ -3,6 +3,7 @@ import { handleKeyPress } from "../../customHooks/enterOutFocues"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { saveGroup } from "../../store/board/board.action"
 import { ThreeDotsIcon } from "../../assets/svg/icon-library"
+import { openDynamicModal } from "../../store/modal/modal.action"
 
 export function GroupHeader({ onRemoveGroup, group }) {
     const [title, setTitle] = useState(group.title)
@@ -48,7 +49,7 @@ export function GroupHeader({ onRemoveGroup, group }) {
                     onKeyDown={(ev) => handleKeyPress(ev)}
                     value={title} />
             }
-            <button className="options-btn"><ThreeDotsIcon /></button>
+            <button onClick={(ev) => openDynamicModal({ ev, name: 'List actions', func: { onRemoveGroup } })} className="options-btn"><ThreeDotsIcon /></button>
         </section>
     )
 }

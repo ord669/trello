@@ -13,6 +13,7 @@ import { MembersModal } from "./task/task-modals/members/members-modal"
 import { EditAttachment } from "./task/task-modals/attachment/edit-attachment-modal";
 import { taskService } from "../services/task.service.local"
 import { toggleMemberAssigned, toggleTaskLabel } from "../store/task/task.action"
+import { ListActions } from "./task/task-modals/listAactions/list-actions"
 
 export function DynamicModal() {
     const { modalPos, modalDetails } = useSelector(storeState => storeState.modalModule)
@@ -47,6 +48,8 @@ export function DynamicModal() {
                 return <CopyModal board={board} currTask={currTask} />
             case 'edit attachment':
                 return <EditAttachment board={board} currTask={currTask} attachment={data.attachment} onEditAttach={func.onEditAttach} />
+            case 'List actions':
+                return <ListActions board={board} currTask={currTask} onRemoveGroup={func.onRemoveGroup} />
             default:
                 break
         }
