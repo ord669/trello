@@ -7,16 +7,16 @@ export async function saveTask(task) {
     try {
         const { board } = store.getState().boardModule
         const savedTask = await taskService.save(task)
-        console.log('savedTask after service: ', savedTask);
+
         const group = board.groups.find(group => group._id === task.groupId)
-        console.log('group:', group)
         if (task._id) {
             group.tasks = group.tasks.map(currTask => currTask._id !== savedTask._id ? currTask : savedTask)
         }
         else {
             group.tasks.push(savedTask)
+            console.log('savedTask: ', savedTask);
             group.tasksId.push(savedTask._id)
-            console.log('group.tasksId:', group.tasksId);
+            console.log('group: ', group);
         }
         saveGroup(group)
     } catch (err) {
