@@ -19,7 +19,6 @@ export function TaskPreview({ task, idx }) {
     const [isQuickEdit, setIsQuickEdit] = useState(false)
     const [isShownLabels, setIsShownLabels] = useState(false)
 
-
     let background
 
     useEffect(() => {
