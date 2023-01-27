@@ -15,6 +15,7 @@ import { MembersModal } from "./cmps/task/task-modals/members/members-modal"
 import { Provider } from 'react-redux'
 import { store } from './store/store'
 import { LoginSignup } from "./cmps/login-signup"
+import { Jarvis } from "./views/jarvis"
 
 export function App() {
 
@@ -33,6 +34,7 @@ export function App() {
                             </Route>
                             <Route path="user/:id" element={<UserDetails />} />
                             <Route path="/board/members" element={<MembersModal />} />
+                            <Route path="/jarvis" element={<Jarvis />} />
                         </Routes>
                     </main>
                     <UserMsg />
