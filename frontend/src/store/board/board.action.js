@@ -1,6 +1,6 @@
 // import { boardService } from "../../services/board.service.local"
 import { boardService } from "../../services/board.service"
-import { socketService, SOCKET_EMIT_SAVE_GROUP } from "../../services/socket.service"
+import { socketService, SOCKET_EMIT_REMOVE_GROUP, SOCKET_EMIT_SAVE_BOARD, SOCKET_EMIT_SAVE_GROUP } from "../../services/socket.service"
 // import { socketService, SOCKET_EMIT_GROUP_DRAGED, SOCKET_EMIT_TASK_DRAGED } from "../../services/socket.service"
 import { taskService } from "../../services/task.service"
 import { utilService } from "../../services/util.service"
@@ -25,6 +25,7 @@ export async function removeGroup(groupId) {
     const { board } = store.getState().boardModule
     try {
         await boardService.removeGroup(board, groupId)
+        socketService.emit(SOCKET_EMIT_REMOVE_GROUP, { boardId: board._id, groupId })
     } catch (err) {
         store.dispatch({ type: UNDO_REMOVE_GROUP, })
         console.log('Err from removeGroup in board action :', err)
@@ -49,6 +50,7 @@ export async function saveGroup(group) {
 export async function saveBoard(board) {
     try {
         const savedBoard = await boardService.save(board)
+        socketService.emit(SOCKET_EMIT_SAVE_BOARD, savedBoard)
         store.dispatch({ type: SET_BOARD, board: savedBoard })
         return savedBoard
         // const newBoard = board._id ? board : savedBoard
@@ -96,7 +98,7 @@ export async function updateSocketDrag({ source, destination, type }) {
 export async function saveSocketGroup(socketGroup) {
     const { board } = store.getState().boardModule
     try {
-        let group = board.groups.find(group => group._id === socketGroup._id)
+        const group = board.groups.find(group => group._id === socketGroup._id)
         const type = group ? UPDATE_GROUP : ADD_GROUP
         store.dispatch({ type, group: socketGroup })
     } catch (err) {
@@ -105,7 +107,11 @@ export async function saveSocketGroup(socketGroup) {
     }
 }
 
+export async function removeSocketGroup(groupId) {
+    console.log('groupId:', groupId)
+    store.dispatch({ type: REMOVE_GROUP, groupId })
+}
+
 export async function dispatchBoard(board) {
-    console.log('board:', board)
     store.dispatch({ type: SET_BOARD, board })
 }

@@ -1,4 +1,4 @@
-import { socketService, SOCKET_EMIT_SAVE_TASK } from '../../services/socket.service'
+import { socketService, SOCKET_EMIT_REMOVE_TASK, SOCKET_EMIT_SAVE_TASK } from '../../services/socket.service'
 import { taskService } from '../../services/task.service'
 import { dispatchBoard, saveGroup } from '../board/board.action'
 import { closeDynamicModal, openDynamicModal } from '../modal/modal.action'
@@ -30,6 +30,7 @@ export async function removeTask(task) {
     try {
         const { board } = store.getState().boardModule
         await taskService.remove(taskId)
+        socketService.emit(SOCKET_EMIT_REMOVE_TASK, {groupId, taskId})
         const group = board.groups.find(group => group._id === groupId)
         group.tasks = group.tasks.filter(task => task._id !== taskId)
         group.tasksId = group.tasksId.filter(id => id !== taskId)
@@ -98,6 +99,21 @@ export async function saveSocketTask(taskFromSocket) {
         throw err
     }
 }
+
+export async function removeSocketTask(taskId, groupId) {
+    // if (!groupId || !taskId) return
+    try {
+        const { board } = store.getState().boardModule
+        const group = board.groups.find(group => group._id === groupId)
+        group.tasks = group.tasks.filter(task => task._id !== taskId)
+        group.tasksId = group.tasksId.filter(id => id !== taskId)
+        dispatchBoard(board)
+    } catch (err) {
+        console.log('Err from removeSocketTask in board action :', err)
+        throw err
+    }
+}
+
 function refreshModal(task) {
     openDynamicModal({ name: 'labels', task })
 

@@ -38,9 +38,25 @@ function setupSocketAPI(http) {
             logger.info(`Task saved in group [${task.groupId}]`)
             socket.broadcast.emit('save-task', task)
         })
+        socket.on('emit-remove-task', ({groupId, taskId}) => {
+            logger.info(`Task removed id [${taskId}] in group [${groupId}]`)
+            socket.broadcast.emit('remove-task', taskId, groupId)
+        })
         socket.on('emit-save-group', group => {
             logger.info(`Group saved [${group._id}]`)
             socket.broadcast.emit('save-group', group)
+        })
+        socket.on('emit-remove-group', ({boardId, groupId}) => {
+            logger.info(`Group [${groupId}] removed from board [${boardId}]`)
+            socket.broadcast.emit('remove-group', groupId)
+        })
+        socket.on('emit-save-board', board => {
+            logger.info(`board saved [${board._id}]`)
+            socket.broadcast.emit('save-board', board)
+        })
+        socket.on('emit-remove-board', boardId => {
+            logger.info(`board saved [${boardId}]`)
+            socket.broadcast.emit('remove-board', boardId)
         })
         // socket.on('set-user-socket', userId => {
         //     logger.info(`Setting socket.userId = ${userId} for socket [id: ${socket.id}]`)

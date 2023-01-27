@@ -65,15 +65,15 @@ async function save(board) {
 }
 
 async function createAiBoard(prompt) {
-    console.log('prompt: ', prompt);
+    console.log('prompt: ', prompt)
     await httpService.post(BASE_URL + 'aiboard', prompt)
-    console.log('JSON.stringify(prompt): ', JSON.stringify(prompt));
+    console.log('JSON.stringify(prompt): ', JSON.stringify(prompt))
 }
 
 function getEmptyBoard(title = '') {
     return {
         title,
-        isstarred: false,
+        isStarred: false,
         style: {},
         groups: [],
         activities: [],
@@ -226,6 +226,7 @@ function getBgImgsURL() {
 }
 
 function removeTasksFromBoard(board) {
+    if (!board.groups) return board
     const groups = board.groups.map(group => {
         delete group.tasks
         return group
