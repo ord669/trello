@@ -69,7 +69,6 @@ export function TaskPreview({ task, idx }) {
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                 >
-
                     {isQuickEdit &&
                         <QuickTaskEdit
                             task={task}
@@ -80,7 +79,6 @@ export function TaskPreview({ task, idx }) {
                         {...provided.dragHandleProps}
                         style={{ cursor: 'pointer' }}
                     >
-
                         {task.style.background && <div style={background} className="task-preview-comver-img">
                         </div>}
                         <div className="task-preview-details" >
@@ -89,7 +87,6 @@ export function TaskPreview({ task, idx }) {
                             <p>{task.title}</p>
                             {<TaskPreviewIcons task={task} />}
                             <div>
-
                             </div>
                         </div>
                         <div className="task-preview-edit-icon">
@@ -97,7 +94,6 @@ export function TaskPreview({ task, idx }) {
                                 <PenIcon />
                             </div>
                         </div>
-
                         {/* <div className="task-preview-icons-container">
                         <TaskPreviewIcons />
                     </div> */}
