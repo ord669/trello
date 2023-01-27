@@ -1,6 +1,8 @@
 import { socketService, SOCKET_EMIT_SAVE_TASK } from '../../services/socket.service'
 import { taskService } from '../../services/task.service'
 import { dispatchBoard, saveGroup } from '../board/board.action'
+import { saveGroup } from '../board/board.action'
+import { closeDynamicModal, openDynamicModal } from '../modal/modal.action'
 import { store } from '../store'
 
 export async function saveTask(task) {
@@ -59,7 +61,7 @@ export async function toggleMemberAssigned(memberId, groupId, taskId) {
     }
 }
 
-export async function toggleTaskLabel(labelId, groupId, taskId) {
+export async function toggleTaskLabel(labelId, groupId, taskId, refresh) {
     const { board } = store.getState().boardModule
 
     const group = board.groups.find(group => group._id === groupId)
@@ -72,6 +74,7 @@ export async function toggleTaskLabel(labelId, groupId, taskId) {
     }
     try {
         saveTask(task)
+        if (refresh) refreshModal(task)
         return task
     } catch (err) {
         console.log('err from toggle task label', err)
@@ -95,7 +98,11 @@ export async function saveSocketTask(taskFromSocket) {
         }
         dispatchBoard(board)
     } catch (err) {
-        console.log('Err from saveTask in board action :', err)
+        console.log('Err from saveSocketTask in board action :', err)
         throw err
     }
+}
+function refreshModal(task) {
+    openDynamicModal({ name: 'labels', task })
+
 }
