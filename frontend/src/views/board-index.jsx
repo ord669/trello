@@ -10,12 +10,20 @@ export function BoardIndex() {
 
     useEffect(() => {
         loadBoards()
+        // socketService.on(SOCKET_EVENT_SAVE_BOARDS, saveSocketBoards)
+        // return () => {
+        //     socketService.off(SOCKET_EVENT_SAVE_BOARDS, saveSocketBoards)
+        // }
     }, [])
 
     async function loadBoards() {
         const boards = await boardService.query()
         setBoards(boards)
     }
+
+    // function saveSocketBoards(board){
+
+    // }
 
 
     const starredBoards = boards.filter(board => board.isStarred)

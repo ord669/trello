@@ -38,6 +38,10 @@ function setupSocketAPI(http) {
             logger.info(`Task saved in group [${task.groupId}]`)
             socket.broadcast.emit('save-task', task)
         })
+        socket.on('emit-save-group', group => {
+            logger.info(`Group saved [${group._id}]`)
+            socket.broadcast.emit('save-group', group)
+        })
         // socket.on('set-user-socket', userId => {
         //     logger.info(`Setting socket.userId = ${userId} for socket [id: ${socket.id}]`)
         //     socket.userId = userId

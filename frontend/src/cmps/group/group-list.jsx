@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { DragDropContext, Droppable } from "react-beautiful-dnd"
-import { socketService, SOCKET_EMIT_DRAG_END, SOCKET_EVENT_DRAG_END, SOCKET_EVENT_SAVE_TASK } from "../../services/socket.service"
-import { updateDrag, updateSocketDrag } from "../../store/board/board.action"
+import { socketService, SOCKET_EMIT_DRAG_END, SOCKET_EVENT_DRAG_END, SOCKET_EVENT_SAVE_GROUP, SOCKET_EVENT_SAVE_TASK } from "../../services/socket.service"
+import { saveSocketGroup, updateDrag, updateSocketDrag } from "../../store/board/board.action"
 import { saveSocketTask } from "../../store/task/task.action"
 import { AddGroup } from "./add-group"
 import { GroupPreview } from "./group-preview"
@@ -11,9 +11,11 @@ export function GroupList({ groups, board }) {
     useEffect(() => {
         socketService.on(SOCKET_EVENT_DRAG_END, updateSocketDrag)
         socketService.on(SOCKET_EVENT_SAVE_TASK, saveSocketTask)
+        socketService.on(SOCKET_EVENT_SAVE_GROUP, saveSocketGroup)
         return () => {
             socketService.off(SOCKET_EVENT_DRAG_END, updateSocketDrag)
             socketService.off(SOCKET_EVENT_SAVE_TASK, saveSocketTask)
+            socketService.off(SOCKET_EVENT_SAVE_GROUP, saveSocketGroup)
         }
     }, [])
 
