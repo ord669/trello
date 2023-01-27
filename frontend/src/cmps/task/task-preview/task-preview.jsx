@@ -84,7 +84,7 @@ export function TaskPreview({ task, idx }) {
                         style={{ cursor: 'pointer' }}
                     >
 
-                        {task.style && <div style={background} className="task-preview-comver-img">
+                        {task.style.background && <div style={background} className="task-preview-comver-img">
                         </div>}
                         <div className="task-preview-details" >
                             {task.labelIds &&

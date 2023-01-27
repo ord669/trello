@@ -82,7 +82,7 @@ export function TaskPreviewIcons({ task }) {
     }
 
     return (
-        <section className='task-preview-icons flex align-center gap-10 '>
+        <section className='task-preview-icons flex align-center gap-10 warp '>
             {!!task.checklists.length && <div style={checkListStyle()} className="tpi-checklists ">
                 <ChecklistIcon style={{ fill: 'red' }} />
                 <div >
@@ -91,10 +91,14 @@ export function TaskPreviewIcons({ task }) {
             </div>}
             {!!task.dueDate && <div style={dueDateStyle()} onClick={(ev) => setDueDateIsDone(ev)} className="tpi-due-date"><ClockIcon /> {day}</div>}
             {!!task.description && <DescriptionIcon />}
-            {taskService.getMembers(board, task).map((member, idx) =>
-                <div key={member._id}>
-                    <UserAvatarIcon member={member} />
-                </div>)}
+
+            <div className="tpi-members ">
+                {taskService.getMembers(board, task).map((member, idx) =>
+                    <div key={member._id}>
+                        <UserAvatarIcon member={member} />
+                    </div>)}
+            </div>
+
 
         </section >
     )
