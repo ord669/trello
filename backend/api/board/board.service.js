@@ -111,10 +111,9 @@ function _buildCriteria(filterBy) {
     return criteria
 }
 
-// getAiBoardFromChat()
-async function getAiBoardFromChat() {
+async function getAiBoardFromChat(prompt) {
     try {
-        const script = await dbService.getBoardScript()
+        const script = await dbService.getBoardScript(prompt)
         const lines = script.split('\n')
 
         console.log('group23222222323231232342343242342323423423423423324s: ', lines)

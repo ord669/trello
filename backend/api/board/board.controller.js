@@ -101,9 +101,13 @@ async function removeGroupFromBoard(req, res) {
 // }
 
 async function getAiBoard(req, res) {
+  const { prompt } = req.body
+
   try {
     logger.debug('Getting Boards')
-    const aiBoards = await boardService.getAiBoardFromChat()
+    console.log('prompt: ', prompt);
+
+    const aiBoards = await boardService.getAiBoardFromChat(prompt)
     console.log('aiBoards: ', aiBoards);
     res.json(aiBoards)
   } catch (err) {
