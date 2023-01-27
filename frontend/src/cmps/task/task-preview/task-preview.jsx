@@ -66,9 +66,7 @@ export function TaskPreview({ task, idx }) {
         <Draggable draggableId={task._id} index={idx}>
             {(provided, snapshot) => (
                 <section className={`task-preview ${snapshot.isDragging ? 'dragged' : ''}`}
-                    onClick={(ev) => {
-                        navigate(`${task.groupId}/${task._id}`)
-                    }}
+                    onClick={(ev) => navigate(`${task.groupId}/${task._id}`)}
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                 >
@@ -84,7 +82,7 @@ export function TaskPreview({ task, idx }) {
                         style={{ cursor: 'pointer' }}
                     >
 
-                        {task.style && <div style={background} className="task-preview-comver-img">
+                        {task.style.background && <div style={background} className="task-preview-comver-img">
                         </div>}
                         <div className="task-preview-details" >
                             {task.labelIds &&
