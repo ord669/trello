@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import tinycolor from "tinycolor2"
 import { PenIcon } from "../../../../assets/svg/icon-library"
+import { openDynamicModal } from "../../../../store/modal/modal.action"
 import { toggleTaskLabel } from "../../../../store/task/task.action"
 
 export function LabelPreview({ label, checkForLabelIncluded, currTask }) {
@@ -27,7 +28,8 @@ export function LabelPreview({ label, checkForLabelIncluded, currTask }) {
         <div
             className="label-container"
             onClick={() => {
-                toggleTaskLabel(label._id, currTask.groupId, currTask._id)
+                toggleTaskLabel(label._id, currTask.groupId, currTask._id, 'refreshLable')
+
             }}
             key={label._id}>
             <input type="checkbox" onChange={() => { }} checked={isClicked} />

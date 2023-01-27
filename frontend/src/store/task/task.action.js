@@ -58,7 +58,7 @@ export async function toggleMemberAssigned(memberId, groupId, taskId) {
     }
 }
 
-export async function toggleTaskLabel(labelId, groupId, taskId) {
+export async function toggleTaskLabel(labelId, groupId, taskId, refresh) {
     const { board } = store.getState().boardModule
 
     const group = board.groups.find(group => group._id === groupId)
@@ -70,11 +70,16 @@ export async function toggleTaskLabel(labelId, groupId, taskId) {
         task.labelIds.push(labelId)
     }
     try {
-        openDynamicModal({ name: 'labels', task })
         saveTask(task)
+        if (refresh) refreshModal(task)
         return task
     } catch (err) {
         console.log('err from toggle task label', err)
         throw err
     }
+}
+
+function refreshModal(task) {
+    openDynamicModal({ name: 'labels', task })
+
 }
