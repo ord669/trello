@@ -56,7 +56,6 @@ export async function saveBoard(board) {
     }
 }
 
-createAiBoard('wedding plan')
 export async function createAiBoard(txt) {
 
     const prompt = { prompt: txt }

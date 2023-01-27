@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient
-const OPENAI_API_KEY = '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'
+const OPENAI_API_KEY = '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'
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
     apiKey: OPENAI_API_KEY,
@@ -11,7 +11,8 @@ const logger = require('./logger.service')
 
 module.exports = {
     getCollection,
-    getBoardScript
+    getBoardScript,
+    getImgFromDal
 }
 
 var dbConn = null
@@ -51,4 +52,15 @@ async function getBoardScript(prompt) {
         stop: [" Human:", " AI:"],
     });
     return response.data.choices[0].text
+}
+
+async function getImgFromDal(prompt) {
+    const response = await openai.createImage({
+        prompt,
+        n: 1,
+        size: "1024x1024",
+    });
+    image_url = response.data.data[0].url;
+    console.log('image_url: ', image_url);
+    return image_url
 }

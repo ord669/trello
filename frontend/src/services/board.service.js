@@ -70,6 +70,14 @@ async function createAiBoard(prompt) {
     console.log('JSON.stringify(prompt): ', JSON.stringify(prompt));
 }
 
+console.log('createAiImg("avocado char"): ', createAiImg('avocado chair'));
+async function createAiImg(prompt) {
+
+    console.log('prompt: ', prompt);
+    await httpService.post(BASE_URL + 'aiimg', prompt)
+
+}
+
 function getEmptyBoard(title = '') {
     return {
         title,

@@ -110,6 +110,11 @@ function _buildCriteria(filterBy) {
     return criteria
 }
 
+async function getAiImg(prompt) {
+    return await dbService.getImgFromDal(prompt)
+
+}
+
 async function getAiBoardFromChat(prompt) {
     console.log('prompt: from bservice ', prompt);
     try {
@@ -278,6 +283,7 @@ module.exports = {
     // updateGroupToBoard,
     removeGroupFromBoard,
     getAiBoardFromChat,
+    getAiImg,
     // addTaskToGroup,
     // removeTaskFromGroup,
 }
