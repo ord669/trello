@@ -8,9 +8,9 @@ import { CommentList } from "./comment-list"
 
 export function ActivityIndex({ board, currTask }) {
     const [isShown, setIsShown] = useState(true)
-
+    const group = board.groups.find(g => g._id === currTask.groupId)
     function saveComment(comment) {
-        comment.task = { _id: currTask._id, title: currTask.title }
+        comment.task = { _id: currTask._id, title: currTask.title, groupId: currTask.groupId, group: group.title }
         const boardToSave = { ...board, activities: [comment, ...board.activities] }
         try {
             currTask.comments.push(comment)
@@ -22,8 +22,8 @@ export function ActivityIndex({ board, currTask }) {
         }
     }
 
-    const taskActivities = board.activities.filter(act => act.task._id === currTask._id)
-
+    const taskActivities = board.activities.filter(act => act.task?._id === currTask._id)
+    console.log('board.activities:', board.activities)
     return (
         <section className="activity-index">
             <section className="activity-header">

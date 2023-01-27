@@ -62,7 +62,6 @@ export async function saveBoard(board) {
     }
 }
 
-// createAiBoard('wedding plan')
 export async function createAiBoard(txt) {
 
     const prompt = { prompt: txt }
@@ -114,4 +113,29 @@ export async function removeSocketGroup(groupId) {
 
 export async function dispatchBoard(board) {
     store.dispatch({ type: SET_BOARD, board })
+}
+
+export async function saveActivity({ board, txt, type, at, diff, task }) {
+    const activity = {
+        _id: utilService.makeId(),
+        byMember: {
+            "_id": "u101",
+            "fullname": "Or Dvir",
+            "imgUrl": "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg"
+        },
+        createdAt: Date.now(),
+        diff,
+        type,
+        txt,
+        at,
+        task
+
+    }
+    console.log(' activity:', activity)
+    const boardToSave = { ...board, activities: [activity, ...board.activities] }
+    try {
+        await saveBoard(boardToSave)
+    } catch (err) {
+        console.log('cannot save activity', err)
+    }
 }

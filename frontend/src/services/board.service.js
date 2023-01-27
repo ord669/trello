@@ -26,6 +26,7 @@ export const boardService = {
     reorderGroups,
     removeTasksFromBoard,
     createAiBoard,
+    createAiImg,
 }
 
 function filterGroupsTasks(board, filterBy = { title: '' }) {
@@ -64,10 +65,23 @@ async function save(board) {
     return board
 }
 
+// console.log('createAiBoard("softwre development"): ', createAiBoard('software development'));
 async function createAiBoard(prompt) {
     console.log('prompt: ', prompt)
     await httpService.post(BASE_URL + 'aiboard', prompt)
-    console.log('JSON.stringify(prompt): ', JSON.stringify(prompt))
+
+}
+
+async function createAiImg(txt) {
+    console.log('txt: ', txt);
+
+    const prompt = { prompt: txt }
+
+    console.log('prompt: ', prompt);
+    const img = await httpService.post(BASE_URL + 'aiimg', prompt)
+    console.log('img: ', img);
+    return img
+
 }
 
 function getEmptyBoard(title = '') {
@@ -248,3 +262,4 @@ async function getImgsFromUnsplash(val = 'london') {
 function getColors() {
     return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91', '#172b4d']
 }
+

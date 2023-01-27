@@ -18,6 +18,7 @@ export async function saveTask(task) {
             group.tasksId.push(savedTask._id)
         }
         saveGroup(group)
+        return savedTask
     } catch (err) {
         console.log('Err from saveTask in board action :', err)
         throw err

@@ -116,6 +116,18 @@ async function getAiBoard(req, res) {
   }
 }
 
+async function getAiBgImg(req, res) {
+  const { prompt } = req.body
+  console.log('prompt: ', prompt);
+  try {
+    const img = await boardService.getAiImg(prompt)
+
+    res.json(img)
+  } catch (err) {
+    console.log('err', err)
+  }
+}
+
 module.exports = {
   getBoards,
   getBoardById,
@@ -126,4 +138,5 @@ module.exports = {
   // addGroupToBoard,
   // updateGroupInBoard,
   getAiBoard,
+  getAiBgImg,
 }

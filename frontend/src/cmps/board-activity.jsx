@@ -1,6 +1,7 @@
 import { ActivityPreview } from "./activity-preview"
 
 export function BoardActivity({ board }) {
+
     return (
         <section className='board-activity'>
             {board.activities.map(activity =>

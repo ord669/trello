@@ -73,6 +73,7 @@
 @import 'cmps/quick-task-edit';
 @import 'cmps/dates-modal';
 @import 'cmps/copy-modal';
+@import 'cmps/jarvis-modal';
 
 //VIEWS
 @import 'views/home-page';
@@ -81,21 +82,3 @@
 @import 'views/jarvis';
 
 @import 'views/task-details';
-
-.jarvis-modal {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    // width: 80vw;
-    // height: 80vh;
-    z-index: 2;
-
-    .jarvis-video {
-        video {
-            margin: 0 auto;
-
-        }
-    }
-
-}
