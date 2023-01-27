@@ -1,16 +1,21 @@
 import { TaskList } from "../task/task-list"
-import { removeGroup } from "../../store/board/board.action"
+import { removeGroup, saveActivity } from "../../store/board/board.action"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { GroupHeader } from "./group-header"
 import { Draggable } from "react-beautiful-dnd"
 import { PlusIcon } from "../../assets/svg/icon-library"
 import { useState } from "react"
+import { useSelector } from "react-redux"
+
 
 export function GroupPreview({ group, idx }) {
     const [isShown, setIsShown] = useState(false)
+    const { board } = useSelector(storeState => storeState.boardModule)
+
 
     function onRemoveGroup() {
         try {
+            saveActivity({ board, type: 'group', diff: 'archived', txt: group.title })
             removeGroup(group._id)
             showSuccessMsg('List removed successfully')
         } catch (err) {

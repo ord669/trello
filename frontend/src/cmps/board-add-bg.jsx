@@ -3,7 +3,7 @@ import { LoaderIcon, ManIcon } from "../assets/svg/icon-library"
 // import { boardService } from "../services/board.service.local"
 import { boardService } from "../services/board.service"
 import { utilService } from "../services/util.service"
-import { saveBoard } from "../store/board/board.action"
+import { saveActivity, saveBoard } from "../store/board/board.action"
 
 export function BoardAddBg({ board, type }) {
     const [imgs, setImgs] = useState([])
@@ -12,16 +12,15 @@ export function BoardAddBg({ board, type }) {
     const setUnsplash = useRef(utilService.debounce(loadImgs))
 
     async function onChangeBoardBg(bg) {
-        console.log('bg: ', bg);
         const updatedBoard = { ...board }
         updatedBoard.style.background = bg
         try {
             await saveBoard(updatedBoard)
+            await saveActivity({ board, type: 'bg' })
 
         } catch (err) {
             console.log('canot change background', err)
         }
-
     }
 
 

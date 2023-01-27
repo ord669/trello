@@ -1,6 +1,4 @@
 export function UserAvatarIcon({ member }) {
-
-
     const userStyle = {
         backgroundImage: `url(${member.imgUrl})`
     }

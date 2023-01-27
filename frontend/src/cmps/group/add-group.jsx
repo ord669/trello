@@ -1,19 +1,24 @@
 import { CloseIcon, PlusIcon } from "../../assets/svg/icon-library"
 import { useState } from "react"
-import { saveGroup } from "../../store/board/board.action"
+import { saveActivity, saveGroup } from "../../store/board/board.action"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 // import { boardService } from "../../services/board.service.local"
 import { boardService } from "../../services/board.service"
+import { useSelector } from "react-redux"
+
 
 export function AddGroup() {
     const [isShown, setIsShown] = useState(false)
     const [title, setTilte] = useState('')
+    const { board } = useSelector(storeState => storeState.boardModule)
+
 
     async function onAddList(ev) {
         ev.preventDefault()
         if (!title) return
         const group = boardService.getEmptyGroup(title)
         try {
+            await saveActivity({ board, type: 'group', txt: group.title, diff: 'added', })
             await saveGroup(group)
             setIsShown(prevIsShown => !prevIsShown)
             setTilte('')

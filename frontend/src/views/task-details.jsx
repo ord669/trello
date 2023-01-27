@@ -15,6 +15,7 @@ import { DueDate } from "../cmps/task/task-details/task-details-due-date"
 import { TaskDetailsAttachment } from "../cmps/task/task-details/task-details-attachment"
 import { taskService } from "../services/task.service"
 import { openDynamicModal } from "../store/modal/modal.action"
+import { saveActivity } from "../store/board/board.action"
 
 export function TaskDetails() {
     const { board } = useSelector(storeState => storeState.boardModule)
@@ -43,6 +44,7 @@ export function TaskDetails() {
 
     function onRemoveTask() {
         removeTask(task)
+        saveActivity({ board, type: 'task', diff: 'archived', task: { title: task.title } })
         navigate(`/board/${board._id}`)
     }
 

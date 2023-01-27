@@ -89,7 +89,6 @@ export function TaskPreview({ task, idx }) {
                             <p>{task.title}</p>
                             {<TaskPreviewIcons task={task} />}
                             <div>
-
                             </div>
                         </div>
                         <div className="task-preview-edit-icon">
