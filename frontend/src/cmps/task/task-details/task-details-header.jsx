@@ -18,7 +18,7 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId, setnoBg,
         setDynamicColor()
         return () => {
         }
-    }, [])
+    }, [task])
 
     function onCloseTask() {
         closeDynamicModal()
@@ -43,7 +43,6 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId, setnoBg,
             const color = colorIsDark ? "#fff" : "#172b4d"
             setColor(color)
         }
-
     }
 
 
