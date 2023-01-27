@@ -55,9 +55,9 @@ async function remove(boardId) {
 async function save(board) {
     const boardForDb = removeTasksFromBoard(structuredClone(board))
     if (board._id) {
-        await httpService.put(BASE_URL + board._id, board)
+        await httpService.put(BASE_URL + board._id, boardForDb)
     } else {
-        const newBoard = await httpService.post(BASE_URL, board)
+        const newBoard = await httpService.post(BASE_URL, boardForDb)
         board._id = newBoard._id
     }
     return board
