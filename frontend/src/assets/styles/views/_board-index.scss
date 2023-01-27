@@ -3,21 +3,33 @@
     max-width: 1200px;
     padding: 40px 40px 0;
     margin: auto;
-    
+
     @include for-normal-layout {
         padding: 40px 100px 0;
     }
 
     .title {
         display: flex;
-        font-size: 1.25rem;
-        padding: 0 0 10px 7px;
+        font-size: 1.10rem;
+        // font-size: 1.25rem;
+        padding: 0 0 10px 5px;
+        font-family: Charlie-Semi-Bold;
 
         svg {
             margin-inline-end: 12px;
             align-self: center;
             width: 28px;
             height: 28px;
+            color: #42526e;
         }
+    }
+
+    .sub-title{
+        font-family: Charlie-semi-Bold;
+        // font-family: Charlie-Bold;
+        font-size: 1.25rem;
+        color: #5e6c84;
+        margin-bottom: 20px;
+        // margin: 20px 0;
     }
 }

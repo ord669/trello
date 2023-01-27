@@ -2,15 +2,18 @@
     color: $clr6;
     background-position: 50%;
     background-size: cover;
+    font-family: Charlie-semi-Bold;
+    font-size: 15px;
 
     .board-hover {
         position: relative;
         display: flex;
         height: 100%;
         width: 100%;
-        padding: 8px;
+        padding: 10px 8px;
+        // padding: 8px;
         border-radius: inherit;
-        background-color: rgba(0, 0, 0, 0.25);
+        background-color: rgba(0, 0, 0, 0.4);
 
         h3 {
             flex-grow: 1;
@@ -42,7 +45,7 @@
         }
 
         &:hover {
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: rgba(0, 0, 0, 0.6);
 
             .board-star {
                 right: 10px;

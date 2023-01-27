@@ -137,7 +137,7 @@ function getEmptyTask() {
     return {
         "title": "",
         "archivedAt": Date.now(),
-        "description": "description",
+        "description": "",
         "comments": [],
         "checklists": [],
         "memberIds": [],
