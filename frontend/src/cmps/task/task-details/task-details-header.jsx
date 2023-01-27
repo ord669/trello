@@ -50,7 +50,7 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId, setnoBg,
                 {showImgBg && !noBg && <div style={background} className="task-details-cover"></div>}
                 {!showImgBg && !noBg && <div style={background} className="task-details-img "></div>}
                 <button className="btn-bar "
-                    onClick={(ev) => openDynamicModal({ ev, name: 'cover', task })} ><FiCreditCard /> Cover</button>
+                    onClick={(ev) => openDynamicModal({ ev, name: 'cover', task, func: { setnoBg } })} ><FiCreditCard /> Cover</button>
 
             </div>
             <div className="header-title-title-container flex  align-center">
