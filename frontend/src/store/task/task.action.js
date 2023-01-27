@@ -1,7 +1,6 @@
 import { socketService, SOCKET_EMIT_SAVE_TASK } from '../../services/socket.service'
 import { taskService } from '../../services/task.service'
 import { dispatchBoard, saveGroup } from '../board/board.action'
-import { saveGroup } from '../board/board.action'
 import { closeDynamicModal, openDynamicModal } from '../modal/modal.action'
 import { store } from '../store'
 
