@@ -113,7 +113,7 @@ export function ToolBar({ board }) {
                 <BoardSideMenu isOpenSideMenu={isOpenSideMenu} board={board}
                     setIsOpenSideMenu={setIsOpenSideMenu} />
                 {isOpenShare && <ShareModal setIsOpenShare={setIsOpenShare} />}
-                {isOpenJarvis && <Jarvis />}
+                {isOpenJarvis && <Jarvis setIsOpenJarvis={setIsOpenJarvis} />}
             </div>
         </section>
     )
