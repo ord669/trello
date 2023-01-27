@@ -7,12 +7,8 @@ export function LabelPreview({ label, checkForLabelIncluded, currTask }) {
     const [isClicked, setIsClicked] = useState(checkForLabelIncluded(label._id))
 
     useEffect(() => {
-        // setIsClicked(checkForLabelIncluded(label._id))
-
-        return () => {
-
-        }
-    }, [])
+        setIsClicked(checkForLabelIncluded(label._id))
+    }, [currTask.labelIds])
 
     function darkenHexColor(hexColor, amount = 20) {
         let color = tinycolor(hexColor)
@@ -27,18 +23,11 @@ export function LabelPreview({ label, checkForLabelIncluded, currTask }) {
     const secStyle = {
         backgroundColor: darkenHexColor(label.color)
     }
-    function checkForChecked() {
-        checkForLabelIncluded(label._id)
-        setIsClicked((prev) => !prev)
-    }
     return (
         <div
             className="label-container"
             onClick={() => {
                 toggleTaskLabel(label._id, currTask.groupId, currTask._id)
-                setTimeout(setIsClicked(!checkForLabelIncluded(label._id)), 1000)
-
-
             }}
             key={label._id}>
             <input type="checkbox" onChange={() => { }} checked={isClicked} />

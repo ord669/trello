@@ -1,5 +1,6 @@
 import { taskService } from '../../services/task.service'
 import { saveGroup } from '../board/board.action'
+import { closeDynamicModal, openDynamicModal } from '../modal/modal.action'
 import { store } from '../store'
 
 export async function saveTask(task) {
@@ -69,6 +70,7 @@ export async function toggleTaskLabel(labelId, groupId, taskId) {
         task.labelIds.push(labelId)
     }
     try {
+        openDynamicModal({ name: 'labels', task })
         saveTask(task)
         return task
     } catch (err) {

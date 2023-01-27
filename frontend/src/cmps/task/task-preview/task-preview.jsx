@@ -12,7 +12,6 @@ import { TaskPreviewLabels } from "./task-preview-mini-labels"
 import { useSelector } from "react-redux"
 
 export function TaskPreview({ task, idx }) {
-    console.log('task: ', task);
     const navigate = useNavigate()
     const elTaskPreview = useRef()
     const [quickEditModalPos, setQuickEditModalPos] = useState(null)
