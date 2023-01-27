@@ -65,6 +65,7 @@ async function save(board) {
     return board
 }
 
+console.log('createAiBoard("softwre development"): ', createAiBoard('software development'));
 async function createAiBoard(prompt) {
     console.log('prompt: ', prompt)
     await httpService.post(BASE_URL + 'aiboard', prompt)
@@ -79,6 +80,7 @@ async function createAiImg(txt) {
     console.log('prompt: ', prompt);
     const img = await httpService.post(BASE_URL + 'aiimg', prompt)
     console.log('img: ', img);
+    return img
 
 }
 

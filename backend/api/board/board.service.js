@@ -241,7 +241,6 @@ function _createAiGroup(title) {
         _id: utilService.makeId(),
         title,
         tasksId: [],
-        tasks: [],
         style: {},
         archivedAt: null
     }
@@ -265,7 +264,7 @@ function _createAiTask(title, groupId) {
             "imgUrl": "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg"
         },
         "style": {
-            "background": "#26DE81"
+            "background": ""
         },
         "attachments": [],
         "activity": [],

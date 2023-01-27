@@ -5,24 +5,11 @@ import { boardService } from "../services/board.service"
 import { utilService } from "../services/util.service"
 import { saveBoard } from "../store/board/board.action"
 
-export function BoardAddBg({ board, type }) {
+export function BoardAddBg({ board, type, onChangeBoardBg }) {
     const [imgs, setImgs] = useState([])
     const [colors, setColors] = useState(boardService.getColors())
     const [imgVal, setImgVal] = useState('london')
     const setUnsplash = useRef(utilService.debounce(loadImgs))
-
-    async function onChangeBoardBg(bg) {
-        const updatedBoard = { ...board }
-        updatedBoard.style.background = bg
-        try {
-            await saveBoard(updatedBoard)
-
-        } catch (err) {
-            console.log('canot change background', err)
-        }
-
-    }
-
 
     useEffect(() => {
         loadImgs()
