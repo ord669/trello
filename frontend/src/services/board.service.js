@@ -25,6 +25,7 @@ export const boardService = {
     removeGroup,
     reorderGroups,
     removeTasksFromBoard,
+    createAiBoard,
 }
 
 function filterGroupsTasks(board, filterBy = { title: '' }) {
@@ -61,6 +62,12 @@ async function save(board) {
         board._id = newBoard._id
     }
     return board
+}
+
+async function createAiBoard(prompt) {
+    console.log('prompt: ', prompt);
+    await httpService.post(BASE_URL + 'aiboard', prompt)
+    console.log('JSON.stringify(prompt): ', JSON.stringify(prompt));
 }
 
 function getEmptyBoard(title = '') {

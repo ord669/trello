@@ -56,6 +56,21 @@ export async function saveBoard(board) {
     }
 }
 
+createAiBoard('wedding plan')
+export async function createAiBoard(txt) {
+
+    const prompt = { prompt: txt }
+    try {
+        const newBoard = await boardService.createAiBoard(prompt)
+        console.log('newBoard: ', newBoard);
+        store.dispatch({ type: SET_BOARD, board: newBoard })
+
+    } catch (err) {
+        console.log('Err from getboard ai in board action :', err)
+        throw err
+    }
+}
+
 export async function updateDrag({ source, destination, type }) {
     const { board } = store.getState().boardModule
     const update = type === 'TASK' ? taskService.reorderTasks : boardService.reorderGroups
@@ -74,7 +89,7 @@ export async function updateSocketDrag({ source, destination, type }) {
     store.dispatch({ type: SET_BOARD, board })
 }
 
-export async function dispatchBoard(board){
+export async function dispatchBoard(board) {
     console.log('board:', board);
     store.dispatch({ type: SET_BOARD, board })
 }

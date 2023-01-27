@@ -26,6 +26,7 @@ async function getById(boardId) {
             group.tasks = tasks
             return group
         }))
+        // console.log('board:', board);
         return board
     } catch (err) {
         logger.error(`while finding board ${boardId}`, err)
@@ -110,9 +111,12 @@ function _buildCriteria(filterBy) {
 }
 
 async function getAiBoardFromChat(prompt) {
+    console.log('prompt: from bservice ', prompt);
     try {
         const script = await dbService.getBoardScript(prompt)
         const lines = script.split('\n')
+
+        console.log('group23222222323231232342343242342323423423423423324s: ', lines)
         const groups = lines.reduce((acc, line) => {
             if (line.includes('$')) {
                 const group = { groupTitle: _removeSpecialChars(line), tasks: [] }
@@ -138,6 +142,8 @@ async function getAiBoardFromChat(prompt) {
         const aiBoard = _createAiBoard('Ai Board', newGroups)
 
         const aiBoardWithId = await add(aiBoard)
+
+        // console.log('getById(aiBoardWithId._id): ', getById(aiBoardWithId._id));
         return await getById(aiBoardWithId._id)
 
     } catch (err) {
@@ -243,12 +249,8 @@ function _createAiTask(title, groupId) {
         "description": "",
         "comments": [],
         "checklists": [],
-        "memberIds": [
-            "u102"
-        ],
-        "labelIds": [
-            "l104"
-        ],
+        "memberIds": [],
+        "labelIds": [],
         "dueDate": null,
         "isDone": false,
         "byMember": {

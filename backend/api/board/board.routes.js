@@ -8,7 +8,7 @@ const router = express.Router()
 // router.use(requireAuth)
 
 router.get('/', log, getBoards)
-router.get('/aiboard', log, getAiBoard)
+router.post('/aiboard', log, getAiBoard)
 
 router.get('/:boardId', getBoardById)
 // router.post('/', requireAuth, addBoard)

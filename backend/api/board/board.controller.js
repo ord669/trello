@@ -101,7 +101,9 @@ async function removeGroupFromBoard(req, res) {
 // }
 
 async function getAiBoard(req, res) {
+  console.log(' req.body: ', req.body);
   const { prompt } = req.body
+  console.log('prompt: ', prompt);
 
   try {
     logger.debug('Getting Boards')
