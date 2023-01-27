@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { BoardSkelton, CloseIcon } from "../assets/svg/icon-library"
 // import { boardService } from "../services/board.service.local"
 import { boardService } from "../services/board.service"
+import { socketService, SOCKET_EMIT_SAVE_BOARD } from "../services/socket.service"
 import { saveBoard } from "../store/board/board.action"
 
 export function CreateBoard({ setIsCreateBoard }) {
@@ -40,6 +41,8 @@ export function CreateBoard({ setIsCreateBoard }) {
         }
         try {
             const savedBoard = await saveBoard(board)
+            console.log('savedBoard:', savedBoard);
+            socketService.emit(SOCKET_EMIT_SAVE_BOARD, savedBoard)
             setIsCreateBoard(prev => !prev)  ///
             navigate(`/board/${savedBoard._id}`)
         } catch (err) {

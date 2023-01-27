@@ -3,13 +3,23 @@ import { userService } from './user.service'
 
 export const SOCKET_EVENT_DRAG_END = 'update-drag-end'
 export const SOCKET_EVENT_SAVE_TASK = 'save-task'
+export const SOCKET_EVENT_REMOVE_TASK = 'remove-task'
+
 export const SOCKET_EVENT_SAVE_GROUP = 'save-group'
-export const SOCKET_EVENT_SAVE_BOARDS = 'save-boards'
+export const SOCKET_EVENT_REMOVE_GROUP = 'remove-group'
+
+export const SOCKET_EVENT_SAVE_BOARD = 'save-board'
+export const SOCKET_EVENT_REMOVE_BOARD = 'remove-board'
 
 export const SOCKET_EMIT_DRAG_END = 'drag-end'
 export const SOCKET_EMIT_SAVE_TASK = 'emit-save-task'
+export const SOCKET_EMIT_REMOVE_TASK = 'emit-remove-task'
+
 export const SOCKET_EMIT_SAVE_GROUP = 'emit-save-group'
-export const SOCKET_EMIT_SAVE_BOARDS = 'emit-save-boards'
+export const SOCKET_EMIT_REMOVE_GROUP = 'emit-remove-group'
+
+export const SOCKET_EMIT_SAVE_BOARD = 'emit-save-board'
+export const SOCKET_EMIT_REMOVE_BOARD = 'emit-remove-board'
 
 // export const SOCKET_EVENT_TASK_DRAGED = 'drag-task'
 // export const SOCKET_EVENT_GROUP_DRAGED = 'drag-group'

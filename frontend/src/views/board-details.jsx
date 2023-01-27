@@ -3,13 +3,14 @@ import { useSelector } from "react-redux"
 import { Outlet, useParams } from "react-router-dom"
 import { GroupList } from "../cmps/group/group-list"
 import { ToolBar } from "../cmps/tool-bar"
-import { loadBoard } from "../store/board/board.action"
+import { dispatchBoard, loadBoard } from "../store/board/board.action"
 import { ArrowDownIcon, LoaderIcon } from "../assets/svg/icon-library"
 import { DynamicModal } from "../cmps/dynamic-modal"
 import { MainSidemenu } from "../cmps/main-side-menu"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { SET_BOARD } from "../store/board/board.reducer"
+import { socketService, SOCKET_EVENT_SAVE_BOARD } from "../services/socket.service"
 
 export function BoardDetails() {
     const { dynamicModalStatus } = useSelector(storeState => storeState.modalModule)
@@ -20,8 +21,10 @@ export function BoardDetails() {
 
     useEffect(() => {
         loadBoard(boardId)
+        socketService.on(SOCKET_EVENT_SAVE_BOARD, dispatchBoard)
 
         return () => {
+            socketService.off(SOCKET_EVENT_SAVE_BOARD, dispatchBoard)
             dispatch({ type: SET_BOARD, board: null })
         }
     }, [boardId])
