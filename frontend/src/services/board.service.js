@@ -65,7 +65,7 @@ async function save(board) {
     return board
 }
 
-console.log('createAiBoard("softwre development"): ', createAiBoard('software development'));
+// console.log('createAiBoard("softwre development"): ', createAiBoard('software development'));
 async function createAiBoard(prompt) {
     console.log('prompt: ', prompt)
     await httpService.post(BASE_URL + 'aiboard', prompt)
