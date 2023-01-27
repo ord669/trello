@@ -25,6 +25,8 @@ export const boardService = {
     removeGroup,
     reorderGroups,
     removeTasksFromBoard,
+    createAiBoard,
+    createAiImg,
 }
 
 function filterGroupsTasks(board, filterBy = { title: '' }) {
@@ -55,18 +57,37 @@ async function remove(boardId) {
 async function save(board) {
     const boardForDb = removeTasksFromBoard(structuredClone(board))
     if (board._id) {
-        await httpService.put(BASE_URL + board._id, board)
+        await httpService.put(BASE_URL + board._id, boardForDb)
     } else {
-        const newBoard = await httpService.post(BASE_URL, board)
+        const newBoard = await httpService.post(BASE_URL, boardForDb)
         board._id = newBoard._id
     }
     return board
 }
 
+// console.log('createAiBoard("softwre development"): ', createAiBoard('software development'));
+async function createAiBoard(prompt) {
+    console.log('prompt: ', prompt)
+    await httpService.post(BASE_URL + 'aiboard', prompt)
+
+}
+
+async function createAiImg(txt) {
+    console.log('txt: ', txt);
+
+    const prompt = { prompt: txt }
+
+    console.log('prompt: ', prompt);
+    const img = await httpService.post(BASE_URL + 'aiimg', prompt)
+    console.log('img: ', img);
+    return img
+
+}
+
 function getEmptyBoard(title = '') {
     return {
         title,
-        isstarred: false,
+        isStarred: false,
         style: {},
         groups: [],
         activities: [],
@@ -219,6 +240,7 @@ function getBgImgsURL() {
 }
 
 function removeTasksFromBoard(board) {
+    if (!board.groups) return board
     const groups = board.groups.map(group => {
         delete group.tasks
         return group

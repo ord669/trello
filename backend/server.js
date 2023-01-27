@@ -24,7 +24,7 @@ const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const taskRoutes = require('./api/task/task.routes')
 const boardRoutes = require('./api/board/board.routes')
-// const {setupSocketAPI} = require('./services/socket.service')
+const {setupSocketAPI} = require('./services/socket.service')
 
 // routes
 const setupAsyncLocalStorage = require('./middlewares/setupAls.middleware')
@@ -34,7 +34,7 @@ app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/board', boardRoutes)
 app.use('/api/task', taskRoutes)
-// setupSocketAPI(http)
+setupSocketAPI(http)
 
 // Make every server-side-route to match the index.html
 // so when requesting http://localhost:3030/index.html/car/123 it will still respond with

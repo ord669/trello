@@ -10,7 +10,6 @@ async function query(filterBy = { title: '' }) {
         // console.log('criteria: ', criteria);
         const collection = await dbService.getCollection('board')
         const boards = await collection.find().toArray()
-        console.log('boards:', boards)
         return boards
     } catch (err) {
         logger.error('cannot find boards', err)
@@ -111,10 +110,15 @@ function _buildCriteria(filterBy) {
     return criteria
 }
 
-// getAiBoardFromChat()
-async function getAiBoardFromChat() {
+async function getAiImg(prompt) {
+    return await dbService.getImgFromDal(prompt)
+
+}
+
+async function getAiBoardFromChat(prompt) {
+    console.log('prompt: from bservice ', prompt);
     try {
-        const script = await dbService.getBoardScript()
+        const script = await dbService.getBoardScript(prompt)
         const lines = script.split('\n')
 
         console.log('group23222222323231232342343242342323423423423423324s: ', lines)
@@ -237,7 +241,6 @@ function _createAiGroup(title) {
         _id: utilService.makeId(),
         title,
         tasksId: [],
-        tasks: [],
         style: {},
         archivedAt: null
     }
@@ -250,12 +253,8 @@ function _createAiTask(title, groupId) {
         "description": "",
         "comments": [],
         "checklists": [],
-        "memberIds": [
-            "u102"
-        ],
-        "labelIds": [
-            "l104"
-        ],
+        "memberIds": [],
+        "labelIds": [],
         "dueDate": null,
         "isDone": false,
         "byMember": {
@@ -265,7 +264,7 @@ function _createAiTask(title, groupId) {
             "imgUrl": "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg"
         },
         "style": {
-            "background": "#26DE81"
+            "background": ""
         },
         "attachments": [],
         "activity": [],
@@ -283,6 +282,7 @@ module.exports = {
     // updateGroupToBoard,
     removeGroupFromBoard,
     getAiBoardFromChat,
+    getAiImg,
     // addTaskToGroup,
     // removeTaskFromGroup,
 }

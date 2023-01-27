@@ -8,7 +8,6 @@ export function TaskDetailsDescription({ task, handleChange }) {
         setIsShown(prev => !prev)
     }
     function handleKeyPress(ev) {
-        console.log('ev: ', ev)
         if (ev.keyCode === 13) {
             ev.target.blur()
             saveTask(task)

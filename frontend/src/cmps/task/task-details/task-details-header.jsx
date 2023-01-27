@@ -45,7 +45,6 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId, setnoBg,
         }
     }
 
-
     if (!task.style.background.includes('https')) {
         background = {
             backgroundColor: `${task.style.background}`,
@@ -73,8 +72,8 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId, setnoBg,
                 </button>
                 {showImgBg && !noBg && <div style={background} className="task-details-cover"></div>}
                 {!showImgBg && !noBg && <div style={background} className="task-details-img "></div>}
-                <button style={{ fill: color, color }} className="btn-bar "
-                    onClick={(ev) => openDynamicModal({ ev, name: 'cover', task, func: { setnoBg } })} ><FiCreditCard /> Cover</button>
+                {!noBg && <button style={{ fill: color, color }} className="btn-bar "
+                    onClick={(ev) => openDynamicModal({ ev, name: 'cover', task, func: { setnoBg } })} ><FiCreditCard /> Cover</button>}
 
             </div>
             <div className="header-title-title-container flex  align-center">

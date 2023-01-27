@@ -101,14 +101,32 @@ async function removeGroupFromBoard(req, res) {
 // }
 
 async function getAiBoard(req, res) {
+  console.log(' req.body: ', req.body);
+  const { prompt } = req.body
+  console.log('prompt: ', prompt);
+
   try {
     logger.debug('Getting Boards')
-    const aiBoards = await boardService.getAiBoardFromChat()
+    console.log('prompt: ', prompt);
+
+    const aiBoards = await boardService.getAiBoardFromChat(prompt)
     console.log('aiBoards: ', aiBoards);
     res.json(aiBoards)
   } catch (err) {
     logger.error('Failed to get ai board  from controller', err)
     res.status(500).send({ err: 'Failed to get ai board from controller' })
+  }
+}
+
+async function getAiBgImg(req, res) {
+  const { prompt } = req.body
+  console.log('prompt: ', prompt);
+  try {
+    const img = await boardService.getAiImg(prompt)
+
+    res.json(img)
+  } catch (err) {
+    console.log('err', err)
   }
 }
 
@@ -122,4 +140,5 @@ module.exports = {
   // addGroupToBoard,
   // updateGroupInBoard,
   getAiBoard,
+  getAiBgImg,
 }

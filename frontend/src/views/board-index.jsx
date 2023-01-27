@@ -3,18 +3,41 @@ import { Clock, EmptyStarIcon } from "../assets/svg/icon-library"
 import { BoardList } from "../cmps/board-list"
 // import { boardService } from "../services/board.service.local"
 import { boardService } from "../services/board.service"
+import { socketService, SOCKET_EVENT_REMOVE_BOARD, SOCKET_EVENT_SAVE_BOARD } from "../services/socket.service"
 
 export function BoardIndex() {
     const [boards, setBoards] = useState([])
-    console.log('boards:', boards);
+    console.log('boards:', boards)
 
     useEffect(() => {
         loadBoards()
+        socketService.on(SOCKET_EVENT_SAVE_BOARD, saveSocketBoard)
+        socketService.on(SOCKET_EVENT_REMOVE_BOARD, removeSocketBoard)
+        return () => {
+            socketService.off(SOCKET_EVENT_SAVE_BOARD, saveSocketBoard)
+            socketService.off(SOCKET_EVENT_REMOVE_BOARD, removeSocketBoard)
+        }
     }, [])
 
     async function loadBoards() {
         const boards = await boardService.query()
         setBoards(boards)
+    }
+
+    function saveSocketBoard(socketBoard) {
+        setBoards(prevBoards => {
+            const boardIdx = prevBoards.findIndex(currBoard => currBoard._id === socketBoard._id)
+            if (boardIdx !== -1) {
+                prevBoards.splice(boardIdx, 1, socketBoard)
+            } else {
+                prevBoards.push(socketBoard)
+            }
+            return [...prevBoards]
+        })
+    }
+
+    function removeSocketBoard(socketBoardId) {
+        setBoards(prevBoards => prevBoards.filter(board => board._id === socketBoardId))
     }
 
 

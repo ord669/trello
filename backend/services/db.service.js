@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient
-const OPENAI_API_KEY = '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'
+const OPENAI_API_KEY = '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'
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
     apiKey: OPENAI_API_KEY,
@@ -11,7 +11,8 @@ const logger = require('./logger.service')
 
 module.exports = {
     getCollection,
-    getBoardScript
+    getBoardScript,
+    getImgFromDal
 }
 
 var dbConn = null
@@ -39,10 +40,10 @@ async function connect() {
         throw err
     }
 }
-async function getBoardScript() {
+async function getBoardScript(prompt) {
     const response = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: "make me a trello board for a software sevelopment project with detailed tasks for each column, each column headline should be presented with only one dollar sign  infront of it, and each task should be presented with only one infinity symbol infront of it",
+        prompt: `make me a trello board for a ${prompt} project with detailed tasks for each column, each column headline should be presented with only one dollar sign  infront of it, and each task should be presented with only one infinity symbol infront of it`,
         temperature: 0.9,
         max_tokens: 1500,
         top_p: 1,
@@ -51,4 +52,17 @@ async function getBoardScript() {
         stop: [" Human:", " AI:"],
     });
     return response.data.choices[0].text
+}
+
+async function getImgFromDal(prompt) {
+    console.log('prompt: ', prompt);
+    const response = await openai.createImage({
+        prompt: `${prompt}`,
+        n: 1,
+        size: "1024x1024",
+    });
+    image_url = response.data.data[0].url;
+    console.log('image_url: ', image_url);
+    return image_url
+
 }

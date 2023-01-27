@@ -1,6 +1,26 @@
 import io from 'socket.io-client'
 import { userService } from './user.service'
 
+export const SOCKET_EVENT_DRAG_END = 'update-drag-end'
+export const SOCKET_EVENT_SAVE_TASK = 'save-task'
+export const SOCKET_EVENT_REMOVE_TASK = 'remove-task'
+
+export const SOCKET_EVENT_SAVE_GROUP = 'save-group'
+export const SOCKET_EVENT_REMOVE_GROUP = 'remove-group'
+
+export const SOCKET_EVENT_SAVE_BOARD = 'save-board'
+export const SOCKET_EVENT_REMOVE_BOARD = 'remove-board'
+
+export const SOCKET_EMIT_DRAG_END = 'drag-end'
+export const SOCKET_EMIT_SAVE_TASK = 'emit-save-task'
+export const SOCKET_EMIT_REMOVE_TASK = 'emit-remove-task'
+
+export const SOCKET_EMIT_SAVE_GROUP = 'emit-save-group'
+export const SOCKET_EMIT_REMOVE_GROUP = 'emit-remove-group'
+
+export const SOCKET_EMIT_SAVE_BOARD = 'emit-save-board'
+export const SOCKET_EMIT_REMOVE_BOARD = 'emit-remove-board'
+
 // export const SOCKET_EVENT_TASK_DRAGED = 'drag-task'
 // export const SOCKET_EVENT_GROUP_DRAGED = 'drag-group'
 
@@ -18,8 +38,9 @@ const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
 
 const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'
-// export const socketService = createSocketService()
-export const socketService = createDummySocketService()
+
+export const socketService = createSocketService()
+// export const socketService = createDummySocketService()
 
 // for debugging from console
 window.socketService = socketService
@@ -47,15 +68,15 @@ function createSocketService() {
     emit(eventName, data) {
       socket.emit(eventName, data)
     },
-    // login(userId) {
-    //   socket.emit(SOCKET_EMIT_LOGIN, userId)
-    // },
-    // logout() {
-    //   socket.emit(SOCKET_EMIT_LOGOUT)
-    // },
-    // terminate() {
-    //   socket = null
-    // },
+    login(userId) {
+      socket.emit(SOCKET_EMIT_LOGIN, userId)
+    },
+    logout() {
+      socket.emit(SOCKET_EMIT_LOGOUT)
+    },
+    terminate() {
+      socket = null
+    },
   }
   return socketService
 }
@@ -101,12 +122,3 @@ function createDummySocketService() {
   return socketService
 }
 
-
-// Basic Tests
-// function cb(x) {console.log('Socket Test - Expected Puk, Actual:', x)}
-// socketService.on('baba', cb)
-// socketService.on('baba', cb)
-// socketService.on('baba', cb)
-// socketService.on('mama', cb)
-// socketService.emit('baba', 'Puk')
-// socketService.off('baba', cb)

@@ -1,5 +1,6 @@
 // import { boardService } from "../../services/board.service.local"
 import { boardService } from "../../services/board.service"
+import { socketService, SOCKET_EMIT_REMOVE_GROUP, SOCKET_EMIT_SAVE_BOARD, SOCKET_EMIT_SAVE_GROUP } from "../../services/socket.service"
 // import { socketService, SOCKET_EMIT_GROUP_DRAGED, SOCKET_EMIT_TASK_DRAGED } from "../../services/socket.service"
 import { taskService } from "../../services/task.service"
 import { utilService } from "../../services/util.service"
@@ -24,6 +25,7 @@ export async function removeGroup(groupId) {
     const { board } = store.getState().boardModule
     try {
         await boardService.removeGroup(board, groupId)
+        socketService.emit(SOCKET_EMIT_REMOVE_GROUP, { boardId: board._id, groupId })
     } catch (err) {
         store.dispatch({ type: UNDO_REMOVE_GROUP, })
         console.log('Err from removeGroup in board action :', err)
@@ -36,6 +38,7 @@ export async function saveGroup(group) {
     const { board } = store.getState().boardModule
     try {
         const savedGroup = await boardService.saveGroup(board, group)
+        socketService.emit(SOCKET_EMIT_SAVE_GROUP, savedGroup)
         store.dispatch({ type, group: savedGroup })
         return savedGroup
     } catch (err) {
@@ -45,29 +48,71 @@ export async function saveGroup(group) {
 }
 
 export async function saveBoard(board) {
-
     try {
         const savedBoard = await boardService.save(board)
-        const newBoard = board._id ? board : savedBoard
-        store.dispatch({ type: SET_BOARD, board: newBoard })
-        return newBoard
+        socketService.emit(SOCKET_EMIT_SAVE_BOARD, savedBoard)
+        store.dispatch({ type: SET_BOARD, board: savedBoard })
+        return savedBoard
+        // const newBoard = board._id ? board : savedBoard
+        // store.dispatch({ type: SET_BOARD, board: newBoard })
+        // return newBoard
     } catch (err) {
         console.log('Err from saveBoard in board action :', err)
         throw err
     }
 }
 
+export async function createAiBoard(txt) {
+
+    const prompt = { prompt: txt }
+    try {
+        const newBoard = await boardService.createAiBoard(prompt)
+        console.log('newBoard: ', newBoard)
+        store.dispatch({ type: SET_BOARD, board: newBoard })
+
+    } catch (err) {
+        console.log('Err from getboard ai in board action :', err)
+        throw err
+    }
+}
+
 export async function updateDrag({ source, destination, type }) {
-    console.log('destination: ', destination);
-    console.log('source: ', source);
     const { board } = store.getState().boardModule
     const update = type === 'TASK' ? taskService.reorderTasks : boardService.reorderGroups
     update(source, destination, board.groups)
-    // const groupsToSave = update(source, destination, board.groups)
-    // const groupsToSave = await update(source, destination, board.groups)
-    // const dragEv = type === 'TASK' ? SOCKET_EMIT_TASK_DRAGED : SOCKET_EMIT_GROUP_DRAGED
     saveBoard({ ...board })
-    // saveBoard({ ...board, groups: groupsToSave })
+}
+
+// export async function updateSocketDrag(board) {
+//     store.dispatch({ type: SET_BOARD, board })
+// }
+
+export async function updateSocketDrag({ source, destination, type }) {
+    const { board } = store.getState().boardModule
+    const update = type === 'TASK' ? taskService.reorderTasks : boardService.reorderGroups
+    update(source, destination, board.groups)
+    store.dispatch({ type: SET_BOARD, board })
+}
+
+export async function saveSocketGroup(socketGroup) {
+    const { board } = store.getState().boardModule
+    try {
+        const group = board.groups.find(group => group._id === socketGroup._id)
+        const type = group ? UPDATE_GROUP : ADD_GROUP
+        store.dispatch({ type, group: socketGroup })
+    } catch (err) {
+        console.log('Err from saveGroup in board action :', err)
+        throw err
+    }
+}
+
+export async function removeSocketGroup(groupId) {
+    console.log('groupId:', groupId)
+    store.dispatch({ type: REMOVE_GROUP, groupId })
+}
+
+export async function dispatchBoard(board) {
+    store.dispatch({ type: SET_BOARD, board })
 }
 
 export async function saveActivity({ board, txt, type, at, diff, task }) {

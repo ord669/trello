@@ -12,8 +12,6 @@ export function LabelsModalList({ filterBy, board, currTask, toggleTaskLabel }) 
         return filteredLabels
     }
     function checkForLabelIncluded(labelId) {
-        console.log('labelId: ', labelId);
-        console.log('currTask: ', currTask.labelIds);
         if (currTask.labelIds.includes(labelId)) return true
         return false
     }

@@ -60,7 +60,6 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
 
         else {
             const colorIsDark = utilService.getBgIsDarkColorHex(bg)
-            console.log('colorisDark: ', colorIsDark);
             const color = colorIsDark ? "#fff" : "#172b4d"
             setBoardColor(color)
         }
@@ -124,7 +123,6 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
             </div>
             <div>
                 <p className="msm-your-boards">Your Boards</p>
-
                 {boards && boards.map(board =>
                     <div key={board._id} className="msm-boards-list">
                         <div onClick={() => navigate(`/board/${board._id}`)} key={board._id} className="msm-card">

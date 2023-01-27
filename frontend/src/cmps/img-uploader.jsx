@@ -3,9 +3,6 @@ import { uploadService } from '../services/upload.service'
 
 export function ImgUploader({ onUploaded = null, type, styleClass, content, showFile }) {
   let fileName
-  console.log('styleClass: ', styleClass);
-  console.log('type: ', type);
-  console.log('styleClass: ', styleClass);
   const [imgData, setImgData] = useState({
     imgUrl: null,
     height: 500,
@@ -14,7 +11,6 @@ export function ImgUploader({ onUploaded = null, type, styleClass, content, show
   const [isUploading, setIsUploading] = useState(false)
 
   async function uploadImg(ev) {
-    console.log('ev: ', ev);
     setIsUploading(true)
     const { secure_url, height, width } = await uploadService.uploadImg(ev)
     setImgData({ imgUrl: secure_url, width, height })

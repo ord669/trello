@@ -1,14 +1,14 @@
+import { socketService, SOCKET_EMIT_REMOVE_TASK, SOCKET_EMIT_SAVE_TASK } from '../../services/socket.service'
 import { taskService } from '../../services/task.service'
-import { saveGroup } from '../board/board.action'
+import { dispatchBoard, saveGroup } from '../board/board.action'
 import { closeDynamicModal, openDynamicModal } from '../modal/modal.action'
 import { store } from '../store'
 
 export async function saveTask(task) {
-
     try {
         const { board } = store.getState().boardModule
         const savedTask = await taskService.save(task)
-
+        socketService.emit(SOCKET_EMIT_SAVE_TASK, savedTask)
         const group = board.groups.find(group => group._id === task.groupId)
         if (task._id) {
             group.tasks = group.tasks.map(currTask => currTask._id !== savedTask._id ? currTask : savedTask)
@@ -31,6 +31,7 @@ export async function removeTask(task) {
     try {
         const { board } = store.getState().boardModule
         await taskService.remove(taskId)
+        socketService.emit(SOCKET_EMIT_REMOVE_TASK, {groupId, taskId})
         const group = board.groups.find(group => group._id === groupId)
         group.tasks = group.tasks.filter(task => task._id !== taskId)
         group.tasksId = group.tasksId.filter(id => id !== taskId)
@@ -76,6 +77,40 @@ export async function toggleTaskLabel(labelId, groupId, taskId, refresh) {
         return task
     } catch (err) {
         console.log('err from toggle task label', err)
+        throw err
+    }
+}
+
+export async function saveSocketTask(taskFromSocket) {
+    try {
+        const { board } = store.getState().boardModule
+        const group = board.groups.find(group => group._id === taskFromSocket.groupId)
+        let task = group.tasks.find(currTask => currTask._id === taskFromSocket._id)
+        if (task) {
+            // task = taskFromSocket
+            group.tasks = group.tasks.map(currTask => currTask._id !== taskFromSocket._id ? currTask : taskFromSocket)
+        }
+        else {
+            group.tasks.push(taskFromSocket)
+            group.tasksId.push(taskFromSocket._id)
+        }
+        dispatchBoard(board)
+    } catch (err) {
+        console.log('Err from saveSocketTask in board action :', err)
+        throw err
+    }
+}
+
+export async function removeSocketTask(taskId, groupId) {
+    // if (!groupId || !taskId) return
+    try {
+        const { board } = store.getState().boardModule
+        const group = board.groups.find(group => group._id === groupId)
+        group.tasks = group.tasks.filter(task => task._id !== taskId)
+        group.tasksId = group.tasksId.filter(id => id !== taskId)
+        dispatchBoard(board)
+    } catch (err) {
+        console.log('Err from removeSocketTask in board action :', err)
         throw err
     }
 }

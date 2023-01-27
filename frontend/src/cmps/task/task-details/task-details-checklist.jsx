@@ -15,8 +15,6 @@ export function TaskDetailsChecklist({ checklist, task }) {
     const [isTitleEdit, setIsTitleEdit] = useState(false)
     const [todo, setTodo, handleChange] = useForm(taskService.getEmptyTodo())
 
-    console.log('checklist.todos:', checklist.todos)
-
     function handleChecklistChange({ target }) {
         setTitle(target.value)
     }
@@ -50,7 +48,6 @@ export function TaskDetailsChecklist({ checklist, task }) {
     }
 
     async function saveTodo(todoToUpdate) {
-        console.log('todoToUpdate: from sat', todoToUpdate);
         if (todoToUpdate._id) {
             // Put
             checklist.todos = checklist.todos.map(currTodo => currTodo._id !== todoToUpdate._id ? currTodo : todoToUpdate)

@@ -29,10 +29,34 @@ function setupSocketAPI(http) {
         //     // emits only to sockets in the same room
         //     gIo.to(socket.myTopic).emit('chat-add-msg', msg)
         // })
-        socket.on('drag-task', task => {
-            gIo.broadcast('task-draged',task)
-            // logger.info(`user-watch from socket [id: ${socket.id}], on user ${userId}`)
-            // socket.join('watching:' + userId)
+        socket.on('drag-end', result => {
+            const { source, destination } = result
+            logger.info(`Task drag from group [id: ${source.droppableId}], to group [id:${destination.droppableId}]`)
+            socket.broadcast.emit('update-drag-end', result)
+        })
+        socket.on('emit-save-task', task => {
+            logger.info(`Task saved in group [${task.groupId}]`)
+            socket.broadcast.emit('save-task', task)
+        })
+        socket.on('emit-remove-task', ({groupId, taskId}) => {
+            logger.info(`Task removed id [${taskId}] in group [${groupId}]`)
+            socket.broadcast.emit('remove-task', taskId, groupId)
+        })
+        socket.on('emit-save-group', group => {
+            logger.info(`Group saved [${group._id}]`)
+            socket.broadcast.emit('save-group', group)
+        })
+        socket.on('emit-remove-group', ({boardId, groupId}) => {
+            logger.info(`Group [${groupId}] removed from board [${boardId}]`)
+            socket.broadcast.emit('remove-group', groupId)
+        })
+        socket.on('emit-save-board', board => {
+            logger.info(`board saved [${board._id}]`)
+            socket.broadcast.emit('save-board', board)
+        })
+        socket.on('emit-remove-board', boardId => {
+            logger.info(`board saved [${boardId}]`)
+            socket.broadcast.emit('remove-board', boardId)
         })
         // socket.on('set-user-socket', userId => {
         //     logger.info(`Setting socket.userId = ${userId} for socket [id: ${socket.id}]`)
@@ -58,7 +82,7 @@ async function emitToUser({ type, data, userId }) {
     if (socket) {
         logger.info(`Emiting event: ${type} to user: ${userId} socket [id: ${socket.id}]`)
         socket.emit(type, data)
-    }else {
+    } else {
         logger.info(`No active socket for user: ${userId}`)
         // _printSockets()
     }
@@ -68,7 +92,7 @@ async function emitToUser({ type, data, userId }) {
 // Optionally, broadcast to a room / to all
 async function broadcast({ type, data, room = null, userId }) {
     userId = userId.toString()
-    
+
     logger.info(`Broadcasting event: ${type}`)
     const excludedSocket = await _getUserSocket(userId)
     if (room && excludedSocket) {
@@ -110,9 +134,9 @@ module.exports = {
     // set up the sockets service and define the API
     setupSocketAPI,
     // emit to everyone / everyone in a specific room (label)
-    emitTo, 
+    emitTo,
     // emit to a specific user (if currently active in system)
-    emitToUser, 
+    emitToUser,
     // Send to all sockets BUT not the current socket - if found
     // (otherwise broadcast to a room / to all)
     broadcast,

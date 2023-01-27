@@ -2,12 +2,37 @@ import { ArrowLeftIcon, CloseIcon, ActivityIcon, PlusIcon } from "../assets/svg/
 import { useEffect, useRef, useState } from "react"
 import { BoardAddBg } from "./board-add-bg";
 import { BoardActivity } from "./board-activity";
+import { useForm } from "../customHooks/useForm";
+import { utilService } from "../services/util.service";
+import { boardService } from "../services/board.service";
+import { DebounceInput } from "react-debounce-input";
+import { useEffectUpdate } from "../customHooks/useEffectUpdate";
+import { saveBoard } from "../store/board/board.action";
 
 export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
     const [isChangeBg, setIsChangeBg] = useState(false)
     const [isOpenBg, setIsOpenBg] = useState(false)
     const [type, setType] = useState('')
+    const [imgSource, setImgSource] = useState()
+    const [imgDesc, setImgDesc, handleChange] = useForm('')
 
+    useEffectUpdate(async () => {
+        const img = await boardService.createAiImg(imgDesc.txt)
+        // setImgSource(img)
+        onChangeBoardBg(img)
+    }, [imgDesc, imgSource])
+
+    async function onChangeBoardBg(bg) {
+        const updatedBoard = { ...board }
+        updatedBoard.style.background = bg
+        try {
+            await saveBoard(updatedBoard)
+
+        } catch (err) {
+            console.log('canot change background', err)
+        }
+
+    }
     function onCloseSideMenu() {
         setIsChangeBg(false)
         setIsOpenBg(false)
@@ -73,15 +98,21 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
                     </div>
                 </section>
                 }
-
-
-
                 {isOpenBg &&
                     <div>
                         <p className="bsm-back" onClick={() => setIsOpenBg(prev => !prev)}><ArrowLeftIcon /></p>
-                        <BoardAddBg type={type} board={board} />
+                        <BoardAddBg type={type} board={board} onChangeBoardBg={onChangeBoardBg} />
                     </div>
                 }
+
+                <DebounceInput
+                    minLength={2}
+                    debounceTimeout={1000}
+                    onChange={handleChange}
+                    name='txt' />
+
+                {/* <input type="text" onChange={handleChange} name="txt" id="" /> */}
+                <img src={imgSource} width={'200px'} height={"200px"} alt="" />
             </section>}
 
         </section >
