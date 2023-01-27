@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient
-const OPENAI_API_KEY = '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'
+const OPENAI_API_KEY = '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'
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
     apiKey: OPENAI_API_KEY,
@@ -55,12 +55,14 @@ async function getBoardScript(prompt) {
 }
 
 async function getImgFromDal(prompt) {
+    console.log('prompt: ', prompt);
     const response = await openai.createImage({
-        prompt,
+        prompt: `${prompt}`,
         n: 1,
         size: "1024x1024",
     });
     image_url = response.data.data[0].url;
     console.log('image_url: ', image_url);
     return image_url
+
 }

@@ -26,6 +26,7 @@ export const boardService = {
     reorderGroups,
     removeTasksFromBoard,
     createAiBoard,
+    createAiImg,
 }
 
 function filterGroupsTasks(board, filterBy = { title: '' }) {
@@ -67,14 +68,17 @@ async function save(board) {
 async function createAiBoard(prompt) {
     console.log('prompt: ', prompt);
     await httpService.post(BASE_URL + 'aiboard', prompt)
-    console.log('JSON.stringify(prompt): ', JSON.stringify(prompt));
+
 }
 
-console.log('createAiImg("avocado char"): ', createAiImg('avocado chair'));
-async function createAiImg(prompt) {
+async function createAiImg(txt) {
+    console.log('txt: ', txt);
+
+    const prompt = { prompt: txt }
 
     console.log('prompt: ', prompt);
-    await httpService.post(BASE_URL + 'aiimg', prompt)
+    const img = await httpService.post(BASE_URL + 'aiimg', prompt)
+    console.log('img: ', img);
 
 }
 

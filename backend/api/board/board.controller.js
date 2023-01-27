@@ -119,16 +119,14 @@ async function getAiBoard(req, res) {
 }
 
 async function getAiBgImg(req, res) {
-  console.log(' req.body: ', req.body);
   const { prompt } = req.body
   console.log('prompt: ', prompt);
   try {
     const img = await boardService.getAiImg(prompt)
-    res.json(img)
 
+    res.json(img)
   } catch (err) {
     console.log('err', err)
-
   }
 }
 
