@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { useForm } from "../../../../customHooks/useForm"
 
 export function EditAttachment({ filterBy, board, currTask, attachment, onEditAttach }) {
-    console.log('attachment: from edit ', attachment);
 
     // function filteredMembers(filterBy) {
     //     let filteredMembers = [...board.members]

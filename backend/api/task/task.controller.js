@@ -28,13 +28,11 @@ async function updateTask(req, res) {
 }
 
 async function addTask(req, res) {
-    console.log('in');
     // const { loggedinUser } = req
     try {
         const task = req.body
         // task.byUserId = loggedinUser._id
         const addedTask = await taskService.add(task)
-        console.log('addedTask:', addedTask);
 
         // prepare the updated review for sending out
         // task.aboutUser = await userService.getById(task.aboutUserId)

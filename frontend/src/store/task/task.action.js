@@ -1,14 +1,16 @@
+import { socketService, SOCKET_EMIT_SAVE_TASK } from '../../services/socket.service'
 import { taskService } from '../../services/task.service'
-import { saveGroup } from '../board/board.action'
+import { dispatchBoard, saveGroup } from '../board/board.action'
 import { closeDynamicModal, openDynamicModal } from '../modal/modal.action'
 import { store } from '../store'
 
 export async function saveTask(task) {
-
     try {
         const { board } = store.getState().boardModule
+        // socketService.emit(SOCKET_EMIT_SAVE_TASK, task)
         const savedTask = await taskService.save(task)
-
+        console.log('savedTask:', savedTask);
+        socketService.emit(SOCKET_EMIT_SAVE_TASK, savedTask)
         const group = board.groups.find(group => group._id === task.groupId)
         if (task._id) {
             group.tasks = group.tasks.map(currTask => currTask._id !== savedTask._id ? currTask : savedTask)
@@ -79,6 +81,26 @@ export async function toggleTaskLabel(labelId, groupId, taskId, refresh) {
     }
 }
 
+export async function saveSocketTask(taskFromSocket) {
+    try {
+        const { board } = store.getState().boardModule
+        const group = board.groups.find(group => group._id === taskFromSocket.groupId)
+        let task = group.tasks.find(currTask => currTask._id === taskFromSocket._id)
+        if (task) {
+            // console.log('in');
+            // task = taskFromSocket
+            group.tasks = group.tasks.map(currTask => currTask._id !== taskFromSocket._id ? currTask : taskFromSocket)
+        }
+        else {
+            group.tasks.push(taskFromSocket)
+            group.tasksId.push(taskFromSocket._id)
+        }
+        dispatchBoard(board)
+    } catch (err) {
+        console.log('Err from saveSocketTask in board action :', err)
+        throw err
+    }
+}
 function refreshModal(task) {
     openDynamicModal({ name: 'labels', task })
 

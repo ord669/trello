@@ -44,7 +44,6 @@ export function CoverModal({ board, currTask, setnoBg }) {
         }
     }
     if (!imgs) return
-    console.log('imgs: ', imgs);
     return (
         <section className='covers-modal-container'>
             <div className="covers-modal-header">

@@ -12,7 +12,6 @@ export function BoardAddBg({ board, type }) {
     const setUnsplash = useRef(utilService.debounce(loadImgs))
 
     async function onChangeBoardBg(bg) {
-        console.log('bg: ', bg);
         const updatedBoard = { ...board }
         updatedBoard.style.background = bg
         try {
@@ -35,7 +34,6 @@ export function BoardAddBg({ board, type }) {
     }
 
     async function loadImgs(val) {
-        console.log('val from babg: ', val);
         try {
             const unsplashImgs = await boardService.getImgsFromUnsplash(val)
             setImgs(unsplashImgs.results)

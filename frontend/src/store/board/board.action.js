@@ -45,7 +45,6 @@ export async function saveGroup(group) {
 }
 
 export async function saveBoard(board) {
-
     try {
         const savedBoard = await boardService.save(board)
         const newBoard = board._id ? board : savedBoard
@@ -58,14 +57,24 @@ export async function saveBoard(board) {
 }
 
 export async function updateDrag({ source, destination, type }) {
-    console.log('destination: ', destination);
-    console.log('source: ', source);
     const { board } = store.getState().boardModule
     const update = type === 'TASK' ? taskService.reorderTasks : boardService.reorderGroups
     update(source, destination, board.groups)
-    // const groupsToSave = update(source, destination, board.groups)
-    // const groupsToSave = await update(source, destination, board.groups)
-    // const dragEv = type === 'TASK' ? SOCKET_EMIT_TASK_DRAGED : SOCKET_EMIT_GROUP_DRAGED
     saveBoard({ ...board })
-    // saveBoard({ ...board, groups: groupsToSave })
+}
+
+// export async function updateSocketDrag(board) {
+//     store.dispatch({ type: SET_BOARD, board })
+// }
+
+export async function updateSocketDrag({ source, destination, type }) {
+    const { board } = store.getState().boardModule
+    const update = type === 'TASK' ? taskService.reorderTasks : boardService.reorderGroups
+    update(source, destination, board.groups)
+    store.dispatch({ type: SET_BOARD, board })
+}
+
+export async function dispatchBoard(board){
+    console.log('board:', board);
+    store.dispatch({ type: SET_BOARD, board })
 }

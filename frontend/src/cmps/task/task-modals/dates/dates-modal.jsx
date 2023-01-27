@@ -10,7 +10,6 @@ export function DatesModal({ board, currTask }) {
     const elPrevDate = useRef()
 
     function onClickDay(date, ev) {
-        console.log('ev:', ev)
         if (elPrevDate.current) {
             elPrevDate.current.style.backgroundColor = 'inherit'
             elPrevDate.current.style.color = 'inherit'
