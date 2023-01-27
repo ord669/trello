@@ -4,6 +4,7 @@ import { handleKeyPress } from "../customHooks/enterOutFocues"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { utilService } from "../services/util.service"
 import { saveBoard } from "../store/board/board.action"
+import { Jarvis } from "../views/jarvis"
 import { BoardSideMenu } from "./board-side-menu"
 import { BoardStarred } from "./board-starred"
 import { ShareModal } from "./share-modal"
@@ -15,6 +16,7 @@ export function ToolBar({ board }) {
     const [isOpenFilter, setIsOpenFilter] = useState(false)
     const [isOpenSideMenu, setIsOpenSideMenu] = useState(false)
     const [isOpenShare, setIsOpenShare] = useState(false)
+    const [isOpenJarvis, setIsOpenJarvis] = useState(false)
     const [color, setColor] = useState('')
     const [btnShareBg, setBtnShareBg] = useState({})
 
@@ -107,9 +109,11 @@ export function ToolBar({ board }) {
                 btn-header-square">
                     <MoreTreeDotsIcon className="icon" />
                 </button>
+                <button onClick={() => setIsOpenJarvis(prev => !prev)} className=" btn-bar  btn-header-square">Jarvis</button>
                 <BoardSideMenu isOpenSideMenu={isOpenSideMenu} board={board}
                     setIsOpenSideMenu={setIsOpenSideMenu} />
                 {isOpenShare && <ShareModal setIsOpenShare={setIsOpenShare} />}
+                {isOpenJarvis && <Jarvis />}
             </div>
         </section>
     )

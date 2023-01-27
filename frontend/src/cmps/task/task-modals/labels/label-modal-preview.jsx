@@ -6,6 +6,14 @@ import { toggleTaskLabel } from "../../../../store/task/task.action"
 export function LabelPreview({ label, checkForLabelIncluded, currTask }) {
     const [isClicked, setIsClicked] = useState(checkForLabelIncluded(label._id))
 
+    useEffect(() => {
+        // setIsClicked(checkForLabelIncluded(label._id))
+
+        return () => {
+
+        }
+    }, [])
+
     function darkenHexColor(hexColor, amount = 20) {
         let color = tinycolor(hexColor)
         let darkerColor = color.darken(amount).toHexString()
@@ -19,14 +27,18 @@ export function LabelPreview({ label, checkForLabelIncluded, currTask }) {
     const secStyle = {
         backgroundColor: darkenHexColor(label.color)
     }
+    function checkForChecked() {
+        checkForLabelIncluded(label._id)
+        setIsClicked((prev) => !prev)
+    }
     return (
         <div
             className="label-container"
-            onClick={async () => {
-                // setIsClicked((prev) => !prev)
-                await toggleTaskLabel(label._id, currTask.groupId, currTask._id)
+            onClick={() => {
+                toggleTaskLabel(label._id, currTask.groupId, currTask._id)
+                setTimeout(setIsClicked(!checkForLabelIncluded(label._id)), 1000)
 
-                setIsClicked(checkForLabelIncluded(label._id))
+
             }}
             key={label._id}>
             <input type="checkbox" onChange={() => { }} checked={isClicked} />

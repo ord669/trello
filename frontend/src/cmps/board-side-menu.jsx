@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, CloseIcon, ActivityIcon } from "../assets/svg/icon-library";
+import { ArrowLeftIcon, CloseIcon, ActivityIcon, PlusIcon } from "../assets/svg/icon-library";
 import { useEffect, useRef, useState } from "react"
 import { BoardAddBg } from "./board-add-bg";
 import { BoardActivity } from "./board-activity";
@@ -73,6 +73,9 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
                     </div>
                 </section>
                 }
+
+
+
                 {isOpenBg &&
                     <div>
                         <p className="bsm-back" onClick={() => setIsOpenBg(prev => !prev)}><ArrowLeftIcon /></p>
