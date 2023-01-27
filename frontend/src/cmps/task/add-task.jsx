@@ -10,7 +10,6 @@ export function AddTask({ groupId, setIsShown }) {
     async function onAddTask() {
         if (!task.title) return
         task.groupId = groupId
-        console.log('task from add task: ', task);
         try {
             await saveTask(task)
             setTask(taskService.getEmptyTask())

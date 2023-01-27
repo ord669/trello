@@ -13,7 +13,6 @@ export function AddComment({ username, saveComment }) {
 
     function onSaveComment() {
         if (!comment.txt) return
-        console.log('comment:', comment)
         comment.createdAt = Date.now()
         saveComment(comment)
         onClose()

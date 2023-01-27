@@ -10,7 +10,6 @@ async function query(filterBy = { title: '' }) {
         // console.log('criteria: ', criteria);
         const collection = await dbService.getCollection('board')
         const boards = await collection.find().toArray()
-        console.log('boards:', boards)
         return boards
     } catch (err) {
         logger.error('cannot find boards', err)
@@ -27,7 +26,6 @@ async function getById(boardId) {
             group.tasks = tasks
             return group
         }))
-        // console.log('board:', board);
         return board
     } catch (err) {
         logger.error(`while finding board ${boardId}`, err)
@@ -116,8 +114,6 @@ async function getAiBoardFromChat() {
     try {
         const script = await dbService.getBoardScript()
         const lines = script.split('\n')
-
-        console.log('group23222222323231232342343242342323423423423423324s: ', lines)
         const groups = lines.reduce((acc, line) => {
             if (line.includes('$')) {
                 const group = { groupTitle: _removeSpecialChars(line), tasks: [] }
@@ -143,8 +139,6 @@ async function getAiBoardFromChat() {
         const aiBoard = _createAiBoard('Ai Board', newGroups)
 
         const aiBoardWithId = await add(aiBoard)
-
-        // console.log('getById(aiBoardWithId._id): ', getById(aiBoardWithId._id));
         return await getById(aiBoardWithId._id)
 
     } catch (err) {

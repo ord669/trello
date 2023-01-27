@@ -17,7 +17,6 @@ import { ListActions } from "./task/task-modals/listAactions/list-actions"
 
 export function DynamicModal() {
     const { modalPos, modalDetails } = useSelector(storeState => storeState.modalModule)
-    console.log('modalDetails: ', modalDetails);
     const { board } = useSelector(storeState => storeState.boardModule)
 
     const windowSize = utilService.getWindowDimensions()
@@ -29,8 +28,6 @@ export function DynamicModal() {
     const clickedElemntHeight = modalPos.height
 
     function DynamicModalContent({ type, func, data, currTask }) {
-        console.log('func: ', func);
-
         switch (type) {
             case 'labels':
                 return <LabelsModal board={board} currTask={currTask} toggleTaskLabel={toggleTaskLabel} />
@@ -56,7 +53,6 @@ export function DynamicModal() {
     }
 
     function renderPos() {
-        console.log('in pos:')
         const bottomMargin = 5
         const modalWidth = 304
         let modalHeight = 220
@@ -74,9 +70,6 @@ export function DynamicModal() {
             default:
                 break;
         }
-        console.log('modalDetails.name: ', modalDetails.name);
-        console.log('modalHeight: ', modalHeight);
-
         if (modalPos.x + modalWidth > windowSize.width) posToRender = "downLeft"
         if (elementStartBottom + modalHeight > windowSize.height) posToRender = "upRight"
         if (elementStartBottom + modalHeight > windowSize.height &&
@@ -89,7 +82,6 @@ export function DynamicModal() {
                     left: `${elementStartLeft}px`,
                 }
             case 'downLeft':
-                console.log('downLeft: ');
                 return {
                     top: `${elementStartBottom + bottomMargin}px`,
                     left: `${elementStartLeft - modalWidth}px`

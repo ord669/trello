@@ -9,7 +9,6 @@ export function TaskDetailsDescription({ description, handleChange }) {
 
     }
     function handleKeyPress(ev) {
-        console.log('ev: ', ev)
         if (ev.keyCode === 13) {
             ev.target.blur()
             //Write you validation logic here

@@ -60,7 +60,6 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
 
         else {
             const colorIsDark = utilService.getBgIsDarkColorHex(bg)
-            console.log('colorisDark: ', colorIsDark);
             const color = colorIsDark ? "#fff" : "#172b4d"
             setBoardColor(color)
         }
