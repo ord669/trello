@@ -86,6 +86,7 @@ export function CoverModal({ board, currTask, setnoBg }) {
                             <div onClick={() => {
                                 currTask.style.background = img.urls.full
                                 try {
+                                    setnoBg(false)
                                     saveTask(currTask)
                                 } catch (err) {
                                     console.log('err from save img bg', err)

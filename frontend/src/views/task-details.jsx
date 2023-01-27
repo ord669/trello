@@ -112,7 +112,7 @@ export function TaskDetails() {
                     </div>
                     <div className="description-container flex">
                         <DescriptionIcon className='icon-title' />
-                        <TaskDetailsDescription handleChange={handleChange} description={task.description} />
+                        <TaskDetailsDescription handleChange={handleChange} task={task} />
                     </div>
                     {task?.checklists &&
                         <div className="checklists-container ">

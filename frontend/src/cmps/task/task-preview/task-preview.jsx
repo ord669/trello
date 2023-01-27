@@ -12,7 +12,6 @@ import { TaskPreviewLabels } from "./task-preview-mini-labels"
 import { useSelector } from "react-redux"
 
 export function TaskPreview({ task, idx }) {
-    console.log('task: ', task);
     const navigate = useNavigate()
     const elTaskPreview = useRef()
     const [quickEditModalPos, setQuickEditModalPos] = useState(null)
@@ -66,9 +65,7 @@ export function TaskPreview({ task, idx }) {
         <Draggable draggableId={task._id} index={idx}>
             {(provided, snapshot) => (
                 <section className={`task-preview ${snapshot.isDragging ? 'dragged' : ''}`}
-                    onClick={(ev) => {
-                        navigate(`${task.groupId}/${task._id}`)
-                    }}
+                    onClick={(ev) => navigate(`${task.groupId}/${task._id}`)}
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                 >

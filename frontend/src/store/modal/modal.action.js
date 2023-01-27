@@ -1,4 +1,5 @@
 
+import { useSelector } from 'react-redux'
 import { utilService } from '../../services/util.service'
 import { store } from '../store'
 
@@ -10,10 +11,9 @@ import { OPEN_MODAL, CLOSE_MODAL, UPDATE_POS, UPDATE_ELEMENT_SIZE, UPDATE_CLICKE
 // }
 export async function openDynamicModal({ ev, name, data, func, task, size }) {
 
-    const { target } = ev
+    closeDynamicModal()
 
-    // GET Element POS
-    updateDynamicModalPos(target.getBoundingClientRect())
+    if (ev) updateDynamicModalPos(ev.target.getBoundingClientRect())
     updateModalType({ name, func, data, task, size })
 
     // GET ELEMENT SIZE
