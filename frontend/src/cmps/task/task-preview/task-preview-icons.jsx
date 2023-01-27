@@ -4,7 +4,7 @@ import { utilService } from "../../../services/util.service";
 import { saveTask } from "../../../store/task/task.action";
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service";
 import { UserAvatarIcon } from "../../user-avatar-icon";
-import { taskService } from "../../../services/task.service.local";
+import { taskService } from "../../../services/task.service";
 import { toggleMemberAssigned } from "../../../store/task/task.action"
 import { useSelector } from "react-redux";
 
