@@ -1,0 +1,21 @@
+.jarvis-input-modal {
+    position: absolute;
+    background-color: black;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 20000;
+
+    .jarvis-input-container {
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        width: 50%;
+        height: 50%;
+        transform: translate(50%, 50%);
+    }
+}
