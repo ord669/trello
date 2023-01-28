@@ -116,13 +116,14 @@ async function getAiImg(prompt) {
 }
 
 async function getAiBoardFromChat(prompt) {
+    console.log('prompt: ', prompt);
     try {
         const script = await dbService.getBoardScript(prompt)
         const lines = script.split('\n')
 
         console.log('group23222222323231232342343242342323423423423423324s: ', lines)
         const groups = lines.reduce((acc, line) => {
-            if (line.includes('$')) {
+            if (line.includes('$') && !line.includes('Object')) {
                 const group = { groupTitle: _removeSpecialChars(line), tasks: [] }
                 acc.push(group)
             } else if (line.includes('∞')) {
@@ -140,7 +141,7 @@ async function getAiBoardFromChat(prompt) {
             }))
             return newGroup
         }))
-        const aiBoard = _createAiBoard('Ai Board', newGroups)
+        const aiBoard = _createAiBoard(`${prompt.prompt}`, newGroups)
         const aiBoardWithId = await add(aiBoard)
         return await getById(aiBoardWithId._id)
 

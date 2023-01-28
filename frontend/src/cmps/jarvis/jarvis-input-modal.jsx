@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import useSound from "use-sound";
 import { JarvisHeart } from "./jarvis-heart";
 import { useState } from "react";
-import jarvisAction from '../../assets/mp3/jarvisAction.mp3';
+import jarvisAction from '../../assets/mp3/jarvisActionGo.mp3';
+import jarvisFinish from '../../assets/mp3/jarvisActionDidHisJob.mp3';
 
 export function JarvisInputModal({ setIsJarvis }) {
     const [subject, setSubject, handleChange] = useForm('')
@@ -14,10 +15,13 @@ export function JarvisInputModal({ setIsJarvis }) {
     const [isLoading, setIsLoading] = useState(false)
 
     const [jarvisStart] = useSound(jarvisAction);
+    const [jarvisEnd] = useSound(jarvisFinish);
 
     useEffectUpdate(async () => {
+        if (!subject.txt) return
         jarvisStart()
         const newAiBoard = await createAiBoard(subject.txt)
+        jarvisEnd()
         navigate(`/board/${newAiBoard._id}`)
         console.log('newAiBoard: ', newAiBoard);
         setIsJarvis(false)
@@ -26,17 +30,21 @@ export function JarvisInputModal({ setIsJarvis }) {
         <section className='jarvis-input-modal'>
             <div className="jarvis-input-container">
                 <div className="jarvis-input-header" >
-                    <DebounceInput
-                        minLength={2}
-                        debounceTimeout={1000}
-                        onChange={(ev) => {
-                            jarvisStart()
-                            handleChange(ev)
-                        }}
-                        name='txt' />
+                    <img src={require('../../assets/img/1x/Asset 2.png')} alt="" />
+                    <JarvisHeart isLoading={isLoading} />
 
                 </div>
-                <JarvisHeart isLoading={isLoading} />
+                <DebounceInput className="Input-text"
+                    minLength={5}
+                    placeholder='Insert Subject'
+                    disabled={false}
+                    debounceTimeout={1000}
+                    onChange={(ev) => {
+                        if (ev.target.value.length < 5) return
+                        setIsLoading(true)
+                        handleChange(ev)
+                    }}
+                    name='txt' />
             </div>
 
         </section>

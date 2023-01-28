@@ -1,6 +1,10 @@
 .jarvis-input-modal {
     position: absolute;
-    background-color: black;
+    background-image: url("../../img/aiBg/4127298.jpg");
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     top: 0;
     right: 0;
     left: 0;
@@ -17,5 +21,31 @@
         width: 50%;
         height: 50%;
         transform: translate(50%, 50%);
+
+        .jarvis-input-header {
+            img {
+                margin-top: -100px;
+                margin-bottom: 50px;
+            }
+        }
+
+        .Input-text {
+            text-align: center;
+            display: block;
+            margin: auto;
+            margin-top: 50px;
+            padding: var(--inputPaddingV) var(--inputPaddingH);
+            color: inherit;
+            width: 50%;
+            height: 30px;
+            font-family: inherit;
+            font-size: var(--inputFontSize);
+            font-weight: inherit;
+            line-height: var(--inputLineHeight);
+            border: none;
+            border-radius: 0.4rem;
+            transition: box-shadow var(--transitionDuration);
+        }
+
     }
 }
