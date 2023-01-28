@@ -7,6 +7,16 @@
         font-size: 50px;
     }
 
+    .highlight {
+        text-decoration: underline;
+        color: #0052cc;
+        font-weight: 900;
+
+        &:hover {
+            color: #091e42;
+        }
+    }
+
     .react-calendar {
 
         .react-calendar__navigation {
@@ -66,7 +76,7 @@
             .react-calendar__tile {
                 height: 32px;
                 border-radius: 3px;
-                
+
                 abbr {
                     display: flex;
                     align-items: center;

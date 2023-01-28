@@ -30,10 +30,6 @@ export function DatesModal({ board, currTask }) {
         closeDynamicModal()
     }
 
-    function onChange(date) {
-        setDate(date)
-    }
-
     function onRemoveDueDate() {
         const task = { ...currTask, dueDate: null, isDone: false }
         try {
@@ -58,6 +54,11 @@ export function DatesModal({ board, currTask }) {
                     calendarType="US"
                     locale="en"
                     onClickDay={onClickDay}
+                    tileClassName={({ date, view }) => {
+                        if (new Intl.DateTimeFormat().format(Date.now()) === new Intl.DateTimeFormat().format(date)) {
+                            return 'highlight'
+                        }
+                    }}
                 />
             </section>
             <h5>Due date</h5>
