@@ -11,7 +11,7 @@ import jarvisFinish from '../assets/mp3/jarvisActionDidHisJob.mp3';
 import { MainLogo } from "../assets/svg/icon-library";
 // import { JarvisAnimation } from "./jarvis-animation";
 
-export function Jarvis({ setIsOpenJarvis, setIsJarvis, boardId }) {
+export function Jarvis({ setIsOpenJarvis, setIsJarvis }) {
     const [isDisable, setIsDisable] = useState(false)
 
     useEffect(() => {
@@ -60,7 +60,7 @@ export function Jarvis({ setIsOpenJarvis, setIsJarvis, boardId }) {
                             <div className="main-title-body">
                                 <DebounceInput className="Input-text"
                                     minLength={5}
-                                    placeholder='your Subject...'
+                                    placeholder='board Subject...'
                                     disabled={isDisable}
                                     debounceTimeout={1000}
                                     onChange={handleChange}
