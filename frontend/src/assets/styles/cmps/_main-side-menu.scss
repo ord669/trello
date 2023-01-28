@@ -9,7 +9,6 @@
     width: 260px;
     transform: translate(-100%);
 
-
     &.open-menu {
         transform: translate(0);
         overflow-y: scroll;
@@ -26,7 +25,6 @@
         >* {
             color: inherit;
         }
-
     }
 
     .msm-card {
@@ -61,8 +59,6 @@
             background-size: cover;
             background-position: center center;
         }
-
-
     }
 
     .msm-board-bg {
@@ -72,8 +68,6 @@
         width: 36px;
         height: 36px;
     }
-
-
 
     .msm-btn-close {
         border-radius: 3px;
@@ -98,11 +92,8 @@
 
     .msm-your-boards {
         padding: 6px;
-        // margin-bottom: 6px;
         font-weight: bold;
         padding: 14px 12px;
-
-
     }
 
     .msm-board-title {
@@ -112,11 +103,9 @@
         padding: 14px 12px;
         border-radius: 3px;
         cursor: pointer;
-        // margin-bottom: 6px;
 
         &:hover {
             background-color: #ffffff4d;
         }
-
     }
 }

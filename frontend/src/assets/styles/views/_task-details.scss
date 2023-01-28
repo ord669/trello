@@ -24,15 +24,12 @@
 
         &:hover {
             background-color: rgba(9, 30, 66, 0.08);
-
         }
     }
 
     @include for-mobile-layout {
         overflow-x: hidden;
-
     }
-
 }
 
 .main-task-details {
@@ -133,7 +130,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
     }
 
     .label-preview {
@@ -152,14 +148,12 @@
     svg {
         width: 27px;
         height: 18px;
-
     }
 
     @include for-mobile-layout {
         position: absolute;
         display: block;
         width: 100%;
-
     }
 }
 

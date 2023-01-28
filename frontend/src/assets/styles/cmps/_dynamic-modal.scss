@@ -3,10 +3,6 @@
     background-color: white;
     min-width: 304px;
     max-width: 304px;
-    /* position the top  edge of the element at the middle of the parent */
-    // left: 50%;
-    /* position the left edge of the element at the middle of the parent */
-    // transform: translate(-50%, 0%);
     border-radius: 3px;
     box-shadow: var(--ds-shadow-overlay, 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08));
     z-index: 10000;
@@ -46,7 +42,6 @@
             path {
                 width: 20px;
                 height: 20px;
-
             }
         }
     }
@@ -57,7 +52,6 @@
         z-index: 1000;
 
         .modal-header {
-            // margin: 4px 0 12px;
             width: 100%;
         }
 
@@ -88,7 +82,6 @@
             font-weight: 600;
             line-height: 16px;
             margin: 16px 0 4px;
-
         }
     }
 

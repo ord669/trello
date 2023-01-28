@@ -29,9 +29,7 @@
     .header-main-btns {
         display: flex;
         align-items: center;
-
     }
-
 
     .home-header {
         height: 60px;
@@ -45,7 +43,6 @@
         color: inherit;
         padding-inline-end: 6px;
 
-
         svg {
             width: 32px;
             height: 32px;
@@ -54,7 +51,6 @@
 
             &:hover {
                 backdrop-filter: contrast(0.5);
-
             }
         }
     }
@@ -67,7 +63,6 @@
     }
 
     .account-item {
-
         border-radius: 50%;
         width: 24px;
         height: 24px;
@@ -85,5 +80,4 @@
     .btn-header-more {
         display: none;
     }
-
 }
