@@ -6,15 +6,12 @@ html {
     line-height: 1.6;
     color: $clr2;
     font-family: SFUIDisplay;
-
 }
 
 body {
     font-size: 14px;
     margin: 0;
     font-family: SFUIDisplay;
-    // font-family: SFUIText;
-
 }
 
 h1,
@@ -46,14 +43,7 @@ svg {
 }
 
 .app {
-    // display: flex;
-    // flex-direction: column;
-
     main {
-        // padding: 0 1em;
         flex-grow: 1;
-        // height: 80vh;
-        // overflow-y: auto;
-        // padding-bottom: 1rem;
     }
 }

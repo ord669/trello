@@ -22,7 +22,6 @@
                 transform: rotate(45deg) translate(0px, -0px);
 
                 path {
-                    // transform: 
                     transform: scale(0.38) translate(-2px, 0px);
                 }
             }
@@ -59,15 +58,11 @@
             width: 16px;
             height: 16px;
             margin-right: 0.6rem;
-
         }
-
     }
 
     @include for-mobile-layout {
         width: 100%;
-
         min-height: 250px;
-
     }
 }

@@ -3,10 +3,13 @@ export const REMOVE_GROUP = 'REMOVE_GROUP'
 export const ADD_GROUP = 'ADD_GROUP'
 export const UPDATE_GROUP = 'UPDATE_GROUP'
 export const UNDO_REMOVE_GROUP = 'UNDO_REMOVE_GROUP'
+export const TOGGLE_LABEL_SIZE = ' TOGGLE_LABEL_SIZE'
 
 const initialState = {
     board: null,
-    lastRemovedGroup: null
+    lastRemovedGroup: null,
+    isLabelMini: true
+
 }
 
 export function boardReducer(state = initialState, action) {
@@ -36,6 +39,10 @@ export function boardReducer(state = initialState, action) {
                 board = { ...state.board, groups: [state.lastRemovedGroup, ...state.board.groups] }
                 newState = { ...state, board, lastRemovedGroup: null }
             }
+            break
+        case TOGGLE_LABEL_SIZE:
+            newState = { ...state, isLabelMini: !state.isLabelMini }
+
             break
         default:
             newState = { ...state }

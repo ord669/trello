@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import tinycolor from "tinycolor2"
+import { toggleLabelSize } from "../../../store/task/task.action"
 
-export function TaskPreviewLabels({ labelId }) {
+export function TaskPreviewLabels({ labelId, type }) {
     const { board } = useSelector(storeState => storeState.boardModule)
     const [label, setLabel] = useState({})
     const [color, setColor] = useState('')
+    // const [isMini, setIsMini] = useState(true)
+    const { isLabelMini } = useSelector(storeState => storeState.boardModule)
+
+
 
     useEffect(() => {
         getLabel(labelId)
@@ -24,6 +29,12 @@ export function TaskPreviewLabels({ labelId }) {
         return darkerColor
     }
 
+    function onChangeLabelSize(ev) {
+        ev.stopPropagation()
+        toggleLabelSize()
+        // setIsMini(prev => !prev)
+    }
+
     const mainStyle = {
         backgroundColor: label.color
     }
@@ -32,10 +43,21 @@ export function TaskPreviewLabels({ labelId }) {
         backgroundColor: darkenHexColor(label.color)
     }
 
-    // if (!label) return <div>loading...</div>
     return (
-        <section style={secStyle} className='task-preview-label'>
-            <div style={mainStyle} className="sec-label-color"></div>
-        </section>
+        <section className="label-container" onClick={(ev) => onChangeLabelSize(ev)}>
+            {isLabelMini ? (
+                <section style={secStyle} className='task-preview-label'>
+                    <div style={mainStyle} className="sec-label-color"></div>
+                </section>
+            )
+                :
+                (
+                    <section style={mainStyle}
+                        className='big-label-preview'>
+                        <div style={secStyle} className="sec-label-big"></div>
+                        <div>{label.title}</div>
+                    </section>
+                )}
+        </section >
     )
 }

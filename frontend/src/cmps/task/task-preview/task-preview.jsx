@@ -10,6 +10,8 @@ import { QuickTaskEdit } from "../quick-task-edit"
 import { useState } from "react"
 import { TaskPreviewLabels } from "./task-preview-mini-labels"
 import { useSelector } from "react-redux"
+import { LabelList } from "../task-details/label-list"
+import { LabelPreview } from "../task-details/label-preview"
 
 export function TaskPreview({ task, idx }) {
     const navigate = useNavigate()
@@ -17,6 +19,7 @@ export function TaskPreview({ task, idx }) {
     const [quickEditModalPos, setQuickEditModalPos] = useState(null)
     const [isQuickEdit, setIsQuickEdit] = useState(false)
     const [isShownLabels, setIsShownLabels] = useState(false)
+    const [type, setType] = useState('mini')
 
     let background
 
@@ -65,7 +68,7 @@ export function TaskPreview({ task, idx }) {
         <Draggable draggableId={task._id} index={idx}>
             {(provided, snapshot) => (
                 <section className={`task-preview ${snapshot.isDragging ? 'dragged' : ''}`}
-                    onClick={(ev) => navigate(`${task.groupId}/${task._id}`)}
+                    onClick={() => navigate(`${task.groupId}/${task._id}`)}
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                 >
@@ -82,8 +85,8 @@ export function TaskPreview({ task, idx }) {
                         {task.style.background && <div style={background} className="task-preview-comver-img">
                         </div>}
                         <div className="task-preview-details" >
-                            {task.labelIds &&
-                                <MiniLabelList task={task} />}
+                            {!!task.labelIds.length &&
+                                <MiniLabelList task={task} type={type}/>}
                             <p>{task.title}</p>
                             {<TaskPreviewIcons task={task} />}
                             <div>

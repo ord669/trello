@@ -121,7 +121,7 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
                 <BoardIcon />
                 <p>Boards</p>
             </div>
-            <div>
+            <div style={{paddingBottom:'30px'}}>
                 <p className="msm-your-boards">Your Boards</p>
                 {boards && boards.map(board =>
                     <div key={board._id} className="msm-boards-list">

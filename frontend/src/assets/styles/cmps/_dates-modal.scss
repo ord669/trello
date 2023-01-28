@@ -7,6 +7,16 @@
         font-size: 50px;
     }
 
+    .highlight {
+        text-decoration: underline;
+        color: #0052cc;
+        font-weight: 900;
+
+        &:hover {
+            color: #091e42;
+        }
+    }
+
     .react-calendar {
 
         .react-calendar__navigation {
@@ -56,17 +66,18 @@
                     text-decoration: none;
                 }
             }
-
+            
         }
-
+        
         .react-calendar__month-view__days {
             color: #091e42;
             font-size: 14px;
+            height: fit-content;
 
             .react-calendar__tile {
                 height: 32px;
                 border-radius: 3px;
-                
+
                 abbr {
                     display: flex;
                     align-items: center;
@@ -82,8 +93,6 @@
                 }
             }
         }
-
-        height: fit-content;
     }
 
     .date-input {
