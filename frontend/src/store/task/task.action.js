@@ -1,6 +1,7 @@
-import { socketService, SOCKET_EMIT_REMOVE_TASK, SOCKET_EMIT_SAVE_TASK } from '../../services/socket.service'
+import { socketService, SOCKET_EMIT_REMOVE_TASK, SOCKET_EMIT_SAVE_TASK, } from '../../services/socket.service'
 import { taskService } from '../../services/task.service'
 import { dispatchBoard, saveGroup } from '../board/board.action'
+import { TOGGLE_LABEL_SIZE } from '../board/board.reducer'
 import { closeDynamicModal, openDynamicModal } from '../modal/modal.action'
 import { store } from '../store'
 
@@ -31,7 +32,7 @@ export async function removeTask(task) {
     try {
         const { board } = store.getState().boardModule
         await taskService.remove(taskId)
-        socketService.emit(SOCKET_EMIT_REMOVE_TASK, {groupId, taskId})
+        socketService.emit(SOCKET_EMIT_REMOVE_TASK, { groupId, taskId })
         const group = board.groups.find(group => group._id === groupId)
         group.tasks = group.tasks.filter(task => task._id !== taskId)
         group.tasksId = group.tasksId.filter(id => id !== taskId)
@@ -81,6 +82,10 @@ export async function toggleTaskLabel(labelId, groupId, taskId, refresh) {
     }
 }
 
+export function toggleLabelSize() {
+    store.dispatch({ type: TOGGLE_LABEL_SIZE })
+}
+
 export async function saveSocketTask(taskFromSocket) {
     try {
         const { board } = store.getState().boardModule
@@ -114,6 +119,7 @@ export async function removeSocketTask(taskId, groupId) {
         throw err
     }
 }
+
 
 function refreshModal(task) {
     openDynamicModal({ name: 'labels', task })
