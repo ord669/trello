@@ -22,7 +22,6 @@ export function LoginSignup(props) {
         setCredentials({ ...credentials, [field]: value })
     }
 
-
     async function onLogin(ev) {
         ev.preventDefault()
         try {
