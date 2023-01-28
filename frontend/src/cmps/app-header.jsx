@@ -7,6 +7,9 @@ import tinycolor from 'tinycolor2'
 import { utilService } from '../services/util.service'
 import { useLocation, useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
+import { JarvisInputModal } from './jarvis/jarvis-input-modal'
+import useSound from 'use-sound'
+import jarviseIntro from '../assets/mp3/jarvisIntro.mp3';
 
 export function AppHeader() {
     const navigate = useNavigate()
@@ -18,6 +21,8 @@ export function AppHeader() {
     const [color, setColor] = useState('')
     const [boardColor, setBoardColor] = useState('')
     const { board } = useSelector(storeState => storeState.boardModule)
+    const [isJarvis, setIsJarvis] = useState(false)
+    const [jarvisIntro] = useSound(jarviseIntro);
 
     useEffect(() => {
         setAvgColor()
@@ -145,12 +150,18 @@ export function AppHeader() {
                 </div>
             </div>
             <div className='header-sec-container'>
+                <button onClick={() => {
+                    jarvisIntro()
+                    setIsJarvis(true)
+                }} className="btn-bar">
+                    JARVIS</button>
                 <button onClick={() => setIsNotification((prev) => !prev)} className="header-icon"> <BellIcon /></button>
                 {isNotification && <BoardNotification />}
                 <div className="account-item">
                     <span>O</span>
                 </div>
             </div>
+            {isJarvis && <JarvisInputModal setIsJarvis={setIsJarvis} />}
 
         </header>
     )

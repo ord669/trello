@@ -115,39 +115,33 @@ async function getAiImg(prompt) {
 }
 
 async function getAiBoardFromChat(prompt) {
-    console.log('prompt: from bservice ', prompt);
+    console.log('prompt: ', prompt);
     try {
         const script = await dbService.getBoardScript(prompt)
         const lines = script.split('\n')
 
         console.log('group23222222323231232342343242342323423423423423324s: ', lines)
         const groups = lines.reduce((acc, line) => {
-            if (line.includes('$')) {
+            if (line.includes('$') && !line.includes('Object')) {
                 const group = { groupTitle: _removeSpecialChars(line), tasks: [] }
                 acc.push(group)
             } else if (line.includes('∞')) {
                 const task = { taskTitle: _removeSpecialChars(line) }
-                // acc[acc.length - 1].tasks.push(task)
                 acc[acc.length - 1].tasks.push(_removeSpecialChars(line))
             }
             return acc
         }, [])
-        console.log('groups: ', groups)
 
-        const newGroups = groups.map(group => {
+        const newGroups = await Promise.all(groups.map(async group => {
             const newGroup = _createAiGroup(group.groupTitle)
-
-            group.tasks.forEach(async task => {
-                const taskFromMongo = await taskService.add(_createAiTask(task, newGroup._id))
-                newGroup.tasksId.push(taskFromMongo._id)
-            })
+            newGroup.tasksId = await Promise.all(group.tasks.map(async task => {
+                const taskFromMongo = await Promise.resolve(taskService.add(_createAiTask(task, newGroup._id)))
+                return taskFromMongo._id
+            }))
             return newGroup
-        })
-        const aiBoard = _createAiBoard('Ai Board', newGroups)
-
+        }))
+        const aiBoard = _createAiBoard(`${prompt.prompt}`, newGroups)
         const aiBoardWithId = await add(aiBoard)
-
-        // console.log('getById(aiBoardWithId._id): ', getById(aiBoardWithId._id));
         return await getById(aiBoardWithId._id)
 
     } catch (err) {
