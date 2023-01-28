@@ -4,13 +4,13 @@ export function DetilsTitle({ onUpdateHeadline, task, group }) {
     return (
         <section className='detils-title'>
             <div className="task-details-title">
-                <div className="task-title-container ">
+                <div className="task-title-container">
                     <textarea type="text"
                         name="title"
                         onChange={onUpdateHeadline}
                         onKeyDown={(e) => handleKeyPress(e)}
                         defaultValue={task.title} />
-                    <p>in list {group.title}</p>
+                    <p>in list <span>{group.title}</span></p>
                 </div>
             </div>
         </section>

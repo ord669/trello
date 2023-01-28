@@ -5,8 +5,6 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { useNavigate } from 'react-router-dom'
 import { MainLogo } from '../assets/svg/icon-library'
 
-
-
 export function LoginSignup(props) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
     const [isSignup, setIsSignup] = useState(false)
@@ -41,7 +39,6 @@ export function LoginSignup(props) {
             const user = await signup(credentials)
             showSuccessMsg(`Welcome new user: ${user.fullname}`)
             clearState()
-            navigate('/board')
         } catch (err) {
             showErrorMsg('Cannot signup')
         }

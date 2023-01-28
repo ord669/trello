@@ -64,12 +64,13 @@ export async function saveBoard(board) {
 
 export async function createAiBoard(txt) {
 
+    if (!txt) return
     const prompt = { prompt: txt }
     try {
         const newBoard = await boardService.createAiBoard(prompt)
-        console.log('newBoard: ', newBoard)
+        console.log('newBoard from create: ', newBoard)
         store.dispatch({ type: SET_BOARD, board: newBoard })
-
+        return newBoard
     } catch (err) {
         console.log('Err from getboard ai in board action :', err)
         throw err

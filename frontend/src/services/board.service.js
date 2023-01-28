@@ -65,10 +65,13 @@ async function save(board) {
     return board
 }
 
-// console.log('createAiBoard("softwre development"): ', createAiBoard('software development'));
-async function createAiBoard(prompt) {
-    console.log('prompt: ', prompt)
-    await httpService.post(BASE_URL + 'aiboard', prompt)
+// createAiBoard("software development")
+async function createAiBoard(txt) {
+    console.log('txt: ', txt)
+    const prompt = { prompt: txt }
+    console.log('prompt: ', prompt);
+
+    return await httpService.post(BASE_URL + 'aiboard', prompt)
 
 }
 
@@ -262,4 +265,3 @@ async function getImgsFromUnsplash(val = 'london') {
 function getColors() {
     return ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91', '#172b4d']
 }
-

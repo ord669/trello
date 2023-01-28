@@ -17,9 +17,9 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
     const [imgDesc, setImgDesc, handleChange] = useForm('')
 
     useEffectUpdate(async () => {
-        const img = await boardService.createAiImg(imgDesc.txt)
+        // const img = await boardService.createAiImg(imgDesc.txt)
         // setImgSource(img)
-        onChangeBoardBg(img)
+        // onChangeBoardBg(img)
     }, [imgDesc, imgSource])
 
     async function onChangeBoardBg(bg) {

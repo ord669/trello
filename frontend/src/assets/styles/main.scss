@@ -17,10 +17,12 @@
 @import 'cmps/loader';
 @import 'cmps/home-header';
 @import 'cmps/tool-bar';
-@import 'cmps/board-side-bar';
 @import 'cmps/user-msg';
 @import 'cmps/share-modal';
 @import 'cmps/jarvis';
+@import 'views/jarvis-input-modal';
+@import 'views/jarvis-heart';
+@import 'views/jarvis-animation';
 
 @import 'cmps/board-list';
 @import 'cmps/board-preview';
@@ -34,19 +36,16 @@
 @import 'cmps/comment-preview';
 
 @import 'cmps/add-group';
-@import 'cmps/group-list';
 @import 'cmps/group-preview';
 
 @import 'cmps/task-preview';
 @import 'cmps/task-preview-mini-label';
 @import 'cmps/task-preview-icons';
 @import 'cmps/add-task';
-@import 'cmps/task-list';
 @import 'cmps/task-filter';
 
 @import 'cmps/task-details-side-menu';
 @import 'cmps/task-details-description';
-@import 'cmps/task-details-member-list';
 @import 'cmps/task-details-header';
 @import 'cmps/task-details-label-members-date';
 @import 'cmps/task-details-attachments';
@@ -62,7 +61,6 @@
 
 @import 'cmps/user-avatar-icon';
 
-@import 'cmps/progress-bar';
 @import 'cmps/dynamic-modal';
 @import 'cmps/modal-members';
 @import 'cmps/modal-labels';

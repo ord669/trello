@@ -7,7 +7,6 @@ button {
 }
 
 .btn {
-    // background-color: rgba(0, 0, 0, 0.1);
     border: none;
     backdrop-filter: contrast(0.5);
 
@@ -44,7 +43,6 @@ button {
 
 .btn-bar:not(.no-edit) {
     background-color: rgba(255, 255, 255, 0.2);
-
     color: inherit;
 
     &:hover {
@@ -70,8 +68,6 @@ button {
     align-items: center;
     backdrop-filter: contrast(0.5);
     gap: 5px;
-
-
 }
 
 .btn-app-header {
@@ -89,8 +85,6 @@ button {
     justify-content: space-between;
     align-items: center;
     gap: 5px;
-
-
 
     &:hover {
         backdrop-filter: contrast(0.5);
@@ -148,9 +142,7 @@ button {
     gap: 4px;
 
     &:hover {
-        // background-color: rgba(255, 255, 255, 0.9) !important;
         backdrop-filter: contrast(0.5);
-
     }
 }
 
