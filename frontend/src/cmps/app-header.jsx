@@ -163,7 +163,7 @@ export function AppHeader() {
                 </div>
             </div>
             {/* {isJarvis && <JarvisInputModal setIsJarvis={setIsJarvis} />} */}
-            {isJarvis && <Jarvis />}
+            {isJarvis && <Jarvis setIsJarvis={setIsJarvis} />}
 
         </header>
     )

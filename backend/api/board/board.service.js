@@ -131,11 +131,14 @@ async function getAiBoardFromChat(prompt) {
             }
             return acc
         }, [])
-
+        var counter = 0
         const newGroups = await Promise.all(groups.map(async group => {
             const newGroup = _createAiGroup(group.groupTitle)
-            newGroup.tasksId = await Promise.all(group.tasks.map(async task => {
-                const taskFromMongo = await Promise.resolve(taskService.add(_createAiTask(task, newGroup._id)))
+            newGroup.tasksId = await Promise.all(group.tasks.map(async (task, idx) => {
+
+                const taskFromMongo = await Promise.resolve(taskService.add(_createAiTask(task, newGroup._id,
+                    Math.floor((Math.random() * 2)) === 0 ? colors[counter++] : images[counter++]
+                )))
                 return taskFromMongo._id
             }))
             return newGroup
@@ -206,25 +209,25 @@ function _createAiBoard(title, groups = []) {
             }
         ],
         style: {
-            "background": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1673811922/samples/landscapes/architecture-signs.jpg"
+            "background": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2068&q=80"
         },
         members: [{
             _id: "u101",
             fullname: "Or Dvir",
             username: "Or Dvir",
-            imgUrl: "https://robohash.org/Or?set=set5"
+            imgUrl: "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg"
         },
         {
             _id: "u102",
             fullname: "Liad Gola",
             username: "Liad Gola",
-            imgUrl: "https://robohash.org/Liad?set=set5"
+            imgUrl: "https://res.cloudinary.com/dug85f2rg/image/upload/v1674737415/liad_tveksl.jpg"
         },
         {
             _id: "u103",
             fullname: "Oren Sharizad",
             username: "Oren Sharizad",
-            imgUrl: "https://robohash.org/oren?set=set5"
+            imgUrl: "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674479066/main_aq4l31.jpg"
         }],
         cmpsOrder: [],
     }
@@ -239,7 +242,8 @@ function _createAiGroup(title) {
     }
 }
 
-function _createAiTask(title, groupId) {
+function _createAiTask(title, groupId, background) {
+    if (!background) background = ''
     return {
         "title": title,
         "archivedAt": Date.now(),
@@ -257,13 +261,45 @@ function _createAiTask(title, groupId) {
             "imgUrl": "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg"
         },
         "style": {
-            "background": ""
+            background
         },
         "attachments": [],
         "activity": [],
         groupId,
     }
 }
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+}
+
+const images = [
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932392/clarity-software-development-architecture_xnjvxl.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932380/Software-development_u0ardw.png",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932368/Your-perfect-development-team-1_kmd8c5.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932366/software-development_2_vtkrg9.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932366/Types-of-Software-Development_xntc98.webp",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932365/Top-6-Software-Development-Methodologies_qyab9m.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932365/Software-Development_nwvt9b.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932362/photo-1610563166150-b34df4f3bcd6_xcihun.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932362/Software-Development-Contract_yzckea.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932362/Software-development-skills-to-learn-in-2022_fmddxi.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932361/Software-Development-Industry_yguihk.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932361/origin_hmen7v.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932360/Software-Development_1_u9hzft.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932360/Career-as-a-software-developer_j2hrke.png",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932360/software-development-and-coding-landing-page_yeo8em.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932360/software-development-business-process-automation-internet-technology-concept-virtual-screen-software-development-143587196_dll8zz.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932359/9-types-of-software-development_oehfpg.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932359/images_antr8v.png",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932209/Top-6-Software-Development-Methodologies_lj1l9n.jpg",
+    'https://res.cloudinary.com/dd09wjwjn/image/upload/v1674724392/nsdjkvajunibmxzwuc7d.png',
+    'https://res.cloudinary.com/dd09wjwjn/image/upload/v1674723476/wrfbuvied7bglma8gwnj.jpg'
+]
+
+const colors = ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91', '#172b4d', '#8c7d20', '#151514', '#0d3728', '#e8e19d', '#f6d5d8', '#e7baa8', '#fdd298']
 
 module.exports = {
     remove,

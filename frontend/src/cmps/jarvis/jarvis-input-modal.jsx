@@ -46,7 +46,7 @@ export function JarvisInputModal({ setIsJarvis }) {
                     }}
                     name='txt' />
             </div>
-            <JarvisAnimation />
+            {/* <JarvisAnimation /> */}
         </section>
     )
 }

@@ -1,8 +1,9 @@
 const MongoClient = require('mongodb').MongoClient
-const OPENAI_API_KEY = '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'
+const OPENAI_API_KEY = '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'
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
     apiKey: OPENAI_API_KEY,
+
 });
 
 const openai = new OpenAIApi(configuration);
@@ -44,10 +45,10 @@ async function getBoardScript(prompt) {
     const response = await openai.createCompletion({
         model: "text-davinci-003",
         prompt: `make me a trello board for a ${prompt} project with detailed tasks for each column, each column headline should be presented with only one dollar sign  infront of it, and each task should be presented with only one infinity symbol infront of it`,
-        temperature: 0.9,
-        max_tokens: 1500,
+        temperature: 0.7,
+        max_tokens: 160,
         top_p: 1,
-        frequency_penalty: 0.0,
+        frequency_penalty: 0.5,
         presence_penalty: 0.6,
         stop: [" Human:", " AI:"],
     });
