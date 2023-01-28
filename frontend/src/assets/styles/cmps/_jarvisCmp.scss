@@ -1,0 +1,84 @@
+.large-header {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #000000db;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    z-index: 999;
+
+    input {
+        z-index: 10000;
+        margin: 30px 0;
+        padding: 0.5rem 1rem;
+        border-radius: 3px;
+        outline: none;
+        // box-shadow: 0.5px 0.5px 15px 0.5px #0ff;
+        border: none;
+        text-align: center;
+        text-transform: uppercase;
+
+    }
+
+    .main-title-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 16px;
+        text-align: center;
+
+    }
+
+    .main-title-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        svg,
+        path {
+            width: 160px;
+            height: 200px;
+        }
+
+    }
+
+    h3 {
+        margin: 30px 0;
+    }
+}
+
+.demo .large-header {
+    background-image: url("ht1tpsdds://images.wallpaperscraft.com/image/starry_sky_stars_space_night_119881_1366x768.jpg");
+}
+
+.main-title {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    color: #F9F1E9;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.demo .main-title {
+    text-transform: uppercase;
+    font-size: 4.2em;
+    letter-spacing: 0.1em;
+}
+
+.main-title .thin {
+    font-weight: 200;
+}
+
+@media only screen and (max-width: 768px) {
+    .demo .main-title {
+        font-size: 3em;
+    }
+}

@@ -40,6 +40,7 @@ export function LoginSignup(props) {
             const user = await signup(credentials)
             showSuccessMsg(`Welcome new user: ${user.fullname}`)
             clearState()
+            navigate('/board')
         } catch (err) {
             showErrorMsg('Cannot signup')
         }
