@@ -153,3 +153,10 @@ button {
     border-radius: 3px;
     color: #6b778c;
 }
+
+@include for-mobile-layout {
+    .btn-bar {
+        padding: 1rem 0.5rem;
+
+    }
+}
