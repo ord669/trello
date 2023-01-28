@@ -115,7 +115,7 @@ export function TaskDetailsChecklist({ checklist, task }) {
             </div>
             <div className="check-box-container" >
                 {checklist.todos.map(todo =>
-                    < ChecklistItemPreview key={todo._id} currTodo={todo} saveTodo={saveTodo} />
+                    < ChecklistItemPreview key={todo._id} task={task} currTodo={todo} saveTodo={saveTodo} />
                 )}
                 <section className="add-new-item">
                     {!isShown ?

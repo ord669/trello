@@ -31,6 +31,8 @@ function DynamicCmp(props) {
             return <BoardGroupActivity {...props} />
         case 'bg':
             return <BoardBgActivity {...props} />
+        case 'todo':
+            return <BoardTodoActivity {...props} />
 
     }
 }
@@ -46,12 +48,11 @@ function BoardTaskActivity({ activity }) {
             .find(t => t._id === activity.task._id)
         if (!task) return
         navigate(`/board/${board._id}/${activity.task.groupId}/${activity.task._id}`)
-
     }
     return (
         <section>
             {activity.diff === 'added' &&
-                <div div className='flex align-center gap-5 warp'>
+                <div className='flex align-center gap-5 warp'>
                     <span onClick={() => onNavigate()} className='activity-task'>
                         {activity.task.title}</span>
                     <span>to</span>
@@ -98,4 +99,30 @@ function BoardBgActivity({ activity }) {
 
     )
 
+}
+
+function BoardTodoActivity({ activity }) {
+    const { board } = useSelector(storeState => storeState.boardModule)
+    const navigate = useNavigate()
+
+    function onNavigate() {
+        const task = board.groups.
+            find(g => g._id === activity.task.groupId).tasks
+            .find(t => t._id === activity.task._id)
+        if (!task) return
+        navigate(`/board/${board._id}/${activity.task.groupId}/${activity.task._id}`)
+    }
+    return (
+        <section>
+            {
+                activity.diff === 'completed' &&
+                <div className='flex align-center gap-5' >
+                    <span>{activity.task.todo}</span>
+                    <span>on</span>
+                    <span onClick={() => onNavigate()} className='activity-task'>
+                        {activity.task.title}</span>
+                </div>
+            }
+        </section>
+    )
 }

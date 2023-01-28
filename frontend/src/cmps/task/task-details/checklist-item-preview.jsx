@@ -1,14 +1,20 @@
 import { useState } from "react"
 import { CloseIcon, ThreeDotsIcon } from "../../../assets/svg/icon-library"
+import { saveActivity } from "../../../store/board/board.action";
 import { openDynamicModal } from "../../../store/modal/modal.action";
+import { useSelector } from "react-redux"
 
-export function ChecklistItemPreview({ currTodo, saveTodo }) {
+
+export function ChecklistItemPreview({ currTodo, saveTodo, task }) {
     const [todo, setTodo] = useState(currTodo)
     const [isShown, setIsShown] = useState(false)
+    const { board } = useSelector(storeState => storeState.boardModule)
+
 
     function onClickTodo(todoToChange) {
         todoToChange.isDone = !todoToChange.isDone
         saveTodo(todoToChange)
+        saveActivity({ board, type: 'todo', diff: 'completed', task: { _id: task._id, groupId: task.groupId, title: task.title, todo: todo.title } })
     }
 
     async function onSaveTodo() {
