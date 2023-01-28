@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import { AttacheIcon, ChecklistIcon, CheckListIcon, ClockIcon, DescriptionIcon, EyeIcon } from "../../../assets/svg/icon-library";
-import { utilService } from "../../../services/util.service";
-import { saveTask } from "../../../store/task/task.action";
-import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service";
-import { UserAvatarIcon } from "../../user-avatar-icon";
-import { taskService } from "../../../services/task.service";
+import { useEffect, useState } from "react"
+import { AttacheIcon, CheckboxIcon, ChecklistIcon, CheckListIcon, ClockIcon, DescriptionIcon, EyeIcon } from "../../../assets/svg/icon-library"
+import { utilService } from "../../../services/util.service"
+import { saveTask } from "../../../store/task/task.action"
+import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service"
+import { UserAvatarIcon } from "../../user-avatar-icon"
+import { taskService } from "../../../services/task.service"
 import { toggleMemberAssigned } from "../../../store/task/task.action"
-import { useSelector } from "react-redux";
+import { useSelector } from "react-redux"
 
 export function TaskPreviewIcons({ task }) {
     // const [todosIsDone, setTodosIsDone] = useState(false)
@@ -71,14 +71,14 @@ export function TaskPreviewIcons({ task }) {
     }
 
     function dueDateStyle() {
-        let style
-        if (task.isDone) {
-            style = {
-                background: '#61bd4f',
-                color: '#fff',
-            }
+        if (task.isDone) return {
+            background: '#61bd4f',
+            color: '#fff',
         }
-        return style
+        if (Date.now() > task.dueDate) return {
+            background: '#eb5a46',
+            color: '#fff'
+        }
     }
 
     return (
@@ -89,7 +89,10 @@ export function TaskPreviewIcons({ task }) {
                     {allTodosIsDone}/{allTodosLength}
                 </div>
             </div>}
-            {!!task.dueDate && <div style={dueDateStyle()} onClick={(ev) => setDueDateIsDone(ev)} className="tpi-due-date"><ClockIcon /> {day}</div>}
+            {!!task.dueDate && <div style={dueDateStyle()} onClick={(ev) => setDueDateIsDone(ev)} className="tpi-due-date">
+                <span className="clock-icon"><ClockIcon /> </span>
+                <span className="checkbox-icon">{task.isDone ? <ChecklistIcon style={{ fill: 'red' }} /> : <CheckboxIcon />}</span>
+                {day}</div>}
             {!!task.description && <DescriptionIcon />}
 
             <div className="tpi-members ">

@@ -12,6 +12,7 @@
 
     &.open-menu {
         transform: translate(0);
+        overflow-y: scroll;
     }
 
     .msm-title {
@@ -118,7 +119,4 @@
         }
 
     }
-
-
-
 }
