@@ -49,12 +49,14 @@
         padding: 4px 8px 2px;
         display: flex;
         flex-direction: column;
+        gap: rem(4px);
+        max-width: 256px;
     }
 
     .task-preview-edit-icon {
         position: absolute;
-        right: 5px;
-        top: 5px;
+        right: 3px;
+        top: 0px;
     }
 
     .task-preview-icons-container {

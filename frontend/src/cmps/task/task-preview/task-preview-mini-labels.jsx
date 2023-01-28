@@ -32,7 +32,6 @@ export function TaskPreviewLabels({ labelId, type }) {
     function onChangeLabelSize(ev) {
         ev.stopPropagation()
         toggleLabelSize()
-        // setIsMini(prev => !prev)
     }
 
     const mainStyle = {
@@ -40,24 +39,17 @@ export function TaskPreviewLabels({ labelId, type }) {
     }
 
     const secStyle = {
-        backgroundColor: darkenHexColor(label.color)
+        backgroundColor: darkenHexColor(label.color),
     }
 
     return (
-        <section className="label-container" onClick={(ev) => onChangeLabelSize(ev)}>
-            {isLabelMini ? (
-                <section style={secStyle} className='task-preview-label'>
-                    <div style={mainStyle} className="sec-label-color"></div>
-                </section>
-            )
-                :
-                (
-                    <section style={mainStyle}
-                        className='big-label-preview'>
-                        <div style={secStyle} className="sec-label-big"></div>
-                        <div>{label.title}</div>
-                    </section>
-                )}
+
+        <section className='label-container' onClick={(ev) => onChangeLabelSize(ev)}>
+            <section style={isLabelMini ? secStyle : mainStyle}
+                className={isLabelMini ? 'task-preview-label' : 'task-preview-label open'}>
+                {!isLabelMini && <div style={secStyle} className={'sec-label-big'}></div>}
+                {!isLabelMini && <div>{label.title}</div>}
+            </section>
         </section >
     )
 }

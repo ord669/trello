@@ -37,11 +37,11 @@ function remove(userId) {
     return httpService.delete(`user/${userId}`)
 }
 
-async function update({_id, score}) {
+async function update({ _id, score }) {
     // const user = await storageService.get('user', _id)
     // await storageService.put('user', user)
 
-    const user = await httpService.put(`user/${_id}`, {_id, score})
+    const user = await httpService.put(`user/${_id}`, { _id, score })
     // Handle case in which admin updates other user's details
     if (getLoggedinUser()._id === user._id) saveLocalUser(user)
     return user
@@ -80,7 +80,7 @@ async function logout() {
 
 
 function saveLocalUser(user) {
-    user = {_id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, score: user.score}
+    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, score: user.score }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }
