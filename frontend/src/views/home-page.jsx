@@ -33,13 +33,13 @@ export function HomePage() {
                             <div className="home-card">
                                 <div className="home-card-title">Boards</div>
                                 <div className="home-card-content">
-                                    <p>Trello boards keep tasks organized and work moving forward. In a glance, see everything from “things to do” to “aww yeah, we did it!”</p>
+                                    <p>Jarvis boards keep tasks organized and work moving forward. In a glance, see everything from “things to do” to “aww yeah, we did it!”</p>
                                 </div>
                             </div>
                             <div className="home-card">
                                 <div className="home-card-title">Lists</div>
                                 <div className="home-card-content">
-                                    <p>The different stages of a task. Start as simple as To Do, Doing or Done—or build a workflow custom fit to your teams needs. Theres no wrong way to Trello.</p>
+                                    <p>The different stages of a task. Start as simple as To Do, Doing or Done—or build a workflow custom fit to your teams needs. Theres no wrong way to Jarvis.</p>
                                 </div>
                             </div>
                             <div className="home-card">

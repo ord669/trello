@@ -17,7 +17,7 @@ export function HomeHeader() {
                 </div>
                 <div>
                     <button onClick={() => navigate('/login')} className='btn-login'>Log in</button>
-                    <button onClick={() => navigate('/board')} className='btn-get-trello'>Get Trello for free</button>
+                    <button onClick={() => navigate('/board')} className='btn-get-trello'>Get Jarvis for free</button>
                 </div>
             </div>
         </header >

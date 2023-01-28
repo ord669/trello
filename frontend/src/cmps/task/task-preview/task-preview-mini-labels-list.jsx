@@ -5,7 +5,7 @@ export function MiniLabelList({ task, onSelectLabel, type }) {
         <section>
             <div className="mini-labels-list-container">
                 {task.labelIds.map((labelId, idx) =>
-                    <div onClick={() => { onSelectLabel(labelId) }} key={idx}>
+                    <div onClick={() => { onSelectLabel(labelId) }} key={labelId}>
                         <TaskPreviewLabels type={type} labelId={labelId} />
                     </div>)}
             </div>
