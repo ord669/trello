@@ -43,12 +43,24 @@
             font-size: 14px;
             margin-left: 0.5rem;
 
-            .complete {
-                color: $clr6;
-                background-color: #61bd4f;
+            .label {
                 font-size: 12px;
                 padding: 1px 4px;
                 border-radius: 2px;
+                color: $clr6;
+
+                &.complete {
+                    background-color: #61bd4f;
+                }
+
+                &.overdue {
+                    background-color: #eb5b46;
+                }
+
+                &.due-soon {
+                    color: $clr7;
+                    background-color: #f2d600;
+                }
             }
 
             .icon {
