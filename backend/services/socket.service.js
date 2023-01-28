@@ -22,7 +22,7 @@ function setupSocketAPI(http) {
             logger.info(`Task saved in group [${task.groupId}]`)
             socket.broadcast.emit('save-task', task)
         })
-        socket.on('emit-remove-task', ({groupId, taskId}) => {
+        socket.on('emit-remove-task', ({ groupId, taskId }) => {
             logger.info(`Task removed id [${taskId}] in group [${groupId}]`)
             socket.broadcast.emit('remove-task', taskId, groupId)
         })
@@ -30,7 +30,7 @@ function setupSocketAPI(http) {
             logger.info(`Group saved [${group._id}]`)
             socket.broadcast.emit('save-group', group)
         })
-        socket.on('emit-remove-group', ({boardId, groupId}) => {
+        socket.on('emit-remove-group', ({ boardId, groupId }) => {
             logger.info(`Group [${groupId}] removed from board [${boardId}]`)
             socket.broadcast.emit('remove-group', groupId)
         })
@@ -42,14 +42,18 @@ function setupSocketAPI(http) {
             logger.info(`board saved [${boardId}]`)
             socket.broadcast.emit('remove-board', boardId)
         })
-        // socket.on('set-user-socket', userId => {
-        //     logger.info(`Setting socket.userId = ${userId} for socket [id: ${socket.id}]`)
-        //     socket.userId = userId
-        // })
-        // socket.on('unset-user-socket', () => {
-        //     logger.info(`Removing socket.userId for socket [id: ${socket.id}]`)
-        //     delete socket.userId
-        // })
+        socket.on('emit-assign-member', ({ userId, data }) => {
+            logger.info(`assigning userId = ${userId} for task [id: ${userId}]`)
+            emitToUser({ type: 'notify-member', data, userId })
+        })
+        socket.on('set-user-socket', userId => {
+            logger.info(`Setting socket.userId = ${userId} for socket [id: ${socket.id}]`)
+            socket.userId = userId
+        })
+        socket.on('unset-user-socket', () => {
+            logger.info(`Removing socket.userId for socket [id: ${socket.id}]`)
+            delete socket.userId
+        })
 
     })
 }

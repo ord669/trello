@@ -11,22 +11,15 @@ router.get('/', log, getBoards)
 router.post('/aiimg', log, getAiBgImg)
 router.post('/aiboard', log, getAiBoard)
 
-
 router.get('/:boardId', getBoardById)
-// router.post('/', requireAuth, addBoard)
-router.post('/', addBoard)
-router.put('/:boardId', updateBoard)
-router.delete('/:boardId', removeBoard)
+// router.post('/', addBoard)
+// router.put('/:boardId', updateBoard)
+// router.delete('/:boardId', removeBoard)
+// router.delete('/:boardId/:groupId', removeGroupFromBoard)
 
-// router.post('/:boardId/group', addGroupToBoard)
-// router.put('/:boardId/group', updateGroupInBoard)
-router.delete('/:boardId/:groupId', removeGroupFromBoard)
-
-// router.put('/:id', requireAuth, updateBoard)
-// router.delete('/:id', requireAuth, removeBoard)
-// router.delete('/:id', requireAuth, requireAdmin, removeBoard)
-
-// router.post('/:id/msg', requireAuth, addBoardMsg)
-// router.delete('/:id/msg/:msgId', requireAuth, removeBoardMsg)
+router.post('/', requireAuth, addBoard)
+router.put('/:boardId', requireAuth, updateBoard)
+router.delete('/:boardId', requireAuth, removeBoard)
+router.delete('/:boardId/:groupId', requireAuth, removeGroupFromBoard)
 
 module.exports = router
