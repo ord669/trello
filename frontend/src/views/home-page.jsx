@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MainLogo } from '../assets/svg/icon-library'
-import { Jarvis } from '../cmps/jarvis'
 
 export function HomePage() {
     const navigate = useNavigate()

@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux'
 import { JarvisInputModal } from './jarvis/jarvis-input-modal'
 import useSound from 'use-sound'
 import jarviseIntro from '../assets/mp3/jarvisIntro.mp3';
+import { Jarvis } from '../views/jarvis'
 
 export function AppHeader() {
     const navigate = useNavigate()
@@ -161,7 +162,8 @@ export function AppHeader() {
                     <span>O</span>
                 </div>
             </div>
-            {isJarvis && <JarvisInputModal setIsJarvis={setIsJarvis} />}
+            {/* {isJarvis && <JarvisInputModal setIsJarvis={setIsJarvis} />} */}
+            {isJarvis && <Jarvis />}
 
         </header>
     )
