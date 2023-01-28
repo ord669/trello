@@ -1,6 +1,7 @@
 import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
+import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'tasks'
 
@@ -125,11 +126,7 @@ function getEmptyComment() {
         "_id": utilService.makeId(),
         "txt": "",
         "type": "comment",
-        "byMember": {
-            "_id": "u101",
-            "fullname": "Or Dvir",
-            "imgUrl": "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg"
-        },
+        "byMember": userService.getLoggedinUser(),
     }
 }
 
@@ -144,12 +141,7 @@ function getEmptyTask() {
         "labelIds": [],
         "dueDate": 0,
         "isDone": false,
-        "byMember": {
-            "_id": "u103",
-            "username": "Oren Sharizad",
-            "fullname": "Oren Sharizad",
-            "imgUrl": "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg"
-        },
+        "byMember": userService.getLoggedinUser(),
         "style": {
             "background": ""
         },

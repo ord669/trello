@@ -109,11 +109,10 @@ export function ToolBar({ board }) {
                 btn-header-square">
                     <MoreTreeDotsIcon className="icon" />
                 </button>
-                <button onClick={() => setIsOpenJarvis(prev => !prev)} className=" btn-bar  btn-header-square">Jarvis</button>
+
                 <BoardSideMenu isOpenSideMenu={isOpenSideMenu} board={board}
                     setIsOpenSideMenu={setIsOpenSideMenu} />
                 {isOpenShare && <ShareModal setIsOpenShare={setIsOpenShare} />}
-                {isOpenJarvis && <Jarvis setIsOpenJarvis={setIsOpenJarvis} />}
             </div>
         </section>
     )
