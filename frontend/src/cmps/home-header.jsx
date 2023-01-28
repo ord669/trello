@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MainLogo } from '../assets/svg/icon-library'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
@@ -8,12 +8,19 @@ import { logout } from '../store/user.actions'
 
 export function HomeHeader() {
     const navigate = useNavigate()
-    const [isOpenNav, setIsOpenNav] = useState(false)
-    const loggdinUser = userService.getLoggedinUser()
+    const [loggdinUser, setLoggdinUser] = useState(userService.getLoggedinUser())
+    console.log('loggdinUser: ', loggdinUser);
+
+    useEffect(() => {
+        setLoggdinUser(userService.getLoggedinUser)
+
+
+    }, [])
 
     async function onLogout() {
         try {
             await logout()
+            setLoggdinUser('')
             showSuccessMsg(`Bye now`)
         } catch (err) {
             showErrorMsg('Cannot logout')

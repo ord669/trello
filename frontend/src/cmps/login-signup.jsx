@@ -26,6 +26,7 @@ export function LoginSignup(props) {
         ev.preventDefault()
         try {
             const user = await login(credentials)
+            if (!user) return
             showSuccessMsg(`Welcome: ${user.fullname}`)
             clearState()
             navigate('/')
