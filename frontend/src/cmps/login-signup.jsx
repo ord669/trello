@@ -22,11 +22,11 @@ export function LoginSignup(props) {
         setCredentials({ ...credentials, [field]: value })
     }
 
-
     async function onLogin(ev) {
         ev.preventDefault()
         try {
             const user = await login(credentials)
+            if (!user) return
             showSuccessMsg(`Welcome: ${user.fullname}`)
             clearState()
             navigate('/')

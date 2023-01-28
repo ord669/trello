@@ -140,19 +140,19 @@ function getEmptyBoard(title = '') {
                 "_id": "u101",
                 "fullname": "Or Dvir",
                 "username": "Or Dvir",
-                "imgUrl": "https://robohash.org/Or?set=set5"
+                "imgUrl": "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg"
             },
             {
                 "_id": "u102",
                 "fullname": "Liad Gola",
                 "username": "Liad Gola",
-                "imgUrl": "https://robohash.org/Liad?set=set5"
+                "imgUrl": "https://res.cloudinary.com/dug85f2rg/image/upload/v1674737415/liad_tveksl.jpg"
             },
             {
                 "_id": "u103",
                 "fullname": "Oren Sharizad",
                 "username": "Oren Sharizad",
-                "imgUrl": "https://robohash.org/oren?set=set5"
+                "imgUrl": "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674479066/main_aq4l31.jpg"
             }
         ]
     }
