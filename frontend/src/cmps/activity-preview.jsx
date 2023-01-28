@@ -3,7 +3,6 @@ import { utilService } from '../services/util.service'
 import { useSelector } from "react-redux"
 
 export function ActivityPreview({ activity }) {
-    console.log('activity: ', activity);
     return (
         <section className="activity-preview">
             <div className="activity-img"
@@ -53,7 +52,7 @@ function BoardTaskActivity({ activity }) {
     return (
         <section>
             {activity.diff === 'added' &&
-                <div div className='flex align-center gap-5 warp'>
+                <div className='flex align-center gap-5 warp'>
                     <span onClick={() => onNavigate()} className='activity-task'>
                         {activity.task.title}</span>
                     <span>to</span>
