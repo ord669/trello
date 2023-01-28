@@ -65,6 +65,7 @@ async function save(board) {
     return board
 }
 
+// createAiBoard("software development")
 async function createAiBoard(txt) {
     console.log('txt: ', txt)
     const prompt = { prompt: txt }

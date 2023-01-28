@@ -8,6 +8,7 @@ import { JarvisHeart } from "./jarvis-heart";
 import { useState } from "react";
 import jarvisAction from '../../assets/mp3/jarvisActionGo.mp3';
 import jarvisFinish from '../../assets/mp3/jarvisActionDidHisJob.mp3';
+import { JarvisAnimation } from "./jarvis-animation";
 
 export function JarvisInputModal({ setIsJarvis }) {
     const [subject, setSubject, handleChange] = useForm('')
@@ -30,8 +31,7 @@ export function JarvisInputModal({ setIsJarvis }) {
         <section className='jarvis-input-modal'>
             <div className="jarvis-input-container">
                 <div className="jarvis-input-header" >
-                    <img src={require('../../assets/img/1x/Asset 2.png')} alt="" />
-                    <JarvisHeart isLoading={isLoading} />
+                    {/* <JarvisHeart isLoading={isLoading} /> */}
 
                 </div>
                 <DebounceInput className="Input-text"
@@ -46,7 +46,7 @@ export function JarvisInputModal({ setIsJarvis }) {
                     }}
                     name='txt' />
             </div>
-
+            <JarvisAnimation />
         </section>
     )
 }

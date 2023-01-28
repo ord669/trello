@@ -1,0 +1,280 @@
+// @import "compass/css3";
+
+// Config ----------------------------------
+
+$spinner-size: 600px; // 200px
+$spinner-thickness: 5px; // 4px
+$spinner-speed: 5.2s; // 1.2s
+
+$spinner-3d: true; // true
+$spinner-loops: infinite; // infinite (be careful, save the batteries!)
+
+// Spinner ----------------------------------
+
+.jarvis-animation {
+	overflow: hidden;
+
+	.spinner {
+		cursor: pointer;
+		background: rgba(255, 255, 255, 0.1);
+		position: relative;
+		margin: auto;
+		box-sizing: border-box;
+		background-clip: padding-box;
+		width: $spinner-size;
+		height: $spinner-size;
+		border-radius: $spinner-thickness*100;
+		border: $spinner-thickness solid hsla(0, 0%, 100%, .1);
+
+		@if ($spinner-3d) {
+			// mask smoothens out the anti-aliasing artifacts in the back. 
+			-webkit-mask: linear-gradient(hsla(0, 0%, 0%, .1), hsla(0, 0%, 0%, 1) 90%);
+			transform-origin: 50% 55%;
+			transform: perspective($spinner-size) rotateX(30deg);
+			animation: spinner-wiggle $spinner-speed $spinner-loops;
+		}
+
+	}
+
+	.spinner:hover:before,
+	.spinner:hover:after {
+		transform-origin: 50% 55%;
+		transform: perspective($spinner-size) rotateX(30deg);
+		animation: spinner-spin $spinner-speed cubic-bezier(.6, .2, 0, .8) $spinner-loops,
+			spinner-fade-hover $spinner-speed linear $spinner-loops;
+	}
+
+	.spinner:hover .color-circle {
+		position: relative;
+		top: 15%;
+		left: 15%;
+		width: 70%;
+		height: 70%;
+		transform-origin: 50% 50%;
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, hsla(110, 100%, 40%, 0.9)), color-stop(100%, hsla(100, 100%, 50%, 1)));
+		border-radius: 50%;
+		transition-duration: 2s;
+		z-index: 2;
+		transition: ease-in-out;
+		cursor: pointer;
+	}
+
+	.spinner h1 {
+		font-size: $spinner-thickness*13;
+		padding: 10%;
+		margin: 20%;
+		text-align: center;
+		width: 100%;
+		left: -30%;
+		float: left;
+		top: 0%;
+		background: rgba(255, 255, 255, 0);
+		position: relative;
+
+		@if ($spinner-3d) {
+			// mask smoothens out the anti-aliasing artifacts in the back. 
+			-webkit-mask: linear-gradient(hsla(0, 0%, 0%, .1), hsla(0, 0%, 0%, 1) 90%);
+			transform-origin: 50% 50%;
+			transform: perspective($spinner-size) rotateX(66deg);
+			animation: spinner-wiggle $spinner-speed $spinner-loops;
+
+			text-shadow: 0 60px 12px -18px hsla(0, 0%, 0%, .1),
+				0 60px 20px -12px hsla(0, 0%, 0%, .1);
+			// animation: float 1s infinite ease-in-out alternate;
+
+		}
+
+		cursor:pointer;
+	}
+
+	.spinner h1:hover {
+
+		@if ($spinner-3d) {
+			// mask smoothens out the anti-aliasing artifacts in the back. 
+			-webkit-mask: linear-gradient(hsla(0, 0%, 0%, .1), hsla(0, 0%, 0%, 1) 90%);
+			transform-origin: 50% 50%;
+			transform: perspective($spinner-size) rotateY(90deg);
+		}
+
+		cursor:pointer;
+	}
+
+	@keyframes spinner-wiggle {
+		30% {
+			transform: perspective($spinner-size) rotateX(10deg);
+		}
+
+		40% {
+			transform: perspective($spinner-size) rotateX(7deg);
+		}
+
+		50% {
+			transform: perspective($spinner-size) rotateX(10deg);
+		}
+
+		60% {
+			transform: perspective($spinner-size) rotateX(8deg);
+		}
+	}
+
+	.spinner:before,
+	.spinner:after {
+		content: "";
+		position: absolute;
+		margin: -$spinner-thickness;
+		box-sizing: inherit;
+		width: inherit;
+		height: inherit;
+		border-radius: 100%;
+		opacity: .0;
+		border: inherit;
+		border-width: $spinner-thickness*50 !important;
+		border-color: transparent;
+		animation: spinner-spin $spinner-speed cubic-bezier(.6, .2, 0, .8) $spinner-loops,
+			spinner-fade $spinner-speed linear $spinner-loops;
+
+	}
+
+	.spinner:before {
+		border-top-color: hsl(190, 100%, 70%);
+	}
+
+	.spinner:after {
+		border-top-color: hsla(70, 100%, 80%, 0.9);
+		animation-delay: $spinner-speed * 0.25;
+		left: -0%;
+		top: -0%;
+	}
+
+	.spinner:hover:after {
+		border-top-color: hsla(100, 100%, 50%, 1);
+		animation-delay: $spinner-speed * 0.25;
+		left: -0%;
+		top: -0%;
+	}
+
+	.spinner:hover:before {
+		border-top-color: hsla(110, 50%, 50%, 1);
+		left: -0%;
+	}
+
+	@keyframes spinner-spin {
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes spinner-fade {
+		20% {
+			opacity: 0;
+		}
+
+		40% {
+			opacity: 1;
+		}
+
+		60% {
+			opacity: 0;
+		}
+	}
+
+	@keyframes spinner-fade-hover {
+
+		50% {
+			opacity: 1;
+		}
+
+	}
+
+	// Page ----------------------------------
+
+	.container {
+		top: 0;
+		left: 0%;
+		margin: 0 auto;
+		width: calc(100%);
+		height: calc(100%);
+		z-index: 9;
+
+		backface-visibility: hidden;
+
+	}
+
+	.outer-circle {
+		position: absolute;
+		width: 80%;
+		height: 80%;
+		border-radius: 50%;
+		background-color: #dee;
+		border: 3px solid #ccc;
+		box-shadow: inset 0 12px 3px -7px #fff, 0 16px 12px rgba(0, 0, 0, 0.1);
+		z-index: 1;
+		left: 10%;
+		top: 10%;
+	}
+
+	.color-circle {
+		position: relative;
+		top: 15%;
+		left: 15%;
+		width: 70%;
+		height: 70%;
+		transform-origin: 50% 50%;
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #25d8fb), color-stop(100%, #4f66bb));
+		border-radius: 50%;
+		z-index: 2;
+	}
+
+	.color-circle-shadow {
+		position: absolute;
+		top: 15%;
+		left: 15%;
+		width: 70%;
+		height: 70%;
+		background: transparent;
+		border-radius: 50%;
+		box-shadow: 0 -12px 3px -7px #ddd, 0 12px 3px -7px #fff, inset 0 24px 18px -10px rgba(0, 0, 140, 0.3), inset 0 0 22px -2px rgba(0, 0, 0, 0.4);
+		z-index: 3;
+	}
+
+	.inner-circle {
+		position: absolute;
+		top: 20%;
+		left: 20.6%;
+		width: 60%;
+		height: 60%;
+		border-radius: 50%;
+		background-color: #eee;
+		box-shadow: inset 0 12px 3px -7px #fff, 0 7px 34px -4px rgba(0, 0, 0, 0.6), 0 16px 12px rgba(0, 0, 0, 0.1);
+		z-index: 4;
+		margin: -$spinner-thickness/1.1;
+
+		img {
+			margin-top: 140px;
+		}
+	}
+
+	.container:hover .color-circle {
+		animation: spin 1.7s infinite linear;
+	}
+
+	@-webkit-keyframes spin {
+		0% {
+			transform: rotateZ(0deg);
+		}
+
+		100% {
+			transform: rotateZ(360deg);
+		}
+
+	}
+
+	@keyframes float {
+		100% {
+			transform: translateY(20px);
+			box-shadow: 0 40px 10px -18px hsla(0, 0%, 0%, .2),
+				0 40px 16px -12px hsla(0, 0%, 0%, .2);
+		}
+	}
+
+}
