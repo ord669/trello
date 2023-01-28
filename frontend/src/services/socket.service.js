@@ -21,11 +21,6 @@ export const SOCKET_EMIT_REMOVE_GROUP = 'emit-remove-group'
 export const SOCKET_EMIT_SAVE_BOARD = 'emit-save-board'
 export const SOCKET_EMIT_REMOVE_BOARD = 'emit-remove-board'
 
-// export const SOCKET_EVENT_TASK_DRAGED = 'drag-task'
-// export const SOCKET_EVENT_GROUP_DRAGED = 'drag-group'
-
-// export const SOCKET_EMIT_TASK_DRAGED = 'task-draged'
-// export const SOCKET_EMIT_GROUP_DRAGED = 'group-draged'
 export const SOCKET_EVENT_ADD_MSG = 'chat-add-msg'
 export const SOCKET_EMIT_SEND_MSG = 'chat-send-msg'
 export const SOCKET_EMIT_SET_TOPIC = 'chat-set-topic'
@@ -82,43 +77,43 @@ function createSocketService() {
 }
 
 // eslint-disable-next-line
-function createDummySocketService() {
-  var listenersMap = {}
-  const socketService = {
-    listenersMap,
-    setup() {
-      listenersMap = {}
-    },
-    terminate() {
-      this.setup()
-    },
-    login() {
-    },
-    logout() {
-    },
-    on(eventName, cb) {
-      listenersMap[eventName] = [...(listenersMap[eventName]) || [], cb]
-    },
-    off(eventName, cb) {
-      if (!listenersMap[eventName]) return
-      if (!cb) delete listenersMap[eventName]
-      else listenersMap[eventName] = listenersMap[eventName].filter(l => l !== cb)
-    },
-    emit(eventName, data) {
-      if (!listenersMap[eventName]) return
-      listenersMap[eventName].forEach(listener => {
-        listener(data)
-      })
-    },
-    // Functions for easy testing of pushed data
-    testChatMsg() {
-      this.emit(SOCKET_EVENT_ADD_MSG, { from: 'Someone', txt: 'Aha it worked!' })
-    },
-    testUserUpdate() {
-      this.emit(SOCKET_EVENT_USER_UPDATED, { ...userService.getLoggedinUser(), score: 555 })
-    }
-  }
-  window.listenersMap = listenersMap
-  return socketService
-}
+// function createDummySocketService() {
+//   var listenersMap = {}
+//   const socketService = {
+//     listenersMap,
+//     setup() {
+//       listenersMap = {}
+//     },
+//     terminate() {
+//       this.setup()
+//     },
+//     login() {
+//     },
+//     logout() {
+//     },
+//     on(eventName, cb) {
+//       listenersMap[eventName] = [...(listenersMap[eventName]) || [], cb]
+//     },
+//     off(eventName, cb) {
+//       if (!listenersMap[eventName]) return
+//       if (!cb) delete listenersMap[eventName]
+//       else listenersMap[eventName] = listenersMap[eventName].filter(l => l !== cb)
+//     },
+//     emit(eventName, data) {
+//       if (!listenersMap[eventName]) return
+//       listenersMap[eventName].forEach(listener => {
+//         listener(data)
+//       })
+//     },
+//     // Functions for easy testing of pushed data
+//     testChatMsg() {
+//       this.emit(SOCKET_EVENT_ADD_MSG, { from: 'Someone', txt: 'Aha it worked!' })
+//     },
+//     testUserUpdate() {
+//       this.emit(SOCKET_EVENT_USER_UPDATED, { ...userService.getLoggedinUser(), score: 555 })
+//     }
+//   }
+//   window.listenersMap = listenersMap
+//   return socketService
+// }
 
