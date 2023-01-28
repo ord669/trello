@@ -21,6 +21,9 @@ export const SOCKET_EMIT_REMOVE_GROUP = 'emit-remove-group'
 export const SOCKET_EMIT_SAVE_BOARD = 'emit-save-board'
 export const SOCKET_EMIT_REMOVE_BOARD = 'emit-remove-board'
 
+export const SOCKET_EMIT_ASSIGN_MEMBER = 'emit-assign-member'
+export const SOCKET_EVENT_NOTIFY_MEMBER = 'notify-member'
+
 export const SOCKET_EVENT_ADD_MSG = 'chat-add-msg'
 export const SOCKET_EMIT_SEND_MSG = 'chat-send-msg'
 export const SOCKET_EMIT_SET_TOPIC = 'chat-set-topic'

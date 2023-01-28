@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient
-const OPENAI_API_KEY = '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'
+const OPENAI_API_KEY = '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'
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
     apiKey: OPENAI_API_KEY,
