@@ -30,6 +30,7 @@ export function ImgUploader({ onUploaded = null, type, styleClass, content, show
       {!type && <label htmlFor="imgUpload">{getUploadLabel()}</label>}
       {type === 'cover' && <label className={styleClass.coverLabelBtn} htmlFor="imgUpload">Upload a cover image</label>}
       {type === 'attach' && <label className={styleClass.attachLableBtn} htmlFor="imgUpload">{content.title}</label>}
+      {type === 'user' && <label className={styleClass.coverLabelBtn} htmlFor="imgUpload">Upload profile image</label>}
       <input type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
     </div>
   )

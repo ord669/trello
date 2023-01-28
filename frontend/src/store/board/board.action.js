@@ -3,6 +3,7 @@ import { boardService } from "../../services/board.service"
 import { socketService, SOCKET_EMIT_REMOVE_GROUP, SOCKET_EMIT_SAVE_BOARD, SOCKET_EMIT_SAVE_GROUP } from "../../services/socket.service"
 // import { socketService, SOCKET_EMIT_GROUP_DRAGED, SOCKET_EMIT_TASK_DRAGED } from "../../services/socket.service"
 import { taskService } from "../../services/task.service"
+import { userService } from "../../services/user.service"
 import { utilService } from "../../services/util.service"
 import { store } from '../store'
 
@@ -119,11 +120,7 @@ export async function dispatchBoard(board) {
 export async function saveActivity({ board, txt, type, at, diff, task }) {
     const activity = {
         _id: utilService.makeId(),
-        byMember: {
-            "_id": "u101",
-            "fullname": "Or Dvir",
-            "imgUrl": "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg"
-        },
+        byMember: userService.getLoggedinUser(),
         createdAt: Date.now(),
         diff,
         type,
@@ -132,7 +129,6 @@ export async function saveActivity({ board, txt, type, at, diff, task }) {
         task
 
     }
-    console.log(' activity:', activity)
     const boardToSave = { ...board, activities: [activity, ...board.activities] }
     try {
         await saveBoard(boardToSave)

@@ -4,6 +4,7 @@ import { login, logout, signup } from '../store/user.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { useNavigate } from 'react-router-dom'
 import { MainLogo } from '../assets/svg/icon-library'
+import { ImgUploader } from './img-uploader'
 
 export function LoginSignup(props) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
@@ -67,7 +68,6 @@ export function LoginSignup(props) {
                 <MainLogo />
                 <span onClick={() => navigate(`/`)}>Jarvis</span>
             </div>
-
             <div className="login-page">
 
                 <p className='login-title'>{!isSignup ? 'Log in to Jarvis ' : 'Sign up for your account'}</p>
@@ -118,7 +118,11 @@ export function LoginSignup(props) {
                             onChange={handleChange}
                             required
                         />
-                        {/* <ImgUploader onUploaded={onUploaded} /> */}
+
+                        <div className='login-upload'>
+                            <ImgUploader onUploaded={onUploaded} type={'user'} styleClass={{}} />
+                        </div>
+
                         <button className='login-btn' >Signup!</button>
                     </form>}
                 </div>
@@ -128,7 +132,6 @@ export function LoginSignup(props) {
             </div>
             <img className="login-img-left" src={require(`../assets/img/left.png`)} alt="hero-img" />
             <img className="login-img-right" src={require(`../assets/img/right.png`)} alt="hero-img" />
-
         </div>
     )
 }

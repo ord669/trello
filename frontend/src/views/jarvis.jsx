@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 
 export function Jarvis({ setIsOpenJarvis }) {
+
     useEffect(() => {
         const scriptSrcs = ["https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js", "https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js", "https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo.js"]
 
@@ -19,7 +20,6 @@ export function Jarvis({ setIsOpenJarvis }) {
                 <div className="content">
                     <div id="large-header" className="large-header">
                         <canvas id="demo-canvas"></canvas>
-                        <ReactPlayer src={audio} />
                         <h1 className="main-title">Jarvis.ai</h1>
                     </div>
                 </div>
