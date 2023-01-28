@@ -42,10 +42,10 @@ function setupSocketAPI(http) {
             logger.info(`board saved [${boardId}]`)
             socket.broadcast.emit('remove-board', boardId)
         })
-        socket.on('emit-assign-member', ({ userId, data }) => {
-            logger.info(`assigning userId = ${userId} for task [id: ${userId}]`)
-            emitToUser({ type: 'notify-member', data, userId })
-        })
+        // socket.on('emit-assign-member', ({ userId, data }) => {
+        //     logger.info(`assigning userId = ${userId} for task [id: ${userId}]`)
+        //     emitToUser({ type: 'notify-member', data, userId })
+        // })
         socket.on('set-user-socket', userId => {
             logger.info(`Setting socket.userId = ${userId} for socket [id: ${socket.id}]`)
             socket.userId = userId
