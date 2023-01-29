@@ -176,7 +176,7 @@ export function AppHeader() {
             </div>
             {/* {isJarvis && <JarvisInputModal setIsJarvis={setIsJarvis} />} */}
             {isJarvis && <Jarvis setIsJarvis={setIsJarvis} />}
-            {isOpenAcount && <Acount setIsOpenAccount={setIsOpenAccount} />}
+            {isOpenAcount && <Acount setLoggdinUser={setLoggdinUser} setIsOpenAccount={setIsOpenAccount} />}
 
         </header>
     )
