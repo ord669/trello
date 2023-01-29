@@ -24,21 +24,26 @@
         padding: 6px 12px;
     }
 
-    .create-jarvis {
-        background-image: url(https://images.unsplash.com/photo-1573767291321-c0af2eaf5266?crop=entropy&cs=tinysrgb&fm=jpg&ixid=Mnw0MDE1NTF8MHwxfHNlYXJjaHw3fHxjeWJlcnxlbnwwfHx8fDE2NzQ5MzY3MDQ&ixlib=rb-4.0.3&q=80);
+    .btn-jarvis {
+        // background-image: url(https://www.swri.org/sites/default/files/styles/client_services_banner/public/client-services-images/clarity-software-development-architecture.jpg?itok=Au1EaCsr&c=87105dd462fd8ffa214a5ecc56486f30);
+        background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('https://www.swri.org/sites/default/files/styles/client_services_banner/public/client-services-images/clarity-software-development-architecture.jpg?itok=Au1EaCsr&c=87105dd462fd8ffa214a5ecc56486f30');
         background-size: cover;
         background-position: center center;
-        height: 95px;
-        width: 150px;
-        border-radius: 8px;
-        color: #fafbfc;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 16px;
-        cursor: pointer;
-        margin: auto;
-        text-align: center;
+        padding: 8px 12px;
+        border-radius: 3px;
+        color: #fff;
+        font-weight: bold;
+        // height: 95px;
+        // width: 150px;
+        // border-radius: 8px;
+        // color: #fafbfc;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+        // font-size: 16px;
+        // cursor: pointer;
+        // margin: auto;
+        // text-align: center;
 
 
         &:hover {
