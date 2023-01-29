@@ -57,7 +57,7 @@ async function login(userCred) {
     }
 }
 async function signup(userCred) {
-    if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+    if (!userCred.imgUrl) userCred.imgUrl = 'https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg'
     // const user = await storageService.post('user', userCred)
     const user = await httpService.post('auth/signup', userCred)
     // socketService.login(user._id)
@@ -89,7 +89,7 @@ function getLoggedinUser() {
     if (!user) return user = {
         _id: utilService.makeId(),
         fullname: 'Guest',
-        imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+        imgUrl: 'https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg'
     }
     return user
     // return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))

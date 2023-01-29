@@ -89,8 +89,6 @@ export function TaskPreview({ task, idx }) {
                                 <MiniLabelList task={task} type={type}/>}
                             <p>{task.title}</p>
                             {<TaskPreviewIcons task={task} />}
-                            <div>
-                            </div>
                         </div>
                         <div className="task-preview-edit-icon">
                             <div className="task-preview-edit display-none">
