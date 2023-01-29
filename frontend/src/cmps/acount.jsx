@@ -6,13 +6,13 @@ import { userService } from "../services/user.service"
 import { logout } from "../store/user.actions"
 import { UserAvatarIcon } from "./user-avatar-icon"
 
-export function Acount({ setIsOpenAccount, setLoggdinUser }) {
+export function Acount({ setIsOpenAccount }) {
     const navigate = useNavigate()
     const [loggdinUser, setLoggdinUser] = useState({})
 
     useEffect(() => {
         setLoggdinUser(userService.getLoggedinUser)
-    }, [loggdinUser])
+    }, [])
 
     async function onLogout() {
         try {
