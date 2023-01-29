@@ -253,27 +253,27 @@ function getRandomInt(min, max) {
 }
 
 const images = [
-    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932392/clarity-software-development-architecture_xnjvxl.jpg",
-    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932380/Software-development_u0ardw.png",
-    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932368/Your-perfect-development-team-1_kmd8c5.jpg",
-    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932366/software-development_2_vtkrg9.jpg",
-    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932366/Types-of-Software-Development_xntc98.webp",
+    'https://res.cloudinary.com/dd09wjwjn/image/upload/v1674723476/wrfbuvied7bglma8gwnj.jpg',
     "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932365/Top-6-Software-Development-Methodologies_qyab9m.jpg",
     "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932365/Software-Development_nwvt9b.jpg",
     "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932362/photo-1610563166150-b34df4f3bcd6_xcihun.jpg",
-    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932362/Software-Development-Contract_yzckea.jpg",
-    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932362/Software-development-skills-to-learn-in-2022_fmddxi.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932360/Software-Development_1_u9hzft.jpg",
     "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932361/Software-Development-Industry_yguihk.jpg",
     "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932361/origin_hmen7v.jpg",
-    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932360/Software-Development_1_u9hzft.jpg",
-    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932360/Career-as-a-software-developer_j2hrke.png",
-    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932360/software-development-and-coding-landing-page_yeo8em.jpg",
     "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932360/software-development-business-process-automation-internet-technology-concept-virtual-screen-software-development-143587196_dll8zz.jpg",
-    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932359/9-types-of-software-development_oehfpg.jpg",
-    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932359/images_antr8v.png",
     "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932209/Top-6-Software-Development-Methodologies_lj1l9n.jpg",
     'https://res.cloudinary.com/dd09wjwjn/image/upload/v1674724392/nsdjkvajunibmxzwuc7d.png',
-    'https://res.cloudinary.com/dd09wjwjn/image/upload/v1674723476/wrfbuvied7bglma8gwnj.jpg'
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932392/clarity-software-development-architecture_xnjvxl.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932380/Software-development_u0ardw.png",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932360/software-development-and-coding-landing-page_yeo8em.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932368/Your-perfect-development-team-1_kmd8c5.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932366/software-development_2_vtkrg9.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932366/Types-of-Software-Development_xntc98.webp",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932362/Software-Development-Contract_yzckea.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932362/Software-development-skills-to-learn-in-2022_fmddxi.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932360/Career-as-a-software-developer_j2hrke.png",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932359/9-types-of-software-development_oehfpg.jpg",
+    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932359/images_antr8v.png",
 ]
 
 const colors = ['#0279C0', '#D29034', '#529839', '#B04632', '#89609E', '#CD5A91', '#4ABF6A', '#06AECC', '#838C91', '#172b4d', '#8c7d20', '#151514', '#0d3728', '#e8e19d', '#f6d5d8', '#e7baa8', '#fdd298']
