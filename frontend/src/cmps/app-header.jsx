@@ -11,6 +11,9 @@ import { JarvisInputModal } from './jarvis/jarvis-input-modal'
 import useSound from 'use-sound'
 import jarviseIntro from '../assets/mp3/jarvisIntro.mp3';
 import { Jarvis } from '../views/jarvis'
+import { userService } from '../services/user.service'
+import { UserAvatarIcon } from './user-avatar-icon'
+import { Acount } from './acount'
 
 export function AppHeader() {
     const navigate = useNavigate()
@@ -19,16 +22,20 @@ export function AppHeader() {
     const [isStarred, setIsStarred] = useState(false)
     const [isCreateBoard, setIsCreateBoard] = useState(false)
     const [isNotification, setIsNotification] = useState(false)
+    const [isOpenAcount, setIsOpenAcount] = useState(false)
     const [color, setColor] = useState('')
     const [boardColor, setBoardColor] = useState('')
     const { board } = useSelector(storeState => storeState.boardModule)
     const [isJarvis, setIsJarvis] = useState(false)
     const [jarvisIntro] = useSound(jarviseIntro);
+    const [loggdinUser, setLoggdinUser] = useState({})
+
 
     useEffect(() => {
         setAvgColor()
         setDynamicColor()
         getBgStyle()
+        setLoggdinUser(userService.getLoggedinUser)
 
     }, [board])
 
@@ -163,12 +170,13 @@ export function AppHeader() {
                     JARVIS</button>
                 <button onClick={() => setIsNotification((prev) => !prev)} className="header-icon"> <BellIcon /></button>
                 {isNotification && <BoardNotification />}
-                <div className="account-item">
-                    <span>O</span>
+                <div onClick={() => setIsOpenAcount(prev => !prev)} className="account-item">
+                    <div><UserAvatarIcon member={loggdinUser} /></div>
                 </div>
             </div>
             {/* {isJarvis && <JarvisInputModal setIsJarvis={setIsJarvis} />} */}
             {isJarvis && <Jarvis setIsJarvis={setIsJarvis} />}
+            {isOpenAcount && <Acount />}
 
         </header>
     )
