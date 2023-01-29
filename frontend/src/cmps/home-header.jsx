@@ -36,7 +36,7 @@ export function HomeHeader() {
                     <h1>Jarvis</h1>
                 </div>
                 <div>
-                    {loggdinUser
+                    {loggdinUser.fullname !== "Guest"
                         ?
                         <button onClick={onLogout} className='btn-login'>Log Out</button>
                         :
