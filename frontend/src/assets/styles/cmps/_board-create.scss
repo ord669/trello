@@ -18,7 +18,36 @@
         padding: 6px 12px;
     }
 
-    // left: 45px;
+    .jarvis-container {
+        border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+        margin-bottom: 8px;
+        padding: 6px 12px;
+    }
+
+    .create-jarvis {
+        background-image: url(https://images.unsplash.com/photo-1573767291321-c0af2eaf5266?crop=entropy&cs=tinysrgb&fm=jpg&ixid=Mnw0MDE1NTF8MHwxfHNlYXJjaHw3fHxjeWJlcnxlbnwwfHx8fDE2NzQ5MzY3MDQ&ixlib=rb-4.0.3&q=80);
+        background-size: cover;
+        background-position: center center;
+        height: 95px;
+        width: 150px;
+        border-radius: 8px;
+        color: #fafbfc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        cursor: pointer;
+        margin: auto;
+        text-align: center;
+
+
+        &:hover {
+            opacity: .7;
+
+        }
+
+    }
+
     .board-title-add {
         input {
             outline: none;

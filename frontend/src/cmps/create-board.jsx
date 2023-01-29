@@ -54,6 +54,9 @@ export function CreateBoard({ setIsCreateBoard }) {
         <section className='create-board-modal'>
             <button onClick={() => setIsCreateBoard(prev => !prev)} className='btn-close-modal'><CloseIcon /></button>
             <p className='create-board-title'>Create board</p>
+            <div className="jarvis-container">
+                <div className="create-jarvis">Let to Jarvis Ai create your board</div>
+            </div>
             <div style={setStyle()} className='create-board-img'>
                 <BoardSkelton />
             </div>
