@@ -1,4 +1,4 @@
-.acount {
+.account {
     position: absolute;
     top: 44px;
     right: 4px;
@@ -7,5 +7,32 @@
     width: 230px;
     padding: 20px;
     border-radius: 3px;
+    box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25);
+
+
+
+    .btn-login {
+        font-size: 14px;
+
+    }
+
+    .account-user {
+        padding-bottom: 16px;
+    }
+
+    .account-title {
+        font-size: 11px;
+        color: #7A869A;
+        margin-bottom: 16px;
+    }
+
+    .user-title {
+        color: $clr2;
+    }
+
+    .user.avatar-icon {
+        width: 40px;
+        height: 40px;
+    }
 
 }
