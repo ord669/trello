@@ -9,6 +9,8 @@
     border: solid 1px rgba(9, 30, 66, 0.08);
     box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25);
 
+
+
     .create-board-title {
         text-align: center;
         border-bottom: 1px solid rgba(9, 30, 66, 0.13);
@@ -16,6 +18,7 @@
         padding: 6px 12px;
     }
 
+    // left: 45px;
     .board-title-add {
         input {
             outline: none;
@@ -90,5 +93,12 @@
                 opacity: .7;
             }
         }
+    }
+}
+
+@include for-mobile-layout {
+    .create-board-modal {
+        position: absolute;
+        left: 45px;
     }
 }

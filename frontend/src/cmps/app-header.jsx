@@ -1,4 +1,4 @@
-import { ArrowDownIcon, BellIcon, BoardIcon, MainLogo } from '../assets/svg/icon-library'
+import { ArrowDownIcon, BellIcon, BoardIcon, MainLogo, PlusIcon } from '../assets/svg/icon-library'
 import { useEffect, useState } from 'react'
 import { CreateBoard } from './create-board'
 import { BoardNotification } from './board-notifiaction'
@@ -133,8 +133,10 @@ export function AppHeader() {
                     <span onClick={() => navigate(`/`)}>Jarvis</span>
                 </div>
                 <div>
-                    <button className='btn-header-more'>More</button>
                     <div className=' header-main-btns ' >
+                        <div className='header-item'>
+                            <button className='btn-header-more btn-bar '>More</button>
+                        </div>
                         <div className='header-item'>
                             <button onClick={() => setIsRecent(prev => !prev)} className='btn-app-header' >Recent <ArrowDownIcon /></button>
                             {isRecent && <BoardRecent setIsRecent={setIsRecent} type={'recent'} />}
@@ -144,7 +146,10 @@ export function AppHeader() {
                             {isStarred && <BoardRecent type={'starred'} />}
                         </div>
                         <div className='header-item'>
-                            <button onClick={() => setIsCreateBoard(prev => !prev)} className="btn-bar">Create</button>
+                            <button onClick={() => setIsCreateBoard(prev => !prev)} className="btn-bar">
+                                <span className='create'>Create</span>
+                                <span className='plus'><PlusIcon /></span>
+                            </button>
                             {isCreateBoard && <CreateBoard setIsCreateBoard={setIsCreateBoard} />}
                         </div>
                     </div>

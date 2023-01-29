@@ -29,6 +29,7 @@
     .header-main-btns {
         display: flex;
         align-items: center;
+        gap: 2px;
     }
 
     .home-header {
@@ -79,5 +80,34 @@
 
     .btn-header-more {
         display: none;
+    }
+
+    .header-item {
+        .create {
+            display: block;
+        }
+
+        .plus {
+            display: none;
+        }
+
+        @include for-mobile-layout {
+            .btn-header-more {
+                display: flex;
+            }
+
+            .btn-app-header {
+                display: none;
+            }
+
+            .create {
+                display: none;
+            }
+
+            .plus {
+                display: block;
+            }
+        }
+
     }
 }

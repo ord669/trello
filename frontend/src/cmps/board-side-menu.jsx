@@ -105,14 +105,7 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
                     </div>
                 }
 
-                <DebounceInput
-                    minLength={2}
-                    debounceTimeout={1000}
-                    onChange={handleChange}
-                    name='txt' />
 
-                {/* <input type="text" onChange={handleChange} name="txt" id="" /> */}
-                <img src={imgSource} width={'200px'} height={"200px"} alt="" />
             </section>}
 
         </section >
