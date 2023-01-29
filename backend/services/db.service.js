@@ -1,15 +1,13 @@
 const MongoClient = require('mongodb').MongoClient
-const OPENAI_API_KEY = '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'
-const { Configuration, OpenAIApi } = require("openai");
-const configuration = new Configuration({
-    apiKey: OPENAI_API_KEY,
 
-});
-
-const openai = new OpenAIApi(configuration);
 const config = require('../config')
 const logger = require('./logger.service')
 
+const { Configuration, OpenAIApi } = require("openai");
+const configuration = new Configuration({
+    apiKey: config.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
 module.exports = {
     getCollection,
     getBoardScript,
