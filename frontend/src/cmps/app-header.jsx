@@ -37,7 +37,7 @@ export function AppHeader() {
         getBgStyle()
         setLoggdinUser(userService.getLoggedinUser)
 
-    }, [board])
+    }, [board, loggdinUser])
 
     async function setAvgColor() {
         if (!board) return

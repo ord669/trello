@@ -12,8 +12,6 @@ export function Acount({ setIsOpenAccount }) {
 
     useEffect(() => {
         setLoggdinUser(userService.getLoggedinUser)
-
-
     }, [loggdinUser])
 
     async function onLogout() {
