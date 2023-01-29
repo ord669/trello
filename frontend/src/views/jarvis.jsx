@@ -36,13 +36,22 @@ export function Jarvis({ setIsOpenJarvis, setIsJarvis }) {
     async function getBoard() {
         if (!subject.txt) return
         jarvisStart()
-        let newAiBoard = await createAiBoard(subject.txt)
-        console.log('newAiBoard: ', newAiBoard);
-        if (!newAiBoard) newAiBoard = await createAiBoard(subject.txt)
-        if (!newAiBoard) newAiBoard = await createAiBoard(subject.txt)
-        jarvisEnd()
-        setIsJarvis(false)
-        navigate(`/board/${newAiBoard._id}`)
+        try {
+            const newAiBoard = await createAiBoard(subject.txt)
+            console.log('newAiBoard: ', newAiBoard);
+            jarvisEnd()
+            setIsJarvis(false)
+            navigate(`/board/${newAiBoard._id}`)
+
+        } catch (err) {
+            console.log('err', err)
+            const newAiBoard = await createAiBoard(subject.txt)
+            console.log('newAiBoard: ', newAiBoard);
+            setIsJarvis(false)
+            navigate(`/board`)
+
+        }
+
     }
     return (
         <section>
