@@ -77,8 +77,7 @@ export function ToolBar({ board }) {
     const admin = board.createdBy
     return (
         <section style={{ color }} className='tool-bar full'>
-
-            <div className="flex ">
+            <div className="flex">
                 <span className="board-title edit-title-input"
                     onInput={handleChange}
                     contentEditable
