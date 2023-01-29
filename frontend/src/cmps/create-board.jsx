@@ -6,7 +6,7 @@ import { boardService } from "../services/board.service"
 import { socketService, SOCKET_EMIT_SAVE_BOARD } from "../services/socket.service"
 import { saveBoard } from "../store/board/board.action"
 
-export function CreateBoard({ setIsCreateBoard }) {
+export function CreateBoard({ setIsCreateBoard, setIsJarvis, jarvisIntro, setfirsTimeOpen, firsTimeOpen }) {
 
     const defaultURL = 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674294790/photo-1674130070695-82aefa76ca67_bgworq.jpg'
 
@@ -88,7 +88,14 @@ export function CreateBoard({ setIsCreateBoard }) {
             </div>
             <div className="flex align-center gap-5">
                 <button onClick={onAddBoard} className='btn-add'>Save</button>
-                <button className="btn-jarvis">Create with Jarvis Ai</button>
+                <button onClick={() => {
+                    if (!firsTimeOpen) {
+                        jarvisIntro()
+                        setfirsTimeOpen(true)
+                    }
+
+                    setIsJarvis(true)
+                }} className="btn-jarvis">Create With Jarvis.Ai</button>
             </div>
         </section >
     )

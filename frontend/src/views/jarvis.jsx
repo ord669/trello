@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DebounceInput } from "react-debounce-input"
 import { useForm } from "../customHooks/useForm"
 import { useEffectUpdate } from "../customHooks/useEffectUpdate";
@@ -8,11 +8,16 @@ import useSound from "use-sound";
 // import { JarvisHeart } from "./jarvis-heart";
 import jarvisAction from '../assets/mp3/jarvisActionGo.mp3';
 import jarvisFinish from '../assets/mp3/jarvisActionDidHisJob.mp3';
-import { MainLogo } from "../assets/svg/icon-library";
+import { MainLogo, MessegeIcon } from "../assets/svg/icon-library";
+// import Typewriter from 'typewriter-effect/dist/core';
+import Typewriter from 'typewriter-effect';
+
 // import { JarvisAnimation } from "./jarvis-animation";
 
 export function Jarvis({ setIsOpenJarvis, setIsJarvis }) {
     const [isDisable, setIsDisable] = useState(false)
+    const elWriting = useRef()
+    const elWriting2 = useRef()
 
     useEffect(() => {
 
@@ -32,6 +37,7 @@ export function Jarvis({ setIsOpenJarvis, setIsJarvis }) {
 
     const [jarvisStart] = useSound(jarvisAction);
     const [jarvisEnd] = useSound(jarvisFinish);
+    const [isScript2, setIsScript2] = useState(false)
 
     async function getBoard() {
         if (!subject.txt) return
@@ -49,10 +55,31 @@ export function Jarvis({ setIsOpenJarvis, setIsJarvis }) {
             console.log('newAiBoard: ', newAiBoard);
             setIsJarvis(false)
             navigate(`/board`)
-
         }
-
     }
+
+    function onSendSubject() {
+        // typewriter2.start()
+        // typewriter2.start()
+        setIsDisable(true)
+        setIsLoading(true)
+        getBoard()
+    }
+    // var paragraph = elWriting.current;
+
+    // var typewriter = new Typewriter(paragraph, {
+    //     delay: 45,
+    //     loop: false,
+    // });
+
+    // var paragraph2 = elWriting2.current;
+
+    // var typewriter2 = new Typewriter(paragraph2, {
+
+    // });
+
+    // typewriter2
+
     return (
         <section>
             <div className="container demo">
@@ -63,23 +90,74 @@ export function Jarvis({ setIsOpenJarvis, setIsJarvis }) {
 
                         <div className="main-title">
                             <div className="main-title-header">
-                                <MainLogo className='logo' />
+                                {/* <MainLogo className='logo' /> */}
                             </div>
-                            <h3>Jarvis.ai</h3>
+                            <h3 onClick={() => {
+                            }}>Jarvis.ai</h3>
                             <div className="main-title-body">
-                                <DebounceInput className="Input-text"
-                                    minLength={5}
-                                    placeholder='board Subject...'
-                                    disabled={isDisable}
-                                    debounceTimeout={1000}
-                                    onChange={handleChange}
-                                    name='txt' />
-                                <button onClick={() => {
-                                    setIsDisable(true)
-                                    setIsLoading(true)
-                                    getBoard()
+                                <div className="paragraph-container">
+                                    {!isScript2 && <Typewriter
+                                        options={{
+                                            loop: false,
+                                            delay: 40,
+                                        }}
+                                        onInit={(typewriter) => {
+                                            typewriter
+                                                .typeString('allow me to intredus my self... ')
+                                                .pauseFor(200)
+                                                .typeString('my name is jarvis ')
+                                                .pauseFor(1000)
+                                                .typeString('now please insert the board subject')
+                                                .typeString('')
+                                                .pauseFor(1000)
+                                                .start()
 
-                                }} className="btn btn-02">Insert</button>
+                                                .callFunction(() => {
+
+                                                })
+                                                .start()
+                                        }}
+                                    />}
+                                    {isScript2 && <Typewriter
+                                        options={{
+                                            loop: false,
+                                            delay: 40,
+                                        }}
+                                        onInit={(typewriter) => {
+                                            typewriter
+                                                .typeString('thank you sir ')
+                                                .pauseFor(200)
+                                                .typeString('now sit back ')
+                                                .pauseFor(100)
+                                                .typeString('relax and grab a cup of coffe while i am fetchin you the best possible plan for your project')
+                                                .typeString('')
+                                                .pauseFor(1000)
+                                                .start()
+                                        }}
+                                    />}
+                                    {!isScript2 && <p ref={elWriting}></p>}
+                                    {isScript2 && <p ref={elWriting2}></p>}
+                                </div>
+                                <div className="input-cotainer">
+
+                                    <DebounceInput className=""
+                                        minLength={5}
+                                        disabled={isDisable}
+                                        debounceTimeout={1000}
+                                        onChange={handleChange}
+                                        name='txt' />
+                                    <div onClick={() => {
+                                        setIsScript2(true)
+                                        jarvisStart()
+
+                                        onSendSubject()
+
+                                    }
+                                    } className="icon-container">
+
+                                        <MessegeIcon className='input-cotainer-icon' />
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
