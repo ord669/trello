@@ -1,9 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.f08447ae.css",
-    "main.js": "/static/js/main.09a6ce07.js",
-    "static/js/845.889a8427.chunk.js": "/static/js/845.889a8427.chunk.js",
-    "static/media/Jarvis boot animation for 5.5 inch screens 1920x1080.mp4": "/static/media/Jarvis boot animation for 5.5 inch screens 1920x1080.bc4edc081a865396974b.mp4",
+    "main.css": "/static/css/main.ceba474e.css",
+    "main.js": "/static/js/main.c7ce5f98.js",
+    "static/js/845.bc6c4cc3.chunk.js": "/static/js/845.bc6c4cc3.chunk.js",
     "static/media/4127298.jpg": "/static/media/4127298.76cc60c298d9d15599d4.jpg",
     "static/media/SFUIText-Regular.otf": "/static/media/SFUIText-Regular.3891cf449d0d4808a8b5.otf",
     "static/media/SFUIDisplay-Regular.otf": "/static/media/SFUIDisplay-Regular.824bcb096242327a0403.otf",
@@ -21,12 +20,12 @@
     "static/media/Asset 2.png": "/static/media/Asset 2.b966f25e144c3307a7de.png",
     "index.html": "/index.html",
     "static/media/white-wave-bg.svg": "/static/media/white-wave-bg.974bc409085f971a4ec4.svg",
-    "main.f08447ae.css.map": "/static/css/main.f08447ae.css.map",
-    "main.09a6ce07.js.map": "/static/js/main.09a6ce07.js.map",
-    "845.889a8427.chunk.js.map": "/static/js/845.889a8427.chunk.js.map"
+    "main.ceba474e.css.map": "/static/css/main.ceba474e.css.map",
+    "main.c7ce5f98.js.map": "/static/js/main.c7ce5f98.js.map",
+    "845.bc6c4cc3.chunk.js.map": "/static/js/845.bc6c4cc3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f08447ae.css",
-    "static/js/main.09a6ce07.js"
+    "static/css/main.ceba474e.css",
+    "static/js/main.c7ce5f98.js"
   ]
 }

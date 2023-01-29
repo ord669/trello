@@ -29,7 +29,7 @@ export function AppHeader() {
     const [isJarvis, setIsJarvis] = useState(false)
     const [jarvisIntro] = useSound(jarviseIntro);
     const [loggdinUser, setLoggdinUser] = useState({})
-
+    const [firsTimeOpen, setfirsTimeOpen] = useState(false)
 
     useEffect(() => {
         setAvgColor()
@@ -164,7 +164,11 @@ export function AppHeader() {
             </div>
             <div className='header-sec-container'>
                 <button onClick={() => {
-                    jarvisIntro()
+                    if (!firsTimeOpen) {
+                        jarvisIntro()
+                        setfirsTimeOpen(true)
+                    }
+
                     setIsJarvis(true)
                 }} className="btn-bar">
                     JARVIS</button>
