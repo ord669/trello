@@ -3,7 +3,6 @@ const openService = require('../api/openAi/openAi.service')
 
 const config = require('../config')
 const logger = require('./logger.service')
-console.log(' configopenAi.OPENAI_API_KEY: ', openService.OPENAI_API_KEY);
 
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({

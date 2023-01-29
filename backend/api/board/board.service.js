@@ -254,7 +254,6 @@ function getRandomInt(min, max) {
 
 const images = [
     'https://res.cloudinary.com/dd09wjwjn/image/upload/v1674723476/wrfbuvied7bglma8gwnj.jpg',
-    "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932365/Top-6-Software-Development-Methodologies_qyab9m.jpg",
     "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932365/Software-Development_nwvt9b.jpg",
     "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932362/photo-1610563166150-b34df4f3bcd6_xcihun.jpg",
     "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674932360/Software-Development_1_u9hzft.jpg",

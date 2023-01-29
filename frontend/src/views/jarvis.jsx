@@ -79,7 +79,7 @@ export function Jarvis({ setIsOpenJarvis, setIsJarvis }) {
                                     setIsLoading(true)
                                     getBoard()
 
-                                }} class="btn btn-02">Insert</button>
+                                }} className="btn btn-02">Insert</button>
 
                             </div>
                         </div>
