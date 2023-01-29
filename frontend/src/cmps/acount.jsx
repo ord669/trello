@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { userService } from "../services/user.service"
 import { logout } from "../store/user.actions"
+import { UserAvatarIcon } from "./user-avatar-icon"
 
-export function Acount() {
+export function Acount({ setIsOpenAccount }) {
     const navigate = useNavigate()
     const [loggdinUser, setLoggdinUser] = useState({})
 
@@ -13,7 +14,7 @@ export function Acount() {
         setLoggdinUser(userService.getLoggedinUser)
 
 
-    }, [])
+    }, [loggdinUser])
 
     async function onLogout() {
         try {
@@ -24,14 +25,24 @@ export function Acount() {
             showErrorMsg('Cannot logout')
         }
     }
+
+    function onNavigate() {
+        navigate('/login')
+        setIsOpenAccount(false)
+    }
     return (
-        <section className='acount'>
-            <h3>Acount</h3>
+        <section className='account'>
+            <h3 className="account-title">Account</h3>
+            <div className="flex align-center gap-10 account-user">
+                <span className="account-img"><UserAvatarIcon member={loggdinUser} /></span>
+                <p className="user-title">{loggdinUser.fullname}</p>
+            </div>
+
             {loggdinUser.fullname !== "Guest"
                 ?
                 <button onClick={onLogout} className='btn-login'>Log Out</button>
                 :
-                <button onClick={() => navigate('/login')} className='btn-login'>Log in</button>
+                <button onClick={onNavigate} className='btn-login'>Log in</button>
             }
 
         </section>

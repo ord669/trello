@@ -22,7 +22,7 @@ export function AppHeader() {
     const [isStarred, setIsStarred] = useState(false)
     const [isCreateBoard, setIsCreateBoard] = useState(false)
     const [isNotification, setIsNotification] = useState(false)
-    const [isOpenAcount, setIsOpenAcount] = useState(false)
+    const [isOpenAcount, setIsOpenAccount] = useState(false)
     const [color, setColor] = useState('')
     const [boardColor, setBoardColor] = useState('')
     const { board } = useSelector(storeState => storeState.boardModule)
@@ -170,13 +170,13 @@ export function AppHeader() {
                     JARVIS</button>
                 <button onClick={() => setIsNotification((prev) => !prev)} className="header-icon"> <BellIcon /></button>
                 {isNotification && <BoardNotification />}
-                <div onClick={() => setIsOpenAcount(prev => !prev)} className="account-item">
+                <div onClick={() => setIsOpenAccount(prev => !prev)} className="account-item">
                     <div><UserAvatarIcon member={loggdinUser} /></div>
                 </div>
             </div>
             {/* {isJarvis && <JarvisInputModal setIsJarvis={setIsJarvis} />} */}
             {isJarvis && <Jarvis setIsJarvis={setIsJarvis} />}
-            {isOpenAcount && <Acount />}
+            {isOpenAcount && <Acount setIsOpenAccount={setIsOpenAccount} />}
 
         </header>
     )
