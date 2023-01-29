@@ -6,7 +6,7 @@ import { userService } from "../services/user.service"
 import { logout } from "../store/user.actions"
 import { UserAvatarIcon } from "./user-avatar-icon"
 
-export function Acount({ setIsOpenAccount }) {
+export function Acount({ setIsOpenAccount, setLoggdinUser }) {
     const navigate = useNavigate()
     const [loggdinUser, setLoggdinUser] = useState({})
 
@@ -27,6 +27,7 @@ export function Acount({ setIsOpenAccount }) {
     function onNavigate() {
         navigate('/login')
         setIsOpenAccount(false)
+        setLoggdinUser('')
     }
     return (
         <section className='account'>
