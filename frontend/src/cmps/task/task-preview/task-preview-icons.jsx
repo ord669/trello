@@ -95,12 +95,12 @@ export function TaskPreviewIcons({ task }) {
                 {day}</div>}
             {!!task.description && <DescriptionIcon />}
 
-            {!!task.members?.length && <div className="tpi-members ">
+            <div className="tpi-members ">
                 {taskService.getMembers(board, task).map((member, idx) =>
                     <div key={member._id}>
                         <UserAvatarIcon member={member} />
                     </div>)}
-            </div>}
+            </div>
         </section>
     )
 }
