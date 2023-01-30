@@ -17,7 +17,7 @@ export function TaskFilter({ setIsOpenFilter, boardId }) {
         const { value, name: filed } = target
         const newFilter = { ...filterBy, [filed]: value }
         setFilterBy(newFilter)
-        loadBoard(boardId, newFilter)
+        // loadBoard(boardId, newFilter)
     }
 
     return (
