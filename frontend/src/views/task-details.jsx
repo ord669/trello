@@ -17,12 +17,11 @@ import { taskService } from "../services/task.service"
 import { openDynamicModal } from "../store/modal/modal.action"
 import { saveActivity } from "../store/board/board.action"
 
-export function TaskDetails() {
+export function TaskDetails({ setnoBg, noBg }) {
     const { board } = useSelector(storeState => storeState.boardModule)
     const { taskId, groupId } = useParams()
     const [group, setGroup] = useState({})
     const [task, setTask, handleChange] = useForm(null)
-    const [noBg, setnoBg] = useState(false)
 
     const navigate = useNavigate()
 

@@ -74,10 +74,7 @@ export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
         }
 
     }
-    function checkPress(ev) {
-        const pressedClickPos = ev.target.getBoundingClientRect()
-        setIsQuickEdit(false)
-    }
+
     let left = false
     if (quickEditModalPos.right + quickEditModalPos.width > windowSize.width) left = true
 

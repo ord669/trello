@@ -140,12 +140,6 @@ function _createAiBoard(title, groups = []) {
     return {
         title,
         isstarred: false,
-        archivedAt: null,
-        createdBy: {
-            _id: "u101",
-            fullname: "Or Dvir",
-            imgUrl: "https://robohash.org/Or?set=set5"
-        },
         groups,
         activities: [],
         labels: [
@@ -206,7 +200,6 @@ function _createAiBoard(title, groups = []) {
             username: "Oren Sharizad",
             imgUrl: "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674479066/main_aq4l31.jpg"
         }],
-        cmpsOrder: [],
     }
 }
 function _createAiGroup(title) {

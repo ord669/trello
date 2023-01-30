@@ -51,9 +51,9 @@ export function BoardIndex() {
                     <BoardList boards={starredBoards} setBoards={setBoards} />
                 </>}
             <section className="title"><Clock /> Recently viewed</section>
-            {!!boards.length && <BoardList boards={[boards[0]]} setBoards={setBoards}  />}
+            {!!boards.length && <BoardList boards={[boards[0]]} setBoards={setBoards} />}
             <section className="sub-title">Your boards</section>
-            <BoardList boards={boards} setBoards={setBoards} isCreate={true}/>
+            <BoardList boards={boards} setBoards={setBoards} isCreate={true} />
         </section>
     )
 }

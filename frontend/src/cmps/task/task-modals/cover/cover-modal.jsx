@@ -6,7 +6,6 @@ import { saveTask } from "../../../../store/task/task.action";
 import { ImgUploader } from "../../../img-uploader";
 
 export function CoverModal({ board, currTask, setnoBg }) {
-    console.log('setnoBg: ', setnoBg);
     const [imgs, setImgs] = useState([])
     const [colors, setColors] = useState(boardService.getColors())
 
