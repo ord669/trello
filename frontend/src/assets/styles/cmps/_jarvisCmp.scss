@@ -15,26 +15,26 @@
     background-position: center center;
     z-index: 999;
 
-    input {
-        z-index: 10000;
-        margin: 30px 0;
-        padding: 0.5rem 1rem;
-        border-radius: 3px;
-        outline: none;
-        // box-shadow: 0.5px 0.5px 15px 0.5px #0ff;
-        border: none;
-        text-align: center;
-        text-transform: uppercase;
-        font-weight: 700;
-
-    }
-
     .main-title-body {
         display: flex;
+        flex-direction: column;
         align-items: center;
         font-size: 16px;
-        text-align: center;
-        justify-content: center;
+
+        .paragraph-container {
+            align-self: center;
+            width: 400px;
+            margin: 2rem 0;
+            margin-bottom: 125px;
+            padding: 0 3rem;
+            height: 110px;
+            text-align: left;
+
+            .Typewriter {
+                margin-left: 1.5rem;
+
+            }
+        }
 
         .btn {
             overflow: hidden;
@@ -96,6 +96,9 @@
             height: 200px;
         }
 
+        .paragraph-container p {
+            font-size: 16px !important;
+        }
     }
 
     h3 {

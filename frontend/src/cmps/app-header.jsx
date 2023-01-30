@@ -157,21 +157,17 @@ export function AppHeader() {
                                 <span className='create'>Create</span>
                                 <span className='plus'><PlusIcon /></span>
                             </button>
-                            {isCreateBoard && <CreateBoard setIsCreateBoard={setIsCreateBoard} />}
+                            {isCreateBoard && <CreateBoard
+                                setIsCreateBoard={setIsCreateBoard}
+                                setIsJarvis={setIsJarvis}
+                                jarvisIntro={jarvisIntro}
+                                setfirsTimeOpen={setfirsTimeOpen}
+                                firsTimeOpen={firsTimeOpen} />}
                         </div>
                     </div>
                 </div>
             </div>
             <div className='header-sec-container'>
-                <button onClick={() => {
-                    if (!firsTimeOpen) {
-                        jarvisIntro()
-                        setfirsTimeOpen(true)
-                    }
-
-                    setIsJarvis(true)
-                }} className="btn-bar">
-                    JARVIS</button>
                 <button onClick={() => setIsNotification((prev) => !prev)} className="header-icon"> <BellIcon /></button>
                 {isNotification && <BoardNotification />}
                 <div onClick={() => setIsOpenAccount(prev => !prev)} className="account-item">
