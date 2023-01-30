@@ -47,9 +47,8 @@ async function query(filterBy = { title: '' }) {
 }
 
 function getById(boardId, filterBy) {
-    console.log('filterBy: ', filterBy);
-    const queryParams = `?title=${filterBy.title}&memberIds=${filterBy.memberIds}`
-    return httpService.get(BASE_URL + boardId + queryParams)
+    // const queryParams = `?title=${filterBy.title}&memberIds=${filterBy.memberIds}`
+    return httpService.get(BASE_URL + boardId)
 }
 
 async function remove(boardId) {
@@ -71,20 +70,20 @@ async function save(board) {
 async function createAiBoard(txt) {
     console.log('txt: ', txt)
     const prompt = { prompt: txt }
-    console.log('prompt: ', prompt);
+    console.log('prompt: ', prompt)
 
     return await httpService.post(BASE_URL + 'aiboard', prompt)
 
 }
 
 async function createAiImg(txt) {
-    console.log('txt: ', txt);
+    console.log('txt: ', txt)
 
     const prompt = { prompt: txt }
 
-    console.log('prompt: ', prompt);
+    console.log('prompt: ', prompt)
     const img = await httpService.post(BASE_URL + 'aiimg', prompt)
-    console.log('img: ', img);
+    console.log('img: ', img)
     return img
 
 }

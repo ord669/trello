@@ -10,7 +10,7 @@ import { MainSidemenu } from "../cmps/main-side-menu"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { SET_BOARD } from "../store/board/board.reducer"
-import { socketService, SOCKET_EVENT_NOTIFY_MEMBER, SOCKET_EVENT_SAVE_BOARD } from "../services/socket.service"
+import { socketService, SOCKET_EVENT_SAVE_BOARD } from "../services/socket.service"
 
 export function BoardDetails() {
     const { dynamicModalStatus } = useSelector(storeState => storeState.modalModule)
@@ -22,11 +22,9 @@ export function BoardDetails() {
     useEffect(() => {
         loadBoard(boardId)
         socketService.on(SOCKET_EVENT_SAVE_BOARD, dispatchBoard)
-        // socketService.on(SOCKET_EVENT_NOTIFY_MEMBER)
         
         return () => {
             socketService.off(SOCKET_EVENT_SAVE_BOARD, dispatchBoard)
-            // socketService.off(SOCKET_EVENT_NOTIFY_MEMBER)
             dispatch({ type: SET_BOARD, board: null })
         }
     }, [boardId])
@@ -46,6 +44,7 @@ export function BoardDetails() {
         }
         return style
     }
+    
     if (!board) return <div style={{ marginTop: "300px" }} className="loader" > <LoaderIcon /></div >
     return (
         <section style={getBgStyle()} className={isOpenMenu ? 'board-details open-menu' : 'board-details'}>
