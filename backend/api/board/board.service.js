@@ -17,19 +17,18 @@ async function query(filterBy = { title: '' }) {
     }
 }
 
-async function getById(boardId, filterBy) {
+async function getById(boardId) {
     try {
         const collection = await dbService.getCollection('board')
         const board = await collection.findOne({ _id: ObjectId(boardId) })
         board.groups = await Promise.all(board.groups.map(async group => {
-            // const tasks = await Promise.all(group.tasksId.map(taskId => taskService.getById(taskId)))
-            // group.tasks = tasks
-            // return group
-            filterBy.groupId = group._id
-            const tasks = await taskService.query(filterBy)
+            const tasks = await Promise.all(group.tasksId.map(taskId => taskService.getById(taskId)))
             group.tasks = tasks
             return group
-
+            // filterBy.groupId = group._id
+            // const tasks = await taskService.query(filterBy)
+            // group.tasks = tasks
+            // return group
         }))
         return board
     } catch (err) {
