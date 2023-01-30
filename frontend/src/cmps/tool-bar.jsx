@@ -79,7 +79,8 @@ export function ToolBar({ board }) {
         <section style={{ color }} className='tool-bar full'>
             <div className="flex">
                 <span className="board-title edit-title-input"
-                    onInput={handleChange}
+                    // onInput={handleChange}
+                    onChange={handleChange}
                     contentEditable
                     suppressContentEditableWarning
                     onBlur={onSaveTitle}

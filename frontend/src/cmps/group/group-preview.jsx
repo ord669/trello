@@ -29,9 +29,8 @@ export function GroupPreview({ group, idx }) {
                 <section className={`group-preview ${snapshot.isDragging ? 'dragged' : ''}`}
                     ref={provided.innerRef}
                     {...provided.draggableProps}
-
                 >
-                    <div  {...provided.dragHandleProps}>
+                    <div {...provided.dragHandleProps}>
                         <GroupHeader onRemoveGroup={onRemoveGroup} group={group} />
                         {/* <button className="btn-close-modal" onClick={() => onRemoveGroup(group._id)}>remove</button> */}
                     </div>

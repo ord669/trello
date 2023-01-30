@@ -9,7 +9,7 @@ import { BoardIndex } from './views/board-index'
 import { UserMsg } from './cmps/user-msg'
 import { DynamicModal } from "./cmps/dynamic-modal"
 import { useSelector } from "react-redux"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { closeDynamicModal, updateDynamicModalPos } from "./store/modal/modal.action"
 import { MembersModal } from "./cmps/task/task-modals/members/members-modal"
 import { Provider } from 'react-redux'
@@ -18,6 +18,7 @@ import { LoginSignup } from "./cmps/login-signup"
 import { Jarvis } from "./views/jarvis"
 
 export function App() {
+    const [noBg, setnoBg] = useState(false)
 
     return (
         <Provider store={store}>
@@ -28,9 +29,9 @@ export function App() {
                         <Routes>
                             <Route path="/" element={<HomePage />} />
                             <Route path="/login" element={<LoginSignup />} />
-                            <Route path="/board" element={<BoardIndex />} />
+                            <Route path="/board" element={<BoardIndex noBg={noBg} setnoBg={setnoBg} />} />
                             <Route path="/board/:boardId" element={<BoardDetails />} >
-                                <Route Route path="/board/:boardId/:groupId/:taskId" element={<TaskDetails />} />
+                                <Route Route path="/board/:boardId/:groupId/:taskId" element={<TaskDetails noBg={noBg} setnoBg={setnoBg} />} />
                             </Route>
                             <Route path="user/:id" element={<UserDetails />} />
                             <Route path="/board/members" element={<MembersModal />} />

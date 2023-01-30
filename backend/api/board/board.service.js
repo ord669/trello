@@ -17,19 +17,18 @@ async function query(filterBy = { title: '' }) {
     }
 }
 
-async function getById(boardId, filterBy) {
+async function getById(boardId) {
     try {
         const collection = await dbService.getCollection('board')
         const board = await collection.findOne({ _id: ObjectId(boardId) })
         board.groups = await Promise.all(board.groups.map(async group => {
-            // const tasks = await Promise.all(group.tasksId.map(taskId => taskService.getById(taskId)))
-            // group.tasks = tasks
-            // return group
-            filterBy.groupId = group._id
-            const tasks = await taskService.query(filterBy)
+            const tasks = await Promise.all(group.tasksId.map(taskId => taskService.getById(taskId)))
             group.tasks = tasks
             return group
-
+            // filterBy.groupId = group._id
+            // const tasks = await taskService.query(filterBy)
+            // group.tasks = tasks
+            // return group
         }))
         return board
     } catch (err) {
@@ -145,12 +144,6 @@ function _createAiBoard(title, groups = []) {
     return {
         title,
         isstarred: false,
-        archivedAt: null,
-        createdBy: {
-            _id: "u101",
-            fullname: "Or Dvir",
-            imgUrl: "https://robohash.org/Or?set=set5"
-        },
         groups,
         activities: [],
         labels: [
@@ -211,7 +204,6 @@ function _createAiBoard(title, groups = []) {
             username: "Oren Sharizad",
             imgUrl: "https://res.cloudinary.com/dsvs2bgn4/image/upload/v1674479066/main_aq4l31.jpg"
         }],
-        cmpsOrder: [],
     }
 }
 function _createAiGroup(title) {

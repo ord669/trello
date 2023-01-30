@@ -7,13 +7,12 @@ import { UserAvatarIcon } from "../user-avatar-icon"
 import { FilterMemberPreview } from "./filter-member-preview"
 
 export function TaskFilterMember() {
-    const { board } = useSelector(storeState => storeState.boardModule)
+    // const { board } = useSelector(storeState => storeState.boardModule)
     const [filterBy, setFilterBy] = useState(boardService.getEmpteyFilter())
 
-    useEffect(() => {
-        loadBoard(board._id, filterBy)
-
-    }, [filterBy])
+    // useEffect(() => {
+    //     loadBoard(board._id, filterBy)
+    // }, [filterBy])
 
     function onSetMemberFilter(memberId) {
         let updatedMemberIds

@@ -9,7 +9,7 @@ import { TaskFilterMember } from "./task-filter-member"
 
 export function TaskFilter({ setIsOpenFilter, boardId }) {
     const [filterBy, setFilterBy] = useState(boardService.getEmpteyFilter())
-    const { board } = useSelector(storeState => storeState.boardModule)
+    // const { board } = useSelector(storeState => storeState.boardModule)
     const [isOpenFilterMember, setIsOpenFilterMember] = useState(false)
 
 
@@ -22,7 +22,7 @@ export function TaskFilter({ setIsOpenFilter, boardId }) {
 
     return (
         <section className='task-filter'>
-            <button onClick={() => setIsOpenFilter(prev => !prev)} className="btn-close-modal"><CloseIcon /></button>
+            {/* <button onClick={() => setIsOpenFilter(prev => !prev)} className="btn-close-modal"><CloseIcon /></button> */}
             <p className="task-filter-title">Filter</p>
             <div className="task-filter-layout">
                 <p className="filter-keyword">Keyword</p>
