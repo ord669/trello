@@ -9,9 +9,9 @@ import { store } from '../store'
 
 import { ADD_GROUP, REMOVE_GROUP, SET_BOARD, UNDO_REMOVE_GROUP, UPDATE_GROUP } from "./board.reducer"
 
-export async function loadBoard(boardId, filterBy) {
+export async function loadBoard(boardId, filterBy = {}) {
     try {
-        const board = await boardService.getById(boardId)
+        const board = await boardService.getById(boardId, filterBy)
         if (!board) throw new Error('Board not found')
         // const filterdBoard = boardService.filterGroupsTasks(board, filterBy)
         store.dispatch({ type: SET_BOARD, board })

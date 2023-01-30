@@ -46,8 +46,10 @@ async function query(filterBy = { title: '' }) {
     return httpService.get(BASE_URL + queryParams)
 }
 
-function getById(boardId) {
-    return httpService.get(BASE_URL + boardId)
+function getById(boardId, filterBy) {
+    console.log('filterBy: ', filterBy);
+    const queryParams = `?title=${filterBy.title}`
+    return httpService.get(BASE_URL + boardId + queryParams)
 }
 
 async function remove(boardId) {
@@ -159,7 +161,7 @@ function getEmptyBoard(title = '') {
 }
 
 function getEmpteyFilter() {
-    return { title: '' }
+    return { title: '', memberIds: [] }
 }
 
 function getEmptyGroup(title = 'New group') {
