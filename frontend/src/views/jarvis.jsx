@@ -59,26 +59,10 @@ export function Jarvis({ setIsOpenJarvis, setIsJarvis }) {
     }
 
     function onSendSubject() {
-        // typewriter2.start()
-        // typewriter2.start()
         setIsDisable(true)
         setIsLoading(true)
         getBoard()
     }
-    // var paragraph = elWriting.current;
-
-    // var typewriter = new Typewriter(paragraph, {
-    //     delay: 45,
-    //     loop: false,
-    // });
-
-    // var paragraph2 = elWriting2.current;
-
-    // var typewriter2 = new Typewriter(paragraph2, {
-
-    // });
-
-    // typewriter2
 
     return (
         <section>
@@ -91,9 +75,9 @@ export function Jarvis({ setIsOpenJarvis, setIsJarvis }) {
                         <div className="main-title">
                             <div className="main-title-header">
                                 {/* <MainLogo className='logo' /> */}
+                                <h3 onClick={() => {
+                                }}>Jarvis.ai</h3>
                             </div>
-                            <h3 onClick={() => {
-                            }}>Jarvis.ai</h3>
                             <div className="main-title-body">
                                 <div className="paragraph-container">
                                     {!isScript2 && <Typewriter
@@ -110,11 +94,6 @@ export function Jarvis({ setIsOpenJarvis, setIsJarvis }) {
                                                 .typeString('now please insert the board subject')
                                                 .typeString('')
                                                 .pauseFor(1000)
-                                                .start()
-
-                                                .callFunction(() => {
-
-                                                })
                                                 .start()
                                         }}
                                     />}
@@ -135,8 +114,6 @@ export function Jarvis({ setIsOpenJarvis, setIsJarvis }) {
                                                 .start()
                                         }}
                                     />}
-                                    {!isScript2 && <p ref={elWriting}></p>}
-                                    {isScript2 && <p ref={elWriting2}></p>}
                                 </div>
                                 <div className="input-cotainer">
 
@@ -149,12 +126,8 @@ export function Jarvis({ setIsOpenJarvis, setIsJarvis }) {
                                     <div onClick={() => {
                                         setIsScript2(true)
                                         jarvisStart()
-
                                         onSendSubject()
-
-                                    }
-                                    } className="icon-container">
-
+                                    }} className="icon-container">
                                         <MessegeIcon className='input-cotainer-icon' />
                                     </div>
                                 </div>

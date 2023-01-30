@@ -137,7 +137,7 @@ export function AppHeader() {
             <div className='flex align-center' >
                 <div style={logoStyle()} className='header-logo flex align-center'>
                     <MainLogo />
-                    <span onClick={() => navigate(`/`)}>Jarvis</span>
+                    <span onClick={() => navigate(`/board`)}>Jarvis</span>
                 </div>
                 <div>
                     <div className=' header-main-btns ' >

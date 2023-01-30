@@ -93,7 +93,7 @@ export function CreateBoard({ setIsCreateBoard, setIsJarvis, jarvisIntro, setfir
                         jarvisIntro()
                         setfirsTimeOpen(true)
                     }
-
+                    setIsCreateBoard(prev => !prev)
                     setIsJarvis(true)
                 }} className="btn-jarvis">Create With Jarvis.Ai</button>
             </div>

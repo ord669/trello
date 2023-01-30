@@ -24,11 +24,11 @@ export function BoardList({ boards, setBoards, isCreate }) {
 
     return (
         <section className='board-list'>
+            {!!boards.length && boards.map(board => <BoardPreview key={board._id} board={board} toggleIsStarred={toggleIsStarred} />)}
             {isCreate && <section className="new-board">
                 <section className="add-board" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>Create new board</section>
                 {isShown && <CreateBoard setIsCreateBoard={setIsShown} />}
             </section>}
-            {!!boards.length && boards.map(board => <BoardPreview key={board._id} board={board} toggleIsStarred={toggleIsStarred} />)}
         </section >
     )
 }
