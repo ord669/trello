@@ -86,7 +86,7 @@ export function CreateBoard({ setIsCreateBoard, setIsJarvis, jarvisIntro, setfir
                     onChange={handleChange}
                 />
             </div>
-            <div className="flex align-center gap-5">
+            <div className="flex align-center gap-5 space-between">
                 <button onClick={onAddBoard} className='btn-add'>Save</button>
                 <button onClick={() => {
                     if (!firsTimeOpen) {

@@ -1,11 +1,17 @@
 import { useState } from "react"
-import { CloseIcon } from "../../assets/svg/icon-library"
+import { useSelector } from "react-redux"
+import { ArrowDownIcon, CloseIcon } from "../../assets/svg/icon-library"
 // import { boardService } from "../../services/board.service.local"
 import { boardService } from "../../services/board.service"
 import { loadBoard } from "../../store/board/board.action"
+import { UserAvatarIcon } from "../user-avatar-icon"
+import { TaskFilterMember } from "./task-filter-member"
 
 export function TaskFilter({ setIsOpenFilter, boardId }) {
     const [filterBy, setFilterBy] = useState(boardService.getEmpteyFilter())
+    const { board } = useSelector(storeState => storeState.boardModule)
+    const [isOpenFilterMember, setIsOpenFilterMember] = useState(false)
+
 
     function handleChange({ target }) {
         const { value, name: filed } = target
@@ -28,6 +34,12 @@ export function TaskFilter({ setIsOpenFilter, boardId }) {
                     placeholder="Enter a keyword..."
                 />
             </div>
+            <div onClick={() => setIsOpenFilterMember(prev => !prev)} className="filter-members flex align-center space-between" >
+                <p>Selecet members</p>
+                <span><ArrowDownIcon /></span>
+            </div>
+            {isOpenFilterMember && <TaskFilterMember />}
+
         </section>
     )
 }

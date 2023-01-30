@@ -10,10 +10,10 @@ export function ActivityPreview({ activity }) {
             </div>
             <div className='activity-content'>
                 <div className=' flex align-center gap-5 warp'>
-                    <span className='activity-fullname'>
+                    {/* <span className='activity-fullname'>
                         {activity.byMember.fullname}
-                    </span>
-                    <span>{activity.diff}</span>
+                    </span> */}
+                    {/* <span>{activity.diff}</span> */}
                     <DynamicCmp cmpType={activity.type} activity={activity} />
                 </div >
                 <p className=" activity-time">{utilService.formatTime(activity.createdAt)}</p>
@@ -116,7 +116,11 @@ function BoardTodoActivity({ activity }) {
         <section>
             {
                 activity.diff === 'completed' &&
-                <div className='flex align-center gap-5' >
+                <div className='flex align-center warp gap-5 ' >
+                    <span className='activity-fullname'>
+                        {activity.byMember.fullname}
+                    </span>
+                    <span>{activity.diff}</span>
                     <span>{activity.task.todo}</span>
                     <span>on</span>
                     <span onClick={() => onNavigate()} className='activity-task'>

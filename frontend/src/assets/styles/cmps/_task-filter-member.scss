@@ -1,0 +1,47 @@
+.task-filter-member {
+    position: absolute;
+    width: 360px;
+    margin-top: 8px;
+    height: max-content;
+
+
+
+    .member-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+        cursor: pointer;
+        border-radius: 3px;
+        padding: 0 6px;
+
+        &:hover {
+            background-color: #ebecf0;
+        }
+
+        .checkbox-filter {
+            transition: all 0.2s ease-in-out;
+            background-color: #fafbfc;
+            box-shadow: inset 0 0 0 2px #dfe1e6;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+
+            &.checked {
+                background-color: #0079bf;
+
+                svg {
+                    fill: #fff;
+                }
+            }
+        }
+
+
+        .member-input {
+            width: 16px;
+            height: 16px;
+            box-shadow: none;
+        }
+    }
+}

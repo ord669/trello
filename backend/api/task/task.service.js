@@ -16,10 +16,17 @@ async function getById(taskId) {
     }
 }
 async function query(filterBy = {}) {
+    console.log('filterBy: ', filterBy);
     try {
         const criteria = _buildCriteria(filterBy)
+        console.log('criteria : ', criteria);
         const collection = await dbService.getCollection('task')
-        const tasks = await collection.find(criteria).toArray()
+        // const tasks = await collection.find(criteria).toArray()
+        const tasks = await collection.aggregate([
+            {
+                $match: criteria
+            },
+        ]).toArray()
         return tasks
     } catch (err) {
         logger.error('cannot find tasks', err)
@@ -65,7 +72,11 @@ async function add(task) {
 
 function _buildCriteria(filterBy) {
     const criteria = {}
-    if (filterBy.title) criteria.title = filterBy.title
+    criteria.groupId = filterBy.groupId
+    if (filterBy.title !== "undefined") criteria.title = { $regex: filterBy.title, $options: 'i' }
+    if (filterBy.memberIds !== 'undefined' && filterBy.memberIds !== '') {
+        criteria.memberIds = { $in: filterBy.memberIds.split(',') }
+    }
     return criteria
 }
 
