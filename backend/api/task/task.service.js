@@ -71,9 +71,13 @@ async function add(task) {
 }
 
 function _buildCriteria(filterBy) {
+    console.log('filterBy from criteria: ', filterBy);
     const criteria = {}
     criteria.groupId = filterBy.groupId
     if (filterBy.title !== "undefined") criteria.title = { $regex: filterBy.title, $options: 'i' }
+    if (filterBy.memberIds !== 'undefined' && filterBy.memberIds !== '') {
+        criteria.memberIds = { $in: filterBy.memberIds.split(',') }
+    }
     return criteria
 }
 

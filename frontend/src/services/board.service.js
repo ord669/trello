@@ -48,7 +48,7 @@ async function query(filterBy = { title: '' }) {
 
 function getById(boardId, filterBy) {
     console.log('filterBy: ', filterBy);
-    const queryParams = `?title=${filterBy.title}`
+    const queryParams = `?title=${filterBy.title}&memberIds=${filterBy.memberIds}`
     return httpService.get(BASE_URL + boardId + queryParams)
 }
 

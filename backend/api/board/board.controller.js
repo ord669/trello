@@ -19,9 +19,10 @@ async function getBoards(req, res) {
 async function getBoardById(req, res) {
   try {
     const filterBy = {
-      title: req.query.title
+      title: req.query.title,
+      memberIds: req.query.memberIds
     }
-    console.log('filterBy: ', filterBy);
+    console.log('filterBy from board controller: ', filterBy);
 
     const { boardId } = req.params
     const board = await boardService.getById(boardId, filterBy)
