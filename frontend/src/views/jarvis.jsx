@@ -87,7 +87,7 @@ export function Jarvis({ setIsOpenJarvis, setIsJarvis }) {
                                         }}
                                         onInit={(typewriter) => {
                                             typewriter
-                                                .typeString('allow me to intredus my self... ')
+                                                .typeString('allow me to introduce myself... ')
                                                 .pauseFor(200)
                                                 .typeString('my name is jarvis ')
                                                 .pauseFor(1000)
@@ -108,7 +108,7 @@ export function Jarvis({ setIsOpenJarvis, setIsJarvis }) {
                                                 .pauseFor(200)
                                                 .typeString('now sit back ')
                                                 .pauseFor(100)
-                                                .typeString('relax and grab a cup of coffe while i am fetchin you the best possible plan for your project')
+                                                .typeString('relax and grab a cup of coffee while i am fetching you the best possible plan for your project')
                                                 .typeString('')
                                                 .pauseFor(1000)
                                                 .start()

@@ -12,8 +12,8 @@ export function ActivityPreview({ activity }) {
                 <div className=' flex align-center gap-5 warp'>
                     {/* <span className='activity-fullname'>
                         {activity.byMember.fullname}
-                    </span> */}
-                    {/* <span>{activity.diff}</span> */}
+                    </span>
+                    <span>{activity.diff}</span> */}
                     <DynamicCmp cmpType={activity.type} activity={activity} />
                 </div >
                 <p className=" activity-time">{utilService.formatTime(activity.createdAt)}</p>
@@ -53,6 +53,10 @@ function BoardTaskActivity({ activity }) {
         <section>
             {activity.diff === 'added' &&
                 <div className='flex align-center gap-5 warp'>
+                    <span className='activity-fullname'>
+                        {activity.byMember.fullname}
+                    </span>
+                    <span>{activity.diff}</span>
                     <span onClick={() => onNavigate()} className='activity-task'>
                         {activity.task.title}</span>
                     <span>to</span>
@@ -61,6 +65,10 @@ function BoardTaskActivity({ activity }) {
             }
             {activity.diff === 'archived' && <div>
                 <div div className='flex align-center gap-5 warp'>
+                    <span className='activity-fullname'>
+                        {activity.byMember.fullname}
+                    </span>
+                    <span>{activity.diff}</span>
                     <span className='activity-task'>
                         {activity.task.title}</span>
                 </div>
@@ -74,10 +82,18 @@ function BoardGroupActivity({ activity }) {
     return (
         <section>
             {activity.diff === 'added' && <div className='flex align-center gap-5'>
+                <span className='activity-fullname'>
+                    {activity.byMember.fullname}
+                </span>
+                <span>{activity.diff}</span>
                 <span>{activity.txt}</span>
                 <span>at board</span>
             </div>}
             {activity.diff === 'archived' && <div className='flex align-center gap-5'>
+                <span className='activity-fullname'>
+                    {activity.byMember.fullname}
+                </span>
+                <span>{activity.diff}</span>
                 <span>list</span>
                 <span>{activity.txt}</span>
             </div>}
@@ -94,6 +110,10 @@ function BoardBgActivity({ activity }) {
 
     return (
         <div className='flex align-center gap-5'>
+            <span className='activity-fullname'>
+                {activity.byMember.fullname}
+            </span>
+            <span>{activity.diff}</span>
             <span>change the background of this board</span>
         </div>
 
