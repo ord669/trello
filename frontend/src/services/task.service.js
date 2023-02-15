@@ -130,9 +130,9 @@ function getEmptyComment() {
     }
 }
 
-function getEmptyTask() {
+function getEmptyTask(title = '') {
     return {
-        "title": "",
+        title,
         "archivedAt": Date.now(),
         "description": "",
         "comments": [],
