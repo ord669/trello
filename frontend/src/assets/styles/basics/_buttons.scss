@@ -10,7 +10,6 @@ button {
     border: none;
     backdrop-filter: contrast(0.5);
 
-
     &:hover {
         background-color: rgba(0, 0, 0, 0.2);
     }
@@ -40,18 +39,6 @@ button {
     }
 }
 
-
-.btn-bar:not(.no-edit) {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: inherit;
-
-    &:hover {
-        background-color: rgba(255, 255, 255, 0.3);
-        backdrop-filter: contrast(0.5);
-
-    }
-}
-
 .btn-bar {
     transition: .1s ease;
     text-align: center;
@@ -68,6 +55,20 @@ button {
     align-items: center;
     backdrop-filter: contrast(0.5);
     gap: 5px;
+
+    &:not(.no-edit) {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: inherit;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: contrast(0.5);
+        }
+
+        @include for-mobile-layout {
+            padding: 1rem 0.5rem;
+        }
+    }
 }
 
 .btn-app-header {
@@ -88,7 +89,6 @@ button {
 
     &:hover {
         backdrop-filter: contrast(0.5);
-
     }
 }
 
@@ -152,11 +152,4 @@ button {
     justify-content: center;
     border-radius: 3px;
     color: #6b778c;
-}
-
-@include for-mobile-layout {
-    .btn-bar {
-        padding: 1rem 0.5rem;
-
-    }
 }

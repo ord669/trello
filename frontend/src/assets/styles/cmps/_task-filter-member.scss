@@ -4,8 +4,6 @@
     margin-top: 8px;
     height: max-content;
 
-
-
     .member-container {
         display: flex;
         align-items: center;
@@ -29,14 +27,13 @@
             align-items: center;
 
             &.checked {
-                background-color: #0079bf;
+                background-color: $clr8;
 
                 svg {
-                    fill: #fff;
+                    fill: $clr6;
                 }
             }
         }
-
 
         .member-input {
             width: 16px;

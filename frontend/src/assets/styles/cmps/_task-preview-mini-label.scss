@@ -7,7 +7,6 @@
     margin-bottom: rem(4px);
     width: 99%;
 
-
     .label-container {
         margin-bottom: rem(4px);
         transition: all 0.5s;
@@ -22,7 +21,7 @@
 
             &.open {
                 display: flex;
-                background-color: rgb(214, 236, 210);
+                background-color: #d6ecd2;
                 align-items: center;
                 gap: 3px;
                 padding: 0 8px;
@@ -31,8 +30,6 @@
                 font-size: 12px;
                 transition: all 0.5s;
                 width: 100%;
-
-
             }
 
             .sec-label-big {
@@ -40,13 +37,6 @@
                 height: 8px;
                 border-radius: 50%;
             }
-
         }
     }
-
-
-
-
-
-
 }

@@ -28,12 +28,9 @@ async function getBoardById(req, res) {
 }
 
 async function addBoard(req, res) {
-  // const { loggedinUser } = req
   try {
     const board = req.body
-    // board.owner = loggedinUser
     const addedBoard = await boardService.add(board)
-    console.log('addedBoard:', addedBoard);
     res.json(addedBoard)
   } catch (err) {
     logger.error('Failed to add board', err)
@@ -75,16 +72,10 @@ async function removeGroupFromBoard(req, res) {
 }
 
 async function getAiBoard(req, res) {
-  console.log(' req.body: ', req.body);
   const { prompt } = req.body
-  console.log('prompt: ', prompt);
-
   try {
     logger.debug('Getting Boards')
-    console.log('prompt: ', prompt);
-
     const aiBoards = await boardService.getAiBoardFromChat(prompt)
-    console.log('aiBoards: ', aiBoards);
     res.json(aiBoards)
   } catch (err) {
     logger.error('Failed to get ai board  from controller', err)
@@ -94,10 +85,8 @@ async function getAiBoard(req, res) {
 
 async function getAiBgImg(req, res) {
   const { prompt } = req.body
-  console.log('prompt: ', prompt);
   try {
     const img = await boardService.getAiImg(prompt)
-
     res.json(img)
   } catch (err) {
     console.log('err', err)

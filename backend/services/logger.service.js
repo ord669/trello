@@ -1,30 +1,25 @@
 const fs = require('fs')
 const asyncLocalStorage = require('./als.service')
-const utilService = require('./util.service')
-
 
 const logsDir = './logs'
 if (!fs.existsSync(logsDir)) {
     fs.mkdirSync(logsDir)
 }
 
-//define the time format
 function getTime() {
     let now = new Date()
     return now.toLocaleString('he')
 }
 
-function isError(e) {
-    return e && e.stack && e.message
+function isError(ev) {
+    return ev && ev.stack && ev.message
 }
 
 function doLog(level, ...args) {
-
     const strs = args.map(arg =>
         (typeof arg === 'string' || isError(arg)) ? arg : JSON.stringify(arg)
     )
-
-    var line = strs.join(' | ')
+    let line = strs.join(' | ')
     const store = asyncLocalStorage.getStore()
     const userId = store?.loggedinUser?._id
     const str = userId ? `(userId: ${userId})` : ''

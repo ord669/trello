@@ -39,7 +39,6 @@
 
     &-content {
         display: flex;
-
         border-radius: 3px;
         margin: 0 0 16px;
         min-height: 80px;
@@ -68,7 +67,7 @@
         padding-top: 0.2rem;
 
         .attachment-details-crud {
-            color: #5e6c84;
+            color: $clr13;
             display: flex;
             align-items: flex-start;
 

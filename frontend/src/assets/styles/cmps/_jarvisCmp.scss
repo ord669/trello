@@ -36,7 +36,6 @@
             text-align: left;
             min-width: 400px;
             max-width: 400px;
-
         }
 
         .btn {
@@ -55,15 +54,23 @@
             transition: all 0.3s;
             border-radius: 3px;
             font-weight: 700;
+
+            &:after {
+                content: '';
+                position: absolute;
+                z-index: -1;
+                transition: all 0.3s;
+                box-sizing: border-box;
+            }
         }
 
-        .btn:after {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            transition: all 0.3s;
-            box-sizing: border-box;
-        }
+        // .btn:after {
+        //     content: '';
+        //     position: absolute;
+        //     z-index: -1;
+        //     transition: all 0.3s;
+        //     box-sizing: border-box;
+        // }
 
         .btn-02:after {
             width: 100%;
@@ -82,7 +89,6 @@
         .btn-02:active:after {
             height: 100%;
         }
-
     }
 
     .main-title-header {
@@ -98,7 +104,6 @@
             width: 160px;
             height: 200px;
         }
-
     }
 
     h3 {

@@ -46,15 +46,6 @@ function setupSocketAPI(http) {
         //     logger.info(`assigning userId = ${userId} for task [id: ${userId}]`)
         //     emitToUser({ type: 'notify-member', data, userId })
         // })
-        socket.on('set-user-socket', userId => {
-            logger.info(`Setting socket.userId = ${userId} for socket [id: ${socket.id}]`)
-            socket.userId = userId
-        })
-        socket.on('unset-user-socket', () => {
-            logger.info(`Removing socket.userId for socket [id: ${socket.id}]`)
-            delete socket.userId
-        })
-
     })
 }
 
@@ -76,8 +67,6 @@ async function emitToUser({ type, data, userId }) {
     }
 }
 
-// If possible, send to all sockets BUT not the current socket 
-// Optionally, broadcast to a room / to all
 async function broadcast({ type, data, room = null, userId }) {
     userId = userId.toString()
 
@@ -104,7 +93,6 @@ async function _getUserSocket(userId) {
     return socket
 }
 async function _getAllSockets() {
-    // return all Socket instances
     const sockets = await gIo.fetchSockets()
     return sockets
 }
@@ -114,6 +102,7 @@ async function _printSockets() {
     console.log(`Sockets: (count: ${sockets.length}):`)
     sockets.forEach(_printSocket)
 }
+
 function _printSocket(socket) {
     console.log(`Socket - socketId: ${socket.id} userId: ${socket.userId}`)
 }

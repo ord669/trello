@@ -1,5 +1,4 @@
 const userService = require('./user.service')
-const socketService = require('../../services/socket.service')
 const logger = require('../../services/logger.service')
 
 async function getUser(req, res) {
@@ -15,7 +14,7 @@ async function getUser(req, res) {
 async function getUsers(req, res) {
     try {
         const filterBy = {
-            txt: req.query?.txt || '',
+            txt: req.query?.txt,
             minBalance: +req.query?.minBalance || 0
         }
         const users = await userService.query(filterBy)

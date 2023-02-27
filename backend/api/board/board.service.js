@@ -4,10 +4,8 @@ const utilService = require('../../services/util.service')
 const ObjectId = require('mongodb').ObjectId
 const taskService = require('../task/task.service')
 
-async function query(filterBy = { title: '' }) {
+async function query() {
     try {
-        // const criteria = _buildCriteria(filterBy)
-        // console.log('criteria: ', criteria);
         const collection = await dbService.getCollection('board')
         const boards = await collection.find().toArray()
         return boards
@@ -84,30 +82,19 @@ async function removeGroupFromBoard(boardId, groupId) {
     }
 }
 
-function _buildCriteria(filterBy) {
-    const criteria = {}
-    if (filterBy.title !== 'undefined') criteria.title = filterBy.title
-    return criteria
-}
-
 async function getAiImg(prompt) {
     return await dbService.getImgFromDal(prompt)
-
 }
 
 async function getAiBoardFromChat(prompt) {
-    console.log('prompt: ', prompt);
     try {
         const script = await dbService.getBoardScript(prompt)
         const lines = script.split('\n')
-
-        console.log('group23222222323231232342343242342323423423423423324s: ', lines)
         const groups = lines.reduce((acc, line) => {
             if (line.includes('$') && !line.includes('Object')) {
                 const group = { groupTitle: _removeSpecialChars(line), tasks: [] }
                 acc.push(group)
             } else if (line.includes('∞')) {
-                const task = { taskTitle: _removeSpecialChars(line) }
                 acc[acc.length - 1].tasks.push(_removeSpecialChars(line))
             }
             return acc
@@ -116,7 +103,6 @@ async function getAiBoardFromChat(prompt) {
         const newGroups = await Promise.all(groups.map(async group => {
             const newGroup = _createAiGroup(group.groupTitle)
             newGroup.tasksId = await Promise.all(group.tasks.map(async (task, idx) => {
-
                 const taskFromMongo = await Promise.resolve(taskService.add(_createAiTask(task, newGroup._id,
                     Math.floor((Math.random() * 2)) === 0 ? colors[counter++] : images[counter++]
                 )))

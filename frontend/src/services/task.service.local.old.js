@@ -84,7 +84,6 @@ function getEmptyComment() {
 
 function getEmptyTask() {
     return {
-        // "_id": '',
         "title": '',
         "archivedAt": Date.now(),
         "description": "description",

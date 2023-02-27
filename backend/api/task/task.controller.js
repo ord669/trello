@@ -1,7 +1,4 @@
 const logger = require('../../services/logger.service')
-const userService = require('../user/user.service')
-const authService = require('../auth/auth.service')
-const socketService = require('../../services/socket.service')
 const taskService = require('./task.service')
 
 async function removeTask(req, res) {
@@ -28,35 +25,9 @@ async function updateTask(req, res) {
 }
 
 async function addTask(req, res) {
-    // const { loggedinUser } = req
     try {
         const task = req.body
-        // task.byUserId = loggedinUser._id
         const addedTask = await taskService.add(task)
-
-        // prepare the updated review for sending out
-        // task.aboutUser = await userService.getById(task.aboutUserId)
-
-        // Give the user credit for adding a review
-        // let user = await userService.getById(review.byUserId)
-
-
-        // loggedinUser = await userService.update(loggedinUser)
-        // task.byUser = loggedinUser
-
-        // User info is saved also in the login-token, update it
-        // const loginToken = authService.getLoginToken(loggedinUser)
-        // res.cookie('loginToken', loginToken)
-
-        // delete task.aboutUserId
-        // delete task.byUserId
-
-        // socketService.broadcast({ type: 'review-added', data: task, userId: loggedinUser._id })
-        // socketService.emitToUser({ type: 'review-about-you', data: task, userId: task.aboutUser._id })
-
-        // const fullUser = await userService.getById(loggedinUser._id)
-        // socketService.emitTo({ type: 'user-updated', data: fullUser, label: fullUser._id })
-
         res.send(addedTask)
     } catch (err) {
         logger.error('Failed to add task', err)

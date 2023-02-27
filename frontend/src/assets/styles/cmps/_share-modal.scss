@@ -8,7 +8,7 @@
     z-index: 2;
     background-color: #f4f5f7;
     border-radius: 3px;
-    box-shadow: -6px 0px 14px rgb(0 0 0 / 20%);
+    box-shadow: -6px 0px 14px #00000033;
     width: 600px;
     height: 250px;
     color: $clr2;
@@ -51,7 +51,7 @@
     }
 
     .btn-copy-link {
-        color: #5e6c84;
+        color: $clr13;
         text-decoration: underline;
     }
 }

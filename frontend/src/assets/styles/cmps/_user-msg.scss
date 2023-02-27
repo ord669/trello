@@ -1,5 +1,5 @@
 .user-msg {
-    color: white;
+    color: $clr6;
     padding: 6px 8px;
     position: fixed;
     top: 50px;
@@ -21,15 +21,15 @@
     height: fit-content;
     border: 0;
     padding: 2px 5px;
-    color: #fff;
+    color: $clr6;
 }
 
 .user-msg.success {
-    background-color: rgb(97 189 79);
+    background-color: #61bd4f;
     padding-inline-start: 25px;
 }
 
 .user-msg.error {
-    background-color: rgb(235 91 70);
+    background-color: #eb5b46;
     padding-inline-start: 25px;
 }

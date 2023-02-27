@@ -2,7 +2,6 @@ import { CloseIcon, PlusIcon } from "../../assets/svg/icon-library"
 import { useState } from "react"
 import { saveActivity, saveGroup } from "../../store/board/board.action"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
-// import { boardService } from "../../services/board.service.local"
 import { boardService } from "../../services/board.service"
 import { useSelector } from "react-redux"
 
