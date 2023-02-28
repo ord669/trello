@@ -1,16 +1,8 @@
 
-import { useSelector } from 'react-redux'
-import { utilService } from '../../services/util.service'
 import { store } from '../store'
+import { OPEN_MODAL, CLOSE_MODAL, UPDATE_ELEMENT_SIZE, UPDATE_MODAL_POS, UPDATE_MODAL_TYPE } from "./modal.reducer"
 
-import { OPEN_MODAL, CLOSE_MODAL, UPDATE_POS, UPDATE_ELEMENT_SIZE, UPDATE_CLICKED_POS, UPDATE_MODAL_POS, UPDATE_MODAL_TYPE } from "./modal.reducer"
-
-// export async function updatePos(pos) {
-//     store.dispatch({ type: SET_MOUSE_POS, pos })
-
-// }
 export async function openDynamicModal({ ev, name, data, func, task, size }) {
-
     closeDynamicModal()
 
     if (ev) updateDynamicModalPos(ev.target.getBoundingClientRect())
@@ -36,12 +28,4 @@ export function updateClickedElementSize(size) {
 export function updateModalType(element) {
     store.dispatch({ type: UPDATE_MODAL_TYPE, element })
 }
-// export function updateClickedPos(clickedPos) {
-//     store.dispatch({ type: UPDATE_CLICKED_POS, clickedPos })
-// }
 
-export function quickEdit(ev, task) {
-    const quickEditModalPos = ev.target.getBoundingClientRect()
-
-    // store.dispatch({ type: UPDATE_MODAL_TYPE, element })
-}

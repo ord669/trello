@@ -2,7 +2,7 @@ import { socketService, SOCKET_EMIT_REMOVE_TASK, SOCKET_EMIT_SAVE_TASK, } from '
 import { taskService } from '../../services/task.service'
 import { dispatchBoard, saveGroup } from '../board/board.action'
 import { TOGGLE_LABEL_SIZE } from '../board/board.reducer'
-import { closeDynamicModal, openDynamicModal } from '../modal/modal.action'
+import { openDynamicModal } from '../modal/modal.action'
 import { store } from '../store'
 
 export async function saveTask(task) {
@@ -63,7 +63,6 @@ export async function toggleMemberAssigned(memberId, groupId, taskId) {
 
 export async function toggleTaskLabel(labelId, groupId, taskId, refresh) {
     const { board } = store.getState().boardModule
-
     const group = board.groups.find(group => group._id === groupId)
     const task = group.tasks.find(task => task._id === taskId)
 
@@ -92,7 +91,6 @@ export async function saveSocketTask(taskFromSocket) {
         const group = board.groups.find(group => group._id === taskFromSocket.groupId)
         let task = group.tasks.find(currTask => currTask._id === taskFromSocket._id)
         if (task) {
-            // task = taskFromSocket
             group.tasks = group.tasks.map(currTask => currTask._id !== taskFromSocket._id ? currTask : taskFromSocket)
         }
         else {
@@ -107,7 +105,6 @@ export async function saveSocketTask(taskFromSocket) {
 }
 
 export async function removeSocketTask(taskId, groupId) {
-    // if (!groupId || !taskId) return
     try {
         const { board } = store.getState().boardModule
         const group = board.groups.find(group => group._id === groupId)
@@ -120,8 +117,6 @@ export async function removeSocketTask(taskId, groupId) {
     }
 }
 
-
 function refreshModal(task) {
     openDynamicModal({ name: 'labels', task })
-
 }

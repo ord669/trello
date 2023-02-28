@@ -3,14 +3,10 @@ import { useSelector } from "react-redux"
 import tinycolor from "tinycolor2"
 import { toggleLabelSize } from "../../../store/task/task.action"
 
-export function TaskPreviewLabels({ labelId, type }) {
+export function TaskPreviewLabels({ labelId }) {
     const { board } = useSelector(storeState => storeState.boardModule)
     const [label, setLabel] = useState({})
-    const [color, setColor] = useState('')
-    // const [isMini, setIsMini] = useState(true)
     const { isLabelMini } = useSelector(storeState => storeState.boardModule)
-
-
 
     useEffect(() => {
         getLabel(labelId)
@@ -20,7 +16,6 @@ export function TaskPreviewLabels({ labelId, type }) {
         const currLabel = board.labels.find(label => label._id === labelId)
         setLabel(currLabel)
         if (!currLabel.color) return
-        setColor(currLabel.color)
     }
 
     function darkenHexColor(hexColor, amount = 20) {

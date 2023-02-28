@@ -2,7 +2,6 @@ import { ActivityPreview } from "../../activity-preview"
 import { CommentPreview } from "./comment-preview"
 
 export function CommentList({ activities }) {
-
     if (!activities) return
     return (
         <section className='comment-list'>

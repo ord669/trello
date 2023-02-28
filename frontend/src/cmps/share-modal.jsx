@@ -1,6 +1,5 @@
 import { CloseIcon, ShareIcon } from "../assets/svg/icon-library";
-import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
-
+import { showSuccessMsg } from "../services/event-bus.service"
 
 export function ShareModal({ setIsOpenShare }) {
 
@@ -8,6 +7,7 @@ export function ShareModal({ setIsOpenShare }) {
         navigator.clipboard.writeText(window.location.href);
         showSuccessMsg('Link copied')
     }
+
     return (
         <section>
             <div onClick={() => setIsOpenShare(prev => !prev)} className="black-modal"></div>
@@ -22,11 +22,8 @@ export function ShareModal({ setIsOpenShare }) {
                         <p>Anyone with the board share link</p>
                         <button onClick={onCopyLink} className="btn-copy-link">Copy link</button>
                     </div>
-
                 </div>
-
             </div>
-
         </section>
     )
 }

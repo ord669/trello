@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { AppHeader } from './app-header'
 import { HomeHeader } from './home-header'
@@ -14,8 +14,7 @@ export function DynamicHeader() {
 
 
     return <div className={'full'}>
-        {isHome && <HomeHeader />}
-        {!isHome && <AppHeader />}
+        {isHome ? <HomeHeader /> : <AppHeader />}
     </div>
 
 }

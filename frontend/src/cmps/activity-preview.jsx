@@ -10,15 +10,11 @@ export function ActivityPreview({ activity }) {
             </div>
             <div className='activity-content'>
                 <div className=' flex align-center gap-5 warp'>
-                    {/* <span className='activity-fullname'>
-                        {activity.byMember.fullname}
-                    </span>
-                    <span>{activity.diff}</span> */}
                     <DynamicCmp cmpType={activity.type} activity={activity} />
                 </div >
                 <p className=" activity-time">{utilService.formatTime(activity.createdAt)}</p>
-            </div >
-        </section >
+            </div>
+        </section>
     )
 }
 

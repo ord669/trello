@@ -6,7 +6,6 @@ import { toggleTaskLabel } from "../../../store/task/task.action"
 export function LabelPreview({ labelId, task }) {
     const { board } = useSelector(storeState => storeState.boardModule)
     const [label, setLabel] = useState({})
-    const [color, setColor] = useState('')
 
     useEffect(() => {
         getLabel(labelId)
@@ -15,7 +14,6 @@ export function LabelPreview({ labelId, task }) {
     function getLabel(labelId) {
         const currLabel = board.labels.find(label => label._id === labelId)
         setLabel(currLabel)
-        setColor(currLabel.color)
     }
 
     function darkenHexColor(hexColor, amount = 20) {

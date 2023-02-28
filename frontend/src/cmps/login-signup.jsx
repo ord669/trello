@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react'
-import { userService } from '../services/user.service'
-import { login, logout, signup } from '../store/user.actions'
+import { useState } from 'react'
+import { login, logout, signup } from '../store/user/user.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { useNavigate } from 'react-router-dom'
 import { MainLogo } from '../assets/svg/icon-library'
 import { ImgUploader } from './img-uploader'
 
-export function LoginSignup(props) {
+export function LoginSignup() {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
     const [isSignup, setIsSignup] = useState(false)
     const navigate = useNavigate()
@@ -45,6 +44,7 @@ export function LoginSignup(props) {
             showErrorMsg('Cannot signup')
         }
     }
+
     async function onLogout() {
         try {
             await logout()
@@ -64,15 +64,12 @@ export function LoginSignup(props) {
 
     return (
         <div className='main-login-page'>
-
             <div className='login-logo'>
                 <MainLogo />
                 <span onClick={() => navigate(`/`)}>Jarvis</span>
             </div>
             <div className="login-page">
-
                 <p className='login-title'>{!isSignup ? 'Log in to Jarvis ' : 'Sign up for your account'}</p>
-
                 {!isSignup && <form className="login-form" onSubmit={onLogin}>
                     <input
                         type="text"
@@ -119,17 +116,13 @@ export function LoginSignup(props) {
                             onChange={handleChange}
                             required
                         />
-
                         <div className='login-upload'>
                             <ImgUploader onUploaded={onUploaded} type={'user'} styleClass={{}} />
                         </div>
-
                         <button className='login-btn' >Signup!</button>
                     </form>}
                 </div>
-
                 <button className="btn-signup" onClick={toggleSignup}>{!isSignup ? "Can't log in? Sign up for an account" : 'Already have an account? Log In'}</button>
-
             </div>
             <img className="login-img-left" src={require(`../assets/img/left.png`)} alt="hero-img" />
             <img className="login-img-right" src={require(`../assets/img/right.png`)} alt="hero-img" />

@@ -1,14 +1,11 @@
 import { useEffect, useRef, useState } from "react"
-import { LoaderIcon, ManIcon } from "../assets/svg/icon-library"
-// import { boardService } from "../services/board.service.local"
+import { LoaderIcon } from "../assets/svg/icon-library"
 import { boardService } from "../services/board.service"
 import { utilService } from "../services/util.service"
-import { saveActivity, saveBoard } from "../store/board/board.action"
 
-export function BoardAddBg({ board, type, onChangeBoardBg }) {
+export function BoardAddBg({ type, onChangeBoardBg }) {
     const [imgs, setImgs] = useState([])
     const [colors, setColors] = useState(boardService.getColors())
-    const [imgVal, setImgVal] = useState('london')
     const setUnsplash = useRef(utilService.debounce(loadImgs))
 
     useEffect(() => {
@@ -33,7 +30,6 @@ export function BoardAddBg({ board, type, onChangeBoardBg }) {
     if (!imgs.length) return <div className="loader"><LoaderIcon /></div>
     return (
         <section className='board-add-bg'>
-
             {type === 'photo' && <div>
                 <h3 className="bsm-title">Photos by Unsplash</h3>
                 <div className="bsm-input">
@@ -48,7 +44,6 @@ export function BoardAddBg({ board, type, onChangeBoardBg }) {
                     )}
                 </div>
             </div>}
-
             {type === 'color' && <div>
                 <h3 className="bsm-title">Colors</h3>
                 <div className="photos-container">
@@ -57,7 +52,6 @@ export function BoardAddBg({ board, type, onChangeBoardBg }) {
                     )}
                 </div>
             </div>}
-
         </section>
     )
 }

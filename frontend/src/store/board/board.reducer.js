@@ -9,7 +9,6 @@ const initialState = {
     board: null,
     lastRemovedGroup: null,
     isLabelMini: true
-
 }
 
 export function boardReducer(state = initialState, action) {
@@ -42,7 +41,6 @@ export function boardReducer(state = initialState, action) {
             break
         case TOGGLE_LABEL_SIZE:
             newState = { ...state, isLabelMini: !state.isLabelMini }
-
             break
         default:
             newState = { ...state }

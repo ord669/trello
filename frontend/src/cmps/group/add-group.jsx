@@ -5,12 +5,10 @@ import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { boardService } from "../../services/board.service"
 import { useSelector } from "react-redux"
 
-
 export function AddGroup() {
     const [isShown, setIsShown] = useState(false)
     const [title, setTilte] = useState('')
     const { board } = useSelector(storeState => storeState.boardModule)
-
 
     async function onAddList(ev) {
         ev.preventDefault()
@@ -50,7 +48,6 @@ export function AddGroup() {
                 <section className="open-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>
                     <PlusIcon />Add another list
                 </section>}
-
         </section>
     )
 }

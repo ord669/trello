@@ -1,18 +1,13 @@
-import { useForm } from "../../../../customHooks/useForm";
-import { taskService } from "../../../../services/task.service";
-import { utilService } from "../../../../services/util.service";
-import { saveTask } from "../../../../store/task/task.action";
-import { ImgUploader } from "../../../img-uploader";
+import { useForm } from "../../../../customHooks/useForm"
+import { taskService } from "../../../../services/task.service"
+import { saveTask } from "../../../../store/task/task.action"
+import { ImgUploader } from "../../../img-uploader"
 
-export function AttachmentModal({ board, currTask, getMembers, onSelectMember }) {
-
+export function AttachmentModal({ currTask }) {
     const [attachment, setAttachment, handleChange] = useForm('')
-
-    const [title, setTitle, handleChangeTitle] = useForm('')
 
     async function onUploadedAttach(url, title = 'uploded img') {
         currTask.attachments.push(taskService.getAttachment(url, title))
-        // currTask.attachments.push({ 'file': url, title, createdAt: utilService.makeId() })
         try {
             saveTask(currTask)
         } catch (err) {
@@ -36,13 +31,6 @@ export function AttachmentModal({ board, currTask, getMembers, onSelectMember })
                         onChange={handleChange}
                         placeholder="Paste any link here..." />
                 </div>
-                {attachment &&
-                    <input
-                        type="text"
-                        name="title"
-                        autoFocus
-                        onChange={handleChangeTitle}
-                        placeholder="Link name (optional)" />}
             </div>
         </section>
     )

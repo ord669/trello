@@ -1,15 +1,12 @@
 import { useState } from "react"
 import { CloseIcon, ThreeDotsIcon } from "../../../assets/svg/icon-library"
 import { saveActivity } from "../../../store/board/board.action";
-import { openDynamicModal } from "../../../store/modal/modal.action";
 import { useSelector } from "react-redux"
-
 
 export function ChecklistItemPreview({ currTodo, saveTodo, task }) {
     const [todo, setTodo] = useState(currTodo)
     const [isShown, setIsShown] = useState(false)
     const { board } = useSelector(storeState => storeState.boardModule)
-
 
     function onClickTodo(todoToChange) {
         todoToChange.isDone = !todoToChange.isDone
@@ -23,7 +20,6 @@ export function ChecklistItemPreview({ currTodo, saveTodo, task }) {
             setIsShown(prevIsShown => !prevIsShown)
         } catch (err) {
             console.log('Cannot save todo:', err)
-
         }
     }
 
@@ -34,7 +30,6 @@ export function ChecklistItemPreview({ currTodo, saveTodo, task }) {
     const style = {
         backgroundColor: isShown ? '#091e420a' : '',
         padding: isShown ? '0 0 6px 4px' : '4px 0px 4px 4px',
-        // padding: isShown ? '0 0 6px 4px' : '6px 0 6px 4px',
         alignItems: isShown ? '' : 'center'
     }
 

@@ -1,5 +1,4 @@
 import { useState } from "react"
-// import { boardService } from "../services/board.service.local"
 import { boardService } from "../services/board.service"
 import { showUserMsg } from "../services/event-bus.service"
 import { socketService, SOCKET_EMIT_SAVE_BOARD } from "../services/socket.service"
@@ -14,7 +13,6 @@ export function BoardList({ boards, setBoards, isCreate }) {
         const boardToSave = { ...board, isStarred: !board.isStarred }
         try {
             boardService.save(boardToSave)
-            // await boardService.save(boardToSave)   /// maybe not with await
             socketService.emit(SOCKET_EMIT_SAVE_BOARD, boardToSave)
             setBoards(prevBoards => prevBoards.map(currBoard => currBoard._id === board._id ? boardToSave : currBoard))
         } catch (err) {

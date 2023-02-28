@@ -6,7 +6,6 @@ import { saveTask } from "../../store/task/task.action"
 import { useSelector } from "react-redux"
 import { saveActivity } from "../../store/board/board.action"
 
-
 export function AddTask({ groupId, setIsShown }) {
     const [task, setTask] = useState(taskService.getEmptyTask())
     const { board } = useSelector(storeState => storeState.boardModule)
@@ -24,7 +23,7 @@ export function AddTask({ groupId, setIsShown }) {
             showErrorMsg('Cannot add task')
         }
     }
-    // { _id: currTask._id, title: currTask.title, groupId: currTask.groupId }
+    
     function handleChange({ target }) {
         setTask((prev) => ({ ...prev, title: target.value }))
     }

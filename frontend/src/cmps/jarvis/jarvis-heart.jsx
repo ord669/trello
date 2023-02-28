@@ -20,7 +20,6 @@ export function JarvisHeart({ isLoading }) {
                     <div className="coil coil-8"></div>
                 </div>
             </div>
-
         </section>
     )
 }

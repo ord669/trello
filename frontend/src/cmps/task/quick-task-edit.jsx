@@ -1,6 +1,5 @@
 import { useState } from "react"
-import { useSelector } from "react-redux"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { CgCreditCard } from "react-icons/cg"
 import { MdLabelOutline } from "react-icons/md"
 import { FiCreditCard } from "react-icons/fi"
@@ -10,10 +9,9 @@ import { BsArchive } from "react-icons/bs"
 
 import { utilService } from "../../services/util.service"
 import { MiniLabelList } from "./task-preview/task-preview-mini-labels-list"
-import { closeDynamicModal, openDynamicModal, updateDynamicModalPos } from "../../store/modal/modal.action"
+import { closeDynamicModal, openDynamicModal } from "../../store/modal/modal.action"
 import { useForm } from "../../customHooks/useForm"
 import { removeTask, saveTask } from "../../store/task/task.action"
-import { IconContext } from "react-icons"
 import { ManIcon } from "../../assets/svg/icon-library"
 
 export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
@@ -48,12 +46,7 @@ export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
     function renderPos() {
         const maxHeight = 150
         let pos = 'normal'
-        if (quickEditModalPos.height + quickEditModalPos.y + maxHeight > windowSize.height) pos = 'toLow'
-
-        // if (modalPos.x + modalWidth > windowSize.width) posToRender = "downLeft"
-        // if (elementStartBottom + modalHeight > windowSize.height) posToRender = "upRight"
-        // if (elementStartBottom + modalHeight > windowSize.height &&
-        //     modalPos.x + modalWidth > windowSize.width) posToRender = "upLeft"
+        if (quickEditModalPos.height + quickEditModalPos.y + maxHeight > windowSize.height) pos = 'tooLow'
 
         switch (pos) {
             case 'normal':
@@ -62,7 +55,7 @@ export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
                     left: `${quickEditModalPos.x}px`,
                     width: `${quickEditModalPos.width}px`,
                 }
-            case 'toLow':
+            case 'tooLow':
                 return {
                     top: `${quickEditModalPos.y}px`,
                     left: `${quickEditModalPos.x}px`,
@@ -110,9 +103,7 @@ export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
                     <button onClick={(ev) => openDynamicModal({ ev, name: 'dates', task })} className="edit-side-btn"><AiOutlineClockCircle /> <span>Edit dates</span></button>
                     <button onClick={() => removeTask(task)} className="edit-side-btn"><BsArchive /> <span>Archive</span></button>
                 </div>
-
                 <div className="quick-task-edit-content">
-
                     {task.style && <div style={background} className="task-preview-comver-img">
                     </div>}
                     <div className="quick-task-edit-details">
@@ -122,9 +113,6 @@ export function QuickTaskEdit({ task, setIsQuickEdit, quickEditModalPos }) {
                         <textarea type="text" name='title' onChange={handleChange} defaultValue={title} />
                         <div className="task-icons">
                         </div>
-                    </div>
-                    <div className="task-preview-edit-icon">
-
                     </div>
                 </div>
 

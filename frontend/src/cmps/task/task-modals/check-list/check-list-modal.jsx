@@ -2,7 +2,7 @@ import { useState } from "react"
 import { taskService } from "../../../../services/task.service"
 import { closeDynamicModal } from "../../../../store/modal/modal.action"
 
-export function CheckListModal({ board, currTask, addCheckList }) {
+export function CheckListModal({ addCheckList }) {
     const [checklist, setChecklist] = useState(taskService.getEmptyChecklist)
 
     function handleChange({ target }) {

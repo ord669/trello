@@ -1,5 +1,3 @@
-import { useEffect } from "react"
-import { useState } from "react"
 import { UserAvatarIcon } from "../../../user-avatar-icon"
 
 export function ModalMembersList({ filterBy, board, currTask, getMembers, toggleMemberAssigned }) {
@@ -29,7 +27,6 @@ export function ModalMembersList({ filterBy, board, currTask, getMembers, toggle
                         {getMembers(board, currTask).some(currMember => currMember._id === member._id)
                             && <button className={`clean-btn fa-solid fa-check `} ></button>}
                     </div>)}
-
             </div>
         </section>
     )

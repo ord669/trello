@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { userService } from "../services/user.service"
-import { logout } from "../store/user.actions"
+import { logout } from "../store/user/user.actions"
 import { UserAvatarIcon } from "./user-avatar-icon"
 
 export function Acount({ setIsOpenAccount }) {
@@ -36,14 +36,12 @@ export function Acount({ setIsOpenAccount }) {
                 <span className="account-img"><UserAvatarIcon member={loggdinUser} /></span>
                 <p className="user-title">{loggdinUser.fullname}</p>
             </div>
-
             {loggdinUser.fullname !== "Guest"
                 ?
                 <button onClick={onLogout} className='btn-login'>Log Out</button>
                 :
                 <button onClick={onNavigate} className='btn-login'>Log in</button>
             }
-
         </section>
     )
 }

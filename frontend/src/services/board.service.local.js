@@ -1,16 +1,11 @@
 
 import { storageService } from './async-storage.service.js'
-import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
 import { taskService } from './task.service.js'
 
-// window.cs = boardService
-
 const STORAGE_KEY = 'board'
-const STORAGE_KEY_TASK = 'tasks'
-
 _createBoards()
+
 export const boardService = {
     query,
     getById,
@@ -161,7 +156,6 @@ function getEmptyGroup(title = 'New group') {
     }
 }
 
-// async function removeGroup(board, groupId) {
 async function removeGroup(board, groupId) {
     const newBoard = structuredClone(board)
     try {
@@ -179,7 +173,6 @@ async function saveGroup(board, group) {
     try {
         if (group._id) {
             newBoard.groups = newBoard.groups.map(currGroup => currGroup._id === group._id ? group : currGroup)
-
         } else {
             group._id = utilService.makeId()
             newBoard.groups.push(group)

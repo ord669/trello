@@ -1,5 +1,4 @@
 import { useForm } from "../../../../customHooks/useForm";
-
 import { ModalMembersList } from "./members-modal-list";
 
 export function MembersModal({ board, currTask, getMembers, toggleMemberAssigned }) {

@@ -27,31 +27,6 @@ export const taskService = {
     reorderTasks,
 }
 
-// async function remove(boardId, groupId, taskId) {
-//     console.log('boardId, groupId, taskId:', boardId, groupId, taskId);
-//     return httpService.delete(`task/${boardId}/${groupId}/${taskId}`)
-// }
-
-// async function save(boardId, task) {
-//     console.log('boardId:', boardId);
-//     let savedTask
-//     if (task._id) {
-//         savedTask = await httpService.put(`task/${boardId}/${task._id}`, task)
-//     } else {
-//         // Later, owner is set by the backend
-//         // board.owner = userService.getLoggedinUser()
-//         savedTask = await httpService.post(`task/${boardId}`, task)
-//     }
-//     return savedTask
-// }
-// async function remove(taskId) {
-//     return httpService.delete(`task/${taskId}`)
-// }
-
-// function getById(taskId) {
-//     return storageService.get(STORAGE_KEY, taskId)
-// }
-
 async function remove(taskId) {
     return httpService.delete(`task/${taskId}`)
 }
@@ -61,8 +36,6 @@ async function save(task) {
     if (task._id) {
         savedTask = await httpService.put(`task/${task._id}`, task)
     } else {
-        // Later, owner is set by the backend
-        // board.owner = userService.getLoggedinUser()
         savedTask = await httpService.post(`task/`, task)
     }
     return savedTask
@@ -161,10 +134,3 @@ function getMembers(board, task) {
     return members
 }
 
-// async function onCoverChangeBg(task, bg) {
-//     task.style.background = bg
-//     try {
-//     } catch (err) {
-//         console.log('err', err)
-//     }
-// }

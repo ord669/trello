@@ -35,9 +35,6 @@ export function DueDate({ task }) {
                     checked={isDone} />
                 <button className="btn-link" onClick={(ev) => openDynamicModal({ ev, name: 'dates', task })}>
                     {`${day} at ${hour}`}
-                    {/* {isDone && <span className="complete">complete</span>}
-                    {!isDone && Date.now() > task.dueDate && <span className="overdue">overdue</span>}
-                    {!isDone && Date.now() > task.dueDate && <span className="overdue">overdue</span>} */}
                     {getDueDateLabel()}
                     <span className="icon"><ArrowDownIcon /></span>
                 </button>

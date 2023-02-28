@@ -1,10 +1,9 @@
 import { useRef, useState } from 'react'
 import Calendar from 'react-calendar'
-import { ArrowRightIcon } from '../../../../assets/svg/icon-library'
 import { saveTask } from '../../../../store/task/task.action'
 import { closeDynamicModal } from '../../../../store/modal/modal.action'
 
-export function DatesModal({ board, currTask }) {
+export function DatesModal({ currTask }) {
     const [date, setDate] = useState(new Date())
     const [isDueDate, setIsDueDate] = useState(currTask.dueDate)
     const elPrevDate = useRef()
@@ -48,13 +47,12 @@ export function DatesModal({ board, currTask }) {
         <section className='dates-modal-container'>
             <section className="modal-header">
                 <Calendar
-                    // maxDate={new Date(date.getTime() + 31556952000)} // full year
                     onChange={setDate}
                     value={date}
                     calendarType="US"
                     locale="en"
                     onClickDay={onClickDay}
-                    tileClassName={({ date, view }) => {
+                    tileClassName={({ date }) => {
                         if (new Intl.DateTimeFormat().format(Date.now()) === new Intl.DateTimeFormat().format(date)) {
                             return 'highlight'
                         }
@@ -68,12 +66,10 @@ export function DatesModal({ board, currTask }) {
                     onChange={() => setIsDueDate(prev => !prev)} />
                 {!!isDueDate ?
                     <section>{shortTime.format(date.getTime())}</section>
-                    // <section contentEditable>{shortTime.format(date.getTime())}</section>
                     :
                     <section>M/D/YYYY</section>
                 }
             </section>
-
             <button className="btn-add" onClick={onSaveDueDate}>Save</button>
             <button className="btn-link" onClick={onRemoveDueDate}>Remove</button>
         </section>

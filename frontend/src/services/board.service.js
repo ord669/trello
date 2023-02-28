@@ -1,11 +1,6 @@
 
-import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
-import { taskService } from './task.service.js'
-
-// window.cs = boardService
 
 const BASE_URL = 'board/'
 
@@ -46,8 +41,7 @@ async function query(filterBy = { title: '' }) {
     return httpService.get(BASE_URL + queryParams)
 }
 
-function getById(boardId, filterBy) {
-    // const queryParams = `?title=${filterBy.title}&memberIds=${filterBy.memberIds}`
+function getById(boardId) {
     return httpService.get(BASE_URL + boardId)
 }
 
@@ -66,26 +60,15 @@ async function save(board) {
     return board
 }
 
-// createAiBoard("software development")
 async function createAiBoard(txt) {
-    console.log('txt: ', txt)
     const prompt = { prompt: txt }
-    console.log('prompt: ', prompt)
-
     return await httpService.post(BASE_URL + 'aiboard', prompt)
-
 }
 
 async function createAiImg(txt) {
-    console.log('txt: ', txt)
-
     const prompt = { prompt: txt }
-
-    console.log('prompt: ', prompt)
     const img = await httpService.post(BASE_URL + 'aiimg', prompt)
-    console.log('img: ', img)
     return img
-
 }
 
 function getEmptyBoard(title = '') {
@@ -182,22 +165,6 @@ async function removeGroup(board, groupId) {
     }
 }
 
-// async function saveGroup(board, group) {
-
-//     try {
-//         if (group._id) {
-//             await httpService.put(BASE_URL + board._id + '/group', group)
-//         } else {
-//             const newGroup = await httpService.post(BASE_URL + board._id + '/group', group)
-//             group._id = newGroup._id
-//         }
-//         return group
-//     } catch (err) {
-//         console.log('Cannot save group: ', err)
-//         throw err
-//     }
-// }
-
 async function saveGroup(board, group) {
     const newBoard = structuredClone(board)
     try {
@@ -254,7 +221,6 @@ function removeTasksFromBoard(board) {
 
 async function getImgsFromUnsplash(val = 'london') {
     const url = `https://api.unsplash.com/search/photos?query=${val}&client_id=3EstyVWkSWr6NLXH18MuOeXbQ8ZaoaBPZW1TGe64YI4`
-    // return fetch(url).then((res) => res.json())
     try {
         const res = await fetch(url)
         return res.json()

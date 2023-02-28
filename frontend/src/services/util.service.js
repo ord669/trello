@@ -2,10 +2,8 @@ import { FastAverageColor } from "fast-average-color"
 
 export const utilService = {
     makeId,
-    makeLorem,
     getRandomIntInclusive,
     debounce,
-    randomPastTime,
     saveToStorage,
     loadFromStorage,
     getBgUrlIsDark,
@@ -14,7 +12,6 @@ export const utilService = {
     formatDate,
     getWindowDimensions,
     getAvgColorImage,
-    // clickedOnModal,
 }
 
 function makeId(length = 6) {
@@ -28,29 +25,10 @@ function makeId(length = 6) {
     return txt
 }
 
-function makeLorem(size = 100) {
-    var words = ['The sky', 'above', 'the port', 'was', 'the color of television', 'tuned', 'to', 'a dead channel', '.', 'All', 'this happened', 'more or less', '.', 'I', 'had', 'the story', 'bit by bit', 'from various people', 'and', 'as generally', 'happens', 'in such cases', 'each time', 'it', 'was', 'a different story', '.', 'It', 'was', 'a pleasure', 'to', 'burn']
-    var txt = ''
-    while (size > 0) {
-        size--
-        txt += words[Math.floor(Math.random() * words.length)] + ' '
-    }
-    return txt
-}
-
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min)
     max = Math.floor(max)
     return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive 
-}
-
-function randomPastTime() {
-    const HOUR = 1000 * 60 * 60
-    const DAY = 1000 * 60 * 60 * 24
-    const WEEK = 1000 * 60 * 60 * 24 * 7
-
-    const pastTime = getRandomIntInclusive(HOUR, WEEK)
-    return Date.now() - pastTime
 }
 
 function debounce(func, timeout = 500) {
@@ -74,18 +52,13 @@ function formatDate(time) {
     var options = {
         year: 'numeric', month: 'short', day: 'numeric',
         hour: 'numeric', minute: 'numeric',
-        // hour12: true,
     }
 
     return new Intl.DateTimeFormat('en', options).format(time)
 }
 
 function formatTime(sentAt) {
-    // const formatter = new Intl.RelativeTimeFormat(undefined, {
-    //     numeric: 'auto',
-    // })
     const formatter = new Intl.RelativeTimeFormat('en', { style: 'narrow' });
-
     const DIVISIONS = [
         { amount: 60, name: 'seconds' },
         { amount: 60, name: 'minutes' },
@@ -115,7 +88,6 @@ async function getAvgColorImage(url) {
     } catch (err) {
         console.error(err)
     }
-
 }
 
 async function getBgUrlIsDark(url) {
@@ -133,28 +105,10 @@ function getBgIsDarkColorHex(color) {
     return brightness < 155;
 }
 
-function onSetDynamicModal() {
-
-}
-
 function getWindowDimensions() {
-
     const { innerWidth: width, innerHeight: height } = window;
     return {
         width,
         height
     };
 }
-
-// function clickedOnModal(clickedPos, ModalPos) {
-
-//     const { borderLeft, borderRight, borderBottom, borderTop } = ModalPos
-//     console.log('borderRight: ', borderRight);
-//     console.log('borderLeft: ', borderLeft);
-//     const { x, y } = clickedPos
-//     console.log('ModalPos from util: ', ModalPos);
-//     console.log('clickedPos: ', clickedPos);
-//     //&& y > borderTop && y < borderBottom
-//     if (x > borderLeft && x < borderRight) return false
-//     else return true
-// }

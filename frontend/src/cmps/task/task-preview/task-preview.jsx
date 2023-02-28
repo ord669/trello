@@ -1,25 +1,18 @@
 import { Draggable } from "react-beautiful-dnd"
 import { useNavigate } from "react-router-dom"
-import { AttacheIcon, AttachmentIcon, ChecklistIcon, CheckListIcon, PenIcon } from "../../../assets/svg/icon-library"
-import { openDynamicModal, quickEdit } from "../../../store/modal/modal.action"
+import { PenIcon } from "../../../assets/svg/icon-library"
 import { TaskPreviewIcons } from "./task-preview-icons"
 import { MiniLabelList } from "./task-preview-mini-labels-list"
 import { useEffect } from "react"
 import { useRef } from "react"
 import { QuickTaskEdit } from "../quick-task-edit"
 import { useState } from "react"
-import { TaskPreviewLabels } from "./task-preview-mini-labels"
-import { useSelector } from "react-redux"
-import { LabelList } from "../task-details/label-list"
-import { LabelPreview } from "../task-details/label-preview"
 
 export function TaskPreview({ task, idx }) {
     const navigate = useNavigate()
     const elTaskPreview = useRef()
     const [quickEditModalPos, setQuickEditModalPos] = useState(null)
     const [isQuickEdit, setIsQuickEdit] = useState(false)
-    const [isShownLabels, setIsShownLabels] = useState(false)
-    const [type, setType] = useState('mini')
 
     let background
 
@@ -50,19 +43,7 @@ export function TaskPreview({ task, idx }) {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
         }
-
     }
-
-    function setLabelsShown(ev) {
-        ev.stopPropagation()
-        setIsShownLabels(prev => !prev)
-
-    }
-
-    // function taskPreviewImgCover() {
-    //     if (task.style.bgColor) return styleBgColor
-    //     if (task.style.img) return styleBgImg
-    // }
 
     return (
         <Draggable draggableId={task._id} index={idx}>
@@ -86,7 +67,7 @@ export function TaskPreview({ task, idx }) {
                         </div>}
                         <div className="task-preview-details" >
                             {!!task.labelIds.length &&
-                                <MiniLabelList task={task} type={type}/>}
+                                <MiniLabelList task={task} />}
                             <p>{task.title}</p>
                             {<TaskPreviewIcons task={task} />}
                         </div>
@@ -95,9 +76,6 @@ export function TaskPreview({ task, idx }) {
                                 <PenIcon />
                             </div>
                         </div>
-                        {/* <div className="task-preview-icons-container">
-                        <TaskPreviewIcons />
-                    </div> */}
                     </div>
                 </section>
             )}

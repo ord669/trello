@@ -4,7 +4,6 @@ import { handleKeyPress } from "../customHooks/enterOutFocues"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { utilService } from "../services/util.service"
 import { saveBoard } from "../store/board/board.action"
-import { Jarvis } from "../views/jarvis"
 import { BoardSideMenu } from "./board-side-menu"
 import { BoardStarred } from "./board-starred"
 import { ShareModal } from "./share-modal"
@@ -16,7 +15,6 @@ export function ToolBar({ board }) {
     const [isOpenFilter, setIsOpenFilter] = useState(false)
     const [isOpenSideMenu, setIsOpenSideMenu] = useState(false)
     const [isOpenShare, setIsOpenShare] = useState(false)
-    const [isOpenJarvis, setIsOpenJarvis] = useState(false)
     const [color, setColor] = useState('')
     const [btnShareBg, setBtnShareBg] = useState({})
 
@@ -48,7 +46,6 @@ export function ToolBar({ board }) {
             try {
                 const colorIsDark = await utilService.getBgUrlIsDark(bg)
                 const color = colorIsDark ? "#fff" : "#172b4d"
-                const bgColor = colorIsDark ? "#fff" : "#0079BF"
                 const btnShareStyle = {
                     background: colorIsDark ? "#fff" : "#0079BF",
                     color: colorIsDark ? "#172b4d" : "#fff"
@@ -59,11 +56,9 @@ export function ToolBar({ board }) {
                 console.error(err)
             }
         }
-
         else {
             const colorIsDark = utilService.getBgIsDarkColorHex(bg)
             const color = colorIsDark ? "#fff" : "#172b4d"
-            const bgColor = colorIsDark ? "#fff" : "#0079BF"
             const btnShareStyle = {
                 background: colorIsDark ? "#fff" : "#0079BF",
                 color: colorIsDark ? "#172b4d" : "#fff"
@@ -71,20 +66,17 @@ export function ToolBar({ board }) {
             setBtnShareBg(btnShareStyle)
             setColor(color)
         }
-
     }
 
-    const admin = board.createdBy
     return (
         <section style={{ color }} className='tool-bar full'>
             <div className="flex">
                 <span className="board-title edit-title-input"
-                    // onInput={handleChange}
                     onChange={handleChange}
                     contentEditable
                     suppressContentEditableWarning
                     onBlur={onSaveTitle}
-                    onKeyDown={(e) => handleKeyPress(e)}
+                    onKeyDown={(ev) => handleKeyPress(ev)}
                 >{title}</span>
                 <div className="tool-bar-star">
                     <BoardStarred board={board} />
@@ -95,13 +87,12 @@ export function ToolBar({ board }) {
                     <FilterIcon className="spacing" />
                     Filter
                 </button>
-                {isOpenFilter && <TaskFilter boardId={board._id} setIsOpenFilter={setIsOpenFilter} />}
+                {isOpenFilter && <TaskFilter />}
                 <span className="span">|</span>
                 <div className="flex align-center">
                     {board.members.map(member =>
                         <div key={member._id}><UserAvatarIcon member={member} /></div>
                     )}
-
                 </div>
                 <button style={btnShareBg} onClick={() => setIsOpenShare(prev => !prev)} className="btn-share"><ManShareIcon /> Share</button>
                 <span className="span">|</span>
@@ -109,7 +100,6 @@ export function ToolBar({ board }) {
                 btn-header-square">
                     <MoreTreeDotsIcon className="icon" />
                 </button>
-
                 <BoardSideMenu isOpenSideMenu={isOpenSideMenu} board={board}
                     setIsOpenSideMenu={setIsOpenSideMenu} />
                 {isOpenShare && <ShareModal setIsOpenShare={setIsOpenShare} />}

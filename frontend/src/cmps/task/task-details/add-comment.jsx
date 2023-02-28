@@ -26,14 +26,13 @@ export function AddComment({ username, saveComment }) {
     return (
         <section className="add-comment">
             <section className="user-avatar-icon" style={{ backgroundImage: `url(https://robohash.org/${username || 'liad'}?set=set5)` }}></section>
-            <section className={`write-comment ${isShown ? 'show' : ''}`}>  {/* onBlur={onClose} */}
+            <section className={`write-comment ${isShown ? 'show' : ''}`}>
                 <textarea
                     onClick={() => setIsShown(true)}
                     name="txt"
                     placeholder="Write a comment..."
                     onChange={handleChange}
                     value={comment.txt}
-                // onKeyDown={(ev) => handleKeyPress(ev)} 
                 />
                 {isShown &&
                     <section className="btns-container">

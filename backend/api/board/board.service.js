@@ -82,10 +82,6 @@ async function removeGroupFromBoard(boardId, groupId) {
     }
 }
 
-async function getAiImg(prompt) {
-    return await dbService.getImgFromDal(prompt)
-}
-
 async function getAiBoardFromChat(prompt) {
     try {
         const script = await dbService.getBoardScript(prompt)
@@ -268,5 +264,4 @@ module.exports = {
     update,
     removeGroupFromBoard,
     getAiBoardFromChat,
-    getAiImg,
 }

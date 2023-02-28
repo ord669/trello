@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { uploadService } from '../services/upload.service'
 
 export function ImgUploader({ onUploaded = null, type, styleClass, content, showFile }) {
-  let fileName
+
   const [imgData, setImgData] = useState({
     imgUrl: null,
     height: 500,
@@ -16,7 +16,6 @@ export function ImgUploader({ onUploaded = null, type, styleClass, content, show
     setImgData({ imgUrl: secure_url, width, height })
     setIsUploading(false)
     onUploaded && onUploaded(secure_url)
-
   }
 
   function getUploadLabel() {

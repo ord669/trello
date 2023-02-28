@@ -8,7 +8,7 @@ export function DetilsTitle({ onUpdateHeadline, task, group }) {
                     <textarea type="text"
                         name="title"
                         onChange={onUpdateHeadline}
-                        onKeyDown={(e) => handleKeyPress(e)}
+                        onKeyDown={(ev) => handleKeyPress(ev)}
                         defaultValue={task.title} />
                     <p>in list <span>{group.title}</span></p>
                 </div>

@@ -1,4 +1,3 @@
-import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
 import { utilService } from './util.service'
 
@@ -14,11 +13,7 @@ export const userService = {
     getById,
     remove,
     update,
-    // changeScore
 }
-
-window.userService = userService
-
 
 function getUsers() {
     // return storageService.query('user')
@@ -68,15 +63,6 @@ async function logout() {
     // socketService.logout()
     return await httpService.post('auth/logout')
 }
-
-// async function changeScore(by) {
-//     const user = getLoggedinUser()
-//     if (!user) throw new Error('Not loggedin')
-//     user.score = user.score + by || by
-//     await update(user)
-//     return user.score
-// }
-
 
 function saveLocalUser(user) {
     user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, score: user.score }

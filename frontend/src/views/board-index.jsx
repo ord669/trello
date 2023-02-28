@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react"
 import { Clock, EmptyStarIcon } from "../assets/svg/icon-library"
 import { BoardList } from "../cmps/board-list"
-// import { boardService } from "../services/board.service.local"
 import { boardService } from "../services/board.service"
 import { socketService, SOCKET_EVENT_REMOVE_BOARD, SOCKET_EVENT_SAVE_BOARD } from "../services/socket.service"
 
 export function BoardIndex() {
     const [boards, setBoards] = useState([])
-    console.log('boards:', boards)
 
     useEffect(() => {
         loadBoards()
@@ -39,8 +37,6 @@ export function BoardIndex() {
     function removeSocketBoard(socketBoardId) {
         setBoards(prevBoards => prevBoards.filter(board => board._id === socketBoardId))
     }
-
-
     const starredBoards = boards.filter(board => board.isStarred)
 
     return (

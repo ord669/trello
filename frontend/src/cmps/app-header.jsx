@@ -1,4 +1,4 @@
-import { ArrowDownIcon, BellIcon, BoardIcon, MainLogo, PlusIcon } from '../assets/svg/icon-library'
+import { ArrowDownIcon, BellIcon, MainLogo, PlusIcon } from '../assets/svg/icon-library'
 import { useEffect, useState } from 'react'
 import { CreateBoard } from './create-board'
 import { BoardNotification } from './board-notifiaction'
@@ -7,7 +7,6 @@ import tinycolor from 'tinycolor2'
 import { utilService } from '../services/util.service'
 import { useLocation, useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
-import { JarvisInputModal } from './jarvis/jarvis-input-modal'
 import useSound from 'use-sound'
 import jarviseIntro from '../assets/mp3/jarvisIntro.mp3';
 import { Jarvis } from '../views/jarvis'
@@ -36,7 +35,6 @@ export function AppHeader() {
         setDynamicColor()
         getBgStyle()
         setLoggdinUser(userService.getLoggedinUser)
-
     }, [board,])
 
     async function setAvgColor() {
@@ -54,7 +52,6 @@ export function AppHeader() {
             const color = bg
             setColor(color)
         }
-
     }
 
     function darkenHexColor(hexColor, amount = 5) {
@@ -86,7 +83,6 @@ export function AppHeader() {
                 background: color.hex,
                 color: boardColor,
                 fill: boardColor
-
             }
         }
         else {
@@ -94,7 +90,6 @@ export function AppHeader() {
                 background: darkenHexColor(bg),
                 color: boardColor,
                 fill: boardColor
-
             }
         }
         return style
@@ -106,7 +101,6 @@ export function AppHeader() {
         if (bg.includes('https')) {
             try {
                 const colorIsDark = await utilService.getBgUrlIsDark(bg)
-
                 const color = colorIsDark ? "#fff" : "#172b4d"
                 setBoardColor(color)
             } catch (err) {
@@ -119,7 +113,6 @@ export function AppHeader() {
             const color = colorIsDark ? "#fff" : "#172b4d"
             setBoardColor(color)
         }
-
     }
 
     function logoStyle() {
@@ -174,10 +167,8 @@ export function AppHeader() {
                     <div><UserAvatarIcon member={loggdinUser} /></div>
                 </div>
             </div>
-            {/* {isJarvis && <JarvisInputModal setIsJarvis={setIsJarvis} />} */}
             {isJarvis && <Jarvis setIsJarvis={setIsJarvis} />}
             {isOpenAcount && <Acount setLoggdinUser={setLoggdinUser} setIsOpenAccount={setIsOpenAccount} />}
-
         </header>
     )
 }

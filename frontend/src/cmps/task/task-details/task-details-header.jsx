@@ -39,7 +39,6 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId, setnoBg,
 
         else {
             const colorIsDark = utilService.getBgIsDarkColorHex(bg)
-            console.log('colorisDark: ', colorIsDark);
             const color = colorIsDark ? "#fff" : "#172b4d"
             setColor(color)
         }
@@ -74,7 +73,6 @@ export function DetailsHeader({ onUpdateHeadline, task, group, boardId, setnoBg,
                 {!showImgBg && !noBg && <div style={background} className="task-details-img "></div>}
                 {!noBg && <button style={{ fill: color, color }} className="btn-bar "
                     onClick={(ev) => openDynamicModal({ ev, name: 'cover', task, func: { setnoBg } })} ><FiCreditCard /> Cover</button>}
-
             </div>
             <div className="header-title-title-container flex  align-center">
                 <TaskTitleIcon className='icon-title' />

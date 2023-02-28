@@ -14,7 +14,6 @@ const initialState = {
 }
 
 export function modalReducer(state = initialState, action) {
-
     let newState = state
 
     switch (action.type) {
@@ -22,7 +21,6 @@ export function modalReducer(state = initialState, action) {
             newState = { ...state, dynamicModalStatus: true }
             break
         case CLOSE_MODAL:
-
             newState = { ...state, dynamicModalStatus: false }
             break
         case UPDATE_MODAL_POS:
@@ -37,7 +35,6 @@ export function modalReducer(state = initialState, action) {
         case UPDATE_MODAL_TYPE:
             newState = { ...state, modalDetails: action.element }
             break
-        default:
     }
     return newState
 }

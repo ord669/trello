@@ -1,38 +1,24 @@
-import { ArrowLeftIcon, CloseIcon, ActivityIcon, PlusIcon } from "../assets/svg/icon-library";
-import { useEffect, useRef, useState } from "react"
+import { ArrowLeftIcon, CloseIcon, ActivityIcon } from "../assets/svg/icon-library";
+import { useState } from "react"
 import { BoardAddBg } from "./board-add-bg";
 import { BoardActivity } from "./board-activity";
-import { useForm } from "../customHooks/useForm";
-import { utilService } from "../services/util.service";
-import { boardService } from "../services/board.service";
-import { DebounceInput } from "react-debounce-input";
-import { useEffectUpdate } from "../customHooks/useEffectUpdate";
 import { saveBoard } from "../store/board/board.action";
 
 export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
     const [isChangeBg, setIsChangeBg] = useState(false)
     const [isOpenBg, setIsOpenBg] = useState(false)
     const [type, setType] = useState('')
-    const [imgSource, setImgSource] = useState()
-    const [imgDesc, setImgDesc, handleChange] = useForm('')
-
-    useEffectUpdate(async () => {
-        // const img = await boardService.createAiImg(imgDesc.txt)
-        // setImgSource(img)
-        // onChangeBoardBg(img)
-    }, [imgDesc, imgSource])
 
     async function onChangeBoardBg(bg) {
         const updatedBoard = { ...board }
         updatedBoard.style.background = bg
         try {
-            await saveBoard(updatedBoard)
-
+            saveBoard(updatedBoard)
         } catch (err) {
             console.log('canot change background', err)
         }
-
     }
+
     function onCloseSideMenu() {
         setIsChangeBg(false)
         setIsOpenBg(false)
@@ -63,7 +49,6 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
     return (
         <section className={isOpenSideMenu ? 'board-side-menu open' : 'board-side-menu'}>
             <button onClick={onCloseSideMenu} className="btn-close-modal"><CloseIcon /></button>
-
             {!isChangeBg && <section >
                 <div onClick={() => setIsChangeBg(prev => !prev)} >
                     <h3 className="bsm-title">Menu</h3>
@@ -81,17 +66,16 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
             </section>
             }
             {!isChangeBg && <BoardActivity board={board} />}
-
             {isChangeBg && <section className="bsm-add-bg ">
                 {!isOpenBg && <section>
                     <p className="bsm-back" onClick={() => setIsChangeBg(prev => !prev)}><ArrowLeftIcon /></p>
                     <h3 className="bsm-title">Change background</h3>
                     <div className="bsm-add-bg-container">
-                        <div >
+                        <div>
                             <div onClick={() => onOpenBgMenu('photo')} className=" bsm-item bsm-item-img"></div>
                             <p>Photos</p>
                         </div>
-                        <div >
+                        <div>
                             <div onClick={() => onOpenBgMenu('color')} className=" bsm-item  bsm-item-color"></div>
                             <p>Colors</p>
                         </div>
@@ -101,13 +85,10 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
                 {isOpenBg &&
                     <div>
                         <p className="bsm-back" onClick={() => setIsOpenBg(prev => !prev)}><ArrowLeftIcon /></p>
-                        <BoardAddBg type={type} board={board} onChangeBoardBg={onChangeBoardBg} />
+                        <BoardAddBg type={type} onChangeBoardBg={onChangeBoardBg} />
                     </div>
                 }
-
-
             </section>}
-
         </section >
     )
 }

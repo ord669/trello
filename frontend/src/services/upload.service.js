@@ -9,8 +9,6 @@ function uploadImg(ev) {
   const formData = new FormData()
   formData.append('upload_preset', UPLOAD_PRESET)
   formData.append('file', ev.target.files[0])
-  console.log('formData: ', formData);
-  console.log(' ev.target.files[0]: ', ev.target.files[0]);
 
   return fetch(UPLOAD_URL, {
     method: 'POST',

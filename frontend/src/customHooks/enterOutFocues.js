@@ -1,8 +1,5 @@
-export function handleKeyPress(e) {
-    if (e.keyCode === 13) {
-        e.target.blur();
-        //Write you validation logic here
+export function handleKeyPress(ev) {
+    if (ev.keyCode === 13) {
+        ev.target.blur()
     }
 }
-
-// For Use On input ==== >>> onKeyDown={(e) => handleKeyPress(e)}

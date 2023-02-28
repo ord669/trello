@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import tinycolor from "tinycolor2";
-import { ArrowDownIcon, ArrowLeftIcon, BoardIcon, LoaderIcon } from "../assets/svg/icon-library";
-// import { boardService } from "../services/board.service.local";
+import { ArrowLeftIcon, BoardIcon, LoaderIcon } from "../assets/svg/icon-library";
 import { boardService } from "../services/board.service";
 import { utilService } from "../services/util.service";
 import { BoardStarred } from "./board-starred";
@@ -17,7 +16,6 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
         setAvgColor()
         setDynamicColor()
         loadBoards()
-
     }, [board])
 
     async function setAvgColor() {
@@ -106,9 +104,7 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
         return style
     }
 
-    // if (!board || !color) return <div className="loader"><LoaderIcon /></div>
     return (
-
         <section style={getDynamicStyle()} className={isOpenMenu ? 'main-side-menu open-menu' : 'main-side-menu'}>
             {!board || !color && <div className="loader"><LoaderIcon /></div>}
             <div className="msm-title">
@@ -116,7 +112,6 @@ export function MainSidemenu({ isOpenMenu, setIsOpenMenu, board }) {
                 <p >{board.title}</p>
                 <button className="msm-btn-close" onClick={() => setIsOpenMenu(prev => !prev)} ><ArrowLeftIcon /></button>
             </div>
-
             <div className="msm-board-title" onClick={() => navigate('/board')}>
                 <BoardIcon />
                 <p>Boards</p>

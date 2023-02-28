@@ -12,7 +12,6 @@ export function GroupPreview({ group, idx }) {
     const [isShown, setIsShown] = useState(false)
     const { board } = useSelector(storeState => storeState.boardModule)
 
-
     function onRemoveGroup() {
         try {
             saveActivity({ board, type: 'group', diff: 'archived', txt: group.title })
@@ -32,7 +31,6 @@ export function GroupPreview({ group, idx }) {
                 >
                     <div {...provided.dragHandleProps}>
                         <GroupHeader onRemoveGroup={onRemoveGroup} group={group} />
-                        {/* <button className="btn-close-modal" onClick={() => onRemoveGroup(group._id)}>remove</button> */}
                     </div>
                     <TaskList tasks={group.tasks} groupId={group._id} isShown={isShown} setIsShown={setIsShown} />
                     {!isShown && <section className="open-form" onClick={() => setIsShown(prevIsShown => !prevIsShown)}>

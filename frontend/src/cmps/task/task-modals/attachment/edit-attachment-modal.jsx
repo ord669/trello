@@ -1,16 +1,6 @@
-import { useEffect, useState } from "react"
 import { useForm } from "../../../../customHooks/useForm"
 
-export function EditAttachment({ filterBy, board, currTask, attachment, onEditAttach }) {
-
-    // function filteredMembers(filterBy) {
-    //     let filteredMembers = [...board.members]
-    //     if (filterBy !== undefined) {
-    //         const regex = new RegExp(filterBy, 'i')
-    //         filteredMembers = board.members.filter(member => regex.test(member.fullname))
-    //     }
-    //     return filteredMembers
-    // }
+export function EditAttachment({ attachment, onEditAttach }) {
     const [title, setTitle, handleChange] = useForm({ txt: '' })
 
     return (

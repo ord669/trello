@@ -23,7 +23,6 @@ export function ActivityIndex({ board, currTask }) {
     }
 
     const taskActivities = board.activities.filter(act => act.task?._id === currTask._id)
-    console.log('board.activities:', board.activities)
     return (
         <section className="activity-index">
             <section className="activity-header">

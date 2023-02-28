@@ -1,7 +1,6 @@
 import ProgressBar from "@ramonak/react-progress-bar"
 import React, { useState } from "react"
 import { useForm } from "../../../customHooks/useForm"
-
 import { ChecklistIcon, CloseIcon } from "../../../assets/svg/icon-library"
 import { saveTask } from "../../../store/task/task.action"
 import { taskService } from "../../../services/task.service"
@@ -9,7 +8,6 @@ import { ChecklistItemPreview } from "./checklist-item-preview"
 import { utilService } from "../../../services/util.service"
 
 export function TaskDetailsChecklist({ checklist, task }) {
-    // const [checklist, setChecklist] = useState(currChecklist)
     const [title, setTitle] = useState(checklist.title)
     const [isShown, setIsShown] = useState(!checklist.todos.length)
     const [isTitleEdit, setIsTitleEdit] = useState(false)
@@ -49,10 +47,8 @@ export function TaskDetailsChecklist({ checklist, task }) {
 
     async function saveTodo(todoToUpdate) {
         if (todoToUpdate._id) {
-            // Put
             checklist.todos = checklist.todos.map(currTodo => currTodo._id !== todoToUpdate._id ? currTodo : todoToUpdate)
         } else {
-            // Post
             todoToUpdate._id = utilService.makeId()
             checklist.todos.push(todo)
             setIsShown(prev => !prev)
@@ -77,7 +73,6 @@ export function TaskDetailsChecklist({ checklist, task }) {
                     <ChecklistIcon className="icon-title" />
                     {isTitleEdit ?
                         <section className="edit-title">
-                            {/* onBlur={() => setIsTitleEdit(prev => !prev)} */}
                             <textarea
                                 name="title"
                                 autoFocus
@@ -122,7 +117,6 @@ export function TaskDetailsChecklist({ checklist, task }) {
                         <button className="check-list-add-btn side-menu-item btn-link" onClick={() => { setIsShown(true) }}>Add an item</button>
                         :
                         <section className="add-item">
-                            {/* onBlur={() => setIsShown(prev => !prev)} */}
                             <textarea autoFocus type="text"
                                 name="title"
                                 placeholder="Add an item"

@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
-import { useForm } from "../../../../customHooks/useForm";
-// import { boardService } from "../../../../services/board.service.local";
-import { boardService } from "../../../../services/board.service";
-import { saveTask } from "../../../../store/task/task.action";
-import { ImgUploader } from "../../../img-uploader";
+import { useEffect, useState } from "react"
+import { boardService } from "../../../../services/board.service"
+import { saveTask } from "../../../../store/task/task.action"
+import { ImgUploader } from "../../../img-uploader"
 
-export function CoverModal({ board, currTask, setnoBg }) {
+export function CoverModal({ currTask, setnoBg }) {
     const [imgs, setImgs] = useState([])
     const [colors, setColors] = useState(boardService.getColors())
 
@@ -70,12 +68,9 @@ export function CoverModal({ board, currTask, setnoBg }) {
             <div className="modal-covers-colors-upload btn-link">
                 <ImgUploader onUploaded={onUploadedImg} type={'cover'} styleClass={{}} />
             </div>
-            <div onClick={() => {
-                onRemoveCover()
-            }} className="modal-covers-colors-upload btn-link">
+            <div onClick={onRemoveCover} className="modal-covers-colors-upload btn-link">
                 <button>Remove cover</button>
             </div>
-
             <section className='modal-covers-list-container'>
                 <h4>Photos from Unsplash</h4>
                 <div className="modal-covers-list-body">

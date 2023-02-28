@@ -1,25 +1,21 @@
 import { useEffect, useState } from "react"
-import { AttacheIcon, CheckboxIcon, ChecklistIcon, CheckListIcon, ClockIcon, DescriptionIcon, EyeIcon } from "../../../assets/svg/icon-library"
+import { CheckboxIcon, ChecklistIcon, ClockIcon, DescriptionIcon } from "../../../assets/svg/icon-library"
 import { utilService } from "../../../services/util.service"
 import { saveTask } from "../../../store/task/task.action"
-import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service"
+import { showSuccessMsg } from "../../../services/event-bus.service"
 import { UserAvatarIcon } from "../../user-avatar-icon"
 import { taskService } from "../../../services/task.service"
-import { toggleMemberAssigned } from "../../../store/task/task.action"
 import { useSelector } from "react-redux"
 
 export function TaskPreviewIcons({ task }) {
-    // const [todosIsDone, setTodosIsDone] = useState(false)
-    const [allTodosLength, setAllTodosLength] = useState('')
-    const [allTodosIsDone, setAllTodosIsDone] = useState('')
+    const [todosLength, setTodosLength] = useState('')
+    const [todosIsDone, setTodosIsDone] = useState('')
     const [day] = utilService.formatDate(task.dueDate).split(',')
     const { board } = useSelector(storeState => storeState.boardModule)
 
     useEffect(() => {
-
         getTodosIsDone()
         getTodosLength()
-
     }, [task])
 
     async function setDueDateIsDone(ev) {
@@ -28,46 +24,42 @@ export function TaskPreviewIcons({ task }) {
         try {
             await saveTask(task)
             showSuccessMsg('Task is Done')
-
         } catch (err) {
             console.log(err)
         }
-
     }
+
     function getTodosIsDone() {
         if (!task.checklists) return
         const doneTodos = task.checklists.reduce((acc, checklist) => {
-            checklist.todos.map(todo => {
+            checklist.todos.forEach(todo => {
                 if (todo.isDone) acc++
             })
             return acc
-
         }, 0)
-        setAllTodosIsDone(doneTodos)
-
+        setTodosIsDone(doneTodos)
     }
 
     function getTodosLength() {
         if (!task.checklists) return
         const allTodosLength = task.checklists.reduce((acc, checklist) => {
-            checklist.todos.map(todo => {
+            checklist.todos.forEach(todo => {
                 if (todo) acc++
             })
             return acc
         }, 0)
-        setAllTodosLength(allTodosLength)
+        setTodosLength(allTodosLength)
     }
 
     function checkListStyle() {
         let style = {}
-        if (allTodosIsDone === allTodosLength) {
+        if (todosIsDone === todosLength) {
             style = {
                 background: '#61bd4f',
                 color: '#fff',
             }
         }
         return style
-
     }
 
     function dueDateStyle() {
@@ -86,7 +78,7 @@ export function TaskPreviewIcons({ task }) {
             {!!task.checklists.length && <div style={checkListStyle()} className="tpi-checklists ">
                 <ChecklistIcon style={{ fill: 'red' }} />
                 <div >
-                    {allTodosIsDone}/{allTodosLength}
+                    {todosIsDone}/{todosLength}
                 </div>
             </div>}
             {!!task.dueDate && <div style={dueDateStyle()} onClick={(ev) => setDueDateIsDone(ev)} className="tpi-due-date">
@@ -94,7 +86,6 @@ export function TaskPreviewIcons({ task }) {
                 <span className="checkbox-icon">{task.isDone ? <ChecklistIcon style={{ fill: 'red' }} /> : <CheckboxIcon />}</span>
                 {day}</div>}
             {!!task.description && <DescriptionIcon />}
-
             <div className="tpi-members ">
                 {taskService.getMembers(board, task).map((member, idx) =>
                     <div key={member._id}>

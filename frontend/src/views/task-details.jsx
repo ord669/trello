@@ -31,12 +31,8 @@ export function TaskDetails({ setnoBg, noBg }) {
     }, [board])
 
     function loadTask() {
-        console.log('board: ', board);
         const currGroup = board.groups.find(group => group._id === groupId)
-        console.log('groupId:', groupId);
-        console.log('currGroup.tasks:', currGroup.tasks);
         const currTask = currGroup.tasks.find(task => task._id === taskId)
-        console.log('currTask:', currTask);
         setTask(currTask)
         setGroup(currGroup)
     }
@@ -58,15 +54,6 @@ export function TaskDetails({ setnoBg, noBg }) {
 
     function addCheckList(checklist) {
         task.checklists.push(checklist)
-        try {
-            saveTask(task)
-        } catch (err) {
-            console.log('err', err)
-        }
-    }
-
-    async function onChoosenDate({ target }) {
-        task.dueDate = target.valueAsNumber
         try {
             saveTask(task)
         } catch (err) {

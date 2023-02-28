@@ -5,7 +5,6 @@ export const useForm = (initialState) => {
 
     function handleChange({ target }) {
         let { value, name: field, type, checked } = target
-        // value = (type === 'number') ? +value : value
         switch (type) {
             case 'number':
             case 'range':
@@ -19,7 +18,6 @@ export const useForm = (initialState) => {
         }
         setFields((prevFields) => ({ ...prevFields, [field]: value }))
     }
-
 
     return [fields, setFields, handleChange]
 

@@ -1,7 +1,5 @@
-// import { boardService } from "../../services/board.service.local"
 import { boardService } from "../../services/board.service"
 import { socketService, SOCKET_EMIT_REMOVE_GROUP, SOCKET_EMIT_SAVE_BOARD, SOCKET_EMIT_SAVE_GROUP } from "../../services/socket.service"
-// import { socketService, SOCKET_EMIT_GROUP_DRAGED, SOCKET_EMIT_TASK_DRAGED } from "../../services/socket.service"
 import { taskService } from "../../services/task.service"
 import { userService } from "../../services/user.service"
 import { utilService } from "../../services/util.service"
@@ -13,7 +11,6 @@ export async function loadBoard(boardId, filterBy = {}) {
     try {
         const board = await boardService.getById(boardId, filterBy)
         if (!board) throw new Error('Board not found')
-        // const filterdBoard = boardService.filterGroupsTasks(board, filterBy)
         store.dispatch({ type: SET_BOARD, board })
     } catch (err) {
         console.error(err)
@@ -54,9 +51,6 @@ export async function saveBoard(board) {
         socketService.emit(SOCKET_EMIT_SAVE_BOARD, savedBoard)
         store.dispatch({ type: SET_BOARD, board: savedBoard })
         return savedBoard
-        // const newBoard = board._id ? board : savedBoard
-        // store.dispatch({ type: SET_BOARD, board: newBoard })
-        // return newBoard
     } catch (err) {
         console.log('Err from saveBoard in board action :', err)
         throw err
@@ -64,12 +58,10 @@ export async function saveBoard(board) {
 }
 
 export async function createAiBoard(txt) {
-
     if (!txt) return
     const prompt = { prompt: txt }
     try {
         const newBoard = await boardService.createAiBoard(prompt)
-        console.log('newBoard from create: ', newBoard)
         store.dispatch({ type: SET_BOARD, board: newBoard })
         return newBoard
     } catch (err) {
@@ -84,10 +76,6 @@ export async function updateDrag({ source, destination, type }) {
     update(source, destination, board.groups)
     saveBoard({ ...board })
 }
-
-// export async function updateSocketDrag(board) {
-//     store.dispatch({ type: SET_BOARD, board })
-// }
 
 export async function updateSocketDrag({ source, destination, type }) {
     const { board } = store.getState().boardModule
@@ -109,7 +97,6 @@ export async function saveSocketGroup(socketGroup) {
 }
 
 export async function removeSocketGroup(groupId) {
-    console.log('groupId:', groupId)
     store.dispatch({ type: REMOVE_GROUP, groupId })
 }
 
@@ -127,7 +114,6 @@ export async function saveActivity({ board, txt, type, at, diff, task }) {
         txt,
         at,
         task
-
     }
     const boardToSave = { ...board, activities: [activity, ...board.activities] }
     try {

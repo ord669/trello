@@ -1,8 +1,6 @@
-import { useState } from "react"
-import { PenIcon } from "../../../../assets/svg/icon-library"
 import { LabelPreview } from "../labels/label-modal-preview"
 
-export function LabelsModalList({ filterBy, board, currTask, toggleTaskLabel }) {
+export function LabelsModalList({ filterBy, board, currTask }) {
     function filteredLabels(filterBy) {
         let filteredLabels = [...board.labels]
         if (filterBy !== undefined) {

@@ -1,4 +1,3 @@
-import { AttachmentIcon } from "../../../assets/svg/icon-library";
 import { utilService } from "../../../services/util.service";
 import { openDynamicModal } from "../../../store/modal/modal.action";
 
@@ -10,7 +9,6 @@ export function TaskDetailsAttachment({ task, attachment, onRemoveAttach, onEdit
 
     return (
         <section className='task-details-attachment'>
-
             <div className="task-details-attachment-content-container">
                 <div className="task-details-attachment-content">
                     <div className="img-container">
@@ -26,10 +24,8 @@ export function TaskDetailsAttachment({ task, attachment, onRemoveAttach, onEdit
                             </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </section>
     )
 }

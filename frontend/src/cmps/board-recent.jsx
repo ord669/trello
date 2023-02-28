@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { LoaderIcon } from "../assets/svg/icon-library"
-// import { boardService } from "../services/board.service.local"
 import { boardService } from "../services/board.service"
 import { BoardStarred } from "./board-starred"
 

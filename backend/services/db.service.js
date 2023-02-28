@@ -13,7 +13,6 @@ const openai = new OpenAIApi(configuration);
 module.exports = {
     getCollection,
     getBoardScript,
-    getImgFromDal
 }
 
 var dbConn = null
@@ -59,15 +58,3 @@ async function getBoardScript(prompt) {
     }
 }
 
-async function getImgFromDal(prompt) {
-    console.log('prompt: ', prompt);
-    const response = await openai.createImage({
-        prompt: `${prompt}`,
-        n: 1,
-        size: "1024x1024",
-    });
-    image_url = response.data.data[0].url;
-    console.log('image_url: ', image_url);
-    return image_url
-
-}

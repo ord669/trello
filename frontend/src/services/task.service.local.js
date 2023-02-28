@@ -1,9 +1,20 @@
-import { httpService } from './http.service.js'
+import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 
+const STORAGE_KEY = 'tasks'
+
+_createTasks()
+
+function _createTasks() {
+    const tasks = utilService.loadFromStorage(STORAGE_KEY)
+    if (!tasks) {
+        storageService._save(STORAGE_KEY, [])
+    }
+}
 export const taskService = {
-    // remove,
-    // save,
+    remove,
+    save,
+    getById,
     getEmptyTask,
     createChecklists,
     getEmptyTodo,
@@ -14,35 +25,20 @@ export const taskService = {
     reorderTasks,
 }
 
-// async function remove(boardId, groupId, taskId) {
-//     console.log('boardId, groupId, taskId:', boardId, groupId, taskId);
-//     return httpService.delete(`task/${boardId}/${groupId}/${taskId}`)
-// }
+function getById(taskId) {
+    return storageService.get(STORAGE_KEY, taskId)
+}
 
-// async function save(boardId, task) {
-//     console.log('boardId:', boardId);
-//     let savedTask
-//     if (task._id) {
-//         savedTask = await httpService.put(`task/${boardId}/${task._id}`, task)
-//     } else {
-//         // Later, owner is set by the backend
-//         // board.owner = userService.getLoggedinUser()
-//         savedTask = await httpService.post(`task/${boardId}`, task)
-//     }
-//     return savedTask
-// }
 async function remove(taskId) {
-    return httpService.delete(`task/${taskId}`)
+    await storageService.remove(STORAGE_KEY, taskId)
 }
 
 async function save(task) {
     let savedTask
     if (task._id) {
-        savedTask = await httpService.put(`task/${task._id}`, task)
+        savedTask = await storageService.put(STORAGE_KEY, task)
     } else {
-        // Later, owner is set by the backend
-        // board.owner = userService.getLoggedinUser()
-        savedTask = await httpService.post(`task/`, task)
+        savedTask = await storageService.post(STORAGE_KEY, task)
     }
     return savedTask
 }
@@ -50,11 +46,13 @@ async function save(task) {
 async function reorderTasks(source, destination, groups) {
     const sourceGroup = groups.find(group => group._id === source.droppableId)
     const [task] = sourceGroup.tasks.splice(source.index, 1)
-    sourceGroup.tasksId.splice(source.index, 1)
+    sourceGroup.tasksId = sourceGroup.tasksId.filter(id => id !== task._id)
     const destinationGroup = groups.find(group => group._id === destination.droppableId)
     task.groupId = destinationGroup._id
+
     destinationGroup.tasks.splice(destination.index, 0, task)
     destinationGroup.tasksId.splice(destination.index, 0, task._id)
+    await save(task)
     return groups
 }
 
@@ -92,7 +90,7 @@ function getEmptyChecklist() {
 
 function getEmptyTodo() {
     return {
-        // "_id": utilService.makeId(),
+        "_id": '',
         "title": "",
         "isDone": false
     }
@@ -106,7 +104,7 @@ function getEmptyComment() {
         "byMember": {
             "_id": "u101",
             "fullname": "Or Dvir",
-            "imgUrl": "https://robohash.org/Or?set=set5"
+            "imgUrl": "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg"
         },
     }
 }
@@ -118,22 +116,18 @@ function getEmptyTask() {
         "description": "description",
         "comments": [],
         "checklists": [],
-        "memberIds": [
-            "u102"
-        ],
-        "labelIds": [
-            "l104"
-        ],
-        "dueDate": 16156215211,
+        "memberIds": [],
+        "labelIds": [],
+        "dueDate": 0,
         "isDone": false,
         "byMember": {
             "_id": "u103",
             "username": "Oren Sharizad",
             "fullname": "Oren Sharizad",
-            "imgUrl": "https://robohash.org/oren?set=set5"
+            "imgUrl": "https://res.cloudinary.com/dd09wjwjn/image/upload/v1674737130/Me_q1h5fa.jpg"
         },
         "style": {
-            "background": "#26DE81"
+            "background": ""
         },
         "attachments": [{
             "createdAt": 1589989488411,
@@ -150,11 +144,3 @@ function getMembers(board, task) {
     let members = board.members.filter(member => task.memberIds.indexOf(member._id) !== -1)
     return members
 }
-
-// async function onCoverChangeBg(task, bg) {
-//     task.style.background = bg
-//     try {
-//     } catch (err) {
-//         console.log('err', err)
-//     }
-// }
