@@ -60,7 +60,7 @@ function BoardTaskActivity({ activity }) {
                 </div>
             }
             {activity.diff === 'archived' && <div>
-                <div div className='flex align-center gap-5 warp'>
+                <div className='flex align-center gap-5 warp'>
                     <span className='activity-fullname'>
                         {activity.byMember.fullname}
                     </span>

@@ -30,6 +30,7 @@ export function ToolBar({ board }) {
     async function onSaveTitle() {
         const newTitle = title.trimEnd()
         if (newTitle === board.title) return
+        console.log('newTitle:', newTitle);
         try {
             const boardToSave = { ...board, title: newTitle }
             await saveBoard(boardToSave)
