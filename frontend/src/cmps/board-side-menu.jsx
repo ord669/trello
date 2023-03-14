@@ -15,7 +15,7 @@ export function BoardSideMenu({ setIsOpenSideMenu, board, isOpenSideMenu }) {
         try {
             saveBoard(updatedBoard)
         } catch (err) {
-            console.log('canot change background', err)
+            console.log('cannot change background', err)
         }
     }
 

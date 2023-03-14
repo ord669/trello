@@ -33,7 +33,7 @@ export function TaskDetailsDescription({ task, handleChange }) {
                                 setIsShown((prev) => !prev)
                             }}
                         />
-                        <div className="desc-btn flex align-cetner ">
+                        <div className="desc-btn flex align-center">
                             <button onClick={() => {
                                 try {
                                     saveTask(task)
